@@ -1,4 +1,4 @@
-update=Wed 16 Mar 2016 15:56:40 CET
+update=Po 28. august 2017, 08:29:33 CEST
 version=1
 last_client=kicad
 [pcbnew]
@@ -60,3 +60,4 @@ LibName28=contrib
 LibName29=valves
 LibName30=/home/nail/src/hw/kicad/library/F-3188_CSR8645
 LibName31=/home/nail/src/kicad/library/phonejack
+LibName32=switches

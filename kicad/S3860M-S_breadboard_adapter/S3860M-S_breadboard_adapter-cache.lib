@@ -3,16 +3,16 @@ EESchema-LIBRARY Version 2.3
 #
 # CONN_01X11
 #
-DEF CONN_01X11 P 0 40 Y N 1 F N
-F0 "P" 0 600 50 H V C CNN
+DEF CONN_01X11 J 0 40 Y N 1 F N
+F0 "J" 0 600 50 H V C CNN
 F1 "CONN_01X11" 100 0 50 V V C CNN
-F2 "" 0 0 50 H V C CNN
-F3 "" 0 0 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
 $FPLIST
- Pin_Header_Straight_1X11
- Pin_Header_Angled_1X11
- Socket_Strip_Straight_1X11
- Socket_Strip_Angled_1X11
+ Pin_Header_Straight_1X*
+ Pin_Header_Angled_1X*
+ Socket_Strip_Straight_1X*
+ Socket_Strip_Angled_1X*
 $ENDFPLIST
 DRAW
 S -50 -495 10 -505 0 1 0 N
@@ -43,16 +43,16 @@ ENDDEF
 #
 # CONN_01X12
 #
-DEF CONN_01X12 P 0 40 Y N 1 F N
-F0 "P" 0 650 50 H V C CNN
+DEF CONN_01X12 J 0 40 Y N 1 F N
+F0 "J" 0 650 50 H V C CNN
 F1 "CONN_01X12" 100 0 50 V V C CNN
-F2 "" 0 0 50 H V C CNN
-F3 "" 0 0 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
 $FPLIST
- Pin_Header_Straight_1X12
- Pin_Header_Angled_1X12
- Socket_Strip_Straight_1X12
- Socket_Strip_Angled_1X12
+ Pin_Header_Straight_1X*
+ Pin_Header_Angled_1X*
+ Socket_Strip_Straight_1X*
+ Socket_Strip_Angled_1X*
 $ENDFPLIST
 DRAW
 S -50 -600 50 600 0 1 0 N
@@ -83,30 +83,11 @@ X P12 12 -200 -550 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# JUMPER3
+# LED-RESCUE-S3860M-S_breadboard_adapter
 #
-DEF JUMPER3 JP 0 30 Y N 1 F N
-F0 "JP" 50 -100 50 H V L CNN
-F1 "JUMPER3" 0 100 50 H V C BNN
-F2 "" 0 0 50 H V C CNN
-F3 "" 0 0 50 H V C CNN
-DRAW
-A -60 10 64 386 1413 0 1 0 N -10 50 -110 50
-A 60 10 64 386 1413 0 1 0 N 110 50 10 50
-C -120 0 35 0 1 0 N
-C 0 0 36 0 1 0 N
-C 120 0 35 0 1 0 N
-X 1 1 -250 0 95 R 40 40 0 1 P
-X 2 2 0 -100 60 U 40 40 0 1 P
-X 3 3 250 0 95 L 40 40 0 1 P
-ENDDRAW
-ENDDEF
-#
-# LED
-#
-DEF LED D 0 40 Y N 1 F N
+DEF LED-RESCUE-S3860M-S_breadboard_adapter D 0 40 Y N 1 F N
 F0 "D" 0 100 50 H V C CNN
-F1 "LED" 0 -100 50 H V C CNN
+F1 "LED-RESCUE-S3860M-S_breadboard_adapter" 0 -100 50 H V C CNN
 F2 "" 0 0 50 H V C CNN
 F3 "" 0 0 50 H V C CNN
 $FPLIST
@@ -128,11 +109,11 @@ ENDDEF
 DEF R R 0 0 N Y 1 F N
 F0 "R" 80 0 50 V V C CNN
 F1 "R" 0 0 50 V V C CNN
-F2 "" -70 0 50 V V C CNN
-F3 "" 0 0 50 H V C CNN
+F2 "" -70 0 50 V I C CNN
+F3 "" 0 0 50 H I C CNN
 $FPLIST
  R_*
- Resistor_*
+ R_*
 $ENDFPLIST
 DRAW
 S -40 -100 40 100 0 1 10 N

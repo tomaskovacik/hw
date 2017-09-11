@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:S3860M-S_breadboard_adapter-rescue
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -33,7 +34,7 @@ LIBS:SOYO-BT24G03
 LIBS:S3860M-S
 LIBS:open-project
 LIBS:S3860M-S_breadboard_adapter-cache
-EELAYER 25 0
+EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -136,7 +137,7 @@ F 3 "" H 5550 6150 50  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L LED D1
+L LED-RESCUE-S3860M-S_breadboard_adapter D1
 U 1 1 56C487CC
 P 6100 5850
 F 0 "D1" H 6200 5700 50  0000 C CNN
@@ -147,7 +148,7 @@ F 3 "" H 6100 5850 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED D2
+L LED-RESCUE-S3860M-S_breadboard_adapter D2
 U 1 1 56C488F4
 P 6100 6150
 F 0 "D2" H 6200 6000 50  0000 C CNN
@@ -157,14 +158,6 @@ F 3 "" H 6100 6150 50  0000 C CNN
 	1    6100 6150
 	1    0    0    -1  
 $EndComp
-Text Label 8400 4300 0    60   ~ 0
-ONKEY
-Text Label 8400 4200 0    60   ~ 0
-VOL+
-Text Label 8400 4100 0    60   ~ 0
-VOL-
-Text Label 8400 4000 0    60   ~ 0
-RESET
 $Comp
 L CONN_01X12 P1
 U 1 1 5576DE6D
@@ -176,84 +169,6 @@ F 3 "" H 3400 3850 60  0000 C CNN
 	1    3400 3850
 	-1   0    0    1   
 $EndComp
-$Comp
-L JUMPER3 VBUCK1
-U 1 1 56E6B6AE
-P 4450 4750
-F 0 "VBUCK1" V 4850 4700 50  0000 L CNN
-F 1 "VBUCK" V 4950 4650 50  0000 L CNN
-F 2 "open-project:S_JUMPER_3" H 4450 4750 50  0001 C CNN
-F 3 "" H 4450 4750 50  0000 C CNN
-	1    4450 4750
-	0    1    1    0   
-$EndComp
-$Comp
-L JUMPER3 GND1
-U 1 1 56E6BB3A
-P 4050 4750
-F 0 "GND1" V 4450 4750 50  0000 L CNN
-F 1 "GND" V 4550 4750 50  0000 L CNN
-F 2 "open-project:S_JUMPER_3" H 4050 4750 50  0001 C CNN
-F 3 "" H 4050 4750 50  0000 C CNN
-	1    4050 4750
-	0    1    1    0   
-$EndComp
-$Comp
-L JUMPER3 ONKEY1
-U 1 1 56E700CA
-P 8000 4600
-F 0 "ONKEY1" V 7600 4550 50  0000 L CNN
-F 1 "ONKEY" V 7500 4500 50  0000 L CNN
-F 2 "open-project:S_JUMPER_3" H 8000 4600 50  0001 C CNN
-F 3 "" H 8000 4600 50  0000 C CNN
-	1    8000 4600
-	0    -1   -1   0   
-$EndComp
-$Comp
-L JUMPER3 VOL+1
-U 1 1 56E70127
-P 7650 4600
-F 0 "VOL+1" V 7250 4550 50  0000 L CNN
-F 1 "VOL+" V 7150 4500 50  0000 L CNN
-F 2 "open-project:S_JUMPER_3" H 7650 4600 50  0001 C CNN
-F 3 "" H 7650 4600 50  0000 C CNN
-	1    7650 4600
-	0    -1   -1   0   
-$EndComp
-$Comp
-L JUMPER3 VOL-1
-U 1 1 56E70179
-P 7300 4600
-F 0 "VOL-1" V 6900 4550 50  0000 L CNN
-F 1 "VOL-" V 6800 4500 50  0000 L CNN
-F 2 "open-project:S_JUMPER_3" H 7300 4600 50  0001 C CNN
-F 3 "" H 7300 4600 50  0000 C CNN
-	1    7300 4600
-	0    -1   -1   0   
-$EndComp
-$Comp
-L JUMPER3 RST1
-U 1 1 56E701FA
-P 6900 4600
-F 0 "RST1" V 6500 4550 50  0000 L CNN
-F 1 "RST" V 6400 4550 50  0000 L CNN
-F 2 "open-project:S_JUMPER_3" H 6900 4600 50  0001 C CNN
-F 3 "" H 6900 4600 50  0000 C CNN
-	1    6900 4600
-	0    -1   -1   0   
-$EndComp
-Text Notes 8350 4750 0    60   ~ 0
-XS3868
-Text Notes 8300 4500 0    60   ~ 0
-S3860M-S
-Text Notes 3200 4650 0    60   ~ 0
-X3860M-S
-Text Notes 3250 4950 0    60   ~ 0
-XS3868
-Text Label 3700 4100 0    60   ~ 0
-VBUCK
-Text Label 3700 4200 0    60   ~ 0
-GND
 Wire Wire Line
 	6250 3300 9100 3300
 Wire Wire Line
@@ -357,123 +272,40 @@ Connection ~ 4850 3800
 Wire Wire Line
 	3600 4300 5050 4300
 Wire Wire Line
-	4050 4200 4050 4500
+	3600 4100 5050 4100
 Wire Wire Line
-	4450 4100 4450 4500
-Wire Wire Line
-	4450 4100 5050 4100
-Wire Wire Line
-	4050 4200 5050 4200
-Wire Wire Line
-	4450 5000 4450 5100
-Wire Wire Line
-	4350 4750 4250 4750
-Wire Wire Line
-	4250 4750 4250 4100
-Wire Wire Line
-	4250 4100 3600 4100
-Wire Wire Line
-	3950 4750 3800 4750
-Wire Wire Line
-	3800 4200 3800 5350
-Wire Wire Line
-	3800 4200 3600 4200
+	3600 4200 5050 4200
 Wire Wire Line
 	9100 3900 6250 3900
 Wire Wire Line
-	7150 4000 9100 4000
-Wire Wire Line
-	7450 4100 9100 4100
-Wire Wire Line
-	7800 4200 9100 4200
-Wire Wire Line
-	8200 4300 9100 4300
-Wire Wire Line
-	7000 4600 7150 4600
-Wire Wire Line
-	7150 4600 7150 4000
-Wire Wire Line
-	7450 4100 7450 4600
-Wire Wire Line
-	7450 4600 7400 4600
-Wire Wire Line
-	7750 4600 7800 4600
-Wire Wire Line
-	7800 4600 7800 4200
-Wire Wire Line
-	8200 4300 8200 4600
-Wire Wire Line
-	8200 4600 8100 4600
-Wire Wire Line
-	6250 4100 7000 4100
-Wire Notes Line
-	6450 4600 8650 4600
-Wire Wire Line
-	4450 5100 4150 5100
-Wire Wire Line
-	4150 5100 4150 4450
-Wire Wire Line
-	4150 4450 4050 4450
-Connection ~ 4050 4450
-Wire Wire Line
-	4050 5000 4050 5050
-Wire Wire Line
-	4050 5050 4300 5050
-Wire Wire Line
-	4300 5050 4300 4450
-Wire Wire Line
-	4300 4450 4450 4450
-Connection ~ 4450 4450
-Wire Notes Line
-	4650 4750 3200 4750
-Wire Wire Line
-	6250 4200 7750 4200
-Wire Wire Line
-	7300 4200 7300 4350
-Wire Wire Line
-	7650 4300 7650 4350
-Wire Wire Line
-	6250 4400 6400 4400
-Wire Wire Line
-	6400 4400 6400 4250
-Wire Wire Line
-	6400 4250 8000 4250
-Wire Wire Line
-	8000 4250 8000 4350
-Wire Wire Line
-	7300 4850 7050 4850
-Wire Wire Line
-	7050 4850 7050 4000
-Wire Wire Line
-	7050 4000 6250 4000
-Wire Wire Line
-	7650 4850 7650 4900
-Wire Wire Line
-	6900 4850 6900 4900
-Wire Wire Line
-	8000 4850 8000 4900
-Wire Wire Line
-	8000 4900 7750 4900
-Wire Wire Line
-	7750 4900 7750 4200
-Connection ~ 7300 4200
-Wire Wire Line
-	6900 4100 6900 4350
-Wire Wire Line
-	6250 4300 7650 4300
-Wire Wire Line
-	6900 4900 6600 4900
-Wire Wire Line
-	6600 4900 6600 4300
-Connection ~ 6600 4300
-Wire Wire Line
-	7650 4900 7000 4900
-Wire Wire Line
-	7000 4900 7000 4100
-Connection ~ 6900 4100
+	6250 4400 8650 4400
 Wire Wire Line
 	5100 4950 5100 5350
 Wire Wire Line
 	5100 5350 3800 5350
-Connection ~ 3800 4750
+Wire Wire Line
+	6250 4100 8250 4100
+Wire Wire Line
+	8250 4100 8250 4000
+Wire Wire Line
+	8250 4000 9100 4000
+Wire Wire Line
+	9100 4100 8400 4100
+Wire Wire Line
+	8400 4100 8400 4200
+Wire Wire Line
+	8400 4200 6250 4200
+Wire Wire Line
+	6250 4300 8550 4300
+Wire Wire Line
+	8550 4300 8550 4200
+Wire Wire Line
+	8550 4200 9100 4200
+Wire Wire Line
+	8650 4300 9100 4300
+Wire Wire Line
+	8650 4400 8650 4300
+Wire Wire Line
+	3800 5350 3800 4200
+Connection ~ 3800 4200
 $EndSCHEMATC

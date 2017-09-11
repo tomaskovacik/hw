@@ -1,4 +1,4 @@
-update=Sun 06 Sep 2015 06:17:21 PM CEST
+update=Po 28. august 2017, 08:26:05 CEST
 version=1
 last_client=kicad
 [pcbnew]
@@ -60,3 +60,4 @@ LibName28=contrib
 LibName29=valves
 LibName30=/home/nail/src/hw/kicad/library/MB-CM15113
 LibName31=/home/nail/src/hw/kicad/audio_source/audio_source-cache
+LibName32=switches

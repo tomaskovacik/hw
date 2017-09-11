@@ -30,7 +30,7 @@ LIBS:atmel
 LIBS:contrib
 LIBS:valves
 LIBS:regulated_power_supply-cache
-EELAYER 25 0
+EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -599,7 +599,7 @@ F 3 "" H 5550 4800 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L LED D5
+L LED-RESCUE-regulated_power_supply D5
 U 1 1 56730594
 P 2100 4450
 F 0 "D5" H 2100 4550 50  0000 C CNN

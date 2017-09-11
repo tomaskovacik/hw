@@ -1,4 +1,4 @@
-update=Thu 17 Mar 2016 16:43:29 CET
+update=Št 31. august 2017, 11:28:36 CEST
 version=1
 last_client=kicad
 [pcbnew]
@@ -59,3 +59,4 @@ LibName27=opto
 LibName28=atmel
 LibName29=contrib
 LibName30=valves
+LibName31=/home/nail/src/hw/kicad/library/S3860M-S

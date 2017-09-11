@@ -1,0 +1,123 @@
+Cmp-Mod V01 Created by PcbNew   date = Št 24. august 2017, 17:44:20 CEST
+
+BeginCmp
+TimeStamp = 55EC7A56
+Path = /55EC62E4
+Reference = U1;
+ValeurCmp = MB-CM15113;
+IdModule  = modules:MB-CM15113;
+EndCmp
+
+BeginCmp
+TimeStamp = 55EC7A15
+Path = /55EC634B
+Reference = P1;
+ValeurCmp = CONN_01X15;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x16;
+EndCmp
+
+BeginCmp
+TimeStamp = 59A2D818
+Path = /57ED066C
+Reference = SW1;
+ValeurCmp = RESET;
+IdModule  = Buttons_Switches_SMD:SW_SPST_FSMSM;
+EndCmp
+
+BeginCmp
+TimeStamp = 55EC7A32
+Path = /55EC639E
+Reference = P3;
+ValeurCmp = CONN_01X15;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x16;
+EndCmp
+
+BeginCmp
+TimeStamp = 57DF0313
+Path = /55EC6792
+Reference = P2;
+ValeurCmp = CONN_01X05;
+IdModule  = jacks:3.5mm_stereo_jack_PJ320B;
+EndCmp
+
+BeginCmp
+TimeStamp = 59A2D786
+Path = /599EF23C
+Reference = C1;
+ValeurCmp = 15pF;
+IdModule  = Capacitors_SMD:C_0805_HandSoldering;
+EndCmp
+
+BeginCmp
+TimeStamp = 59A2D797
+Path = /599EFBD4
+Reference = C2;
+ValeurCmp = 100n;
+IdModule  = Capacitors_SMD:C_0805_HandSoldering;
+EndCmp
+
+BeginCmp
+TimeStamp = 59A2D7AD
+Path = /57ECF6CA
+Reference = D1;
+ValeurCmp = D;
+IdModule  = LEDs.pretty:LED-1206;
+EndCmp
+
+BeginCmp
+TimeStamp = 59A2D7C3
+Path = /57ECF843
+Reference = D2;
+ValeurCmp = D;
+IdModule  = LEDs.pretty:LED-1206;
+EndCmp
+
+BeginCmp
+TimeStamp = 59A2D7CD
+Path = /599EED00
+Reference = L1;
+ValeurCmp = 15nH;
+IdModule  = Choke_SMD:Choke_SMD_1206_Standard;
+EndCmp
+
+BeginCmp
+TimeStamp = 59A2D7D9
+Path = /57ED0675
+Reference = R1;
+ValeurCmp = 10k;
+IdModule  = Resistors_SMD.pretty:R_0805_HandSoldering;
+EndCmp
+
+BeginCmp
+TimeStamp = 59A2D7E5
+Path = /57ECF44A
+Reference = R2;
+ValeurCmp = 470;
+IdModule  = Resistors_SMD.pretty:R_0805_HandSoldering;
+EndCmp
+
+BeginCmp
+TimeStamp = 59A2D7F1
+Path = /57ECF4C4
+Reference = R3;
+ValeurCmp = 470;
+IdModule  = Resistors_SMD.pretty:R_0805_HandSoldering;
+EndCmp
+
+BeginCmp
+TimeStamp = 59A2D7FD
+Path = /57ED0215
+Reference = R4;
+ValeurCmp = 10k;
+IdModule  = Resistors_SMD.pretty:R_0805_HandSoldering;
+EndCmp
+
+BeginCmp
+TimeStamp = 59A2D833
+Path = /57ED00C6
+Reference = SW2;
+ValeurCmp = ON/OFF;
+IdModule  = Buttons_Switches_SMD:SW_SPST_FSMSM;
+EndCmp
+
+EndListe

@@ -1,4 +1,4 @@
-update=Wed 17 Dec 2014 14:35:45 CET
+update=Pi  8. september 2017, 12:56:46 CEST
 last_client=kicad
 [general]
 version=1
@@ -43,7 +43,7 @@ LibName12=c-t-smd
 LibName13=modules/BLK-MD-SPK-B-E
 [eeschema]
 version=1
-LibDir=/home/nail/Ubuntu One/elektronika/kicad/library
+LibDir=/home/nail/src/kicad-library/library
 [eeschema/libraries]
 LibName1=power
 LibName2=device
@@ -78,3 +78,4 @@ LibName30=valves
 LibName31=/home/nail/src/hw/kicad/library/aimtec
 LibName32=/home/nail/src/hw/kicad/library/BLK-MD-SPK-B
 LibName33=/home/nail/src/kicad/library/phonejack
+LibName34=f-6888

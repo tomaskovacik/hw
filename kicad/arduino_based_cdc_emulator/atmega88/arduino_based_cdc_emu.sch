@@ -30,7 +30,7 @@ LIBS:atmel
 LIBS:contrib
 LIBS:valves
 LIBS:arduino_based_cdc_emu-cache
-EELAYER 25 0
+EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -70,13 +70,13 @@ Text Label 4200 2350 0    60   ~ 0
 DataIn
 Text Label 4200 2550 0    60   ~ 0
 Clock
-Text Label 4150 3850 0    60   ~ 0
+Text Label 6350 4900 0    60   ~ 0
 DataOut
-Text Label 7100 2750 0    60   ~ 0
+Text Label 8050 2150 0    60   ~ 0
 Clock
-Text Label 7100 2400 0    60   ~ 0
+Text Label 8050 2050 0    60   ~ 0
 DataIn
-Text Label 6950 1650 0    60   ~ 0
+Text Label 8050 1950 0    60   ~ 0
 DataOut
 $Comp
 L GND-RESCUE-arduino_based_cdc_emu #PWR02
@@ -189,36 +189,14 @@ F 3 "" H 2500 5900 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R-RESCUE-arduino_based_cdc_emu R2
-U 1 1 530C78F0
-P 3850 2550
-F 0 "R2" V 4059 2550 50  0000 C CNN
-F 1 "3k3" V 3967 2550 50  0000 C CNN
-F 2 "Resistors_SMD:R_0805" H 3850 2550 60  0001 C CNN
-F 3 "" H 3850 2550 60  0001 C CNN
-	1    3850 2550
-	0    -1   -1   0   
-$EndComp
-$Comp
-L R-RESCUE-arduino_based_cdc_emu R1
-U 1 1 530C77F4
-P 3850 2350
-F 0 "R1" V 4059 2350 50  0000 C CNN
-F 1 "3k3" V 3967 2350 50  0000 C CNN
-F 2 "Resistors_SMD:R_0805" H 3850 2350 60  0001 C CNN
-F 3 "" H 3850 2350 60  0001 C CNN
-	1    3850 2350
-	0    -1   -1   0   
-$EndComp
-$Comp
 L R-RESCUE-arduino_based_cdc_emu R4
 U 1 1 530C77E3
-P 3850 3850
-F 0 "R4" V 4059 3850 50  0000 C CNN
-F 1 "3k3" V 3967 3850 50  0000 C CNN
-F 2 "Resistors_SMD:R_0805" H 3850 3850 60  0001 C CNN
-F 3 "" H 3850 3850 60  0001 C CNN
-	1    3850 3850
+P 6050 4900
+F 0 "R4" V 6259 4900 50  0000 C CNN
+F 1 "3k3" V 6167 4900 50  0000 C CNN
+F 2 "Resistors_SMD:R_0805" H 6050 4900 60  0001 C CNN
+F 3 "" H 6050 4900 60  0001 C CNN
+	1    6050 4900
 	0    -1   -1   0   
 $EndComp
 $Comp
@@ -242,50 +220,6 @@ F 2 "" H 1450 4500 60  0001 C CNN
 F 3 "" H 1450 4500 60  0001 C CNN
 	1    1450 4500
 	1    0    0    -1  
-$EndComp
-$Comp
-L GND-RESCUE-arduino_based_cdc_emu #PWR010
-U 1 1 530C7791
-P 5100 3450
-F 0 "#PWR010" H 5100 3450 30  0001 C CNN
-F 1 "GND" H 5100 3380 30  0001 C CNN
-F 2 "" H 5100 3450 60  0001 C CNN
-F 3 "" H 5100 3450 60  0001 C CNN
-	1    5100 3450
-	1    0    0    -1  
-$EndComp
-$Comp
-L C-RESCUE-arduino_based_cdc_emu C2
-U 1 1 530C7707
-P 4900 2650
-F 0 "C2" V 4647 2650 50  0000 C CNN
-F 1 "22p" V 4739 2650 50  0000 C CNN
-F 2 "Capacitors_SMD:C_0805" H 4900 2650 60  0001 C CNN
-F 3 "" H 4900 2650 60  0001 C CNN
-	1    4900 2650
-	0    1    1    0   
-$EndComp
-$Comp
-L C-RESCUE-arduino_based_cdc_emu C1
-U 1 1 530C7703
-P 4900 3250
-F 0 "C1" H 4950 3350 50  0000 L CNN
-F 1 "22p" H 4950 3150 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0805" H 4900 3250 60  0001 C CNN
-F 3 "" H 4900 3250 60  0001 C CNN
-	1    4900 3250
-	0    1    1    0   
-$EndComp
-$Comp
-L CRYSTAL X1
-U 1 1 530C76D9
-P 4600 2950
-F 0 "X1" V 4547 3083 60  0000 L CNN
-F 1 "16MHz" V 4653 3083 60  0000 L CNN
-F 2 "Crystals_Oscillators_SMD:Q_49U3HMS" H 4600 2950 60  0001 C CNN
-F 3 "" H 4600 2950 60  0001 C CNN
-	1    4600 2950
-	0    1    1    0   
 $EndComp
 $Comp
 L ATMEGA88-A IC1
@@ -357,37 +291,23 @@ $EndComp
 Wire Wire Line
 	4900 5400 4900 5450
 Wire Wire Line
-	4550 2550 4100 2550
-Wire Wire Line
-	7100 2400 7750 2400
-Wire Wire Line
-	7450 1650 6950 1650
+	8050 1950 8950 1950
 Wire Wire Line
 	3850 5550 3850 5700
 Wire Wire Line
-	3600 2550 3400 2550
+	3400 2650 4900 2650
 Wire Wire Line
-	3600 2350 3400 2350
-Connection ~ 4600 3250
-Wire Wire Line
-	3400 2650 4700 2650
-Connection ~ 4600 2650
-Wire Wire Line
-	3600 3850 3400 3850
+	3400 3850 4850 3850
 Wire Wire Line
 	2400 5650 2800 5650
 Wire Wire Line
 	3200 5950 3200 6250
 Wire Wire Line
-	7100 2750 8300 2750
-Wire Wire Line
 	9650 2350 9550 2350
 Wire Wire Line
 	9550 2350 9550 2400
 Wire Wire Line
-	4550 3850 4100 3850
-Wire Wire Line
-	4550 2350 4100 2350
+	6750 4900 6300 4900
 Wire Wire Line
 	1450 2650 1500 2650
 Wire Wire Line
@@ -427,9 +347,6 @@ Wire Wire Line
 	8750 5100 8750 5000
 Wire Wire Line
 	8750 5000 8950 5000
-Wire Wire Line
-	5100 2650 5100 3450
-Connection ~ 5100 3250
 Wire Wire Line
 	3400 3500 4050 3500
 Wire Wire Line
@@ -485,118 +402,11 @@ F 3 "" H 4900 6600 60  0001 C CNN
 $EndComp
 Wire Wire Line
 	4900 6450 4900 6600
-$Comp
-L Q_NPN_BEC Q2
-U 1 1 568577D1
-P 7950 2400
-F 0 "Q2" H 8144 2446 50  0000 L CNN
-F 1 "Q_NPN_EBC" H 8144 2354 50  0000 L CNN
-F 2 "" H 8150 2500 50  0000 C CNN
-F 3 "" H 7950 2400 50  0000 C CNN
-	1    7950 2400
-	1    0    0    -1  
-$EndComp
-$Comp
-L Q_NPN_BEC Q3
-U 1 1 56857A9E
-P 8500 2750
-F 0 "Q3" H 8694 2796 50  0000 L CNN
-F 1 "Q_NPN_EBC" H 8694 2704 50  0000 L CNN
-F 2 "" H 8700 2850 50  0000 C CNN
-F 3 "" H 8500 2750 50  0000 C CNN
-	1    8500 2750
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND-RESCUE-arduino_based_cdc_emu #PWR015
-U 1 1 56857AFF
-P 8600 3100
-F 0 "#PWR015" H 8600 3100 30  0001 C CNN
-F 1 "GND" H 8600 3030 30  0001 C CNN
-F 2 "" H 8600 3100 60  0001 C CNN
-F 3 "" H 8600 3100 60  0001 C CNN
-	1    8600 3100
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	8600 3100 8600 2950
-$Comp
-L GND-RESCUE-arduino_based_cdc_emu #PWR016
-U 1 1 56857B8F
-P 8050 2900
-F 0 "#PWR016" H 8050 2900 30  0001 C CNN
-F 1 "GND" H 8050 2830 30  0001 C CNN
-F 2 "" H 8050 2900 60  0001 C CNN
-F 3 "" H 8050 2900 60  0001 C CNN
-	1    8050 2900
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	8050 2900 8050 2600
-Wire Wire Line
-	8600 2150 8600 2550
-$Comp
-L Q_NPN_BEC Q1
-U 1 1 56858123
-P 7550 1950
-F 0 "Q1" H 7744 1996 50  0000 L CNN
-F 1 "Q_NPN_EBC" H 7744 1904 50  0000 L CNN
-F 2 "" H 7750 2050 50  0000 C CNN
-F 3 "" H 7550 1950 50  0000 C CNN
-	1    7550 1950
-	-1   0    0    -1  
-$EndComp
-Wire Wire Line
-	7450 1550 7450 1750
-$Comp
-L GND-RESCUE-arduino_based_cdc_emu #PWR017
-U 1 1 56858287
-P 7450 2300
-F 0 "#PWR017" H 7450 2300 30  0001 C CNN
-F 1 "GND" H 7450 2230 30  0001 C CNN
-F 2 "" H 7450 2300 60  0001 C CNN
-F 3 "" H 7450 2300 60  0001 C CNN
-	1    7450 2300
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	7450 2300 7450 2150
-$Comp
-L R-RESCUE-arduino_based_cdc_emu R5
-U 1 1 5685849E
-P 7450 1300
-F 0 "R5" H 7521 1346 50  0000 L CNN
-F 1 "3k3" H 7521 1254 50  0000 L CNN
-F 2 "Resistors_SMD:R_0805_HandSoldering" H 7450 1300 60  0001 C CNN
-F 3 "" H 7450 1300 60  0001 C CNN
-	1    7450 1300
-	1    0    0    -1  
-$EndComp
-Connection ~ 7450 1650
-$Comp
-L +5V #PWR018
-U 1 1 56859029
-P 7450 900
-F 0 "#PWR018" H 7450 990 20  0001 C CNN
-F 1 "+5V" H 7450 990 30  0000 C CNN
-F 2 "" H 7450 900 60  0001 C CNN
-F 3 "" H 7450 900 60  0001 C CNN
-	1    7450 900 
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	7450 900  7450 1050
 Wire Wire Line
 	4900 6000 4500 6000
 Connection ~ 4900 6000
 Wire Wire Line
-	9650 1950 7750 1950
-Wire Wire Line
-	3400 2750 4250 2750
-Wire Wire Line
-	4250 2750 4250 3250
-Wire Wire Line
-	4250 3250 4700 3250
+	3400 2750 4350 2750
 Wire Wire Line
 	9650 2250 9350 2250
 Wire Wire Line
@@ -604,123 +414,9 @@ Wire Wire Line
 Wire Wire Line
 	8050 2050 8500 2050
 Wire Wire Line
-	8600 2150 8950 2150
-Wire Wire Line
 	8800 2050 9650 2050
 Wire Wire Line
 	9650 2150 9250 2150
-$Comp
-L D D1
-U 1 1 5685DEE4
-P 8650 2050
-F 0 "D1" H 8650 1742 50  0000 C CNN
-F 1 "1N4148" H 8650 1834 50  0000 C CNN
-F 2 "Diodes_SMD:DO-214AA" H 8650 1926 50  0000 C CNN
-F 3 "" H 8650 2050 50  0000 C CNN
-	1    8650 2050
-	-1   0    0    1   
-$EndComp
-$Comp
-L D D2
-U 1 1 5685E033
-P 9100 2150
-F 0 "D2" H 9100 1934 50  0000 C CNN
-F 1 "1N4148" H 9100 2026 50  0000 C CNN
-F 2 "Diodes_SMD:DO-214AA" H 9100 2150 50  0000 C CNN
-F 3 "" H 9100 2150 50  0000 C CNN
-	1    9100 2150
-	-1   0    0    1   
-$EndComp
-$Comp
-L R-RESCUE-arduino_based_cdc_emu R6
-U 1 1 5685F70C
-P 7650 3150
-F 0 "R6" H 7721 3196 50  0000 L CNN
-F 1 "47k" H 7721 3104 50  0000 L CNN
-F 2 "Resistors_SMD:R_0805_HandSoldering" H 7650 3150 60  0001 C CNN
-F 3 "" H 7650 3150 60  0001 C CNN
-	1    7650 3150
-	1    0    0    -1  
-$EndComp
-$Comp
-L R-RESCUE-arduino_based_cdc_emu R8
-U 1 1 5685F7CA
-P 8250 3150
-F 0 "R8" H 8321 3196 50  0000 L CNN
-F 1 "47k" H 8321 3104 50  0000 L CNN
-F 2 "Resistors_SMD:R_0805_HandSoldering" H 8250 3150 60  0001 C CNN
-F 3 "" H 8250 3150 60  0001 C CNN
-	1    8250 3150
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND-RESCUE-arduino_based_cdc_emu #PWR019
-U 1 1 5685F83F
-P 7650 3550
-F 0 "#PWR019" H 7650 3550 30  0001 C CNN
-F 1 "GND" H 7650 3480 30  0001 C CNN
-F 2 "" H 7650 3550 60  0001 C CNN
-F 3 "" H 7650 3550 60  0001 C CNN
-	1    7650 3550
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND-RESCUE-arduino_based_cdc_emu #PWR020
-U 1 1 5685F88F
-P 8250 3550
-F 0 "#PWR020" H 8250 3550 30  0001 C CNN
-F 1 "GND" H 8250 3480 30  0001 C CNN
-F 2 "" H 8250 3550 60  0001 C CNN
-F 3 "" H 8250 3550 60  0001 C CNN
-	1    8250 3550
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	8250 3550 8250 3400
-Wire Wire Line
-	7650 3550 7650 3400
-Wire Wire Line
-	7650 2900 7650 2400
-Connection ~ 7650 2400
-Wire Wire Line
-	8250 2900 8250 2750
-Connection ~ 8250 2750
-$Comp
-L R-RESCUE-arduino_based_cdc_emu R9
-U 1 1 56861203
-P 8900 1350
-F 0 "R9" H 8971 1396 50  0000 L CNN
-F 1 "3k3" H 8971 1304 50  0000 L CNN
-F 2 "Resistors_SMD:R_0805_HandSoldering" H 8900 1350 60  0001 C CNN
-F 3 "" H 8900 1350 60  0001 C CNN
-	1    8900 1350
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	8900 1600 8900 2150
-Connection ~ 8900 2150
-$Comp
-L R-RESCUE-arduino_based_cdc_emu R7
-U 1 1 568612FF
-P 8050 1350
-F 0 "R7" H 8121 1396 50  0000 L CNN
-F 1 "3k3" H 8121 1304 50  0000 L CNN
-F 2 "Resistors_SMD:R_0805_HandSoldering" H 8050 1350 60  0001 C CNN
-F 3 "" H 8050 1350 60  0001 C CNN
-	1    8050 1350
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	7450 1000 8900 1000
-Wire Wire Line
-	8900 1000 8900 1100
-Connection ~ 7450 1000
-Wire Wire Line
-	8050 1100 8050 1000
-Connection ~ 8050 1000
-Connection ~ 8050 2050
-Wire Wire Line
-	8050 1600 8050 2200
 Connection ~ 3850 5650
 Wire Wire Line
 	2500 5700 2500 5650
@@ -729,4 +425,126 @@ Wire Wire Line
 	2500 6250 2500 6100
 Wire Wire Line
 	3850 6100 3850 6250
+$Comp
+L Jumper_NC_Dual JP?
+U 1 1 58C14056
+P 5550 4350
+F 0 "JP?" H 5550 4589 50  0000 C CNN
+F 1 "Jumper_NC_Dual" H 5550 4498 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm" H 100 0   50  0001 C CNN
+F 3 "" H 100 0   50  0001 C CNN
+	1    5550 4350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5550 4450 5550 4900
+Wire Wire Line
+	5550 4900 5800 4900
+Wire Wire Line
+	5800 4350 6150 4350
+Wire Wire Line
+	6150 4350 6150 2050
+Wire Wire Line
+	6150 2050 3400 2050
+Wire Wire Line
+	4850 3850 4850 4350
+Wire Wire Line
+	4850 4350 5300 4350
+$Comp
+L GND-RESCUE-arduino_based_cdc_emu #PWR010
+U 1 1 530C7791
+P 5350 2950
+F 0 "#PWR010" H 5350 2950 30  0001 C CNN
+F 1 "GND" H 5350 2880 30  0001 C CNN
+F 2 "" H 5350 2950 60  0001 C CNN
+F 3 "" H 5350 2950 60  0001 C CNN
+	1    5350 2950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Resonator_Small Y?
+U 1 1 58C19400
+P 5000 2750
+F 0 "Y?" V 5325 2700 50  0000 C CNN
+F 1 "Resonator_Small" V 5234 2700 50  0000 C CNN
+F 2 "modules:MURATA_CSTCE_V53" H -125 -200 50  0001 C CNN
+F 3 "" H -125 -200 50  0001 C CNN
+	1    5000 2750
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4350 2850 4900 2850
+Wire Wire Line
+	4350 2750 4350 2850
+Wire Wire Line
+	5200 2750 5350 2750
+Wire Wire Line
+	5350 2750 5350 2950
+$Comp
+L D D2
+U 1 1 5685E033
+P 9100 2150
+F 0 "D2" H 9100 1934 50  0000 C CNN
+F 1 "1N4148" H 9100 2026 50  0000 C CNN
+F 2 "Diodes_SMD:DO-214AA" H 9100 2150 50  0001 C CNN
+F 3 "" H 9100 2150 50  0000 C CNN
+	1    9100 2150
+	-1   0    0    1   
+$EndComp
+$Comp
+L D D?
+U 1 1 58C1A494
+P 8650 2050
+F 0 "D?" H 8650 1834 50  0000 C CNN
+F 1 "1N4148" H 8650 1926 50  0000 C CNN
+F 2 "Diodes_SMD:DO-214AA" H 8650 2050 50  0001 C CNN
+F 3 "" H 8650 2050 50  0000 C CNN
+	1    8650 2050
+	-1   0    0    1   
+$EndComp
+$Comp
+L D D?
+U 1 1 58C16D80
+P 9100 1950
+F 0 "D?" H 9100 1734 50  0000 C CNN
+F 1 "1N4148" H 9100 1826 50  0000 C CNN
+F 2 "Diodes_SMD:DO-214AA" H 9100 1950 50  0001 C CNN
+F 3 "" H 9100 1950 50  0000 C CNN
+	1    9100 1950
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	9250 1950 9650 1950
+Wire Wire Line
+	8950 2150 8050 2150
+$Comp
+L R-RESCUE-arduino_based_cdc_emu R?
+U 1 1 58C1746A
+P 3800 2550
+F 0 "R?" V 4009 2550 50  0000 C CNN
+F 1 "3k3" V 3917 2550 50  0000 C CNN
+F 2 "Resistors_SMD:R_0805" H 3800 2550 60  0001 C CNN
+F 3 "" H 3800 2550 60  0001 C CNN
+	1    3800 2550
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R-RESCUE-arduino_based_cdc_emu R?
+U 1 1 58C1758C
+P 3800 2350
+F 0 "R?" V 4009 2350 50  0000 C CNN
+F 1 "3k3" V 3917 2350 50  0000 C CNN
+F 2 "Resistors_SMD:R_0805" H 3800 2350 60  0001 C CNN
+F 3 "" H 3800 2350 60  0001 C CNN
+	1    3800 2350
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3400 2350 3550 2350
+Wire Wire Line
+	3550 2550 3400 2550
+Wire Wire Line
+	4200 2550 4050 2550
+Wire Wire Line
+	4050 2350 4200 2350
 $EndSCHEMATC

@@ -1,11 +1,11 @@
-EESchema-LIBRARY Version 2.3
+EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# +12V
+# audio_preamplifier-rescue_+12V
 #
-DEF +12V #PWR 0 0 Y Y 1 F P
+DEF audio_preamplifier-rescue_+12V #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -150 50 H I C CNN
-F1 "+12V" 0 140 50 H V C CNN
+F1 "audio_preamplifier-rescue_+12V" 0 140 50 H V C CNN
 F2 "" 0 0 50 H V C CNN
 F3 "" 0 0 50 H V C CNN
 DRAW
@@ -16,11 +16,11 @@ X +12V 1 0 0 0 U 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# AGND
+# audio_preamplifier-rescue_AGND
 #
-DEF AGND #PWR 0 10 Y Y 1 F P
+DEF audio_preamplifier-rescue_AGND #PWR 0 10 Y Y 1 F P
 F0 "#PWR" 0 0 40 H I C CNN
-F1 "AGND" 0 -70 50 H V C CNN
+F1 "audio_preamplifier-rescue_AGND" 0 -70 50 H V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW
@@ -29,11 +29,11 @@ X AGND 1 0 0 0 U 40 40 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# C
+# audio_preamplifier-rescue_C
 #
-DEF C C 0 10 N Y 1 F N
+DEF audio_preamplifier-rescue_C C 0 10 N Y 1 F N
 F0 "C" 25 100 50 H V L CNN
-F1 "C" 25 -100 50 H V L CNN
+F1 "audio_preamplifier-rescue_C" 25 -100 50 H V L CNN
 F2 "" 38 -150 50 H V C CNN
 F3 "" 0 0 50 H V C CNN
 $FPLIST
@@ -51,11 +51,11 @@ X ~ 2 0 -150 110 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# CONN_01X03
+# audio_preamplifier-rescue_CONN_01X03
 #
-DEF CONN_01X03 P 0 40 Y N 1 F N
+DEF audio_preamplifier-rescue_CONN_01X03 P 0 40 Y N 1 F N
 F0 "P" 0 200 50 H V C CNN
-F1 "CONN_01X03" 100 0 50 V V C CNN
+F1 "audio_preamplifier-rescue_CONN_01X03" 100 0 50 V V C CNN
 F2 "" 0 0 50 H V C CNN
 F3 "" 0 0 50 H V C CNN
 $FPLIST
@@ -75,11 +75,11 @@ X P3 3 -200 -100 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# CONN_01X05
+# audio_preamplifier-rescue_CONN_01X05
 #
-DEF CONN_01X05 P 0 40 Y N 1 F N
+DEF audio_preamplifier-rescue_CONN_01X05 P 0 40 Y N 1 F N
 F0 "P" 0 300 50 H V C CNN
-F1 "CONN_01X05" 100 0 50 V V C CNN
+F1 "audio_preamplifier-rescue_CONN_01X05" 100 0 50 V V C CNN
 F2 "" 0 0 50 H V C CNN
 F3 "" 0 0 50 H V C CNN
 $FPLIST
@@ -103,11 +103,11 @@ X P5 5 -200 -200 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# CP
+# audio_preamplifier-rescue_CP
 #
-DEF CP C 0 10 N Y 1 F N
+DEF audio_preamplifier-rescue_CP C 0 10 N Y 1 F N
 F0 "C" 25 100 50 H V L CNN
-F1 "CP" 25 -100 50 H V L CNN
+F1 "audio_preamplifier-rescue_CP" 25 -100 50 H V L CNN
 F2 "" 38 -150 50 H V C CNN
 F3 "" 0 0 50 H V C CNN
 $FPLIST
@@ -132,11 +132,11 @@ X ~ 2 0 -150 110 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# INDUCTOR
+# audio_preamplifier-rescue_INDUCTOR
 #
-DEF INDUCTOR L 0 40 N N 1 F N
+DEF audio_preamplifier-rescue_INDUCTOR L 0 40 N N 1 F N
 F0 "L" -50 0 50 V V C CNN
-F1 "INDUCTOR" 100 0 50 V V C CNN
+F1 "audio_preamplifier-rescue_INDUCTOR" 100 0 50 V V C CNN
 F2 "" 0 0 50 H V C CNN
 F3 "" 0 0 50 H V C CNN
 $FPLIST
@@ -153,11 +153,11 @@ X 2 2 0 -300 100 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# R
+# audio_preamplifier-rescue_R
 #
-DEF R R 0 0 N Y 1 F N
+DEF audio_preamplifier-rescue_R R 0 0 N Y 1 F N
 F0 "R" 80 0 50 V V C CNN
-F1 "R" 0 0 50 V V C CNN
+F1 "audio_preamplifier-rescue_R" 0 0 50 V V C CNN
 F2 "" -70 0 50 V V C CNN
 F3 "" 0 0 50 H V C CNN
 $FPLIST
@@ -171,11 +171,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# TL072-RESCUE-audio_preamplifier
+# audio_preamplifier-rescue_TL072-RESCUE-audio_preamplifier
 #
-DEF TL072-RESCUE-audio_preamplifier U 0 20 Y Y 2 F N
+DEF audio_preamplifier-rescue_TL072-RESCUE-audio_preamplifier U 0 20 Y Y 2 F N
 F0 "U" -50 200 60 H V L CNN
-F1 "TL072-RESCUE-audio_preamplifier" -50 -250 60 H V L CNN
+F1 "audio_preamplifier-rescue_TL072-RESCUE-audio_preamplifier" -50 -250 60 H V L CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW

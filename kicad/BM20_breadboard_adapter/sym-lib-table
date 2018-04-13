@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name BM20_breadboard_adapter-rescue)(type Legacy)(uri ${KIPRJMOD}/BM20_breadboard_adapter-rescue.lib)(options "")(descr ""))
+)

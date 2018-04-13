@@ -1,0 +1,416 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:F-3188_CSR8645
+LIBS:phonejack
+LIBS:switches
+LIBS:F-3188_CSR8645_breadbord_Adapter-cache
+EELAYER 26 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L F-3188_CSR8645 U1
+U 1 1 56E97AB3
+P 6000 4150
+F 0 "U1" H 5800 6093 60  0000 C CNN
+F 1 "F-3188_CSR8645" H 5800 5987 60  0000 C CNN
+F 2 "my_modules:F-3188_CSR8645_no_silk_under_antena" H 5800 5881 60  0000 C CNN
+F 3 "" H 6000 2450 60  0000 C CNN
+	1    6000 4150
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X21 P2
+U 1 1 56E97AFF
+P 7400 3600
+F 0 "P2" H 7477 3683 50  0000 L CNN
+F 1 "CONN_01X21" H 7477 3592 50  0000 L CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x21" H 7477 3501 50  0000 L CNN
+F 3 "" H 7400 3600 50  0000 C CNN
+	1    7400 3600
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X22 P1
+U 1 1 56E97BD5
+P 4150 3650
+F 0 "P1" H 4228 3733 50  0000 L CNN
+F 1 "CONN_01X22" H 4228 3642 50  0000 L CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x22" H 4228 3551 50  0000 L CNN
+F 3 "" H 4150 3650 50  0000 C CNN
+	1    4150 3650
+	-1   0    0    -1  
+$EndComp
+$Comp
+L SCJ368R1NUS0B00G J1
+U 1 1 56E988D9
+P 9150 5500
+F 0 "J1" V 9295 5256 60  0000 R CNN
+F 1 "SCJ368R1NUS0B00G" V 9189 5256 60  0000 R CNN
+F 2 "jacks:3.5mm_stereo_jack_PJ306M" V 9083 5256 60  0000 R CNN
+F 3 "" H 9150 5500 60  0000 C CNN
+	1    9150 5500
+	1    0    0    -1  
+$EndComp
+$Comp
+L LED D2
+U 1 1 59A3B48E
+P 2650 4900
+F 0 "D2" V 2688 4782 50  0000 R CNN
+F 1 "LED1" V 2597 4782 50  0000 R CNN
+F 2 "LEDs:LED_1206" H 2650 4900 50  0001 C CNN
+F 3 "" H 2650 4900 50  0001 C CNN
+	1    2650 4900
+	-1   0    0    1   
+$EndComp
+$Comp
+L R R4
+U 1 1 59A3B572
+P 2150 4900
+F 0 "R4" H 2220 4946 50  0000 L CNN
+F 1 "1k" H 2220 4855 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805" V 2080 4900 50  0001 C CNN
+F 3 "" H 2150 4900 50  0001 C CNN
+	1    2150 4900
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R3
+U 1 1 59A3B74C
+P 2150 4550
+F 0 "R3" H 2220 4596 50  0000 L CNN
+F 1 "1k" H 2220 4505 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805" V 2080 4550 50  0001 C CNN
+F 3 "" H 2150 4550 50  0001 C CNN
+	1    2150 4550
+	0    -1   -1   0   
+$EndComp
+$Comp
+L LED D1
+U 1 1 59A3B7BD
+P 2650 4550
+F 0 "D1" V 2688 4432 50  0000 R CNN
+F 1 "LED1" V 2597 4432 50  0000 R CNN
+F 2 "LEDs:LED_1206" H 2650 4550 50  0001 C CNN
+F 3 "" H 2650 4550 50  0001 C CNN
+	1    2650 4550
+	-1   0    0    1   
+$EndComp
+Text Label 4450 4200 0    60   ~ 0
+GND
+Wire Wire Line
+	4350 2600 4800 2600
+Wire Wire Line
+	4800 2700 4350 2700
+Wire Wire Line
+	4350 2800 4800 2800
+Wire Wire Line
+	4800 2900 4350 2900
+Wire Wire Line
+	4350 3000 4800 3000
+Wire Wire Line
+	4800 3100 4350 3100
+Wire Wire Line
+	4350 3200 4800 3200
+Wire Wire Line
+	4800 3300 4350 3300
+Wire Wire Line
+	4350 3400 4800 3400
+Wire Wire Line
+	4800 3500 4350 3500
+Wire Wire Line
+	4350 3600 4800 3600
+Wire Wire Line
+	4800 3700 4350 3700
+Wire Wire Line
+	4350 3800 4800 3800
+Wire Wire Line
+	4800 3900 4350 3900
+Wire Wire Line
+	4800 4000 4350 4000
+Wire Wire Line
+	4350 4100 4800 4100
+Wire Wire Line
+	4350 4200 4800 4200
+Wire Wire Line
+	5500 4450 4900 4450
+Wire Wire Line
+	4900 4450 4900 4300
+Wire Wire Line
+	4900 4300 4350 4300
+Wire Wire Line
+	4350 4400 4850 4400
+Wire Wire Line
+	4850 4400 4850 4500
+Wire Wire Line
+	4850 4500 5600 4500
+Wire Wire Line
+	5600 4500 5600 4450
+Wire Wire Line
+	5700 4450 5700 4550
+Wire Wire Line
+	5700 4550 4800 4550
+Wire Wire Line
+	4800 4550 4800 4500
+Wire Wire Line
+	4800 4500 4350 4500
+Wire Wire Line
+	4350 4600 5800 4600
+Wire Wire Line
+	5800 4600 5800 4450
+Wire Wire Line
+	5900 4450 5900 4700
+Wire Wire Line
+	5900 4700 4350 4700
+Wire Wire Line
+	7200 2600 6800 2600
+Wire Wire Line
+	6800 2700 7200 2700
+Wire Wire Line
+	6800 2900 7200 2900
+Wire Wire Line
+	7200 3000 6800 3000
+Wire Wire Line
+	6800 3100 7200 3100
+Wire Wire Line
+	7200 3200 6800 3200
+Wire Wire Line
+	6800 3300 7200 3300
+Wire Wire Line
+	7200 3400 6800 3400
+Wire Wire Line
+	6800 3500 7200 3500
+Wire Wire Line
+	7200 3600 6800 3600
+Wire Wire Line
+	6800 3700 7200 3700
+Wire Wire Line
+	7200 3800 6800 3800
+Wire Wire Line
+	6800 3900 7200 3900
+Wire Wire Line
+	7200 4000 6800 4000
+Wire Wire Line
+	6800 4100 7200 4100
+Wire Wire Line
+	7200 4200 6800 4200
+Wire Wire Line
+	6300 4450 6650 4450
+Wire Wire Line
+	6650 4450 6650 4300
+Wire Wire Line
+	6650 4300 7200 4300
+Wire Wire Line
+	7200 4400 6700 4400
+Wire Wire Line
+	6700 4400 6700 4500
+Wire Wire Line
+	6700 4500 6200 4500
+Wire Wire Line
+	6200 4500 6200 4450
+Wire Wire Line
+	6100 4450 6100 4550
+Wire Wire Line
+	6100 4550 6750 4550
+Wire Wire Line
+	6750 4550 6750 4500
+Wire Wire Line
+	6750 4500 7200 4500
+Wire Wire Line
+	7200 4600 6000 4600
+Wire Wire Line
+	6000 4600 6000 4450
+Wire Wire Line
+	7800 5300 8650 5300
+Wire Wire Line
+	8650 5300 8650 5250
+Wire Wire Line
+	8650 5250 8900 5250
+Wire Wire Line
+	7200 2800 6800 2800
+Wire Wire Line
+	8900 5350 8750 5350
+Wire Wire Line
+	8750 5350 8750 5450
+Wire Wire Line
+	8750 5650 8900 5650
+Wire Wire Line
+	8750 5550 8750 5650
+Wire Wire Line
+	8750 5600 7900 5600
+Wire Wire Line
+	8750 5400 7700 5400
+Wire Wire Line
+	2300 4900 2500 4900
+Wire Wire Line
+	2500 4550 2300 4550
+Text Label 7800 5300 0    60   ~ 0
+HGND
+Text Label 7700 5400 0    60   ~ 0
+HL
+Text Label 7900 5600 0    60   ~ 0
+HR
+Text Label 6950 2800 0    60   ~ 0
+HGND
+Text Label 6950 2900 0    60   ~ 0
+HL
+Text Label 6950 2700 0    60   ~ 0
+HR
+Text Label 4450 3900 0    60   ~ 0
+BAT
+Text Label 4450 2700 0    60   ~ 0
+LED1
+Text Label 4450 2800 0    60   ~ 0
+LED0
+Wire Wire Line
+	2800 4550 3450 4550
+Wire Wire Line
+	2800 4900 3450 4900
+Wire Wire Line
+	2000 4550 1350 4550
+Wire Wire Line
+	2000 4900 1350 4900
+Text Label 1350 4550 0    60   ~ 0
+BAT
+Text Label 1350 4900 0    60   ~ 0
+BAT
+Text Label 3450 4550 2    60   ~ 0
+LED1
+Text Label 3450 4900 2    60   ~ 0
+LED0
+$Comp
+L SW_Push SW1
+U 1 1 59A3B90C
+P 2600 5450
+F 0 "SW1" H 2600 5735 50  0000 C CNN
+F 1 "RESET" H 2600 5644 50  0000 C CNN
+F 2 "Buttons_Switches_SMD:SW_SPST_FSMSM" H 2600 5650 50  0001 C CNN
+F 3 "" H 2600 5650 50  0001 C CNN
+	1    2600 5450
+	1    0    0    -1  
+$EndComp
+$Comp
+L SW_Push SW2
+U 1 1 59A3B9B6
+P 2600 5900
+F 0 "SW2" H 2600 6185 50  0000 C CNN
+F 1 "POWER_ON" H 2600 6094 50  0000 C CNN
+F 2 "Buttons_Switches_SMD:SW_SPST_FSMSM" H 2600 6100 50  0001 C CNN
+F 3 "" H 2600 6100 50  0001 C CNN
+	1    2600 5900
+	1    0    0    -1  
+$EndComp
+Text Label 3450 5900 2    60   ~ 0
+POWER_ON
+Text Label 4450 3800 0    60   ~ 0
+RST#
+$Comp
+L R R2
+U 1 1 59A3BD2D
+P 1950 5900
+F 0 "R2" H 2020 5946 50  0000 L CNN
+F 1 "10k" H 2020 5855 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805" V 1880 5900 50  0001 C CNN
+F 3 "" H 1950 5900 50  0001 C CNN
+	1    1950 5900
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R1
+U 1 1 59A3BDA7
+P 1950 5450
+F 0 "R1" H 2020 5496 50  0000 L CNN
+F 1 "10k" H 2020 5405 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805" V 1880 5450 50  0001 C CNN
+F 3 "" H 1950 5450 50  0001 C CNN
+	1    1950 5450
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1800 5450 1350 5450
+Wire Wire Line
+	1800 5900 1350 5900
+Wire Wire Line
+	2100 5450 2400 5450
+Wire Wire Line
+	2400 5900 2100 5900
+Wire Wire Line
+	2800 5900 3450 5900
+Wire Wire Line
+	2800 5450 3450 5450
+Text Label 3450 5450 2    60   ~ 0
+GND
+Text Label 2150 5450 0    60   ~ 0
+RST#
+Text Label 1350 5450 0    60   ~ 0
+BAT
+Text Label 1350 5900 0    60   ~ 0
+BAT
+$Comp
+L GS2 J2
+U 1 1 59A3C964
+P 2600 6250
+F 0 "J2" V 2395 6250 50  0000 C CNN
+F 1 "ON" V 2486 6250 50  0000 C CNN
+F 2 "Connectors:GS2" V 2674 6250 50  0001 C CNN
+F 3 "" H 2600 6250 50  0001 C CNN
+	1    2600 6250
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2800 6250 2900 6250
+Wire Wire Line
+	2900 6250 2900 5900
+Connection ~ 2900 5900
+Wire Wire Line
+	2250 5900 2250 6250
+Wire Wire Line
+	2250 6250 2400 6250
+Connection ~ 2250 5900
+Text Label 4350 4000 0    60   ~ 0
+POWER_ON
+Wire Wire Line
+	8750 5450 8900 5450
+Connection ~ 8750 5400
+Wire Wire Line
+	8750 5550 8900 5550
+Connection ~ 8750 5600
+$EndSCHEMATC

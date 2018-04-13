@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name F-3188_CSR8645_breadbord_Adapter-rescue)(type Legacy)(uri ${KIPRJMOD}/F-3188_CSR8645_breadbord_Adapter-rescue.lib)(options "")(descr ""))
+  (lib (name power)(type Legacy)(uri ${KICAD_SYMBOL_DIR}/power.lib)(options "")(descr ""))
+)

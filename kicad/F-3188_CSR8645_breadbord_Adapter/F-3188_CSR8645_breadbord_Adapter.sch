@@ -1,36 +1,4 @@
-EESchema Schematic File Version 2
-LIBS:power
-LIBS:device
-LIBS:transistors
-LIBS:conn
-LIBS:linear
-LIBS:regul
-LIBS:74xx
-LIBS:cmos4000
-LIBS:adc-dac
-LIBS:memory
-LIBS:xilinx
-LIBS:microcontrollers
-LIBS:dsp
-LIBS:microchip
-LIBS:analog_switches
-LIBS:motorola
-LIBS:texas
-LIBS:intel
-LIBS:audio
-LIBS:interface
-LIBS:digital-audio
-LIBS:philips
-LIBS:display
-LIBS:cypress
-LIBS:siliconi
-LIBS:opto
-LIBS:atmel
-LIBS:contrib
-LIBS:valves
-LIBS:F-3188_CSR8645
-LIBS:phonejack
-LIBS:switches
+EESchema Schematic File Version 4
 LIBS:F-3188_CSR8645_breadbord_Adapter-cache
 EELAYER 26 0
 EELAYER END
@@ -47,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L F-3188_CSR8645 U1
+L F-3188_CSR8645:F-3188_CSR8645 U1
 U 1 1 56E97AB3
 P 6000 4150
 F 0 "U1" H 5800 6093 60  0000 C CNN
@@ -58,7 +26,7 @@ F 3 "" H 6000 2450 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_01X21 P2
+L F-3188_CSR8645_breadbord_Adapter-rescue:CONN_01X21-RESCUE-F-3188_CSR8645_breadbord_Adapter P2
 U 1 1 56E97AFF
 P 7400 3600
 F 0 "P2" H 7477 3683 50  0000 L CNN
@@ -69,7 +37,7 @@ F 3 "" H 7400 3600 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_01X22 P1
+L F-3188_CSR8645_breadbord_Adapter-rescue:CONN_01X22-RESCUE-F-3188_CSR8645_breadbord_Adapter P1
 U 1 1 56E97BD5
 P 4150 3650
 F 0 "P1" H 4228 3733 50  0000 L CNN
@@ -80,7 +48,7 @@ F 3 "" H 4150 3650 50  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L SCJ368R1NUS0B00G J1
+L F-3188_CSR8645_breadbord_Adapter-rescue:SCJ368R1NUS0B00G-RESCUE-F-3188_CSR8645_breadbord_Adapter J1
 U 1 1 56E988D9
 P 9150 5500
 F 0 "J1" V 9295 5256 60  0000 R CNN
@@ -91,7 +59,7 @@ F 3 "" H 9150 5500 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED D2
+L F-3188_CSR8645_breadbord_Adapter-rescue:LED-RESCUE-F-3188_CSR8645_breadbord_Adapter D2
 U 1 1 59A3B48E
 P 2650 4900
 F 0 "D2" V 2688 4782 50  0000 R CNN
@@ -102,7 +70,7 @@ F 3 "" H 2650 4900 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L R R4
+L F-3188_CSR8645_breadbord_Adapter-rescue:R-RESCUE-F-3188_CSR8645_breadbord_Adapter R4
 U 1 1 59A3B572
 P 2150 4900
 F 0 "R4" H 2220 4946 50  0000 L CNN
@@ -113,7 +81,7 @@ F 3 "" H 2150 4900 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L R R3
+L F-3188_CSR8645_breadbord_Adapter-rescue:R-RESCUE-F-3188_CSR8645_breadbord_Adapter R3
 U 1 1 59A3B74C
 P 2150 4550
 F 0 "R3" H 2220 4596 50  0000 L CNN
@@ -124,7 +92,7 @@ F 3 "" H 2150 4550 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L LED D1
+L F-3188_CSR8645_breadbord_Adapter-rescue:LED-RESCUE-F-3188_CSR8645_breadbord_Adapter D1
 U 1 1 59A3B7BD
 P 2650 4550
 F 0 "D1" V 2688 4432 50  0000 R CNN
@@ -269,11 +237,11 @@ Wire Wire Line
 Wire Wire Line
 	8900 5350 8750 5350
 Wire Wire Line
-	8750 5350 8750 5450
+	8750 5350 8750 5400
 Wire Wire Line
 	8750 5650 8900 5650
 Wire Wire Line
-	8750 5550 8750 5650
+	8750 5550 8750 5600
 Wire Wire Line
 	8750 5600 7900 5600
 Wire Wire Line
@@ -317,7 +285,7 @@ LED1
 Text Label 3450 4900 2    60   ~ 0
 LED0
 $Comp
-L SW_Push SW1
+L F-3188_CSR8645_breadbord_Adapter-rescue:SW_Push-RESCUE-F-3188_CSR8645_breadbord_Adapter SW1
 U 1 1 59A3B90C
 P 2600 5450
 F 0 "SW1" H 2600 5735 50  0000 C CNN
@@ -328,7 +296,7 @@ F 3 "" H 2600 5650 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L SW_Push SW2
+L F-3188_CSR8645_breadbord_Adapter-rescue:SW_Push-RESCUE-F-3188_CSR8645_breadbord_Adapter SW2
 U 1 1 59A3B9B6
 P 2600 5900
 F 0 "SW2" H 2600 6185 50  0000 C CNN
@@ -343,7 +311,7 @@ POWER_ON
 Text Label 4450 3800 0    60   ~ 0
 RST#
 $Comp
-L R R2
+L F-3188_CSR8645_breadbord_Adapter-rescue:R-RESCUE-F-3188_CSR8645_breadbord_Adapter R2
 U 1 1 59A3BD2D
 P 1950 5900
 F 0 "R2" H 2020 5946 50  0000 L CNN
@@ -354,7 +322,7 @@ F 3 "" H 1950 5900 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L R R1
+L F-3188_CSR8645_breadbord_Adapter-rescue:R-RESCUE-F-3188_CSR8645_breadbord_Adapter R1
 U 1 1 59A3BDA7
 P 1950 5450
 F 0 "R1" H 2020 5496 50  0000 L CNN
@@ -371,9 +339,9 @@ Wire Wire Line
 Wire Wire Line
 	2100 5450 2400 5450
 Wire Wire Line
-	2400 5900 2100 5900
+	2400 5900 2250 5900
 Wire Wire Line
-	2800 5900 3450 5900
+	2800 5900 2900 5900
 Wire Wire Line
 	2800 5450 3450 5450
 Text Label 3450 5450 2    60   ~ 0
@@ -385,7 +353,7 @@ BAT
 Text Label 1350 5900 0    60   ~ 0
 BAT
 $Comp
-L GS2 J2
+L F-3188_CSR8645_breadbord_Adapter-rescue:GS2-RESCUE-F-3188_CSR8645_breadbord_Adapter J2
 U 1 1 59A3C964
 P 2600 6250
 F 0 "J2" V 2395 6250 50  0000 C CNN
@@ -413,4 +381,12 @@ Connection ~ 8750 5400
 Wire Wire Line
 	8750 5550 8900 5550
 Connection ~ 8750 5600
+Wire Wire Line
+	2900 5900 3450 5900
+Wire Wire Line
+	2250 5900 2100 5900
+Wire Wire Line
+	8750 5400 8750 5450
+Wire Wire Line
+	8750 5600 8750 5650
 $EndSCHEMATC

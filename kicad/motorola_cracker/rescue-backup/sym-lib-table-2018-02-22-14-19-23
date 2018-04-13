@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name motorola_cracker-rescue)(type Legacy)(uri ${KIPRJMOD}/motorola_cracker-rescue.lib)(options "")(descr ""))
+  (lib (name power)(type Legacy)(uri ${KICAD_SYMBOL_DIR}/power.lib)(options "")(descr ""))
+)

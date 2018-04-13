@@ -1,0 +1,240 @@
+EESchema Schematic File Version 4
+LIBS:F-6188_breakout_board-cache
+EELAYER 26 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L gencon:CONN_16 CON1
+U 1 1 5A847A68
+P 3800 2900
+F 0 "CON1" H 3928 2948 60  0000 L CNN
+F 1 "CONN_16" H 3928 2842 60  0000 L CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x16_Pitch2.54mm" H 3800 2900 50  0001 C CNN
+F 3 "" H 3800 2900 50  0001 C CNN
+	1    3800 2900
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	4550 2150 4250 2150
+Wire Wire Line
+	4200 2250 4550 2250
+Wire Wire Line
+	4550 2350 4200 2350
+Wire Wire Line
+	4550 2450 4200 2450
+Wire Wire Line
+	4200 2550 4550 2550
+Wire Wire Line
+	4550 2650 4200 2650
+Wire Wire Line
+	4200 2750 4550 2750
+Wire Wire Line
+	4550 2850 4200 2850
+Wire Wire Line
+	4200 2950 4550 2950
+Wire Wire Line
+	4550 3050 4200 3050
+Wire Wire Line
+	4200 3150 4550 3150
+Wire Wire Line
+	4200 3250 4550 3250
+Wire Wire Line
+	4200 3350 4550 3350
+$Comp
+L gencon:CONN_16 CON2
+U 1 1 5A84AD5B
+P 6850 2900
+F 0 "CON2" H 6978 2948 60  0000 L CNN
+F 1 "CONN_16" H 6978 2842 60  0000 L CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x16_Pitch2.54mm" H 6850 2900 50  0001 C CNN
+F 3 "" H 6850 2900 50  0001 C CNN
+	1    6850 2900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4200 3650 4250 3650
+Wire Wire Line
+	4550 3550 4200 3550
+Wire Wire Line
+	4200 3450 4550 3450
+Wire Wire Line
+	6150 3650 6250 3650
+Wire Wire Line
+	6150 3550 6450 3550
+Wire Wire Line
+	6150 3450 6450 3450
+Wire Wire Line
+	6150 3350 6450 3350
+Wire Wire Line
+	6150 3250 6450 3250
+Wire Wire Line
+	6150 3150 6450 3150
+Wire Wire Line
+	6150 3050 6450 3050
+Wire Wire Line
+	6150 2950 6350 2950
+Wire Wire Line
+	6150 2850 6350 2850
+Wire Wire Line
+	6150 2750 6350 2750
+Wire Wire Line
+	6150 2650 6350 2650
+Wire Wire Line
+	6150 2550 6450 2550
+Wire Wire Line
+	6150 2450 6450 2450
+Wire Wire Line
+	6150 2350 6450 2350
+Wire Wire Line
+	6150 2250 6450 2250
+Wire Wire Line
+	6150 2150 6250 2150
+$Comp
+L tech-thing:JUMPER3 JP1
+U 1 1 5A858E5B
+P 7600 2400
+F 0 "JP1" H 7600 2722 40  0000 C CNN
+F 1 "JUMPER3" H 7600 2646 40  0000 C CNN
+F 2 "Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm" H 7600 2555 60  0001 C CNN
+F 3 "" H 7600 2400 60  0000 C CNN
+	1    7600 2400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6350 2650 6350 2400
+Wire Wire Line
+	6350 2400 7350 2400
+Connection ~ 6350 2650
+Wire Wire Line
+	6350 2650 6450 2650
+Wire Wire Line
+	6350 2950 6350 3000
+Wire Wire Line
+	6350 3000 8100 3000
+Wire Wire Line
+	8100 3000 8100 2400
+Wire Wire Line
+	8100 2400 7850 2400
+Connection ~ 6350 2950
+Wire Wire Line
+	6350 2950 6450 2950
+Wire Wire Line
+	6350 2750 6350 2700
+Wire Wire Line
+	6350 2700 7600 2700
+Connection ~ 6350 2750
+Wire Wire Line
+	6350 2750 6450 2750
+Wire Wire Line
+	7600 2900 6350 2900
+Wire Wire Line
+	6350 2900 6350 2850
+Connection ~ 6350 2850
+Wire Wire Line
+	6350 2850 6450 2850
+Wire Wire Line
+	7600 2700 7600 2650
+Wire Wire Line
+	7600 2650 7650 2650
+Wire Wire Line
+	7650 2850 7600 2850
+Wire Wire Line
+	7600 2850 7600 2900
+Wire Wire Line
+	7650 2550 7600 2550
+Wire Wire Line
+	7600 2550 7600 2500
+$Comp
+L w_connectors:Jack_3.5mm_5pin J1
+U 1 1 5A85FD91
+P 7800 2750
+F 0 "J1" H 7978 2852 60  0000 L CNN
+F 1 "Jack_3.5mm_5pin" H 7978 2746 60  0000 L CNN
+F 2 "jacks:3.5mm_stereo_jack_PJ320B_no_up_silkscreen" H 7978 2640 60  0001 L CNN
+F 3 "" H 7800 2800 60  0000 C CNN
+	1    7800 2750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7600 2900 7600 2950
+Wire Wire Line
+	7600 2950 7650 2950
+Connection ~ 7600 2900
+Wire Wire Line
+	7650 2750 7600 2750
+Wire Wire Line
+	7600 2750 7600 2700
+Connection ~ 7600 2700
+$Comp
+L power:GND #PWR?
+U 1 1 5A8F23C5
+P 6400 2000
+F 0 "#PWR?" H 6400 1750 50  0001 C CNN
+F 1 "GND" H 6405 1827 50  0000 C CNN
+F 2 "" H 6400 2000 50  0001 C CNN
+F 3 "" H 6400 2000 50  0001 C CNN
+	1    6400 2000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6400 2000 6400 1950
+Wire Wire Line
+	6400 1950 6250 1950
+Wire Wire Line
+	6250 1950 6250 2150
+Connection ~ 6250 2150
+Wire Wire Line
+	6250 2150 6450 2150
+$Comp
+L power:GND #PWR?
+U 1 1 5A8F43E0
+P 4400 2000
+F 0 "#PWR?" H 4400 1750 50  0001 C CNN
+F 1 "GND" H 4405 1827 50  0000 C CNN
+F 2 "" H 4400 2000 50  0001 C CNN
+F 3 "" H 4400 2000 50  0001 C CNN
+	1    4400 2000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4400 2000 4400 1950
+Wire Wire Line
+	4400 1950 4250 1950
+Wire Wire Line
+	4250 1950 4250 2150
+Connection ~ 4250 2150
+Wire Wire Line
+	4250 2150 4200 2150
+Wire Wire Line
+	6250 3650 6250 2150
+Connection ~ 6250 3650
+Wire Wire Line
+	6250 3650 6450 3650
+Wire Wire Line
+	4250 2150 4250 3650
+Connection ~ 4250 3650
+Wire Wire Line
+	4250 3650 4550 3650
+$Comp
+L F-6188:F-6188 U?
+U 1 1 5AA6C3D3
+P 2850 4900
+F 0 "U?" H 5350 7937 60  0000 C CNN
+F 1 "F-6188" H 5350 7831 60  0000 C CNN
+F 2 "" H 5450 6400 60  0001 C CNN
+F 3 "datasheet/F-6188_BK8000L/F-6188-BK8000L-eng.pdf" H 5450 6400 60  0001 C CNN
+	1    2850 4900
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC

@@ -1,37 +1,4 @@
-EESchema Schematic File Version 2
-LIBS:XS3868_breadboard_adapter-rescue
-LIBS:power
-LIBS:device
-LIBS:transistors
-LIBS:conn
-LIBS:linear
-LIBS:regul
-LIBS:74xx
-LIBS:cmos4000
-LIBS:adc-dac
-LIBS:memory
-LIBS:xilinx
-LIBS:microcontrollers
-LIBS:dsp
-LIBS:microchip
-LIBS:analog_switches
-LIBS:motorola
-LIBS:texas
-LIBS:intel
-LIBS:audio
-LIBS:interface
-LIBS:digital-audio
-LIBS:philips
-LIBS:display
-LIBS:cypress
-LIBS:siliconi
-LIBS:opto
-LIBS:atmel
-LIBS:contrib
-LIBS:valves
-LIBS:phonejack
-LIBS:XS3868
-LIBS:switches
+EESchema Schematic File Version 4
 LIBS:XS3868_breadboard_adapter-cache
 EELAYER 26 0
 EELAYER END
@@ -48,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L SCJ368R1NUS0B00G J1
+L phonejack:SCJ368R1NUS0B00G J1
 U 1 1 5576DC76
 P 5650 2550
 F 0 "J1" H 5650 2850 60  0000 C CNN
@@ -59,7 +26,7 @@ F 3 "" H 5650 2550 60  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L CONN_01X11 P2
+L XS3868_breadboard_adapter-rescue:CONN_01X11-RESCUE-XS3868_breadboard_adapter P2
 U 1 1 5576DF5A
 P 9300 3800
 F 0 "P2" H 9300 4450 50  0000 C CNN
@@ -70,7 +37,7 @@ F 3 "" H 9300 3800 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L SW_Push RESET1
+L XS3868_breadboard_adapter-rescue:SW_Push-RESCUE-XS3868_breadboard_adapter RESET1
 U 1 1 56C45A37
 P 5400 4950
 F 0 "RESET1" H 5400 5206 50  0000 C CNN
@@ -81,7 +48,7 @@ F 3 "" H 5400 4950 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R1
+L XS3868_breadboard_adapter-rescue:R-RESCUE-XS3868_breadboard_adapter R1
 U 1 1 56C47B10
 P 5400 5200
 F 0 "R1" V 5192 5200 50  0000 C CNN
@@ -92,7 +59,7 @@ F 3 "" H 5400 5200 50  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L SW_Push ON/OFF/PLAY1
+L XS3868_breadboard_adapter-rescue:SW_Push-RESCUE-XS3868_breadboard_adapter ON/OFF/PLAY1
 U 1 1 56C4875B
 P 5700 5700
 F 0 "ON/OFF/PLAY1" H 5700 5956 50  0000 C CNN
@@ -103,7 +70,7 @@ F 3 "" H 5700 5700 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R2
+L XS3868_breadboard_adapter-rescue:R-RESCUE-XS3868_breadboard_adapter R2
 U 1 1 56C48674
 P 5550 5850
 F 0 "R2" V 5750 5850 50  0000 C CNN
@@ -114,7 +81,7 @@ F 3 "" H 5550 5850 50  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R3
+L XS3868_breadboard_adapter-rescue:R-RESCUE-XS3868_breadboard_adapter R3
 U 1 1 56C48760
 P 5550 6150
 F 0 "R3" V 5750 6150 50  0000 C CNN
@@ -125,7 +92,7 @@ F 3 "" H 5550 6150 50  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L LED D1
+L XS3868_breadboard_adapter-rescue:LED-RESCUE-XS3868_breadboard_adapter D1
 U 1 1 56C487CC
 P 6100 5850
 F 0 "D1" H 6200 5700 50  0000 C CNN
@@ -136,7 +103,7 @@ F 3 "" H 6100 5850 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED D2
+L XS3868_breadboard_adapter-rescue:LED-RESCUE-XS3868_breadboard_adapter D2
 U 1 1 56C488F4
 P 6100 6150
 F 0 "D2" H 6200 6000 50  0000 C CNN
@@ -147,7 +114,7 @@ F 3 "" H 6100 6150 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_01X12 P1
+L XS3868_breadboard_adapter-rescue:CONN_01X12-RESCUE-XS3868_breadboard_adapter P1
 U 1 1 5576DE6D
 P 3400 3850
 F 0 "P1" H 3400 4500 50  0000 C CNN
@@ -170,19 +137,19 @@ Wire Wire Line
 Wire Wire Line
 	6250 3800 9100 3800
 Wire Wire Line
-	3600 3300 5050 3300
+	3600 3300 4900 3300
 Wire Wire Line
-	3600 3400 5050 3400
+	3600 3400 4950 3400
 Wire Wire Line
-	3600 3500 5050 3500
+	3600 3500 5000 3500
 Wire Wire Line
 	3600 3600 5050 3600
 Wire Wire Line
 	3600 3700 5050 3700
 Wire Wire Line
-	3600 3800 5050 3800
+	3600 3800 4850 3800
 Wire Wire Line
-	3600 3900 5050 3900
+	3600 3900 4800 3900
 Wire Wire Line
 	3600 4000 5050 4000
 Wire Wire Line
@@ -210,7 +177,7 @@ Connection ~ 4950 4300
 Wire Wire Line
 	5000 5700 5500 5700
 Wire Wire Line
-	5000 4400 5000 6500
+	5000 4400 5000 5700
 Connection ~ 5000 4400
 Wire Wire Line
 	4850 3800 4850 5850
@@ -225,7 +192,7 @@ Wire Wire Line
 Wire Wire Line
 	6250 5850 6400 5850
 Wire Wire Line
-	6400 5850 6400 6500
+	6400 5850 6400 6150
 Wire Wire Line
 	6250 6150 6400 6150
 Wire Wire Line
@@ -237,38 +204,38 @@ Wire Wire Line
 Wire Wire Line
 	5250 5200 4950 5200
 Wire Wire Line
-	5600 4950 9000 4950
+	5600 4950 5800 4950
 Wire Wire Line
 	5800 4950 5800 5200
 Wire Wire Line
 	5800 5200 5550 5200
 Connection ~ 5800 4950
 Wire Wire Line
-	3600 4400 5050 4400
+	3600 4400 5000 4400
 Wire Wire Line
 	4800 6150 4800 3900
 Connection ~ 4800 3900
 Connection ~ 4850 3800
 Wire Wire Line
-	3600 4300 5050 4300
+	3600 4300 4450 4300
 Wire Wire Line
 	3600 4100 5050 4100
 Wire Wire Line
-	3600 4200 5050 4200
+	3600 4200 3800 4200
 Wire Wire Line
 	9100 3900 6250 3900
 Wire Wire Line
 	5100 4950 5100 5350
 Wire Wire Line
-	5100 5350 3800 5350
+	5100 5350 4450 5350
 Wire Wire Line
 	6250 4000 9100 4000
 Wire Wire Line
 	6250 4100 9100 4100
 Wire Wire Line
-	6250 4200 9100 4200
+	6250 4200 6300 4200
 Wire Wire Line
-	6250 4300 9100 4300
+	6250 4300 9000 4300
 Wire Wire Line
 	3800 5350 3800 4200
 Connection ~ 3800 4200
@@ -283,7 +250,7 @@ Wire Wire Line
 	6300 5700 6300 4200
 Connection ~ 6300 4200
 $Comp
-L XS3868 U1
+L XS3868_breadboard_adapter-rescue:XS3868-RESCUE-XS3868_breadboard_adapter U1
 U 1 1 59A82016
 P 5650 3750
 F 0 "U1" H 5650 4743 60  0000 C CNN
@@ -294,7 +261,7 @@ F 3 "" H 5700 3750 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C1
+L XS3868_breadboard_adapter-rescue:C-RESCUE-XS3868_breadboard_adapter C1
 U 1 1 59A824D9
 P 4450 4950
 F 0 "C1" H 4565 4996 50  0000 L CNN
@@ -308,10 +275,10 @@ Wire Wire Line
 	4450 4800 4450 4300
 Connection ~ 4450 4300
 Wire Wire Line
-	4450 5100 4450 5500
+	4450 5100 4450 5350
 Connection ~ 4450 5350
 $Comp
-L GND #PWR?
+L power:GND #PWR?
 U 1 1 59A82F11
 P 4450 5500
 F 0 "#PWR?" H 4450 5250 50  0001 C CNN
@@ -321,4 +288,36 @@ F 3 "" H 4450 5500 50  0001 C CNN
 	1    4450 5500
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	5000 3500 5050 3500
+Wire Wire Line
+	4950 3400 5050 3400
+Wire Wire Line
+	4900 3300 5050 3300
+Wire Wire Line
+	4950 4300 5050 4300
+Wire Wire Line
+	5000 4400 5050 4400
+Wire Wire Line
+	5000 5700 5000 6500
+Wire Wire Line
+	6400 6150 6400 6500
+Wire Wire Line
+	5800 4950 9000 4950
+Wire Wire Line
+	4800 3900 5050 3900
+Wire Wire Line
+	4850 3800 5050 3800
+Wire Wire Line
+	3800 4200 5050 4200
+Wire Wire Line
+	9000 4300 9100 4300
+Wire Wire Line
+	6300 4200 9100 4200
+Wire Wire Line
+	4450 4300 4950 4300
+Wire Wire Line
+	4450 5350 3800 5350
+Wire Wire Line
+	4450 5350 4450 5500
 $EndSCHEMATC

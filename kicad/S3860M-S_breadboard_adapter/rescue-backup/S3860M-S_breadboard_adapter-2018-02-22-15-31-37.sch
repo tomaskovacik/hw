@@ -1,0 +1,311 @@
+EESchema Schematic File Version 2
+LIBS:S3860M-S_breadboard_adapter-rescue
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:phonejack
+LIBS:SOYO-BT24G03
+LIBS:S3860M-S
+LIBS:open-project
+LIBS:S3860M-S_breadboard_adapter-cache
+EELAYER 26 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L S3860M-S U1
+U 1 1 5576DBD3
+P 5650 3750
+F 0 "U1" H 5650 4100 60  0000 C CNN
+F 1 "S3860M-S" H 5650 2950 60  0000 C CNN
+F 2 "my_modules:XS3868" H 5700 3750 60  0001 C CNN
+F 3 "" H 5700 3750 60  0000 C CNN
+	1    5650 3750
+	1    0    0    -1  
+$EndComp
+$Comp
+L SCJ368R1NUS0B00G J1
+U 1 1 5576DC76
+P 5650 2550
+F 0 "J1" H 5650 2850 60  0000 C CNN
+F 1 "SCJ368R1NUS0B00G" H 5650 2300 60  0001 C CNN
+F 2 "jacks:3.5mm_stereo_jack_PJ320B" H 5650 2550 60  0001 C CNN
+F 3 "" H 5650 2550 60  0000 C CNN
+	1    5650 2550
+	0    -1   -1   0   
+$EndComp
+$Comp
+L CONN_01X11 P2
+U 1 1 5576DF5A
+P 9300 3800
+F 0 "P2" H 9300 4450 50  0000 C CNN
+F 1 "CONN_01X12" V 9400 3800 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x11" H 9300 3800 60  0001 C CNN
+F 3 "" H 9300 3800 60  0000 C CNN
+	1    9300 3800
+	1    0    0    -1  
+$EndComp
+$Comp
+L SW_PUSH RESET1
+U 1 1 56C45A37
+P 5400 4950
+F 0 "RESET1" H 5400 5206 50  0000 C CNN
+F 1 "1" H 5400 5114 50  0000 C CNN
+F 2 "Buttons_Switches_SMD:SW_SPST_FSMSM" H 5400 4950 50  0001 C CNN
+F 3 "" H 5400 4950 50  0000 C CNN
+	1    5400 4950
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R1
+U 1 1 56C47B10
+P 5400 5200
+F 0 "R1" V 5192 5200 50  0000 C CNN
+F 1 "10k" V 5284 5200 50  0000 C CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" V 5284 5200 50  0001 C CNN
+F 3 "" H 5400 5200 50  0000 C CNN
+	1    5400 5200
+	0    1    1    0   
+$EndComp
+$Comp
+L SW_PUSH ON/OFF/PLAY1
+U 1 1 56C4875B
+P 5700 5700
+F 0 "ON/OFF/PLAY1" H 5700 5956 50  0000 C CNN
+F 1 "ON/OFF" H 5700 5864 50  0000 C CNN
+F 2 "Buttons_Switches_SMD:SW_SPST_FSMSM" H 5700 5700 50  0001 C CNN
+F 3 "" H 5700 5700 50  0000 C CNN
+	1    5700 5700
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R2
+U 1 1 56C48674
+P 5550 5850
+F 0 "R2" V 5750 5850 50  0000 C CNN
+F 1 "470" V 5650 5850 50  0000 C CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" V 5434 5850 50  0001 C CNN
+F 3 "" H 5550 5850 50  0000 C CNN
+	1    5550 5850
+	0    1    1    0   
+$EndComp
+$Comp
+L R R3
+U 1 1 56C48760
+P 5550 6150
+F 0 "R3" V 5750 6150 50  0000 C CNN
+F 1 "470" V 5650 6150 50  0000 C CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" V 5434 6150 50  0001 C CNN
+F 3 "" H 5550 6150 50  0000 C CNN
+	1    5550 6150
+	0    1    1    0   
+$EndComp
+$Comp
+L LED-RESCUE-S3860M-S_breadboard_adapter D1
+U 1 1 56C487CC
+P 6100 5850
+F 0 "D1" H 6200 5700 50  0000 C CNN
+F 1 "LED" H 6000 5700 50  0000 C CNN
+F 2 "LEDs:LED-1206" H 6100 5850 50  0001 C CNN
+F 3 "" H 6100 5850 50  0000 C CNN
+	1    6100 5850
+	1    0    0    -1  
+$EndComp
+$Comp
+L LED-RESCUE-S3860M-S_breadboard_adapter D2
+U 1 1 56C488F4
+P 6100 6150
+F 0 "D2" H 6200 6000 50  0000 C CNN
+F 1 "LED" H 6000 6000 50  0000 C CNN
+F 2 "LEDs:LED-1206" H 6100 6150 50  0001 C CNN
+F 3 "" H 6100 6150 50  0000 C CNN
+	1    6100 6150
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X12 P1
+U 1 1 5576DE6D
+P 3400 3850
+F 0 "P1" H 3400 4500 50  0000 C CNN
+F 1 "CONN_01X12" V 3500 3850 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x12" H 3400 3850 60  0001 C CNN
+F 3 "" H 3400 3850 60  0000 C CNN
+	1    3400 3850
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	6250 3300 9100 3300
+Wire Wire Line
+	6250 3400 9100 3400
+Wire Wire Line
+	6250 3500 9100 3500
+Wire Wire Line
+	6250 3600 9100 3600
+Wire Wire Line
+	6250 3700 9100 3700
+Wire Wire Line
+	6250 3800 9100 3800
+Wire Wire Line
+	3600 3300 5050 3300
+Wire Wire Line
+	3600 3400 5050 3400
+Wire Wire Line
+	3600 3500 5050 3500
+Wire Wire Line
+	3600 3600 5050 3600
+Wire Wire Line
+	3600 3700 5050 3700
+Wire Wire Line
+	3600 3800 5050 3800
+Wire Wire Line
+	3600 3900 5050 3900
+Wire Wire Line
+	3600 4000 5050 4000
+Wire Wire Line
+	5000 3500 5000 3000
+Wire Wire Line
+	5000 3000 5800 3000
+Wire Wire Line
+	5800 3000 5800 2800
+Connection ~ 5000 3500
+Wire Wire Line
+	5500 2800 5500 2950
+Wire Wire Line
+	5500 2950 4950 2950
+Wire Wire Line
+	4950 2950 4950 3400
+Connection ~ 4950 3400
+Wire Wire Line
+	4900 3300 4900 2900
+Wire Wire Line
+	4900 2900 5400 2900
+Wire Wire Line
+	5400 2900 5400 2800
+Connection ~ 4900 3300
+Connection ~ 4950 4300
+Wire Wire Line
+	5400 5700 5000 5700
+Wire Wire Line
+	5000 4400 5000 6500
+Connection ~ 5000 4400
+Wire Wire Line
+	6000 5700 9050 5700
+Wire Wire Line
+	4850 3800 4850 5850
+Wire Wire Line
+	4850 5850 5400 5850
+Wire Wire Line
+	4800 6150 5400 6150
+Wire Wire Line
+	5900 5850 5700 5850
+Wire Wire Line
+	5900 6150 5700 6150
+Wire Wire Line
+	6300 5850 6400 5850
+Wire Wire Line
+	6400 5850 6400 6500
+Wire Wire Line
+	6400 6150 6300 6150
+Wire Wire Line
+	6400 6500 5000 6500
+Connection ~ 5000 5700
+Connection ~ 6400 6150
+Wire Wire Line
+	4950 5200 4950 4300
+Wire Wire Line
+	5250 5200 4950 5200
+Wire Wire Line
+	5700 4950 9000 4950
+Wire Wire Line
+	9000 4950 9000 4000
+Wire Wire Line
+	5800 4950 5800 5200
+Wire Wire Line
+	5800 5200 5550 5200
+Connection ~ 5800 4950
+Wire Wire Line
+	9050 5700 9050 4300
+Connection ~ 9000 4000
+Connection ~ 9050 4300
+Wire Wire Line
+	3600 4400 5050 4400
+Wire Wire Line
+	4800 6150 4800 3900
+Connection ~ 4800 3900
+Connection ~ 4850 3800
+Wire Wire Line
+	3600 4300 5050 4300
+Wire Wire Line
+	3600 4100 5050 4100
+Wire Wire Line
+	3600 4200 5050 4200
+Wire Wire Line
+	9100 3900 6250 3900
+Wire Wire Line
+	6250 4400 8650 4400
+Wire Wire Line
+	5100 4950 5100 5350
+Wire Wire Line
+	5100 5350 3800 5350
+Wire Wire Line
+	6250 4100 8250 4100
+Wire Wire Line
+	8250 4100 8250 4000
+Wire Wire Line
+	8250 4000 9100 4000
+Wire Wire Line
+	9100 4100 8400 4100
+Wire Wire Line
+	8400 4100 8400 4200
+Wire Wire Line
+	8400 4200 6250 4200
+Wire Wire Line
+	6250 4300 8550 4300
+Wire Wire Line
+	8550 4300 8550 4200
+Wire Wire Line
+	8550 4200 9100 4200
+Wire Wire Line
+	8650 4300 9100 4300
+Wire Wire Line
+	8650 4400 8650 4300
+Wire Wire Line
+	3800 5350 3800 4200
+Connection ~ 3800 4200
+$EndSCHEMATC

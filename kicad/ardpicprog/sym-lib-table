@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name ardpicprog-rescue)(type Legacy)(uri ${KIPRJMOD}/ardpicprog-rescue.lib)(options "")(descr ""))
+)

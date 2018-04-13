@@ -1,34 +1,4 @@
-EESchema Schematic File Version 2
-LIBS:arduino_based_cdc_emu-rescue
-LIBS:power
-LIBS:device
-LIBS:transistors
-LIBS:conn
-LIBS:linear
-LIBS:regul
-LIBS:74xx
-LIBS:cmos4000
-LIBS:adc-dac
-LIBS:memory
-LIBS:xilinx
-LIBS:microcontrollers
-LIBS:dsp
-LIBS:microchip
-LIBS:analog_switches
-LIBS:motorola
-LIBS:texas
-LIBS:intel
-LIBS:audio
-LIBS:interface
-LIBS:digital-audio
-LIBS:philips
-LIBS:display
-LIBS:cypress
-LIBS:siliconi
-LIBS:opto
-LIBS:atmel
-LIBS:contrib
-LIBS:valves
+EESchema Schematic File Version 4
 LIBS:arduino_based_cdc_emu-cache
 EELAYER 26 0
 EELAYER END
@@ -45,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L +5V #PWR01
+L power:+5V #PWR01
 U 1 1 53207304
 P 4900 5400
 F 0 "#PWR01" H 4900 5490 20  0001 C CNN
@@ -56,7 +26,7 @@ F 3 "" H 4900 5400 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R-RESCUE-arduino_based_cdc_emu R3
+L arduino_based_cdc_emu-rescue:R-RESCUE-arduino_based_cdc_emu R3
 U 1 1 532072FD
 P 4900 5700
 F 0 "R3" V 4980 5700 50  0000 C CNN
@@ -79,7 +49,7 @@ DataIn
 Text Label 8050 1950 0    60   ~ 0
 DataOut
 $Comp
-L GND-RESCUE-arduino_based_cdc_emu #PWR02
+L arduino_based_cdc_emu-rescue:GND-RESCUE-arduino_based_cdc_emu #PWR02
 U 1 1 530C945D
 P 9550 2400
 F 0 "#PWR02" H 9550 2400 30  0001 C CNN
@@ -90,7 +60,7 @@ F 3 "" H 9550 2400 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_5 P1
+L arduino_based_cdc_emu-rescue:CONN_5-RESCUE-arduino_based_cdc_emu P1
 U 1 1 530C9435
 P 10050 2150
 F 0 "P1" V 10000 2150 50  0000 C CNN
@@ -101,7 +71,7 @@ F 3 "" H 10050 2150 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +12V #PWR03
+L power:+12V #PWR03
 U 1 1 530C8041
 P 2400 5500
 F 0 "#PWR03" H 2400 5450 20  0001 C CNN
@@ -112,7 +82,7 @@ F 3 "" H 2400 5500 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR04
+L power:+5V #PWR04
 U 1 1 530C8014
 P 3850 5550
 F 0 "#PWR04" H 3850 5640 20  0001 C CNN
@@ -123,7 +93,7 @@ F 3 "" H 3850 5550 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND-RESCUE-arduino_based_cdc_emu #PWR05
+L arduino_based_cdc_emu-rescue:GND-RESCUE-arduino_based_cdc_emu #PWR05
 U 1 1 530C800A
 P 3200 6250
 F 0 "#PWR05" H 3200 6250 30  0001 C CNN
@@ -134,7 +104,7 @@ F 3 "" H 3200 6250 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L 78L05 U1
+L arduino_based_cdc_emu-rescue:78L05-RESCUE-arduino_based_cdc_emu U1
 U 1 1 530C7FFF
 P 3200 5700
 F 0 "U1" H 3350 5504 60  0000 C CNN
@@ -145,7 +115,7 @@ F 3 "" H 3200 5700 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND-RESCUE-arduino_based_cdc_emu #PWR06
+L arduino_based_cdc_emu-rescue:GND-RESCUE-arduino_based_cdc_emu #PWR06
 U 1 1 530C7FEB
 P 3850 6250
 F 0 "#PWR06" H 3850 6250 30  0001 C CNN
@@ -156,7 +126,7 @@ F 3 "" H 3850 6250 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND-RESCUE-arduino_based_cdc_emu #PWR07
+L arduino_based_cdc_emu-rescue:GND-RESCUE-arduino_based_cdc_emu #PWR07
 U 1 1 530C7FE7
 P 2500 6250
 F 0 "#PWR07" H 2500 6250 30  0001 C CNN
@@ -167,7 +137,7 @@ F 3 "" H 2500 6250 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C-RESCUE-arduino_based_cdc_emu C4
+L arduino_based_cdc_emu-rescue:C-RESCUE-arduino_based_cdc_emu C4
 U 1 1 530C7FE2
 P 3850 5900
 F 0 "C4" H 3965 5946 50  0000 L CNN
@@ -178,7 +148,7 @@ F 3 "" H 3850 5900 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C-RESCUE-arduino_based_cdc_emu C3
+L arduino_based_cdc_emu-rescue:C-RESCUE-arduino_based_cdc_emu C3
 U 1 1 530C7FD9
 P 2500 5900
 F 0 "C3" H 2550 6000 50  0000 L CNN
@@ -189,7 +159,7 @@ F 3 "" H 2500 5900 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R-RESCUE-arduino_based_cdc_emu R4
+L arduino_based_cdc_emu-rescue:R-RESCUE-arduino_based_cdc_emu R4
 U 1 1 530C77E3
 P 6050 4900
 F 0 "R4" V 6259 4900 50  0000 C CNN
@@ -200,7 +170,7 @@ F 3 "" H 6050 4900 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L +5V #PWR08
+L power:+5V #PWR08
 U 1 1 530C77C0
 P 1450 1850
 F 0 "#PWR08" H 1450 1940 20  0001 C CNN
@@ -211,7 +181,7 @@ F 3 "" H 1450 1850 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND-RESCUE-arduino_based_cdc_emu #PWR09
+L arduino_based_cdc_emu-rescue:GND-RESCUE-arduino_based_cdc_emu #PWR09
 U 1 1 530C77A6
 P 1450 4500
 F 0 "#PWR09" H 1450 4500 30  0001 C CNN
@@ -222,7 +192,7 @@ F 3 "" H 1450 4500 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ATMEGA88-A IC1
+L arduino_based_cdc_emu-rescue:ATMEGA88-A-RESCUE-arduino_based_cdc_emu IC1
 U 1 1 530C76C5
 P 2400 3150
 F 0 "IC1" H 1700 4400 50  0000 L BNN
@@ -233,7 +203,7 @@ F 3 "" H 2400 3150 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +12V #PWR011
+L power:+12V #PWR011
 U 1 1 543549B8
 P 9350 1750
 F 0 "#PWR011" H 9350 1700 20  0001 C CNN
@@ -244,7 +214,7 @@ F 3 "" H 9350 1750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_01X05 P2
+L arduino_based_cdc_emu-rescue:CONN_01X05-RESCUE-arduino_based_cdc_emu P2
 U 1 1 54357812
 P 9150 4800
 F 0 "P2" H 9150 5000 50  0000 C CNN
@@ -263,7 +233,7 @@ TX
 Text GLabel 8800 4900 0    60   Input ~ 0
 TX
 $Comp
-L GND-RESCUE-arduino_based_cdc_emu #PWR012
+L arduino_based_cdc_emu-rescue:GND-RESCUE-arduino_based_cdc_emu #PWR012
 U 1 1 54358932
 P 8750 5100
 F 0 "#PWR012" H 8750 5100 30  0001 C CNN
@@ -278,7 +248,7 @@ RESET
 Text Label 8450 4700 0    60   ~ 0
 RESET
 $Comp
-L +5V #PWR013
+L power:+5V #PWR013
 U 1 1 554857A3
 P 8750 4400
 F 0 "#PWR013" H 8750 4490 20  0001 C CNN
@@ -293,13 +263,13 @@ Wire Wire Line
 Wire Wire Line
 	8050 1950 8950 1950
 Wire Wire Line
-	3850 5550 3850 5700
+	3850 5550 3850 5650
 Wire Wire Line
 	3400 2650 4900 2650
 Wire Wire Line
 	3400 3850 4850 3850
 Wire Wire Line
-	2400 5650 2800 5650
+	2400 5650 2500 5650
 Wire Wire Line
 	3200 5950 3200 6250
 Wire Wire Line
@@ -311,7 +281,7 @@ Wire Wire Line
 Wire Wire Line
 	1450 2650 1500 2650
 Wire Wire Line
-	1450 1850 1450 2650
+	1450 1850 1450 2050
 Wire Wire Line
 	1500 2350 1450 2350
 Connection ~ 1450 2350
@@ -324,7 +294,7 @@ Connection ~ 1450 2050
 Wire Wire Line
 	1500 4150 1450 4150
 Wire Wire Line
-	1450 4150 1450 4500
+	1450 4150 1450 4250
 Wire Wire Line
 	1500 4250 1450 4250
 Connection ~ 1450 4250
@@ -356,7 +326,7 @@ Wire Wire Line
 Wire Wire Line
 	8750 4600 8750 4400
 $Comp
-L CONN_01X01 P3
+L arduino_based_cdc_emu-rescue:CONN_01X01-RESCUE-arduino_based_cdc_emu P3
 U 1 1 5548A42E
 P 9150 5750
 F 0 "P3" H 9150 5950 50  0000 C CNN
@@ -375,7 +345,7 @@ MISO
 Text Label 8500 5750 0    60   ~ 0
 MISO
 $Comp
-L CP C5
+L arduino_based_cdc_emu-rescue:CP-RESCUE-arduino_based_cdc_emu C5
 U 1 1 560D753D
 P 4900 6300
 F 0 "C5" H 4925 6400 50  0000 L CNN
@@ -388,9 +358,9 @@ $EndComp
 Text Label 4500 6000 0    60   ~ 0
 RESET
 Wire Wire Line
-	4900 5950 4900 6150
+	4900 5950 4900 6000
 $Comp
-L GND-RESCUE-arduino_based_cdc_emu #PWR014
+L arduino_based_cdc_emu-rescue:GND-RESCUE-arduino_based_cdc_emu #PWR014
 U 1 1 560D79D0
 P 4900 6600
 F 0 "#PWR014" H 4900 6600 30  0001 C CNN
@@ -426,7 +396,7 @@ Wire Wire Line
 Wire Wire Line
 	3850 6100 3850 6250
 $Comp
-L Jumper_NC_Dual JP?
+L arduino_based_cdc_emu-rescue:Jumper_NC_Dual-RESCUE-arduino_based_cdc_emu JP?
 U 1 1 58C14056
 P 5550 4350
 F 0 "JP?" H 5550 4589 50  0000 C CNN
@@ -451,7 +421,7 @@ Wire Wire Line
 Wire Wire Line
 	4850 4350 5300 4350
 $Comp
-L GND-RESCUE-arduino_based_cdc_emu #PWR010
+L arduino_based_cdc_emu-rescue:GND-RESCUE-arduino_based_cdc_emu #PWR010
 U 1 1 530C7791
 P 5350 2950
 F 0 "#PWR010" H 5350 2950 30  0001 C CNN
@@ -462,7 +432,7 @@ F 3 "" H 5350 2950 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Resonator_Small Y?
+L arduino_based_cdc_emu-rescue:Resonator_Small-RESCUE-arduino_based_cdc_emu Y?
 U 1 1 58C19400
 P 5000 2750
 F 0 "Y?" V 5325 2700 50  0000 C CNN
@@ -481,7 +451,7 @@ Wire Wire Line
 Wire Wire Line
 	5350 2750 5350 2950
 $Comp
-L D D2
+L arduino_based_cdc_emu-rescue:D-RESCUE-arduino_based_cdc_emu D2
 U 1 1 5685E033
 P 9100 2150
 F 0 "D2" H 9100 1934 50  0000 C CNN
@@ -492,7 +462,7 @@ F 3 "" H 9100 2150 50  0000 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L D D?
+L arduino_based_cdc_emu-rescue:D-RESCUE-arduino_based_cdc_emu D?
 U 1 1 58C1A494
 P 8650 2050
 F 0 "D?" H 8650 1834 50  0000 C CNN
@@ -503,7 +473,7 @@ F 3 "" H 8650 2050 50  0000 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L D D?
+L arduino_based_cdc_emu-rescue:D-RESCUE-arduino_based_cdc_emu D?
 U 1 1 58C16D80
 P 9100 1950
 F 0 "D?" H 9100 1734 50  0000 C CNN
@@ -518,7 +488,7 @@ Wire Wire Line
 Wire Wire Line
 	8950 2150 8050 2150
 $Comp
-L R-RESCUE-arduino_based_cdc_emu R?
+L arduino_based_cdc_emu-rescue:R-RESCUE-arduino_based_cdc_emu R?
 U 1 1 58C1746A
 P 3800 2550
 F 0 "R?" V 4009 2550 50  0000 C CNN
@@ -529,7 +499,7 @@ F 3 "" H 3800 2550 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L R-RESCUE-arduino_based_cdc_emu R?
+L arduino_based_cdc_emu-rescue:R-RESCUE-arduino_based_cdc_emu R?
 U 1 1 58C1758C
 P 3800 2350
 F 0 "R?" V 4009 2350 50  0000 C CNN
@@ -547,4 +517,20 @@ Wire Wire Line
 	4200 2550 4050 2550
 Wire Wire Line
 	4050 2350 4200 2350
+Wire Wire Line
+	1450 2350 1450 2650
+Wire Wire Line
+	1450 2150 1450 2350
+Wire Wire Line
+	1450 2050 1450 2150
+Wire Wire Line
+	1450 4250 1450 4350
+Wire Wire Line
+	1450 4350 1450 4500
+Wire Wire Line
+	4900 6000 4900 6150
+Wire Wire Line
+	3850 5650 3850 5700
+Wire Wire Line
+	2500 5650 2800 5650
 $EndSCHEMATC

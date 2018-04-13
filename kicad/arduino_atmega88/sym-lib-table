@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name arduino_atmega88-rescue)(type Legacy)(uri ${KIPRJMOD}/arduino_atmega88-rescue.lib)(options "")(descr ""))
+  (lib (name power1)(type Legacy)(uri ${KICAD_SYMBOL_DIR}/power.lib)(options "")(descr ""))
+)

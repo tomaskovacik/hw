@@ -1,36 +1,6 @@
-EESchema Schematic File Version 2
-LIBS:motorola_cracker-rescue
-LIBS:power
-LIBS:device
-LIBS:transistors
-LIBS:conn
-LIBS:linear
-LIBS:regul
-LIBS:74xx
-LIBS:cmos4000
-LIBS:adc-dac
-LIBS:memory
-LIBS:xilinx
-LIBS:microcontrollers
-LIBS:dsp
-LIBS:microchip
-LIBS:analog_switches
-LIBS:motorola
-LIBS:texas
-LIBS:intel
-LIBS:audio
-LIBS:interface
-LIBS:digital-audio
-LIBS:philips
-LIBS:display
-LIBS:cypress
-LIBS:siliconi
-LIBS:opto
-LIBS:atmel
-LIBS:contrib
-LIBS:valves
+EESchema Schematic File Version 4
 LIBS:motorola_cracker-cache
-EELAYER 25 0
+EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -45,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L +5V #PWR01
+L motorola_cracker-rescue:+5V-RESCUE-motorola_cracker #PWR01
 U 1 1 53AAD03E
 P 3450 2300
 F 0 "#PWR01" H 3450 2390 20  0001 C CNN
@@ -56,7 +26,7 @@ F 3 "" H 3450 2300 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR02
+L motorola_cracker-rescue:GND-RESCUE-motorola_cracker #PWR02
 U 1 1 53AACF93
 P 8450 3350
 F 0 "#PWR02" H 8450 3350 30  0001 C CNN
@@ -67,7 +37,7 @@ F 3 "" H 8450 3350 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR03
+L motorola_cracker-rescue:GND-RESCUE-motorola_cracker #PWR03
 U 1 1 52DC243F
 P 7750 1750
 F 0 "#PWR03" H 7750 1750 30  0001 C CNN
@@ -78,7 +48,7 @@ F 3 "" H 7750 1750 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L GND #PWR04
+L motorola_cracker-rescue:GND-RESCUE-motorola_cracker #PWR04
 U 1 1 52DC243D
 P 7750 1100
 F 0 "#PWR04" H 7750 1100 30  0001 C CNN
@@ -89,7 +59,7 @@ F 3 "" H 7750 1100 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L C C3
+L motorola_cracker-rescue:C-RESCUE-motorola_cracker C3
 U 1 1 52DC2436
 P 7300 1650
 F 0 "C3" H 7350 1750 50  0000 L CNN
@@ -100,7 +70,7 @@ F 3 "" H 7300 1650 60  0001 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L C C2
+L motorola_cracker-rescue:C-RESCUE-motorola_cracker C2
 U 1 1 52DC2429
 P 7300 1050
 F 0 "C2" H 7350 1150 50  0000 L CNN
@@ -111,7 +81,7 @@ F 3 "" H 7300 1050 60  0001 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L Crystal X1
+L motorola_cracker-rescue:Crystal-RESCUE-motorola_cracker X1
 U 1 1 52DC241C
 P 6500 1350
 F 0 "X1" H 6500 1500 60  0000 C CNN
@@ -122,7 +92,7 @@ F 3 "" H 6500 1350 60  0001 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L CONN_01X02 P2
+L motorola_cracker-rescue:CONN_01X02-RESCUE-motorola_cracker P2
 U 1 1 52DBDB8E
 P 8250 3150
 F 0 "P2" V 8200 3150 60  0000 C CNN
@@ -133,7 +103,7 @@ F 3 "" H 8250 3150 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L GND #PWR05
+L motorola_cracker-rescue:GND-RESCUE-motorola_cracker #PWR05
 U 1 1 52DBC8C7
 P 9200 1400
 F 0 "#PWR05" H 9200 1400 30  0001 C CNN
@@ -144,7 +114,7 @@ F 3 "" H 9200 1400 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L CONN_01X04 P1
+L motorola_cracker-rescue:CONN_01X04-RESCUE-motorola_cracker P1
 U 1 1 52DBC7F5
 P 8800 1200
 F 0 "P1" V 8750 1200 60  0000 C CNN
@@ -155,7 +125,7 @@ F 3 "" H 8800 1200 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L R R8
+L motorola_cracker-rescue:R-RESCUE-motorola_cracker R8
 U 1 1 52DAF95D
 P 3850 2400
 F 0 "R8" V 3930 2400 50  0000 C CNN
@@ -166,7 +136,7 @@ F 3 "" H 3850 2400 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L R R9
+L motorola_cracker-rescue:R-RESCUE-motorola_cracker R9
 U 1 1 52DAF927
 P 6800 3400
 F 0 "R9" V 6700 3500 50  0000 C CNN
@@ -177,7 +147,7 @@ F 3 "" H 6800 3400 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L +5V #PWR06
+L motorola_cracker-rescue:+5V-RESCUE-motorola_cracker #PWR06
 U 1 1 52DAF91A
 P 7150 3150
 F 0 "#PWR06" H 7150 3240 20  0001 C CNN
@@ -188,7 +158,7 @@ F 3 "" H 7150 3150 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR07
+L motorola_cracker-rescue:GND-RESCUE-motorola_cracker #PWR07
 U 1 1 52DAF8D6
 P 5200 5250
 F 0 "#PWR07" H 5200 5250 30  0001 C CNN
@@ -199,7 +169,7 @@ F 3 "" H 5200 5250 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR08
+L motorola_cracker-rescue:+5V-RESCUE-motorola_cracker #PWR08
 U 1 1 52DAF45F
 P 9200 950
 F 0 "#PWR08" H 9200 1040 20  0001 C CNN
@@ -210,7 +180,7 @@ F 3 "" H 9200 950 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L GND #PWR09
+L motorola_cracker-rescue:GND-RESCUE-motorola_cracker #PWR09
 U 1 1 543000B3
 P 6850 3900
 F 0 "#PWR09" H 6850 3900 30  0001 C CNN
@@ -225,7 +195,7 @@ Text Notes 6350 3900 0    60   ~ 0
 Text Notes 7150 3800 0    60   ~ 0
 68HC705
 $Comp
-L R R1
+L motorola_cracker-rescue:R-RESCUE-motorola_cracker R1
 U 1 1 55BA483C
 P 6800 3300
 F 0 "R1" V 6880 3300 50  0000 C CNN
@@ -236,7 +206,7 @@ F 3 "" H 6800 3300 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L +5V #PWR010
+L motorola_cracker-rescue:+5V-RESCUE-motorola_cracker #PWR010
 U 1 1 55BAE486
 P 5200 1000
 F 0 "#PWR010" H 5200 1090 20  0001 C CNN
@@ -247,7 +217,7 @@ F 3 "" H 5200 1000 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R7
+L motorola_cracker-rescue:R-RESCUE-motorola_cracker R7
 U 1 1 52DAF9A3
 P 6600 2000
 F 0 "R7" V 6680 2000 50  0000 C CNN
@@ -264,7 +234,7 @@ RX
 Text Label 3450 2800 0    60   ~ 0
 TX
 $Comp
-L CONN_01X01 P3
+L motorola_cracker-rescue:CONN_01X01-RESCUE-motorola_cracker P3
 U 1 1 55BB8CCF
 P 8800 1700
 F 0 "P3" V 8750 1700 60  0000 C CNN
@@ -281,7 +251,7 @@ TX
 Text Label 9400 1700 2    60   ~ 0
 RESET
 $Comp
-L JUMPER3 JP1
+L motorola_cracker-rescue:JUMPER3-RESCUE-motorola_cracker JP1
 U 1 1 55BBE03F
 P 6850 3700
 F 0 "JP1" H 6900 3600 50  0000 L CNN
@@ -294,7 +264,7 @@ $EndComp
 Text Label 7350 2000 2    60   ~ 0
 +12V
 $Comp
-L R R2
+L motorola_cracker-rescue:R-RESCUE-motorola_cracker R2
 U 1 1 55BA6671
 P 6900 1350
 F 0 "R2" V 6980 1350 50  0000 C CNN
@@ -329,11 +299,11 @@ Wire Wire Line
 Wire Wire Line
 	5200 1000 5200 1100
 Wire Wire Line
-	6200 3300 6650 3300
+	6200 3300 6450 3300
 Wire Wire Line
 	6950 3400 7150 3400
 Wire Wire Line
-	7150 3400 7150 3150
+	7150 3400 7150 3300
 Wire Wire Line
 	6950 3300 7150 3300
 Connection ~ 7150 3300
@@ -375,7 +345,7 @@ Wire Wire Line
 Text Label 8850 3100 2    60   ~ 0
 +12V
 $Comp
-L 68HC05_PLCC U2
+L motorola_cracker-rescue:68HC05_PLCC-RESCUE-motorola_cracker U2
 U 1 1 55BA8732
 P 5200 3100
 F 0 "U2" H 5500 4900 70  0000 C CNN
@@ -386,9 +356,9 @@ F 3 "" H 5200 3100 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6200 1650 7150 1650
+	6200 1650 6500 1650
 Wire Wire Line
-	6250 1050 7150 1050
+	6250 1050 6500 1050
 Wire Wire Line
 	6900 1500 6900 1650
 Connection ~ 6900 1650
@@ -401,4 +371,16 @@ Connection ~ 6500 1050
 Wire Wire Line
 	6900 1200 6900 1050
 Connection ~ 6900 1050
+Wire Wire Line
+	7150 3300 7150 3150
+Wire Wire Line
+	6450 3300 6650 3300
+Wire Wire Line
+	6900 1650 7150 1650
+Wire Wire Line
+	6500 1650 6900 1650
+Wire Wire Line
+	6500 1050 6900 1050
+Wire Wire Line
+	6900 1050 7150 1050
 $EndSCHEMATC

@@ -1,11 +1,11 @@
-EESchema-LIBRARY Version 2.3
+EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# CONN_01X03
+# SC70_breadboard_adapter-rescue:CONN_01X03-RESCUE-SC70_breadboard_adapter
 #
-DEF CONN_01X03 P 0 40 Y N 1 F N
+DEF SC70_breadboard_adapter-rescue:CONN_01X03-RESCUE-SC70_breadboard_adapter P 0 40 Y N 1 F N
 F0 "P" 0 200 50 H V C CNN
-F1 "CONN_01X03" 100 0 50 V V C CNN
+F1 "SC70_breadboard_adapter-rescue:CONN_01X03-RESCUE-SC70_breadboard_adapter" 100 0 50 V V C CNN
 F2 "" 0 0 50 H V C CNN
 F3 "" 0 0 50 H V C CNN
 $FPLIST
@@ -25,11 +25,11 @@ X P3 3 -200 -100 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# DIL6
+# SC70_breadboard_adapter-rescue:DIL6-RESCUE-SC70_breadboard_adapter
 #
-DEF DIL6 P 0 40 Y N 1 F N
+DEF SC70_breadboard_adapter-rescue:DIL6-RESCUE-SC70_breadboard_adapter P 0 40 Y N 1 F N
 F0 "P" 0 200 50 H V C CNN
-F1 "DIL6" 0 0 50 V V C CNN
+F1 "SC70_breadboard_adapter-rescue:DIL6-RESCUE-SC70_breadboard_adapter" 0 0 50 V V C CNN
 F2 "" 0 0 50 H V C CNN
 F3 "" 0 0 50 H V C CNN
 DRAW

@@ -1,37 +1,6 @@
-EESchema Schematic File Version 2
-LIBS:arduino_atmega88-rescue
-LIBS:power
-LIBS:device
-LIBS:transistors
-LIBS:conn
-LIBS:linear
-LIBS:regul
-LIBS:74xx
-LIBS:cmos4000
-LIBS:adc-dac
-LIBS:memory
-LIBS:xilinx
-LIBS:microcontrollers
-LIBS:dsp
-LIBS:microchip
-LIBS:analog_switches
-LIBS:motorola
-LIBS:texas
-LIBS:intel
-LIBS:audio
-LIBS:interface
-LIBS:digital-audio
-LIBS:philips
-LIBS:display
-LIBS:cypress
-LIBS:siliconi
-LIBS:opto
-LIBS:atmel
-LIBS:contrib
-LIBS:valves
-LIBS:arduino_shieldsNCL
+EESchema Schematic File Version 4
 LIBS:arduino_atmega88-cache
-EELAYER 25 0
+EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -86,7 +55,7 @@ Connection ~ 1750 3800
 Wire Wire Line
 	2150 3800 1750 3800
 Wire Wire Line
-	1750 3950 1750 3600
+	1750 3950 1750 3800
 Wire Wire Line
 	1750 3600 2150 3600
 Wire Wire Line
@@ -129,13 +98,13 @@ Connection ~ 4900 2950
 Wire Wire Line
 	5500 2300 5500 2350
 Wire Wire Line
-	5000 2950 4050 2950
+	5000 2950 4900 2950
 Wire Wire Line
 	5250 1400 5250 1550
 Wire Wire Line
 	4650 1950 4650 2100
 Wire Wire Line
-	4650 2100 4050 2100
+	4650 2100 4500 2100
 Wire Wire Line
 	4050 3700 4350 3700
 Wire Wire Line
@@ -177,9 +146,9 @@ Wire Wire Line
 Wire Wire Line
 	4050 3800 4350 3800
 Wire Wire Line
-	4050 2200 5250 2200
+	4050 2200 4700 2200
 Wire Wire Line
-	5250 2200 5250 1950
+	5250 2200 5250 2100
 Connection ~ 5250 2100
 Wire Wire Line
 	4650 1400 4650 1550
@@ -190,7 +159,7 @@ Wire Wire Line
 Wire Wire Line
 	4900 2350 4900 2400
 Wire Wire Line
-	4900 2900 4900 3050
+	4900 2900 4900 2950
 Wire Wire Line
 	9400 1700 9750 1700
 Wire Wire Line
@@ -225,7 +194,7 @@ Wire Wire Line
 Wire Wire Line
 	7000 2200 7000 2150
 Wire Wire Line
-	7500 2400 6750 2400
+	7500 2400 7400 2400
 Wire Wire Line
 	6750 2400 6750 2500
 Wire Wire Line
@@ -240,7 +209,7 @@ Connection ~ 1750 3700
 Wire Wire Line
 	2150 1800 1750 1800
 Wire Wire Line
-	1750 1800 1750 1400
+	1750 1800 1750 1600
 Connection ~ 1750 1500
 Wire Wire Line
 	2150 1500 1750 1500
@@ -269,7 +238,7 @@ Wire Wire Line
 Wire Wire Line
 	1650 5350 1800 5350
 Wire Wire Line
-	1650 5000 1650 5550
+	1650 5000 1650 5350
 Connection ~ 1650 5350
 Wire Wire Line
 	1650 5950 1650 6100
@@ -279,9 +248,9 @@ Wire Wire Line
 Wire Wire Line
 	8400 5700 8400 5600
 Wire Wire Line
-	2800 5350 2600 5350
+	2800 5350 2700 5350
 $Comp
-L DIODE D3
+L arduino_atmega88-rescue:DIODE-RESCUE-arduino_atmega88 D3
 U 1 1 5335B1E9
 P 3000 5350
 F 0 "D3" H 3000 5450 40  0000 C CNN
@@ -292,7 +261,7 @@ F 3 "" H 3000 5350 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L DIODE D4
+L arduino_atmega88-rescue:DIODE-RESCUE-arduino_atmega88 D4
 U 1 1 5335A8D7
 P 8650 5700
 F 0 "D4" H 8650 5800 40  0000 C CNN
@@ -303,7 +272,7 @@ F 3 "" H 8650 5700 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L GND-RESCUE-arduino_atmega88 #PWR01
+L arduino_atmega88-rescue:GND-RESCUE-arduino_atmega88 #PWR01
 U 1 1 5335A5BD
 P 2200 6100
 F 0 "#PWR01" H 2200 6100 30  0001 C CNN
@@ -314,7 +283,7 @@ F 3 "" H 2200 6100 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND-RESCUE-arduino_atmega88 #PWR02
+L arduino_atmega88-rescue:GND-RESCUE-arduino_atmega88 #PWR02
 U 1 1 5335A5B8
 P 2700 6100
 F 0 "#PWR02" H 2700 6100 30  0001 C CNN
@@ -325,7 +294,7 @@ F 3 "" H 2700 6100 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND-RESCUE-arduino_atmega88 #PWR03
+L arduino_atmega88-rescue:GND-RESCUE-arduino_atmega88 #PWR03
 U 1 1 5335A5B7
 P 1650 6100
 F 0 "#PWR03" H 1650 6100 30  0001 C CNN
@@ -338,7 +307,7 @@ $EndComp
 Text Label 1650 5000 0    60   ~ 0
 Vin
 $Comp
-L +5V #PWR04
+L power1:+5V #PWR04
 U 1 1 5335A59A
 P 3300 5100
 F 0 "#PWR04" H 3300 5190 20  0001 C CNN
@@ -349,7 +318,7 @@ F 3 "" H 3300 5100 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L 78L05 U1
+L arduino_atmega88-rescue:78L05-RESCUE-arduino_atmega88 U1
 U 1 1 5335A58C
 P 2200 5400
 F 0 "U1" H 2350 5204 60  0000 C CNN
@@ -360,7 +329,7 @@ F 3 "" H 2200 5400 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C-RESCUE-arduino_atmega88 C6
+L arduino_atmega88-rescue:C-RESCUE-arduino_atmega88 C6
 U 1 1 5335A584
 P 2700 5800
 F 0 "C6" H 2750 5900 50  0000 L CNN
@@ -371,7 +340,7 @@ F 3 "" H 2700 5800 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C-RESCUE-arduino_atmega88 C5
+L arduino_atmega88-rescue:C-RESCUE-arduino_atmega88 C5
 U 1 1 5335A581
 P 1650 5750
 F 0 "C5" H 1700 5850 50  0000 L CNN
@@ -382,7 +351,7 @@ F 3 "" H 1650 5750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_6 P1
+L arduino_atmega88-rescue:CONN_6-RESCUE-arduino_atmega88 P1
 U 1 1 53318F84
 P 5250 5500
 F 0 "P1" V 5200 5500 60  0000 C CNN
@@ -393,7 +362,7 @@ F 3 "" H 5250 5500 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR05
+L power1:+5V #PWR05
 U 1 1 53318048
 P 8050 4550
 F 0 "#PWR05" H 8050 4640 20  0001 C CNN
@@ -404,7 +373,7 @@ F 3 "" H 8050 4550 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED-RESCUE-arduino_atmega88 D2
+L arduino_atmega88-rescue:LED-RESCUE-arduino_atmega88 D2
 U 1 1 53318026
 P 8050 5600
 F 0 "D2" H 8050 5700 50  0000 C CNN
@@ -415,7 +384,7 @@ F 3 "" H 8050 5600 60  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R-RESCUE-arduino_atmega88 R2
+L arduino_atmega88-rescue:R-RESCUE-arduino_atmega88 R2
 U 1 1 53318025
 P 8050 5000
 F 0 "R2" V 8130 5000 50  0000 C CNN
@@ -426,7 +395,7 @@ F 3 "" H 8050 5000 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND-RESCUE-arduino_atmega88 #PWR06
+L arduino_atmega88-rescue:GND-RESCUE-arduino_atmega88 #PWR06
 U 1 1 53318024
 P 8050 6000
 F 0 "#PWR06" H 8050 6000 30  0001 C CNN
@@ -439,7 +408,7 @@ $EndComp
 Text Label 6750 4650 0    60   ~ 0
 SCK
 $Comp
-L GND-RESCUE-arduino_atmega88 #PWR07
+L arduino_atmega88-rescue:GND-RESCUE-arduino_atmega88 #PWR07
 U 1 1 53317FD6
 P 7200 6000
 F 0 "#PWR07" H 7200 6000 30  0001 C CNN
@@ -450,7 +419,7 @@ F 3 "" H 7200 6000 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R-RESCUE-arduino_atmega88 R1
+L arduino_atmega88-rescue:R-RESCUE-arduino_atmega88 R1
 U 1 1 53317FCD
 P 7200 5000
 F 0 "R1" V 7280 5000 50  0000 C CNN
@@ -461,7 +430,7 @@ F 3 "" H 7200 5000 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED-RESCUE-arduino_atmega88 D1
+L arduino_atmega88-rescue:LED-RESCUE-arduino_atmega88 D1
 U 1 1 53317FC2
 P 7200 5600
 F 0 "D1" H 7200 5700 50  0000 C CNN
@@ -476,7 +445,7 @@ RTS
 Text Label 9000 6000 0    60   ~ 0
 DTR
 $Comp
-L +3.3V-RESCUE-arduino_atmega88 #PWR08
+L arduino_atmega88-rescue:+3.3V-RESCUE-arduino_atmega88 #PWR08
 U 1 1 53317D04
 P 8800 6000
 F 0 "#PWR08" H 8800 5960 30  0001 C CNN
@@ -487,7 +456,7 @@ F 3 "" H 8800 6000 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L +5V #PWR09
+L power1:+5V #PWR09
 U 1 1 53317CF8
 P 8400 5600
 F 0 "#PWR09" H 8400 5690 20  0001 C CNN
@@ -502,7 +471,7 @@ TX
 Text Label 9000 5500 0    60   ~ 0
 RX
 $Comp
-L GND-RESCUE-arduino_atmega88 #PWR010
+L arduino_atmega88-rescue:GND-RESCUE-arduino_atmega88 #PWR010
 U 1 1 53317C3C
 P 9000 5200
 F 0 "#PWR010" H 9000 5200 30  0001 C CNN
@@ -515,7 +484,7 @@ $EndComp
 Text Label 4450 5550 0    60   ~ 0
 MOSI
 $Comp
-L GND-RESCUE-arduino_atmega88 #PWR011
+L arduino_atmega88-rescue:GND-RESCUE-arduino_atmega88 #PWR011
 U 1 1 53317586
 P 4300 5950
 F 0 "#PWR011" H 4300 5950 30  0001 C CNN
@@ -526,7 +495,7 @@ F 3 "" H 4300 5950 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR012
+L power1:+5V #PWR012
 U 1 1 53317583
 P 4300 5150
 F 0 "#PWR012" H 4300 5240 20  0001 C CNN
@@ -543,7 +512,7 @@ SCK
 Text Label 4450 5250 0    60   ~ 0
 MISO
 $Comp
-L CONN_7 P4
+L arduino_atmega88-rescue:CONN_7-RESCUE-arduino_atmega88 P4
 U 1 1 533174DE
 P 9750 5700
 F 0 "P4" V 9700 5700 60  0000 C CNN
@@ -554,7 +523,7 @@ F 3 "" H 9750 5700 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND-RESCUE-arduino_atmega88 #PWR013
+L arduino_atmega88-rescue:GND-RESCUE-arduino_atmega88 #PWR013
 U 1 1 53317494
 P 1750 3950
 F 0 "#PWR013" H 1750 3950 30  0001 C CNN
@@ -569,7 +538,7 @@ A7
 Text Label 1900 2850 0    60   ~ 0
 A6
 $Comp
-L +5V #PWR014
+L power1:+5V #PWR014
 U 1 1 533171DD
 P 1750 1400
 F 0 "#PWR014" H 1750 1490 20  0001 C CNN
@@ -582,7 +551,7 @@ $EndComp
 Text Label 1850 2100 0    60   ~ 0
 AREF
 $Comp
-L GND-RESCUE-arduino_atmega88 #PWR015
+L arduino_atmega88-rescue:GND-RESCUE-arduino_atmega88 #PWR015
 U 1 1 53317195
 P 1750 2650
 F 0 "#PWR015" H 1750 2650 30  0001 C CNN
@@ -593,7 +562,7 @@ F 3 "" H 1750 2650 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C-RESCUE-arduino_atmega88 C1
+L arduino_atmega88-rescue:C-RESCUE-arduino_atmega88 C1
 U 1 1 5331718F
 P 1750 2350
 F 0 "C1" H 1800 2450 50  0000 L CNN
@@ -606,7 +575,7 @@ $EndComp
 Text Label 9550 1700 0    60   ~ 0
 AREF
 $Comp
-L GND-RESCUE-arduino_atmega88 #PWR016
+L arduino_atmega88-rescue:GND-RESCUE-arduino_atmega88 #PWR016
 U 1 1 53317146
 P 10050 1850
 F 0 "#PWR016" H 10050 1850 30  0001 C CNN
@@ -659,7 +628,7 @@ A0
 Text Label 7150 2600 0    60   ~ 0
 Vin
 $Comp
-L GND-RESCUE-arduino_atmega88 #PWR017
+L arduino_atmega88-rescue:GND-RESCUE-arduino_atmega88 #PWR017
 U 1 1 533170E1
 P 6750 2500
 F 0 "#PWR017" H 6750 2500 30  0001 C CNN
@@ -670,7 +639,7 @@ F 3 "" H 6750 2500 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR018
+L power1:+5V #PWR018
 U 1 1 533170C3
 P 6850 2150
 F 0 "#PWR018" H 6850 2240 20  0001 C CNN
@@ -681,7 +650,7 @@ F 3 "" H 6850 2150 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +3.3V-RESCUE-arduino_atmega88 #PWR019
+L arduino_atmega88-rescue:+3.3V-RESCUE-arduino_atmega88 #PWR019
 U 1 1 533170BB
 P 7000 2150
 F 0 "#PWR019" H 7000 2110 30  0001 C CNN
@@ -712,7 +681,7 @@ TX
 Text Label 4250 3100 0    60   ~ 0
 RX
 $Comp
-L GND-RESCUE-arduino_atmega88 #PWR020
+L arduino_atmega88-rescue:GND-RESCUE-arduino_atmega88 #PWR020
 U 1 1 53316F0E
 P 4900 3750
 F 0 "#PWR020" H 4900 3750 30  0001 C CNN
@@ -723,7 +692,7 @@ F 3 "" H 4900 3750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L SW_PUSH SW1
+L arduino_atmega88-rescue:SW_PUSH-RESCUE-arduino_atmega88 SW1
 U 1 1 53316EFA
 P 4900 3350
 F 0 "SW1" H 5050 3460 50  0000 C CNN
@@ -734,7 +703,7 @@ F 3 "" H 4900 3350 60  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L +5V #PWR021
+L power1:+5V #PWR021
 U 1 1 53316DF1
 P 5500 2300
 F 0 "#PWR021" H 5500 2390 20  0001 C CNN
@@ -745,7 +714,7 @@ F 3 "" H 5500 2300 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R-RESCUE-arduino_atmega88 R3
+L arduino_atmega88-rescue:R-RESCUE-arduino_atmega88 R3
 U 1 1 53316DE9
 P 4900 2650
 F 0 "R3" V 4980 2650 50  0000 C CNN
@@ -758,7 +727,7 @@ $EndComp
 Text Label 5550 2950 0    60   ~ 0
 DTR
 $Comp
-L C-RESCUE-arduino_atmega88 C3
+L arduino_atmega88-rescue:C-RESCUE-arduino_atmega88 C3
 U 1 1 53316DBF
 P 5200 2950
 F 0 "C3" H 5250 3050 50  0000 L CNN
@@ -781,7 +750,7 @@ A1
 Text Label 4250 2350 0    60   ~ 0
 A0
 $Comp
-L GND-RESCUE-arduino_atmega88 #PWR022
+L arduino_atmega88-rescue:GND-RESCUE-arduino_atmega88 #PWR022
 U 1 1 53316CEE
 P 5250 1400
 F 0 "#PWR022" H 5250 1400 30  0001 C CNN
@@ -792,7 +761,7 @@ F 3 "" H 5250 1400 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L GND-RESCUE-arduino_atmega88 #PWR023
+L arduino_atmega88-rescue:GND-RESCUE-arduino_atmega88 #PWR023
 U 1 1 53316CAD
 P 4650 1400
 F 0 "#PWR023" H 4650 1400 30  0001 C CNN
@@ -803,7 +772,7 @@ F 3 "" H 4650 1400 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L C-RESCUE-arduino_atmega88 C4
+L arduino_atmega88-rescue:C-RESCUE-arduino_atmega88 C4
 U 1 1 53316C9F
 P 5250 1750
 F 0 "C4" H 5300 1850 50  0000 L CNN
@@ -814,7 +783,7 @@ F 3 "" H 5250 1750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C-RESCUE-arduino_atmega88 C2
+L arduino_atmega88-rescue:C-RESCUE-arduino_atmega88 C2
 U 1 1 53316C9B
 P 4650 1750
 F 0 "C2" H 4700 1850 50  0000 L CNN
@@ -825,7 +794,7 @@ F 3 "" H 4650 1750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CRYSTAL X1
+L arduino_atmega88-rescue:CRYSTAL-RESCUE-arduino_atmega88 X1
 U 1 1 53316C89
 P 4950 2100
 F 0 "X1" H 4950 2250 60  0000 C CNN
@@ -848,7 +817,7 @@ D9
 Text Label 4250 1500 0    60   ~ 0
 D8
 $Comp
-L ATMEGA88A-A IC1
+L arduino_atmega88-rescue:ATMEGA88A-A-RESCUE-arduino_atmega88 IC1
 U 1 1 53316A2F
 P 3050 2600
 F 0 "IC1" H 2350 3850 50  0000 L BNN
@@ -859,7 +828,7 @@ F 3 "" H 3050 2600 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ARDUINO_SHIELD SHIELD1
+L arduino_shieldsNCL:ARDUINO_SHIELD SHIELD1
 U 1 1 5331693A
 P 8450 2500
 F 0 "SHIELD1" H 8100 3450 60  0000 C CNN
@@ -870,7 +839,7 @@ F 3 "" H 8450 2500 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R-RESCUE-arduino_atmega88 R4
+L arduino_atmega88-rescue:R-RESCUE-arduino_atmega88 R4
 U 1 1 5452671C
 P 4600 2500
 F 0 "R4" V 4680 2500 50  0000 C CNN
@@ -892,4 +861,28 @@ Wire Wire Line
 Connection ~ 4500 2100
 Wire Wire Line
 	8800 5800 8800 6000
+Wire Wire Line
+	1750 1600 1750 1500
+Wire Wire Line
+	1750 3800 1750 3700
+Wire Wire Line
+	4900 2950 4050 2950
+Wire Wire Line
+	4900 2950 4900 3050
+Wire Wire Line
+	5250 2100 5250 1950
+Wire Wire Line
+	7400 2400 6750 2400
+Wire Wire Line
+	1750 3700 1750 3600
+Wire Wire Line
+	1750 1500 1750 1400
+Wire Wire Line
+	1650 5350 1650 5550
+Wire Wire Line
+	2700 5350 2600 5350
+Wire Wire Line
+	4700 2200 5250 2200
+Wire Wire Line
+	4500 2100 4050 2100
 $EndSCHEMATC

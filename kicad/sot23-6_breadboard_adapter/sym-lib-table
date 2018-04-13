@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name sot23-6_breadboard_adapter-rescue)(type Legacy)(uri ${KIPRJMOD}/sot23-6_breadboard_adapter-rescue.lib)(options "")(descr ""))
+  (lib (name power)(type Legacy)(uri ${KICAD_SYMBOL_DIR}/power.lib)(options "")(descr ""))
+)

@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name ardpicprog-rescue)(type Legacy)(uri ${KIPRJMOD}/ardpicprog-rescue.lib)(options "")(descr ""))
+  (lib (name power1)(type Legacy)(uri ${KICAD_SYMBOL_DIR}/power.lib)(options "")(descr ""))
+)

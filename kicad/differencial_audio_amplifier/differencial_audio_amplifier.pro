@@ -1,4 +1,4 @@
-update=Wed 16 Mar 2016 15:19:56 CET
+update=Št 14. september 2017, 13:01:51 CEST
 version=1
 last_client=kicad
 [cvpcb]
@@ -71,6 +71,3 @@ LibName26=opto
 LibName27=atmel
 LibName28=contrib
 LibName29=valves
-LibName30=/home/nail/src/hw/kicad/library/BLK-MD-SPK-B
-LibName31=/home/nail/src/hw/kicad/library/S3860M-S
-LibName32=/home/nail/src/hw/kicad/library/F-3188_CSR8645

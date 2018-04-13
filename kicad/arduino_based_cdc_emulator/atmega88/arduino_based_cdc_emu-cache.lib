@@ -1,102 +1,70 @@
-EESchema-LIBRARY Version 2.3
+EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# +12V
+# arduino_based_cdc_emu-rescue:78L05-RESCUE-arduino_based_cdc_emu
 #
-DEF +12V #PWR 0 0 Y Y 1 F P
-F0 "#PWR" 0 -150 50 H I C CNN
-F1 "+12V" 0 140 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-P 2 0 1 0 -30 50 0 100 N
-P 2 0 1 0 0 0 0 100 N
-P 2 0 1 0 0 100 30 50 N
-X +12V 1 0 0 0 U 50 50 1 1 W N
-ENDDRAW
-ENDDEF
-#
-# +5V
-#
-DEF +5V #PWR 0 0 Y Y 1 F P
-F0 "#PWR" 0 -150 50 H I C CNN
-F1 "+5V" 0 140 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-P 2 0 1 0 -30 50 0 100 N
-P 2 0 1 0 0 0 0 100 N
-P 2 0 1 0 0 100 30 50 N
-X +5V 1 0 0 0 U 50 50 1 1 W N
-ENDDRAW
-ENDDEF
-#
-# 7805
-#
-DEF 7805 U 0 30 N Y 1 F N
+DEF arduino_based_cdc_emu-rescue:78L05-RESCUE-arduino_based_cdc_emu U 0 30 N Y 1 F N
 F0 "U" 150 -196 50 H V C CNN
-F1 "7805" 0 200 50 H V C CNN
+F1 "arduino_based_cdc_emu-rescue:78L05-RESCUE-arduino_based_cdc_emu" 0 200 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
-ALIAS LM7805 LM7812 78L05
 DRAW
 S -200 -150 200 150 0 1 0 N
+X GND GND 0 -250 100 U 40 40 1 1 I
 X VI VI -400 50 200 R 40 40 1 1 I
 X VO VO 400 50 200 L 40 40 1 1 w
-X GND GND 0 -250 100 U 40 40 1 1 I
 ENDDRAW
 ENDDEF
 #
-# ATMEGA168-A
+# arduino_based_cdc_emu-rescue:ATMEGA88-A-RESCUE-arduino_based_cdc_emu
 #
-DEF ATMEGA168-A IC 0 40 Y Y 1 F N
+DEF arduino_based_cdc_emu-rescue:ATMEGA88-A-RESCUE-arduino_based_cdc_emu IC 0 40 Y Y 1 F N
 F0 "IC" -750 1250 50 H V L BNN
-F1 "ATMEGA168-A" 450 -1400 50 H V L BNN
+F1 "arduino_based_cdc_emu-rescue:ATMEGA88-A-RESCUE-arduino_based_cdc_emu" 450 -1400 50 H V L BNN
 F2 "TQFP32" 0 0 50 H V C CIN
 F3 "" 0 0 50 H V C CNN
-ALIAS ATMEGA48-A ATMEGA88-A
 DRAW
 S -750 1200 850 -1300 0 1 10 f
 X (PCINT19/OC2B/INT1)PD3 1 1000 -800 150 L 40 40 1 1 B
+X (PCINT22/OC0A/AIN0)PD6 10 1000 -1100 150 L 40 40 1 1 B
+X (PCINT23/AIN1)PD7 11 1000 -1200 150 L 40 40 1 1 B
+X (PCINT0/CLKO/ICP1)PB0 12 1000 1100 150 L 40 40 1 1 B
+X (PCINT1/OC1A)PB1 13 1000 1000 150 L 40 40 1 1 B
+X (PCINT2/OC1B/~SS~)PB2 14 1000 900 150 L 40 40 1 1 B
+X (PCINT3/OC2/MOSI)PB3 15 1000 800 150 L 40 40 1 1 B
+X (PCINT4/MISO)PB4 16 1000 700 150 L 40 40 1 1 B
+X (PCINT5/SCK)PB5 17 1000 600 150 L 40 40 1 1 B
+X AVCC 18 -900 800 150 R 40 40 1 1 W
+X ADC6 19 -900 -250 150 R 40 40 1 1 I
 X (PCINT20/XCK/T0)PD4 2 1000 -900 150 L 40 40 1 1 B
+X AREF 20 -900 500 150 R 40 40 1 1 B
+X GND 21 -900 -1000 150 R 40 40 1 1 W
+X ADC7 22 -900 -350 150 R 40 40 1 1 I
+X (PCINT8/ADC0)PC0 23 1000 250 150 L 40 40 1 1 B
+X (PCINT9/ADC1)PC1 24 1000 150 150 L 40 40 1 1 B
+X (PCINT10/ADC2)PC2 25 1000 50 150 L 40 40 1 1 B
+X (PCINT11/ADC3)PC3 26 1000 -50 150 L 40 40 1 1 B
+X (PCINT12/SDA/ADC4)PC4 27 1000 -150 150 L 40 40 1 1 B
+X (PCINT13/SCL/ADC5)PC5 28 1000 -250 150 L 40 40 1 1 B
+X (PCINT14/~RESET~)PC6 29 1000 -350 150 L 40 40 1 1 B
 X GND 3 -900 -1200 150 R 40 40 1 1 W
+X (PCINT16/RXD)PD0 30 1000 -500 150 L 40 40 1 1 B
+X (PCINT17/TXD)PD1 31 1000 -600 150 L 40 40 1 1 B
+X (PCINT18/INT0)PD2 32 1000 -700 150 L 40 40 1 1 B
 X VCC 4 -900 1100 150 R 40 40 1 1 W
 X GND 5 -900 -1100 150 R 40 40 1 1 W
 X VCC 6 -900 1000 150 R 40 40 1 1 W
 X (PCINT6/XTAL1/TOSC1)PB6 7 1000 500 150 L 40 40 1 1 B
 X (PCINT7/XTAL2/TOSC2)PB7 8 1000 400 150 L 40 40 1 1 B
 X (PCINT21/OC0B/T1)PD5 9 1000 -1000 150 L 40 40 1 1 B
-X (PCINT22/OC0A/AIN0)PD6 10 1000 -1100 150 L 40 40 1 1 B
-X AREF 20 -900 500 150 R 40 40 1 1 B
-X (PCINT16/RXD)PD0 30 1000 -500 150 L 40 40 1 1 B
-X (PCINT23/AIN1)PD7 11 1000 -1200 150 L 40 40 1 1 B
-X GND 21 -900 -1000 150 R 40 40 1 1 W
-X (PCINT17/TXD)PD1 31 1000 -600 150 L 40 40 1 1 B
-X (PCINT0/CLKO/ICP1)PB0 12 1000 1100 150 L 40 40 1 1 B
-X ADC7 22 -900 -350 150 R 40 40 1 1 I
-X (PCINT18/INT0)PD2 32 1000 -700 150 L 40 40 1 1 B
-X (PCINT1/OC1A)PB1 13 1000 1000 150 L 40 40 1 1 B
-X (PCINT8/ADC0)PC0 23 1000 250 150 L 40 40 1 1 B
-X (PCINT2/OC1B/~SS~)PB2 14 1000 900 150 L 40 40 1 1 B
-X (PCINT9/ADC1)PC1 24 1000 150 150 L 40 40 1 1 B
-X (PCINT3/OC2/MOSI)PB3 15 1000 800 150 L 40 40 1 1 B
-X (PCINT10/ADC2)PC2 25 1000 50 150 L 40 40 1 1 B
-X (PCINT4/MISO)PB4 16 1000 700 150 L 40 40 1 1 B
-X (PCINT11/ADC3)PC3 26 1000 -50 150 L 40 40 1 1 B
-X (PCINT5/SCK)PB5 17 1000 600 150 L 40 40 1 1 B
-X (PCINT12/SDA/ADC4)PC4 27 1000 -150 150 L 40 40 1 1 B
-X AVCC 18 -900 800 150 R 40 40 1 1 W
-X (PCINT13/SCL/ADC5)PC5 28 1000 -250 150 L 40 40 1 1 B
-X ADC6 19 -900 -250 150 R 40 40 1 1 I
-X (PCINT14/~RESET~)PC6 29 1000 -350 150 L 40 40 1 1 B
 ENDDRAW
 ENDDEF
 #
-# C-RESCUE-arduino_based_cdc_emu
+# arduino_based_cdc_emu-rescue:C-RESCUE-arduino_based_cdc_emu
 #
-DEF C-RESCUE-arduino_based_cdc_emu C 0 10 N Y 1 F N
+DEF arduino_based_cdc_emu-rescue:C-RESCUE-arduino_based_cdc_emu C 0 10 N Y 1 F N
 F0 "C" 0 100 40 H V L CNN
-F1 "C-RESCUE-arduino_based_cdc_emu" 6 -85 40 H V L CNN
+F1 "arduino_based_cdc_emu-rescue:C-RESCUE-arduino_based_cdc_emu" 6 -85 40 H V L CNN
 F2 "" 38 -150 30 H V C CNN
 F3 "" 0 0 60 H V C CNN
 $FPLIST
@@ -112,11 +80,11 @@ X ~ 2 0 -200 170 U 40 40 1 1 P
 ENDDRAW
 ENDDEF
 #
-# CONN_01X01
+# arduino_based_cdc_emu-rescue:CONN_01X01-RESCUE-arduino_based_cdc_emu
 #
-DEF CONN_01X01 J 0 40 Y N 1 F N
+DEF arduino_based_cdc_emu-rescue:CONN_01X01-RESCUE-arduino_based_cdc_emu J 0 40 Y N 1 F N
 F0 "J" 0 100 50 H V C CNN
-F1 "CONN_01X01" 100 0 50 V V C CNN
+F1 "arduino_based_cdc_emu-rescue:CONN_01X01-RESCUE-arduino_based_cdc_emu" 100 0 50 V V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -132,11 +100,11 @@ X P1 1 -200 0 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# CONN_01X05
+# arduino_based_cdc_emu-rescue:CONN_01X05-RESCUE-arduino_based_cdc_emu
 #
-DEF CONN_01X05 J 0 40 Y N 1 F N
+DEF arduino_based_cdc_emu-rescue:CONN_01X05-RESCUE-arduino_based_cdc_emu J 0 40 Y N 1 F N
 F0 "J" 0 300 50 H V C CNN
-F1 "CONN_01X05" 100 0 50 V V C CNN
+F1 "arduino_based_cdc_emu-rescue:CONN_01X05-RESCUE-arduino_based_cdc_emu" 100 0 50 V V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -160,11 +128,11 @@ X P5 5 -200 -200 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# CONN_5
+# arduino_based_cdc_emu-rescue:CONN_5-RESCUE-arduino_based_cdc_emu
 #
-DEF CONN_5 P 0 40 Y Y 1 F N
+DEF arduino_based_cdc_emu-rescue:CONN_5-RESCUE-arduino_based_cdc_emu P 0 40 Y Y 1 F N
 F0 "P" -50 0 50 V V C CNN
-F1 "CONN_5" 50 0 50 V V C CNN
+F1 "arduino_based_cdc_emu-rescue:CONN_5-RESCUE-arduino_based_cdc_emu" 50 0 50 V V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW
@@ -177,11 +145,11 @@ X ~ 5 -400 -200 300 R 60 60 1 1 P I
 ENDDRAW
 ENDDEF
 #
-# CP
+# arduino_based_cdc_emu-rescue:CP-RESCUE-arduino_based_cdc_emu
 #
-DEF CP C 0 10 N Y 1 F N
+DEF arduino_based_cdc_emu-rescue:CP-RESCUE-arduino_based_cdc_emu C 0 10 N Y 1 F N
 F0 "C" 25 100 50 H V L CNN
-F1 "CP" 25 -100 50 H V L CNN
+F1 "arduino_based_cdc_emu-rescue:CP-RESCUE-arduino_based_cdc_emu" 25 -100 50 H V L CNN
 F2 "" 38 -150 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -200,11 +168,11 @@ X ~ 2 0 -150 110 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# D
+# arduino_based_cdc_emu-rescue:D-RESCUE-arduino_based_cdc_emu
 #
-DEF D D 0 40 N N 1 F N
+DEF arduino_based_cdc_emu-rescue:D-RESCUE-arduino_based_cdc_emu D 0 40 N N 1 F N
 F0 "D" 0 100 50 H V C CNN
-F1 "D" 0 -100 50 H V C CNN
+F1 "arduino_based_cdc_emu-rescue:D-RESCUE-arduino_based_cdc_emu" 0 -100 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -223,11 +191,11 @@ X A 2 150 0 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# GND-RESCUE-arduino_based_cdc_emu
+# arduino_based_cdc_emu-rescue:GND-RESCUE-arduino_based_cdc_emu
 #
-DEF ~GND-RESCUE-arduino_based_cdc_emu #PWR 0 0 Y Y 1 F P
+DEF ~arduino_based_cdc_emu-rescue:GND-RESCUE-arduino_based_cdc_emu #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 0 30 H I C CNN
-F1 "GND-RESCUE-arduino_based_cdc_emu" 0 -70 30 H I C CNN
+F1 "arduino_based_cdc_emu-rescue:GND-RESCUE-arduino_based_cdc_emu" 0 -70 30 H I C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW
@@ -236,11 +204,11 @@ X GND 1 0 0 0 U 30 30 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# Jumper_NC_Dual
+# arduino_based_cdc_emu-rescue:Jumper_NC_Dual-RESCUE-arduino_based_cdc_emu
 #
-DEF Jumper_NC_Dual JP 0 30 Y N 1 F N
+DEF arduino_based_cdc_emu-rescue:Jumper_NC_Dual-RESCUE-arduino_based_cdc_emu JP 0 30 Y N 1 F N
 F0 "JP" 50 -100 50 H V L CNN
-F1 "Jumper_NC_Dual" 0 100 50 H V C BNN
+F1 "arduino_based_cdc_emu-rescue:Jumper_NC_Dual-RESCUE-arduino_based_cdc_emu" 0 100 50 H V C BNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -255,11 +223,11 @@ X 3 3 250 0 95 L 50 50 0 1 P
 ENDDRAW
 ENDDEF
 #
-# R-RESCUE-arduino_based_cdc_emu
+# arduino_based_cdc_emu-rescue:R-RESCUE-arduino_based_cdc_emu
 #
-DEF R-RESCUE-arduino_based_cdc_emu R 0 0 N Y 1 F N
+DEF arduino_based_cdc_emu-rescue:R-RESCUE-arduino_based_cdc_emu R 0 0 N Y 1 F N
 F0 "R" 80 0 40 V V C CNN
-F1 "R-RESCUE-arduino_based_cdc_emu" 7 1 40 V V C CNN
+F1 "arduino_based_cdc_emu-rescue:R-RESCUE-arduino_based_cdc_emu" 7 1 40 V V C CNN
 F2 "" -70 0 30 V V C CNN
 F3 "" 0 0 30 H V C CNN
 $FPLIST
@@ -276,11 +244,11 @@ X ~ 2 0 -250 100 U 60 60 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Resonator_Small
+# arduino_based_cdc_emu-rescue:Resonator_Small-RESCUE-arduino_based_cdc_emu
 #
-DEF Resonator_Small Y 0 40 Y N 1 F N
+DEF arduino_based_cdc_emu-rescue:Resonator_Small-RESCUE-arduino_based_cdc_emu Y 0 40 Y N 1 F N
 F0 "Y" 125 75 50 H V L CNN
-F1 "Resonator_Small" 125 0 50 H V L CNN
+F1 "arduino_based_cdc_emu-rescue:Resonator_Small-RESCUE-arduino_based_cdc_emu" 125 0 50 H V L CNN
 F2 "" -25 0 50 H I C CNN
 F3 "" -25 0 50 H I C CNN
 $FPLIST
@@ -308,6 +276,36 @@ P 4 0 1 0 95 -110 95 -150 -95 -150 -95 -105 N
 X 1 1 -100 100 50 D 50 50 1 1 P
 X 2 2 0 -200 50 U 50 50 1 1 P
 X 3 3 100 100 50 D 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# power:+12V
+#
+DEF power:+12V #PWR 0 0 Y Y 1 F P
+F0 "#PWR" 0 -150 50 H I C CNN
+F1 "power:+12V" 0 140 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+P 2 0 1 0 -30 50 0 100 N
+P 2 0 1 0 0 0 0 100 N
+P 2 0 1 0 0 100 30 50 N
+X +12V 1 0 0 0 U 50 50 1 1 W N
+ENDDRAW
+ENDDEF
+#
+# power:+5V
+#
+DEF power:+5V #PWR 0 0 Y Y 1 F P
+F0 "#PWR" 0 -150 50 H I C CNN
+F1 "power:+5V" 0 140 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+P 2 0 1 0 -30 50 0 100 N
+P 2 0 1 0 0 0 0 100 N
+P 2 0 1 0 0 100 30 50 N
+X +5V 1 0 0 0 U 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #

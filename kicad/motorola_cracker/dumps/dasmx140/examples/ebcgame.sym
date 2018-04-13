@@ -1,0 +1,167 @@
+;
+;	Symbol file for Bally Game CPU
+;	==============================
+;
+;	Eight Ball Champ game ROM (U3)
+;       ==============================
+;
+;       Peter J.C.Clare, 9th January 2000
+;
+
+;=============================================================================
+;
+;	Symbol file syntax
+;	~~~~~~~~~~~~~~~~~~
+;
+;	A symbol file may contain the following commands:
+;
+;	Define the CPU type
+;		cpu 6800 | 6801 | 6802 | 6803 | 6808 | 6809
+;
+;	Define a symbol corresponding to a value (usually an address)
+;		symbol <value> <name>
+;
+;	Define a location that contains a word pointing to a code entry
+;	(for example, the reset entry point)
+;		vector <address> <vector name> [<destination name>]
+;
+;	Define a table of vectors (i.e. a jump table) of length <count>
+;	Each vector will be used as a code entry point if threading is used.
+;		vectab <address> <name> [<count>]
+;
+;	Define a code entry point (for code threading)
+;		code <address> [<name>]
+;
+;	Define a single data byte, or <count> length array of bytes
+;		byte <address> <name> [<count>]
+;
+;	Define a single data word, or <count> length array of words
+;		word <address> <name> [<count>]
+;
+;	Define a table of addresses, which point to data, of length <count>
+;		addrtab <address> <name> [<count>]
+;
+;	Define a single data character, or <count> length string of chars
+;		string <address> <name> [<count>]
+;
+;
+;	All commands must occupy a single line.  Blank lines are ignored.
+;	The ';' character starts a comment - all remaining characters on a
+;	a line are ignored.  Number values may be given in decimal (default),
+;	octal or hex using standard C conventions (e.g. 0x prefix for hex).
+;
+;	The rest of this file serves as a practical example of how these
+;	commands may be used.
+;
+
+;=============================================================================
+;
+;	General 6803 definitions
+;
+
+cpu		6803
+
+symbol		0x0000	ioPort1ddr
+symbol		0x0001	ioPort2ddr
+symbol		0x0002	ioPort1data
+symbol		0x0003	ioPort2data
+
+symbol		0x0008	timerCSR
+symbol		0x0009	timerHigh
+symbol		0x000A	timerLow
+
+symbol		0x000B	ocrHigh
+symbol		0x000C	ocrLow
+
+symbol		0x000D	icrHigh
+symbol		0x000E	icrLow
+
+symbol		0x0010	sciModeControl
+symbol		0x0011	sciTRCS
+symbol		0x0012	sciRxData
+symbol		0x0013	sciTxData
+
+symbol		0x0014	ramControl
+
+vector		0xFFF0	sci_vector	sci_entry
+vector		0xFFF2	tof_vector	tof_entry
+vector		0xFFF4	ocf_vector	ocf_entry
+vector		0xFFF6	icf_vector	icf_entry
+vector		0xFFF8	irq_vector	int_entry
+vector		0xFFFA	swi_vector	swi_entry
+vector		0xFFFC	nmi_vector	nmi_entry
+vector		0xFFFE	res_vector	reset
+
+
+;=============================================================================
+;
+;       General Bally Game CPU hardware definitions
+;
+
+; RAM and ROM start addresses
+symbol		0x0000	u4ram
+symbol		0x8000	u2rom		;jumpered for 27128
+symbol		0xC000	u3rom		;jumpered for 27128
+
+
+
+;=============================================================================
+;
+;       Eight Ball Champ specific definitions
+;
+;	Note: this is by no means a complete set of definitions for
+;	all the code and data areas - just a selection.
+;
+
+symbol		0x1017	jumpVector
+
+string		0xC001	msgGameId	13
+
+byte		0xC12F	byteTable1	28
+byte		0xCC26	byteTable2	12
+byte		0xF19C	byteTable3	395
+byte		0xEAD5	byteTable4	206
+
+vectab		0xC011	jumpTable1	13
+vectab		0xC02B	jumpTable2	35
+vectab		0xC073	jumpTable3	2
+vectab		0xC077	jumpTable4	4
+vectab		0xC2C5	jumpTable5	12
+vectab		0xCC32	jumpTable6	11
+vectab		0xCDCE	jumpTable7	5
+vectab		0xE002	jumpTable8	16
+
+vectab		0xC07F	vector3
+vectab		0xC081	vector4
+vectab		0xC085	vector5
+vectab		0xC089	vector6
+vectab		0xC090	vector7
+vectab		0xC094	vector8
+vectab		0xC096	vector9
+vectab		0xC098	vector10
+vectab		0xC09A	vector11
+vectab		0xC09C	vector12
+vectab		0xC09E	vector13
+vectab		0xC0A0	vector14
+
+;these are vectors in byteTable4 (5 bytes per entry)
+vectab		0xEB71	vector15
+vectab		0xEB76	vector16
+vectab		0xEB7B	vector17
+vectab		0xEB80	vector18
+vectab		0xEB85	vector19
+vectab		0xEB8A	vector20
+vectab		0xEB8F	vector21
+vectab		0xEB94	vector22
+vectab		0xEB99	vector23
+vectab		0xEB9E	vector24
+
+;target addresses for index jumps
+code		0xECF0
+code		0xED1F
+code		0xED40
+code		0xEEA8
+code		0xEF26
+
+;skip unused bytes at end of ROM just prior to interrupt vectors
+skip		0xFA56	0x059A

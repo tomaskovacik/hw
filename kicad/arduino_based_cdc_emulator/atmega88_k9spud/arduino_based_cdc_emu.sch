@@ -1,36 +1,6 @@
-EESchema Schematic File Version 2
-LIBS:arduino_based_cdc_emu-rescue
-LIBS:power
-LIBS:device
-LIBS:transistors
-LIBS:conn
-LIBS:linear
-LIBS:regul
-LIBS:74xx
-LIBS:cmos4000
-LIBS:adc-dac
-LIBS:memory
-LIBS:xilinx
-LIBS:microcontrollers
-LIBS:dsp
-LIBS:microchip
-LIBS:analog_switches
-LIBS:motorola
-LIBS:texas
-LIBS:intel
-LIBS:audio
-LIBS:interface
-LIBS:digital-audio
-LIBS:philips
-LIBS:display
-LIBS:cypress
-LIBS:siliconi
-LIBS:opto
-LIBS:atmel
-LIBS:contrib
-LIBS:valves
+EESchema Schematic File Version 4
 LIBS:arduino_based_cdc_emu-cache
-EELAYER 25 0
+EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -66,11 +36,11 @@ Wire Wire Line
 	4250 5300 4250 5550
 Connection ~ 3850 4950
 Wire Wire Line
-	3750 4950 4250 4950
+	3750 4950 3850 4950
 Wire Wire Line
 	4250 4950 4250 5200
 Wire Wire Line
-	4250 5550 3750 5550
+	4250 5550 3850 5550
 Connection ~ 3850 5550
 Connection ~ 3350 5550
 Wire Wire Line
@@ -78,7 +48,7 @@ Wire Wire Line
 Wire Wire Line
 	8650 5850 8650 6050
 Wire Wire Line
-	8550 5450 8950 5450
+	8550 5450 8650 5450
 Wire Wire Line
 	9350 5750 9350 6050
 Wire Wire Line
@@ -92,11 +62,11 @@ Wire Wire Line
 Wire Wire Line
 	7300 4150 6850 4150
 Wire Wire Line
-	6850 5300 7500 5300
+	6850 5300 7300 5300
 Wire Wire Line
 	6350 5300 6150 5300
 $Comp
-L +5V #PWR01
+L power:+5V #PWR01
 U 1 1 53207304
 P 7300 5250
 F 0 "#PWR01" H 7300 5340 20  0001 C CNN
@@ -107,7 +77,7 @@ F 3 "" H 7300 5250 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R-RESCUE-arduino_based_cdc_emu R3
+L arduino_based_cdc_emu-rescue:R-RESCUE-arduino_based_cdc_emu R3
 U 1 1 532072FD
 P 6600 5300
 F 0 "R3" V 6680 5300 50  0000 C CNN
@@ -130,7 +100,7 @@ DataIn
 Text Label 9200 2950 0    60   ~ 0
 DataOut
 $Comp
-L CONN_5 P1
+L arduino_based_cdc_emu-rescue:CONN_5-RESCUE-arduino_based_cdc_emu P1
 U 1 1 530C9435
 P 10100 3150
 F 0 "P1" V 10050 3150 50  0000 C CNN
@@ -141,7 +111,7 @@ F 3 "" H 10100 3150 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +12V #PWR02
+L power:+12V #PWR02
 U 1 1 530C8041
 P 8550 5300
 F 0 "#PWR02" H 8550 5250 20  0001 C CNN
@@ -152,7 +122,7 @@ F 3 "" H 8550 5300 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR03
+L power:+5V #PWR03
 U 1 1 530C8014
 P 10000 5350
 F 0 "#PWR03" H 10000 5440 20  0001 C CNN
@@ -163,7 +133,7 @@ F 3 "" H 10000 5350 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L 78L05 U1
+L arduino_based_cdc_emu-rescue:78L05-RESCUE-arduino_based_cdc_emu U1
 U 1 1 530C7FFF
 P 9350 5500
 F 0 "U1" H 9500 5304 60  0000 C CNN
@@ -174,7 +144,7 @@ F 3 "" H 9350 5500 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C-RESCUE-arduino_based_cdc_emu C4
+L arduino_based_cdc_emu-rescue:C-RESCUE-arduino_based_cdc_emu C4
 U 1 1 530C7FE2
 P 10000 5650
 F 0 "C4" H 10050 5750 50  0000 L CNN
@@ -185,7 +155,7 @@ F 3 "" H 10000 5650 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C-RESCUE-arduino_based_cdc_emu C3
+L arduino_based_cdc_emu-rescue:C-RESCUE-arduino_based_cdc_emu C3
 U 1 1 530C7FD9
 P 8650 5650
 F 0 "C3" H 8700 5750 50  0000 L CNN
@@ -196,7 +166,7 @@ F 3 "" H 8650 5650 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R-RESCUE-arduino_based_cdc_emu R2
+L arduino_based_cdc_emu-rescue:R-RESCUE-arduino_based_cdc_emu R2
 U 1 1 530C78F0
 P 6600 4350
 F 0 "R2" V 6680 4350 50  0000 C CNN
@@ -207,7 +177,7 @@ F 3 "" H 6600 4350 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L R-RESCUE-arduino_based_cdc_emu R1
+L arduino_based_cdc_emu-rescue:R-RESCUE-arduino_based_cdc_emu R1
 U 1 1 530C77F4
 P 6600 4150
 F 0 "R1" V 6680 4150 50  0000 C CNN
@@ -218,7 +188,7 @@ F 3 "" H 6600 4150 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L R-RESCUE-arduino_based_cdc_emu R4
+L arduino_based_cdc_emu-rescue:R-RESCUE-arduino_based_cdc_emu R4
 U 1 1 530C77E3
 P 6600 5650
 F 0 "R4" V 6680 5650 50  0000 C CNN
@@ -229,7 +199,7 @@ F 3 "" H 6600 5650 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L +5V #PWR04
+L power:+5V #PWR04
 U 1 1 530C77C0
 P 4200 3650
 F 0 "#PWR04" H 4200 3740 20  0001 C CNN
@@ -240,7 +210,7 @@ F 3 "" H 4200 3650 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C-RESCUE-arduino_based_cdc_emu C2
+L arduino_based_cdc_emu-rescue:C-RESCUE-arduino_based_cdc_emu C2
 U 1 1 530C7707
 P 3550 5550
 F 0 "C2" H 3600 5650 50  0000 L CNN
@@ -251,7 +221,7 @@ F 3 "" H 3550 5550 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L C-RESCUE-arduino_based_cdc_emu C1
+L arduino_based_cdc_emu-rescue:C-RESCUE-arduino_based_cdc_emu C1
 U 1 1 530C7703
 P 3550 4950
 F 0 "C1" H 3600 5050 50  0000 L CNN
@@ -262,7 +232,7 @@ F 3 "" H 3550 4950 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L CRYSTAL X1
+L arduino_based_cdc_emu-rescue:CRYSTAL-RESCUE-arduino_based_cdc_emu X1
 U 1 1 530C76D9
 P 3850 5250
 F 0 "X1" H 3850 5400 60  0000 C CNN
@@ -273,7 +243,7 @@ F 3 "" H 3850 5250 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L ATMEGA88-A-RESCUE-arduino_based_cdc_emu IC1
+L arduino_based_cdc_emu-rescue:ATMEGA88-A-RESCUE-arduino_based_cdc_emu IC1
 U 1 1 530C76C5
 P 5150 4950
 F 0 "IC1" H 4450 6200 50  0000 L BNN
@@ -284,7 +254,7 @@ F 3 "" H 5150 4950 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +12V #PWR05
+L power:+12V #PWR05
 U 1 1 543549B8
 P 9050 3200
 F 0 "#PWR05" H 9050 3150 20  0001 C CNN
@@ -295,7 +265,7 @@ F 3 "" H 9050 3200 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4200 4450 4200 3650
+	4200 4450 4200 4150
 Wire Wire Line
 	4250 4150 4200 4150
 Connection ~ 4200 4150
@@ -308,7 +278,7 @@ Connection ~ 4200 3850
 Wire Wire Line
 	4250 5950 4200 5950
 Wire Wire Line
-	4200 5950 4200 6300
+	4200 5950 4200 6050
 Wire Wire Line
 	4250 6050 4200 6050
 Connection ~ 4200 6050
@@ -321,7 +291,7 @@ Connection ~ 8650 5450
 Wire Wire Line
 	10000 5450 9750 5450
 $Comp
-L CONN_01X03 P2
+L arduino_based_cdc_emu-rescue:CONN_01X03-RESCUE-arduino_based_cdc_emu P2
 U 1 1 54357812
 P 9950 4400
 F 0 "P2" V 9900 4400 50  0000 C CNN
@@ -369,7 +339,7 @@ NoConn ~ 6150 4050
 NoConn ~ 6150 3950
 NoConn ~ 6150 3850
 $Comp
-L GND #PWR06
+L power:GND #PWR06
 U 1 1 564E2443
 P 4200 6300
 F 0 "#PWR06" H 4200 6050 50  0001 C CNN
@@ -380,7 +350,7 @@ F 3 "" H 4200 6300 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR07
+L power:GND #PWR07
 U 1 1 564E2722
 P 3350 5700
 F 0 "#PWR07" H 3350 5450 50  0001 C CNN
@@ -391,7 +361,7 @@ F 3 "" H 3350 5700 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR08
+L power:GND #PWR08
 U 1 1 564E291B
 P 8650 6050
 F 0 "#PWR08" H 8650 5800 50  0001 C CNN
@@ -402,7 +372,7 @@ F 3 "" H 8650 6050 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR09
+L power:GND #PWR09
 U 1 1 564E2BE7
 P 9350 6050
 F 0 "#PWR09" H 9350 5800 50  0001 C CNN
@@ -413,7 +383,7 @@ F 3 "" H 9350 6050 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR010
+L power:GND #PWR010
 U 1 1 564E2C19
 P 10000 6050
 F 0 "#PWR010" H 10000 5800 50  0001 C CNN
@@ -424,7 +394,7 @@ F 3 "" H 10000 6050 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR011
+L power:GND #PWR011
 U 1 1 564E2EC9
 P 9550 4600
 F 0 "#PWR011" H 9550 4350 50  0001 C CNN
@@ -435,7 +405,7 @@ F 3 "" H 9550 4600 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR012
+L power:GND #PWR012
 U 1 1 564E3127
 P 9600 3400
 F 0 "#PWR012" H 9600 3150 50  0001 C CNN
@@ -446,7 +416,7 @@ F 3 "" H 9600 3400 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR013
+L power:GND #PWR013
 U 1 1 564E32CC
 P 7500 5900
 F 0 "#PWR013" H 7500 5650 50  0001 C CNN
@@ -457,7 +427,7 @@ F 3 "" H 7500 5900 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CP 2u2
+L arduino_based_cdc_emu-rescue:CP-RESCUE-arduino_based_cdc_emu 2u2
 U 1 1 564E32FE
 P 7500 5550
 F 0 "2u2" H 7550 5650 50  0000 L CNN
@@ -477,5 +447,25 @@ Wire Wire Line
 Wire Wire Line
 	4250 4450 4200 4450
 Wire Wire Line
-	3350 4950 3350 5700
+	3350 4950 3350 5550
+Wire Wire Line
+	3850 4950 4250 4950
+Wire Wire Line
+	3850 5550 3750 5550
+Wire Wire Line
+	3350 5550 3350 5700
+Wire Wire Line
+	4200 4150 4200 3950
+Wire Wire Line
+	4200 3950 4200 3850
+Wire Wire Line
+	4200 3850 4200 3650
+Wire Wire Line
+	4200 6050 4200 6150
+Wire Wire Line
+	4200 6150 4200 6300
+Wire Wire Line
+	8650 5450 8950 5450
+Wire Wire Line
+	7300 5300 7500 5300
 $EndSCHEMATC

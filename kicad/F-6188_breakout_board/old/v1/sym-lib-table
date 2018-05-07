@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name power)(type Legacy)(uri ${KICAD_SYMBOL_DIR}/power.lib)(options "")(descr ""))
+  (lib (name F-6188_breakout_board-rescue)(type Legacy)(uri ${KIPRJMOD}/F-6188_breakout_board-rescue.lib)(options "")(descr ""))
+)

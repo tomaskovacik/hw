@@ -1,0 +1,11 @@
+"Id";"Designator";"Package";"Quantity";"Designation";"Supplier and ref";
+1;"POWER ON";"SW_SPST_FSMSM";1;"POWER_ON";;;
+2;"RESET";"SW_SPST_FSMSM";1;"RESET";;;
+3;"U1";"F-3188_CSR8645_no_silk_under_antena";1;"F-3188_CSR8645";;;
+4;"P1";"Pin_Header_Straight_1x22";1;"CONN_01X22";;;
+5;"P2";"Pin_Header_Straight_1x21";1;"CONN_01X21";;;
+6;"J1";"3.5mm_stereo_jack_PJ306M_no_screw_terminal";1;"SCJ368R1NUS0B00G";;;
+7;"D1,D2";"LED_1206";2;"LED1";;;
+8;"R1,R2";"R_0805";2;"10k";;;
+9;"R3,R4";"R_0805";2;"1k";;;
+10;"J2";"SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm";1;"ON";;;

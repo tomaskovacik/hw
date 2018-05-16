@@ -358,7 +358,7 @@ U 1 1 59A3C964
 P 2600 6250
 F 0 "J2" V 2395 6250 50  0000 C CNN
 F 1 "ON" V 2486 6250 50  0000 C CNN
-F 2 "Connectors:GS2" V 2674 6250 50  0001 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" V 2674 6250 50  0001 C CNN
 F 3 "" H 2600 6250 50  0001 C CNN
 	1    2600 6250
 	0    1    1    0   
@@ -373,7 +373,7 @@ Wire Wire Line
 Wire Wire Line
 	2250 6250 2400 6250
 Connection ~ 2250 5900
-Text Label 4350 4000 0    60   ~ 0
+Text Label 4400 4000 0    60   ~ 0
 POWER_ON
 Wire Wire Line
 	8750 5450 8900 5450

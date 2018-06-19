@@ -4,10401 +4,6127 @@
 ;		(c) Copyright 1996-2003   Conquest Consultants
 ;		Version 1.40 (Oct 18 2003)
 ;
-;	File:		chorus_1_volume_fixed.rom
+;	File:		chorus_1_volume_fixed.bin
 ;
 ;	Size:		31232 bytes
 ;	Checksum:	48C8
 ;	CRC-32:		3FA3AF90
 ;
-;	Date:		Wed Mar 21 18:03:54 2018
+;	Date:		Tue Jun 19 12:12:22 2018
 ;
 ;	CPU:		Motorola 68HC05 (68HC05 family)
 ;
 ;
 ;
-	org	$0000
+	org	$0400
 ;
-L0000:
-X0000:
+L0400:
 	rsp
-L0001:
-X0001:
 	sei
-L0002:
-X0002:
-	bset	6,X00BA
-L0004:
-X0004:
-	bclr	5,X00BA
-L0006:
-X0006:
-	brset	7,X000C,L0023
-L0009:
-X0009:
+	bset	6,RAM1_0ba
+	bclr	5,RAM1_0ba
+	brset	7,Miscell,L0423
 	jsr	L374A
-L000C:
-X000C:
-	bne	L0023
-L000E:
-X000E:
+	bne	L0423
 	lda	#$53
-L0010:
-X0010:
-	cmp	X006B
-L0012:
-X0012:
-	bne	L0023
-L0014:
-X0014:
+L0410:
+	cmp	RAM1_06b
+	bne	L0423
 	jsr	L2141
-L0017:
-X0017:
 	jsr	L2069
-L001A:
-X001A:
-	clr	X006B
-L001C:
-X001C:
-	bclr	3,X0001
-L001E:
-X001E:
-	bset	3,X0005
-L0020:
-X0020:
+L041A:
+	clr	RAM1_06b
+	bclr	3,PortB
+	bset	3,DDRB
 	jmp	L0506
 ;
-L0023:
-	jsr	L2031
-L0026:
-X0026:
-	jmp	L04F1
+L0423:
+	db	$CD
 ;
-L0029:
-X0029:
-	jsr	L3778
-L002C:
-X002C:
-	lda	X0011
-L002E:
-X002E:
+L0424:
+	bra	L0457
+;
+	db	$CC
+;
+L0427:
+	brset	2,STACK_0f1,L03F7
+	asr	RAM1_078
+L042C:
+	lda	SCDR
 	jmp	L04B0
 ;
-L0031:
-X0031:
-	lda	X0013
-L0033:
-X0033:
-	lda	X0019
-L0035:
-X0035:
-	rti
+	db	$B6, $13, $B6
 ;
-L0036:
-X0036:
-	brset	7,X0013,L00A3
-L0039:
-X0039:
-	brclr	3,X0013,L008B
-L003C:
-	lda	X001F
-L003E:
+L0434:
+	bclr	4,RAM1_080
+	brset	7,TSR,L04A3
+;
+L0439:
+	db	$07, $13
+;
+L043B:
+	clra
+	lda	OCL2
 	add	#$88
-L0040:
-X0040:
 	tax
-L0041:
-X0041:
-	lda	X001E
-L0043:
-X0043:
+L0441:
+	lda	OCH2
 	adc	#$13
-L0045:
-	sta	X001E
-L0047:
-	lda	X0013
-L0049:
-	stx	X001F
-L004B:
-	bset	3,X0067
-L004D:
-X004D:
-	brclr	1,X0006,L0053
-L0050:
-X0050:
-	brset	1,X0002,L0055
-L0053:
-X0053:
-	bset	4,X005D
-L0055:
-X0055:
-	bclr	1,X0002
-L0057:
-X0057:
-	tst	X0063
-L0059:
-X0059:
-	beq	L005D
-L005B:
-X005B:
-	dec	X0063
-L005D:
-X005D:
-	dec	X0068
-L005F:
-X005F:
-	bne	L0063
-L0061:
-X0061:
-	bset	7,X0067
-L0063:
-X0063:
+L0445:
+	sta	OCH2
+	lda	TSR
+	stx	OCL2
+	bset	3,RAM1_067
+	brclr	1,DDRC,L0453
+	brset	1,PortC,L0455
+L0453:
+	bset	4,RAM1_05d
+L0455:
+	bclr	1,PortC
+L0457:
+	tst	RAM1_063
+	beq	L045D
+	dec	RAM1_063
+L045D:
+	dec	RAM1_068
+	bne	L0463
+	bset	7,RAM1_067
+L0463:
 	jsr	L376B
-L0066:
-X0066:
-	lda	X0068
-L0068:
-X0068:
+	lda	RAM1_068
 	bit	#$3F
-L006A:
-X006A:
-	bne	L006E
-L006C:
-X006C:
-	bset	6,X0067
-L006E:
-X006E:
+	bne	L046E
+	bset	6,RAM1_067
+L046E:
 	bit	#$03
-L0070:
-X0070:
-	bne	L007C
-L0072:
-X0072:
-	bset	4,X0067
-L0074:
-X0074:
+	bne	L047C
+	bset	4,RAM1_067
 	jsr	L4C73
-L0077:
-X0077:
 	jsr	L223C
-L007A:
-X007A:
-	lda	X0068
-L007C:
-X007C:
+	lda	RAM1_068
+L047C:
 	bit	#$0F
-L007E:
-X007E:
-	bne	L008B
-L0080:
-X0080:
-	bset	5,X0067
-L0082:
-X0082:
-	brset	2,X005E,L0089
-L0085:
-X0085:
-	lda	X001A
-L0087:
-X0087:
-	bra	L009A
+	bne	L048B
+	bset	5,RAM1_067
+	brset	2,RAM1_05e,L0489
+	lda	ACH
+	bra	L049A
 ;
-L0089:
-X0089:
-	bclr	2,X005E
-L008B:
-X008B:
-	brclr	6,X0013,L00B0
-L008E:
-X008E:
-	bset	2,X005E
-L0090:
-X0090:
-	ldx	X0017
-L0092:
-X0092:
-	lda	X0016
-L0094:
-X0094:
-	brclr	0,X0061,L009A
-L0097:
-X0097:
+L0489:
+	bclr	2,RAM1_05e
+L048B:
+	brclr	6,TSR,L04B0
+	bset	2,RAM1_05e
+	ldx	OCL1
+L0492:
+	lda	OCH1
+	brclr	0,RAM1_061,L049A
 	jsr	L0B9E
-L009A:
-X009A:
-	sta	X0016
-L009C:
-X009C:
-	stx	X0017
-L009E:
-X009E:
-	bra	L00B0
+L049A:
+	sta	OCH1
+L049C:
+	stx	OCL1
+	bra	L04B0
 ;
-L00A0:
-X00A0:
-	brclr	7,X0013,L00A8
-L00A3:
-X00A3:
+	db	$0F, $13, $05
+;
+L04A3:
 	jsr	L21DD
-L00A6:
-X00A6:
-	bra	L00B0
+L04A6:
+	bra	L04B0
 ;
-L00A8:
-X00A8:
-	brclr	4,X0013,L00B0
-L00AB:
-X00AB:
-	jsr	L4C57
-L00AE:
-X00AE:
-	lda	X001D
-L00B0:
-X00B0:
-	brclr	7,X0013,L00BE
-L00B3:
-X00B3:
-	brset	4,X005E,L00BE
-L00B6:
-X00B6:
-	bset	4,X005E
-L00B8:
-X00B8:
-	bclr	1,X0012
-L00BA:
-X00BA:
-	bset	3,X0076
-L00BC:
-X00BC:
-	lda	X0015
-L00BE:
-X00BE:
-	brclr	4,X0013,L00C3
-L00C1:
-X00C1:
-	bset	7,X0096
-L00C3:
-X00C3:
+	db	$09, $13, $05, $CD
+	db	$4C, $57, $B6, $1D
+;
+L04B0:
+	brclr	7,TSR,L04BE
+L04B3:
+	brset	4,RAM1_05e,L04BE
+	bset	4,RAM1_05e
+	bclr	1,TCR
+	bset	3,RAM1_076
+	lda	ICL1
+L04BE:
+	brclr	4,TSR,L04C3
+	bset	7,RAM1_096
+L04C3:
 	rti
 ;
-L00C4:
-X00C4:
-	brclr	7,X0013,L00D2
-L00C7:
-X00C7:
-	brset	4,X005E,L00D2
-L00CA:
-X00CA:
-	bset	4,X005E
-L00CC:
-X00CC:
-	bclr	1,X0012
-L00CE:
-X00CE:
-	bset	3,X0076
-L00D0:
-X00D0:
-	lda	X0015
-L00D2:
-X00D2:
-	cli
-L00D3:
-X00D3:
+L04C4:
+	brclr	7,TSR,L04D2
+L04C7:
+	brset	4,RAM1_05e,L04D2
+	bset	4,RAM1_05e
+	bclr	1,TCR
+L04CE:
+	bset	3,RAM1_076
+;
+	db	$B6
+;
+L04D1:
+	bclr	2,RAM1_09a
 	rts
 ;
-L00D4:
-X00D4:
+L04D4:
 	lda	#$53
-L00D6:
-X00D6:
-	sta	X006B
-L00D8:
-X00D8:
-	bset	0,X000C
-L00DA:
-X00DA:
+L04D6:
+	sta	RAM1_06b
+	bset	0,Miscell
+L04DA:
 	stop
-L00DB:
-	bra	L00D4
+	bra	L04D4
 ;
-L00DD:
-	lda	#$28
-L00DF:
+	db	$A6, $28
+;
+L04DF:
 	deca
-L00E0:
-X00E0:
-	beq	L00E5
-L00E2:
-	bil	L00DF
-L00E4:
-X00E4:
+;
+L04E0:
+	db	$27
+;
+L04E1:
+	brclr	1,X002E,L04DF
 	rti
 ;
-L00E5:
-	brset	7,X00BA,L00ED
-L00E8:
-X00E8:
-	brset	6,X00B9,L00ED
-L00EB:
-X00EB:
-	bset	7,X0061
-L00ED:
-X00ED:
-	bclr	6,X00BA
-L00EF:
-X00EF:
-	clr	X00D6
-L00F1:
-X00F1:
+L04E5:
+	brset	7,RAM1_0ba,L04ED
+	brset	6,RAM1_0b9,L04ED
+L04EB:
+	bset	7,RAM1_061
+L04ED:
+	bclr	6,RAM1_0ba
+L04EF:
+	clr	STACK_0d6
+L04F1:
 	sei
-L00F2:
-	bclr	4,X000C
-L00F4:
-X00F4:
-	bclr	5,X00BA
-L00F6:
-X00F6:
-	bclr	3,X0061
-L00F8:
-X00F8:
+L04F2:
+	bclr	4,Miscell
+	bclr	5,RAM1_0ba
+	bclr	3,RAM1_061
 	jsr	L071F
-L00FB:
-X00FB:
-	bset	3,X0061
-L00FD:
-X00FD:
-	bclr	5,X0001
-L00FF:
-X00FF:
-	bclr	5,X006A
-L0101:
-X0101:
+	bset	3,RAM1_061
+	bclr	5,PortB
+	bclr	5,RAM1_06a
+L0501:
 	jsr	L2643
-L0104:
-	bset	5,X0001
-L0106:
+	bset	5,PortB
+L0506:
 	rsp
-L0107:
-	bclr	2,X005D
-L0109:
-	brset	1,X000C,L00D4
-L010C:
+	bclr	2,RAM1_05d
+	brset	1,Miscell,L04D4
+L050C:
 	sei
-L010D:
 	jsr	L2118
-L0110:
 	cli
-L0111:
-	brset	0,X0061,L011E
-L0114:
-	bclr	7,X0061
-L0116:
-	brset	6,X0061,L011B
-L0119:
-	bclr	6,X005F
-L011B:
+L0511:
+	brset	0,RAM1_061,L051E
+L0514:
+	bclr	7,RAM1_061
+	brset	6,RAM1_061,L051B
+	bclr	6,RAM1_05f
+L051B:
 	jmp	L08B2
 ;
-L011E:
-	bil	L00ED
-L0120:
-X0120:
-	brclr	3,X0061,L00F1
-L0123:
-X0123:
-	jsr	L3815
-L0126:
-	bclr	3,X00CE
-L0128:
-	bclr	6,X005F
-L012A:
-	brset	2,X0012,L012F
-L012D:
-	bclr	3,X0001
-L012F:
-	bset	2,X0012
-L0131:
-	bset	4,X0012
-L0133:
-	bset	0,X0001
-L0135:
-	brset	3,X007F,L0141
-L0138:
-	brset	2,X007F,L0141
-L013B:
-	brset	7,X0069,L0141
-L013E:
-	jsr	L0B8C
-L0141:
-	jsr	L2082
-L0144:
-	jsr	L2079
-L0147:
-	brset	0,X00A1,L015C
-L014A:
-	bclr	2,X0006
-L014C:
-	bclr	3,X0006
-L014E:
-	jsr	L2643
-L0151:
-	lda	X0002
-L0153:
-	and	#$0C
-L0155:
-	bne	L0160
-L0157:
-	bclr	5,X0069
-L0159:
-	brset	3,X008E,L0166
-L015C:
-	bset	4,X0069
-L015E:
-	bra	L0168
-;
-L0160:
-X0160:
-	bset	5,X0069
-L0162:
-	bclr	1,X0081
-L0164:
-	bclr	3,X008E
-L0166:
-	bclr	4,X0069
-L0168:
-	bset	2,X0006
-L016A:
-	bset	3,X0006
-L016C:
-	cli
-L016D:
-	brclr	6,X00BA,L0173
-L0170:
-	brset	5,X0061,L017D
-L0173:
-	jsr	L1375
-L0176:
-	bset	5,X0061
-L0178:
-	jsr	L0713
-L017B:
-	bclr	2,X009E
-L017D:
-	brset	6,X0061,L0185
-L0180:
-	jsr	L3155
-L0183:
-	bset	6,X0061
-L0185:
-	brset	4,X0061,L0191
-L0188:
-	jsr	L2725
-L018B:
-	jsr	L1EF3
-L018E:
-	jsr	L48DF
-L0191:
-	bset	4,X0061
-L0193:
-	brset	2,X009E,L0199
-L0196:
-	jsr	L39C1
-L0199:
-	jsr	L0713
-L019C:
-	jsr	L36FC
-L019F:
-	jsr	L3B0A
-L01A2:
-	jsr	L0B2F
-L01A5:
-	clrx
-L01A6:
-	jsr	L2649
-L01A9:
-	brclr	3,X008B,L01BB
-L01AC:
-	lda	#$0B
-L01AE:
-	brset	4,X008B,L01B6
-L01B1:
-	lda	#$1A
-L01B3:
-	brclr	1,X0081,L01BB
-L01B6:
-	jsr	L24E5
-L01B9:
-	bset	1,X00CB
-L01BB:
-	clr	X0067
-L01BD:
-	clr	X0068
-L01BF:
-	brclr	4,X00BB,L01C4
-L01C2:
-	bset	2,X0094
-L01C4:
-	sei
-L01C5:
-	bset	4,X000C
-L01C7:
-	bset	7,X0012
-L01C9:
-	cli
-L01CA:
-	brset	7,X0069,L01D4
-L01CD:
-	brclr	5,X00BB,L01D4
-L01D0:
-X01D0:
-	bset	7,X0069
-L01D2:
-	bset	1,X005D
-L01D4:
-	jsr	L0785
-L01D7:
-	brset	2,X005D,L01E3
-L01DA:
-X01DA:
-	clra
-L01DB:
-	brclr	3,X0000,L01E6
-L01DE:
-	deca
-L01DF:
-	bne	L01DB
-L01E1:
-	bclr	4,X0061
-L01E3:
-	jmp	L0506
-;
-L01E6:
-	bih	L01EB
-L01E8:
-	jmp	L04E5
-;
-L01EB:
-	jsr	L22BD
-L01EE:
-	jsr	L3164
-L01F1:
-	jsr	L4C7B
-L01F4:
-	jsr	L142B
-L01F7:
-	jsr	L37F4
-L01FA:
-	jsr	L40DD
-L01FD:
-	jsr	L4955
-L0200:
-X0200:
-	jsr	L27CF
-L0203:
-	jsr	L27C2
-L0206:
-	jsr	L1F1C
-L0209:
-	jsr	L3A48
-L020C:
-	jsr	L3B88
-L020F:
-	jsr	L0614
-L0212:
-	bra	L01C4
-;
-L0214:
-	brset	3,X0067,L022D
-L0217:
-	brset	2,X0067,L0240
-L021A:
-	brset	1,X0067,L0247
-L021D:
-	brset	0,X0067,L0270
-L0220:
-	brset	4,X0067,L0249
-L0223:
-	brset	5,X0067,L025A
-L0226:
-	brset	6,X0067,L0265
-L0229:
-	brset	7,X0067,L026D
-L022C:
-	rts
-;
-L022D:
-	bclr	3,X0067
-L022F:
-	bset	2,X0067
-L0231:
-	jsr	L200B
-L0234:
-	jsr	L386E
-L0237:
-	jsr	L274E
-L023A:
-	jsr	L23CE
-L023D:
-	jmp	L39F4
-;
-L0240:
-	bclr	2,X0067
-L0242:
-	bset	1,X0067
-L0244:
-	jmp	L0719
-L0247:
-	bra	L02B5
-;
-L0249:
-	bclr	4,X0067
-L024B:
-	jsr	L2730
-L024E:
-	jsr	L1EF4
-L0251:
-	jsr	L3173
-L0254:
-X0254:
-	jsr	L3CE1
-L0257:
-X0257:
-	jmp	L27C3
-;
-L025A:
-	bclr	5,X0067
-L025C:
-X025C:
-	jsr	L1419
-L025F:
-	jsr	L3D06
-L0262:
-	jmp	L3730
-;
-L0265:
-X0265:
-	bclr	6,X0067
-L0267:
-X0267:
-	jsr	L3BA2
-L026A:
-	jmp	L4CB4
-;
-L026D:
-	bclr	7,X0067
-L026F:
-	rts
-;
-L0270:
-	bclr	0,X0067
-L0272:
-X0272:
-	jsr	L490B
-L0275:
-X0275:
-	jsr	L316A
-L0278:
-	jsr	L3BFE
-L027B:
-X027B:
-	brset	7,X0060,L02A4
-L027E:
-	brclr	3,X008B,L029E
-L0281:
-	brset	3,X00CE,L029B
-L0284:
-	brclr	6,X005D,L0292
-L0287:
-	bclr	1,X00CB
-L0289:
-	jsr	L38D0
-L028C:
-	jsr	L454C
-L028F:
-	jsr	L2174
-L0292:
-	jsr	L34F7
-L0295:
-	jsr	L479C
-L0298:
-	jsr	L460C
-L029B:
-	jsr	L28B0
-L029E:
-X029E:
-	jsr	L2D55
-L02A1:
-X02A1:
-	jsr	L4B76
-L02A4:
-X02A4:
-	jsr	L4541
-L02A7:
-	jsr	L3BD8
-L02AA:
-X02AA:
-	bclr	6,X005D
-L02AC:
-X02AC:
-	brclr	7,X0060,L02B2
-L02AF:
-	jsr	L2D55
-L02B2:
-X02B2:
-	jmp	L0BBE
-;
-L02B5:
-X02B5:
-	bclr	1,X0067
-L02B7:
-X02B7:
-	bset	0,X0067
-L02B9:
-	brclr	7,X005D,L0312
-L02BC:
-	bclr	7,X005D
-L02BE:
-X02BE:
-	lda	X00CA
-L02C0:
-X02C0:
-	and	#$0F
-L02C2:
-X02C2:
-	ldx	#$03
-L02C4:
-X02C4:
-	mul
-L02C5:
-	tax
-L02C6:
-	cpx	#$21
-L02C8:
-X02C8:
-	bcc	L0312
-L02CA:
-X02CA:
-	jsr	L06E5,x						;INFO: index jump
-L02CD:
-X02CD:
-	lda	X00CA
-L02CF:
-	jsr	L2617
-L02D2:
-X02D2:
-	and	#$03
-L02D4:
-X02D4:
-	ldx	#$03
-L02D6:
-X02D6:
-	mul
-L02D7:
-X02D7:
-	tax
-L02D8:
-X02D8:
-	cpx	#$0C
-L02DA:
-	bcc	L0312
-L02DC:
-	jsr	L0706,x						;INFO: index jump
-L02DF:
-	brclr	6,X00CA,L0312
-L02E2:
-	jmp	L2CD3
-L02E5:
-	jmp	L062C
-L02E8:
-	jmp	L2B51
-L02EB:
-	jmp	L4833
-L02EE:
-	jmp	L46A7
-L02F1:
-	jmp	L36AB
-L02F4:
-	jmp	L394C
-L02F7:
-	jmp	L30C1
-L02FA:
-	jmp	L062C
-L02FD:
-	jmp	L4BFD
-L0300:
-	jmp	L4578
-L0303:
-	jmp	L4542
-L0306:
-	jmp	L4C0F
-L0309:
-	jmp	L2C36
-L030C:
-	jmp	L487B
-L030F:
-	jmp	L471A
-L0312:
-	rts
-;
-L0313:
-	jsr	L142B
-L0316:
-	jsr	L37F4
-L0319:
-	jsr	L1407
-L031C:
-	jmp	L37B0
-;
-L031F:
-	clr	X0066
-L0321:
-	lda	X0065
-L0323:
-	sta	X02B0
-L0326:
-	bclr	7,X0069
-L0328:
-	brclr	4,X0061,L0333
-L032B:
-	jsr	L0B8C
-L032E:
-	jsr	L48CA
-L0331:
-	bclr	4,X0061
-L0333:
-	lda	#$0A
-L0335:
-	sta	X0050
-L0337:
-	bset	2,X0012
-L0339:
-	bset	4,X0012
-L033B:
-	bih	L033F
-L033D:
-	bclr	6,X00BA
-L033F:
-	jsr	L2631
-L0342:
-	brset	1,X0002,L0347
-L0345:
-	bset	4,X005D
-L0347:
-	bclr	1,X0002
-L0349:
-	jsr	L0785
-L034C:
-	lda	X0065
-L034E:
-	sub	X02B0
-L0351:
-	cmp	#$03
-L0353:
-	bcs	L0357
-L0355:
-	bset	5,X0060
-L0357:
-	lda	#$27
-L0359:
-	jsr	L25B7
-L035C:
-	cmp	#$19
-L035E:
-	bcs	L0372
-L0360:
-	cmp	#$53
-L0362:
-	bhi	L036E
-L0364:
-	bclr	6,X0061
-L0366:
-	bclr	5,X0061
-L0368:
-	bclr	7,X0061
-L036A:
-	bclr	6,X005F
-L036C:
-	bra	L033F
-;
-L036E:
-	cmp	#$73
-L0370:
-	bcs	L0333
-L0372:
-	bil	L0333
-L0374:
-	dec	X0050
-L0376:
-	bne	L033F
-L0378:
-	rts
-;
-L0379:
-	jsr	L0B8C
-L037C:
-	jsr	L48CA
-L037F:
-	jsr	L209E
-L0382:
-	jmp	L0506
-;
-L0385:
-	brset	4,X005D,L038F
-L0388:
-	brclr	1,X000C,L038E
-L038B:
-	brclr	1,X0003,L03B7
-L038E:
-	rts
-;
-L038F:
-	lda	#$06
-L0391:
-	brset	1,X000C,L0396
-L0394:
-	lda	#$01
-L0396:
-	add	X0066
-L0398:
-	sta	X0066
-L039A:
-	bcc	L03B7
-L039C:
-	lda	#$01
-L039E:
-	add	X0065
-L03A0:
-	sta	X0065
-L03A2:
-	bcc	L03B7
-L03A4:
-	brset	7,X0064,L03B7
-L03A7:
-	inc	X0064
-L03A9:
-	bpl	L03B7
-L03AB:
-	brset	2,X008B,L03B7
-L03AE:
-	brset	1,X005F,L03B7
-L03B1:
-	brclr	0,X0061,L03B7
-L03B4:
-	jmp	L08A2
-;
-L03B7:
-	bclr	4,X005D
-L03B9:
-	brclr	1,X0006,L03C0
-L03BC:
-	bclr	1,X0006
-L03BE:
-	bra	L03D3
-;
-L03C0:
-	lda	X0062
-L03C2:
-	brclr	1,X0002,L03C9
-L03C5:
-	add	#$20
-L03C7:
-	bra	L03CB
-;
-L03C9:
-	sub	#$20
-L03CB:
-	bcs	L03CF
-L03CD:
-	sta	X0062
-L03CF:
-	bset	1,X0006
-L03D1:
-	bset	1,X0002
-L03D3:
-	clra
-L03D4:
-	brset	2,X0003,L03D9
-L03D7:
-	ora	#$01
-L03D9:
-	brset	0,X0003,L03DE
-L03DC:
-	ora	#$02
-L03DE:
-	brclr	7,X005E,L03E3
-L03E1:
-	ora	#$04
-L03E3:
-	brclr	1,X0003,L03E8
-L03E6:
-	ora	#$10
-L03E8:
-	tst	X0062
-L03EA:
-	bpl	L03EE
-L03EC:
-	ora	#$08
-L03EE:
-	brclr	6,X0003,L03F3
-L03F1:
-	ora	#$80
-L03F3:
-	eor	X005F
-L03F5:
-	and	#$9F
-L03F7:
-	beq	L0467
-L03F9:
-	sta	X005B
-L03FB:
-	eor	X005F
-L03FD:
-	sta	X005F
-L03FF:
-	brclr	3,X005F,L0406
-L0402:
-	bset	5,X005F
-L0404:
-	bra	L0410
-;
-L0406:
-	brclr	7,X005F,L040B
-L0409:
-	bset	5,X005F
-L040B:
-	brset	1,X005F,L0410
-L040E:
-	bclr	5,X005F
-L0410:
-	brclr	0,X005B,L0420
-L0413:
-	brset	0,X005F,L0495
-L0416:
-	brset	6,X005F,L041C
-L0419:
-	brclr	0,X0061,L0420
-L041C:
-	bclr	6,X005F
-L041E:
-	bra	L03B4
-;
-L0420:
-	brclr	7,X0060,L0426
-L0423:
-	brset	5,X005D,L044B
-L0426:
-	bclr	5,X005D
-L0428:
-	brset	1,X005F,L0435
-L042B:
-	brclr	1,X005B,L044B
-L042E:
-	brclr	0,X0061,L04A9
-L0431:
-	bset	1,X0061
-L0433:
-	bra	L04A2
-;
-L0435:
-	brset	0,X0061,L0440
-L0438:
-	brclr	1,X005B,L044B
-L043B:
-	brset	0,X005F,L0497
-L043E:
-	bset	5,X005F
-L0440:
-	bclr	1,X0061
-L0442:
-	brclr	1,X005B,L044B
-L0445:
-	brclr	0,X005F,L044B
-L0448:
-	brset	3,X00CE,L0497
-L044B:
-	brclr	4,X005B,L0461
-L044E:
-	brset	0,X0061,L0454
-L0451:
-	brclr	1,X005F,L0461
-L0454:
-	brclr	3,X0060,L0461
-L0457:
-	bclr	3,X0060
-L0459:
-	brset	4,X005F,L045E
-L045C:
-	bset	0,X0060
-L045E:
-	brset	1,X000C,L0464
-L0461:
-	brclr	2,X005B,L0467
-L0464:
-	brclr	0,X0061,L04A9
-L0467:
-	rts
-;
-L0468:
-	jsr	L2082
-L046B:
-	jsr	L2079
-L046E:
-	jsr	L48DF
-L0471:
-	lda	#$C8
-L0473:
-	sta	X0063
-L0475:
-	tst	X0063
-L0477:
-	beq	L04AC
-L0479:
-	brclr	3,X0067,L0481
-L047C:
-	bclr	3,X0067
-L047E:
-	jsr	L490B
-L0481:
-	jsr	L4955
-L0484:
-	jsr	L40DD
-L0487:
-	brclr	7,X0092,L0475
-L048A:
-	brset	4,X0092,L0475
-L048D:
-	bset	0,X0061
-L048F:
-	bset	7,X0060
-L0491:
-	bset	6,X0060
-L0493:
-	bra	L04A9
-;
-L0495:
-	bclr	4,X0061
-L0497:
-	bset	0,X0061
-L0499:
-	clr	X0093
-L049B:
-	brclr	1,X005F,L04A9
-L049E:
-	bclr	1,X0061
-L04A0:
-	bra	L04A9
-;
-L04A2:
-	bclr	0,X0061
-L04A4:
-	brclr	1,X005F,L04A9
-L04A7:
-	bset	5,X005F
-L04A9:
-	jmp	L0506
-;
-L04AC:
-	lda	#$08
-L04AE:
-	sta	X0060
-L04B0:
-	bra	L04A9
-;
-L04B2:
-	bclr	7,X0069
-L04B4:
-	brset	4,X0060,L0468
-L04B7:
-	brset	0,X0060,L04BE
-L04BA:
-	lda	#$08
-L04BC:
-	sta	X0060
-L04BE:
-	brset	3,X007F,L04C7
-L04C1:
-	brset	2,X007F,L04C7
-L04C4:
-	jsr	L0B8C
-L04C7:
-	brset	5,X005F,L04D0
-L04CA:
-	jsr	L0B8C
-L04CD:
-	jsr	L48CA
-L04D0:
-	jsr	L22BD
-L04D3:
-	clr	X000A
-L04D5:
-	bih	L04DA
-L04D7:
-	jmp	L04E5
-;
-L04DA:
-	brclr	2,X009E,L04E0
-L04DD:
-	jsr	L39A4
-L04E0:
-	brset	6,X005F,L04E6
-L04E3:
-	jsr	L3161
-L04E6:
-	brset	5,X005F,L04EC
-L04E9:
-	jsr	L209E
-L04EC:
-	jsr	L0785
-L04EF:
-	brset	6,X005F,L04F9
-L04F2:
-	bclr	0,X0001
-L04F4:
-	ldx	#$02
-L04F6:
-	jsr	L2649
-L04F9:
-	brset	5,X005F,L0507
-L04FC:
-	brclr	6,X005F,L0520
-L04FF:
-	brclr	5,X0061,L0507
-L0502:
-	brset	0,X00A1,L0532
-L0505:
-	bra	L0520
-;
-L0507:
-	jsr	L2082
-L050A:
-	brclr	6,X005F,L052A
-L050D:
-	bclr	3,X0000
-L050F:
-	bset	3,X0004
-L0511:
-	jsr	L1375
-L0514:
-	lda	#$89
-L0516:
-	sta	X00B3
-L0518:
-	lda	X00C4
-L051A:
-	sta	X00B7
-L051C:
-	bset	5,X0061
 L051E:
-	bra	L0532
+	bil	L04ED
+	brclr	3,RAM1_061,L04F1
+	jsr	L3815
+	bclr	3,STACK_0ce
+	bclr	6,RAM1_05f
 ;
-L0520:
-	brclr	7,X0064,L052A
-L0523:
-	bclr	6,X005F
-L0525:
-	ldx	#$02
-L0527:
-	jsr	L2649
-L052A:
-	bclr	5,X0061
+	db	$04, $12
+;
 L052C:
-	jsr	L3161
-L052F:
-	jsr	L13C5
-L0532:
-	brclr	5,X005F,L0564
-L0535:
-	bclr	1,X0081
-L0537:
-	bset	2,X0012
-L0539:
-	bset	4,X0012
-L053B:
-	bset	3,X008B
-L053D:
+	brset	1,OCL1,L0530
+	bset	2,TCR
+L0531:
+	bset	4,TCR
+	bset	0,PortB
+	brset	3,RAM1_07f,L0541
+	brset	2,RAM1_07f,L0541
+	brset	7,RAM1_069,L0541
+	jsr	L0B8C
+L0541:
+	jsr	L2082
 	jsr	L2079
-L0540:
-	jsr	L48DF
-L0543:
-	jsr	L0B2F
-L0546:
-	bset	4,X0061
-L0548:
-	bset	0,X0080
-L054A:
-	lda	#$80
-L054C:
-	sta	X007D
-L054E:
-	sta	X007B
-L0550:
-	brclr	3,X008E,L0555
-L0553:
-	ora	#$10
-L0555:
-	sta	X00D5
-L0557:
-	bset	6,X0094
-L0559:
-	bset	5,X0094
-L055B:
-	bset	1,X0094
-L055D:
-	bclr	4,X006B
-L055F:
-	bset	6,X0095
-L0561:
-	jmp	L09C6
+L0547:
+	brset	0,RAM1_0a1,L055C
+	bclr	2,DDRC
+	bclr	3,DDRC
+	jsr	L2643
+	lda	PortC
+	and	#$0C
+	bne	L0560
 ;
-L0564:
-	bclr	2,X0012
-L0566:
-	brset	5,X0061,L0561
-L0569:
-	jsr	L3161
+	db	$1B
+;
+L0558:
+	rol	DDRC,x
+	stop
+	brset	5,TCH,L05C7
+	bra	L0568
+;
+L0560:
+	bset	5,RAM1_069
+L0562:
+	bclr	1,RAM1_081
+	bclr	3,RAM1_08e
+	bclr	4,RAM1_069
+L0568:
+	bset	2,DDRC
+	bset	3,DDRC
 L056C:
-	brclr	3,X0060,L05A0
-L056F:
-	brset	2,X005F,L0575
-L0572:
-	jmp	L0A6D
+	cli
+	brclr	6,RAM1_0ba,L0573
+	brset	5,RAM1_061,L057D
+L0573:
+	jsr	L1375
+	bset	5,RAM1_061
 ;
-L0575:
-	jsr	L20B4
-L0578:
-	lda	#$FA
+	db	$CD, $07
+;
 L057A:
-	sta	X0012
-L057C:
-	lda	#$64
-L057E:
-	sta	X0063
-L0580:
-	jsr	L0785
-L0583:
-	jsr	L40DD
-L0586:
-	brset	4,X0060,L05C3
-L0589:
-	brset	5,X005F,L05C3
-L058C:
-	jsr	L22BD
-L058F:
-	brclr	3,X0067,L0597
-L0592:
-	bclr	3,X0067
-L0594:
-	jsr	L23CE
-L0597:
-	brclr	6,X005F,L0580
-L059A:
-	tst	X0063
-L059C:
-	bne	L0580
-L059E:
-	bra	L05C3
-;
-L05A0:
-	jsr	L2065
-L05A3:
-	lda	#$5A
-L05A5:
-	sta	X0012
-L05A7:
-	lda	#$FA
-L05A9:
-	sta	X0063
-L05AB:
-	jsr	L0785
-L05AE:
-	jsr	L40DD
-L05B1:
-	brset	4,X0060,L05C3
-L05B4:
-	brset	5,X005F,L05C3
-L05B7:
-	brset	3,X0060,L05C3
-L05BA:
-	brclr	4,X005F,L05A7
-L05BD:
-	tst	X0063
-L05BF:
-	bne	L05AB
-L05C1:
-	bset	3,X0060
-L05C3:
-	jmp	L0506
-;
-L05C6:
-	lda	#$64
-L05C8:
-	sta	X0063
-L05CA:
-	lda	#$1E
-L05CC:
-	sta	X0068
-L05CE:
-	bclr	6,X0067
-L05D0:
-	bclr	1,X0001
-L05D2:
-	lda	#$5B
-L05D4:
-	sta	X00A6
-L05D6:
-	cli
-L05D7:
-	brclr	6,X005F,L05E8
-L05DA:
-	jsr	L142B
-L05DD:
-	jsr	L37F4
-L05E0:
-	jsr	L34F7
-L05E3:
-	jsr	L3164
-L05E6:
-	bset	0,X0001
-L05E8:
-	jsr	L0785
-L05EB:
-	jsr	L40DD
-L05EE:
-	brset	4,X0060,L05C3
-L05F1:
-	bil	L0666
-L05F3:
-	jsr	L4C7B
-L05F6:
-	jsr	L22BD
-L05F9:
-	brclr	2,X0012,L05FF
-L05FC:
-	jsr	L4955
-L05FF:
-	brclr	3,X0067,L05D6
-L0602:
-	bclr	3,X0067
-L0604:
-	jsr	L23CE
-L0607:
-	brclr	6,X005F,L061B
-L060A:
-	jsr	L1407
-L060D:
-	jsr	L37B0
-L0610:
-	jsr	L316A
-L0613:
-	brclr	5,X0067,L061B
-L0616:
-	bclr	5,X0067
-L0618:
-	jsr	L1419
-L061B:
-	brclr	2,X0012,L0650
-L061E:
-	brclr	5,X005F,L05C3
-L0621:
-	jsr	L2D55
-L0624:
-	jsr	L0BBE
-L0627:
-	jsr	L490B
-L062A:
-	brclr	4,X0067,L05D6
-L062D:
-	bclr	4,X0067
-L062F:
-	dec	X00A7
-L0631:
-	beq	L0648
-L0633:
-	brset	7,X005F,L05D2
-L0636:
-	lda	X009A
-L0638:
-	cmp	#$F0
-L063A:
-	bcs	L05D2
-L063C:
-	brclr	3,X005F,L05D6
-L063F:
-	brset	1,X005F,L05D6
-L0642:
-	lda	#$02
-L0644:
-	sta	X00A6
-L0646:
-	bra	L05D6
-;
-L0648:
-	dec	X00A6
-L064A:
-	bne	L05D6
-L064C:
-	bclr	5,X005F
-L064E:
-	bra	L05D6
-;
-L0650:
-	brset	5,X005F,L06BB
-L0653:
-	brclr	0,X00A1,L0659
-L0656:
-	jmp	L09C6
-;
-L0659:
-	brclr	6,X0067,L0663
-L065C:
-	brset	3,X00B9,L06BB
-L065F:
-	tst	X0063
-L0661:
-	beq	L06BB
-L0663:
-	jmp	L09D6
-;
-L0666:
-	bset	2,X0012
-L0668:
-	bset	4,X0012
-L066A:
-	jmp	L04E5
-;
-L066D:
-	sei
-L066E:
-	bclr	4,X000C
-L0670:
-	jsr	L2065
-L0673:
-	lda	#$5A
-L0675:
-	sta	X0012
-L0677:
-	bset	1,X000C
-L0679:
-	lda	#$14
-L067B:
-	sta	X0063
-L067D:
-	clr	X000B
-L067F:
-	clr	X0076
-L0681:
-	clr	X005E
-L0683:
-	clr	X00A8
-L0685:
-	clr	X00A6
-L0687:
-	clr	X0009
-L0689:
-	clr	X000F
-L068B:
-	cli
-L068C:
-	jsr	L0785
-L068F:
-	lda	#$08
-L0691:
-	add	X001A
-L0693:
-	sta	X001E
-L0695:
-	clr	X001F
-L0697:
-	wait
-L0698:
-	brset	0,X0000,L069B
-L069B:
-	lda	#$27
-L069D:
-	sta	X0009
-L069F:
-	jsr	L223C
-L06A2:
-	brset	5,X005F,L06BB
-L06A5:
-	tst	X0063
-L06A7:
-	bne	L06C5
-L06A9:
-	brset	3,X0000,L06B8
-L06AC:
-	bclr	3,X0000
-L06AE:
-	bset	3,X0004
-L06B0:
-	clra
-L06B1:
-	deca
-L06B2:
-	bne	L06B1
-L06B4:
-	bclr	3,X0004
-L06B6:
-	clr	X006A
-L06B8:
-	brclr	6,X005F,L06BE
-L06BB:
-	jmp	L0506
-;
-L06BE:
-	bclr	0,X0005
-L06C0:
-	brclr	7,X0064,L06C5
-L06C3:
-	bclr	6,X0061
-L06C5:
-	brset	6,X005F,L0687
-L06C8:
-	bil	L0666
-L06CA:
-	brclr	2,X0012,L06D9
-L06CD:
-	tst	X0063
-L06CF:
-	bne	L0687
-L06D1:
-	bset	5,X0001
-L06D3:
-	bclr	3,X0000
-L06D5:
-	bset	3,X0004
-L06D7:
-	bra	L0673
-;
-L06D9:
-	brclr	7,X0009,L06D9
-L06DC:
-	tst	X00A8
-L06DE:
-	bne	L06EB
-L06E0:
-	brclr	3,X00A6,L0705
-L06E3:
-	lda	X00A4
-L06E5:
-	ldx	X00A5
-L06E7:
-	bsr	L0728
-L06E9:
-	bra	L071B
-;
-L06EB:
-	lda	X00A8
-L06ED:
-	sub	X0008
-L06EF:
-	bcs	L0705
-L06F1:
-	cmp	#$03
-L06F3:
-	bcs	L0705
-L06F5:
-	bset	2,X0012
-L06F7:
-	bset	4,X0012
-L06F9:
-	bclr	3,X0001
-L06FB:
-	bset	3,X0005
-L06FD:
-	lda	#$30
-L06FF:
-	sta	X0063
-L0701:
-	bclr	5,X0001
-L0703:
-	bra	L071F
-;
-L0705:
-	lda	X0008
-L0707:
-	add	X00A5
-L0709:
-	sta	X00A5
-L070B:
-	bcc	L070F
-L070D:
-	inc	X00A4
-L070F:
-	inc	X00A6
-L0711:
-	lda	X00A6
-L0713:
-	bit	#$3F
-L0715:
-	bne	L0725
-L0717:
-	lda	X00A4
-L0719:
-	ldx	X00A5
-L071B:
-	bsr	L072A
-L071D:
-	sta	X00A8
-L071F:
-	clr	X00A5
-L0721:
-	clr	X00A4
-L0723:
-	clr	X00A6
-L0725:
-	jmp	L0A87
-;
-L0728:
-	rolx
-L0729:
-	rola
-L072A:
-	rolx
-L072B:
-	rola
-L072C:
-	rolx
-L072D:
-	rola
-L072E:
-	rts
-;
-L072F:
-	brset	7,X0061,L0755
-L0732:
-	ldx	#$A8
-L0734:
-	jsr	L38CC
-L0737:
-	sta	X0085
-L0739:
-	jsr	L1296
-L073C:
-	jsr	L12B1
-L073F:
-	stx	X0057
-L0741:
-	ldx	#$AB
-L0743:
-	jsr	L38CC
-L0746:
-	add	#$FD
-L0748:
-	add	X0057
-L074A:
-	bpl	L074D
-L074C:
-	clra
-L074D:
-	cmp	X0085
-L074F:
-	bcc	L0755
-L0751:
-	sta	X0085
-L0753:
-	bset	3,X005C
-L0755:
-	bclr	7,X0082
-L0757:
-	lda	#$FF
-L0759:
-	sta	X0088
-L075B:
-	sta	X0083
-L075D:
-	jsr	L0FCC
-L0760:
-	clr	X0082
-L0762:
-	jsr	L0F96
-L0765:
-	jsr	L0F89
-L0768:
-	clr	X007E
-L076A:
-	clr	X0080
-L076C:
-	clr	X0087
-L076E:
-	bset	4,X007E
-L0770:
-	bset	3,X007E
-L0772:
-	brclr	3,X005F,L0778
-L0775:
-	brset	0,X0081,L079D
-L0778:
-	bclr	0,X0081
-L077A:
-	clrx
-L077B:
-	brset	0,X0061,L0780
-L077E:
-	ldx	#$04
-L0780:
-	lda	X136A,x
-L0783:
-	sta	X008A
-L0785:
-	bset	6,X0082
-L0787:
-	bclr	2,X006B
-L0789:
-	bclr	1,X006B
-L078B:
-	rts
-;
-L078C:
-	brclr	3,X0001,L0796
-L078F:
-	bclr	3,X0001
-L0791:
-	lda	#$05
-L0793:
-	jsr	L2623
-L0796:
-	jsr	L0F96
-L0799:
-	bclr	1,X0001
-L079B:
-	bclr	0,X0081
-L079D:
-	rts
-;
-L079E:
-	brclr	7,X0087,L07BD
-L07A1:
-	lda	#$01
-L07A3:
-	eor	X0012
-L07A5:
-	sta	X0012
-L07A7:
-	lda	X0017
-L07A9:
-	add	#$A0
-L07AB:
-	tax
-L07AC:
-	lda	X0016
-L07AE:
-	adc	#$01
-L07B0:
-	cmp	X001A
-L07B2:
-	bmi	L07BA
-L07B4:
-	bne	L07BD
-L07B6:
-	cpx	X001B
-L07B8:
-	bhi	L07BD
-L07BA:
-	lda	X001A
-L07BC:
-	inca
-L07BD:
-	rts
-;
-L07BE:
-	tst	X007E
-L07C0:
-	beq	L07FD
-L07C2:
-	brclr	2,X007E,L07CD
-L07C5:
-	bclr	2,X007E
-L07C7:
-	clr	X008A
-L07C9:
-	lda	#$DD
-L07CB:
-	sta	X0087
-L07CD:
-	lda	#$FF
-L07CF:
-	brset	6,X007E,L07E8
-L07D2:
-	lda	#$C8
-L07D4:
-	brset	7,X007E,L07E8
-L07D7:
-	brclr	1,X007E,L07F2
-L07DA:
-	bclr	1,X007E
-L07DC:
-	lda	X0082
-L07DE:
-	and	#$03
-L07E0:
-	cmp	#$02
-L07E2:
-	bne	L07F2
-L07E4:
-	bset	4,X0080
-L07E6:
-	lda	#$05
-L07E8:
-	bclr	6,X007E
-L07EA:
-	bclr	7,X007E
-L07EC:
-	jsr	L0F96
-L07EF:
-	jmp	L0D0D
-;
-L07F2:
-	brclr	5,X007E,L07FD
-L07F5:
-	bclr	5,X007E
-L07F7:
-	brclr	6,X0082,L07FD
-L07FA:
-	jmp	L0CF6
-;
-L07FD:
-	brclr	6,X0082,L0003
-	jmp	L0CB9
-;
-	brset	2,X00BE,L0009
-	brset	3,X007F,L0042
-	brset	7,X0087,L0070
-	brset	0,X0080,L0042
-	brset	5,X007F,L0064
-	brset	7,X007F,L006A
-	brset	6,X007F,L005E
-	brset	4,X0082,L0029
-	brclr	5,X0080,L0029
-	lda	X0088
-	add	#$34
-	bcc	L0029
-	bclr	5,X0082
-	jmp	L0CE2
-;
-	lda	X007F
-	and	#$03
-	bne	L0045
-	lda	X0266
-	bpl	L0042
-	lda	X0265
-	cmp	#$40
-	beq	L003F
-	cmp	#$30
-	bne	L0042
-	jmp	L0CEC
-	jmp	L0CD8
-;
-	deca
-	bne	L005B
-	ldx	#$AD
-	jsr	L38CC
-	beq	L0052
-	brset	1,X007C,L005E
-	brset	7,X007C,L0042
-	brset	1,X007C,L0042
-	jmp	L0CEC
-;
-	deca
-	bne	L0064
-	brset	0,X00BA,L00D8
-	jmp	L0CEC
-;
-	brset	6,X0080,L00D8
-	jmp	L0CEC
-;
-	lda	#$80
-	sta	X0087
-	bra	L00EC
-;
-	dec	X008A
-	bpl	L00D7
-	lda	X0087
-	and	#$1F
-	cmp	#$1F
-	bne	L0080
-	bclr	1,X0087
-	bclr	6,X0087
-	inc	X0087
-	brset	6,X0087,L0088
-	brclr	0,X0087,L00AB
-	jsr	L1278
-	beq	L0092
-	brset	6,X0087,L010B
-	bra	L0108
-;
-	brclr	5,X007F,L00A1
-	bclr	7,X007F
-	bclr	7,X0082
-	bclr	6,X0082
-	clr	X008A
-	bclr	0,X0082
-	bra	L0108
-;
-	brclr	0,X0087,L00AB
-	jsr	L0FB1
-	lda	#$14
-	bra	L00B4
-;
-	lda	#$FE
-	sta	X0088
-	jsr	L0F96
-L08B2:
-	lda	#$50
-	sta	X008A
-	jmp	L0DA3
-;
-	dec	X008A
-	bne	L00D7
-	brclr	0,X0081,L0114
-	lda	#$02
-	sta	X008A
-	jsr	L1278
-	beq	L00F6
-	brclr	7,X0082,L00E5
-	eor	X0082
-	sta	X0082
-	bset	3,X007E
-	bset	3,X00BC
-	jsr	L0F89
-	rts
-;
-	brclr	5,X0082,L00DE
-	brclr	4,X0082,L00E2
-	bset	5,X0082
-	bra	L00B6
-;
-	brset	7,X0082,L00B6
-	brset	7,X0082,L00EC
-	jsr	L0F96
-	rts
-;
-	jsr	L1278
-	bne	L0108
-	bclr	5,X0082
-	brclr	7,X0082,L00B6
-	bclr	6,X0082
-	bclr	4,X0080
-	brclr	7,X0082,L00D7
-	clr	X008A
-	brset	0,X0080,L00D7
-	jsr	L0FB1
-	jmp	L0BFD
-;
-	brclr	7,X0082,L00D8
-	lda	#$02
-	sta	X008A
-	bset	6,X0082
-	jmp	L0DA3
-;
-	brclr	1,X0081,L0165
-	brset	7,X0060,L0165
-	brset	2,X0082,L0192
-	brclr	3,X0082,L012E
-	brclr	1,X0001,L0129
-	bclr	1,X0001
-	ldx	#$04
-	bra	L018E
-;
-	brclr	7,X006B,L0192
-	bra	L018A
-;
-	brclr	3,X0001,L0143
-	brset	7,X0082,L0137
-	brset	2,X00BE,L00D7
-	bclr	3,X0001
-	ldx	#$01
-	brclr	7,X006B,L019B
-	brclr	1,X0001,L019B
-	bra	L0197
-;
-	ldx	#$02
-	brclr	0,X0061,L0199
-	brset	7,X006B,L0151
-	bset	7,X006B
-	bset	6,X0095
-	bra	L019B
-;
-	brset	1,X0001,L015A
-	bset	1,X0001
-	ldx	#$01
-	bra	L019B
-;
-	ldx	#$03
-	brclr	1,X0090,L0199
-	bset	3,X0001
-	ldx	#$06
-	bra	L019B
-;
-	brset	0,X0061,L0172
-	brset	7,X005F,L0192
-	brset	3,X005F,L0192
-	bclr	3,X0001
-	bra	L0197
-;
-	brset	3,X005F,L0192
-	brset	1,X0001,L0192
-	brclr	7,X0060,L0180
-	lda	X02C4
-	bmi	L0192
-	bset	1,X0001
-	bclr	7,X006B
-	bset	6,X0095
-	ldx	#$07
-	bra	L019B
-;
-	bclr	7,X006B
-	bset	6,X0095
-	ldx	#$04
-	bra	L019B
-;
-	brclr	0,X0002,L0197
-	bset	3,X0001
-	ldx	#$05
-	bset	0,X0081
-	lda	X136A,x
-	sta	X008A
-	bset	4,X0012
-	rts
-;
-	ldx	X0085
-	lda	X131A,x
-	brclr	1,X0081,L01AE
-	lda	X133A,x
-	sta	X0058
-	brset	4,X0080,L01C2
-	brset	6,X0082,L01BF
-	brset	7,X0087,L01C2
-	brset	7,X0082,L01BF
-	brclr	5,X0082,L01C2
-	jmp	L0E9A
-;
-	jsr	L1296
-	brset	7,X0087,L01E5
-	brset	4,X007F,L020C
-	ldx	#$A9
-	jsr	L12A5
-	brclr	5,X007F,L01D6
-	brset	1,X00A1,L01DF
-L09D6:
-	brclr	6,X007F,L020C
-	tst	X0058
-	beq	L01EF
-	dec	X0058
-	stx	X0086
-	lda	X0057
-	bra	L01EF
-;
-	brclr	6,X0087,L01EF
-	add	X1372
-	bcc	L01EF
-	lda	#$FF
-	cmp	X0058
-	bhi	L01F5
-	sta	X0058
-	brclr	7,X0087,L020C
-	brset	6,X0087,L020C
-	lda	X0087
-	lsra
-	and	#$0F
-	tax
-	lda	X0058
-	add	X135A,x
-	bcc	L020A
-	lda	#$FF
-	sta	X0058
-	brset	6,X0081,L021B
-	lda	X0084
-	beq	L021B
-	asla
-	nega
-	add	X0058
-	bcs	L021D
-	clra
-	cmp	XB658
-	brclr	3,X0081,L0224
-	lda	#$80
-	sub	X0085
-	sta	X0058
-	brset	2,X00BE,L025C
-	brset	3,X0082,L029A
-	brset	2,X0082,L0249
-	brset	2,X006B,L0235
-	brclr	1,X006B,L023B
-	bclr	2,X006B
-	bclr	1,X006B
-	bset	6,X0095
-	brclr	1,X0081,L025C
-	brset	1,X0001,L025C
-	brset	4,X0082,L025C
-	jsr	L0F4A
-	bra	L029A
-;
-	ldx	#$AE
-	jsr	L38CC
-	and	#$07
-	deca
-	asla
-	asla
-	add	X1373
-	add	X0058
-	bcs	L029A
-	sta	X0058
-	brset	7,X0081,L0277
-	brset	5,X007F,L0277
-	brset	6,X007F,L0277
-	brset	3,X0081,L0277
-	ldx	#$00
-	brclr	1,X0081,L026F
-L0A6D:
-	ldx	#$10
-	jsr	L12C3
-	coma
-	and	#$0F
-	bra	L0278
-;
-	clra
-	sta	X0059
-	cmp	X0083
-	beq	L028E
-	bcc	L0289
-	lda	X0083
-	deca
-	and	#$0F
-	sta	X0083
-L0A87:
-	bra	L028B
-;
-	sta	X0083
-	jsr	L0FBD
-	asl	X0059
-	lda	X0058
-	sub	X0059
-	bcc	L0297
-	clra
-	asla
-	bcc	L029C
-	lda	#$FF
-	sta	X0058
-	sta	X0059
-	brset	6,X0082,L02B2
-	brset	7,X0087,L02B2
-	lda	X0088
-	sub	X0058
-	beq	L030A
-	rora
-	eor	#$7F
-	brclr	4,X0081,L02B6
-	lda	X0058
-	bra	L02F7
-;
-	ldx	#$20
-	jsr	L12C3
-	asla
-	brset	5,X0082,L02C1
-	add	#$10
-	add	#$00
-	tax
-	lda	X12FA,x
-	dec	X008A
-	bmi	L02E7
-	tsta
-	bmi	L02D8
-	tst	X0089
-	bmi	L02EE
-	cmp	X0089
-	bhi	L02E0
-	bra	L0312
-;
-	tst	X0089
-	bpl	L02EE
-	cmp	X0089
-	bcc	L02D6
-	tax
-	sub	X0089
-	stx	X0089
-	bra	L02F5
-;
-	tsta
-	bne	L02EE
-	lda	X0058
-	sub	X0088
-	ldx	X12FB,x
-	stx	X008A
-	sta	X0089
-	add	X0088
-	bset	4,X0082
-	cmp	X0059
-	bne	L02FF
-	bclr	4,X0082
-	cmp	X0088
-	beq	L030C
-	sta	X0088
-	jsr	L0FCC
-	bra	L0312
-;
-	bclr	4,X0082
-	brset	4,X007E,L0305
-	brset	3,X007E,L0305
-	lda	X0082
-	and	#$0C
-	tax
-	brclr	0,X0080,L031D
-	brset	0,X0061,L031F
-	eor	X007F
-	and	#$0C
-	beq	L037C
-	brclr	5,X0082,L0329
-	brclr	7,X0082,L037C
-	tstx
-	beq	L032D
-	txa
-	eor	X0082
-L0B2F:
-	sta	X0082
-	bset	6,X0095
-	bclr	2,X006B
-	bclr	1,X006B
-	brclr	1,X0081,L0353
-	clra
-	ldx	#$AF
-	jsr	L38A0
-	brset	3,X0082,L0348
-	brclr	2,X0082,L034A
-	bset	2,X006B
-	bset	1,X006B
-	bclr	0,X0081
-	lda	#$05
-	sta	X008A
-	bset	6,X0082
-	rts
-;
-	brclr	3,X0082,L036D
-	brclr	1,X0001,L0361
-	bclr	1,X0001
-	bclr	3,X0082
-	lda	#$50
-	bra	L0382
-;
-	ldx	#$AF
-	jsr	L38CC
-	rora
-	bcc	L0372
-	bset	2,X006B
-	bra	L0374
-;
-	brclr	2,X0082,L0377
-	bset	2,X006B
-	bset	1,X006B
-	bset	3,X0001
-	rts
-;
-	brset	0,X0061,L037D
-	bclr	3,X0001
-	rts
-;
-	brset	1,X0001,L037C
-	lda	#$28
-	bclr	0,X0081
-	sta	X008A
-	bset	6,X0082
-	rts
-;
-	lda	X0082
-	and	#$03
-	tax
-	lda	X11FB,x
-	sta	X0050
-	clra
-	bra	L03C3
-;
-	bset	7,X0082
-	brset	5,X0081,L037C
-	lda	#$FF
-	cmp	X0088
-	beq	L03A5
-	sta	X0088
-	bsr	L03D1
-	lda	#$FF
-	sta	X0050
-	lda	#$03
-	bsr	L03C3
-	lda	#$81
-	bra	L03B7
-;
-	bclr	7,X0082
-	bset	3,X007E
-	lda	#$80
-	sta	X0050
-	lda	#$08
-	bra	L03C3
-;
-	lda	X0083
-	sta	X0050
-	lda	#$01
-	ldx	#$88
-	brclr	0,X0002,L03CB
-	jsr	L11FF
-	rts
-;
-	lda	X0088
-	brset	7,X0082,L03CB
-	brclr	5,X007F,L03DC
-	brset	5,X0082,L03DC
-	add	#$E0
-	bcs	L03DC
-	clra
-	brclr	1,X0081,L0405
-	brclr	1,X0082,L03EC
-	brset	0,X0082,L03F9
-	brclr	2,X00B8,L03F9
-	lda	#$08
-	bra	L03F3
-;
-	lda	#$14
-	brclr	0,X0082,L03F3
-	lda	#$0C
-	nega
-	add	X0088
-	bcs	L03F9
-	clra
-	cmp	#$30
-	bcc	L03FF
-L0BFD:
-	lda	#$30
-	cmp	#$44
-	bcc	L0405
-	bset	3,X007E
-	sta	X0056
-	bclr	7,X005B
-	ldx	#$A0
-	jsr	L10EF
-	sta	X0059
-	ldx	#$A1
-	jsr	L10EF
-	sta	X0058
-	brset	5,X0082,L0442
-	brclr	3,X007E,L0442
-	bclr	3,X007E
-	bmi	L0423
-	coma
-	cmp	XAB07
-	and	#$0F
-	sta	X0050
-	lda	X0059
-	bmi	L0434
-	coma
-	bit	#$08
-	bne	L0436
-	sub	#$0D
-	add	#$07
-	jsr	L261E
-	add	X0050
-	sta	X0050
-	lda	#$03
-	jsr	L0FC3
-	lda	X0058
-	bne	L0452
-	lda	X0059
-	add	#$08
-	sta	X0057
-	tax
-	lda	X1137,x
-	bra	L0467
-;
-	add	#$08
-	sta	X0057
-	lda	X0059
-	bpl	L045B
-	nega
-	jsr	L261E
-	add	X0057
-	tax
-	lda	X1137,x
-	brclr	7,X0059,L046A
-	jsr	L261E
-	jsr	L2617
-	brset	3,X0057,L047E
-	brset	7,X005B,L047D
-	nega
-	beq	L047D
-	add	X0056
-	bcs	L0484
-	clra
-	bra	L0484
-;
-	clra
-	add	X0056
-	bcc	L0484
-	lda	#$FF
-	sta	X0050
-	lda	#$02
-	jsr	L0FC3
-	brclr	4,X007E,L04EE
-	bclr	4,X007E
-	lda	#$88
-	sta	X0055
-	lda	#$14
-	sta	X0054
-	lda	#$E0
-	ldx	#$53
-	stx	X0057
-	ldx	X0057
-	clr	,x
-	sta	X0056
-	ldx	#$A3
-	jsr	L38CC
-	brclr	6,X008E,L04AC
-	clra
-	eor	X0056
-	bit	#$20
-	bne	L04C0
-	jsr	L38CC
-	brclr	6,X008E,L04B9
-	clra
-L0CB9:
-	bpl	L04BC
-	nega
-	add	#$10
-	bsr	L04E0
-	ldx	#$A2
-	jsr	L38CC
-	eor	X0056
-	bit	#$40
-	beq	L04D3
-	jsr	L38CC
-	bpl	L04D1
-	nega
-	bsr	L04E0
-	dec	X0057
-	lda	X0056
-	sub	#$20
-	bmi	L049E
-	ldx	#$55
-	jmp	L1205
-;
-	tax
-	lda	X11DB,x
-	ldx	X0057
-	add	,x
-	cmp	#$1F
-	bls	L04ED
-	lda	#$1F
-	sta	,x
-	rts
-;
-	clra
-	brset	5,X0082,L04FC
-	brset	5,X007F,L0535
-L0CF6:
-	brset	6,X007F,L0535
-	brset	3,X0081,L0535
-	jsr	L38CC
-	add	#$06
-	bpl	L0505
-	lda	#$06
-	cpx	#$A0
-	bne	L050B
-	add	#$0D
-	brclr	1,X0081,L0510
-	add	#$1A
-	tax
-	lda	X11A7,x
-	bmi	L0535
-	brclr	1,X0081,L0535
-	ldx	X0056
-	cpx	#$44
-	bcc	L0535
-	clr	X0053
-	cpx	#$36
-	bcs	L052D
-	inc	X0053
-	cpx	#$3C
-	bcs	L052D
-	inc	X0053
-	cmp	X0053
-	bls	L0535
-	lda	X0053
-	bset	7,X005B
-	tsta
-	rts
-;
-	brset	0,X0000,L05AA
-;
-	db	$72, $62, $51, $41
-;
-	brn	L0540
-	brn	L0583
-;
-	db	$52, $62, $72
-;
-	neg	,x
-	brset	0,X0000,L0549
-	asl	,x
-	asr	X0057,x
-	rorx
-;
-	db	$35
-;
-	bclr	1,X0000
-;
-	db	$32
-;
-	comx
-;
-	db	$65, $75
-;
-	ror	,x
-;
-	db	$86
-;
-	brset	0,X0000,L0559
-	asl	X0068,x
-	asrx
-	rora
-;
-	db	$35
-;
-	bclr	1,X0000
-;
-	db	$41
-;
-	comx
-	lsr	,x
-;
-	db	$75, $85, $86
-;
-	brset	0,X0000,L0569
-	rol	X0058,x
-	aslx
-	asra
-	bcs	L0583
-	brset	0,X0041,L05D5
-	lsr	,x
-;
-	db	$75, $85, $86
-;
-	brset	0,X0000,L0579
-	rolx
-	aslx
-	asla
-	asra
-	bne	L0593
-	brset	0,X0041,L05E5
-	lsr	,x
-;
-	db	$84, $85, $95
-;
-	brset	0,X0000,L0589
-	rolx
-	aslx
-	asla
-	asra
-	bcs	L05A3
-	brset	0,X0041,L05F4
-	lsr	,x
-;
-	db	$84, $85, $95
-;
-	brset	0,X0000,L0599
-	rolx
-	aslx
-	asla
-	asra
-	bcs	L05B3
-	brset	0,X0041,L0604
-	lsr	,x
-;
-L0DA3:
-	db	$84, $85, $95
-;
-	brset	0,X00FA,L05A4
-	jmp	,x						;INFO: index jump
-;
-	jsr	,x						;INFO: index jump
-	ldx	,x
-	stx	,x
-	brset	0,X0001,L05B2
-	brclr	1,X0004,L05B8
-	brset	3,X00FB,L05B2
-	jsr	,x						;INFO: index jump
-	jsr	,x						;INFO: index jump
-	ldx	,x
-	ldx	,x
-	stx	,x
-	brset	0,X0001,L05BF
-	brset	1,X0003,L05C4
-	add	,x
-	add	,x
-	jmp	,x						;INFO: index jump
-;
-	jsr	,x						;INFO: index jump
-	ldx	,x
-	stx	,x
-	brset	0,X0001,L05CB
-	brset	1,X0002,L05D0
-	brclr	1,X00FB,L05CB
-	jmp	,x						;INFO: index jump
-;
-	jsr	,x						;INFO: index jump
-	ldx	,x
-	stx	,x
-	brset	0,X0001,L05D8
-	brset	1,X0002,L05DD
-	brclr	1,X0000,L05DE
-	brset	1,X0003,L05E4
-	brclr	2,X0006,L05EA
-	brset	4,X0009,L05F0
-	brclr	5,X000C,L05F6
-	brset	7,X000F,L05EC
-	brclr	0,X0002,L05F2
-	brset	2,X0005,L05F8
-	brclr	3,X0008,L05FE
-	brset	5,X000B,L0604
-	brclr	6,X000E,L061A
-	asl	X0039
-	dec	X002B
-	sta	X0051
-	stx	X0052
-	ldx	#$52
-	stx	X005A
-	bsr	L060F
-	bcc	L066E
-	bsr	L060F
-	bcc	L066E
-	ldx	X005A
-	bsr	L066F
-	lda	,x
-	bsr	L0620
-	bcs	L0664
-	decx
-	cpx	#$50
-	bcc	L0613
-	clc
-	bra	L0664
-;
-	sec
-	rola
-	bcs	L0628
-	bsr	L063A
-	bra	L062C
-;
-	bclr	6,X0004
-	bra	L062C
-;
-	bsr	L0633
-	asla
-	bne	L0622
-	bclr	6,X0004
-	bclr	7,X0004
-	brset	6,X0000,L0638
-	bra	L0673
-;
-	bset	6,X0004
-	bclr	6,X0000
-	rts
-;
-	bsr	L066F
-	bsr	L0620
-	bcs	L0664
-	bsr	L0673
-	lda	#$01
-	bclr	6,X0004
-	bclr	7,X0004
-	brset	6,X0000,L0650
-	rola
-	bsr	L0673
-	bcc	L0649
-	sta	,x
-	dec	X0059
-	bmi	L0661
-	bsr	L063A
-	decx
-	bclr	7,X0004
-	bra	L0645
-;
-	bsr	L0631
-	clc
-	bsr	L0673
-	bsr	L063A
-	bclr	7,X0004
-	bsr	L066E
-	bclr	6,X0004
-	rts
-;
-	bsr	L0668
-	bsr	L063A
-	bset	7,X0004
-	bclr	7,X0000
-	rts
-;
-	lda	#$03
-	brset	5,X007F,L068F
-	brset	7,X007F,L0691
-	brset	6,X0087,L0691
-	deca
-	brset	6,X007F,L068F
-	brclr	0,X007F,L068D
-	brset	1,X007C,L068F
-	lda	X007F
-	clr	X0087
-	eor	X0082
-	and	#$03
-	rts
-;
-	ldx	#$10
-	jsr	L38CC
-	brclr	1,X0081,L06A4
-	add	#$10
-	bcc	L06A4
-	lda	#$FF
-	rts
-;
-	sta	X0057
-	jsr	L38CC
-	asla
-	asla
-	add	#$F4
-	nega
-	add	X0057
-	sta	X0057
-	clrx
-	incx
-	lda	X131A,x
-	brclr	1,X0081,L06BE
-	lda	X133A,x
-	cmp	X0057
-	bhi	L06B4
-	rts
-;
-	clr	X0057
-	add	X12D2,x
-	bcs	L06CF
-	inc	X0057
-	incx
-	bra	L06C5
-;
-	lda	X0057
-	rts
-;
-	sta	X0004
-	brset	2,X0004,L06DB
-	brset	2,X0004,L06DE
-	brset	2,X00FF,L06DD
-	brset	0,X0000,L06E0
-	brset	0,X0000,L0672
-	brset	3,X0006,L06EC
-	brset	3,X0006,L06EF
-	brset	3,X0006,L06F2
-	brset	3,X0006,L06F5
-	brset	3,X0006,L06F1
-	bra	L0734
-;
-	bset	3,X000A
-	brset	1,X000E,L0719
-	stx	,x
-	bra	L06FC
-;
-	bset	0,X0000
-	brset	4,X0000,L0701
-	brset	0,X0000,L0704
-	ldx	,x
-	brclr	1,X00FC,L0708
-	eor	,x
-	brset	0,X000C,L070C
-	brset	3,X0000,L0711
-	brset	0,X0000,L0712
-	brset	0,X0000,L0713
-	brclr	1,X00FC,L0718
-	eor	,x
-	brset	0,X009C,L06B8
-;
-	db	$90, $84
-;
-	asl	,x
-	inc	X0064,x
-	incx
-	lsrx
-;
-	db	$4E
-;
-	asla
-	lsra
-	nega
-	inc	X0038
-	lsr	X0030
-	bmc	L0755
-	bne	L0753
-	bhi	L0751
-	bset	7,X001C
-	bset	5,X0018
-	bset	3,X0014
-	bset	1,X0010
-	bset	0,X009C
-;
-	db	$92, $88, $7E
-;
-	lsr	,x
-	dec	X0062,x
-	decx
-	lsrx
-;
-	db	$4E
-;
-	asla
-	lsra
-	nega
-	inc	X0038
-	ror	X0034
-;
-	db	$32
-;
-	neg	X002E
-	bmc	L077A
-	bhcc	L0778
-	bcc	L0776
-	bra	L0774
-;
-	bset	6,X001A
-	bset	4,X0018
-	bset	7,X001C
-	bset	5,X0018
-	bset	3,X0014
-	bset	1,X0010
-	brset	7,X000C,L076F
-	brset	4,X0006,L076C
-	brset	1,X0000,L0775
-	bset	2,X0003
-	negx
-	bhcc	L0775
-	inc	X0046
-	bset	4,X0000
-	bset	0,X000D
-;
-	db	$61
-;
-	brclr	5,X000C,L0734
-	brclr	2,X000A,L0737
-	bclr	3,X0020
-	brclr	1,X000B,L073C
-	bset	1,X0019
-	brclr	0,X001D,L0741
-	bset	5,X00BA
-L0F89:
-	clr	X00D6
-	clr	X00C1
-	jsr	L1E7D
-	bset	0,X00BA
-	jsr	L2640
-	bset	4,X0001
-	ldx	#$B0
-	jsr	L38CC
-	and	#$62
-	ora	#$80
-	brclr	4,X00B5,L07A5
-	ora	#$10
-	sta	X00B5
-	clr	X00BF
-	jsr	L2631
-	brclr	0,X0061,L07C2
-	clr	X00BC
-L0FB1:
-	bset	2,X00BC
-	brclr	4,X0069,L07C2
-	brset	1,X005F,L07C2
-	bclr	6,X00B5
-	lda	X00B5
-L0FBD:
-	ldx	#$B0
-	jsr	L38A0
-	bset	4,X00BC
-	rts
-;
-	brclr	6,X0061,L07D0
-	brset	6,X00BA,L07D0
-	lda	#$05
-	brclr	5,X00BA,L07D2
-	lda	#$28
-	sta	X0063
-	bset	6,X00BA
-	bset	5,X00BA
-	lda	#$30
-	ldx	#$01
-	jsr	L1BD9
-	brclr	3,X0067,L07EA
-	bclr	3,X0067
-	jsr	L1407
-	jsr	L37B0
-	jsr	L0785
-	jsr	L37F4
-	jsr	L142B
-	brclr	6,X00BA,L07FC
-	bclr	6,X00D6
-	tst	X0063
-	bne	L07DF
-	jsr	L37F4
-	jsr	L1E7D
-	bclr	5,X00BA
-	bclr	6,X00BA
-	rts
-;
-	brset	7,X00D6,L0045
-	brset	6,X00BA,L0010
-	brclr	5,X00BA,L0034
-	lda	X00BB
-	sta	X0058
-	jsr	L1446
-	bra	L003B
-;
-	brset	7,X00D6,L0045
-	brset	6,X00BA,L0022
-	brclr	5,X00BA,L0034
-	lda	X00BB
-	sta	X0058
-	jsr	L1551
-	bra	L003B
-;
-	lda	X00BB
-	sta	X0058
-	jsr	L15C8
-	bra	L003B
-;
-	brclr	0,X0061,L003B
-	bclr	5,X0061
-	bset	2,X005D
-	lda	X00BB
-	cmp	X0058
-	beq	L0045
-	bset	6,X00CB
-	bset	5,X00CB
-	rts
-;
-	brclr	4,X00BC,L004E
-	bclr	4,X00BC
-	jmp	L1AA5
-;
-	brset	7,X00C1,L0054
-	brset	6,X00C1,L005A
-	brclr	3,X00BC,L005A
-	jmp	L1953
-;
-	brclr	2,X00C0,L0060
-	jmp	L1CAD
-;
-	lda	X00B3
-	bne	L006B
-	jsr	L14DF
-	jsr	L1516
-	rts
-;
-	bmi	L00AC
-	brset	4,X00B3,L0089
-	bit	#$60
-	beq	L0079
-	jsr	L189A
-	bra	L007B
-;
-	clr	X00B3
-	bclr	0,X00BA
-	brset	7,X00B9,L0086
-	brclr	6,X00BA,L0086
-	brclr	6,X00C1,L0088
-	bset	0,X00BA
-	rts
-;
-	lda	X00C1
-	and	#$86
-	cmp	#$86
-	bne	L0094
-	jsr	L1C82
-	lda	#$B4
-	brset	5,X00B6,L00AA
-	lda	#$88
-	brclr	7,X00BA,L0079
-	brclr	2,X00B6,L0079
-	brclr	1,X00B6,L00AA
-	brset	5,X00B3,L00AA
-	brclr	0,X00B6,L0079
-	sta	X00B3
-	bclr	7,X00B3
-	bclr	2,X00BB
-	and	#$07
-	tax
-	lda	X00B4
-	bpl	L00BD
-	and	#$7F
-	sta	X00B4
-	sta	X00B8
-	ldx	X19DD,x
-	jsr	L1A3D,x						;INFO: index jump
-	brset	7,X00B3,L007B
-	lda	X00B3
-	cmp	#$70
-	bcc	L0079
-	bclr	3,X00BB
-	brset	4,X00B3,L0079
-	sta	X00B6
-	bclr	5,X00BC
-	and	#$07
-	cmp	#$07
-	bne	L0079
-	bset	4,X00B6
-	bra	L0079
-;
-	lda	X00C1
-	bit	#$C0
-	beq	L00F6
-	and	#$86
-	cmp	#$86
-	bne	L0114
-	bclr	5,X00BC
-	bclr	2,X00BB
-L10EF:
-	jsr	L1E69
-	beq	L00FF
-	bclr	2,X00BA
-	bclr	4,X00C0
-	lda	#$97
-	ldx	#$C0
-	jsr	L1C84
-	jsr	L1E74
-	brclr	4,X00BF,L0110
-	brset	2,X00BE,L0114
-	brset	1,X00BE,L0114
-	brclr	7,X00BF,L0114
-	bclr	7,X00BF
-	bset	4,X00BF
-	bset	3,X00BC
-	rts
-	rts
-;
-	brset	4,X00C1,L0150
-	dec	X00C3
-	bne	L0150
-	lda	X00C1
-	cmp	#$60
-	beq	L012B
-	brclr	3,X00BC,L012B
-	inc	X00C3
-	jmp	L1953
-;
-	brclr	7,X00C1,L013D
-	bclr	7,X00C1
-	bclr	6,X00C1
-	lda	X00C1
-	and	#$07
-	tax
-X1137:
-	ldx	X1D18,x
-	jmp	L1D20,x						;INFO: index jump
-;
-	brclr	6,X00C1,L014E
-	bclr	6,X00C1
-	lda	X00B6
-	and	#$07
-	tax
-	ldx	X1C0E,x
-	jsr	L1C16,x						;INFO: index jump
-	cmp	X3FC1
-	rts
-;
-	brset	7,X00BA,L019C
-	jsr	L1E4F
-	beq	L019C
-	lda	X00BE
-X115B:
-	brset	5,X00B9,L017E
-	brset	4,X00B9,L0174
-	brclr	1,X00BE,L0169
-	brclr	3,X00B9,L016C
-	bra	L0198
-;
-	brset	3,X00BA,L0198
-	bit	#$F0
-	beq	L019C
-	ora	#$F0
-	bra	L01A0
-;
-	brclr	1,X00BE,L017A
-	brset	0,X00BE,L018F
-	lda	#$02
-	bra	L0186
-;
-	brclr	2,X00BE,L0184
-	brset	0,X00BE,L018F
-	lda	#$04
-	bset	7,X00BF
-	bset	5,X00CB
-	bset	3,X00BC
-	inca
-	bset	4,X00BA
-	and	#$07
-	ora	#$20
-	brclr	6,X00B9,L0198
-	ora	#$C0
-	add	#$F0
-	bcs	L01A0
-	jsr	L1E87
-	clra
-	sta	X00BE
-	brclr	4,X00C1,L0150
-	jmp	L1519
-;
-	brclr	1,X006C,L0156
-	brset	0,X00CD,L01A3
-	brclr	1,X0003,L01B4
-	bih	L01B6
-	brset	3,X00B7,L020C
-	bsr	L01BD
-	lda	X0056
-	jsr	L261E
-	jsr	L2533
-	cmp	XA620
-	sta	X0288,x
-	incx
-	rts
-;
-	brclr	3,X00D6,L01C7
-	bclr	3,X00D6
-	bset	6,X00BA
-	ldx	X0271
-	stx	X005B
-	lsrx
-	lsrx
-	lsrx
-	cpx	#$0C
-	bcc	L01E7
-X11DB:
-	ldx	X15A8,x
-	lda	X0272
-	jmp	L15E4,x						;INFO: index jump
-	jmp	L170D
-	jmp	L170A
-;
-	bset	6,X00BB
-	bset	2,X00BF
-	cmp	X0273
-	bcs	L01F5
-	bclr	2,X00BF
-	brclr	4,X00CE,L01E7
-	clrx
-	lda	X0274
-	bsr	L01BD
-	bsr	L01C1
-	lda	X0273
-	jsr	L15BD
-	bsr	L01C1
-	brset	0,X00BB,L024B
-	bsr	L01C1
-	cpx	#$08
-	bne	L020B
-	bra	L024B
-;
-	brclr	1,X005B,L024D
-	lda	X0274
-	bmi	L022E
-	eor	X00C5
-	and	#$1F
-	bne	L0224
-	brset	7,X00C5,L022E
-	eor	X00C5
-	sta	X00C5
-	bset	5,X00C5
-	bset	6,X00C5
-	bset	7,X00C5
-	brclr	4,X00CE,L024B
-	brset	6,X00BB,L023B
-	clrx
-	bsr	L01C1
-	cpx	#$04
-	bne	L0235
-	bset	0,X00BB
-	ldx	#$04
-	lda	X0273
-	jsr	L15B4
-	lda	X0272
-	jsr	L15B4
-	bset	6,X00CB
-	jmp	L170A
-;
-	ldx	X005B
-	cpx	#$08
-	beq	L0263
-	cpx	#$0B
-	bne	L024D
-	brclr	6,X00CE,L0260
-	jsr	L1EB3
-	lda	X0275
-	bclr	5,X00BA
-	bclr	6,X00BA
-	tsta
-	bpl	L026C
-	bset	6,X00BA
-	bclr	3,X00BA
-	bit	#$40
-	beq	L0286
-	bset	3,X00BA
-	bit	#$20
-	beq	L0286
-L1278:
-	tax
-	lda	X00B8
-	and	#$0F
-	ora	#$80
-	sta	X00B4
-	lda	#$CA
-	sta	X00B3
-	txa
-	jsr	L2617
-	eor	X00B9
-	and	#$07
-	bra	L02F4
-;
-	bclr	4,X00BB
-	brclr	2,X005B,L024D
-	ldx	#$07
-L1296:
-	stx	X0056
-	lda	#$07
-	sub	X0056
-	tax
-	lda	X0272,x
-	ldx	X0056
-	sta	X0280,x
-L12A5:
-	dec	X0056
-	bpl	L0298
-	bset	4,X00BB
-	bset	2,X0094
-	bset	5,X00BB
-	bra	L024B
-;
-L12B1:
-	bclr	1,X00BB
-	bit	#$10
-	beq	L02B9
-	bset	1,X00BB
-	and	#$87
-	bpl	L02C9
-	ora	#$10
-	brset	7,X00B9,L02D0
-	bclr	4,X00BB
-	jsr	L1797
-	bra	L02CE
-;
-	brclr	7,X00B9,L02D0
-	bclr	7,X00BA
-	bset	7,X00CB
-	jsr	L261F
-	eor	X00B9
-	and	#$B8
-	bra	L02F4
-;
-	brset	0,X00BF,L02F2
-	lda	X0271
-	and	#$03
-	tax
-	lda	X0272,x
-	sta	X0056
-	and	#$07
-	tax
-	ldx	X176B,x
-	bclr	7,X00BA
-	jsr	L1771,x						;INFO: index jump
-	bra	L030A
-;
-	bset	5,X00CB
-	beq	L030A
-	eor	X00B9
-X12FA:
-	sta	X00B9
-	brset	2,X00B8,L030A
-	brclr	3,X00B9,L030A
-	ldx	#$B2
-	jsr	L38CC
-	jsr	L1E45
-	bset	6,X00D6
-	rts
-;
-	brset	0,X00BF,L02F2
-	lda	X0273
-	brset	3,X00B6,L031A
-	cmp	#$FF
-	beq	L035A
-X131A:
-	sta	X00B7
-	lda	X00B6
-	and	#$07
-	cmp	#$04
-	bne	L032F
-	jsr	L1E8C
-	eor	X00C0
-	and	#$03
-	beq	L032F
-	bset	2,X00C0
-	lda	X0272
-	bmi	L033E
-	brclr	6,X00B9,L0345
-	bclr	4,X00BB
-	jsr	L1E7F
-	bra	L0343
-;
-	brset	6,X00B9,L0345
-	bset	6,X00B9
-	bset	5,X00CB
-	brclr	5,X00B6,L035F
-	lda	X00B7
-	ldx	X00C2
-	incx
-	beq	L035D
-	brclr	7,X00C1,L035F
-	cmp	X00C2
-	bne	L035F
-	bclr	5,X00B6
-	bra	L035F
-;
-X135A:
-	bset	3,X00BB
-	cmp	XB7C2
-	lda	X00C3
-	cmp	#$40
-	beq	L0369
-	bset	5,X00BB
-	bset	6,X00CB
-	bra	L02F2
-;
-	bit	X2744
-	lsra
-	brset	0,X0026,L0381
-;
-X1372:
-	db	$61
-;
-X1373:
-	brset	1,X001F,L03D7
-	brclr	4,X00B6,L0384
-	brset	7,X00B6,L03C8
-	lda	X00C1
-	and	#$07
-	cmp	#$02
-	beq	L03CA
-	brset	5,X00BC,L0390
-	brset	6,X00BC,L0390
-	lda	X00B8
-	and	#$70
-	bne	L0394
-	bsr	L03CA
-	bset	7,X00BB
-	brset	7,X0056,L0397
-	rts
-;
-	brclr	7,X0056,L03B2
-	bset	4,X00B8
-	brset	2,X00B8,L03AD
-	bclr	0,X00B8
-	lda	#$FF
-	ldx	#$BC
-	jsr	L38A0
-	incx
-	jsr	L38A0
-	lda	#$80
-	sta	X00B3
-	rts
-	jmp	L1D8A
-;
-	bclr	3,X00BF
-	brclr	7,X0056,L0435
-	jsr	L1C7C
-	bset	2,X007E
-	lda	X00B8
-	sta	X00BD
-	bset	2,X00BB
-L13C5:
-	bclr	6,X00BC
-	rts
-;
-	bclr	4,X00BB
-	brset	6,X00BF,L03D2
-	brset	6,X0056,L03DC
-	bclr	6,X00BC
-	bclr	2,X00BB
-	bclr	6,X00B8
-	bclr	5,X00B8
-	bclr	4,X00B8
-	bra	L0433
-;
-	lda	X00B8
-	brset	6,X00BC,L03E5
-	bit	#$70
-	bne	L0435
-	and	#$0C
-	sta	X00BD
-	lda	X0272
-	sub	#$06
-	beq	L03F9
-	bmi	L03F7
-	deca
-	inc	X00BD
-	bra	L03EC
-;
-	add	#$07
-	jsr	L261E
-	add	X00BD
-	sta	X00BD
-	brclr	2,X00B8,L040C
-	jsr	L261F
-	eor	X00B8
-	and	#$08
-	bra	L0417
-;
-	brclr	5,X0069,L0413
-	bit	#$01
-	bne	L0425
-	eor	X00B8
-	and	#$03
-	beq	L0429
-L1419:
-	brclr	6,X00BC,L0422
-	bclr	6,X00B8
-	bclr	5,X00B8
-	bclr	4,X00B8
-	brset	5,X00BC,L03C3
-	brset	6,X00BC,L03D2
-	rts
-;
-	bset	5,X00BB
-L142B:
-	lda	X00BD
-	sta	X00B8
-	bset	6,X00BC
-	bclr	2,X00BB
-	bset	7,X00CB
-	rts
-;
-	brclr	6,X00D2,L043C
-	jmp	L1798
-;
-	brclr	7,X0056,L0469
-	bclr	2,X00C0
-	jsr	L1E42
-	bsr	L03CA
-L1446:
-	brset	5,X00B6,L0463
-	brclr	6,X00BF,L045C
-	brset	1,X00BA,L0453
-	bset	1,X00BA
-	bset	3,X00BC
-	lda	#$E3
-	brset	4,X00C1,L045E
-	ldx	#$01
-	bra	L0460
-;
-	lda	#$60
-	ldx	#$28
-	jmp	L1C84
-;
-	brclr	2,X00C1,L045C
-	bset	5,X00C1
-	rts
-;
-	brclr	5,X00B6,L0471
-	jsr	L1D8A
-	bra	L048B
-;
-	lda	X00B6
-	and	#$07
-	cmp	#$05
-	beq	L0484
-	cmp	#$04
-L147B:
-	bne	L048B
-	brclr	6,X00B5,L048B
-	clr	X00C2
-	bset	0,X00B6
-	lsr	X00C2
-	bne	L048B
-	jsr	L1D4B
-	bset	7,X00BA
-	lda	X00B6
-	ora	#$D0
-	bit	#$20
-	beq	L0497
-	and	#$A7
-	sta	X00B3
-	rts
-;
-	lda	X00B3
-	bit	#$0F
-	beq	L0518
-	and	#$07
-	tax
-	clra
-	sec
-	rola
-	decx
-	bpl	L04A5
-	sta	X0056
-	ldx	#$B5
-	brclr	3,X00B3,L04B2
-	ldx	#$BC
-	brclr	6,X00B3,L04BE
-	brset	5,X00B3,L04BC
-	coma
-	and	,x
-	bra	L04BF
-;
-	eor	,x
-	cmp	X00FA
-	brset	3,X00B3,L04CB
-	brclr	1,X0056,L04CB
-	bit	#$02
-	beq	L04CB
-	ora	#$0C
-	brclr	3,X008E,L04DD
-	brclr	4,X0056,L04D7
-	bit	#$10
-	beq	L04D7
-	ora	#$08
-	bit	#$08
-	bne	L04DD
-	and	#$AF
-	sta	,x
-	ldx	#$F3
-	brset	3,X00B3,L052F
-	and	#$62
-	ldx	#$B0
-	jsr	L38A0
-	bset	5,X00CB
-	brset	5,X0056,L04F5
-	brclr	6,X0056,L0549
-	brset	2,X00B8,L0507
-	lda	X00B6
-	and	#$17
-	cmp	#$04
-	bne	L0507
-	brclr	5,X00B6,L0503
-	brclr	7,X00BA,L0507
-	bsr	L048B
-	bra	L0553
-;
-	brclr	6,X0056,L0549
-	ldx	#$10
-	cmp	#$05
-	beq	L054E
-	brset	6,X0059,L051A
-	ldx	#$F1
-	brset	6,X00B9,L054E
-	bra	L0549
-;
-	bset	4,X00C0
-	bclr	3,X00C0
-	brclr	2,X00B8,L0532
-	bset	3,X00C0
-	ldx	#$B2
-	jsr	L38CC
-	sta	X00B8
-	bclr	5,X00BB
-	jmp	L17AD
-	jmp	L1AA5
-;
-	brset	6,X00C1,L0549
-	jsr	L1E69
-	bne	L0549
-	lda	#$01
-	sta	X00C3
-	lda	X00C1
-	cmp	#$95
-	beq	L0549
-	lda	#$86
-	jsr	L1C82
-	lda	X00B3
-	and	#$10
-	tax
-	stx	X00B3
-	bset	3,X00BC
-	rts
-;
-	lda	#$C8
-	brset	6,X005F,L057F
-	jsr	L1E5A
-	brset	7,X0061,L058E
-	brclr	1,X00BA,L0563
-	and	#$BF
-	ora	#$08
-	ora	#$04
-	and	#$4E
-	brclr	7,X00B5,L0571
-	brset	3,X00B5,L0571
-	and	#$4A
-	brclr	6,X00CE,L0576
-	ora	#$30
-	brset	4,X00CE,L057C
-	brclr	3,X00CE,L057E
-	ora	#$10
-	inca
-	bit	#$04
-	beq	L0590
-	brset	3,X005D,L0589
-	brclr	3,X00BF,L058B
-	and	#$F3
-	brclr	7,X00BF,L0590
-	and	#$FB
-	ldx	#$01
-	brclr	3,X008E,L059B
-	ora	#$02
-	and	#$BB
-	ldx	#$09
-	brclr	0,X0061,L05AD
-	brclr	1,X0082,L05A8
-	brset	0,X0082,L05A8
-	ora	#$80
-	bra	L05AD
-;
-X15A8:
-	brclr	4,X0069,L05AD
-	ora	#$40
-	sta	X027C
-	txa
-	brclr	6,X005F,L05B6
-L15B4:
-	ora	#$40
-	bclr	1,X00BC
-	ora	#$80
-	brclr	4,X00BF,L05C4
-L15BD:
-	brset	7,X00B5,L05C4
-	bset	1,X00BC
-	and	#$7F
-	sta	X027D
-	lda	#$20
-	brclr	2,X00B8,L05D1
-	brset	6,X005F,L05D1
-	lda	#$02
-	ora	#$10
-	bset	2,X00B5
-	tax
-	bclr	3,X00BC
-	lda	#$0A
-	jmp	L1A75
-;
-	db	$7E, $7B
-;
-	brset	0,X005E,L05BE
-	cmp	XD0F5
-	bclr	3,X005D
-	lda	X00B8
-	and	#$74
-	cmp	#$60
-	beq	L062B
-	ldx	#$02
-	cmp	#$10
-	bne	L05F9
-	bset	3,X00BF
-	bra	L0627
-;
-	ldx	#$83
-	cmp	#$50
-	beq	L0627
-	clrx
-	brclr	2,X00B8,L0608
-	brclr	3,X00B8,L060D
-	bra	L060B
-;
-	brclr	1,X00B8,L060D
-	ldx	#$04
-	and	#$70
-	cmp	#$20
-	beq	L0621
-	brset	2,X00B8,L0620
-	incx
-	cmp	#$30
-	beq	L0621
-	incx
-	cmp	#$40
-	beq	L0621
-	rts
-;
-	aslx
-	aslx
-	sec
-	rolx
-	sec
-	rolx
-	lda	#$18
-	bra	L0675
-;
-	lda	X0088
-	lsra
-	sta	X0056
-	lda	X0083
-	asla
-	add	X0056
-	ldx	#$70
-	jsr	L388B
-	jmp	L17BA
-;
-	brclr	3,X00B3,L05E5
-	clr	X00B6
-	brclr	6,X00B3,L0654
-	brclr	5,X00B3,L064E
-	ldx	#$09
-	clr	X00B3
-	bra	L0672
-;
-	ldx	#$EA
-	stx	X00B3
-	bra	L066D
-;
-	bclr	5,X00BC
-	bclr	6,X00BC
-	bset	3,X0094
-	jsr	L1DF2
-	ora	#$80
-	brset	3,X00B5,L0666
-	coma
-	and	X0056
-	cmp	XBA56
-	ldx	X0057
-	jsr	L38A0
-	jsr	L1E29
-	ldx	#$89
-	jsr	L1E06
-	sta	X0050
-	stx	X0051
-	brclr	7,X00D6,L068C
-	jsr	L0785
-	jsr	L22BD
-	brclr	3,X0067,L0679
-	bclr	3,X0067
-	jsr	L1EE2
-	bra	L0679
-;
-	lda	X0050
-	ldx	X0051
-	sta	X027A
-	stx	X027B
-	bset	7,X00D6
-	clr	X00D9
-	rts
-;
-	brclr	3,X00B3,L06A5
-	brset	7,X00BA,L069A
-	ldx	#$0A
-	bra	L0627
-;
-	brset	3,X00BF,L069A
-	bset	0,X00BC
-	brset	6,X00D3,L06AF
-	bclr	0,X00BC
-	lda	X00BC
-	and	#$07
-	tax
-	lda	#$20
-	bra	L0675
-X16B8:
-	jmp	L1B81
-;
-	bclr	3,X00BF
-	bclr	5,X00BB
-	bclr	4,X00BB
-	brclr	3,X00B3,L06DA
-	ldx	#$B1
-	jsr	L38CC
-	brclr	5,X00B6,L06D3
-	bit	#$70
-	bne	L06D5
-	jmp	L1DA5
-;
-	ora	#$70
-	sta	X00B8
-	brset	2,X00B8,L06DA
-	bclr	7,X00BF
-	lda	X00B8
-	and	#$70
-	cmp	#$70
-	bne	L06E7
-	jsr	L1DCA
-	jsr	L1DF2
-	bset	0,X0056
-	and	X0056
-	bset	3,X00B5
-	bne	L06F6
-	bclr	3,X00B5
-	bclr	4,X00B5
-	bset	3,X00BC
-	bclr	1,X00BA
-	bset	1,X00BF
-	bset	0,X00BF
-	lda	#$40
-	ldx	#$0C
-	brclr	6,X005F,L0707
-	ldx	#$01
-	jsr	L1E7D
-L170A:
-	jmp	L1C84
-;
-L170D:
-	brset	2,X00B8,L0715
-	bset	1,X00B8
-	bclr	0,X00B8
-	cmp	X16B8
-	bra	L06F6
-;
-	brset	5,X00B3,L0795
-	brclr	3,X00BF,L0723
-	bset	0,X00B3
-	bset	1,X00B3
-	brset	6,X00B3,L0732
-	brclr	4,X00B3,L076F
-	brclr	1,X00BA,L076C
-	bclr	1,X00BA
-	bset	3,X00BC
-	bra	L076C
-;
-	brclr	6,X00B3,L073D
-	brclr	4,X00B3,L073D
-	bclr	4,X00B3
-	bclr	6,X00BF
-	cmp	X1CBF
-	bclr	6,X00B3
-	lda	X00B6
-	and	#$07
-	cmp	#$06
-	bne	L0754
-	ldx	#$B1
-	jsr	L38CC
-	sta	X00B8
-	bclr	7,X00BF
-	bra	L0769
-;
-	cmp	#$04
-	bne	L0769
-	brset	4,X00B3,L0769
-	lda	X00B6
-	eor	X00B3
-	bit	#$08
-	beq	L0769
-	jsr	L1AFE
-	jmp	L1A6D
-;
-	brclr	4,X00B3,L076F
-	bclr	6,X00BF
-	rts
-;
-	brset	7,X00BF,L06FE
-	brset	3,X00BF,L06FE
-	bset	7,X00BF
-	jsr	L1AE4
-	lda	#$48
-	bra	L0700
-	jmp	L1AFE
-;
-	brclr	3,X00B3,L0789
-	bset	7,X00BF
-	jmp	L1AF6
-;
-	brclr	6,X00B9,L076E
-	jsr	L1E81
-	lda	#$48
-	clrx
-	jmp	L1A75
-;
-	bclr	6,X00BF
-L1797:
-	brset	4,X00B3,L07A5
-	brset	5,X00B6,L077E
-	bsr	L07C9
-	lda	#$FF
-	sta	X00C2
-	bra	L0775
-;
-	lda	X00BD
-	eor	X00B8
-	and	#$07
-	bne	L07B1
-L17AD:
-	lda	X00BD
-	sta	X00B8
-	clr	X00C3
-	jsr	L1E74
-	lda	X00C1
-	cmp	#$95
-L17BA:
-	bne	L07C3
-	clr	X00C1
-	bset	3,X00BC
-	jmp	L1E29
-;
-	jsr	L17AD
-	jmp	L1ADA
-;
-	lda	X00B8
-	sta	X00BD
-	ldx	X00C1
-	jmp	L1E38
-;
-	lda	#$64
-	sta	X027C
-	lda	#$19
-	bclr	6,X00B8
-	bclr	5,X00B8
-	bclr	4,X00B8
-	bset	5,X00BC
-	bset	3,X00B5
-	bclr	3,X00BB
-	brclr	0,X00B6,L07EE
-	brset	1,X00B6,L07EE
-	brset	2,X00B6,L07F0
-	bclr	2,X00BA
-	brclr	2,X00C0,L07F6
-	bclr	2,X00C0
-	cmp	X3FBB
-	clr	X00C5
-	jsr	L1E7D
-	bset	7,X00BA
-	bset	7,X00CB
-	bclr	6,X00BC
-	brset	3,X00C0,L0008
-	bclr	4,X00C0
-	bclr	3,X00C0
-	bset	7,X00B5
-	bra	L0792
-;
-	eor	#$11
-	coma
-	coma
-;
-	db	$75
-;
-	lsra
-	brset	0,X001B,L07E4
-	bclr	6,X0084
-	ldx	#$C7
-	brset	3,X008E,L0021
-	brclr	5,X0069,L0023
-	ldx	#$E7
-	bset	7,X00BF
-	bra	L07D2
-;
-	ldx	X00B7
-	clra
-	sta	X027C
-	lda	#$11
-	bra	L07E5
-;
-	brset	3,X00C1,L004D
-	ldx	#$50
-	bset	0,X005B
-	cmp	X115B
-	lda	#$C1
-	bsr	L0084
-	ldx	#$86
-	brclr	3,X00B6,L0046
-	ldx	#$06
-	lda	#$18
-	brclr	0,X005B,L07F0
-	bra	L07D9
-;
-	lda	#$40
-	ldx	#$02
-	bsr	L0084
-	jsr	L1DCA
-	jmp	L1CF7
-	rts
-;
-	brset	5,X00C1,L0076
-	bset	7,X00BF
-	jsr	L1D84
-	ldx	#$A0
-	brset	2,X00C2,L006E
-	lda	#$6C
-	brset	1,X00C2,L0070
-	ldx	#$20
-	lda	#$64
-	jmp	L1BD4
-	jmp	L1D11
-;
-	brset	5,X00B6,L0073
-	jsr	L1E74
-	lda	#$92
-	ldx	#$10
-	bra	L0084
-;
-	ldx	#$C8
-	sta	X00C1
-	stx	X00C3
-	jmp	L147B
-;
-	brset	3,X00C1,L004D
-	brset	5,X00C1,L0076
-	lda	#$C4
-	ldx	#$64
-	brset	5,X00B6,L009C
-	lda	#$D3
-L189A:
-	ldx	#$FF
-	bsr	L0084
-	bclr	5,X00B5
-	brset	3,X00CE,L00AD
-	ldx	#$AC
-	jsr	L38CC
-	rora
-	bcc	L00AD
-	bset	5,X00B5
-	jsr	L1E8C
-	eor	X00C0
-	and	#$03
-	eor	X00C0
-	sta	X00C0
-	lda	X005B
-	clrx
-	jmp	L1BD4
-;
-	lda	#$60
-	brclr	5,X00C1,L00F3
-	ldx	#$02
-	brset	7,X00B9,L00CD
-	brset	7,X00BA,L0084
-X18CB:
-	bset	5,X00BB
-	brclr	1,X00BA,L00D7
-	bclr	1,X00BA
-	brclr	6,X00B5,L00D7
-	bset	3,X00BC
-	brclr	3,X005D,L00E0
-	bclr	3,X005D
-	lda	#$82
-	sta	X00B3
-	lda	#$C0
-	brset	3,X00BB,L0082
-	jsr	L1E29
-	brset	4,X00BF,L00EF
-	ldx	#$2D
-	bra	L0113
-;
-	lda	#$C7
-	bra	L0082
-;
-	ldx	#$1E
-	bsr	L0084
-	jsr	L1E06
-	ldx	X00B7
-	stx	X027D
-	beq	L0109
-	brclr	7,X0061,L0109
-	ldx	#$29
-	lda	#$1A
-	cmp	XAE09
-	jmp	L1BE5
-;
-	jsr	L17BF
-	ldx	#$23
-	lda	#$95
-	jmp	L1C84
-;
-	dec	X006F,x
-	ror	X009C
-;
-	db	$5E
-;
-	asra
-	brset	0,X0016,L00C7
-;
-	db	$86
-;
-	brset	2,X00CE,L0175
-	brset	7,X00B9,L0175
-	jsr	L1E4F
-	beq	L0135
-	lda	#$85
-	sta	X00B3
-	lda	#$04
-	sta	X00C2
-	rts
-;
-	lda	#$87
-	clr	X00BE
-	brset	2,X00CE,L0175
-	brset	7,X00B9,L0175
-	brset	5,X0080,L0120
-	lda	X007F
-	and	#$2B
-	cmp	#$02
-	bne	L0120
-	brset	2,X00B8,L0135
-	brset	4,X00C0,L0120
-	bset	2,X00BA
-L1953:
-	bclr	4,X00BA
-	rts
-;
-	clr	X00C1
-	bclr	4,X00B6
-	bclr	2,X00BB
-	lda	#$87
-	brclr	0,X00BA,L0163
-	lda	#$D7
-	ldx	#$10
-	bra	L0115
-;
-	brclr	2,X00BE,L016D
-	brset	4,X00BA,L0178
-	brset	5,X00B6,L017B
-	brset	4,X00BF,L0135
-	lda	#$86
-	jmp	L1C82
-;
-	bclr	5,X00B6
-	rts
-	jmp	L1B7A
-;
-	brclr	5,X00C1,L0184
-	jmp	L185C
-;
-	lda	#$D3
-	ldx	#$FF
-	bra	L0165
-;
-	lda	#$88
-	sta	X00B3
-	rts
-;
-	brclr	6,X00BF,L019B
-	ldx	#$06
-	brclr	2,X00B8,L0198
-	aslx
-	jmp	L1C39
-;
-	brset	5,X00C1,L01A5
-	lda	#$A1
-	ldx	#$30
-	jmp	L1C84
-;
-	bclr	2,X00BB
-	lda	X00B8
-	and	#$70
-	bne	L01B6
-	brset	3,X00BF,L01B6
-	brset	7,X00B6,L01B6
-	jsr	L1A54
-	jsr	L1E29
-	jmp	L1C7C
-;
-	brset	6,X00BF,L01C5
-	brclr	5,X00C1,L01C5
-	jmp	L185C
-;
-	lda	#$C3
-	jmp	L1C9A
-;
-	bsr	L01D5
-	eor	X00B8
-	and	#$70
-	eor	X00B8
-	sta	X00B8
-	rts
-;
-	bsr	L01E4
-	add	#$B3
-	jsr	L38CB
-	and	#$70
-	cmp	#$70
-	bne	L01E3
-	clra
-	rts
-;
-	lda	X00B8
-	and	#$03
-	brclr	2,X00B8,L01F1
-	lda	#$04
-	brclr	3,X00B8,L01F1
-	inca
-	rts
-;
-	bsr	L01E4
-	add	#$BA
-	sta	X0057
-	jsr	L38CB
-	sta	X0056
-	lda	X00B8
-	jsr	L2617
-	jsr	L2664
-	rts
-;
-	lda	X00B8
-	asla
-	jsr	L2616
-	bne	L0210
-	lda	#$07
-	deca
-	brclr	2,X00B8,L0219
-	brclr	3,X00B8,L0223
-	bra	L0221
-;
-	brclr	1,X00B8,L021E
-	add	#$0E
-	brclr	0,X00B8,L0223
-	add	#$07
-	sta	X027C
-	lda	#$19
-	rts
-;
-	clr	X00BD
-	bclr	2,X00BB
-	ldx	#$B1
-	jsr	L38CC
-	eor	X00B8
-	and	#$0F
-	beq	L0242
-	ldx	#$B1
-	jsr	L38CC
-L1A3D:
-	brset	2,X00B8,L0240
-	bsr	L0248
-	jsr	L1DD5
-	brset	7,X00BB,L0228
-	lda	X00B8
-	and	#$7F
-	jmp	L38A0
-;
-	lda	#$01
-	brset	2,X00B8,L0266
-L1A54:
-	brset	2,X00BE,L0268
-	brset	5,X00B9,L0268
-	lda	X00B5
-	and	#$4E
-	brset	3,X008E,L0264
-	brclr	6,X005F,L0266
-	and	#$BF
-	bit	#$40
-	rts
-;
-	bsr	L024F
-	bne	L026F
-L1A6D:
-	coma
-	rts
-;
-	lda	X00B9
-	and	#$38
-	rts
-;
-	lda	X00B6
-	beq	L027C
-	clr	X00B6
-	bset	6,X00CB
-	rts
-;
-	clr	X00B9
-	bclr	6,X00B9
-	bset	5,X00CB
-	bclr	5,X00B9
-	bclr	4,X00B9
-	clr	X00BE
-	bclr	4,X00BA
-	rts
-;
-	clr	X005B
-	brset	3,X00B6,L0293
-	bset	5,X005B
-	brclr	5,X00B5,L0298
-	bset	2,X005B
-	brclr	2,X00B8,L029F
-	bset	7,X005B
-	bra	L02B0
-;
-	bset	6,X005B
-	lda	X00B7
-	cmp	#$41
-L1AA5:
-	bhi	L02AE
-	cmp	#$12
-	bcs	L02B0
-	bset	0,X005B
-	cmp	X125B
-	lda	X005B
-	rts
-;
-	clrx
-	lda	X0274
-	bsr	L02D0
-	lda	X0273
-	bsr	L02D0
-	lda	X0272
-	bsr	L02D0
-	lda	#$2E
-	sta	X00DE
-	lda	#$20
-	sta	X00E0
-	lda	#$52
-	sta	X00E1
-	rts
-;
-	sta	X005B
-	bsr	L02D9
-	lda	X005B
-	jsr	L261E
-	jsr	L2617
-	add	#$30
-	sta	X00DA,x
-	incx
-	rts
-;
-	clra
-	brclr	2,X005F,L02EE
-	lda	X02A5
-	ldx	X000B
-	jsr	L246E
-	sta	X000B
-	jmp	L37B0
-	rts
-;
-	ldx	#$CD
-L1AF6:
-	jsr	L265E
-	bne	L0309
-	clra
-	sta	X0254
-	sta	X0255
-	sta	X0256
-	bset	4,X009E
-	bra	L0319
-;
-	ldx	#$CC
-	jsr	L265E
-	bpl	L0312
-	bclr	1,X00CB
-	bne	L031B
-	dec	,x
-	bclr	5,X00C5
-	bclr	1,X00CB
-	bset	7,X005D
-	rts
-;
-	brset	6,X00C6,L0331
-	brset	5,X00C6,L0333
-	brclr	7,X00C6,L031B
-	brset	2,X00CB,L0331
-	lda	X00CC
-	cmp	#$FF
-	beq	L0331
-	bclr	7,X00C6
-	rts
-;
-	bset	7,X0050
-	lda	X009E
-	and	#$F0
-	bne	L03AC
-	lda	X00C6
-	and	#$1F
-	asla
-	sta	X0056
-	asla
-	add	X0056
-	cmp	#$BA
-	bne	L0349
-	lda	#$FF
-	brclr	5,X00C6,L0353
-	bset	4,X009E
-	bset	5,X009E
-	bclr	5,X00C6
-	rts
-;
-	tsta
-	bmi	L0358
-	bne	L035D
-	brset	1,X00CB,L03AC
-	beq	L035F
-	sta	X00CC
-	clr	X00C6
-	lda	X00C7
-	bpl	L03AD
-	brclr	6,X00C7,L03C4
-	and	#$0E
-	tax
-	lda	X1FEB,x
-	sta	X0059
-	lda	X1FEC,x
-	sta	X0056
-	lsrx
-	lda	X1FFB,x
-	sta	X0256
-	and	#$0F
-	beq	L0393
-	deca
-L1B81:
-	sta	X0058
-	ldx	X1FEA
-	stx	X0057
-	lda	X1FE9
-	tsta
-	beq	L0390
-	bset	0,X0059
-	jsr	L2679
-	brclr	5,X00C7,L0399
-	bset	6,X009E
-	cmp	X1E9E
-	brclr	7,X0050,L03AC
-	bclr	2,X00CB
-	lda	X00CE
-	and	#$07
-	cmp	#$06
-	bne	L03AC
-	eor	X00CE
-	sta	X00CE
-	rts
-;
-	ldx	#$61
-	stx	X0256
-	sta	X0257
-	cmp	#$70
-	bcs	L0399
-	and	#$07
-	tax
-	lda	X2003,x
-	sta	X0257
-	bra	L0396
-;
-	ldx	X00C8
-	and	#$0F
-	bit	#$08
-	bne	L03D3
-	bclr	7,X0050
-	tstx
-	bpl	L03D3
-	negx
-	inca
-	jsr	L261E
-	sta	X0257
-L1BD9:
-	txa
-	and	#$0F
-	add	X0257
-	sta	X0257
-	lda	#$71
-	sta	X0256
-	bra	L0393
-;
-	brset	1,X0057,L03EC
-	eor	X0280
-	brset	1,X0057,L03F4
+	bclr	1,ICL1
 ;
 	db	$9E
 ;
-	brset	1,X0060,L03F6
-	brset	0,X0000,L0465
-	brset	1,X0088,L042E
-	asla
-	aslx
+L057D:
+	brset	6,RAM1_061,L0585
+	jsr	L3155
+L0583:
+	bset	6,RAM1_061
+L0585:
+	brset	4,RAM1_061,L0591
+	jsr	L2725
+	jsr	L1EF3
+	jsr	L48DF
+L0591:
+	bset	4,RAM1_061
+	brset	2,RAM1_09e,L0599
+L0596:
+	jsr	L39C1
+L0599:
+	jsr	L0713
+L059C:
+	jsr	L36FC
+	jsr	L3B0A
+	jsr	L0B2F
+	clrx
+L05A6:
+	jsr	L2649
+	brclr	3,RAM1_08b,L05BB
+	lda	#$0B
+L05AE:
+	brset	4,RAM1_08b,L05B6
+	lda	#$1A
+	brclr	1,RAM1_081,L05BB
+L05B6:
+	jsr	L24E5
+	bset	1,STACK_0cb
+L05BB:
+	clr	RAM1_067
+	clr	RAM1_068
+L05BF:
+	brclr	4,RAM1_0bb,L05C4
+L05C2:
+	bset	2,RAM1_094
+L05C4:
+	sei
+	bset	4,Miscell
+L05C7:
+	bset	7,TCR
+	cli
+L05CA:
+	brset	7,RAM1_069,L05D4
+	brclr	5,RAM1_0bb,L05D4
+	bset	7,RAM1_069
+L05D2:
+	bset	1,RAM1_05d
+L05D4:
+	jsr	L0785
+	brset	2,RAM1_05d,L05E3
+	clra
+L05DB:
+	brclr	3,PortA,L05E6
+	deca
+	bne	L05DB
+	bclr	4,RAM1_061
+L05E3:
+	jmp	L0506
 ;
-	db	$92
+L05E6:
+	bih	L05EB
+	jmp	L04E5
 ;
-	sbc	#$B0
-	cmp	X0048,x
-	bclr	2,X000E
-	brset	0,X0000,L0408
-	brset	0,X0000,L040B
-	brset	6,X0069,L0411
-X1C0E:
-	brset	0,X0080,L0430
+L05EB:
+	jsr	L22BD
+	jsr	L3164
+	jsr	L4C7B
+	jsr	L142B
+	jsr	L37F4
+	jsr	L40DD
+	jsr	L4955
+	jsr	L27CF
+;
+	db	$CD
+;
+L0604:
+	beq	L05C8
+	jsr	L1F1C
+	jsr	L3A48
+	jsr	L3B88
+	jsr	L0614
+	bra	L05C4
+;
+L0614:
+	brset	3,RAM1_067,L062D
+L0617:
+	brset	2,RAM1_067,L0640
+	brset	1,RAM1_067,L0647
+	brset	0,RAM1_067,L0670
+	brset	4,RAM1_067,L0649
+	brset	5,RAM1_067,L065A
+	brset	6,RAM1_067,L0665
+	brset	7,RAM1_067,L066D
+L062C:
+	rts
+;
+L062D:
+	bclr	3,RAM1_067
+	bset	2,RAM1_067
+	jsr	L200B
+	jsr	L386E
+L0637:
+	jsr	L274E
+	jsr	L23CE
+	jmp	L39F4
+;
+L0640:
+	bclr	2,RAM1_067
+	bset	1,RAM1_067
+;
+	db	$CC
+;
+L0645:
+	brclr	3,TCL,L0668
+	inc	TCL,x
+	asr	STACK_0cd,x
+	beq	L067E
+	jsr	L1EF4
+	jsr	L3173
+	jsr	L3CE1
+	jmp	L27C3
+;
+L065A:
+	bclr	5,RAM1_067
+	jsr	L1419
+	jsr	L3D06
+L0662:
+	jmp	L3730
+;
+L0665:
+	bclr	6,RAM1_067
+	jsr	L3BA2
+	jmp	L4CB4
+;
+L066D:
+	bclr	7,RAM1_067
+	rts
+;
+L0670:
+	bclr	0,RAM1_067
+	jsr	L490B
+	jsr	L316A
+	jsr	L3BFE
+	brset	7,RAM1_060,L06A4
+L067E:
+	brclr	3,RAM1_08b,L069E
+	brset	3,STACK_0ce,L069B
+L0684:
+	brclr	6,RAM1_05d,L0692
+	bclr	1,STACK_0cb
+	jsr	L38D0
+	jsr	L454C
+L068F:
+	jsr	L2174
+L0692:
+	jsr	L34F7
+	jsr	L479C
+	jsr	L460C
+L069B:
+	jsr	L28B0
+L069E:
+	jsr	L2D55
+	jsr	L4B76
+L06A4:
+	jsr	L4541
+	jsr	L3BD8
+	bclr	6,RAM1_05d
+	brclr	7,RAM1_060,L06B2
+	jsr	L2D55
+L06B2:
+	jmp	L0BBE
+;
+	db	$13
+;
+L06B6:
+	asr	SCSR,x
+	asr	SCCR2,x
+	tstx
+	rorx
+	bclr	7,RAM1_05d
+	lda	STACK_0ca
+	and	#$0F
+	ldx	#$03
+	mul
+	tax
+	cpx	#$21
+	bcc	L0712
+	jsr	L06E5,x						;INFO: index jump
+	lda	STACK_0ca
+	jsr	L2617
+	and	#$03
+	ldx	#$03
+	mul
+	tax
+	cpx	#$0C
+	bcc	L0712
+	jsr	L0706,x						;INFO: index jump
+	brclr	6,STACK_0ca,L0712
+	jmp	L2CD3
+;
+L06E5:
+	db	$CC, $06, $2C, $CC
+	db	$2B, $51, $CC, $48
+	db	$33, $CC, $46, $A7
+	db	$CC, $36, $AB, $CC
+	db	$39, $4C
+;
+L06F7:
+	jmp	L30C1
+;
+	db	$CC, $06, $2C, $CC
+	db	$4B, $FD, $CC, $45
+	db	$78, $CC, $45, $42
+L0706:
+	db	$CC, $4C, $0F, $CC
+;
+L070A:
+	bmc	L0742
+	jmp	L487B
+;
+	db	$CC
+;
+L0710:
+	asra
+;
+	db	$1A
+;
+L0712:
+	rts
+;
+L0713:
+	jsr	L142B
+;
+	db	$CD, $37
+;
+L0718:
+	and	,x
+L0719:
+	jsr	L1407
+	jmp	L37B0
+;
+L071F:
+	clr	RAM1_066
+	lda	RAM1_065
+	sta	RAM2_02b0
+	bclr	7,RAM1_069
+	brclr	4,RAM1_061,L0733
+	jsr	L0B8C
+;
+	db	$CD, $48
+;
+L0730:
+	ora	X1961
+L0733:
+	lda	#$0A
+	sta	RAM1_050
+	bset	2,TCR
+	bset	4,TCR
+	bih	L073F
+	bclr	6,RAM1_0ba
+L073F:
+	jsr	L2631
+L0742:
+	brset	1,PortC,L0747
+	bset	4,RAM1_05d
+L0747:
+	bclr	1,PortC
+L0749:
+	jsr	L0785
+	lda	RAM1_065
+	sub	RAM2_02b0
+	cmp	#$03
+	bcs	L0757
+	bset	5,RAM1_060
+L0757:
 	lda	#$27
 	jsr	L25B7
-L1C16:
 	cmp	#$19
-	bcs	L041C
-	bclr	3,X005D
-	cmp	#$D5
-	bcs	L0425
-	bset	0,X0080
-	bset	6,X0069
+	bcs	L0772
+	cmp	#$53
+	bhi	L076E
+	bclr	6,RAM1_061
+	bclr	5,RAM1_061
+	bclr	7,RAM1_061
+	bclr	6,RAM1_05f
+	bra	L073F
+;
+L076E:
+	cmp	#$73
+	bcs	L0733
+L0772:
+	bil	L0733
+	dec	RAM1_050
+	bne	L073F
 	rts
 ;
-	cmp	#$D2
-	bhi	L0430
-	brclr	6,X0069,L0430
-	bclr	6,X0069
-	bclr	0,X0080
-	rts
+L0779:
+	jsr	L0B8C
+L077C:
+	jsr	L48CA
+	jsr	L209E
+L0782:
+	jmp	L0506
 ;
-	jsr	L2136
-	brclr	7,X000C,L045A
-	jsr	L210B
-	ldx	#$14
-	jsr	L20D2
-	bclr	2,X0006
-	bclr	3,X0006
-	jsr	L2643
-	bset	5,X0069
-	lda	X0002
-	and	#$0C
-	bne	L0450
-	bclr	5,X0069
-	bset	2,X0006
-	bset	3,X0006
-	bclr	7,X000C
-	lda	#$FF
-	sta	X008C
-	lda	X001A
-	add	#$14
-	sta	X001E
-	lda	X0013
-	clr	X001F
-	rts
+L0785:
+	brset	4,RAM1_05d,L078F
+	brclr	1,Miscell,L078E
 ;
-	bsr	L049E
-	bsr	L04B4
-	lda	#$30
-	brclr	6,X005F,L0472
-	lda	#$31
-	bset	0,X0001
-	sta	X0005
-	lda	#$02
-	sta	X0006
-	rts
+	db	$03, $03
 ;
-	brset	2,X0001,L0490
-L1C7C:
-	bset	2,X0001
-	ldx	#$08
-	bra	L048E
+L078D:
+	bhcs	L0710
+L078F:
+	lda	#$06
+	brset	1,Miscell,L0796
+	lda	#$01
+L0796:
+	add	RAM1_066
+	sta	RAM1_066
+	bcc	L07B7
+L079C:
+	lda	#$01
+	add	RAM1_065
+	sta	RAM1_065
+	bcc	L07B7
+	brset	7,RAM1_064,L07B7
+	inc	RAM1_064
+	bpl	L07B7
+L07AB:
+	brset	2,RAM1_08b,L07B7
+	brset	1,RAM1_05f,L07B7
+	brclr	0,RAM1_061,L07B7
+L07B4:
+	jmp	L08A2
 ;
-L1C82:
-	brset	0,X0002,L0490
-	bset	0,X0002
-	brset	6,X005F,L0490
-	bclr	3,X0001
-	ldx	#$06
-	bsr	L04D2
-	lda	#$2C
-	sta	X000F
-	lda	X215B
-	sta	X000D
-	lda	X0010
-	lda	X0011
-	rts
+L07B7:
+	bclr	4,RAM1_05d
+	brclr	1,DDRC,L07C0
+L07BC:
+	bclr	1,DDRC
+L07BE:
+	bra	L07D3
 ;
-	bclr	4,X0061
-	bclr	0,X0081
-	brset	2,X0012,L04A8
-	brclr	2,X0001,L04B2
-	ldx	#$32
-	bsr	L04D2
-	bclr	2,X0001
-	ldx	#$05
-	bsr	L04D2
-	cli
-	rts
+L07C0:
+	lda	RAM1_062
+	brclr	1,PortC,L07C9
+L07C5:
+	add	#$20
+	bra	L07CB
 ;
-	lda	#$04
-	jsr	L2633
-	clr	X000F
-	lda	#$07
-	sta	X0004
-X1CBF:
-	clr	X0000
-	bclr	6,X0001
-	bclr	5,X0061
-	brclr	0,X0002,L04B2
-	bclr	0,X0002
-	brclr	4,X000C,L050A
-	ldx	#$32
-	bsr	L04D2
-	rts
-;
-	sei
-	bclr	7,X008F
-	brclr	1,X0002,L04DB
-	bclr	1,X0002
-	cmp	X1202
-	txa
-	and	#$03
-	bne	L04F4
-	stx	X0057
+L07C9:
+	sub	#$20
+L07CB:
+	bcs	L07CF
+L07CD:
+	sta	RAM1_062
+L07CF:
+	bset	1,DDRC
+L07D1:
+	bset	1,PortC
+L07D3:
 	clra
-	brclr	2,X005F,L04F0
-	lda	X02A5
-	ldx	X000B
-	jsr	L246E
-	sta	X000B
-	ldx	X0057
-	jsr	L2631
-L1CF7:
-	decx
-	bpl	L04D5
-	bset	2,X00D6
-	bset	4,X005E
-	bset	7,X0096
-	brclr	0,X0002,L0509
-	brclr	7,X008F,L0509
-	jmp	L04ED
+	brset	2,PortD,L07D9
+	ora	#$01
+L07D9:
+	brset	0,PortD,L07DE
+L07DC:
+	ora	#$02
+L07DE:
+	brclr	7,RAM1_05e,L07E3
+	ora	#$04
+L07E3:
+	brclr	1,PortD,L07E8
+	ora	#$10
+L07E8:
+	tst	RAM1_062
+	bpl	L07EE
+L07EC:
+	ora	#$08
 ;
+L07EE:
+	db	$0D
+;
+L07EF:
+	brclr	1,PortC,L079C
+	rti
+;
+L07F3:
+	eor	RAM1_05f
+	and	#$9F
+	beq	L0067
+L07F9:
+	sta	RAM1_05b
+	eor	RAM1_05f
+	sta	RAM1_05f
+	brclr	3,RAM1_05f,L0006
+	bset	5,RAM1_05f
+	bra	L0010
+;
+	db	$0F, $5F, $02, $1A
+	db	$5F, $02, $5F, $02
+	db	$1B, $5F, $01, $5B
+	db	$0D, $00, $5F, $7F
+	db	$0C, $5F, $03, $01
+	db	$61, $04, $1D, $5F
+	db	$20, $94, $0F, $60
+	db	$03, $0A, $5D, $25
+	db	$1B, $5D, $02, $5F
+	db	$0A, $03, $5B, $1D
+	db	$01, $61, $78, $12
+	db	$61, $20, $6D, $00
+	db	$61, $08, $03, $5B
+	db	$10, $00, $5F, $59
+	db	$1A, $5F, $13, $61
+	db	$03, $5B, $06, $01
+	db	$5F, $03, $06, $CE
+	db	$4C, $09, $5B, $13
+	db	$00, $61, $03, $03
+	db	$5F, $0D, $07, $60
+	db	$0A, $17, $60, $08
+	db	$5F, $02, $10, $60
+	db	$02, $0C, $03, $05
+	db	$5B, $03, $01, $61
+	db	$42, $81, $CD, $20
+	db	$82, $CD, $20, $79
+	db	$CD, $48, $DF, $A6
+	db	$C8, $B7, $63, $3D
+	db	$63, $27, $33, $07
+	db	$67, $05, $17, $67
+	db	$CD, $49, $0B, $CD
+	db	$49, $55, $CD, $40
+	db	$DD, $0F, $92, $EB
+	db	$08, $92, $E8, $10
+	db	$61, $1E, $60, $1C
+	db	$60, $20, $14, $19
+	db	$61, $10, $61, $3F
+	db	$93, $03, $5F, $0B
+	db	$13, $61, $20, $07
+;
+L08A2:
+	bclr	0,RAM1_061
+	brclr	1,RAM1_05f,L00A9
+	bset	5,RAM1_05f
+	jmp	L0506
+;
+	db	$A6, $08, $B7, $60
+	db	$20, $F7
+;
+L08B2:
+	bclr	7,RAM1_069
+	brset	4,RAM1_060,L0068
+	brset	0,RAM1_060,L00BE
+	lda	#$08
+	sta	RAM1_060
+	brset	3,RAM1_07f,L00C7
+	brset	2,RAM1_07f,L00C7
+	jsr	L0B8C
+	brset	5,RAM1_05f,L00D0
+	jsr	L0B8C
+	jsr	L48CA
+	jsr	L22BD
+	clr	PLMA
+	bih	L00DA
+	jmp	L04E5
+;
+	db	$05, $9E, $03, $CD
+	db	$39, $A4, $0C, $5F
+	db	$03, $CD, $31, $61
+	db	$0A, $5F, $03, $CD
+	db	$20, $9E, $CD, $07
+	db	$85, $0C, $5F, $07
+	db	$11, $01, $AE, $02
+	db	$CD, $26, $49, $0A
+	db	$5F, $0B, $0D, $5F
+	db	$21, $0B, $61, $05
+	db	$00, $A1, $2D, $20
+	db	$19, $CD, $20, $82
+	db	$0D, $5F, $1D, $17
+	db	$00, $16, $04, $CD
+	db	$13, $75, $A6, $89
+	db	$B7, $B3, $B6, $C4
+	db	$B7, $B7, $1A, $61
+	db	$20, $12, $0F, $64
+	db	$07, $1D, $5F, $AE
+	db	$02, $CD, $26, $49
+	db	$1B, $61, $CD, $31
+	db	$61, $CD, $13, $C5
+	db	$0B, $5F, $2F, $13
+	db	$81, $14, $12, $18
+	db	$12, $16, $8B, $CD
+	db	$20, $79, $CD, $48
+	db	$DF, $CD, $0B, $2F
+	db	$18, $61, $10, $80
+	db	$A6, $80, $B7, $7D
+	db	$B7, $7B, $07, $8E
+	db	$02, $AA, $10, $B7
+	db	$D5, $1C, $94, $1A
+	db	$94, $12, $94, $19
+	db	$6B, $1C, $95, $CC
+	db	$09, $C6, $15, $12
+	db	$0A, $61, $F8, $CD
+	db	$31, $61, $07, $60
+	db	$31, $04, $5F, $03
+	db	$CC, $0A, $6D, $CD
+	db	$20, $B4, $A6, $FA
+	db	$B7, $12, $A6, $64
+	db	$B7, $63, $CD, $07
+	db	$85, $CD, $40, $DD
+	db	$08, $60, $3A, $0A
+	db	$5F, $37, $CD, $22
+	db	$BD, $07, $67, $05
+	db	$17, $67, $CD, $23
+	db	$CE, $0D, $5F, $E6
+	db	$3D, $63, $26, $E2
+	db	$20, $23, $CD, $20
+	db	$65, $A6, $5A, $B7
+	db	$12, $A6, $FA, $B7
+	db	$63, $CD, $07, $85
+	db	$CD, $40, $DD, $08
+	db	$60, $0F, $0A, $5F
+	db	$0C, $06, $60, $09
+	db	$09, $5F, $EA, $3D
+	db	$63, $26, $EA, $16
+	db	$60, $CC, $05, $06
+	db	$A6, $64, $B7, $63
+	db	$A6, $1E, $B7, $68
+	db	$1D, $67, $13, $01
+	db	$A6, $5B, $B7, $A6
+	db	$9A, $0D, $5F, $0E
+	db	$CD, $14, $2B, $CD
+	db	$37, $F4, $CD, $34
+	db	$F7, $CD, $31, $64
+	db	$10, $01, $CD, $07
+	db	$85, $CD, $40, $DD
+	db	$08, $60, $D2, $2E
+	db	$73, $CD, $4C, $7B
+	db	$CD, $22, $BD, $05
+	db	$12, $03, $CD, $49
+	db	$55, $07, $67, $D4
+	db	$17, $67, $CD, $23
+	db	$CE, $0D, $5F, $11
+	db	$CD, $14, $07, $CD
+	db	$37, $B0, $CD, $31
+	db	$6A, $0B, $67, $05
+	db	$1B, $67, $CD, $14
+	db	$19, $05, $12, $32
+	db	$0B, $5F, $A2, $CD
+	db	$2D, $55, $CD, $0B
+	db	$BE, $CD, $49, $0B
+	db	$09, $67, $A9, $19
+	db	$67, $3A, $A7, $27
+	db	$15, $0E, $5F, $9C
+	db	$B6, $9A, $A1, $F0
+	db	$25, $96, $07, $5F
+	db	$97, $02, $5F, $94
+	db	$A6, $02, $B7, $A6
+	db	$20, $8E, $3A, $A6
+	db	$26, $8A, $1B, $5F
+	db	$20, $86, $0A, $5F
+	db	$68, $01, $A1, $03
+	db	$CC, $09, $C6, $0D
+	db	$67, $07, $06, $B9
+	db	$5C, $3D, $63, $27
+	db	$58, $CC, $09, $D6
+	db	$14, $12, $18, $12
+	db	$CC, $04, $E5, $9B
+	db	$19, $0C, $CD, $20
+	db	$65, $A6, $5A, $B7
+	db	$12, $12, $0C, $A6
+	db	$14, $B7, $63, $3F
+	db	$0B, $3F, $76, $3F
+	db	$5E, $3F, $A8, $3F
+	db	$A6, $3F, $09, $3F
+	db	$0F, $9A, $CD, $07
+	db	$85, $A6, $08, $BB
+	db	$1A, $B7, $1E, $3F
+	db	$1F, $8F, $00, $00
+	db	$00, $A6, $27, $B7
+	db	$09, $CD, $22, $3C
+	db	$0A, $5F, $16, $3D
+	db	$63, $26, $1C, $06
+	db	$00, $0C, $17, $00
+	db	$16, $04, $4F, $4A
+	db	$26, $FD, $17, $04
+	db	$3F, $6A, $0D, $5F
+	db	$03, $CC, $05, $06
+	db	$11, $05, $0F, $64
+	db	$02, $1D, $61, $0C
+	db	$5F, $BF, $2E, $9C
+	db	$05, $12, $0C, $3D
+	db	$63, $26, $B6, $1A
+	db	$01, $17, $00, $16
+	db	$04, $20, $9A, $0F
+	db	$09, $FD, $3D, $A8
+	db	$26, $0B, $07, $A6
+	db	$22, $B6, $A4, $BE
+	db	$A5, $AD, $3F, $20
+	db	$30, $B6, $A8, $B0
+	db	$08, $25, $14, $A1
+	db	$03, $25, $10, $14
+	db	$12, $18, $12, $17
+	db	$01, $16, $05, $A6
+	db	$30, $B7, $63, $1B
+	db	$01, $20, $1A, $B6
+	db	$08, $BB, $A5, $B7
+	db	$A5, $24, $02, $3C
+	db	$A4, $3C, $A6, $B6
+	db	$A6, $A5, $3F, $26
+	db	$0E, $B6, $A4, $BE
+	db	$A5, $AD, $0D, $B7
+	db	$A8, $3F, $A5, $3F
+	db	$A4, $3F, $A6, $CC
+	db	$0A, $87, $59, $49
+	db	$59, $49, $59, $49
+	db	$81
+;
+L0B2F:
+	brset	7,RAM1_061,L0355
+	ldx	#$A8
+	jsr	L38CC
+	sta	RAM1_085
+	jsr	L1296
+	jsr	L12B1
+	stx	RAM1_057
+	ldx	#$AB
+	jsr	L38CC
+	add	#$FD
+	add	RAM1_057
+	bpl	L034D
+	clra
+	cmp	RAM1_085
+	bcc	L0355
+	sta	RAM1_085
+	bset	3,RAM1_05c
+	bclr	7,RAM1_082
+	lda	#$FF
+	sta	RAM1_088
+	sta	RAM1_083
+	jsr	L0FCC
+	clr	RAM1_082
+	jsr	L0F96
+	jsr	L0F89
+	clr	RAM1_07e
+	clr	RAM1_080
+	clr	RAM1_087
+	bset	4,RAM1_07e
+	bset	3,RAM1_07e
+	brclr	3,RAM1_05f,L0378
+	brset	0,RAM1_081,L039D
+	bclr	0,RAM1_081
+	clrx
+	brset	0,RAM1_061,L0380
+	ldx	#$04
+	lda	X136A,x
+	sta	RAM1_08a
+	bset	6,RAM1_082
+	bclr	2,RAM1_06b
+	bclr	1,RAM1_06b
+	rts
+;
+L0B8C:
+	brclr	3,PortB,L0396
+	bclr	3,PortB
+	lda	#$05
+	jsr	L2623
+	jsr	L0F96
+	bclr	1,PortB
+	bclr	0,RAM1_081
+	rts
+;
+L0B9E:
+	brclr	7,RAM1_087,L03BD
+	lda	#$01
+	eor	TCR
+	sta	TCR
+	lda	OCL1
+	add	#$A0
+	tax
+	lda	OCH1
+	adc	#$01
+	cmp	ACH
+	bmi	L03BA
+	bne	L03BD
+	cpx	ACL
+	bhi	L03BD
+	lda	ACH
+	inca
+	rts
+;
+L0BBE:
+	tst	RAM1_07e
+	beq	L03FD
+	brclr	2,RAM1_07e,L03CD
+	bclr	2,RAM1_07e
+	clr	RAM1_08a
+	lda	#$DD
+	sta	RAM1_087
+	lda	#$FF
+	brset	6,RAM1_07e,L03E8
+	lda	#$C8
+	brset	7,RAM1_07e,L03E8
+	brclr	1,RAM1_07e,L03F2
+	bclr	1,RAM1_07e
+	lda	RAM1_082
+	and	#$03
+	cmp	#$02
+	bne	L03F2
+	bset	4,RAM1_080
+	lda	#$05
+	bclr	6,RAM1_07e
+	bclr	7,RAM1_07e
+	jsr	L0F96
+	jmp	L0D0D
+;
+	db	$0B, $7E, $08, $1B
+	db	$7E, $0D, $82, $03
+	db	$CC, $0C, $F6, $0D
+	db	$82, $03, $CC, $0C
+	db	$B9, $04, $BE, $03
+	db	$06, $7F, $39, $0E
+	db	$87, $64, $00, $80
+	db	$33, $0A, $7F, $52
+	db	$0E, $7F, $55, $0C
+	db	$7F, $46, $08, $82
+	db	$0E, $0B, $80, $0B
+	db	$B6, $88, $AB, $34
+	db	$24, $05, $1B, $82
+	db	$CC, $0C, $E2, $B6
+	db	$7F, $A4, $03, $26
+	db	$16, $C6, $02, $66
+	db	$2A, $0E, $C6, $02
+	db	$65, $A1, $40, $27
+	db	$04, $A1, $30, $26
+	db	$03, $CC, $0C, $EC
+	db	$CC, $0C, $D8, $4A
+	db	$26, $13, $AE, $AD
+	db	$CD, $38, $CC, $27
+	db	$03, $02, $7C, $0C
+	db	$0E, $7C, $ED, $02
+	db	$7C, $EA, $CC, $0C
+	db	$EC, $4A, $26, $06
+	db	$00, $BA, $77, $CC
+	db	$0C, $EC, $0C, $80
+	db	$71, $CC, $0C, $EC
+	db	$A6, $80, $B7, $87
+	db	$20, $7C, $3A, $8A
+	db	$2A, $63, $B6, $87
+	db	$A4, $1F, $A1, $1F
+	db	$26, $04, $13, $87
+	db	$1D, $87, $3C, $87
+	db	$0C, $87, $03, $01
+	db	$87, $23, $CD, $12
+	db	$78, $27, $05, $0C
+	db	$87, $7B, $20, $76
+	db	$0B, $7F, $0C, $1F
+	db	$7F, $1F, $82, $1D
+	db	$82, $3F, $8A, $11
+	db	$82, $20, $67, $01
+	db	$87, $07, $CD, $0F
+	db	$B1, $A6, $14, $20
+	db	$09, $A6, $FE, $B7
+	db	$88, $CD, $0F, $96
+	db	$A6, $50, $B7, $8A
+	db	$CC, $0D, $A3, $3A
+	db	$8A, $26, $1A, $01
+	db	$81, $54, $A6, $02
+	db	$B7, $8A, $CD, $12
+	db	$78, $27, $2D, $0F
+	db	$82, $19, $B8, $82
+	db	$B7, $82, $16, $7E
+	db	$16, $BC, $CD, $0F
+	db	$89, $81, $0B, $82
+	db	$03, $09, $82, $04
+	db	$1A, $82, $20, $D4
+	db	$0E, $82, $D1, $0E
+	db	$82, $04, $CD, $0F
+	db	$96, $81, $CD, $12
+	db	$78, $26, $17, $1B
+	db	$82, $0F, $82, $C0
+	db	$1D, $82, $19, $80
+	db	$0F, $82, $DA, $3F
+	db	$8A, $00, $80, $D5
+	db	$CD, $0F, $B1, $CC
+	db	$0B, $FD, $0F, $82
+	db	$CD, $A6, $02
+;
+L0D0D:
+	sta	RAM1_08a
+	bset	6,RAM1_082
+	jmp	L0DA3
+;
+	db	$03, $81, $4E, $0E
+	db	$60, $4B, $04, $82
+	db	$75, $07, $82, $0E
+	db	$03, $01, $06, $13
+	db	$01, $AE, $04, $20
+	db	$65, $0F, $6B, $66
+	db	$20, $5C, $07, $01
+	db	$12, $0E, $82, $03
+	db	$04, $BE, $A0, $17
+	db	$01, $AE, $01, $0F
+	db	$6B, $5D, $03, $01
+	db	$5A, $20, $54, $AE
+	db	$02, $01, $61, $51
+	db	$0E, $6B, $06, $1E
+	db	$6B, $1C, $95, $20
+	db	$4A, $02, $01, $06
+	db	$12, $01, $AE, $01
+	db	$20, $41, $AE, $03
+	db	$03, $90, $3A, $16
+	db	$01, $AE, $06, $20
+	db	$36, $00, $61, $0A
+	db	$0E, $5F, $27, $06
+	db	$5F, $24, $17, $01
+	db	$20, $25, $06, $5F
+	db	$1D, $02, $01, $1A
+	db	$0F, $60, $05, $C6
+	db	$02, $C4, $2B, $12
+	db	$12, $01, $1F, $6B
+	db	$1C, $95, $AE, $07
+	db	$20, $11, $1F, $6B
+	db	$1C, $95, $AE, $04
+	db	$20, $09, $01, $02
+	db	$02, $16, $01, $AE
+	db	$05, $10, $81, $D6
+	db	$13, $6A, $B7, $8A
+	db	$18, $12, $81
+;
+L0DA3:
+	ldx	RAM1_085
+	lda	X131A,x
+	brclr	1,RAM1_081,L05AE
+	lda	X133A,x
+	sta	RAM1_058
+	brset	4,RAM1_080,L05C2
+	brset	6,RAM1_082,L05BF
+	brset	7,RAM1_087,L05C2
+	brset	7,RAM1_082,L05BF
+	brclr	5,RAM1_082,L05C2
+	jmp	L0E9A
+;
+	db	$CD, $12, $96, $0E
+	db	$87, $1D, $08, $7F
+	db	$41, $AE, $A9, $CD
+	db	$12, $A5, $0B, $7F
+	db	$03, $02, $A1, $09
+	db	$0D, $7F, $33, $3D
+	db	$58, $27, $12, $3A
+	db	$58, $BF, $86, $B6
+	db	$57, $20, $0A, $0D
+	db	$87, $07, $CB, $13
+	db	$72, $24, $02, $A6
+	db	$FF, $B1, $58, $22
+	db	$02, $B7, $58, $0F
+	db	$87, $14, $0C, $87
+	db	$11, $B6, $87, $44
+	db	$A4, $0F, $97, $B6
+	db	$58, $DB, $13, $5A
+	db	$24, $02, $A6, $FF
+	db	$B7, $58, $0C, $81
+	db	$0C, $B6, $84, $27
+	db	$08, $48, $40, $BB
+	db	$58, $25, $04, $4F
+	db	$C1, $B6, $58, $07
+	db	$81, $04, $A6, $80
+	db	$B0, $85, $B7, $58
+	db	$04, $BE, $33, $06
+	db	$82, $6E, $04, $82
+	db	$1A, $04, $6B, $03
+	db	$03, $6B, $06, $15
+	db	$6B, $13, $6B, $1C
+	db	$95, $03, $81, $1E
+	db	$02, $01, $1B, $08
+	db	$82, $18, $CD, $0F
+	db	$4A, $20, $51, $AE
+	db	$AE, $CD, $38, $CC
+	db	$A4, $07, $4A, $48
+	db	$48, $CB, $13, $73
+	db	$BB, $58, $25, $40
+	db	$B7, $58, $0E, $81
+	db	$18, $0A, $7F, $15
+	db	$0C, $7F, $12, $06
+	db	$81, $0F, $AE, $00
+	db	$03, $81, $02, $AE
+	db	$10, $CD, $12, $C3
+	db	$43, $A4, $0F, $20
+	db	$01, $4F, $B7, $59
+	db	$B1, $83, $27, $10
+	db	$24, $09, $B6, $83
+	db	$4A, $A4, $0F, $B7
+	db	$83, $20, $02, $B7
+	db	$83, $CD, $0F, $BD
+	db	$38, $59, $B6, $58
+	db	$B0, $59, $24, $01
+	db	$4F, $48, $24, $02
+;
+L0E9A:
+	lda	#$FF
+	sta	RAM1_058
+	sta	RAM1_059
+	brset	6,RAM1_082,L06B2
+	brset	7,RAM1_087,L06B2
+	lda	RAM1_088
+	sub	RAM1_058
+	beq	L070A
+	rora
+	eor	#$7F
+	brclr	4,RAM1_081,L06B6
+	lda	RAM1_058
+	bra	L06F7
+;
+	db	$AE, $20, $CD, $12
+	db	$C3, $48, $0A, $82
+	db	$02, $AB, $10, $AB
+	db	$00, $97, $D6, $12
+	db	$FA, $3A, $8A, $2B
+	db	$1C, $4D, $2B, $0A
+	db	$3D, $89, $2B, $1C
+	db	$B1, $89, $22, $0A
+	db	$20, $3A, $3D, $89
+	db	$2A, $12, $B1, $89
+	db	$24, $F6, $97, $B0
+	db	$89, $BF, $89, $20
+	db	$0E, $4D, $26, $04
+	db	$B6, $58, $B0, $88
+	db	$DE, $12, $FB, $BF
+	db	$8A, $B7, $89, $BB
+	db	$88, $18, $82, $B1
+	db	$59, $26, $02, $19
+	db	$82, $B1, $88, $27
+	db	$09, $B7, $88, $CD
+	db	$0F, $CC, $20, $08
+	db	$19, $82, $08, $7E
+	db	$F6, $06, $7E, $F3
+	db	$B6, $82, $A4, $0C
+	db	$97, $01, $80, $03
+	db	$00, $61, $02, $B8
+	db	$7F, $A4, $0C, $27
+	db	$59, $0B, $82, $03
+	db	$0F, $82, $53, $5D
+	db	$27, $01, $9F, $B8
+	db	$82, $B7, $82, $1C
+	db	$95, $15, $6B, $13
+	db	$6B, $03, $81, $19
+	db	$4F, $AE, $AF, $CD
+	db	$38, $A0, $06, $82
+	db	$05, $05, $82, $04
+	db	$14, $6B, $12, $6B
+	db	$11, $81, $A6, $05
+	db	$B7, $8A, $1C, $82
+	db	$81, $07, $82, $17
+	db	$03, $01, $08, $13
+	db	$01, $17, $82, $A6
+	db	$50, $20, $21, $AE
+	db	$AF, $CD, $38, $CC
+	db	$46, $24, $09, $14
+	db	$6B, $20, $07, $05
+	db	$82, $07, $14, $6B
+	db	$12, $6B, $16, $01
+	db	$81, $00, $61, $03
+	db	$17, $01, $81, $02
+	db	$01, $FC, $A6, $28
+	db	$11, $81, $B7, $8A
+	db	$1C, $82, $81
+;
+L0F89:
+	lda	RAM1_082
+	and	#$03
+	tax
+	lda	X11FB,x
+	sta	RAM1_050
+	clra
+	bra	L07C3
+;
+L0F96:
+	bset	7,RAM1_082
+	brset	5,RAM1_081,L077C
+	lda	#$FF
+	cmp	RAM1_088
+	beq	L07A5
+	sta	RAM1_088
+	bsr	L07D1
+	lda	#$FF
+	sta	RAM1_050
+	lda	#$03
+	bsr	L07C3
+	lda	#$81
+	bra	L07B7
+;
+	db	$1F, $82, $16, $7E
+	db	$A6, $80, $B7, $50
+	db	$A6, $08, $20, $06
+	db	$B6, $83, $B7, $50
+	db	$A6, $01, $AE, $88
+	db	$01, $02, $03, $CD
+	db	$11, $FF, $81
+;
+L0FCC:
+	lda	RAM1_088
+	brset	7,RAM1_082,L07CB
+	brclr	5,RAM1_07f,L07DC
+	brset	5,RAM1_082,L07DC
+	add	#$E0
+	bcs	L07DC
+	clra
+	brclr	1,RAM1_081,L0005
+	brclr	1,RAM1_082,L07EC
+	brset	0,RAM1_082,L07F9
+	brclr	2,RAM1_0b8,L07F9
+	lda	#$08
+	bra	L07F3
+;
+	db	$A6, $14, $01, $82
+	db	$02, $A6, $0C, $40
+	db	$BB, $88, $25, $01
+	db	$4F, $A1, $30, $24
+	db	$02, $A6, $30, $A1
+	db	$44, $24, $02, $16
+	db	$7E, $B7, $56, $1F
+	db	$5B, $AE, $A0, $CD
+	db	$10, $EF, $B7, $59
+	db	$AE, $A1, $CD, $10
+	db	$EF, $B7, $58, $0A
+	db	$82, $28, $07, $7E
+	db	$25, $17, $7E, $2B
+	db	$02, $43, $C1, $AB
+	db	$07, $A4, $0F, $B7
+	db	$50, $B6, $59, $2B
+	db	$07, $43, $A5, $08
+	db	$26, $04, $A0, $0D
+	db	$AB, $07, $CD, $26
+	db	$1E, $BB, $50, $B7
+	db	$50, $A6, $03, $CD
+	db	$0F, $C3, $B6, $58
+	db	$26, $0C, $B6, $59
+	db	$AB, $08, $B7, $57
+	db	$97, $D6, $11, $37
+	db	$20, $15, $AB, $08
+	db	$B7, $57, $B6, $59
+	db	$2A, $01, $40, $CD
+	db	$26, $1E
+X105E:
+	db	$BB, $57, $97, $D6
+	db	$11, $37, $0F, $59
+	db	$03, $CD, $26, $1E
+	db	$CD, $26, $17, $06
+	db	$57, $0E, $0E, $5B
+	db	$0A, $40, $27, $07
+	db	$BB, $56, $25, $0A
+	db	$4F, $20, $07, $4F
+	db	$BB, $56, $24, $02
+	db	$A6, $FF, $B7, $50
+	db	$A6, $02, $CD, $0F
+	db	$C3, $09, $7E, $60
+	db	$19, $7E, $A6, $88
+	db	$B7, $55, $A6, $14
+	db	$B7, $54, $A6, $E0
+	db	$AE, $53, $BF, $57
+	db	$BE, $57, $7F, $B7
+	db	$56, $AE, $A3, $CD
+	db	$38, $CC, $0D, $8E
+	db	$01, $4F, $B8, $56
+	db	$A5, $20, $26, $0E
+	db	$CD, $38, $CC, $0D
+	db	$8E, $01, $4F, $2A
+	db	$01, $40, $AB, $10
+	db	$AD, $20, $AE, $A2
+	db	$CD, $38, $CC, $B8
+	db	$56, $A5, $40, $27
+	db	$08, $CD, $38, $CC
+	db	$2A, $01, $40, $AD
+	db	$0D, $3A, $57, $B6
+	db	$56, $A0, $20, $2B
+	db	$C3, $AE, $55, $CC
+	db	$12, $05, $97, $D6
+	db	$11, $DB, $BE, $57
+	db	$FB, $A1, $1F, $23
+	db	$02, $A6, $1F, $F7
+	db	$81, $4F, $0A, $82
+	db	$09, $0A, $7F, $3F
+	db	$0C, $7F, $3C, $06
+	db	$81, $39, $CD, $38
+	db	$CC, $AB, $06, $2A
+	db	$02, $A6, $06, $A3
+	db	$A0, $26, $02, $AB
+	db	$0D, $03, $81, $02
+	db	$AB, $1A, $97, $D6
+	db	$11, $A7, $2B, $1F
+	db	$03, $81, $1C, $BE
+	db	$56, $A3, $44, $24
+	db	$16, $3F, $53, $A3
+	db	$36, $25, $08, $3C
+	db	$53, $A3, $3C, $25
+	db	$02, $3C, $53, $B1
+	db	$53, $23, $04, $B6
+	db	$53, $1E, $5B, $4D
+	db	$81, $00, $00, $70
+	db	$72, $62, $51, $41
+	db	$21, $00, $21, $41
+	db	$52, $62, $72, $70
+	db	$00, $00, $00, $78
+	db	$67, $57, $56, $35
+	db	$13, $00, $32, $53
+	db	$65, $75, $76, $86
+	db	$00, $00, $00, $68
+	db	$68, $57, $46, $35
+	db	$13, $00, $41, $53
+	db	$74, $75, $85, $86
+	db	$00, $00, $00, $69
+	db	$58, $58, $47, $25
+	db	$14, $00, $41, $63
+	db	$74, $75, $85, $86
+	db	$00, $00, $00, $59
+	db	$58, $48, $47, $26
+	db	$14, $00, $41, $63
+	db	$74, $84, $85, $95
+	db	$00, $00, $00, $59
+	db	$58, $48, $47, $25
+	db	$14, $00, $41, $62
+	db	$74, $84, $85, $95
+	db	$00, $00, $00, $59
+	db	$58, $48, $47, $25
+	db	$14, $00, $41, $62
+	db	$74, $84, $85, $95
+	db	$00, $FA, $FB, $FC
+	db	$FD, $FE, $FF, $00
+	db	$01, $02, $03, $04
+	db	$05, $06, $FB, $FC
+	db	$FD, $FD, $FE, $FE
+	db	$FF, $00, $01, $01
+	db	$02, $03, $03, $FB
+	db	$FB, $FC, $FD, $FE
+	db	$FF, $00, $01, $01
+	db	$02, $02, $03, $03
+	db	$FB, $FB, $FC, $FD
+	db	$FE, $FF, $00, $01
+	db	$01, $02, $02, $03
+	db	$03, $00, $01, $02
+	db	$03, $04, $05, $06
+	db	$07, $08, $09, $0A
+	db	$0B, $0C, $0D, $0E
+	db	$0F, $00, $01, $02
+	db	$03, $04, $05, $06
+	db	$07, $08, $09, $0A
+	db	$0B, $0C, $0D, $0E
+	db	$1F
+X11FB:
+	db	$38, $39, $3A, $2B
+	db	$B7, $51, $BF, $52
+	db	$AE, $52, $BF, $5A
+	db	$AD, $06, $24, $63
+	db	$AD, $02, $24, $5F
+	db	$BE, $5A, $AD, $5C
+	db	$F6, $AD, $0A, $25
+	db	$4C, $5A, $A3, $50
+	db	$24, $F6, $98, $20
+	db	$44, $99, $49, $25
+	db	$04, $AD, $14, $20
+	db	$04, $1D, $04, $20
+	db	$00, $AD, $05, $48
+	db	$26, $F1, $1D, $04
+	db	$1F, $04, $0C, $00
+	db	$00, $20, $39, $1C
+	db	$04, $1D, $00, $81
+	db	$AD, $2E, $AD, $DD
+	db	$25, $1F, $AD, $2C
+	db	$A6, $01, $1D, $04
+	db	$1F, $04, $0C, $00
+	db	$00, $49, $AD, $20
+	db	$24, $F4, $F7, $3A
+	db	$59, $2B, $07, $AD
+	db	$DE, $5A, $1F, $04
+	db	$20, $E4, $AD, $CE
+	db	$98, $AD, $0D, $AD
+	db	$D2, $1F, $04, $AD
+	db	$02, $1D, $04, $81
+	db	$AD, $F7, $AD, $C7
+	db	$1E, $04, $1F, $00
+	db	$81, $A6, $03, $0A
+	db	$7F, $12, $0E, $7F
+	db	$11, $0C, $87, $0E
+	db	$4A, $0C, $7F, $08
+	db	$01, $7F, $03, $02
+	db	$7C, $02, $B6, $7F
+	db	$3F, $87, $B8, $82
+	db	$A4, $03, $81
+;
+L1296:
+	ldx	#$10
+	jsr	L38CC
+	brclr	1,RAM1_081,L02A4
+	add	#$10
+	bcc	L02A4
+	lda	#$FF
+	rts
+;
+	db	$B7, $57, $CD, $38
+	db	$CC, $48, $48, $AB
+	db	$F4, $40, $BB, $57
+;
+L12B1:
+	sta	RAM1_057
+	clrx
+	incx
+	lda	X131A,x
+	brclr	1,RAM1_081,L02BE
+	lda	X133A,x
+	cmp	RAM1_057
+	bhi	L02B4
+	rts
+;
+	db	$3F, $57, $DB, $12
+	db	$D2, $25, $05, $3C
+	db	$57, $5C, $20, $F6
+	db	$B6, $57, $81, $B7
+	db	$04, $04, $04, $04
+	db	$04, $04, $04, $04
+	db	$FF, $00, $00, $00
+	db	$00, $00, $00, $8F
+	db	$06, $06, $06, $06
+	db	$06, $06, $06, $06
+	db	$06, $06, $06, $06
+	db	$06, $06, $FF, $20
+	db	$40, $16, $0A, $02
+	db	$0E, $20, $FF, $20
+	db	$00, $10, $00, $08
+	db	$00, $00, $00, $00
+	db	$00, $FE, $03, $FC
+	db	$00, $F8, $00, $0C
+	db	$00, $06, $00, $02
+	db	$00, $00, $00, $00
+	db	$00, $FE, $03, $FC
+	db	$00, $F8, $00
+X131A:
+	db	$9C, $9C, $90, $84
+	db	$78, $6C, $64, $5C
+	db	$54, $4E, $48, $44
+	db	$40, $3C, $38, $34
+	db	$30, $2C, $28, $26
+	db	$24, $22, $20, $1E
+	db	$1C, $1A, $18, $16
+	db	$14, $12, $10, $10
+X133A:
+	db	$9C, $92, $88, $7E
+	db	$74, $6A, $62, $5A
+	db	$54, $4E, $48, $44
+	db	$40, $3C, $38, $36
+	db	$34, $32, $30, $2E
+	db	$2C, $2A, $28, $26
+	db	$24, $22, $20, $1E
+	db	$1C, $1A, $18, $18
+	db	$1E, $1C, $1A, $18
+	db	$16, $14, $12, $10
+	db	$0E, $0C, $0A, $08
+	db	$06, $04, $02, $00
+X136A:
+	db	$0A, $14, $03, $50
+	db	$28, $05, $3C, $46
+	db	$18, $00, $10
+;
+L1375:
+	brclr	6,RAM1_061,L0383
+	brset	6,RAM1_0ba,L0380
+	brset	5,RAM1_0ba,L0395
+	bra	L0383
+;
+	db	$0B, $BA, $12, $19
+	db	$01, $1D, $BA, $1A
+	db	$BA, $3F, $D6, $3F
+	db	$C1, $CD, $1E, $7D
+	db	$10, $BA, $CD, $26
+	db	$40, $18, $01, $AE
+	db	$B0, $CD, $38, $CC
+	db	$A4, $62, $AA, $80
+	db	$09, $B5, $02, $AA
+	db	$10, $B7, $B5, $3F
+	db	$BF, $CD, $26, $31
+	db	$01, $61, $13, $3F
+	db	$BC, $14, $BC, $09
+	db	$69, $0C, $02, $5F
+	db	$09, $1D, $B5, $B6
+	db	$B5, $AE, $B0, $CD
+	db	$38, $A0, $18, $BC
+	db	$81, $0D, $61, $08
+	db	$0C, $BA, $05, $A6
+	db	$05, $0B, $BA, $02
+	db	$A6, $28, $B7, $63
+	db	$1C, $BA, $1A, $BA
+	db	$A6, $30, $AE, $01
+	db	$CD, $1B, $D9, $07
+	db	$67, $08, $17, $67
+	db	$CD, $14, $07, $CD
+	db	$37, $B0, $CD, $07
+	db	$85, $CD, $37, $F4
+	db	$CD, $14, $2B, $0D
+	db	$BA, $06, $1D, $D6
+	db	$3D, $63, $26, $E3
+	db	$CD, $37, $F4, $CD
+	db	$1E, $7D, $1B, $BA
+	db	$1D, $BA, $81
+;
+L1407:
+	brset	7,STACK_0d6,L0445
+	brset	6,RAM1_0ba,L0410
+	brclr	5,RAM1_0ba,L0434
+	lda	RAM1_0bb
+	sta	RAM1_058
+	jsr	L1446
+	bra	L043B
+;
+L1419:
+	brset	7,STACK_0d6,L0445
+	brset	6,RAM1_0ba,L0422
+	brclr	5,RAM1_0ba,L0434
+	lda	RAM1_0bb
+	sta	RAM1_058
+	jsr	L1551
+	bra	L043B
+;
+L142B:
+	lda	RAM1_0bb
+	sta	RAM1_058
+	jsr	L15C8
+	bra	L043B
+;
+	db	$01, $61, $04, $1B
+	db	$61, $14, $5D, $B6
+	db	$BB, $B1, $58, $27
+	db	$04, $1C, $CB, $1A
+	db	$CB, $81
+;
+L1446:
+	brclr	4,RAM1_0bc,L044E
+	bclr	4,RAM1_0bc
+	jmp	L1AA5
+;
+	db	$0E, $C1, $03, $0C
+	db	$C1, $06, $07, $BC
+	db	$03, $CC, $19, $53
+	db	$05, $C0, $03, $CC
+	db	$1C, $AD, $B6, $B3
+	db	$26, $07, $CD, $14
+	db	$DF, $CD, $15, $16
+	db	$81, $2B, $3F, $08
+	db	$B3, $19, $A5, $60
+	db	$27, $05, $CD, $18
+	db	$9A, $20, $02, $3F
+	db	$B3, $11, $BA, $0E
+	db	$B9, $06, $0D, $BA
+	db	$03, $0D, $C1, $02
+	db	$10, $BA, $81, $B6
+	db	$C1, $A4, $86, $A1
+	db	$86, $26, $03, $CD
+	db	$1C, $82, $A6, $B4
+	db	$0A, $B6, $11, $A6
+	db	$88, $0F, $BA, $DB
+	db	$05, $B6, $D8, $03
+	db	$B6, $06, $0A, $B3
+	db	$03, $01, $B6, $CF
+	db	$B7, $B3, $1F, $B3
+	db	$15, $BB, $A4, $07
+	db	$97, $B6, $B4, $2A
+	db	$06, $A4, $7F, $B7
+	db	$B4, $B7, $B8, $DE
+	db	$19, $DD, $DD, $1A
+	db	$3D, $0E, $B3, $B5
+	db	$B6, $B3, $A1, $70
+	db	$24, $AD, $17, $BB
+	db	$08, $B3, $A8, $B7
+	db	$B6, $1B, $BC, $A4
+	db	$07, $A1, $07, $26
+	db	$9E, $18, $B6, $20
+	db	$9A, $B6, $C1, $A5
+	db	$C0, $27, $11, $A4
+	db	$86, $A1, $86, $26
+	db	$29, $1B, $BC, $15
+	db	$BB, $CD, $1E, $69
+	db	$27, $0B, $15, $BA
+	db	$19, $C0, $A6, $97
+	db	$AE, $C0, $CD, $1C
+	db	$84, $CD, $1E, $74
+	db	$09, $BF, $0B, $04
+	db	$BE, $0C, $02, $BE
+	db	$09, $0F, $BF, $06
+	db	$1F, $BF, $18, $BF
+	db	$16, $BC, $81, $81
+	db	$08, $C1, $37, $3A
+	db	$C3, $26, $33, $B6
+	db	$C1, $A1, $60, $27
+	db	$08, $07, $BC, $05
+	db	$3C, $C3, $CC, $19
+	db	$53, $0F, $C1, $0F
+	db	$1F, $C1, $1D, $C1
+	db	$B6, $C1, $A4, $07
+	db	$97, $DE, $1D, $18
+	db	$DC, $1D, $20, $0D
+	db	$C1, $0E, $1D, $C1
+	db	$B6, $B6, $A4, $07
+	db	$97, $DE, $1C, $0E
+	db	$DD, $1C, $16, $C1
+	db	$3F, $C1, $81
+;
+L1551:
+	brset	7,RAM1_0ba,L059C
+	jsr	L1E4F
+	beq	L059C
+	lda	RAM1_0be
+	brset	5,RAM1_0b9,L057E
+	brset	4,RAM1_0b9,L0574
+	brclr	1,RAM1_0be,L0569
+	brclr	3,RAM1_0b9,L056C
+	bra	L0598
+;
+	db	$06, $BA, $2C, $A5
+	db	$F0, $27, $2C, $AA
+	db	$F0, $20, $2C, $03
+	db	$BE, $03, $00, $BE
+	db	$15, $A6, $02, $20
+	db	$08, $05, $BE, $03
+	db	$00, $BE, $0B, $A6
+	db	$04, $1E, $BF, $1A
+	db	$CB, $16, $BC, $4C
+	db	$18, $BA, $A4, $07
+	db	$AA, $20, $0D, $B9
+	db	$02, $AA, $C0, $AB
+	db	$F0, $25, $04, $CD
+	db	$1E, $87, $4F, $B7
+	db	$BE, $09, $C1, $AB
+	db	$CC, $15, $19
+X15A8:
+	db	$03, $6C, $AB, $00
+	db	$CD, $F5, $03, $03
+	db	$03, $2F, $03, $06
+	db	$B7, $56, $AD, $05
+	db	$B6, $56, $CD, $26
+	db	$1E, $CD, $25, $33
+	db	$C1, $A6, $20, $D7
+	db	$02, $88, $5C, $81
+;
+L15C8:
+	brclr	3,STACK_0d6,L05C7
+	bclr	3,STACK_0d6
+	bset	6,RAM1_0ba
+	ldx	RAM2_0271
+	stx	RAM1_05b
+	lsrx
+	lsrx
+	lsrx
+	cpx	#$0C
+	bcc	L05E7
+	ldx	X15A8,x
+	lda	RAM2_0272
+	jmp	L15E4,x						;INFO: index jump
+;
+L15E4:
+	db	$CC, $17, $0D, $CC
+	db	$17, $0A, $1C, $BB
+	db	$14, $BF, $C1, $02
+	db	$73, $25, $02, $15
+	db	$BF, $09, $CE, $EF
+	db	$5F, $C6, $02, $74
+	db	$AD, $BF, $AD, $C1
+	db	$C6, $02, $73, $CD
+	db	$15, $BD, $AD, $B9
+	db	$00, $BB, $40, $AD
+	db	$B4, $A3, $08, $26
+	db	$FA, $20, $38, $03
+	db	$5B, $37, $C6, $02
+	db	$74, $2B, $13, $B8
+	db	$C5, $A4, $1F, $26
+	db	$03, $0E, $C5, $0A
+	db	$B8, $C5, $B7, $C5
+	db	$1A, $C5, $1C, $C5
+	db	$1E, $C5, $09, $CE
+	db	$1A, $0C, $BB, $07
+	db	$5F, $AD, $8A, $A3
+	db	$04, $26, $FA, $10
+	db	$BB, $AE, $04, $C6
+	db	$02, $73, $CD, $15
+	db	$B4, $C6, $02, $72
+	db	$CD, $15, $B4, $1C
+	db	$CB, $CC, $17, $0A
+	db	$BE, $5B, $A3, $08
+	db	$27, $0D, $A3, $0B
+	db	$26, $F3, $0D, $CE
+	db	$03, $CD, $1E, $B3
+	db	$C6, $02, $75, $1B
+	db	$BA, $1D, $BA, $4D
+	db	$2A, $02, $1C, $BA
+	db	$17, $BA, $A5, $40
+	db	$27, $14, $16, $BA
+	db	$A5, $20, $27, $0E
+	db	$97, $B6, $B8, $A4
+	db	$0F, $AA, $80, $B7
+	db	$B4, $A6, $CA, $B7
+	db	$B3, $9F, $CD, $26
+	db	$17, $B8, $B9, $A4
+	db	$07, $20, $65, $19
+	db	$BB, $05, $5B, $B9
+	db	$AE, $07, $BF, $56
+	db	$A6, $07, $B0, $56
+	db	$97, $D6, $02, $72
+	db	$BE, $56, $D7, $02
+	db	$80, $3A, $56, $2A
+	db	$EF, $18, $BB, $14
+	db	$94, $1A, $BB, $20
+	db	$9A, $13, $BB, $A5
+	db	$10, $27, $02, $12
+	db	$BB, $A4, $87, $2A
+	db	$0C, $AA, $10, $0E
+	db	$B9, $0E, $19, $BB
+	db	$CD, $17, $97, $20
+	db	$05, $0F, $B9, $04
+	db	$1F, $BA, $1E, $CB
+	db	$CD, $26, $1F, $B8
+	db	$B9, $A4, $B8, $20
+	db	$1B, $00, $BF, $16
+	db	$C6, $02, $71, $A4
+	db	$03, $97, $D6, $02
+	db	$72, $B7, $56, $A4
+	db	$07, $97, $DE, $17
+	db	$6B, $1F, $BA, $DD
+	db	$17, $71, $20, $16
+	db	$1A, $CB, $27, $12
+	db	$B8, $B9, $B7, $B9
+	db	$04, $B8, $0B, $07
+	db	$B9, $08, $AE, $B2
+	db	$CD, $38, $CC, $CD
+	db	$1E, $45, $1C, $D6
+	db	$81, $00, $BF, $E2
+	db	$C6, $02, $73, $06
+	db	$B6, $04, $A1, $FF
+	db	$27, $40, $B7, $B7
+	db	$B6, $B6, $A4, $07
+	db	$A1, $04, $26, $0B
+	db	$CD, $1E, $8C, $B8
+	db	$C0, $A4, $03, $27
+	db	$02, $14, $C0, $C6
+	db	$02, $72, $2B, $0A
+	db	$0D, $B9, $0E, $19
+	db	$BB, $CD, $1E, $7F
+	db	$20, $05, $0C, $B9
+	db	$04, $1C, $B9, $1A
+	db	$CB, $0B, $B6, $17
+	db	$B6, $B7, $BE, $C2
+	db	$5C, $27, $0E, $0F
+	db	$C1, $0D, $B1, $C2
+	db	$26, $09, $1B, $B6
+	db	$20, $05, $16, $BB
+	db	$C1, $B7, $C2, $B6
+	db	$C3, $A1, $40, $27
+	db	$04, $1A, $BB, $1C
+	db	$CB, $20, $87, $C5
+	db	$27, $44, $44, $00
+	db	$26, $0F, $61, $02
+	db	$1F, $61, $09, $B6
+	db	$0B, $0E, $B6, $4C
+	db	$B6, $C1, $A4, $07
+	db	$A1, $02, $27, $46
+	db	$0A, $BC, $09, $0C
+	db	$BC, $06, $B6, $B8
+	db	$A4, $70, $26, $04
+	db	$AD, $38, $1E, $BB
+	db	$0E, $56, $00, $81
+	db	$0F, $56, $17, $18
+	db	$B8, $04, $B8, $0D
+	db	$11, $B8, $A6, $FF
+	db	$AE, $BC, $CD, $38
+	db	$A0, $5C, $CD, $38
+	db	$A0, $A6, $80, $B7
+	db	$B3, $81, $CC, $1D
+	db	$8A, $17, $BF, $0F
+	db	$56, $7B, $CD, $1C
+	db	$7C, $14, $7E, $B6
+	db	$B8, $B7, $BD, $14
+	db	$BB, $1D, $BC, $81
+	db	$19, $BB, $0C, $BF
+	db	$05, $0C, $56, $0C
+	db	$1D, $BC, $15, $BB
+	db	$1D, $B8, $1B, $B8
+	db	$19, $B8, $20, $57
+	db	$B6, $B8, $0C, $BC
+	db	$04, $A5, $70, $26
+	db	$50, $A4, $0C, $B7
+	db	$BD, $C6, $02, $72
+	db	$A0, $06, $27, $09
+	db	$2B, $05, $4A, $3C
+	db	$BD, $20, $F5, $AB
+	db	$07, $CD, $26, $1E
+	db	$BB, $BD, $B7, $BD
+	db	$05, $B8, $09, $CD
+	db	$26, $1F, $B8, $B8
+	db	$A4, $08, $20, $0B
+	db	$0B, $69, $04, $A5
+	db	$01, $26, $12, $B8
+	db	$B8, $A4, $03, $27
+	db	$10, $0D, $BC, $06
+	db	$1D, $B8, $1B, $B8
+	db	$19, $B8, $0A, $BC
+	db	$9E, $0C, $BC, $AA
+	db	$81, $1A, $BB, $B6
+	db	$BD, $B7, $B8, $1C
+	db	$BC, $15, $BB, $1E
+	db	$CB, $81, $0D, $D2
+	db	$03, $CC, $17, $98
+	db	$0F, $56, $2A, $15
+	db	$C0, $CD, $1E, $42
+	db	$AD, $84, $0A, $B6
+	db	$1A, $0D, $BF, $10
+	db	$02, $BA, $04, $12
+	db	$BA, $16, $BC, $A6
+	db	$E3, $08, $C1, $06
+	db	$AE, $01, $20, $04
+	db	$A6, $60, $AE, $28
+	db	$CC, $1C, $84, $05
+	db	$C1, $F6, $1A, $C1
+	db	$81, $0B, $B6, $05
+	db	$CD, $1D, $8A, $20
+	db	$1A, $B6, $B6, $A4
+	db	$07, $A1, $05, $27
+	db	$0B, $A1, $04, $26
+	db	$0E, $0D, $B5, $0B
+	db	$3F, $C2, $10, $B6
+	db	$34, $C2, $26, $03
+	db	$CD, $1D, $4B, $1E
+	db	$BA, $B6, $B6, $AA
+	db	$D0, $A5, $20, $27
+	db	$02, $A4, $A7, $B7
+	db	$B3, $81, $B6, $B3
+	db	$A5, $0F, $27, $78
+	db	$A4, $07, $97, $4F
+	db	$99, $49, $5A, $2A
+	db	$FC, $B7, $56, $AE
+	db	$B5, $07, $B3, $02
+	db	$AE, $BC, $0D, $B3
+	db	$09, $0A, $B3, $04
+	db	$43, $F4, $20, $03
+	db	$F8, $B1, $FA, $06
+	db	$B3, $09, $03, $56
+	db	$06, $A5, $02, $27
+	db	$02, $AA, $0C
+X18CB:
+	db	$07, $8E, $0F, $09
+	db	$56, $06, $A5, $10
+	db	$27, $02, $AA, $08
+	db	$A5, $08, $26, $02
+	db	$A4, $AF, $F7, $AE
+	db	$F3, $06, $B3, $4C
+	db	$A4, $62, $AE, $B0
+	db	$CD, $38, $A0, $1A
+	db	$CB, $0A, $56, $06
+	db	$0D, $56, $57, $04
+	db	$B8, $12, $B6, $B6
+	db	$A4, $17, $A1, $04
+	db	$26, $0A, $0B, $B6
+	db	$03, $0F, $BA, $04
+	db	$AD, $86, $20, $4C
+	db	$0D, $56, $3F, $AE
+	db	$10, $A1, $05, $27
+	db	$3E, $0C, $59, $07
+	db	$AE, $F1, $0C, $B9
+	db	$36, $20, $2F, $18
+	db	$C0, $17, $C0, $05
+	db	$B8, $11, $16, $C0
+	db	$AE, $B2, $CD, $38
+	db	$CC, $B7, $B8, $1B
+	db	$BB, $CC, $17, $AD
+	db	$CC, $1A, $A5, $0C
+	db	$C1, $14, $CD, $1E
+	db	$69, $26, $0F, $A6
+	db	$01, $B7, $C3, $B6
+	db	$C1, $A1, $95, $27
+	db	$05, $A6, $86, $CD
+	db	$1C, $82, $B6, $B3
+	db	$A4, $10, $97, $BF
+	db	$B3, $16, $BC, $81
+	db	$A6, $C8, $0C, $5F
+	db	$27, $CD, $1E, $5A
+	db	$0E, $61, $30, $03
+	db	$BA, $02
+X1961:
+	db	$A4, $BF, $AA, $08
+	db	$AA, $04, $A4, $4E
+	db	$0F, $B5, $05, $06
+	db	$B5, $02, $A4, $4A
+	db	$0D, $CE, $02, $AA
+	db	$30, $08, $CE, $03
+	db	$07, $CE, $02, $AA
+	db	$10, $4C, $A5, $04
+	db	$27, $0D, $06, $5D
+	db	$03, $07, $BF, $02
+	db	$A4, $F3, $0F, $BF
+	db	$02, $A4, $FB, $AE
+	db	$01, $07, $8E, $06
+	db	$AA, $02, $A4, $BB
+	db	$AE, $09, $01, $61
+	db	$0F, $03, $82, $07
+	db	$00, $82, $04, $AA
+	db	$80, $20, $05, $09
+	db	$69, $02, $AA, $40
+	db	$C7, $02, $7C, $9F
+	db	$0D, $5F, $02, $AA
+	db	$40, $13, $BC, $AA
+	db	$80, $09, $BF, $07
+	db	$0E, $B5, $04, $12
+	db	$BC, $A4, $7F, $C7
+	db	$02, $7D, $A6, $20
+	db	$05, $B8, $05, $0C
+	db	$5F, $02, $A6, $02
+	db	$AA, $10, $14, $B5
+	db	$97, $17, $BC, $A6
+	db	$0A, $CC, $1A, $75
+	db	$7E, $7B, $00, $5E
+	db	$DC, $C1, $D0, $F5
+	db	$17, $5D, $B6, $B8
+	db	$A4, $74, $A1, $60
+	db	$27, $3C, $AE, $02
+	db	$A1, $10, $26, $04
+	db	$16, $BF, $20, $2E
+	db	$AE, $83, $A1, $50
+	db	$27, $28, $5F, $05
+	db	$B8, $05, $07, $B8
+	db	$07, $20, $03, $03
+	db	$B8, $02, $AE, $04
+	db	$A4, $70, $A1, $20
+	db	$27, $0E, $04, $B8
+	db	$0A, $5C, $A1, $30
+	db	$27, $06, $5C, $A1
+	db	$40, $27, $01, $81
+	db	$58, $58, $99, $59
+	db	$99, $59, $A6, $18
+	db	$20, $4A, $B6, $88
+	db	$44, $B7, $56, $B6
+	db	$83, $48, $BB, $56
+	db	$AE, $70, $CD, $38
+	db	$8B, $CC, $17, $BA
+	db	$07, $B3, $A5, $3F
+	db	$B6, $0D, $B3, $0F
+	db	$0B, $B3, $06, $AE
+	db	$09, $3F, $B3, $20
+	db	$24, $AE, $EA, $BF
+	db	$B3, $20, $19, $1B
+	db	$BC, $1D, $BC, $16
+	db	$94, $CD, $1D, $F2
+	db	$AA, $80, $06, $B5
+	db	$04, $43, $B4, $56
+	db	$C1, $BA, $56, $BE
+	db	$57, $CD, $38, $A0
+	db	$CD, $1E, $29, $AE
+	db	$89, $CD, $1E, $06
+	db	$B7, $50, $BF, $51
+	db	$0F, $D6, $10, $CD
+	db	$07, $85, $CD, $22
+	db	$BD, $07, $67, $F4
+	db	$17, $67, $CD, $1E
+	db	$E2, $20, $ED, $B6
+	db	$50, $BE, $51, $C7
+	db	$02, $7A, $CF, $02
+	db	$7B, $1E, $D6, $3F
+	db	$D9, $81, $07, $B3
+	db	$07, $0E, $BA, $F9
+	db	$AE, $0A, $20, $82
+;
+L1AA5:
+	brset	3,RAM1_0bf,L029A
+	bset	0,RAM1_0bc
+	brset	6,STACK_0d3,L02AF
+	bclr	0,RAM1_0bc
+	lda	RAM1_0bc
+	and	#$07
+	tax
+	lda	#$20
+	bra	L0275
+;
+	db	$CC, $1B, $81, $17
+	db	$BF, $1B, $BB, $19
+	db	$BB, $07, $B3, $16
+	db	$AE, $B1, $CD, $38
+	db	$CC, $0B, $B6, $07
+	db	$A5, $70, $26, $05
+	db	$CC, $1D, $A5, $AA
+	db	$70, $B7, $B8, $04
+	db	$B8, $00, $1F, $BF
+	db	$B6, $B8, $A4, $70
+	db	$A1, $70, $26, $03
+	db	$CD, $1D, $CA, $CD
+	db	$1D, $F2, $10, $56
+	db	$B4, $56, $16, $B5
+	db	$26, $04, $17, $B5
+	db	$19, $B5, $16, $BC
+	db	$13, $BA, $12, $BF
+	db	$10, $BF, $A6, $40
+	db	$AE, $0C, $0D, $5F
+	db	$02, $AE, $01, $CD
+	db	$1E, $7D, $CC, $1C
+	db	$84, $04, $B8, $05
+	db	$12, $B8, $11, $B8
+	db	$C1, $16, $B8, $20
+	db	$DD, $0A, $B3, $79
+	db	$07, $BF, $04, $10
+	db	$B3, $12, $B3, $0C
+	db	$B3, $0C, $09, $B3
+	db	$46, $03, $BA, $40
+	db	$13, $BA, $16, $BC
+	db	$20, $3A, $0D, $B3
+	db	$08, $09, $B3, $05
+	db	$19, $B3, $1D, $BF
+	db	$C1, $1C, $BF, $1D
+	db	$B3, $B6, $B6, $A4
+	db	$07, $A1, $06, $26
+	db	$0B, $AE, $B1, $CD
+	db	$38, $CC, $B7, $B8
+	db	$1F, $BF, $20, $15
+	db	$A1, $04, $26, $11
+	db	$08, $B3, $0E, $B6
+	db	$B6, $B8, $B3, $A5
+	db	$08, $27, $06, $CD
+	db	$1A, $FE, $CC, $1A
+	db	$6D, $09, $B3, $03
+	db	$1D, $BF, $81, $0E
+	db	$BF, $8C, $06, $BF
+	db	$89, $1E, $BF, $CD
+	db	$1A, $E4, $A6, $48
+	db	$20, $82, $CC, $1A
+	db	$FE, $07, $B3, $05
+	db	$1E, $BF, $CC, $1A
+	db	$F6, $0D, $B9, $E2
+	db	$CD, $1E, $81, $A6
+	db	$48, $5F, $CC, $1A
+	db	$75, $1D, $BF, $08
+	db	$B3, $0B, $0A, $B6
+	db	$E1, $AD, $2A, $A6
+	db	$FF, $B7, $C2, $20
+	db	$D0, $B6, $BD, $B8
+	db	$B8, $A4, $07, $26
+	db	$04, $B6, $BD, $B7
+	db	$B8, $3F, $C3, $CD
+	db	$1E, $74, $B6, $C1
+	db	$A1, $95, $26, $07
+	db	$3F, $C1, $16, $BC
+	db	$CC, $1E, $29, $CD
+	db	$17, $AD, $CC, $1A
+	db	$DA, $B6, $B8, $B7
+	db	$BD, $BE, $C1, $CC
+	db	$1E, $38, $A6, $64
+	db	$C7, $02, $7C, $A6
+	db	$19, $1D, $B8, $1B
+	db	$B8, $19, $B8, $1A
+	db	$BC, $16, $B5, $17
+	db	$BB, $01, $B6, $06
+	db	$02, $B6, $03, $04
+	db	$B6, $02, $15, $BA
+	db	$05, $C0, $03, $15
+	db	$C0, $C1, $3F, $BB
+	db	$3F, $C5, $CD, $1E
+	db	$7D, $1E, $BA, $1E
+	db	$CB, $1D, $BC, $06
+	db	$C0, $02, $19, $C0
+	db	$17, $C0, $1E, $B5
+	db	$20, $84, $A8, $11
+	db	$43, $43, $75, $44
+	db	$00, $1B, $CD, $1D
+	db	$84, $AE, $C7, $06
+	db	$8E, $03, $0B, $69
+	db	$02, $AE, $E7, $1E
+	db	$BF, $20, $AB, $BE
+	db	$B7, $4F, $C7, $02
+	db	$7C, $A6, $11, $20
+	db	$B4, $06, $C1, $19
+	db	$AE, $50, $10, $5B
+	db	$C1, $11, $5B, $A6
+	db	$C1, $AD, $45, $AE
+	db	$86, $07, $B6, $02
+	db	$AE, $06, $A6, $18
+	db	$01, $5B, $A5, $20
+	db	$8C, $A6, $40, $AE
+	db	$02, $AD, $31, $CD
+	db	$1D, $CA, $CC, $1C
+	db	$F7, $81, $0A, $C1
+	db	$19, $1E, $BF, $CD
+	db	$1D, $84, $AE, $A0
+	db	$04, $C2, $07, $A6
+	db	$6C, $02, $C2, $04
+	db	$AE, $20, $A6, $64
+	db	$CC, $1B, $D4, $CC
+	db	$1D, $11, $0A, $B6
+	db	$FA, $CD, $1E, $74
+	db	$A6, $92, $AE, $10
+	db	$20, $02, $AE, $C8
+	db	$B7, $C1, $BF, $C3
+	db	$CC, $14, $7B, $06
+	db	$C1, $BF, $0A, $C1
+	db	$E5, $A6, $C4, $AE
+	db	$64, $0A, $B6, $04
+	db	$A6, $D3, $AE, $FF
+	db	$AD, $E6, $1B, $B5
+	db	$06, $CE, $0A, $AE
+	db	$AC, $CD, $38, $CC
+	db	$46, $24, $02, $1A
+	db	$B5, $CD, $1E, $8C
+	db	$B8, $C0, $A4, $03
+	db	$B8, $C0, $B7, $C0
+	db	$B6, $5B, $5F, $CC
+	db	$1B, $D4, $A6, $60
+	db	$0B, $C1, $30, $AE
+	db	$02, $0E, $B9, $05
+	db	$0E, $BA, $B9, $1A
+	db	$BB, $03, $BA, $07
+	db	$13, $BA, $0D, $B5
+	db	$02, $16, $BC, $07
+	db	$5D, $06, $17, $5D
+	db	$A6, $82, $B7, $B3
+	db	$A6, $C0, $06, $BB
+	db	$9D, $CD, $1E, $29
+	db	$08, $BF, $04, $AE
+	db	$2D, $20, $24, $A6
+	db	$C7, $20, $8F, $AE
+	db	$1E, $AD, $8D, $CD
+	db	$1E, $06, $BE, $B7
+	db	$CF, $02, $7D, $27
+	db	$08, $0F, $61, $05
+	db	$AE, $29, $A6, $1A
+	db	$C1, $AE, $09, $CC
+	db	$1B, $E5, $CD, $17
+	db	$BF, $AE, $23, $A6
+	db	$95, $CC, $1C, $84
+	db	$6A, $6F, $36, $9C
+	db	$5E, $47, $00, $16
+	db	$A6, $86, $04, $CE
+	db	$50, $0E, $B9, $4D
+	db	$CD, $1E, $4F, $27
+	db	$08, $A6, $85, $B7
+	db	$B3, $A6, $04, $B7
+	db	$C2, $81, $A6, $87
+	db	$3F, $BE, $04, $CE
+	db	$38, $0E, $B9, $35
+	db	$0A, $80, $DD, $B6
+	db	$7F, $A4, $2B, $A1
+	db	$02, $26, $D5, $04
+	db	$B8, $E7, $08, $C0
+	db	$CF, $14, $BA, $19
+	db	$BA, $81, $3F, $C1
+	db	$19, $B6, $15, $BB
+	db	$A6, $87, $01, $BA
+	db	$02, $A6, $D7, $AE
+	db	$10, $20, $AE, $05
+	db	$BE, $03, $08, $BA
+	db	$0B, $0A, $B6, $0B
+	db	$08, $BF, $C2, $A6
+	db	$86, $CC, $1C, $82
+	db	$1B, $B6, $81, $CC
+	db	$1B, $7A, $0B, $C1
+	db	$03, $CC, $18, $5C
+	db	$A6, $D3, $AE, $FF
+	db	$20, $DB, $A6, $88
+	db	$B7, $B3, $81, $0D
+	db	$BF, $09, $AE, $06
+	db	$05, $B8, $01, $58
+	db	$CC, $1C, $39, $0A
+	db	$C1, $07, $A6, $A1
+	db	$AE, $30, $CC, $1C
+	db	$84, $15, $BB, $B6
+	db	$B8, $A4, $70, $26
+	db	$09, $06, $BF, $06
+	db	$0E, $B6, $03, $CD
+	db	$1A, $54, $CD, $1E
+	db	$29, $CC, $1C, $7C
+	db	$0C, $BF, $06, $0B
+	db	$C1, $03, $CC, $18
+	db	$5C, $A6, $C3, $CC
+	db	$1C, $9A, $AD, $09
+	db	$B8, $B8, $A4, $70
+	db	$B8, $B8, $B7, $B8
+	db	$81, $AD, $0D, $AB
+	db	$B3, $CD, $38, $CB
+	db	$A4, $70, $A1, $70
+	db	$26, $01, $4F, $81
+	db	$B6, $B8, $A4, $03
+	db	$05, $B8, $06, $A6
+	db	$04, $07, $B8, $01
+	db	$4C, $81, $AD, $F0
+	db	$AB, $BA, $B7, $57
+	db	$CD, $38, $CB, $B7
+	db	$56, $B6, $B8, $CD
+	db	$26, $17, $CD, $26
+	db	$64, $81, $B6, $B8
+	db	$48, $CD, $26, $16
+	db	$26, $02, $A6, $07
+	db	$4A, $05, $B8, $05
+	db	$07, $B8, $0C, $20
+	db	$08, $03, $B8, $02
+	db	$AB, $0E, $01, $B8
+	db	$02, $AB, $07, $C7
+	db	$02, $7C, $A6, $19
+	db	$81, $3F, $BD, $15
+	db	$BB, $AE, $B1, $CD
+	db	$38, $CC, $B8, $B8
+	db	$A4, $0F, $27, $0A
+	db	$AE, $B1, $CD, $38
+	db	$CC, $04, $B8, $00
+	db	$AD, $06, $CD, $1D
+	db	$D5, $0E, $BB, $E0
+	db	$B6, $B8, $A4, $7F
+	db	$CC, $38, $A0
+;
+L1E4F:
+	lda	#$01
+	brset	2,RAM1_0b8,L0666
+	brset	2,RAM1_0be,L0668
+	brset	5,RAM1_0b9,L0668
+	lda	RAM1_0b5
+	and	#$4E
+	brset	3,RAM1_08e,L0664
+	brclr	6,RAM1_05f,L0666
+	and	#$BF
+	bit	#$40
+	rts
+;
+	db	$AD, $E4, $26, $02
+	db	$43, $81, $B6, $B9
+	db	$A4, $38, $81, $B6
+	db	$B6, $27, $04, $3F
+	db	$B6, $1C, $CB, $81
+	db	$3F, $B9, $1D, $B9
+	db	$1A, $CB, $1B, $B9
+	db	$19, $B9, $3F, $BE
+	db	$19, $BA, $81, $3F
+	db	$5B, $06, $B6, $02
+	db	$1A, $5B, $0B, $B5
+	db	$02, $14, $5B, $05
+	db	$B8, $04, $1E, $5B
+	db	$20, $11, $1C, $5B
+	db	$B6, $B7, $A1, $41
+	db	$22, $07, $A1, $12
+	db	$25, $05, $10, $5B
+	db	$C1, $12, $5B, $B6
+	db	$5B, $81, $5F, $C6
+	db	$02, $74, $AD, $17
+	db	$C6, $02, $73, $AD
+	db	$12, $C6, $02, $72
+	db	$AD, $0D, $A6, $2E
+	db	$B7, $DE, $A6, $20
+	db	$B7, $E0, $A6, $52
+	db	$B7, $E1, $81, $B7
+	db	$5B, $AD, $05, $B6
+	db	$5B, $CD, $26, $1E
+	db	$CD, $26, $17, $AB
+	db	$30, $E7, $DA, $5C
+	db	$81, $4F, $05, $5F
+	db	$08, $C6, $02, $A5
+	db	$BE, $0B, $CD, $24
+	db	$6E, $B7, $0B, $CC
+	db	$37, $B0
+;
+L1EF3:
+	rts
+;
+L1EF4:
+	ldx	#$CD
+	jsr	L265E
+	bne	L0709
+	clra
+	sta	RAM2_0254
+	sta	RAM2_0255
+	sta	RAM2_0256
+	bset	4,RAM1_09e
+	bra	L0719
+;
+	db	$AE, $CC, $CD, $26
+	db	$5E, $2A, $02, $13
+	db	$CB, $26, $07, $7A
+	db	$1B, $C5, $13, $CB
+	db	$1E, $5D, $81
+;
+L1F1C:
+	brset	6,STACK_0c6,L0731
+	brset	5,STACK_0c6,L0733
+	brclr	7,STACK_0c6,L071B
+	brset	2,STACK_0cb,L0731
+	lda	STACK_0cc
+	cmp	#$FF
+	beq	L0731
+	bclr	7,STACK_0c6
+	rts
+;
+	db	$1E, $50, $B6, $9E
+	db	$A4, $F0, $26, $73
+	db	$B6, $C6, $A4, $1F
+	db	$48, $B7, $56, $48
+	db	$BB, $56, $A1, $BA
+	db	$26, $02, $A6, $FF
+	db	$0B, $C6, $07, $18
+	db	$9E, $1A, $9E, $1B
+	db	$C6, $81, $4D, $2B
+	db	$02, $26, $05, $02
+	db	$CB, $51, $27, $02
+	db	$B7, $CC, $3F, $C6
+	db	$B6, $C7, $2A, $48
+	db	$0D, $C7, $5C, $A4
+	db	$0E, $97, $D6, $1F
+	db	$EB, $B7, $59, $D6
+	db	$1F, $EC, $B7, $56
+	db	$54, $D6, $1F, $FB
+	db	$C7, $02, $56, $A4
+	db	$0F, $27, $13, $4A
+	db	$B7, $58, $CE, $1F
+	db	$EA, $BF, $57, $C6
+	db	$1F, $E9, $4D, $27
+	db	$02, $10, $59, $CD
+	db	$26, $79, $0B, $C7
+	db	$03, $1C, $9E, $C1
+	db	$1E, $9E, $0F, $50
+	db	$0E, $15, $CB, $B6
+	db	$CE, $A4, $07, $A1
+	db	$06, $26, $04, $B8
+	db	$CE, $B7, $CE, $81
+	db	$AE, $61, $CF, $02
+	db	$56, $C7, $02, $57
+	db	$A1, $70, $25, $E0
+	db	$A4, $07, $97, $D6
+	db	$20, $03, $C7, $02
+	db	$57, $20, $D2, $BE
+	db	$C8, $A4, $0F, $A5
+	db	$08, $26, $07, $1F
+	db	$50, $5D, $2A, $02
+	db	$50, $4C, $CD, $26
+	db	$1E, $C7, $02, $57
+	db	$9F, $A4, $0F, $CB
+	db	$02, $57, $C7, $02
+	db	$57, $A6, $71, $C7
+	db	$02, $56, $20, $AA
+	db	$02, $57, $00, $C8
+	db	$02, $80, $02, $57
+	db	$02, $9E, $02, $60
+	db	$00, $00, $00, $6C
+	db	$02, $88, $32, $48
+	db	$58, $92, $A2, $B0
+	db	$E1, $48, $15, $0E
+	db	$00, $00, $00, $00
+	db	$00, $00
+;
+L200B:
+	brset	6,RAM1_069,L0011
+	brset	0,RAM1_080,L0030
+	lda	#$27
+	jsr	L25B7
+	cmp	#$19
+	bcs	L001C
+	bclr	3,RAM1_05d
+	cmp	#$D5
+	bcs	L0025
+	bset	0,RAM1_080
+	bset	6,RAM1_069
+	rts
+;
+	db	$A1, $D2, $22, $07
+	db	$0D, $69, $04, $1D
+	db	$69, $11, $80, $81
+	db	$CD, $21, $36, $0F
+	db	$0C, $23, $CD, $21
+	db	$0B, $AE, $14, $CD
+	db	$20, $D2, $15, $06
+	db	$17, $06, $CD, $26
+	db	$43, $1A, $69, $B6
+	db	$02, $A4, $0C, $26
+	db	$02, $1B, $69, $14
+	db	$06, $16, $06, $1F
+	db	$0C, $A6, $FF, $B7
+	db	$8C
+;
+L205A:
+	lda	ACH
+	add	#$14
+	sta	OCH2
+	lda	TSR
+	clr	OCL2
+	rts
+;
+	db	$AD, $37, $AD, $4B
+;
+L2069:
+	lda	#$30
+	brclr	6,RAM1_05f,L0072
+	lda	#$31
+	bset	0,PortB
+	sta	DDRB
+	lda	#$02
+	sta	DDRC
+	rts
+;
+L2079:
+	brset	2,PortB,L0090
+	bset	2,PortB
+	ldx	#$08
+	bra	L008E
+;
+L2082:
+	brset	0,PortC,L0090
+	bset	0,PortC
+	brset	6,RAM1_05f,L0090
+	bclr	3,PortB
+	ldx	#$06
+	bsr	L00D2
+	lda	#$2C
+	sta	SCCR2
+	lda	X215B
+	sta	BAUD
+	lda	SCSR
+	lda	SCDR
+	rts
+;
+L209E:
+	bclr	4,RAM1_061
+	bclr	0,RAM1_081
+	brset	2,TCR,L00A8
+	brclr	2,PortB,L00B2
+	ldx	#$32
+	bsr	L00D2
+	bclr	2,PortB
+	ldx	#$05
+	bsr	L00D2
 	cli
 	rts
 ;
-	ldx	#$90
-	lda	#$00
-	clr	X004F,x
-L1D11:
-	sta	X024F,x
-	decx
-	bne	L050F
-	rts
+	db	$A6, $04, $CD, $26
+	db	$33, $3F, $0F, $A6
+	db	$07, $B7, $04, $3F
+	db	$00, $1D, $01, $1B
+	db	$61, $01, $02, $EA
+	db	$11, $02, $09, $0C
+	db	$3D, $AE, $32, $AD
+	db	$01, $81, $9B, $1F
+	db	$8F, $03, $02, $03
+	db	$13, $02, $C1, $12
+	db	$02, $9F, $A4, $03
+	db	$26, $12, $BF, $57
+	db	$4F, $05, $5F, $08
+	db	$C6, $02, $A5, $BE
+	db	$0B, $CD, $24, $6E
+	db	$B7, $0B, $BE, $57
+	db	$CD, $26, $31, $5A
+	db	$2A, $DB, $14, $D6
+	db	$18, $5E, $1E, $96
+	db	$01, $02, $06, $0F
+	db	$8F, $03, $CC, $04
+	db	$ED, $9A, $81, $AE
+	db	$90, $A6, $00, $6F
+	db	$4F, $D7, $02, $4F
+	db	$5A, $26, $F8, $81
 ;
-X1D18:
-	brclr	5,X0005,L0536
+L2118:
+	brclr	5,DDRB,L0136
 	lda	X2152
-	sta	X0004
-L1D20:
+	sta	DDRA
 	lda	X2153
-	sta	X0005
+	sta	DDRB
 	lda	X2154
-	sta	X0006
-	bset	7,X0012
-	bset	6,X0012
-	bset	5,X0012
+	sta	DDRC
+	bset	7,TCR
+	bset	6,TCR
+	bset	5,TCR
 	lda	X215A
-	sta	X000C
+	sta	Miscell
 	rts
 ;
-	clrx
-	lda	X214E,x
-	sta	,x
-	incx
-	cpx	#$13
-	bmi	L0537
-	rts
+	db	$5F, $D6, $21, $4E
+	db	$F7, $5C, $A3, $13
+	db	$2B, $F7, $81
 ;
+L2141:
 	clrx
 	lda	X2161,x
 	sta	,x
 	incx
 	cpx	#$13
-	bmi	L0542
-L1D4B:
+	bmi	L0142
 	jmp	L205A
 ;
-	stx	,x
-	sub	X00FC
-	brset	0,X0004,L0553
-	brclr	7,X0040,L0557
-	bra	L0559
+	db	$FF, $B0, $FC, $00
+X2152:
+	db	$04
+X2153:
+	db	$FF
+X2154:
+	db	$0F, $40, $00, $20
+	db	$00, $00
+X215A:
+	db	$BC
+X215B:
+	db	$C0, $00, $2C, $00
+	db	$00, $FA
+X2161:
+	db	$F8, $B8, $FE, $00
+	db	$07, $31, $02, $40
+	db	$00, $20, $00, $00
+	db	$BC, $C0, $00, $2C
+	db	$00, $00, $FA
 ;
-	brset	0,X00BC,L051C
-	brset	0,X002C,L055F
-	brset	0,X00FA,L055A
-	eor	X00FE
-	brset	0,X0007,L0598
-	brset	1,X0040,L056A
-	bra	L056C
+L2174:
+	brclr	6,RAM1_05d,L01AE
+	brclr	2,STACK_0ce,L01AE
+	brset	1,STACK_0ce,L01AE
+	brclr	0,STACK_0ce,L01AE
+	jmp	L21BB
 ;
-	brset	0,X00BC,L052F
-	brset	0,X002C,L0572
-	brset	0,X00FA,L0582
-	tstx
-	asr	X0005
-	ldx	X3402
-	ldx	X3101
-	ldx	X2ECC
-	brn	L053E
-	lda	X0078
-	and	#$07
-	ldx	#$81
-	cmp	#$04
-	bcc	L05AE
-	cmp	#$01
-	bne	L0594
-	bset	4,X00CE
-	rts
+L2183:
+	db	$B6, $78, $A4, $07
+	db	$AE, $81, $A1, $04
+	db	$24, $21, $A1, $01
+	db	$26, $03, $18, $CE
+	db	$81, $AE, $02, $A1
+	db	$02, $26, $03, $1A
+	db	$CE, $81, $16, $BC
+	db	$AE, $08, $C1, $AE
+	db	$01, $10, $80, $BF
+	db	$D0, $1C, $CE, $1E
+	db	$94, $1D, $B5, $81
+	db	$A6, $48, $B7, $9F
+	db	$AE, $71, $A6, $41
+	db	$B7, $CE, $20, $E9
 ;
-	ldx	#$02
-	cmp	#$02
-	bne	L059D
-	bset	5,X00CE
-	rts
-;
-	bset	3,X00BC
-	ldx	#$08
-	cmp	XAE01
-	bset	0,X0080
-	stx	X00D0
-	bset	6,X00CE
-	bset	7,X0094
-	bclr	6,X00B5
-	rts
-;
-	lda	#$48
-	sta	X009F
-	ldx	#$71
-	lda	#$41
-	sta	X00CE
-	bra	L05A4
-;
+L21BB:
 	clrx
 	lda	X21D5,x
-	sta	X0056
+	sta	RAM1_056
 	lda	X21D4,x
-	beq	L05D3
+	beq	L01D3
 	jsr	L2889
-	bne	L05BC
+	bne	L01BC
 	ldx	X21D3,x
 	jsr	L2183,x						;INFO: index jump
-	bclr	6,X005D
+	bclr	6,RAM1_05d
+X21D3:
 	rts
 ;
-	sub	X0000,x
-	add	X001F,x
-	eor	X002C,x
-	brclr	3,X002C,L05DD
+X21D4:
+	db	$E0
+X21D5:
+	db	$00, $EB, $1F, $E8
+	db	$2C, $07, $2C, $00
+;
+L21DD:
 	lda	#$02
-	eor	X0012
-	sta	X0012
-	bset	3,X0076
-	lda	X0014
-	sta	X006D
-	lda	X0015
-	sta	X006E
-	brclr	4,X005E,L05F5
-	brset	1,X0012,L0624
-	bra	L0611
+	eor	TCR
+	sta	TCR
+	bset	3,RAM1_076
+	lda	ICH1
+	sta	RAM1_06d
+	lda	ICL1
+	sta	RAM1_06e
+	brclr	4,RAM1_05e,L01F5
+	brset	1,TCR,L0224
+	bra	L0211
 ;
-	sub	X0070
+	db	$B0, $70, $97, $B6
+	db	$6D, $B2, $6F, $A5
+	db	$E0, $26, $11, $02
+	db	$0C, $0B, $03, $12
+	db	$08, $B7, $71, $BF
+	db	$72, $11, $76, $20
+	db	$0E, $CD, $22, $7E
+	db	$B6, $6E, $B7, $70
+	db	$B6, $6D, $B7, $6F
+	db	$08, $5E, $06, $0A
+	db	$03, $06, $03, $12
+	db	$06, $19, $5E, $81
+	db	$03, $12, $FC, $A6
+	db	$02, $B8, $12, $B7
+	db	$12, $A6, $10, $BB
+	db	$6E, $B7, $6E, $24
+	db	$02, $3C, $6D, $B6
+	db	$15, $20, $B1
+;
+L223C:
+	brclr	3,RAM1_076,L0242
+	bclr	3,RAM1_076
+	rts
+;
+	db	$18, $5E, $13, $12
+	db	$B6, $15, $A6, $20
+	db	$BB, $76, $AA, $40
+	db	$A4, $DF, $B7, $76
+	db	$0B, $03, $1D, $0E
+	db	$01, $0E, $B6, $5E
+	db	$A0, $20, $25, $02
+	db	$B7, $5E, $2B, $32
+	db	$1D, $5E, $20, $09
+	db	$04, $76, $1E, $14
+	db	$76, $12, $76, $20
+	db	$18, $01, $61, $22
+	db	$A6, $14, $5F, $BF
+	db	$71, $B7, $72, $10
+	db	$76, $01, $61, $05
+	db	$0F, $01, $02, $15
+	db	$76, $B7, $73, $BF
+	db	$74, $18, $76, $0E
+	db	$01, $08, $A6, $20
+	db	$BB, $5E, $25, $02
+	db	$B7, $5E, $A6, $20
+	db	$BB, $76, $B7, $76
+	db	$A4, $60, $A1, $60
+	db	$26, $1C, $0E, $76
+	db	$05, $00, $61, $07
+	db	$1D, $76, $1F, $01
+	db	$18, $5E, $81, $A6
+	db	$24, $B7, $09, $0F
+	db	$09, $FD, $B6, $08
+	db	$B7, $75, $1E, $01
+	db	$18, $5E, $81
+;
+L22BD:
+	clra
+	brset	0,RAM1_061,L02C4
+	brclr	2,RAM1_05f,L02CA
+	brset	4,RAM1_076,L02CF
+	brset	2,RAM1_05f,L032B
+	sta	RAM2_02a4
+	bra	L0329
+;
+	db	$19, $76, $9B, $B6
+	db	$73, $B7, $50, $B6
+	db	$74, $B7, $51, $B6
+	db	$71, $B7, $52, $B6
+	db	$72, $B7, $53, $9A
+	db	$0E, $76, $78, $4F
+	db	$05, $5F, $3F, $5F
+	db	$CD, $24, $8F, $CD
+	db	$24, $8D, $AE, $03
+	db	$E6, $50, $DB, $02
+	db	$A0, $D7, $02, $A0
+	db	$E7, $56, $E6, $4F
+	db	$D9, $02, $9F, $D7
+	db	$02, $9F, $E7, $55
+	db	$5A, $5A, $2A, $E8
+	db	$CD, $25, $E4, $5F
+	db	$CD, $24, $B3, $25
+	db	$0D, $AE, $09, $CD
+	db	$24, $1E, $A6, $1A
+	db	$CD, $24, $3F, $C7
+	db	$02, $A5, $C6, $02
+	db	$A5, $BE, $0B, $CD
+	db	$24, $6E, $B7, $0B
+	db	$81, $4F, $C7, $02
+	db	$AA, $AE, $0D, $CD
+	db	$24, $8F, $B6, $75
+	db	$CB, $02, $AE, $C7
+	db	$02, $AE, $4F, $C9
+	db	$02, $AD, $C7, $02
+	db	$AD, $C6, $02, $AE
+	db	$CE, $02, $AD, $56
+	db	$46, $56, $46, $56
+	db	$46, $AE, $0B, $CD
+	db	$24, $B4, $25, $4B
+	db	$AE, $19, $CD, $24
+	db	$1E, $20, $34, $04
+	db	$76, $CB, $AE, $06
+	db	$CD, $24, $8F, $CD
+	db	$24, $8D, $AE, $03
+	db	$E6, $50, $DB, $02
+	db	$A6, $D7, $02, $A6
+	db	$E7, $56, $E6, $4F
+	db	$D9, $02, $A5, $D7
+	db	$02, $A5, $E7, $55
+	db	$5A, $5A, $2A, $E8
+	db	$CD, $25, $E4, $AE
+	db	$06, $CD, $24, $B3
+	db	$25, $15, $AE, $0F
+	db	$CD, $24, $1E, $A6
+	db	$24, $CD, $24, $3F
+	db	$C7, $02, $AB, $A6
+	db	$2A, $CD, $24, $3F
+	db	$C7, $02, $AC, $01
+	db	$61, $28, $C6, $02
+	db	$AB, $BE, $0A, $CD
+	db	$24, $6E, $B7, $0A
+	db	$C6, $02, $AC, $BE
+	db	$6C, $CD, $24, $6E
+	db	$97, $02, $76, $0C
+	db	$C6, $02, $AC, $B0
+	db	$6C, $24, $01, $40
+	db	$A4, $FC, $27, $06
+	db	$13, $76, $BF, $6C
+	db	$12, $5D, $81
+;
+L23CE:
+	brclr	2,RAM1_05f,L03DB
+	lda	RAM2_02a5
+	ldx	PLMB
+	jsr	L2402
+	sta	PLMB
+	brclr	0,RAM1_061,L03CD
+	lda	RAM2_02ab
+	ldx	PLMA
+	jsr	L2402
+	sta	PLMA
+	lda	RAM2_02ac
+	ldx	RAM1_06c
+	jsr	L2402
 	tax
-	lda	X006D
-	sbc	X006F
-	bit	#$E0
-	bne	L0611
-	brset	1,X000C,L060E
-	brclr	1,X0012,L060E
-L1E06:
-	sta	X0071
-	stx	X0072
-	bclr	0,X0076
-	bra	L061C
-;
-	jsr	L227E
-	lda	X006E
-	sta	X0070
-	lda	X006D
-	sta	X006F
-	brset	4,X005E,L0622
-	brset	5,X0003,L0625
-	brclr	1,X0012,L0628
-	bclr	4,X005E
-	rts
-;
-	brclr	1,X0012,L0624
-	lda	#$02
-	eor	X0012
-	sta	X0012
-	lda	#$10
-	add	X006E
-	sta	X006E
-	bcc	L0638
-	inc	X006D
-L1E38:
-	lda	X0015
-	bra	L05ED
-;
-	brclr	3,X0076,L0642
-	bclr	3,X0076
-	rts
-;
-L1E42:
-	bset	4,X005E
-	bclr	1,X0012
-	lda	X0015
-	lda	#$20
-	add	X0076
-	ora	#$40
-	and	#$DF
-	sta	X0076
-	brclr	5,X0003,L0672
-	brset	7,X0001,L0666
-	lda	X005E
-L1E5A:
-	sub	#$20
-	bcs	L0660
-	sta	X005E
-	bmi	L0694
-	bclr	6,X005E
-	bra	L066F
-;
-	brset	2,X0076,L0687
-L1E69:
-	bset	2,X0076
-	bset	1,X0076
-	bra	L0687
-;
-	brclr	0,X0061,L0694
-	lda	#$14
-L1E74:
-	clrx
-	stx	X0071
-	sta	X0072
-	bset	0,X0076
-	brclr	0,X0061,L0683
-	brclr	7,X0001,L0683
-L1E81:
-	bclr	2,X0076
-	sta	X0073
-	stx	X0074
-L1E87:
-	bset	4,X0076
-	brset	7,X0001,L0694
-L1E8C:
-	lda	#$20
-	add	X005E
-	bcs	L0694
-	sta	X005E
-	lda	#$20
-	add	X0076
-	sta	X0076
-	and	#$60
-	cmp	#$60
-X1E9E:
-	bne	L06BC
-	brset	7,X0076,L06A8
-	brset	0,X0061,L06AD
-	bclr	6,X0076
-	bclr	7,X0001
-	bset	4,X005E
-	rts
-;
-	lda	#$24
-	sta	X0009
-	brclr	7,X0009,L06B1
-	lda	X0008
-	sta	X0075
-	bset	7,X0001
-	bset	4,X005E
-	rts
-;
-	clra
-	brset	0,X0061,L06C4
-	brclr	2,X005F,L06CA
-	brset	4,X0076,L06CF
-	brset	2,X005F,L072B
-	sta	X02A4
-	bra	L0729
-;
-	bclr	4,X0076
-	sei
-	lda	X0073
-	sta	X0050
-	lda	X0074
-	sta	X0051
-	lda	X0071
-	sta	X0052
-	lda	X0072
-	sta	X0053
-L1EE2:
-	cli
-	brset	7,X0076,L075E
-	clra
-	brclr	2,X005F,L0729
-	clrx
-	jsr	L248F
-	jsr	L248D
-	ldx	#$03
-L1EF3:
-	lda	X0050,x
-	add	X02A0,x
-	sta	X02A0,x
-	sta	X0056,x
-	lda	X004F,x
-	adc	X029F,x
-	sta	X029F,x
-	sta	X0055,x
-	decx
-	decx
-	bpl	L06F3
-	jsr	L25E4
-	clrx
-	jsr	L24B3
-	bcs	L0721
-	ldx	#$09
-	jsr	L241E
-	lda	#$1A
-	jsr	L243F
-	sta	X02A5
-	lda	X02A5
-	ldx	X000B
-	jsr	L246E
-	sta	X000B
-	rts
-;
-	clra
-	sta	X02AA
-	ldx	#$0D
-	jsr	L248F
-	lda	X0075
-	add	X02AE
-	sta	X02AE
-	clra
-	adc	X02AD
-	sta	X02AD
-	lda	X02AE
-	ldx	X02AD
-	rorx
-	rora
-	rorx
-	rora
-	rorx
-	rora
-	ldx	#$0B
-	jsr	L24B4
-	bcs	L07A2
-	ldx	#$19
-	jsr	L241E
-	bra	L0792
-;
-	brset	2,X0076,L072C
-	ldx	#$06
-	jsr	L248F
-	jsr	L248D
-	ldx	#$03
-	lda	X0050,x
-	add	X02A6,x
-	sta	X02A6,x
-	sta	X0056,x
-	lda	X004F,x
-	adc	X02A5,x
-	sta	X02A5,x
-	sta	X0055,x
-	decx
-	decx
-	bpl	L076B
-	jsr	L25E4
-	ldx	#$06
-	jsr	L24B3
-	bcs	L07A2
-	ldx	#$0F
-	jsr	L241E
-	lda	#$24
-	jsr	L243F
-	sta	X02AB
-	lda	#$2A
-	jsr	L243F
-	sta	X02AC
-	brclr	0,X0061,L07CD
-	lda	X02AB
-	ldx	X000A
-	jsr	L246E
-	sta	X000A
-	lda	X02AC
-	ldx	X006C
-	jsr	L246E
-	tax
-	brset	1,X0076,L07C7
-	lda	X02AC
-	sub	X006C
-	bcc	L07C3
+	lda	RAM2_02ac
+	sub	RAM1_06c
+	bcc	L03F9
 	nega
 	and	#$FC
-	beq	L07CD
-	bclr	1,X0076
-	stx	X006C
-	bset	1,X005D
+	beq	L03CD
+	stx	RAM1_06c
+	bset	1,RAM1_05d
 	rts
 ;
-	brclr	2,X005F,L07DB
-	lda	X02A5
-	ldx	X000B
-	jsr	L2402
-	sta	X000B
-	brclr	0,X0061,L07CD
-	lda	X02AB
-	ldx	X000A
-	jsr	L2402
-	sta	X000A
-	lda	X02AC
-X1FEB:
-	ldx	X006C
-	jsr	L2402
-	tax
-	lda	X02AC
-	sub	X006C
-	bcc	L07F9
-	nega
-	and	#$FC
-X1FFB:
-	beq	L07CD
-	stx	X006C
-	bset	1,X005D
-	rts
-;
-	stx	X0056
-	sub	X0056
-	beq	L001B
-	bcs	L0013
+L2402:
+	stx	RAM1_056
+	sub	RAM1_056
+	beq	L041B
+	bcs	L0413
 	clrx
-L200B:
 	cmp	#$10
-	bcs	L001A
+	bcs	L041A
 	ldx	#$02
-	bra	L001A
+	bra	L041A
 ;
-	clrx
-	cmp	#$F0
-	bhi	L001A
-	ldx	#$FE
-	txa
-	add	X0056
-	rts
+	db	$5F, $A1, $F0, $22
+	db	$02, $AE, $FE, $9F
+	db	$BB, $56, $81, $A6
+	db	$05, $B7, $50, $3F
+	db	$56, $D6, $01, $00
+	db	$B1, $52, $24, $09
+	db	$B7, $56, $5A, $3A
+	db	$50, $2A, $F2, $A6
+	db	$FF, $B0, $56, $B7
+	db	$51, $B6, $52, $B0
+	db	$56, $B7, $52, $81
+	db	$BB, $50, $97, $3F
+	db	$5A, $B6, $50, $A1
+	db	$05, $27, $0B, $D6
+	db	$01, $01, $B7, $5A
+	db	$A6, $FF, $3D, $50
+	db	$2B, $03, $D6, $01
+	db	$00, $B0, $5A, $97
+	db	$B6, $52, $42, $B7
+	db	$59, $BF, $58, $3F
+	db	$57, $B6, $51, $B7
+	db	$56, $CD, $25, $E4
+	db	$BB, $5A, $81, $BF
+	db	$56, $B0, $56, $27
+	db	$15, $25, $0A, $AE
+	db	$01, $A1, $10, $25
+	db	$0C, $AE, $08, $20
+	db	$08, $AE, $FF, $A1
+	db	$F0, $22, $02, $AE
+	db	$F8, $9F, $BB, $56
+	db	$81, $81, $5C, $5C
+	db	$D6, $02, $A0, $B7
+	db	$56, $D6, $02, $A1
+	db	$34, $56, $46, $34
+	db	$56, $46, $34, $56
+	db	$46, $B7, $57, $D6
+	db	$02, $A1, $B0, $57
+	db	$D7, $02, $A1, $D6
+	db	$02, $A0, $B2, $56
+	db	$D7, $02, $A0, $81
+	db	$43, $B7, $52, $02
+	db	$76, $0A, $D0, $02
+	db	$A4, $24, $01, $40
+	db	$A1, $02, $25, $07
+	db	$B6, $52, $D7, $02
+	db	$A4, $A1, $00, $81
+	db	$BE, $CC, $A3, $FF
+	db	$26, $02, $1B, $C5
+	db	$AE, $80, $00, $CB
+	db	$04, $0D, $C6, $13
+	db	$81, $AE, $5F, $C1
+	db	$AE, $20, $1B, $C5
+	db	$20, $09
 ;
-	lda	#$05
-	sta	X0050
-	clr	X0056
-	lda	X0100,x
-	cmp	X0052
-	bcc	L0034
-	sta	X0056
-	decx
-	dec	X0050
-	bpl	L0024
-	lda	#$FF
-	sub	X0056
-	sta	X0051
-	lda	X0052
-	sub	X0056
-	sta	X0052
-	rts
-;
-	add	X0050
-	tax
-	clr	X005A
-	lda	X0050
-	cmp	#$05
-	beq	L0055
-	lda	X0101,x
-	sta	X005A
-	lda	#$FF
-	tst	X0050
-	bmi	L0058
-	lda	X0100,x
-	sub	X005A
-L205A:
-	tax
-	lda	X0052
-	mul
-	sta	X0059
-	stx	X0058
-	clr	X0057
-	lda	X0051
-	sta	X0056
-	jsr	L25E4
-	add	X005A
-	rts
-;
-	stx	X0056
-	sub	X0056
-	beq	L0089
-	bcs	L0080
-	ldx	#$01
-	cmp	#$10
-	bcs	L0088
-	ldx	#$08
-	bra	L0088
-;
-	ldx	#$FF
-L2082:
-	cmp	#$F0
-	bhi	L0088
-	ldx	#$F8
-	txa
-	add	X0056
-	rts
-	rts
-;
-	incx
-	incx
-	lda	X02A0,x
-	sta	X0056
-	lda	X02A1,x
-	lsr	X0056
-	rora
-	lsr	X0056
-	rora
-	lsr	X0056
-	rora
-	sta	X0057
-	lda	X02A1,x
-	sub	X0057
-	sta	X02A1,x
-	lda	X02A0,x
-	sbc	X0056
-	sta	X02A0,x
-	rts
-;
-	coma
-L20B4:
-	sta	X0052
-	brset	1,X0076,L00C3
-	sub	X02A4,x
-	bcc	L00BF
-	nega
-	cmp	#$02
-	bcs	L00CA
-	lda	X0052
-	sta	X02A4,x
-	cmp	#$00
-	rts
-;
-	ldx	X00CC
-	cpx	#$FF
-	bne	L00D3
-	bclr	5,X00C5
-	ldx	#$80
-	brset	0,X00CB,L00DC
-	brclr	6,X00C6,L00EE
-	rts
-;
-	ldx	#$5F
-	cmp	XAE20
-	bclr	5,X00C5
-	bra	L00EE
-;
+L24E5:
 	ldx	#$4C
 	cmp	XAE50
-	clr	X00CC
-	bset	3,X00CC
-	bclr	0,X00CB
-	stx	X00C6
-	sta	X00C7
+	clr	STACK_0cc
+	bset	3,STACK_0cc
+	bclr	0,STACK_0cb
+	stx	STACK_0c6
+	sta	STACK_0c7
 	rts
 ;
-	eor	X0250,x
-	beq	L0102
-	eor	X0250,x
-	sta	X0250,x
-	bset	5,X00C6
-	incx
-	rts
+	db	$D8, $02, $50, $27
+	db	$08, $D8, $02, $50
+	db	$D7, $02, $50, $1A
+	db	$C6, $5C, $81
 ;
+L2504:
 	clrx
 	lda	#$00
-	bsr	L00F5
+	bsr	L04F5
 	cpx	#$06
-L210B:
-	bne	L0105
+	bne	L0505
 	rts
 ;
-	ldx	#$01
-	bsr	L00F5
-	lda	X0056
-	ora	#$40
-	brclr	5,X0069,L011A
-	clra
-	brset	2,X00B8,L0122
-	brclr	6,X00B5,L0122
-	ora	#$04
-	bsr	L0107
-	clrx
-	lda	#$00
-	bra	L00F5
+	db	$AE, $01, $AD, $E3
+	db	$B6, $56, $AA, $40
+	db	$0B, $69, $01, $4F
+	db	$04, $B8, $05, $0D
+	db	$B5, $02, $AA, $04
+	db	$AD, $E3, $5F, $A6
+	db	$00, $20, $CC, $B7
+	db	$56, $AD, $06, $97
+	db	$B6, $56, $CD, $26
+	db	$1E, $CD, $26, $17
+	db	$A1, $0A, $25, $02
+	db	$AB, $07, $AB, $30
+	db	$81, $A6, $68, $C1
+	db	$A6, $70, $C1, $A6
+	db	$60, $C1, $A6, $78
+	db	$C1, $A6, $80, $4A
+	db	$B7, $56, $AE, $07
+	db	$BF, $57, $BE, $56
+	db	$D6, $26, $A5, $3A
+	db	$56, $BE, $57, $D7
+	db	$02, $57, $3A, $57
+	db	$2A, $F0, $81, $02
+	db	$CB, $0B, $3C, $CC
+	db	$3D, $CC, $27, $03
+	db	$3A, $CC, $81, $3A
+	db	$CC, $A1, $03, $26
+	db	$09, $A6, $39, $0D
+	db	$D2, $1E, $A6, $36
+	db	$20, $1A, $A1, $01
+	db	$26, $05, $0B, $BB
+	db	$2F, $16, $94, $0D
+	db	$B5, $05, $04, $B8
+	db	$02, $AA, $08
 ;
-	sta	X0056
-	bsr	L0133
-	tax
-	lda	X0056
-	jsr	L261E
-	jsr	L2617
-L2136:
-	cmp	#$0A
-	bcs	L013C
-	add	#$07
-	add	#$30
-	rts
-;
-	lda	#$68
-L2141:
-	cmp	XA670
-	cmp	XA660
-	cmp	XA678
-	cmp	XA680
-	deca
-X214E:
-	sta	X0056
-	ldx	#$07
-X2152:
-	stx	X0057
-X2154:
-	ldx	X0056
-	lda	X26A5,x
-	dec	X0056
-X215B:
-	ldx	X0057
-	sta	X0257,x
-	dec	X0057
-	bpl	L0154
-	rts
-;
-	brset	1,X00CB,L0173
-	inc	X00CC
-	tst	X00CC
-	beq	L0171
-	dec	X00CC
-	rts
-;
-	dec	X00CC
-	cmp	#$03
-	bne	L0180
-	lda	#$39
-	brclr	6,X00D2,L019A
-	lda	#$36
-	bra	L019A
-;
-	cmp	#$01
-	bne	L0189
-	brclr	5,X00BB,L01B6
-	bset	3,X0094
-	brclr	6,X00B5,L0191
-	brset	2,X00B8,L0191
-	ora	#$08
-	brclr	3,X008E,L0196
+L2591:
+	brclr	3,RAM1_08e,L0596
 	ora	#$10
-	sta	X00D5
-	bra	L01A6
+	sta	STACK_0d5
+	bra	L05A6
 ;
-	ora	#$40
-	eor	X00D5
-	and	#$7F
-	beq	L01B6
-	eor	X00D5
-	sta	X00D5
-	brclr	0,X0061,L01AD
-	brclr	3,X00CE,L01B2
+	db	$AA, $40, $B8, $D5
+	db	$A4, $7F, $27, $14
+	db	$B8, $D5, $B7, $D5
+;
+L25A6:
+	brclr	0,RAM1_061,L05AD
+	brclr	3,STACK_0ce,L05B2
 	clra
-	brclr	3,X008E,L01B2
+	brclr	3,RAM1_08e,L05B2
 	ora	#$10
-	bset	7,X00D5
-	bset	1,X0094
+	bset	7,STACK_0d5
+	bset	1,RAM1_094
 	rts
 ;
+L25B7:
 	tax
 	lda	#$04
-	sta	X0056
-	clr	X0057
+	sta	RAM1_056
+	clr	RAM1_057
 	clra
-	bms	L01CA
+	bms	L05CA
 	sei
-	stx	X0009
-	brclr	7,X0009,L01C4
+	stx	ADSTAT
+	brclr	7,ADSTAT,L05C4
 	cli
-	bra	L01CF
+	bra	L05CF
 ;
-	stx	X0009
-	brclr	7,X0009,L01CC
-	add	X0008
-	bcc	L01D5
-X21D3:
-	inc	X0057
-X21D5:
-	dec	X0056
-	bne	L01BF
-	lsr	X0057
-	rora
-	lsr	X0057
-	rora
-	adc	#$00
-	sta	X0056
-	rts
+	db	$BF, $09, $0F, $09
+	db	$FD, $BB, $08, $24
+	db	$02, $3C, $57, $3A
+	db	$56, $26, $E6, $34
+	db	$57, $46, $34, $57
+	db	$46, $A9, $00, $B7
+	db	$56, $81, $5F, $99
+	db	$59, $25, $2A, $34
+	db	$56, $36, $57, $B6
+	db	$59, $B0, $57, $B7
+	db	$59, $B6, $58, $B2
+	db	$56, $B7, $58, $24
+	db	$EA, $98, $59, $25
+	db	$14, $34, $56, $36
+	db	$57, $B6, $59, $BB
+	db	$57, $B7, $59, $B6
+	db	$58, $B9, $56, $B7
+	db	$58, $24, $EA, $20
+	db	$D2, $9F, $81, $44
 ;
-	clrx
-	sec
-	rolx
-	bcs	L0213
-	lsr	X0056
-	ror	X0057
-	lda	X0059
-	sub	X0057
-	sta	X0059
-	lda	X0058
-	sbc	X0056
-	sta	X0058
-	bcc	L01E5
-	clc
-	rolx
-	bcs	L0213
-	lsr	X0056
-	ror	X0057
-	lda	X0059
-	add	X0057
-	sta	X0059
-	lda	X0058
-	adc	X0056
-	sta	X0058
-	bcc	L01FB
-	bra	L01E5
-;
-	txa
-	rts
-;
+L2616:
 	lsra
-	lsra
+L2617:
 	lsra
 	lsra
 	lsra
 	lsra
 	rts
 ;
-	asla
-	asla
-	asla
-	asla
-	asla
-	asla
-	rts
+	db	$48, $48, $48, $48
+	db	$48, $48, $81
 ;
-	sta	X0050
-	bra	L022C
+L2623:
+	sta	RAM1_050
+	bra	L062C
 ;
-	jsr	L0785
-	bsr	L0231
-	dec	X0050
-	bpl	L0227
-	rts
+	db	$CD, $07, $85, $AD
+	db	$05, $3A, $50, $2A
+	db	$F7, $81
 ;
+L2631:
 	lda	#$14
-	add	X001A
-	tst	X001B
-	bih	L023B
-	bset	7,X008F
-	cmp	X001A
-	bpl	L0237
+	add	ACH
+	tst	ACL
+	bih	L063B
+	bset	7,RAM1_08f
+	cmp	ACH
+	bpl	L0637
 	rts
 ;
+L2640:
 	lda	#$85
-	cmp	XA621
+;
+	db	$C1
+;
+L2643:
+	lda	#$21
 	deca
-	bne	L0245
+	bne	L0645
 	rts
 ;
+L2649:
 	lda	X2656,x
-	sta	X0064
+	sta	RAM1_064
 	lda	X2657,x
-	sta	X0065
-	clr	X0066
+	sta	RAM1_065
+	clr	RAM1_066
 	rts
 ;
+X2656:
+	db	$7C
+X2657:
+	db	$52, $69, $EB, $2C
+	db	$00, $7F, $E0
+;
+L265E:
 	inc	,x
-;
-	db	$52
-;
-	rol	X00EB,x
-	bmc	L025C
-	clr	,x
-	sub	X007C,x
-	beq	L0262
+	beq	L0662
 	dec	,x
 	dec	,x
 	rts
 ;
-	and	#$07
-	tax
-	clra
-	sec
-	rola
-	decx
-	bpl	L0269
-	rts
+	db	$A4, $07, $97, $4F
+	db	$99, $49, $5A, $2A
+	db	$FC, $81
 ;
+L266E:
 	lda	#$80
 	bit	,x
-	bne	L0276
+	bne	L0676
 	lsra
-	bne	L0270
+	bne	L0670
 	eor	,x
 	sta	,x
 	rts
 ;
-	ldx	X0056
-	inc	X0056
+L2679:
+	ldx	RAM1_056
+	inc	RAM1_056
 	lda	,x
-L227E:
-	brclr	1,X0059,L0284
-	lda	X0200,x
-	ldx	X0057
-	inc	X0057
-	brclr	0,X0059,L028F
-	sta	X0200,x
-	cmp	X00F7
-	dec	X0058
-	bpl	L0279
+	brclr	1,RAM1_059,L0684
+	lda	BOT1_0200,x
+	ldx	RAM1_057
+	inc	RAM1_057
+	brclr	0,RAM1_059,L068F
+	sta	BOT1_0200,x
+	cmp	STACK_0f7
+	dec	RAM1_058
+	bpl	L0679
 	rts
 ;
+L2695:
 	clrx
 	tsta
-	bpl	L02A4
+	bpl	L06A4
 	ldx	#$07
 	asla
 	asla
-	bmi	L02A4
+	bmi	L06A4
 	lsrx
 	asla
-	bmi	L02A4
+	bmi	L06A4
 	lsrx
 	rts
 ;
-	lsrx
+	db	$54, $41, $20, $20
+	db	$20, $31, $20, $20
+	db	$47, $41, $4C, $41
+	db	$20, $31, $20, $20
+	db	$56, $4F, $4C, $20
+	db	$20, $31, $20, $20
+	db	$53, $45, $4E, $53
+	db	$20, $44, $58, $20
+	db	$52, $4D, $20, $20
+	db	$20, $4F, $4E, $20
+	db	$4E, $41, $56, $20
+	db	$20, $31, $20, $20
+	db	$54, $45, $4C, $20
+	db	$20, $52, $20, $20
+	db	$47, $41, $4C, $41
+	db	$20, $4F, $46, $46
+	db	$53, $45, $4E, $53
+	db	$20, $4C, $4F, $20
+	db	$52, $4D, $20, $20
+	db	$20, $4F, $46, $46
+	db	$54, $45, $4C, $20
+	db	$20, $4C, $20, $20
+	db	$45, $31, $20, $50
+	db	$33, $3A, $30, $30
+	db	$43, $44, $31, $20
+	db	$45, $52, $52, $31
+	db	$4E, $4F, $20, $43
+	db	$4F, $44, $45, $20
+	db	$52, $30, $20, $30
+	db	$30, $3A, $20, $20
+	db	$46, $41, $44, $20
+	db	$4F, $46, $46, $20
 ;
-	db	$41
-;
-	bra	L02C9
-	bra	L02DC
-	bra	L02CD
-;
-	asra
-;
-	db	$41
-;
-	inca
-;
-	db	$41
-;
-	bra	L02E4
-	bra	L02D5
-;
-	rorx
-	clra
-	inca
-	bra	L02DA
-;
-	db	$31
-;
-	bra	L02DD
-;
-L22BD:
-	comx
-;
-	db	$45, $4E
-;
-	comx
-	bra	L0307
-;
-	aslx
-	bra	L0318
-;
-	tsta
-	bra	L02E9
-	bra	L031A
-;
-	db	$4E
-;
-	bra	L031C
-;
-	db	$41
-;
-	rorx
-	bra	L02F2
-;
-	db	$31
-;
-	bra	L02F5
-;
-	lsrx
-;
-	db	$45
-;
-	inca
-	bra	L02FA
-;
-	db	$52
-;
-	bra	L02FD
-;
-	asra
-;
-	db	$41
-;
-	inca
-;
-	db	$41
-;
-	bra	L0332
-;
-	rora
-	rora
-	comx
-;
-	db	$45, $4E
-;
-	comx
-	bra	L0337
-;
-	clra
-	bra	L0340
-;
-	tsta
-	bra	L0311
-	bra	L0342
-;
-	rora
-	rora
-	lsrx
-;
-	db	$45
-;
-	inca
-	bra	L031A
-;
-	inca
-	bra	L031D
-;
-	db	$45, $31
-;
-	bra	L0351
-;
-	com	X003A
-	neg	X0030
-	coma
-	lsra
-;
-	db	$31
-;
-	bra	L034F
-;
-	db	$52, $52, $31, $4E
-;
-	clra
-	bra	L0354
-;
-	clra
-	lsra
-;
-	db	$45
-;
-	bra	L0368
-;
-	neg	X0020
-	neg	X0030
-	dec	X0020
-	bra	L0364
-;
-	db	$41
-;
-	lsra
-	bra	L0371
-;
-	rora
-	rora
-	bra	L0365
-;
-	ora	XA60A
-	sta	X00CF
-	lda	#$05
-	sta	X00CE
-	rts
-;
-	ldx	#$D1
-	jsr	L265E
-	bne	L0339
-	bclr	7,X00D2
-	ldx	#$CF
-	jsr	L265E
-	bne	L032F
-	brclr	3,X00CE,L0345
-	bset	7,X005D
-	brclr	2,X00CE,L03C1
-	lda	X00CE
-	and	#$F8
-	sta	X00CE
+L2725:
+	clr	STACK_0ca
 	lda	#$0A
-	brset	7,X0060,L03B7
-	lda	#$08
-	brclr	3,X008B,L03B7
-	tst	X00CE
-	beq	L038D
-	brset	7,X00CE,L03B7
-	brset	2,X00CE,L0382
-	brclr	1,X00CE,L036E
-	lda	#$01
-	brclr	0,X00CE,L03A8
-	lda	#$04
-	bra	L03A8
-;
-	brset	5,X00CE,L0379
-	brclr	6,X00CE,L038D
+	sta	STACK_0cf
 	lda	#$05
-	brset	0,X00CE,L03B7
-	lda	#$09
-	brclr	6,X0067,L03A8
-	bset	7,X005D
-	bra	L03A8
+	sta	STACK_0ce
+	rts
 ;
-	brclr	1,X00CE,L038D
-	brset	2,X00CB,L038D
-	lda	#$06
-	brclr	0,X00CE,L03A6
+	db	$AE, $D1, $CD, $26
+	db	$5E, $26, $02, $1F
+	db	$D2, $AE, $CF, $CD
+	db	$26, $5E, $26, $EF
+	db	$07, $CE, $02, $1E
+	db	$5D, $05, $CE, $79
+	db	$B6, $CE, $A4, $F8
+	db	$B7, $CE
+;
+L274E:
+	lda	#$0A
+	brset	7,RAM1_060,L07B7
+	lda	#$08
+	brclr	3,RAM1_08b,L07B7
+	tst	STACK_0ce
+	beq	L078D
+	brset	7,STACK_0ce,L07B7
+	brset	2,STACK_0ce,L0782
+	brclr	1,STACK_0ce,L076E
 	lda	#$01
-	brset	3,X00CE,L03A8
-	lda	#$06
-	brset	6,X007F,L03A8
-	brset	3,X007F,L03A8
+	brclr	0,STACK_0ce,L07A8
 	lda	#$04
-	brset	5,X007F,L03A6
-	lda	X007F
-	coma
-	and	#$03
-	beq	L03A8
-	ora	#$40
-	brset	5,X007F,L03B7
-	sta	X0056
-	lda	X007F
-	coma
-	and	#$03
-	jsr	L261E
-	add	X0056
-	eor	X00CA
-	beq	L03C1
-	eor	X00CA
-	sta	X00CA
-	bset	7,X005D
-	rts
-	rts
+	bra	L07A8
 ;
-	lda	X007A
-	beq	L0427
-	dec	X0079
-	bne	L0427
-	clr	X007A
-	bra	L041F
+	db	$0A, $CE, $08, $0D
+	db	$CE, $19, $A6, $05
+	db	$00, $CE, $3E, $A6
+	db	$09, $0D, $67, $2A
+	db	$1E, $5D, $20, $26
+	db	$03, $CE, $08, $04
+	db	$CB, $05, $A6, $06
+	db	$01, $CE, $19, $A6
+	db	$01, $06, $CE, $16
+	db	$A6, $06, $0C, $7F
+	db	$11, $06, $7F, $0E
+	db	$A6, $04, $0A, $7F
+	db	$07, $B6, $7F, $43
+	db	$A4, $03, $27, $02
+	db	$AA, $40, $0A, $7F
+	db	$0C, $B7, $56, $B6
+	db	$7F, $43, $A4, $03
+	db	$CD, $26, $1E, $BB
+	db	$56, $B8, $CA, $27
+	db	$06, $B8, $CA, $B7
+	db	$CA, $1E, $5D, $81
+	db	$81
 ;
-	brset	1,X0077,L03EF
-	brclr	4,X0077,L03F3
-	lda	X0078
+L27C3:
+	lda	RAM1_07a
+	beq	L0027
+	dec	RAM1_079
+	bne	L0027
+	clr	RAM1_07a
+	bra	L001F
+;
+L27CF:
+	brset	1,RAM1_077,L07EF
+	brclr	4,RAM1_077,L07F3
+	lda	RAM1_078
 	and	#$1F
-	beq	L03EF
-	sta	X007A
-	lda	X0077
+	beq	L07EF
+	sta	RAM1_07a
+	lda	RAM1_077
 	and	#$E0
-	add	X007A
-	sta	X007A
+	add	RAM1_07a
+	sta	RAM1_07a
 	jsr	L2616
 	tax
 	lda	X2827,x
-	sta	X0079
+	sta	RAM1_079
 	cmp	X3F7A
-	clr	X0077
-	brclr	6,X009F,L0427
-	brset	6,X005D,L0427
-	lda	X007A
-	beq	L040B
-	brclr	7,X009F,L0403
-	bclr	6,X009F
-L2402:
+	clr	RAM1_077
+	brclr	6,RAM1_09f,L0027
+	brset	6,RAM1_05d,L0027
+	lda	RAM1_07a
+	beq	L000B
+	brclr	7,RAM1_09f,L0003
+	bclr	6,RAM1_09f
 	rts
 ;
-	clr	X007A
-	and	#$1F
-	ora	#$C0
-	bra	L041F
+	db	$3F, $7A, $A4, $1F
+	db	$AA, $C0, $20, $14
+	db	$1D, $9F, $B6, $9F
+	db	$2A, $04, $A8, $90
+	db	$20, $0A, $97, $D6
+	db	$28, $5B, $0B, $69
+	db	$03, $D6, $28, $2D
+	db	$B7, $78, $A1, $01
+	db	$27, $02, $1C, $5D
+X2827:
+	db	$81, $19, $0A, $4B
+	db	$25, $32, $00, $E1
+	db	$E2, $E3, $E4, $E5
+	db	$E6, $E7, $07, $E9
+	db	$01, $01, $01, $ED
+	db	$0D, $09, $0A, $F6
+	db	$01, $F3, $0C, $F5
+	db	$01, $F7, $F8, $F9
+	db	$FA, $FB, $FC, $FD
+	db	$FE, $06, $EA, $01
+	db	$02, $0F, $0F, $03
+	db	$FF, $F4, $08, $EE
+	db	$EF, $F0, $F1, $F2
+	db	$00, $E1, $E2, $E3
+	db	$E4, $E5, $E6, $E7
+	db	$E8, $E9, $04, $EB
+	db	$EC, $ED, $0D, $09
+	db	$0A, $F6, $05, $F3
+	db	$0C, $F5, $0B, $F7
+	db	$F8, $F9, $FA, $FB
+	db	$FC, $FD, $FE, $06
+	db	$EA, $01, $02, $0F
+	db	$0F, $03, $FF, $F4
+	db	$08, $EE, $EF, $F0
+	db	$F1, $F2
 ;
-	bclr	6,X009F
-	lda	X009F
-	bpl	L0415
-	eor	#$90
-	bra	L041F
-;
-	tax
-	lda	X285B,x
-	brclr	5,X0069,L041F
-	lda	X282D,x
-	sta	X0078
-	cmp	#$01
-	beq	L0427
-	bset	6,X005D
-	rts
-;
-	bclr	4,X000A
-;
-	db	$4B
-;
-	bcs	L045F
-	brset	0,X00E1,L0412
-	cpx	X00E4,x
-	bit	X00E6,x
-	sta	X0007,x
-	adc	X0001,x
-	brclr	0,X0001,L0428
-	brclr	6,X0009,L0448
-	lda	,x
-L243F:
-	brclr	0,X00F3,L044E
-	bit	,x
-	brclr	0,X00F7,L043E
-	adc	,x
-	ora	,x
-	add	,x
-	jmp	,x						;INFO: index jump
-;
-	jsr	,x						;INFO: index jump
-	ldx	,x
-	brset	3,X00EA,L0450
-	brset	1,X000F,L0461
-	brclr	1,X00FF,L0449
-	brset	4,X00EE,L0447
-	sub	,x
-	cmp	,x
-	sbc	,x
-	brset	0,X00E1,L0440
-	cpx	X00E4,x
-	bit	X00E6,x
-	sta	X00E8,x
-	adc	X0004,x
-	add	X00EC,x
-	jsr	L000D,x						;INFO: index jump
-	brclr	4,X000A,L0463
-	brclr	2,X00F3,L047C
-	bit	,x
-	brclr	5,X00F7,L046C
-	adc	,x
-	ora	,x
-	add	,x
-	jmp	,x						;INFO: index jump
-;
-	jsr	,x						;INFO: index jump
-	ldx	,x
-	brset	3,X00EA,L047E
-	brset	1,X000F,L048F
-	brclr	1,X00FF,L0477
-	brset	4,X00EE,L0475
-	sub	,x
-	cmp	,x
-	sbc	,x
-	incx
-	incx
-	cmp	X0078
-L248D:
-	beq	L04AF
-L248F:
-	cmp	#$1F
-	bne	L0499
-	eor	X0078
-	and	#$F0
-	bra	L04AF
-;
-	bit	#$E0
-	beq	L04AC
-	bit	#$1F
-	bne	L04AC
-	eor	X0078
-	beq	L04AC
-	cmp	#$06
-	bhi	L04AC
-	bit	#$00
-	rts
-;
-	lda	#$01
-	rts
-	rts
-;
-	brset	6,X005F,L0532
-L24B3:
-	brclr	1,X00BC,L04CB
-	brset	7,X00B9,L04CB
-	brset	7,X00B3,L04CB
-	brclr	2,X00CE,L04C5
-	brset	1,X00CE,L04C5
-	brclr	0,X00CE,L04CB
-	lda	#$27
-	sta	X00B3
-	bclr	1,X00BC
-L24CB:
-	brclr	5,X00CB,L04F5
-	lda	X00D5
-	and	#$70
-	bne	L04F5
-	lda	X00D5
-	and	#$07
-	beq	L04F5
-	cmp	#$06
-L24DC:
-	bcc	L04F5
-	clra
-	brset	3,X00CE,L04E8
-	brclr	6,X00B5,L04EA
-L24E5:
-	brset	2,X00B8,L04EA
-L24E8:
-	lda	#$08
-	eor	X00D5
-	and	#$08
-	beq	L04F5
-	eor	X00D5
-	jsr	L2591
-L24F5:
-	bclr	6,X00D2
-	lda	X00B6
-	and	#$07
-	cmp	#$06
-	bne	L0501
-	bset	6,X00D2
-	lda	X007F
-	and	#$2B
-L2505:
-	cmp	#$02
-	bne	L0532
-	brset	5,X00CE,L0518
-	lda	X00CA
-L250E:
-	and	#$0F
-	cmp	#$01
-	beq	L0518
-	cmp	#$06
-	bne	L0532
-	brset	5,X00CB,L0523
-	brset	6,X00CB,L0523
-	brclr	7,X00CB,L0529
-	bset	2,X00CB
-	bset	7,X005D
-	bclr	5,X00CB
-	bclr	6,X00CB
-	brset	6,X00CE,L0532
-	brclr	6,X005D,L0532
-	jmp	L2CD4
-	rts
-;
-L2533:
-	lda	X00B8
-	and	#$60
-	cmp	#$60
-	bne	L0543
-	lda	X00B8
-	and	#$0F
-L253F:
-	ora	#$10
-	bra	L0559
-;
-	lda	#$10
-	bra	L054F
-;
-	lda	X00B8
-	and	#$60
-L254B:
-	beq	L0553
-L254D:
-	lda	#$F0
-	add	X00B8
-	bra	L055E
-;
-	lda	X00B8
-	and	#$0F
-	ora	#$60
-	brset	2,X00B8,L055E
-	eor	#$01
-	ora	#$80
-	bra	L058D
-;
-	lda	X00B8
-	brset	2,X00B8,L056C
-	and	#$03
-	inca
-	bra	L058B
-;
-	lda	#$08
-	brclr	3,X00B8,L0589
-	clra
-	bra	L058B
-;
-	lda	X00B8
-	brset	2,X00B8,L0581
-	asla
-	asla
-	eor	X00B8
-	and	#$08
-	bra	L0587
-;
-	lsra
-	lsra
-	eor	X00B8
-	and	#$02
-	ora	#$04
-	eor	X00B8
-	ora	#$F0
-	sta	X00B4
-	lda	#$80
-L2591:
-	bra	L05EA
-	bra	L0547
-	bra	L0533
-	bra	L0562
-	bra	L0574
-;
-	brset	2,X00B8,L0599
-	brset	5,X0069,L05C1
-	lda	#$01
-	bra	L0589
-;
-	brclr	2,X00B8,L05AD
-	bset	4,X00B3
-	bset	5,X00B3
-	rts
-;
-	brclr	4,X00CE,L0599
-	lda	#$30
-	jmp	L2A6B
-	jmp	L2B14
-;
-	brset	2,X00B6,L05C1
-	brset	3,X008E,L05D1
-	brclr	2,X00B8,L05D8
-	rts
-;
-	lda	#$19
-	brset	1,X00B5,L05C9
-	lda	#$18
-	jsr	L24E5
-	lda	#$61
-	jmp	L2A57
-;
-	bset	6,X00C5
-	lda	#$63
-	jmp	L2A59
-	jmp	L2A91
-;
-	bset	7,X00D2
-	ldx	#$FA
-	stx	X00D1
-	bra	L0617
-;
-	lda	#$A4
-	brclr	5,X00B6,L05EA
-	lda	#$B4
-	bclr	7,X00D2
-	bra	L0657
-;
-	lda	#$86
-	sta	X00B3
-	bclr	7,X00D2
-	bset	2,X00CB
-	rts
-;
-	lda	#$08
-	brset	2,X00B8,L060E
-	ldx	#$9F
-	jsr	L38CC
-	sta	X005B
-	lda	X00B8
-	jsr	L38A0
-	eor	X005B
-	and	#$01
-	ora	#$02
-	jmp	L2989
-;
-	bset	7,X00D2
-	bra	L061A
-;
-	bset	7,X00D2
-L2617:
-	lda	#$C4
-	cmp	XA6CC
-	brclr	7,X00D2,L05D8
-L261F:
-	ldx	#$FA
-	stx	X00D1
-L2623:
-	bra	L063C
-;
-	brset	7,X00D2,L0655
-	lda	#$D4
-	bra	L0631
-;
-	brset	7,X00D2,L0655
-	lda	#$DC
-L2631:
-	bclr	4,X00BB
-L2633:
-	bclr	5,X00BB
-	bra	L0657
-;
-	lda	#$C4
-	cmp	XA6CC
-	brset	3,X005D,L066D
-	bclr	4,X00BB
-	bclr	5,X00BB
-L2643:
-	brclr	7,X00D2,L0648
-	ora	#$07
-	sta	X00B3
-	bset	2,X00CB
-	brclr	7,X00D2,L0669
-	ldx	#$FA
-	stx	X00D1
-	bra	L0669
-;
-	lda	#$94
-X2657:
-	bset	2,X00CB
-	bset	5,X00D2
-	sta	X00B3
-	jmp	L2B0A
-;
-	lda	#$8A
-	jsr	L2B36
-	bclr	5,X00D2
-	bset	7,X007E
-	lda	#$90
-	sta	X0077
-	rts
-;
-L266E:
-	bset	5,X007E
-	brclr	5,X00D2,L066D
-	bclr	1,X00CB
-	lda	#$80
-	jsr	L2B36
-	bra	L06A1
-;
-	clrx
-	bset	5,X00D2
-	brset	2,X00BA,L068E
-	brset	3,X00CE,L068E
-	brset	4,X00B6,L0691
-	brclr	7,X00BA,L0691
-	brclr	2,X00B6,L0691
-	jmp	L2AFB
-;
-	brclr	5,X00B6,L0697
-	lda	#$B4
-	cmp	XA642
-	sta	X00B3
-	bset	4,X00CC
-	lda	#$B0
-	bra	L066B
-;
-	lda	#$27
-	jsr	L25B7
-	cmp	#$19
-	bcc	L06B4
-	bset	3,X005D
-	lda	X00B4
-	and	#$74
-	cmp	#$60
-	beq	L06C5
-	brclr	3,X0081,L06C0
-	bclr	3,X0081
-	ldx	#$A8
-	jsr	L38CC
-	sta	X0085
-	brclr	3,X005D,L06D9
-	bra	L0700
-;
-	ldx	#$82
-	eor	X00B8
-	and	#$74
-	beq	L06F7
-	bclr	3,X005D
-	bset	3,X007E
-	bset	3,X0081
-	lda	X0088
-	nega
-	lsra
-	sta	X0085
-	brset	3,X008E,L0700
-	lda	X00B4
-	and	#$7F
-	cmp	X00B8
-	bne	L0700
-	brclr	2,X00CE,L0700
-	brset	1,X00CE,L0700
-	brset	0,X00CE,L0700
-	jsr	L1DF2
-	and	X0056
-	beq	L0700
-	bclr	7,X00B5
-	cmp	XBFB3
-	bra	L0700
-;
-	lda	#$80
-	jsr	L2B36
-	bset	2,X00CE
-	bclr	1,X00CE
-	bclr	0,X00CE
-	lda	#$7D
-	sta	X00CF
-	brclr	3,X00CE,L0713
-	bclr	1,X00CE
-	lda	#$32
-	sta	X00CF
-	rts
-;
-	brset	5,X00D2,L0725
-	bset	5,X00D2
-	brclr	4,X00BB,L0720
-	lda	#$C2
-	bra	L0733
-;
-	lda	#$01
-	sta	X00CC
-	rts
-;
-L2725:
-	lda	X00CC
-	cmp	#$FF
-	bne	L0720
-	bclr	5,X00D2
-	lda	X00B7
-	sta	X00C8
-	lda	#$C0
-	jmp	L24E8
-;
-	sta	X00B3
-	bset	2,X00CB
-	bclr	7,X00D2
-	lda	X0078
-	jsr	L261E
-	eor	X00B8
-	and	#$70
-	eor	X00B8
-	ora	#$80
-	sta	X00B4
-	brclr	5,X0069,L0750
-L274E:
-	bclr	0,X00B4
-	rts
-;
-	brclr	3,X00CE,L0757
-	jmp	L2BD8
-;
-	brset	7,X00B9,L0780
-	brclr	7,X00BA,L0760
-	brset	2,X00B6,L0780
-	brclr	3,X008E,L0780
-	brclr	7,X00C5,L0780
-	brclr	4,X00B5,L0780
-	brclr	6,X00C5,L0780
-	bclr	6,X00C5
-	bset	5,X00C5
-	lda	X00C5
-	and	#$1F
-	jsr	L259A
-	lda	X00C5
-	and	#$1F
-	add	#$23
-	jmp	L24E8
-;
-	lda	#$01
-	brclr	4,X00BB,L0789
-	brclr	3,X00B5,L0789
-	inca
-	brset	7,X00B9,L0792
-	brclr	7,X00BA,L0794
-	brclr	2,X00B6,L0794
-	lda	#$03
-	jsr	L2565
-	lda	#$13
-	brset	6,X00D2,L07CE
-	brclr	3,X00B5,L07B8
-	brclr	7,X00BA,L07A5
-	brset	2,X00B6,L07B8
-	brclr	4,X00CE,L07B3
-	brset	6,X00BB,L07AE
-	brclr	0,X00BB,L07B8
-	lda	#$CE
-	jmp	L24CB
-;
-	lda	#$C2
-	brset	4,X00BB,L07B0
-	brclr	5,X00BB,L07D7
-	clra
-	brclr	2,X00B8,L07C6
-	ora	#$10
-	brclr	3,X008E,L07C6
-	ora	#$20
-	sta	X00C9
-	lda	X00B7
-	sta	X00C8
-	lda	#$C0
-	brclr	7,X00CB,L07D4
-	jmp	L24DC
-	jmp	L24CB
-	rts
-;
-	brset	6,X005F,L0029
-	brclr	2,X00B6,L07E5
-	jsr	L2B0A
-	lda	#$70
-	bra	L07CE
-;
-	lda	X00CF
-	deca
-	brset	1,X00CE,L0013
-	brclr	0,X00B9,L07F6
-	brset	6,X00BB,L07F3
-	bmi	L000B
-	brset	2,X00BF,L000B
-	bpl	L0006
-	lda	#$32
-	sta	X00CF
-	lda	#$D4
-	brclr	3,X00B6,L0003
-	lda	#$DC
-	jmp	L2A57
-;
-	brclr	5,X00D2,L079F
-	bra	L07E1
-;
-	lda	#$0A
-	sta	X00CE
-	lda	#$7D
-	sta	X00CF
-	bpl	L079F
-	lda	#$4B
-	sta	X00CF
-	ldx	#$04
-	jsr	L2649
-	bset	6,X005F
-	lda	X00B7
-	sta	X00C4
-	lda	#$15
-	jmp	L24DC
-;
-	lda	X00CF
-	deca
-	bpl	L0024
-	bclr	0,X0061
-	bset	2,X005D
-	rts
-	jmp	L2504
-;
-	bclr	7,X00CB
-	brset	6,X005F,L0033
-	brclr	7,X0069,L0033
-	lda	X00B8
-	brset	2,X00B8,L0063
-	and	#$07
-	tax
-	lda	X2CCF,x
-	brclr	5,X0069,L004E
-	and	#$0C
-	brclr	7,X00BA,L0054
-	brset	2,X00B6,L0057
-	brclr	3,X00B5,L0059
-	ora	#$02
-	brset	3,X008E,L006A
-	brclr	1,X00BB,L006A
-	ora	#$01
-	bra	L006A
-;
-	lda	#$18
-	brclr	3,X00B8,L006A
-	lda	#$1C
-	clrx
-	jsr	L24F5
-	brset	3,X00CE,L0076
-	lda	X00BD
-	brset	2,X00BB,L0078
-	lda	X00B8
-	and	#$70
-	brclr	7,X00B9,L007E
-	clra
-	jsr	L2617
-	jsr	L24F5
-	lda	#$02
-	brset	2,X00B8,L00AD
 L2889:
-	lda	#$08
-	brclr	7,X00BA,L0091
-	brset	2,X00B6,L0094
-	brclr	3,X00B5,L0096
-	ora	#$01
-	brset	3,X00CE,L009C
-	brclr	6,X00B5,L009E
-	ora	#$04
-	brclr	3,X008E,L00A6
-	brclr	4,X00B5,L00A6
-	ora	#$04
-	brclr	1,X00B8,L00B2
-	ora	#$20
-	bra	L00B2
-;
-	brclr	3,X00B8,L00B2
-L28B0:
-	ora	#$20
-	brclr	5,X00B6,L00B7
-	ora	#$10
-	brclr	5,X0069,L00BC
-	and	#$2F
-	jsr	L24F5
-	clra
 	incx
-	brclr	2,X00BB,L00CB
-	lda	X00BD
-	and	#$70
-	jsr	L2617
-	jsr	L24F5
-	rts
-;
-	asla
-	bhcc	L011E
-	bmc	L0055
-	clrx
-	brclr	3,X00CE,L00DA
-	ldx	#$52
-	lda	X2CF1,x
-	sta	X0056
-	lda	X2CF0,x
-	beq	L00EF
-	jsr	L2889
-	bne	L00DA
-	ldx	X2CEF,x
-	jsr	L2993,x						;INFO: index jump
-	rts
-;
-	sub	X00E9,x
-	sub	#$CD
-	rti
-;
-	sbc	XC0DB,x
-	stx	,x
-	brset	0,X00F4,L00FE
-	adc	X0025,x
-	adc	#$2F
-	adc	X3EE7
-;
-	db	$84
-;
-	eor	,x
-;
-	db	$87, $87
-;
-	adc	X0098
-	adc	X00A7
-;
-	db	$82
-;
-	eor	X007E
-	sta	X92D8
-	sec
-	jmp	,x						;INFO: index jump
-;
-	db	$84
-;
-	jsr	,x						;INFO: index jump
-;
-	db	$87
-;
-	rsp
-	adc	X009D
-	adc	X00BC
-;
-	db	$82
-;
-	jsr	L007E
-	jmp	L92DD,x						;INFO: index jump
-;
-	sec
-	sub	,x
-;
-	db	$84
-;
-	stx	X0087,x
-;
-	db	$90
-;
-	adc	X008F
-	adc	X00B0
-;
-	db	$82, $AF, $7E
-;
-	sub	X92CF,x
-	sec
-	brclr	5,X0050,L012A
-;
-	db	$45
-;
-	bit	X005B
-	bit	X6408,x
-	brset	2,X00F6,L0150
-	lda	X2236,x
-	brset	3,X00E7,L00D9
-	eor	,x
-	rsp
-	jmp	,x						;INFO: index jump
-;
-	db	$95
-;
-	jsr	,x						;INFO: index jump
-	rsp
-	sub	,x
-;
-	db	$95
-;
-	stx	X009C,x
-	bit	,x
-	lsr	X00E0,x
-	sbc	X00F7,x
-	brset	4,X0000,L0164
-	neg	X001F,x
-	brclr	3,X008B,L0177
-	lda	#$48
-	brset	2,X00BE,L0162
-	lda	#$08
-	brset	3,X005F,L017A
-	lda	#$40
-	brset	4,X00BA,L017A
-	brset	2,X00BE,L017A
-	lda	#$04
-	brset	7,X005F,L0181
-	lda	#$80
-	brset	2,X00BA,L0181
-	clra
-	bra	L0181
-;
-	brclr	5,X00CB,L0181
-	bclr	5,X00CB
-	bset	7,X005D
-	eor	X007F
-	and	#$CC
-	sta	X005B
-	eor	X007F
-L2989:
-	sta	X007F
-	and	#$60
-	bne	L019E
-	brset	3,X0081,L019E
-	brclr	4,X007F,L019E
-	bclr	4,X007F
-	ldx	#$A8
-	jsr	L38CC
-	sta	X0085
-	brclr	0,X0061,L01FE
-	tst	X005B
-	beq	L01CC
-	bset	7,X005D
-	bset	0,X00CB
-	bset	3,X007E
-	bset	2,X00CB
-	brset	3,X00CE,L01FF
-	brclr	3,X005B,L01BB
-	bset	7,X005D
-	bset	0,X00CB
-	bset	4,X00B3
-	bclr	7,X00D2
-	brclr	6,X005B,L01CC
-	bset	7,X005D
-	brset	6,X007F,L01CC
-	ldx	#$A8
-	jsr	L38CC
-	sta	X0085
-	bra	L01CC
-;
-	brclr	5,X007C,L01FF
-	brset	6,X007C,L01EB
-	brclr	2,X0069,L01FF
-	bclr	2,X0069
-	bclr	2,X00D2
-	bclr	4,X00D3
-	ldx	#$A5
-	jsr	L38A0
-	brset	1,X007F,L01FF
-	brclr	0,X007F,L01FF
-	brset	2,X0081,L01FB
-	bra	L0219
-;
-	brset	2,X0069,L01FF
-	bset	2,X0069
-	bset	2,X0081
-	brclr	1,X007F,L01F7
-	bclr	2,X0081
-	bset	2,X00CB
-	bset	4,X00B3
-	jmp	L2F57
-	rts
-;
-	lda	X007F
-	brset	0,X0080,L0208
-	bit	#$EA
-	beq	L0252
-	bit	#$03
-	bne	L021C
-	brclr	1,X00D2,L0261
-	brset	0,X00D2,L0261
-	bset	0,X00D2
-	ldx	#$88
-	jmp	L2EC7
-	jmp	L2F12
-;
-	brclr	0,X007F,L025E
-	brclr	2,X00D2,L02A0
-	brset	5,X007F,L025E
-	brclr	3,X005F,L022B
-	brset	1,X007C,L02A0
-	brset	7,X00D3,L02A0
-	bset	7,X00D3
-	bclr	2,X00D3
-	brclr	3,X006A,L0237
-	bset	2,X00D3
-	bclr	1,X00D3
-	brclr	1,X007C,L024D
-	bset	1,X00D3
-	bset	0,X00D3
-	brclr	0,X007C,L0248
-	brset	2,X007C,L024D
-	bra	L024B
-;
-	brclr	2,X007C,L024D
-	bclr	0,X00D3
-	lda	#$88
-	jmp	L2F06
-;
-	brclr	3,X008B,L025E
-	brset	7,X0060,L025E
-	lda	X00CE
-	and	#$C8
-	beq	L026A
-	brset	1,X00D2,L02C3
-	brset	2,X00D2,L0267
-	brclr	3,X007C,L02A0
-	jmp	L2F00
-;
-	brclr	0,X007F,L0281
-	brset	1,X00D2,L02C3
-	brclr	6,X007C,L02A0
-	brset	4,X007C,L02A0
-	brclr	2,X00D2,L02CD
-	brset	7,X00D3,L02CD
-	bra	L02A0
-	jmp	L2DD5
-;
-	brset	2,X00D2,L0300
-	brset	3,X007C,L0300
-	brclr	6,X006A,L0219
-	lda	X0265
+	incx
+	cmp	RAM1_078
+	beq	L00AF
+	cmp	#$1F
+	bne	L0099
+	eor	RAM1_078
 	and	#$F0
-	cmp	#$B0
-L2A91:
-	beq	L029A
-	brclr	3,X00D4,L029A
-	bclr	3,X00D4
-	bra	L02B4
+	bra	L00AF
 ;
-	brclr	1,X00D2,L02B4
-	brset	0,X00D2,L02B4
-	bclr	5,X0080
-	lda	X0085
-	bne	L02A8
-	bset	5,X0080
-	brclr	6,X005D,L0320
-	brclr	3,X008B,L0320
-	brset	0,X0080,L0320
-	jmp	L310A
+	db	$A5, $E0, $27, $0F
+	db	$A5, $1F, $26, $0B
+	db	$B8, $78, $27, $07
+	db	$A1, $06, $22, $03
+	db	$A5, $00, $81, $A6
+	db	$01, $81, $81
 ;
-	bset	1,X00D2
-	bclr	0,X00D2
-	bset	4,X00B3
-	ldx	#$8D
-	brclr	2,X00D4,L02C7
-	ldx	#$83
-	bra	L02C7
-;
-	ldx	#$80
-	bclr	1,X00D2
-	stx	X007D
-	bset	6,X0094
-	bra	L0316
-;
-	bset	2,X00D2
-	bset	4,X00B3
-	bclr	1,X007F
-	bset	0,X007F
-	brset	3,X00D3,L02E5
-	bset	3,X00D3
-	lda	#$8C
-	brset	4,X00D3,L0306
-	lda	#$8D
-	bset	0,X007C
-	bra	L0306
-;
-	lda	#$8F
-	brclr	7,X00D3,L0306
-	bclr	7,X00D3
-	lda	X00D3
+L28B0:
+	brset	6,RAM1_05f,L0132
+	brclr	1,RAM1_0bc,L00CB
+	brset	7,RAM1_0b9,L00CB
+	brset	7,RAM1_0b3,L00CB
+	brclr	2,STACK_0ce,L00C5
+	brset	1,STACK_0ce,L00C5
+	brclr	0,STACK_0ce,L00CB
+	lda	#$27
+	sta	RAM1_0b3
+	bclr	1,RAM1_0bc
+	brclr	5,STACK_0cb,L00F5
+	lda	STACK_0d5
+	and	#$70
+	bne	L00F5
+	lda	STACK_0d5
 	and	#$07
-	brclr	5,X00D3,L02F5
-	ora	#$08
-	tax
-	lda	X30FA,x
-	brclr	2,X00D3,L0306
-	bset	3,X006A
-	bra	L0308
-;
-	lda	#$80
-	bclr	2,X00D2
-	bclr	3,X007C
-	bclr	3,X006A
-	sta	X007B
-L2B0A:
-	bset	5,X0094
-	cmp	#$81
-	beq	L031A
-	bra	L0316
-;
-	bset	1,X007F
-L2B14:
-	bclr	0,X007F
-	bclr	7,X00D2
-	bset	2,X00CB
-	bset	4,X005C
-	bset	7,X005D
-	bset	3,X00BC
-	rts
-;
-	brclr	6,X007C,L0338
-	brset	5,X007F,L0338
-	lda	#$81
-	bra	L0306
-;
-	brset	3,X008E,L034A
-	brclr	1,X00A1,L0334
-	brclr	3,X00D2,L0338
-	lda	#$B0
-L2B36:
-	sta	X0077
-	rts
-;
-	brclr	5,X007F,L034A
-	bclr	5,X007F
-	bclr	1,X00CE
-	bclr	0,X00CE
-	lda	#$80
-	sta	X00A0
-	bclr	3,X00D2
-	bra	L0316
-;
-	brset	3,X007F,L0338
-	bclr	2,X0081
-	bset	6,X00C5
-L2B51:
-	brset	0,X007F,L036D
-	brclr	1,X007F,L0312
-	brset	5,X007C,L0362
-	lda	#$84
-	sta	X007B
-	bset	5,X0094
-	bra	L036D
-;
-	brclr	2,X0069,L036D
-	bset	0,X007F
-	bclr	4,X007C
-	bclr	3,X006A
-	bra	L0378
-;
-	brclr	6,X006A,L0312
+	beq	L00F5
+	cmp	#$06
+	bcc	L00F5
 	clra
-	sta	X0264
-	bclr	0,X00D4
-	bclr	0,X007F
-	bclr	1,X007F
-	bclr	2,X00BA
-	bra	L0316
-;
-	ldx	#$00
-	cmp	XAE06
-	bra	L039D
-;
-	ldx	#$06
-	brclr	6,X008E,L039D
-	lda	X00CE
-	and	#$F8
-	sta	X00CE
-	jsr	L254B
-	lda	#$C4
-	jmp	L24E8
-;
-	ldx	#$04
-	cmp	XAE02
-	brset	5,X007F,L0338
-	brclr	2,X00CE,L03B4
-	brclr	1,X00CE,L03B4
-	brset	0,X00CE,L03B4
-	cpx	X00D0
-	bne	L03B4
-	clr	X00CF
-	bset	0,X00CF
-	clr	X00CC
-	rts
-;
-	brset	7,X007F,L03B3
-	brset	5,X0080,L03B3
-	lda	X0082
-	and	#$8F
-	beq	L03E5
-	cmp	#$01
-	beq	L03E5
-	and	#$0F
-	beq	L03E5
+	brset	3,STACK_0ce,L00E8
+	brclr	6,RAM1_0b5,L00EA
+	brset	2,RAM1_0b8,L00EA
+	lda	#$08
+	eor	STACK_0d5
+	and	#$08
+	beq	L00F5
+	eor	STACK_0d5
+	jsr	L2591
+	bclr	6,STACK_0d2
+	lda	RAM1_0b6
+	and	#$07
+	cmp	#$06
+	bne	L0101
+	bset	6,STACK_0d2
+	lda	RAM1_07f
+	and	#$2B
 	cmp	#$02
-	bne	L03B3
-	brset	7,X00B9,L03B3
-	brclr	2,X00B6,L03E5
-	lda	X00B6
-	cmp	#$05
-	beq	L03B3
-L2BD8:
-	brset	7,X00B5,L03DF
-	bset	7,X00B5
-	bset	3,X00BC
-	bset	4,X00B3
-	bset	5,X00B3
-	bclr	7,X00D2
-	stx	X00D0
-	bset	2,X00CE
-	bset	1,X00CE
-	bclr	0,X00CE
-	lda	#$96
-	sta	X00CF
-	jmp	L30C1
-;
-	lda	#$01
-	cmp	XA6FF
-	ldx	#$50
-	bra	L0404
-;
-	lda	#$01
-	cmp	XA6FF
-	ldx	#$30
-	stx	X0077
-	bra	L046A
-;
-	lda	X0078
+	bne	L0132
+	brset	5,STACK_0ce,L0118
+	lda	STACK_0ca
 	and	#$0F
-	add	#$F9
-	nega
-	beq	L03B3
-	brclr	2,X00CE,L046A
-	brclr	1,X00CE,L046A
-	brset	0,X00CE,L046A
-	sta	X0057
-	jsr	L30C1
-	bsr	L0458
-	bhi	L0449
-	jsr	L30E2
-	bne	L0430
-	tst	X0063
-	bne	L03ED
-	add	X0057
-	bra	L0443
+	cmp	#$01
+	beq	L0118
+	cmp	#$06
+	bne	L0132
+	brset	5,STACK_0cb,L0123
+	brset	6,STACK_0cb,L0123
+	brclr	7,STACK_0cb,L0129
+	bset	2,STACK_0cb
+	bset	7,RAM1_05d
+	bclr	5,STACK_0cb
+	bclr	6,STACK_0cb
+	brset	6,STACK_0ce,L0132
+	brclr	6,RAM1_05d,L0132
+	jmp	L2CD4
 ;
-	bpl	L043D
-	add	X0057
-	bmi	L0443
-L2C36:
-	lda	#$28
-	sta	X0063
-	clra
-	bra	L0443
+	db	$81, $B6, $B8, $A4
+	db	$60, $A1, $60, $26
+	db	$08, $B6, $B8, $A4
+	db	$0F, $AA, $10, $20
+	db	$16, $A6, $10, $20
+	db	$08, $B6, $B8, $A4
+	db	$60, $27, $06, $A6
+	db	$F0, $BB, $B8, $20
+	db	$0B, $B6, $B8, $A4
+	db	$0F, $AA, $60, $04
+	db	$B8, $02, $A8, $01
+	db	$AA, $80, $20, $2B
+	db	$B6, $B8, $04, $B8
+	db	$05, $A4, $03, $4C
+	db	$20, $1F, $A6, $08
+	db	$07, $B8, $18, $4F
+	db	$20, $17, $B6, $B8
+	db	$04, $B8, $08, $48
+	db	$48, $B8, $B8, $A4
+	db	$08, $20, $06, $44
+	db	$44, $B8, $B8, $A4
+	db	$02, $AA, $04, $B8
+	db	$B8, $AA, $F0, $B7
+	db	$B4, $A6, $80, $20
+	db	$57, $20, $B2, $20
+	db	$9C, $20, $C9, $20
+	db	$D9, $04, $B8, $FB
+	db	$0A, $69, $20, $A6
+	db	$01, $20, $E4, $05
+	db	$B8, $05, $18, $B3
+	db	$1A, $B3, $81, $09
+	db	$CE, $E9, $A6, $30
+	db	$CC, $2A, $6B, $CC
+	db	$2B, $14, $04, $B6
+	db	$06, $06, $8E, $13
+	db	$05, $B8, $17, $81
+	db	$A6, $19, $02, $B5
+	db	$02, $A6, $18, $CD
+	db	$24, $E5, $A6, $61
+	db	$CC, $2A, $57, $1C
+	db	$C5, $A6, $63, $CC
+	db	$2A, $59, $CC, $2A
+	db	$91, $1E, $D2, $AE
+	db	$FA, $BF, $D1, $20
+	db	$34, $A6, $A4, $0B
+	db	$B6, $02, $A6, $B4
+	db	$1F, $D2, $20, $69
+	db	$A6, $86, $B7, $B3
+	db	$1F, $D2, $14, $CB
+	db	$81, $A6, $08, $04
+	db	$B8, $12, $AE, $9F
+	db	$CD, $38, $CC, $B7
+	db	$5B, $B6, $B8, $CD
+	db	$38, $A0, $B8, $5B
+	db	$A4, $01, $AA, $02
+	db	$CC, $29, $89, $1E
+	db	$D2, $20, $05, $1E
+	db	$D2, $A6, $C4, $C1
+	db	$A6, $CC, $0F, $D2
+	db	$B9, $AE, $FA, $BF
+	db	$D1, $20, $17, $0E
+	db	$D2, $2D, $A6, $D4
+	db	$20, $05, $0E, $D2
+	db	$26, $A6, $DC, $19
+	db	$BB, $1B, $BB, $20
+	db	$20, $A6, $C4, $C1
+	db	$A6, $CC, $06, $5D
+	db	$2E, $19, $BB, $1B
+	db	$BB, $0F, $D2, $02
+	db	$AA, $07, $B7, $B3
+	db	$14, $CB, $0F, $D2
+	db	$1A, $AE, $FA, $BF
+	db	$D1, $20, $14, $A6
+	db	$94, $14, $CB, $1A
+	db	$D2, $B7, $B3, $CC
+	db	$2B, $0A, $A6, $8A
+	db	$CD, $2B, $36, $1B
+	db	$D2, $1E, $7E, $A6
+	db	$90, $B7, $77, $81
+	db	$1A, $7E, $0B, $D2
+	db	$FA, $13, $CB, $A6
+	db	$80, $CD, $2B, $36
+	db	$20, $25, $5F, $1A
+	db	$D2, $04, $BA, $0C
+	db	$06, $CE, $09, $08
+	db	$B6, $09, $0F, $BA
+	db	$06, $05, $B6, $03
+	db	$CC, $2A, $FB, $0B
+	db	$B6, $03, $A6, $B4
+	db	$C1, $A6, $42, $B7
+	db	$B3, $18, $CC, $A6
+	db	$B0, $20, $CA, $A6
+	db	$27, $CD, $25, $B7
+	db	$A1, $19, $24, $0A
+	db	$16, $5D, $B6, $B4
+	db	$A4, $74, $A1, $60
+	db	$27, $11, $07, $81
+	db	$09, $17, $81, $AE
+	db	$A8, $CD, $38, $CC
+	db	$B7, $85, $07, $5D
+	db	$16, $20, $3B, $AE
+	db	$82, $B8, $B8, $A4
+	db	$74, $27, $2A, $17
+	db	$5D, $16, $7E, $16
+	db	$81, $B6, $88, $40
+	db	$44, $B7, $85, $06
+	db	$8E, $24, $B6, $B4
+	db	$A4, $7F, $B1, $B8
+	db	$26, $1C, $05, $CE
+	db	$19, $02, $CE, $16
+	db	$00, $CE, $13, $CD
+	db	$1D, $F2, $B4, $56
+	db	$27, $0C, $1F, $B5
+	db	$C1, $BF, $B3, $20
+	db	$05, $A6, $80, $CD
+	db	$2B, $36, $14, $CE
+	db	$13, $CE, $11, $CE
+	db	$A6, $7D, $B7, $CF
+	db	$07, $CE, $06, $13
+	db	$CE, $A6, $32, $B7
+	db	$CF, $81, $0A, $D2
+	db	$0E, $1A, $D2, $09
+	db	$BB, $04, $A6, $C2
+	db	$20, $13, $A6, $01
+	db	$B7, $CC, $81, $B6
+	db	$CC, $A1, $FF, $26
+	db	$F5, $1B, $D2, $B6
+	db	$B7, $B7, $C8, $A6
+	db	$C0, $CC, $24, $E8
+	db	$B7, $B3, $14, $CB
+	db	$1F, $D2, $B6, $78
+	db	$CD, $26, $1E, $B8
+	db	$B8, $A4, $70, $B8
+	db	$B8, $AA, $80, $B7
+	db	$B4, $0B, $69, $02
+	db	$11, $B4, $81, $07
+	db	$CE, $03, $CC, $2B
+	db	$D8, $0E, $B9, $26
+	db	$0F, $BA, $03, $04
+	db	$B6, $20, $07, $8E
+	db	$1D, $0F, $C5, $1A
+	db	$09, $B5, $17, $0D
+	db	$C5, $14, $1D, $C5
+	db	$1A, $C5, $B6, $C5
+	db	$A4, $1F, $CD, $25
+	db	$9A, $B6, $C5, $A4
+	db	$1F, $AB, $23, $CC
+	db	$24, $E8, $A6, $01
+	db	$09, $BB, $04, $07
+	db	$B5, $01, $4C, $0E
+	db	$B9, $06, $0F, $BA
+	db	$05, $05, $B6, $02
+	db	$A6, $03, $CD, $25
+	db	$65, $A6, $13, $0C
+	db	$D2, $32, $07, $B5
+	db	$19, $0F, $BA, $03
+	db	$04, $B6, $13, $09
+	db	$CE, $0B, $0C, $BB
+	db	$03, $01, $BB, $0A
+	db	$A6, $CE, $CC, $24
+	db	$CB, $A6, $C2, $08
+	db	$BB, $F8, $0B, $BB
+	db	$1C, $4F, $05, $B8
+	db	$07, $AA, $10, $07
+	db	$8E, $02, $AA, $20
+	db	$B7, $C9, $B6, $B7
+	db	$B7, $C8, $A6, $C0
+	db	$0F, $CB, $03, $CC
+	db	$24, $DC, $CC, $24
+	db	$CB, $81, $0C, $5F
+	db	$4E, $05, $B6, $07
+	db	$CD, $2B, $0A, $A6
+	db	$70, $20, $E9, $B6
+	db	$CF, $4A, $02, $CE
+	db	$28, $01, $B9, $08
+	db	$0C, $BB, $02, $2B
+	db	$18, $04, $BF, $15
+	db	$2A, $0E, $A6, $32
+	db	$B7, $CF, $A6, $D4
+	db	$07, $B6, $02, $A6
+	db	$DC, $CC, $2A, $57
+	db	$0B, $D2, $96, $20
+	db	$D6, $A6, $0A, $B7
+	db	$CE, $A6, $7D, $B7
+	db	$CF, $2A, $8A, $A6
+	db	$4B, $B7, $CF, $AE
+	db	$04, $CD, $26, $49
+	db	$1C, $5F, $B6, $B7
+	db	$B7, $C4, $A6, $15
+	db	$CC, $24, $DC, $B6
+	db	$CF, $4A, $2A, $F6
+	db	$11, $61, $14, $5D
+	db	$81, $CC, $25, $04
+	db	$1F, $CB, $0C, $5F
+	db	$F8, $0F, $69, $F5
+	db	$B6, $B8, $04, $B8
+	db	$20, $A4, $07, $97
+	db	$D6, $2C, $CF, $0B
+	db	$69, $02, $A4, $0C
+	db	$0F, $BA, $03, $04
+	db	$B6, $03, $07, $B5
+	db	$02, $AA, $02, $06
+	db	$8E, $0E, $03, $BB
+	db	$0B, $AA, $01, $20
+	db	$07, $A6, $18, $07
+	db	$B8, $02, $A6, $1C
+	db	$5F, $CD, $24, $F5
+	db	$06, $CE, $05, $B6
+	db	$BD, $04, $BB, $02
+	db	$B6, $B8, $A4, $70
+	db	$0F, $B9, $01, $4F
+	db	$CD, $26, $17, $CD
+	db	$24, $F5, $A6, $02
+	db	$04, $B8, $24, $A6
+	db	$08, $0F, $BA, $03
+	db	$04, $B6, $03, $07
+	db	$B5, $02, $AA, $01
+	db	$06, $CE, $03, $0D
+	db	$B5, $02, $AA, $04
+	db	$07, $8E, $05, $09
+	db	$B5, $02, $AA, $04
+	db	$03, $B8, $09, $AA
+	db	$20, $20, $05, $07
+	db	$B8, $02, $AA, $20
+	db	$0B, $B6, $02, $AA
+	db	$10, $0B, $69, $02
+	db	$A4, $2F, $CD, $24
+	db	$F5, $4F, $5C, $05
+	db	$BB, $07, $B6, $BD
+	db	$A4, $70, $CD, $26
+	db	$17, $CD, $24, $F5
+	db	$81, $48, $28, $4C
+	db	$2C
 ;
-	add	X0057
-	bmi	L0436
-	beq	L0436
-	bsr	L0458
-	bhi	L03ED
-	bra	L044B
-;
-	clr	X0056
-	bsr	L04C1
-	lda	X0056
-	jsr	L38A0
-	bset	4,X007E
-	bset	3,X007E
-	bra	L03ED
-;
-	ldx	X00D0
-	aslx
-	sta	X0056
-	bpl	L0461
-	nega
-	incx
-	brclr	1,X0081,L0466
-	incx
-	incx
-	cmp	X30B1,x
+L2CD3:
 	rts
-;
-	brset	5,X0082,L04B0
-	brset	7,X0087,L04B0
-	brset	6,X007F,L0476
-	brclr	5,X007F,L0483
-	brset	4,X007F,L0486
-	ldx	X0086
-	cpx	X0085
-	bls	L0486
-	stx	X0085
-	bra	L0486
-;
-	brset	3,X0082,L04B0
-	bset	4,X007F
-	add	X0085
-	bmi	L049F
-	brset	3,X0081,L0495
-	cmp	#$1E
-	bls	L0495
-	lda	#$1E
-	brclr	7,X0082,L04A0
-	tst	X0085
-	bne	L04B0
-	lda	#$01
-	cmp	X004F
-	sta	X0085
-	brset	6,X007F,L04B0
-	brset	7,X007F,L04B0
-	brset	5,X007F,L04B0
-	brset	3,X0081,L04B0
-	bset	3,X005C
-	rts
-;
-	brset	3,X0006,L04B9
-	brclr	2,X0006,L04BD
-	brclr	2,X0005,L04C9
-	brclr	7,X000F,L04CC
-	brclr	7,X000F,L04CF
-	brclr	7,X000D,L0542
-	bset	0,X00AE
-	brset	7,X00A6,L04F3
-	brset	2,X00BE,L04F3
-	brset	5,X00B9,L04F3
-	ldx	#$10
-	lda	#$2A
-	bra	L04F3
 ;
 L2CD4:
-	ldx	#$12
-	lda	#$38
-	brset	3,X008E,L04DF
-	ldx	#$11
-	lda	#$37
-	brset	3,X007F,L04F3
-	lda	X00D0
-	sta	X00C7
-	bset	7,X00C7
-	lsra
-	add	#$A0
-	jsr	L38CB
-	sta	X00C8
-X2CF0:
-	bset	6,X00C6
-	rts
-;
-	jsr	L259A
-	txa
-	jmp	L24CB
-;
-	wait
-	wait
-;
-	db	$8A, $8B, $90, $90, $89, $89
-;
-	wait
-	wait
-;
-	db	$82
-;
-	swi
-;
-	db	$90, $90, $89, $89
-;
 	clrx
-	brclr	3,X00CE,L0510
-	ldx	#$22
-	lda	X3127,x
-	sta	X0056
-	lda	X3126,x
-	beq	L0525
+	brclr	3,STACK_0ce,L04DA
+	ldx	#$52
+	lda	X2CF1,x
+	sta	RAM1_056
+	lda	X2CF0,x
+	beq	L04EF
 	jsr	L2889
-	bne	L0510
-	ldx	X3125,x
-	jsr	L2F21,x						;INFO: index jump
+	bne	L04DA
+	ldx	X2CEF,x
+	jsr	L2993,x						;INFO: index jump
+X2CEF:
 	rts
 ;
-	brclr	6,X0064,L0532
-	asr	,x
-	brset	5,X005D,L0539
-	dec	,x
-	bclr	7,X00E7
-	ora	,x
-	jmp	L3AD3,x						;INFO: index jump
+X2CF0:
+	db	$E0
+X2CF1:
+	db	$E9, $A0, $CD, $80
+	db	$D2, $C0, $DB, $FF
+	db	$00, $F4, $02, $E9
+	db	$25, $A9, $2F, $C9
+	db	$3E, $E7, $84, $F8
+	db	$87, $87, $B9, $98
+	db	$B9, $A7, $82, $B8
+	db	$7E, $C7, $92, $D8
+	db	$99, $FC, $84, $FD
+	db	$87, $9C, $B9, $9D
+	db	$B9, $BC, $82, $BD
+	db	$7E, $DC, $92, $DD
+	db	$99, $F0, $84, $EF
+	db	$87, $90, $B9, $8F
+	db	$B9, $B0, $82, $AF
+	db	$7E, $D0, $92, $CF
+	db	$99, $0B, $50, $F5
+	db	$45, $B5, $5B, $D5
+	db	$64, $08, $04, $F6
+	db	$12, $D6, $22, $36
+	db	$06, $E7, $95, $F8
+	db	$9C, $FC, $95, $FD
+	db	$9C, $F0, $95, $EF
+	db	$9C, $F5, $64, $E0
+	db	$E2, $F7, $08, $00
 ;
-	decx
-	cpx	XDA92,x
-	add	,x
-	stx	X3BD6,x
+L2D55:
+	brset	7,RAM1_060,L0577
+	brclr	3,RAM1_08b,L0577
+	lda	#$48
+	brset	2,RAM1_0be,L0562
+	lda	#$08
+	brset	3,RAM1_05f,L057A
+	lda	#$40
+	brset	4,RAM1_0ba,L057A
+	brset	2,RAM1_0be,L057A
+	lda	#$04
+	brset	7,RAM1_05f,L0581
+	lda	#$80
+	brset	2,RAM1_0ba,L0581
+	clra
+	bra	L0581
 ;
-	db	$5B
+	db	$0B, $CB, $04, $1B
+	db	$CB, $1E, $5D, $B8
+	db	$7F, $A4, $CC, $B7
+	db	$5B, $B8, $7F, $B7
+	db	$7F, $A4, $60, $26
+	db	$0F, $06, $81, $0C
+	db	$09, $7F, $09, $19
+	db	$7F, $AE, $A8, $CD
+	db	$38, $CC, $B7, $85
+	db	$01, $61, $5D, $3D
+	db	$5B, $27, $27, $1E
+	db	$5D, $10, $CB, $16
+	db	$7E, $14, $CB, $06
+	db	$CE, $4F, $07, $5B
+	db	$08, $1E, $5D, $10
+	db	$CB, $18, $B3, $1F
+	db	$D2, $0D, $5B, $0E
+	db	$1E, $5D, $0C, $7F
+	db	$09, $AE, $A8, $CD
+	db	$38, $CC, $B7, $85
+	db	$20, $00, $0B, $7C
+	db	$30, $0C, $7C, $19
+	db	$05, $69, $2A, $15
+	db	$69, $15, $D2, $19
+	db	$D3, $AE, $A5, $CD
+	db	$38, $A0, $02, $7F
+	db	$1C, $01, $7F, $19
+	db	$04, $81, $12, $20
+	db	$2E, $04, $69, $11
+	db	$14, $69, $14, $81
+	db	$03, $7F, $02, $15
+	db	$81, $14, $CB, $18
+	db	$B3, $CC, $2F, $57
+	db	$81, $B6, $7F, $00
+	db	$80, $04, $A5, $EA
+	db	$27, $4A, $A5, $03
+	db	$26, $10, $03, $D2
+	db	$52, $00, $D2, $4F
+	db	$10, $D2, $AE, $88
+	db	$CC, $2E, $C7, $CC
+	db	$2F, $12, $01, $7F
+	db	$3F, $05, $D2, $7E
+	db	$0A, $7F, $39, $07
+	db	$5F, $03, $02, $7C
+	db	$75, $0E, $D3, $72
+	db	$1E, $D3, $15, $D3
+	db	$07, $6A, $02, $14
+	db	$D3, $13, $D3, $03
+	db	$7C, $11, $12, $D3
+	db	$10, $D3, $01, $7C
+	db	$05, $04, $7C, $07
+	db	$20, $03, $05, $7C
+	db	$02, $11, $D3, $A6
+	db	$88, $CC, $2F, $06
+	db	$07, $8B, $09, $0E
+	db	$60, $06, $B6, $CE
+	db	$A4, $C8, $27, $0C
+	db	$02, $D2, $62, $04
+	db	$D2, $03, $07, $7C
+	db	$39, $CC, $2F, $00
+	db	$01, $7F, $14, $02
+	db	$D2, $53, $0D, $7C
+	db	$2D, $08, $7C, $2A
+	db	$05, $D2, $54, $0E
+	db	$D3, $51, $20, $22
+	db	$CC, $2D, $D5, $04
+	db	$D2, $7C, $06, $7C
+	db	$79, $0D, $6A, $8F
+	db	$C6, $02, $65, $A4
+	db	$F0, $A1, $B0, $27
+	db	$07, $07, $D4, $04
+	db	$17, $D4, $20, $1A
+	db	$03, $D2, $17, $00
+	db	$D2, $14, $1B, $80
+	db	$B6, $85, $26, $02
+	db	$1A, $80, $0D, $5D
+	db	$75, $07, $8B, $72
+	db	$00, $80, $6F, $CC
+	db	$31, $0A, $12, $D2
+	db	$11, $D2, $18, $B3
+	db	$AE, $8D, $05, $D4
+	db	$08, $AE, $83, $20
+	db	$04, $AE, $80, $13
+	db	$D2, $BF, $7D, $1C
+	db	$94, $20, $49, $14
+	db	$D2, $18, $B3, $13
+	db	$7F, $10, $7F, $06
+	db	$D3, $0D, $16, $D3
+	db	$A6, $8C, $08, $D3
+	db	$27, $A6, $8D, $10
+	db	$7C, $20, $21, $A6
+	db	$8F, $0F, $D3, $1C
+	db	$1F, $D3, $B6, $D3
+	db	$A4, $07, $0B, $D3
+	db	$02, $AA, $08, $97
+	db	$D6, $30, $FA, $05
+	db	$D3, $0A, $16, $6A
+	db	$20, $08, $A6, $80
+	db	$15, $D2, $17, $7C
+	db	$17, $6A, $B7, $7B
+	db	$1A, $94, $A1, $81
+	db	$27, $0A, $20, $04
+	db	$12, $7F, $11, $7F
+	db	$1F, $D2, $14, $CB
+	db	$18, $5C, $1E, $5D
+	db	$16, $BC, $81, $0D
+	db	$7C, $14, $0A, $7F
+	db	$11, $A6, $81, $20
+	db	$DB, $06, $8E, $1C
+	db	$03, $A1, $03, $07
+	db	$D2, $04, $A6, $B0
+	db	$B7, $77, $81, $0B
+	db	$7F, $0E, $1B, $7F
+	db	$13, $CE, $11, $CE
+	db	$A6, $80, $B7, $A0
+	db	$17, $D2, $20, $CC
+	db	$06, $7F, $EB, $15
+	db	$81, $1C, $C5, $00
+	db	$7F, $19, $03, $7F
+	db	$BB, $0A, $7C, $08
+	db	$A6, $84, $B7, $7B
+	db	$1A, $94, $20, $0B
+	db	$05, $69, $08, $10
+	db	$7F, $19, $7C, $17
+	db	$6A, $20, $0B, $0D
+	db	$6A, $A2, $4F, $C7
+	db	$02, $64, $11, $D4
+	db	$11, $7F, $13, $7F
+	db	$15, $BA, $20, $98
+	db	$AE, $00, $C1, $AE
+	db	$06, $20, $18, $AE
+	db	$06, $0D, $8E, $13
+	db	$B6, $CE, $A4, $F8
+	db	$B7, $CE, $CD, $25
+	db	$4B, $A6, $C4, $CC
+	db	$24, $E8, $AE, $04
+	db	$C1, $AE, $02, $0A
+	db	$7F, $98, $05, $CE
+	db	$11, $03, $CE, $0E
+	db	$00, $CE, $0B, $B3
+	db	$D0, $26, $07, $3F
+	db	$CF, $10, $CF, $3F
+	db	$CC, $81, $0E, $7F
+	db	$FC, $0A, $80, $F9
+	db	$B6, $82, $A4, $8F
+	db	$27, $25, $A1, $01
+	db	$27, $21, $A4, $0F
+	db	$27, $1D, $A1, $02
+	db	$26, $E7, $0E, $B9
+	db	$E4, $05, $B6, $13
+	db	$B6, $B6, $A1, $05
+	db	$27, $DB, $0E, $B5
+	db	$04, $1E, $B5, $16
+	db	$BC, $18, $B3, $1A
+	db	$B3, $1F, $D2, $BF
+	db	$D0, $14, $CE, $12
+	db	$CE, $11, $CE, $A6
+	db	$96, $B7, $CF, $CC
+	db	$30, $C1, $A6, $01
+	db	$C1, $A6, $FF, $AE
+	db	$50, $20, $07, $A6
+	db	$01, $C1, $A6, $FF
+	db	$AE, $30, $BF, $77
+	db	$20, $62, $B6, $78
+	db	$A4, $0F, $AB, $F9
+	db	$40, $27, $A2, $05
+	db	$CE, $56, $03, $CE
+	db	$53, $00, $CE, $50
+	db	$B7, $57, $CD, $30
+	db	$C1, $AD, $37, $22
+	db	$26, $CD, $30, $E2
+	db	$26, $08, $3D, $63
+	db	$26, $C1, $BB, $57
+	db	$20, $13, $2A, $0B
+	db	$BB, $57, $2B, $0D
+	db	$A6, $28, $B7, $63
+	db	$4F, $20, $06, $BB
+	db	$57, $2B, $F5, $27
+	db	$F3, $AD, $13, $22
+	db	$A6, $20, $02, $3F
+	db	$56, $AD, $74, $B6
+	db	$56, $CD, $38, $A0
+	db	$18, $7E, $16, $7E
+	db	$20, $95, $BE, $D0
+	db	$58, $B7, $56, $2A
+	db	$02, $40, $5C, $03
+	db	$81, $02, $5C, $5C
+	db	$D1, $30, $B1, $81
+	db	$0A, $82, $43, $0E
+	db	$87, $40, $0C, $7F
+	db	$03, $0B, $7F, $0D
+	db	$08, $7F, $0D, $BE
+	db	$86, $B3, $85, $23
+	db	$07, $BF, $85, $20
+	db	$03, $06, $82, $2A
+	db	$18, $7F, $BB, $85
+	db	$2B, $13, $06, $81
+	db	$06, $A1, $1E, $23
+	db	$02, $A6, $1E, $0F
+	db	$82, $08, $3D, $85
+	db	$26, $14, $A6, $01
+	db	$B1, $4F, $B7, $85
+	db	$0C, $7F, $0B, $0E
+	db	$7F, $08, $0A, $7F
+	db	$05, $06, $81, $02
+	db	$16, $5C, $81, $06
+	db	$06, $05, $05, $06
+	db	$06, $05, $05, $0F
+	db	$0F, $0F, $0F, $0F
+	db	$0F, $0F, $0F
 ;
-	lda	XDB92,x
-	add	X000A,x
-	add	X18EE
-	brset	5,X00CE,L0560
-	brset	3,X0000,L054B
+L30C1:
+	brclr	6,RAM1_07f,L00D4
+	ldx	#$0E
+	lda	#$2B
+	brset	2,RAM1_0be,L00F3
+	brset	5,RAM1_0b9,L00F3
+	ldx	#$10
+	lda	#$2A
+	bra	L00F3
+;
+	db	$AE, $12, $A6, $38
+	db	$06, $8E, $04, $AE
+	db	$11, $A6, $37, $06
+	db	$7F, $11, $B6, $D0
+	db	$B7, $C7, $1E, $C7
+	db	$44, $AB, $A0, $CD
+	db	$38, $CB, $B7, $C8
+	db	$1C, $C6, $81, $CD
+	db	$25, $9A, $9F, $CC
+	db	$24, $CB, $8F, $8F
+	db	$8A, $8B, $90, $90
+	db	$89, $89, $8F, $8F
+	db	$82, $83, $90, $90
+	db	$89, $89, $5F, $07
+	db	$CE, $02, $AE, $22
+	db	$D6, $31, $27, $B7
+	db	$56, $D6, $31, $26
+	db	$27, $0B, $CD, $28
+	db	$89, $26, $F1, $DE
+	db	$31, $25, $DD, $2F
+	db	$21, $81, $0D, $64
+	db	$09, $77, $0A, $5D
+	db	$0C, $7A, $1F, $E7
+	db	$FA, $DC, $3A, $D3
+	db	$5A, $D3, $DA, $92
+	db	$FB, $DF, $3B, $D6
+	db	$5B, $D6, $DB, $92
+	db	$EB, $0A, $CB, $18
+	db	$EE, $0A, $CE, $18
+	db	$06, $00, $00
+;
+L314B:
 	jmp	L2631
 ;
+L314E:
 	lda	#$C8
 	nop
 	deca
-	bne	L0550
+	bne	L0150
 	rts
 ;
-L2D55:
-	clr	X00A1
-	clr	X00A2
-	clr	X00B2
-	brclr	4,X0069,L0570
+L3155:
+	clr	RAM1_0a1
+	clr	RAM1_0a2
+	clr	RAM1_0b2
+	brclr	4,RAM1_069,L0170
 	jmp	L3199
-	jmp	L322B
 ;
-	brclr	4,X0069,L0570
+	db	$CC, $32, $2B
+;
+L3164:
+	brclr	4,RAM1_069,L0170
 	jmp	L31DA
 ;
-	brclr	4,X0069,L0570
+L316A:
+	brclr	4,RAM1_069,L0170
 	jmp	L31FE
 ;
-	bclr	7,X00A0
-	rts
+	db	$1F, $A0, $81
+;
+L3173:
 	jmp	L3176
 ;
-	brclr	1,X00A1,L0597
-	dec	X00AF
-	bpl	L0597
-	brset	7,X00A1,L0583
+L3176:
+	brclr	1,RAM1_0a1,L0197
+	dec	RAM1_0af
+	bpl	L0197
+	brset	7,RAM1_0a1,L0183
 	jmp	L322B
 ;
-	brset	2,X00A1,L0597
-	lda	#$14
-	sta	X00AF
-	jsr	L3453
-	cmp	#$03
-	bls	L0597
-	inc	X00B1
-	bne	L0597
-	bset	1,X00B1
-	sec
-	rts
+	db	$04, $A1, $11, $A6
+	db	$14, $B7, $AF, $CD
+	db	$34, $53, $A1, $03
+	db	$23, $06, $3C, $B1
+	db	$26, $02, $12, $B1
+	db	$99, $81
 ;
+L3199:
 	sei
-	bclr	3,X0002
-	bclr	2,X0002
+	bclr	3,PortC
+	bclr	2,PortC
 	cli
 	jsr	L314B
 	sei
-	bset	2,X0002
-	bset	3,X0002
+	bset	2,PortC
+	bset	3,PortC
 	cli
-	bsr	L05BC
+	bsr	L01BC
 	ldx	#$A3
-	clr	X0001,x
+	clr	PortB,x
 	jsr	L3395
 	jsr	L33DB
-	inc	X00B2
-	brclr	4,X00B2,L05AA
-	bclr	4,X00B2
+	inc	RAM1_0b2
+	brclr	4,RAM1_0b2,L01AA
+	bclr	4,RAM1_0b2
 	rts
 ;
-	brset	0,X00A1,L05BB
-	jsr	L325E
-	lda	#$4C
-	bsr	L05D4
-	lda	#$A6
-	bsr	L05D4
-	lda	#$07
-	bsr	L05D4
-	clra
-	jsr	L334F
-	lda	#$0E
-	ldx	#$50
-	sta	,x
-	jmp	L32F3
+	db	$00, $A1, $FC, $CD
+	db	$32, $5E, $A6, $4C
+	db	$AD, $0E, $A6, $A6
+	db	$AD, $0A, $A6, $07
+	db	$AD, $06, $4F, $CD
+	db	$33, $4F, $A6, $0E
+	db	$AE, $50, $F7, $CC
+	db	$32, $F3
 ;
-	brclr	7,X00A0,L0609
-	brclr	0,X00A1,L05E6
-	lda	X00A0
+L31DA:
+	brclr	7,RAM1_0a0,L0209
+	brclr	0,RAM1_0a1,L01E6
+	lda	RAM1_0a0
 	and	#$08
-	bne	L0609
-	lda	X00A0
+	bne	L0209
+	lda	RAM1_0a0
 	and	#$0F
-	bsr	L05F7
-	bclr	7,X00A0
-	lda	X00A0
+	bsr	L01F7
+	bclr	7,RAM1_0a0
+	lda	RAM1_0a0
 	jsr	L2616
 	and	#$03
-	beq	L0609
+	beq	L0209
 	tax
 	ldx	X3418,x
 	jmp	L33DB,x						;INFO: index jump
 ;
-	brset	0,X00A1,L060A
-	brset	2,X00A1,L0609
-	brset	1,X00A1,L060A
-	clr	X00A1
+L31FE:
+	brset	0,RAM1_0a1,L020A
+	brset	2,RAM1_0a1,L0209
+	brset	1,RAM1_0a1,L020A
+	clr	RAM1_0a1
 	rts
 ;
-	jsr	L3338
-	and	#$20
-	bne	L0609
-	brset	1,X00A1,L0624
-	lda	X00AE
-	cmp	#$02
-	beq	L061D
-	brclr	4,X00A1,L0620
-	bset	5,X00A1
-	rts
+	db	$CD, $33, $38, $A4
+	db	$20, $26, $F8, $02
+	db	$A1, $10, $B6, $AE
+	db	$A1, $02, $27, $03
+	db	$09, $A1, $03, $1A
+	db	$A1, $81, $A6, $91
+	db	$20, $2F, $07, $A1
+	db	$E0, $A6, $92, $20
+	db	$5D
 ;
-	lda	#$91
-	bra	L0653
-;
-	brclr	3,X00A1,L0607
-	lda	#$92
-	bra	L0688
-;
-	bsr	L0657
-	brclr	0,X00A1,L0609
-	bsr	L065E
+L322B:
+	bsr	L0257
+	brclr	0,RAM1_0a1,L0209
+	bsr	L025E
 	jmp	L3477
 ;
-	brset	0,X00A1,L0609
-	bsr	L0657
-	lda	X00A2
-	and	#$0F
-	sta	X00A2
-	jsr	L34EA
-	lda	X00AD
-	beq	L064B
-	add	#$01
-	bcc	L064D
-	lda	#$02
-	sta	X00AE
-	sta	X00B1
-	lda	#$89
-	sta	X00A1
-	bra	L068A
+	db	$00, $A1, $D1, $AD
+	db	$1D, $B6, $A2, $A4
+	db	$0F, $B7, $A2, $CD
+	db	$34, $EA, $B6, $AD
+	db	$27, $04, $AB, $01
+	db	$24, $02, $A6, $02
+	db	$B7, $AE, $B7, $B1
+	db	$A6, $89, $B7, $A1
+	db	$20, $33, $03, $A1
+	db	$AF, $3F, $A1, $AD
+	db	$00, $A6, $05, $CC
+	db	$33, $4F, $B6, $A2
+	db	$A4, $0F, $27, $71
+	db	$AD, $EC, $AE, $AD
+	db	$CD, $33, $91, $0D
+	db	$A0, $05, $AE, $A3
+	db	$CD, $33, $B5, $CD
+	db	$33, $DB, $BE, $AE
+	db	$BF, $B1, $B3, $AD
+	db	$25, $03, $A6, $8A
+	db	$C1, $A6, $82, $B7
+	db	$A1, $A6, $08, $AD
+	db	$D2, $B6, $AD, $05
+	db	$A1, $04, $B6, $B1
+	db	$1C, $A1, $B7, $58
+	db	$4F, $07, $A1, $03
+	db	$4A, $B7, $58, $AE
+	db	$56, $B7, $57, $A6
+	db	$00, $F7, $AD, $32
+	db	$AE, $56, $A6, $7F
+	db	$F7, $B6, $B1, $A1
+	db	$02, $25, $03, $09
+	db	$A1, $02, $A6, $02
+	db	$E7, $01, $7F, $AD
+	db	$1F, $A6, $03, $00
+	db	$A1, $02, $A6, $02
+	db	$AD, $99, $A6, $04
+	db	$AD, $95, $CD, $34
+	db	$F2, $5F, $AD, $67
+	db	$A4, $20, $26, $05
+	db	$5A, $26, $F7, $3F
+	db	$A1, $81, $AD, $16
+	db	$64, $01, $76, $64
+	db	$01, $76, $64, $01
+	db	$76, $64, $01, $76
+	db	$0D, $A1, $05, $7C
+	db	$7C, $7C, $1D, $A1
+	db	$AD, $00, $F6, $AD
+	db	$59, $F6, $CD, $26
+	db	$17, $5C, $20, $52
 ;
-	brclr	1,X00A1,L0609
-	clr	X00A1
-	bsr	L065E
-	lda	#$05
-	jmp	L334F
-;
-	lda	X00A2
-	and	#$0F
-	beq	L06DA
-	bsr	L0657
-	ldx	#$AD
-	jsr	L3391
-	brclr	6,X00A0,L0678
-	ldx	#$A3
-	jsr	L33B5
-	jsr	L33DB
-	ldx	X00AE
-	stx	X00B1
-	cpx	X00AD
-	bcs	L0686
-	lda	#$8A
-	cmp	XA682
-	sta	X00A1
-	lda	#$08
-	bsr	L0660
-	lda	X00AD
-	brclr	2,X00A1,L0697
-	lda	X00B1
-	bset	6,X00A1
-	sta	X0058
-	clra
-	brclr	3,X00A1,L06A0
-	deca
-	sta	X0058
-	ldx	#$56
-	sta	X0057
-	lda	#$00
-	sta	,x
-	bsr	L06DB
-	ldx	#$56
-	lda	#$7F
-	sta	,x
-	lda	X00B1
-	cmp	#$02
-	bcs	L06B7
-	brclr	4,X00A1,L06B9
-	lda	#$02
-	sta	X0001,x
-	clr	,x
-	bsr	L06DD
-	lda	#$03
-	brset	0,X00A1,L06C5
-	lda	#$02
-	bsr	L0660
-L2EC7:
-	lda	#$04
-	bsr	L0660
-	jsr	L34F2
-	clrx
-	bsr	L0738
-	and	#$20
-	bne	L06DA
-	decx
-	bne	L06CF
-	clr	X00A1
-	rts
-;
-	bsr	L06F3
-	lsr	X0001,x
-	ror	,x
-	lsr	X0001,x
-	ror	,x
-	lsr	X0001,x
-	ror	,x
-	lsr	X0001,x
-	ror	,x
-	brclr	6,X00A1,L06F1
-	inc	,x
-	inc	,x
-	inc	,x
-	bclr	6,X00A1
-	bsr	L06F3
-	lda	,x
-	bsr	L074F
-	lda	,x
-	jsr	L2617
-	incx
-	bra	L074F
-;
+L32FD:
 	lda	#$09
-	bsr	L074F
+	bsr	L034F
 	lda	#$02
 	jsr	L314E
-L2F06:
 	ldx	#$50
-	bsr	L0720
+	bsr	L0320
 	sta	,x
 	incx
 	cpx	#$54
-	bls	L0708
+	bls	L0308
 	ldx	#$51
-L2F12:
 	asl	,x
-	rol	X0001,x
+	rol	PortB,x
 	asl	,x
-	rol	X0001,x
+	rol	PortB,x
 	asl	,x
-	rol	X0001,x
+	rol	PortB,x
 	asl	,x
-	rol	X0001,x
+	rol	PortB,x
 	incx
 	rts
 ;
-	bsr	L072E
+	db	$AD, $0C, $CD, $26
+	db	$17, $B7, $59, $AD
+	db	$0A, $A4, $F0, $BA
+	db	$59, $81, $A6, $31
+	db	$4A, $26, $FD, $A6
+	db	$1B, $4A, $26, $FD
+	db	$9B, $B6, $06, $A4
+	db	$03, $AB, $0C, $B7
+	db	$06, $9A, $14, $02
+	db	$17, $02, $AD, $45
+	db	$B6, $02, $16, $02
+	db	$81, $A6, $03, $3F
+	db	$5A, $16, $02, $3A
+	db	$5A, $26, $03, $CC
+	db	$32, $D8, $AD, $31
+	db	$17, $02, $CD, $34
+	db	$F2, $08, $02, $ED
+	db	$A1, $05, $27, $06
+	db	$0A, $02, $E6, $C1
+	db	$A6, $02, $CD, $26
+	db	$1E, $AA, $0F, $9B
+	db	$B7, $02, $B6, $06
+	db	$A4, $03, $AB, $FC
+	db	$B7, $06, $9A, $15
+	db	$02, $AD, $0A, $14
+	db	$02, $B6, $06, $A4
+	db	$03, $AB, $0C, $B7
+	db	$06, $CD, $34, $F2
+	db	$81, $11, $58, $20
+	db	$04
+;
+L3395:
+	bset	0,RAM1_058
+	bclr	1,RAM1_058
+	stx	RAM1_057
+	lda	RAM1_0a2
 	jsr	L2617
-	sta	X0059
-	bsr	L0733
-	and	#$F0
-	ora	X0059
-	rts
-;
-	lda	#$31
-	deca
-	bne	L0730
-	lda	#$1B
-	deca
-	bne	L0735
-	sei
-	lda	X0006
-	and	#$03
-	add	#$0C
-	sta	X0006
-	cli
-	bset	2,X0002
-	bclr	3,X0002
-	bsr	L078D
-	lda	X0002
-	bset	3,X0002
-	rts
-;
-	lda	#$03
-	clr	X005A
-	bset	3,X0002
-	dec	X005A
-	bne	L075A
-L2F57:
-	jmp	L32D8
-;
-	bsr	L078D
-	bclr	3,X0002
-	jsr	L34F2
-	brset	4,X0002,L0751
-	cmp	#$05
-	beq	L076E
-	brset	5,X0002,L0751
-	cmp	XA602
-	jsr	L261E
-	ora	#$0F
-	sei
-	sta	X0002
-	lda	X0006
-	and	#$03
-	add	#$FC
-	sta	X0006
-	cli
-	bclr	2,X0002
-	bsr	L078D
-	bset	2,X0002
-	lda	X0006
-	and	#$03
-	add	#$0C
-	sta	X0006
-	jsr	L34F2
-	rts
-;
-	bclr	0,X0058
-	bra	L0799
-;
-	bset	0,X0058
-	bclr	1,X0058
-	stx	X0057
-	lda	X00A2
-	jsr	L2617
-	sta	X0052
-	lda	X00B2
+	sta	RAM1_052
+	lda	RAM1_0b2
 	and	#$0F
-	sub	X0052
-	bpl	L07AC
+	sub	RAM1_052
+	bpl	L03AC
 	add	#$0A
 	inca
 	asla
-	sta	X0059
-	ldx	X0057
+	sta	RAM1_059
+	ldx	RAM1_057
 	lda	#$04
 	cmp	XA608
-	sta	X0056
-	brclr	0,X0058,L07CA
+	sta	RAM1_056
+	brclr	0,RAM1_058,L03CA
 	lda	,x
-	stx	X005A
-	ldx	X0059
-	sta	X02D8,x
-	ldx	X005A
-	inc	X0059
-	bra	L07D6
+	stx	RAM1_05a
+	ldx	RAM1_059
+	sta	RAM2_02d8,x
+	ldx	RAM1_05a
+	inc	RAM1_059
+	bra	L03D6
 ;
-	stx	X005A
-	ldx	X0059
-	inc	X0059
-	lda	X02D8,x
-	ldx	X005A
-	sta	,x
-	incx
-	dec	X0056
-	bne	L07B9
+	db	$BF, $5A, $BE, $59
+	db	$3C, $59, $D6, $02
+	db	$D8, $BE, $5A, $F7
+	db	$5C, $3A, $56, $26
+	db	$DE
+;
+L33DB:
 	rts
 ;
-	lda	X00A2
-	cmp	#$0F
-	beq	L000D
-	add	#$10
-	cmp	#$A0
-	bcc	L000D
-	tax
-	jsr	L2617
-	sta	X0056
-	lda	X00A2
-	and	#$0F
-	cmp	X0056
-	bcs	L000D
-	txa
-	bra	L0005
+	db	$B6, $A2, $A1, $0F
+	db	$27, $2B, $AB, $10
+	db	$A1, $A0, $24, $25
+	db	$97, $CD, $26, $17
+	db	$B7, $56, $B6, $A2
+	db	$A4, $0F, $B1, $56
+	db	$25, $17, $9F, $20
+	db	$0C, $B6, $A2, $A1
+	db	$0F, $27, $0E, $A4
+	db	$F0, $27, $0A, $A0
+	db	$10, $B8, $A2, $A4
+	db	$F0, $B8, $A2, $20
+	db	$06, $4F, $81, $B6
+	db	$A2, $A4, $0F, $B7
+	db	$A2, $A4, $0F, $81
+X3418:
+	db	$6B, $00, $00, $00
+	db	$50, $54, $58, $00
+	db	$5C, $4D, $81, $81
+	db	$82, $68, $60, $64
+	db	$CC, $32, $35, $AD
+	db	$AF, $20, $17, $AD
+	db	$C8, $20, $13, $AD
+	db	$DA, $20, $0F, $AD
+	db	$D6, $20, $06, $AD
+	db	$9F, $20, $02, $AD
+	db	$B8, $27, $98, $CC
+	db	$32, $63, $02, $A1
+	db	$03, $CC, $31, $61
+	db	$1F, $A1, $A6, $01
+	db	$B7, $AF, $81, $B6
+	db	$AD, $B0, $B1, $24
+	db	$02, $A0, $02, $81
+	db	$81, $CD, $32, $57
+	db	$15, $A1, $AE, $50
+	db	$CD, $33, $91, $CD
+	db	$33, $DB, $B6, $52
+	db	$B7, $AB, $B6, $53
+	db	$B7, $AC, $BE, $B1
+	db	$CC, $32, $7F
 ;
-	lda	X00A2
-	cmp	#$0F
-	beq	L000D
-	and	#$F0
-	beq	L000D
-	sub	#$10
-	eor	X00A2
-	and	#$F0
-	eor	X00A2
-	bra	L0013
-;
-	clra
-	rts
-;
-	lda	X00A2
-	and	#$0F
-	sta	X00A2
-	and	#$0F
-	rts
-;
-	db	$6B
-;
-	brset	0,X0000,L001C
-	negx
-	lsrx
-	aslx
-	brset	0,X005C,L006F
-	rts
-	rts
-;
-	db	$82
-;
-	asl	X0060,x
-	lsr	X00CC,x
-;
-	db	$32, $35
-;
-	bsr	L07DC
-	bra	L0046
-;
-	bsr	L07F9
-	bra	L0046
-;
-	bsr	L000F
-	bra	L0046
-;
-	bsr	L000F
-	bra	L0041
-;
-	bsr	L07DC
-	bra	L0041
-;
-	bsr	L07F9
-	beq	L07DB
-	jmp	L3263
-;
-	brset	1,X00A1,L004C
-	jmp	L3161
-;
-	bclr	7,X00A1
-	lda	#$01
-	sta	X00AF
-	rts
-;
-	lda	X00AD
-	sub	X00B1
-	bcc	L005B
-	sub	#$02
-	rts
-	rts
-;
-	jsr	L3257
-	bclr	2,X00A1
-	ldx	#$50
-	jsr	L3391
-	jsr	L33DB
-	lda	X0052
-	sta	X00AB
-	lda	X0053
-	sta	X00AC
-	ldx	X00B1
-	jmp	L327F
-;
+L3477:
 	jsr	L32FD
 	lda	,x
-	sta	X00AD
-	brset	5,X00A1,L008A
-	sub	X00AE
-	bcc	L0086
+	sta	RAM1_0ad
+	brset	5,RAM1_0a1,L048A
+	sub	RAM1_0ae
+	bcc	L0486
 	sub	#$02
 	sub	#$02
-	bcs	L00E7
-	lda	X00B2
+	bcs	L04E7
+	lda	RAM1_0b2
 	inca
 	cmp	#$09
-	bls	L0092
+	bls	L0492
 	clra
-	sta	X00B2
+	sta	RAM1_0b2
 	ldx	#$AD
 	jsr	L3395
 	ldx	#$A3
 	jsr	L33DB
-	lda	X00AD
+	lda	RAM1_0ad
 	add	#$01
-	bcc	L00A6
+	bcc	L04A6
 	lda	#$02
-	sta	X00B1
-	clr	X00A2
-	lda	X00AE
-	cmp	X00B1
-	bcc	L00CE
-	sta	X00AE
-	beq	L00DA
-	brset	5,X00A1,L00E1
-	lda	X00A2
+	sta	RAM1_0b1
+	clr	RAM1_0a2
+	lda	RAM1_0ae
+	cmp	RAM1_0b1
+	bcc	L04CE
+	sta	RAM1_0ae
+	beq	L04DA
+	brset	5,RAM1_0a1,L04E1
+	lda	RAM1_0a2
 	cmp	#$90
-	bcc	L00E7
+	bcc	L04E7
 	add	#$11
-	sta	X00A2
-L30C1:
+	sta	RAM1_0a2
 	ldx	#$50
-	bsr	L00EC
-	lda	X0051
-	brset	1,X00A1,L00D2
-	cmp	X00AE
-	bcs	L00B0
-	bset	1,X00A1
-	bra	L00D6
+	bsr	L04EC
+	lda	RAM1_051
+	brset	1,RAM1_0a1,L04D2
+	cmp	RAM1_0ae
+	bcs	L04B0
+	bset	1,RAM1_0a1
+	bra	L04D6
 ;
-	cmp	X00AE
-	bcc	L00DA
-	cmp	X00B1
-	bcc	L00B0
-	lda	X00A2
-	beq	L00E7
-	brclr	5,X00A1,L00E3
-	ora	#$0F
-	and	#$0F
-	sta	X00A2
-	clr	X00A1
-	rts
+	db	$B1, $AE, $24, $04
+	db	$B1, $B1, $24, $D6
+	db	$B6, $A2, $27, $09
+	db	$0B, $A1, $02, $AA
+	db	$0F, $A4, $0F, $B7
+	db	$A2, $3F, $A1, $81
+	db	$AE, $AD, $CD, $33
+	db	$91, $CC, $33, $DB
+	db	$6D, $FF, $6D, $FF
+	db	$81
 ;
-	ldx	#$AD
-	jsr	L3391
-	jmp	L33DB
-;
-	tst	X00FF,x
-	tst	X00FF,x
-	rts
-;
-	brset	7,X00A0,L0100
-X30FA:
-	lda	X00CE
+L34F7:
+	brset	7,RAM1_0a0,L0500
+	lda	STACK_0ce
 	and	#$C0
-	beq	L0101
+	beq	L0501
 	rts
 ;
-X3101:
-	brset	5,X00CE,L0140
-	brclr	1,X00A1,L010C
-	brclr	7,X00A1,L010C
-L310A:
-	bset	5,X007F
-	brclr	5,X007F,L011E
-	brset	3,X007F,L011B
-	brset	5,X00B9,L011B
-	brset	0,X005D,L011E
-	brclr	4,X00BA,L011E
-	jmp	L35ED
+	db	$0A, $CE, $3C, $03
+	db	$A1, $05, $0F, $A1
+	db	$02, $1A, $7F, $0B
+	db	$7F, $0F, $06, $7F
+	db	$09, $0A, $B9, $06
+	db	$00, $5D, $06, $09
+	db	$BA, $03, $CC, $35
+	db	$ED, $01, $A1, $09
+	db	$0B, $7F, $06, $10
+	db	$5D, $A6, $80, $20
+	db	$14, $0A, $B9, $0C
+	db	$09, $B9, $12, $02
+	db	$A1, $14, $0A, $7F
+	db	$11, $00, $5D, $0E
+	db	$00, $A1, $4C, $A6
+	db	$89, $B7, $A0, $20
+	db	$46, $11, $5D, $00
+	db	$A1, $DF, $0B, $7F
+	db	$3E, $19, $BA, $06
+	db	$CE, $39, $03, $A1
+	db	$06, $14, $CE, $1A
+	db	$CF, $20, $30, $BE
+	db	$CF, $05, $CE, $1E
+	db	$07, $D2, $09, $B6
+	db	$A2, $A4, $F0, $26
+	db	$0E, $CC, $36, $86
+	db	$5C, $26, $AF, $1F
+	db	$CF, $A6, $88, $10
+	db	$5D, $20, $0F, $CD
+	db	$36, $A5, $A6, $85
+	db	$20, $0A, $5C, $26
+	db	$0A, $07, $D2, $6C
+	db	$A6, $8D, $1D, $80
+	db	$CC, $36, $3B, $0D
+	db	$5D, $35, $06, $7F
+	db	$32, $CC, $36, $CD
+	db	$A6, $44, $1C, $C5
+	db	$20, $3A, $B6, $7F
+	db	$A4, $2B, $A1, $02
+	db	$26, $21, $A6, $30
+	db	$20, $1B, $06, $CE
+	db	$1A, $06, $8E, $17
+	db	$06, $D2, $74, $0A
+	db	$7F, $44, $81, $06
+	db	$CE, $0D, $06, $8E
+	db	$E1, $03, $A1, $03
+	db	$07, $D2, $1A, $A6
+	db	$B0, $B7, $77, $81
+	db	$09, $BA, $06, $19
+	db	$BA, $A6, $F1, $20
+	db	$07, $A6, $66, $05
+	db	$B8, $02, $A6, $26
+	db	$B7, $B3, $CC, $36
+	db	$6A, $A6, $24, $06
+	db	$8E, $B8, $06, $D2
+	db	$42, $0A, $7F, $06
+	db	$0D, $B5, $E6, $04
+	db	$B8, $E3, $04, $BE
+	db	$D6, $03, $A1, $06
+	db	$A6, $80, $B7, $A0
+	db	$20, $77, $B6, $A2
+	db	$A4, $0F, $0B, $7F
+	db	$07, $27, $6E, $CD
+	db	$36, $A5, $20, $35
+	db	$00, $A1, $02, $27
+	db	$0D, $19, $BA, $A6
+	db	$FF, $B7, $CF, $14
+	db	$CE, $A6, $80, $CC
+	db	$35, $83, $3F, $C8
+	db	$A6, $8A, $CD, $24
+	db	$E5, $A6, $2C, $CD
+	db	$25, $9A, $81, $CD
+	db	$36, $A5, $A6, $80
+	db	$02, $A1, $13, $B6
+	db	$A2, $A1, $0F, $27
+	db	$08, $4A, $CD, $26
+	db	$1E, $B1, $A2, $24
+	db	$03, $A6, $86, $C1
+	db	$A6, $84, $1A, $7F
+	db	$B7, $A0, $20, $57
+	db	$03, $5F, $03, $CC
+	db	$35, $CA, $0A, $7F
+	db	$5A, $14, $7E, $10
+	db	$80, $A6, $02, $B7
+	db	$7F, $AE, $06, $CD
+	db	$26, $49, $A6, $08
+	db	$B7, $CE, $A6, $26
+	db	$B7, $B3, $1B, $D2
+	db	$A6, $14, $AD, $31
+	db	$19, $B3, $1B, $B6
+	db	$81, $1B, $7F, $13
+	db	$CE, $11, $CE, $17
+	db	$D2, $20, $2A, $0A
+	db	$7F, $2D, $08, $BA
+	db	$2A, $B6, $A2, $A4
+	db	$0F, $27, $93, $A6
+	db	$86, $B7, $A0, $19
+	db	$BA, $17, $D2, $A6
+	db	$7D, $1C, $80, $15
+	db	$CE, $B7, $CF, $12
+	db	$CE, $10, $CE, $1A
+	db	$7F, $B7, $CF, $18
+	db	$B3, $1A, $B3, $1F
+	db	$D2, $14, $CB, $16
+	db	$7E, $1E, $5D, $81
+	db	$16, $D2, $A6, $32
+	db	$20, $DF, $B6, $A2
+	db	$A1, $0F, $26, $04
+	db	$A6, $01, $20, $0B
+	db	$CD, $26, $17, $B7
+	db	$5B, $B6, $A2, $B0
+	db	$5B, $A4, $0F, $B7
+	db	$C8, $AB, $2C, $CD
+	db	$25, $9A, $A6, $8A
+	db	$CD, $24, $DC, $81
+	db	$5F, $0B, $CE, $02
+	db	$AE, $0E, $D6, $36
+	db	$EA, $B7, $56, $D6
+	db	$36, $E9, $27, $0B
+	db	$CD, $28, $89, $26
+	db	$F1, $DE, $36, $E8
+	db	$DD, $35, $91, $81
+	db	$E8, $1F, $C8, $45
+	db	$A8, $B0, $28, $00
+	db	$AB, $E3, $AE, $E3
+	db	$08, $12, $07, $30
+	db	$E8, $30, $00
 ;
-	brclr	0,X00A1,L012A
-	brclr	5,X007F,L012A
-	bset	0,X005D
-X3126:
-	lda	#$80
-	bra	L013E
-;
-	brset	5,X00B9,L0139
-	brclr	4,X00B9,L0142
-	brset	1,X00A1,L0147
-	brset	5,X007F,L0147
-	brset	0,X005D,L0147
-	brset	0,X00A1,L0188
-	lda	#$89
-	sta	X00A0
-	bra	L0188
-;
-	bclr	0,X005D
-	brset	0,X00A1,L0126
-	brclr	5,X007F,L0188
-	bclr	4,X00BA
-	brset	3,X00CE,L0188
-	brclr	1,X00A1,L0158
-	bset	2,X00CE
-	bset	5,X00CF
-	bra	L0188
-;
-	ldx	X00CF
-	brclr	2,X00CE,L017B
-	brclr	3,X00D2,L0169
-	lda	X00A2
-	and	#$F0
-L3164:
-	bne	L0174
-	jmp	L3686
-;
-	incx
-L316A:
-	bne	L011B
-	bclr	7,X00CF
-	lda	#$88
-	bset	0,X005D
-	bra	L0183
-;
-	jsr	L36A5
-	lda	#$85
-	bra	L0185
-;
-	incx
-	bne	L0188
-	brclr	3,X00D2,L01ED
-	lda	#$8D
-	bclr	6,X0080
-	jmp	L363B
-;
-	brclr	6,X005D,L01C0
-	brset	3,X007F,L01C0
-	jmp	L36CD
-;
-	lda	#$44
-	bset	6,X00C5
-	bra	L01D1
-;
-	lda	X007F
-L3199:
-	and	#$2B
-	cmp	#$02
-	bne	L01C0
-	lda	#$30
-	bra	L01BE
-;
-	brset	3,X00CE,L01C0
-	brset	3,X008E,L01C0
-	brset	3,X00D2,L0220
-	brset	5,X007F,L01F3
-	rts
-;
-	brset	3,X00CE,L01C0
-	brset	3,X008E,L0197
-	brclr	1,X00A1,L01BC
-	brclr	3,X00D2,L01D6
-	lda	#$B0
-	sta	X0077
-	rts
-;
-	brclr	4,X00BA,L01CA
-	bclr	4,X00BA
-	lda	#$F1
-	bra	L01D1
-;
-	lda	#$66
-	brclr	2,X00B8,L01D1
-	lda	#$26
-	sta	X00B3
-	jmp	L366A
-;
-	lda	#$24
-	brset	3,X008E,L0193
-	brset	3,X00D2,L0220
-	brset	5,X007F,L01E7
-	brclr	6,X00B5,L01CA
-	brset	2,X00B8,L01CA
-	brset	2,X00BE,L01C0
-	brclr	1,X00A1,L01F3
-	lda	#$80
-	sta	X00A0
-	bra	L026A
-;
-	lda	X00A2
-	and	#$0F
-	brclr	5,X007F,L0201
-	beq	L026A
-	jsr	L36A5
-	bra	L0236
-;
-	brset	0,X00A1,L0206
-	beq	L0213
-	bclr	4,X00BA
-	lda	#$FF
-	sta	X00CF
-	bset	2,X00CE
-	lda	#$80
-	jmp	L3583
-;
-	clr	X00C8
-	lda	#$8A
-	jsr	L24E5
-	lda	#$2C
-	jsr	L259A
-	rts
-;
-	jsr	L36A5
-	lda	#$80
-	brset	1,X00A1,L023B
-	lda	X00A2
-	cmp	#$0F
-	beq	L0236
-	deca
-	jsr	L261E
-	cmp	X00A2
-	bcc	L0239
-	lda	#$86
-	cmp	XA684
-	bset	5,X007F
-	sta	X00A0
-	bra	L0298
-;
-	brclr	1,X005F,L0247
-	jmp	L35CA
-;
-	brset	5,X007F,L02A4
-	bset	2,X007E
-	bset	0,X0080
-	lda	#$02
-	sta	X007F
-	ldx	#$06
-	jsr	L2649
-L3257:
-	lda	#$08
-	sta	X00CE
-	lda	#$26
-	sta	X00B3
-	bclr	5,X00D2
-	lda	#$14
-L3263:
-	bsr	L0296
-	bclr	4,X00B3
-	bclr	5,X00B6
-	rts
-;
-	bclr	5,X007F
-	bclr	1,X00CE
-	bclr	0,X00CE
-	bclr	3,X00D2
-	bra	L029E
-;
-	brset	5,X007F,L02A4
-	brset	4,X00BA,L02A4
-	lda	X00A2
-	and	#$0F
-	beq	L0213
-	lda	#$86
-	sta	X00A0
-	bclr	4,X00BA
-	bclr	3,X00D2
-	lda	#$7D
-	bset	6,X0080
-	bclr	2,X00CE
-	sta	X00CF
-	bset	1,X00CE
-	bset	0,X00CE
-	bset	5,X007F
-	sta	X00CF
-	bset	4,X00B3
-	bset	5,X00B3
-	bclr	7,X00D2
-	bset	2,X00CB
-	bset	3,X007E
-	bset	7,X005D
-	rts
-;
-	bset	3,X00D2
-	lda	#$32
-	bra	L028A
-;
-	lda	X00A2
-	cmp	#$0F
-	bne	L02B5
-	lda	#$01
-	bra	L02C0
-;
-	jsr	L2617
-	sta	X005B
-	lda	X00A2
-	sub	X005B
-	and	#$0F
-	sta	X00C8
-	add	#$2C
-	jsr	L259A
-	lda	#$8A
-	jsr	L24DC
-	rts
-;
-	clrx
-	brclr	5,X00CE,L02D3
-	ldx	#$0E
-	lda	X36EA,x
-	sta	X0056
-L32D8:
-	lda	X36E9,x
-	beq	L02E8
-	jsr	L2889
-	bne	L02D3
-	ldx	X36E8,x
-	jsr	L3591,x						;INFO: index jump
-	rts
-;
-	eor	X001F,x
-	eor	X45A8
-	sub	X0028
-	brset	0,X00AB,L02D6
-L32F3:
-	ldx	#$E3
-	brset	4,X0012,L02FF
-	neg	X00E8
-	neg	X0000
-	bsr	L034A
-	beq	L030E
+L36FC:
+	bsr	L074A
+	beq	L070E
 	lda	#$81
-	sta	X007B
-	bset	5,X0094
-	bset	2,X0069
-	bset	1,X007F
-	bclr	0,X007F
-	bset	4,X005C
-	lda	X0103
+	sta	RAM1_07b
+	bset	5,RAM1_094
+	bset	2,RAM1_069
+	bset	1,RAM1_07f
+	bclr	0,RAM1_07f
+	bset	4,RAM1_05c
+	lda	SEC_MODE
 	and	#$EF
-	brclr	7,X008B,L0318
+	brclr	7,RAM1_08b,L0718
 	ora	#$10
-	sta	X008B
-	bclr	7,X008B
+	sta	RAM1_08b
+	bclr	7,RAM1_08b
 	and	#$E0
 	cmp	#$A0
-	bne	L0330
-	lda	X0101
-	sta	X008C
-	lda	X0102
-	sta	X008D
+	bne	L0730
+	lda	SEC_CODE1
+	sta	RAM1_08c
+	lda	SEC_CODE2
+	sta	RAM1_08d
 	lda	#$A8
-	sta	X008B
-	bsr	L034A
-	beq	L0336
-	bclr	3,X008B
-	brset	3,X008B,L0349
-	bset	0,X0080
-	brclr	2,X008B,L0349
-	brclr	7,X0064,L0349
-	clr	X008B
+	sta	RAM1_08b
+L3730:
+	bsr	L074A
+	beq	L0736
+	bclr	3,RAM1_08b
+	brset	3,RAM1_08b,L0749
+	bset	0,RAM1_080
+	brclr	2,RAM1_08b,L0749
+	brclr	7,RAM1_064,L0749
+	clr	RAM1_08b
 	clra
 	jsr	L3761
-	bset	7,X005D
+	bset	7,RAM1_05d
 	rts
 ;
-	lda	X0101
-	cmp	X008C
-L334F:
-	bne	L0349
-	lda	X0102
-	cmp	X008D
+L374A:
+	lda	SEC_CODE1
+	cmp	RAM1_08c
+	bne	L0749
+	lda	SEC_CODE2
+	cmp	RAM1_08d
 	rts
 ;
-	brclr	1,X008B,L035C
-	bset	2,X008B
-	lda	X008B
-	cmp	XA608
+	db	$03, $8B, $02, $14
+	db	$8B, $B6, $8B, $C1
+	db	$A6, $08
+;
+L3761:
 	ldx	#$63
 	jsr	L388B
-	bset	2,X005D
+	bset	2,RAM1_05d
 	jmp	L2725
 ;
-	brclr	0,X00D6,L0373
-	brclr	1,X00D6,L0375
-	bclr	0,X00D6
-	bclr	2,X00D6
-	bset	1,X00D6
+L376B:
+	brclr	0,STACK_0d6,L0773
+	brclr	1,STACK_0d6,L0775
+	bclr	0,STACK_0d6
+	bclr	2,STACK_0d6
+	bset	1,STACK_0d6
 	rts
 ;
-	bclr	1,X00D6
-	brset	3,X0010,L03AB
-	brset	2,X00D6,L03AB
-	lda	X0011
-	brset	6,X00BA,L0388
-	brclr	5,X00BA,L03AB
-	brset	0,X00D6,L039A
-	bmi	L03A8
-	brset	3,X00D6,L03AB
-	sta	X0271
-	bset	0,X00D6
-L3395:
-	and	#$07
-	sta	X00D7
-	rts
+	db	$13, $D6, $06, $10
+	db	$2E, $04, $D6, $2B
+	db	$B6, $11, $0C, $BA
+	db	$03, $0B, $BA, $23
+	db	$00, $D6, $0F, $2B
+	db	$1B, $06, $D6, $1B
+	db	$C7, $02, $71, $10
+	db	$D6, $A4, $07, $B7
+	db	$D7, $81, $BE, $D7
+	db	$D7, $02, $72, $3A
+	db	$D7, $2A, $04, $16
+	db	$D6, $11, $D6, $81
+	db	$B7, $D8, $81, $14
+	db	$D6, $10, $D6, $81
 ;
-	ldx	X00D7
-	sta	X0272,x
-	dec	X00D7
-	bpl	L03A7
-	bset	3,X00D6
-	bclr	0,X00D6
-	rts
-;
-	sta	X00D8
-	rts
-;
-	bset	2,X00D6
-	bset	0,X00D6
-	rts
-;
-	brclr	7,X00D6,L03F3
-	brset	2,X00D6,L03F3
-	lda	X00D9
-	bne	L03BC
-	clr	X00D8
-	lda	X027A
+L37B0:
+	brclr	7,STACK_0d6,L07F3
+	brset	2,STACK_0d6,L07F3
+	lda	STACK_0d9
+	bne	L07BC
+	clr	STACK_0d8
+	lda	RAM2_027a
 	ora	#$80
-	cmp	X00D8
-	beq	L03E9
-	lda	X00D9
+	cmp	STACK_0d8
+	beq	L07E9
+	lda	STACK_0d9
 	and	#$03
-	bne	L03DA
+	bne	L07DA
 	clrx
-	bsr	L0408
+	bsr	L0008
 	txa
 	incx
 	deca
-	bmi	L03CC
-	eor	X027A
+	bmi	L07CC
+	eor	RAM2_027a
 	and	#$03
-	bne	L03CC
-	inc	X00D9
-	bne	L03F3
-	brclr	0,X0061,L03E3
-	bset	2,X005D
-	bclr	6,X00BA
-	bclr	5,X00BA
-	bclr	5,X0061
-	bclr	7,X00D6
-	brclr	1,X00BF,L03F1
-	bclr	1,X00BF
+	bne	L07CC
+	inc	STACK_0d9
+	bne	L07F3
+	brclr	0,RAM1_061,L07E3
+	bset	2,RAM1_05d
+	bclr	6,RAM1_0ba
+	bclr	5,RAM1_0ba
+	bclr	5,RAM1_061
+	bclr	7,STACK_0d6
+	brclr	1,RAM1_0bf,L07F1
+	bclr	1,RAM1_0bf
 	rts
 ;
-	bclr	0,X00BF
-	rts
+	db	$11, $BF, $81
 ;
-	brclr	6,X00D6,L0414
-	bclr	6,X00D6
+L37F4:
+	brclr	6,STACK_0d6,L0014
+	bclr	6,STACK_0d6
 	clra
 	deca
-	beq	L0400
-	brclr	7,X0010,L03FA
-	lda	X0271
+	beq	L0000
+	brclr	7,SCSR,L07FA
+	lda	RAM2_0271
 	ora	#$80
-	sta	X0011
+	sta	SCDR
 	rts
 ;
-	clra
-	deca
-	beq	L040F
-	brclr	7,X0010,L0409
-	lda	X027A,x
-	sta	X0011
-	rts
+	db	$4F, $4A, $27, $03
+	db	$0F, $10, $FA, $D6
+	db	$02, $7A, $B7, $11
+	db	$81
 ;
-	clr	X005D
-	clr	X0077
-	clr	X00A0
-	clr	X005D
-	clr	X00D5
-	clr	X007D
-	clr	X007B
-	clr	X0078
-	clr	X007A
-	clr	X00D2
+L3815:
+	clr	RAM1_05d
+	clr	RAM1_077
+	clr	RAM1_0a0
+	clr	RAM1_05d
+	clr	STACK_0d5
+	clr	RAM1_07d
+	clr	RAM1_07b
+	clr	RAM1_078
+	clr	RAM1_07a
+	clr	STACK_0d2
 	lda	#$88
-	sta	X00B3
-	clr	X00BB
-	clr	X00B6
+	sta	RAM1_0b3
+	clr	RAM1_0bb
+	clr	RAM1_0b6
 	jsr	L2504
 	ldx	#$A7
 	jsr	L38CC
 	and	#$03
-	sta	X007F
-	bset	7,X007F
+	sta	RAM1_07f
+	bset	7,RAM1_07f
 	ldx	#$A5
 	jsr	L38CC
 	and	#$71
-	sta	X00D3
-	bset	7,X007C
+	sta	STACK_0d3
+	bset	7,RAM1_07c
 	ldx	#$A6
 	jsr	L38CC
 	and	#$06
-	sta	X00D4
-L3453:
-	lda	X0081
+	sta	STACK_0d4
+	lda	RAM1_081
 	and	#$01
-	sta	X0081
-	bset	6,X0081
+	sta	RAM1_081
+	bset	6,RAM1_081
 	jsr	L400D
-	brclr	5,X0069,L046C
-	bclr	5,X00D3
-	bclr	6,X00D3
-	brset	0,X007F,L046C
+	brclr	5,RAM1_069,L006C
+	bclr	5,STACK_0d3
+	bclr	6,STACK_0d3
+	brset	0,RAM1_07f,L006C
 	lda	#$02
-	sta	X007F
-	rts
+	sta	RAM1_07f
 	rts
 ;
-	tst	X005C
-	beq	L048A
-	lda	X007F
+	db	$81
+;
+L386E:
+	tst	RAM1_05c
+	beq	L008A
+	lda	RAM1_07f
 	ldx	#$A7
-	brset	4,X005C,L047F
-	lda	X0085
+	brset	4,RAM1_05c,L007F
+	lda	RAM1_085
 	ldx	#$A8
-	bclr	3,X005C
-	bclr	4,X005C
-	brclr	0,X0061,L048A
-	brset	0,X0080,L048A
+	bclr	3,RAM1_05c
+	bclr	4,RAM1_05c
+	brclr	0,RAM1_061,L008A
+	brset	0,RAM1_080,L008A
 	jsr	L38A0
 	rts
 ;
+L388B:
 	cpx	#$90
-	bcc	L04BB
+	bcc	L00BB
 	cpx	#$63
-	bcs	L04BB
-	bsr	L04A4
-	bsr	L0497
+	bcs	L00BB
+	bsr	L00A4
+	bsr	L0097
 	txa
 	sub	#$30
 	tax
-	lda	X0130,x
-	bra	L04A4
+	lda	EEPROM_0130,x
+	bra	L00A4
 ;
+L38A0:
 	cpx	#$90
-	bcs	L04BB
-	sta	X0059
-	cmp	X0100,x
-	beq	L04BB
+	bcs	L00BB
+	sta	RAM1_059
+	cmp	OPTR,x
+	beq	L00BB
 	sei
-	bclr	4,X000C
-	bset	1,X0007
-	bset	2,X0007
-	bsr	L04BC
-	bset	1,X0007
-	bsr	L04BC
-	bset	4,X000C
+	bclr	4,Miscell
+	bset	1,EEPROM_ECLK_control
+	bset	2,EEPROM_ECLK_control
+	bsr	L00BC
+	bset	1,EEPROM_ECLK_control
+	bsr	L00BC
+	bset	4,Miscell
 	cli
 	rts
 ;
-	sta	X0100,x
-	bset	0,X0007
-	cli
-	jsr	L2631
-	sei
-	lda	X0059
-	bclr	1,X0007
+	db	$D7, $01, $00, $10
+	db	$07, $9A, $CD, $26
+	db	$31, $9B, $B6, $59
+	db	$13, $07, $81, $97
+;
+L38CC:
+	lda	OPTR,x
 	rts
 ;
-	tax
-	lda	X0100,x
-	rts
-;
-	brclr	6,X00CE,L053D
-	lda	X00D0
+L38D0:
+	brclr	6,STACK_0ce,L013D
+	lda	STACK_0d0
 	and	#$F0
-	beq	L053D
+	beq	L013D
 	jmp	L397F
 ;
-	lda	X00D0
-	bmi	L053D
-	and	#$70
-	cmp	#$60
-	bhi	L04EB
-	brclr	1,X0081,L04F1
-	bne	L04F1
-	clra
-	brclr	3,X008E,L04F1
-	add	#$10
-	add	#$10
-	sta	X00D0
-	jsr	L2617
-	add	#$A8
-	jsr	L38CB
-	and	#$07
-	add	X00D0
-	bra	L052B
+L38DC:
+	db	$B6, $D0, $2B, $5D
+	db	$A4, $70, $A1, $60
+	db	$22, $05, $03, $81
+	db	$08, $26, $06, $4F
+	db	$07, $8E, $02, $AB
+	db	$10, $AB, $10, $B7
+	db	$D0, $CD, $26, $17
+	db	$AB, $A8, $CD, $38
+	db	$CB, $A4, $07, $BB
+	db	$D0, $20, $28, $B6
+	db	$D0, $CD, $26, $17
+	db	$97, $B6, $78, $A1
+	db	$17, $27, $2E, $22
+	db	$0C, $B6, $D0, $D1
+	db	$39, $3D, $22, $0E
+	db	$27, $11, $4C, $20
+	db	$0E, $B6, $D0, $D1
+	db	$39, $44, $22, $06
+	db	$27, $05, $D6, $39
+	db	$3D, $B1, $4A, $B7
+	db	$D0, $CD, $26, $17
+	db	$AB, $A8, $97, $B6
+	db	$D0, $A4, $07, $CD
+	db	$38, $A0, $CC, $39
+	db	$4C, $81, $15, $25
+	db	$35, $41, $51, $65
+	db	$71, $11, $20, $31
+	db	$40, $50, $61, $70
+	db	$A6, $00, $CD, $25
+	db	$73, $B6, $D0, $2A
+	db	$01, $81, $A4, $70
+	db	$44, $CD, $25, $4D
+	db	$B6, $D0, $A4, $07
+	db	$A1, $01, $27, $16
+	db	$25, $07, $AA, $30
+	db	$C7, $02, $5C, $20
+	db	$0D, $B6, $D0, $A0
+	db	$10, $44, $44, $A4
+	db	$18, $AB, $40, $CD
+	db	$25, $4D, $A6, $C4
+	db	$CC, $24, $DC
 ;
-	lda	X00D0
-	jsr	L2617
-	tax
-	lda	X0078
-	cmp	#$17
-	beq	L053D
-	bhi	L051D
-	lda	X00D0
-	cmp	X393D,x
-	bhi	L0526
-	beq	L052B
-	inca
-	bra	L052B
-;
-	lda	X00D0
-	cmp	X3944,x
-	bhi	L052A
-	beq	L052B
-	lda	X393D,x
-	cmp	X004A
-	sta	X00D0
-	jsr	L2617
-	add	#$A8
-	tax
-	lda	X00D0
-	and	#$07
-	jsr	L38A0
-	jmp	L394C
-	rts
-;
-	bclr	2,X0025
-;
-	db	$35, $41, $51, $65, $71
-;
-	bclr	0,X0020
-;
-	db	$31
-;
-	nega
-	negx
-;
-	db	$61
-;
-	neg	,x
-	lda	#$00
-	jsr	L2573
-	lda	X00D0
-	bpl	L0556
-	rts
-;
-	and	#$70
-	lsra
-	jsr	L254D
-	lda	X00D0
-	and	#$07
-	cmp	#$01
-	beq	L057A
-	bcs	L056D
-	ora	#$30
-	sta	X025C
-	bra	L057A
-;
-	lda	X00D0
-	sub	#$10
-	lsra
-	lsra
-	and	#$18
-	add	#$40
-	jsr	L254D
-	lda	#$C4
-	jmp	L24DC
-;
+L397F:
 	clrx
-	brset	7,X00D0,L0585
-L3583:
+	brset	7,STACK_0d0,L0185
 	ldx	#$00
 	lda	X399E,x
-	sta	X0056
+	sta	RAM1_056
 	lda	X399D,x
-	beq	L059C
+	beq	L019C
 	jsr	L2889
-	bne	L0585
+	bne	L0185
 	ldx	X399C,x
 	jsr	L38DC,x						;INFO: index jump
-	bclr	6,X005D
+	bclr	6,RAM1_05d
+X399C:
 	rts
 ;
-	eor	X0000,x
-	brclr	3,X0000,L05C1
-	beq	L05A4
-	lda	#$05
-	sta	X0063
-	lda	#$80
-	jsr	L3A7E
-	beq	L05B9
-	jsr	L0785
-	jsr	L2631
-	tst	X0063
-	bne	L05A8
-	jsr	L2631
-	bclr	6,X0001
-	clr	X009E
-	rts
+X399D:
+	db	$E8
+X399E:
+	db	$00, $07, $00, $1F
+	db	$27, $00, $A6, $05
+	db	$B7, $63, $A6, $80
+	db	$CD, $3A, $7E, $27
+	db	$0A, $CD, $07, $85
+	db	$CD, $26, $31, $3D
+	db	$63, $26, $EF, $CD
+	db	$26, $31, $1D, $01
+	db	$3F, $9E, $81
 ;
-	bset	1,X005D
+L39C1:
+	bset	1,RAM1_05d
 	lda	#$07
 	cmp	XA607
-	sta	X009E
-L35CA:
+	sta	RAM1_09e
 	jsr	L3AA2
-	bclr	6,X0001
+	bclr	6,PortB
 	jsr	L2640
-	bset	6,X0001
+	bset	6,PortB
 	lda	#$05
-	sta	X0063
-	brclr	0,X0000,L05E4
-	tst	X0063
-	bne	L05D8
-	bclr	2,X009E
+	sta	RAM1_063
+	brclr	0,PortA,L01E4
+	tst	RAM1_063
+	bne	L01D8
+	bclr	2,RAM1_09e
 	jmp	L0779
 ;
-	jsr	L2631
-	jsr	L2631
-	bsr	L0648
-	clr	X009F
-	jsr	L2504
-	rts
-	bra	L05DF
+	db	$CD, $26, $31, $CD
+	db	$26, $31, $AD, $5C
+	db	$3F, $9F, $CD, $25
+	db	$04, $81, $20, $EB
 ;
-	lda	X009E
+L39F4:
+	lda	RAM1_09e
 	and	#$F0
-	bne	L060E
-	brclr	1,X005D,L0624
-	lda	X006C
+	bne	L020E
+	brclr	1,RAM1_05d,L0224
+	lda	RAM1_06c
 	coma
 	ldx	#$07
-	sta	X0250,x
+	sta	RAM2_0250,x
 	lda	#$E1
-	bsr	L067E
-	bne	L0624
-	bclr	1,X005D
+	bsr	L027E
+	bne	L0224
+	bclr	1,RAM1_05d
 	rts
 ;
-	brclr	2,X009E,L0624
-	lda	X0256
-	ldx	#$07
-	brclr	7,X009E,L0625
-	brclr	3,X009E,L063E
-	lda	#$D0
-	bsr	L067E
-	bne	L0624
-	bclr	3,X009E
-	rts
+	db	$05, $9E, $13, $C6
+	db	$02, $56, $AE, $07
+	db	$0F, $9E, $0C, $07
+	db	$9E, $22, $A6, $D0
+	db	$AD, $5E, $26, $02
+	db	$17, $9E, $81, $0D
+	db	$9E, $0C, $06, $9E
+	db	$13, $A6, $C0, $AD
+	db	$4F, $26, $F3, $16
+	db	$9E, $81, $A6, $13
+	db	$5F, $0A, $9E, $04
+	db	$A6, $23, $AE, $03
+	db	$CD, $3A, $7E, $26
+	db	$E1, $AE, $9E, $CC
+	db	$26, $6E
 ;
-	brclr	6,X009E,L0634
-	brset	3,X009E,L063E
-	lda	#$C0
-	bsr	L067E
-	bne	L0624
-	bset	3,X009E
-	rts
-;
-	lda	#$13
-	clrx
-	brset	5,X009E,L063E
-	lda	#$23
-	ldx	#$03
-	jsr	L3A7E
-	bne	L0624
-	ldx	#$9E
-	jmp	L266E
-;
-	brclr	2,X009E,L05F2
-	brset	0,X0000,L06A8
-	brset	6,X009F,L06A8
+L3A48:
+	brclr	2,RAM1_09e,L01F2
+	brset	0,PortA,L02A8
+	brset	6,RAM1_09f,L02A8
 	lda	#$01
-	sta	X0057
+	sta	RAM1_057
 	lda	#$25
 	jsr	L3AA9
-	beq	L06A0
-	bclr	1,X0004
+	beq	L02A0
+	bclr	1,DDRA
 	lda	#$01
-	bset	2,X0000
-	brset	1,X0000,L0665
+	bset	2,PortA
+	brset	1,PortA,L0265
 	rola
-	bclr	2,X0000
-	bcc	L0660
-L366A:
-	sta	X0056
+	bclr	2,PortA
+	bcc	L0260
+	sta	RAM1_056
 	sei
-	bsr	L06E7
-	beq	L06A0
-	brset	6,X0056,L06A2
-	lda	X0056
-	beq	L0699
-	sta	X009F
-	bset	6,X009F
-	bra	L0699
+	bsr	L02E7
+	beq	L02A0
+	brset	6,RAM1_056,L02A2
+	lda	RAM1_056
+	beq	L0299
+	sta	RAM1_09f
+	bset	6,RAM1_09f
+	bra	L0299
 ;
-	sta	X0056
-	and	#$0F
-	inca
-	sta	X0057
-	lda	#$9A
-	bsr	L06A9
-	beq	L06A0
-	lda	X0056
-	bsr	L06C8
-	beq	L06A0
-	lda	X0250,x
-	incx
-	tst	X0057
-	bpl	L068D
-	bset	1,X009E
-	bset	0,X009E
-	clra
-	bra	L06A2
+	db	$B7, $56, $A4, $0F
+	db	$4C, $B7, $57, $A6
+	db	$9A, $AD, $20, $27
+	db	$15, $B6, $56, $AD
+	db	$39, $27, $0F, $D6
+	db	$02, $50, $5C, $3D
+	db	$57, $2A, $F4, $12
+	db	$9E, $10, $9E, $4F
+	db	$20, $02, $3A, $9E
 ;
-	dec	X009E
-	bclr	1,X0004
-	bset	2,X0000
-	bset	2,X0004
+L3AA2:
+	bclr	1,DDRA
+	bset	2,PortA
+	bset	2,DDRA
 	rts
 ;
-	sta	X0058
-L36AB:
-	bclr	1,X0004
-	bclr	2,X0000
-	lda	X001A
+L3AA9:
+	sta	RAM1_058
+	bclr	1,DDRA
+	bclr	2,PortA
+	lda	ACH
 	add	#$14
-	cmp	X001A
-	bmi	L06C4
-	brset	1,X0000,L06B3
-	brset	0,X0000,L06B3
-	brset	0,X0000,L06C6
-	cmp	X001A
-	bpl	L06BD
+	cmp	ACH
+	bmi	L02C4
+	brset	1,PortA,L02B3
+	brset	0,PortA,L02B3
+	brset	0,PortA,L02C6
+	cmp	ACH
+	bpl	L02BD
 	clra
 	rts
 ;
-	lda	X0058
-	sec
-	rola
-	bclr	2,X0000
-	bclr	1,X0000
-	bcc	L06D4
-	bclr	1,X0004
-	bra	L06D6
+	db	$B6, $58, $99, $49
+	db	$15, $00, $13, $00
+	db	$24, $04, $13, $04
+	db	$20, $02, $12, $04
+	db	$14, $00, $48, $26
+	db	$EF, $15, $00, $CD
+	db	$3B, $09, $13, $04
+	db	$3D, $57, $26, $01
+	db	$9B, $A6, $38, $01
+	db	$00, $05, $4A, $26
+	db	$FA, $9A, $81, $14
+	db	$00, $9A, $3A, $57
+	db	$2B, $11, $CD, $26
+	db	$40, $4F, $00, $00
+	db	$0A, $A6, $38, $15
+	db	$00, $00, $00, $03
+	db	$4A, $26, $FA, $81
 ;
-	bset	1,X0004
-	bset	2,X0000
-	asla
-	bne	L06CA
-	bclr	2,X0000
-	jsr	L3B09
-	bclr	1,X0004
-	tst	X0057
-	bne	L06E7
-	sei
-	lda	#$38
-X36E9:
-	brclr	0,X0000,L06F1
-	deca
-	bne	L06E9
-	cli
-	rts
-;
-	bset	2,X0000
-	cli
-	dec	X0057
-	bmi	L0709
-	jsr	L2640
+L3B0A:
 	clra
-L36FC:
-	brset	0,X0000,L0709
-	lda	#$38
-	bclr	2,X0000
-	brset	0,X0000,L0709
-	deca
-	bne	L0703
-	rts
-;
-	clra
-	sta	X008F
-	sta	X02D1
-	bclr	4,X006B
-	bset	6,X0095
-	clr	X0090
-	bset	1,X0091
+	sta	RAM1_08f
+	sta	RAM2_02d1
+	bclr	4,RAM1_06b
+	bset	6,RAM1_095
+	clr	RAM1_090
+	bset	1,RAM1_091
 	ldx	#$0F
-	sta	X02C0,x
+	sta	RAM2_02c0,x
 	decx
-	bpl	L071A
+	bpl	L031A
 	lda	#$40
-	sta	X02CA
-	sta	X02CB
+	sta	RAM2_02ca
+	sta	RAM2_02cb
 	lda	#$10
-	sta	X02C2
-	brset	7,X0061,L0787
-L3730:
-	brclr	3,X008E,L0735
-	bset	4,X00D5
-	bset	5,X00D5
+	sta	RAM2_02c2
+	brset	7,RAM1_061,L0387
+	brclr	3,RAM1_08e,L0335
+	bset	4,STACK_0d5
+	bset	5,STACK_0d5
 	jsr	L25A6
-	bset	5,X008F
-	brset	3,X005F,L0741
-	bset	0,X0090
+	bset	5,RAM1_08f
+	brset	3,RAM1_05f,L0341
+	bset	0,RAM1_090
 	ldx	#$2F
-	bclr	0,X005B
-	lda	X0100,x
-	cmp	X0130,x
-	bne	L0752
-	cmp	X0160,x
-	beq	L076F
-	bset	0,X005B
-	and	X0130,x
-L3757:
-	sta	X0057
-	lda	X0100,x
-	eor	X0130,x
-L375F:
-	and	X0160,x
-	ora	X0057
-	sta	X0057
+	bclr	0,RAM1_05b
+	lda	OPTR,x
+	cmp	EEPROM_0130,x
+	bne	L0352
+	cmp	EEPROM_0160,x
+	beq	L036F
+	bset	0,RAM1_05b
+	and	EEPROM_0130,x
+	sta	RAM1_057
+	lda	OPTR,x
+	eor	EEPROM_0130,x
+	and	EEPROM_0160,x
+	ora	RAM1_057
+	sta	RAM1_057
 	txa
 	add	#$60
 	tax
-	lda	X0057
+	lda	RAM1_057
 	jsr	L388B
 	decx
-	bpl	L0745
+	bpl	L0345
 	lda	#$03
-	bsr	L07C4
+	bsr	L03C4
 	ldx	#$12
-L3778:
 	jsr	L38CC
 	ldx	#$0E
 	cmp	#$5A
-	beq	L0782
+	beq	L0382
 	clra
 	add	#$FF
 	jsr	L3DFF
 	rts
 ;
-	brclr	6,X009F,L07A1
+L3B88:
+	brclr	6,RAM1_09f,L03A1
 	clrx
-	lda	X009F
-	bmi	L079E
+	lda	RAM1_09f
+	bmi	L039E
 	and	#$3F
 	cmp	#$21
-	beq	L079E
-	bcs	L079C
+	beq	L039E
+	bcs	L039C
 	cmp	#$25
-	bcs	L079E
+	bcs	L039E
 	ldx	#$BC
-	stx	X02D6
+	stx	RAM2_02d6
 	rts
 ;
-	lda	X02D6
-	beq	L07B3
+L3BA2:
+	lda	RAM2_02d6
+	beq	L03B3
 	deca
-	sta	X02D6
-	bne	L07B3
+	sta	RAM2_02d6
+	bne	L03B3
 	lda	#$01
-	bset	0,X005B
-	bra	L07C4
+	bset	0,RAM1_05b
+	bra	L03C4
 ;
-	brclr	4,X007C,L07A1
-	ldx	#$0D
-	jsr	L3DD2
-	lda	X02CD
-	bpl	L07A1
-	lda	#$04
-	bra	L07D3
+	db	$09, $7C, $EB, $AE
+	db	$0D, $CD, $3D, $D2
+	db	$C6, $02, $CD, $2A
+	db	$E1, $A6, $04, $20
+	db	$0F, $B7, $50, $AE
+	db	$0D, $01, $5B, $00
+	db	$CD, $3D, $E0, $01
+	db	$5B, $D0, $B6, $50
+	db	$AE, $CF, $CC, $38
+	db	$A0
 ;
-	sta	X0050
-	ldx	#$0D
-	brclr	0,X005B,L07CB
-	jsr	L3DE0
-	brclr	0,X005B,L07A1
-	lda	X0050
-	ldx	#$CF
-	jmp	L38A0
-;
-	brclr	7,X0060,L07FD
-	brclr	6,X005D,L07FD
+L3BD8:
+	brclr	7,RAM1_060,L03FD
+	brclr	6,RAM1_05d,L03FD
 	ldx	#$23
 	lda	X40B0,x
 	decx
 	decx
-	cmp	X0078
-	bne	L07FA
+	cmp	RAM1_078
+	bne	L03FA
 	lda	X40B0,x
-	sta	X02D3
+	sta	RAM2_02d3
 	lda	X40B1,x
-	sta	X02D4
+	sta	RAM2_02d4
 	lda	#$FF
-	sta	X02D5
+	sta	RAM2_02d5
 	decx
-	bne	L07E0
+	bne	L03E0
 	rts
 ;
-	brclr	2,X0091,L0039
+L3BFE:
+	brclr	2,RAM1_091,L0439
 	sei
-	brclr	7,X0001,L0027
-	brclr	1,X0090,L0027
-	brset	3,X0001,L0027
+	brclr	7,PortB,L0427
+	brclr	1,RAM1_090,L0427
+	brset	3,PortB,L0427
 	lda	#$24
 	jsr	L25B7
 	cmp	#$1F
-	bls	L0016
+	bls	L0416
 	lda	#$1F
-	sta	X02C7
+	sta	RAM2_02c7
 	lda	#$23
 	jsr	L25B7
 	cmp	#$1F
-	bls	L0024
+	bls	L0424
 	lda	#$1F
-	sta	X02C8
+	sta	RAM2_02c8
 	cli
-	brclr	3,X0001,L008A
-	brclr	1,X0090,L008A
-	bclr	1,X0090
-	lda	X02C7
-	beq	L008A
-	bset	4,X006B
-	bset	6,X0095
-	lda	X0090
+	brclr	3,PortB,L048A
+	brclr	1,RAM1_090,L048A
+	bclr	1,RAM1_090
+	lda	RAM2_02c7
+	beq	L048A
+	bset	4,RAM1_06b
+	bset	6,RAM1_095
+	lda	RAM1_090
 	add	#$04
-	sta	X0090
-	bcs	L0084
-	bpl	L008A
+	sta	RAM1_090
+	bcs	L0484
+	bpl	L048A
 	sei
-	brclr	7,X0001,L008A
+	brclr	7,PortB,L048A
 	lda	#$24
 	jsr	L25B7
 	cli
-	brset	5,X008E,L0056
+	brset	5,RAM1_08e,L0456
 	cmp	#$64
-	bhi	L0056
+	bhi	L0456
 	lda	#$64
-	sub	X02C7
-	bcc	L005C
+	sub	RAM2_02c7
+	bcc	L045C
 	clra
 	jsr	L3FAE
-	brset	1,X008F,L0084
-	brset	0,X008F,L0084
+	brset	1,RAM1_08f,L0484
+	brset	0,RAM1_08f,L0484
 	sei
-	brclr	7,X0001,L008A
+	brclr	7,PortB,L048A
 	lda	#$23
 	jsr	L25B7
-L386E:
 	cli
-	brclr	5,X008E,L0075
-	brclr	7,X008E,L007B
+	brclr	5,RAM1_08e,L0475
+	brclr	7,RAM1_08e,L047B
 	cmp	#$64
-	bhi	L007B
+	bhi	L047B
 	lda	#$64
-	sub	X02C8
-	bcc	L0081
+	sub	RAM2_02c8
+	bcc	L0481
 	clra
 	jsr	L3FAE
-	bclr	4,X006B
-	bset	6,X0095
-	clr	X0090
+	bclr	4,RAM1_06b
+	bset	6,RAM1_095
+	clr	RAM1_090
 	cli
-L388B:
-	brset	4,X00BC,L00C7
-	brset	2,X00BC,L00A6
-	brset	3,X00BF,L00C7
-	brclr	5,X008F,L00C7
-	bclr	5,X008F
-	bclr	6,X008F
-	bset	2,X00BC
-	bset	4,X00BC
+	brset	4,RAM1_0bc,L04C7
+	brset	2,RAM1_0bc,L04A6
+	brset	3,RAM1_0bf,L04C7
+	brclr	5,RAM1_08f,L04C7
+	bclr	5,RAM1_08f
+	bclr	6,RAM1_08f
+	bset	2,RAM1_0bc
+	bset	4,RAM1_0bc
 	lda	#$60
-	sta	X02D1
-	bra	L00C7
+	sta	RAM2_02d1
+	bra	L04C7
 ;
-	lda	X02D1
-	bit	#$08
-	bne	L00B3
-	inca
-	sta	X02D1
-	bra	L00C7
+	db	$C6, $02, $D1, $A5
+	db	$08, $26, $06, $4C
+	db	$C7, $02, $D1, $20
+	db	$14, $9B, $0E, $01
+	db	$10, $A6, $23, $CD
+	db	$25, $B7, $C7, $02
+	db	$D2, $C6, $02, $D1
+	db	$AA, $80, $C7, $02
+	db	$D1, $9A, $0F, $60
+	db	$15, $10, $80, $C6
+	db	$02, $D5, $27, $0E
+	db	$4A, $C7, $02, $D5
+	db	$26, $08, $A6, $20
+	db	$C7, $02, $D3, $C7
+	db	$02, $D4, $81
 ;
-	sei
-	brset	7,X0001,L00C7
-	lda	#$23
-	jsr	L25B7
-	sta	X02D2
-	lda	X02D1
-	ora	#$80
-	sta	X02D1
-	cli
-	brclr	7,X0060,L00E0
-L38CB:
-	bset	0,X0080
-	lda	X02D5
-L38D0:
-	beq	L00E0
-	deca
-	sta	X02D5
-	bne	L00E0
-	lda	#$20
-	sta	X02D3
-	sta	X02D4
-	rts
-;
-	lda	X02D7
-	brclr	4,X006A,L00EB
+L3CE1:
+	lda	RAM2_02d7
+	brclr	4,RAM1_06a,L04EB
 	add	#$0C
-	bcs	L00F2
-	beq	L00F2
+	bcs	L04F2
+	beq	L04F2
 	sub	#$04
-	sta	X02D7
-	brclr	2,X0091,L00E0
-	brclr	0,X0090,L00E0
-	bclr	0,X0090
-	brset	3,X0091,L0101
+	sta	RAM2_02d7
+	brclr	2,RAM1_091,L04E0
+	brclr	0,RAM1_090,L04E0
+	bclr	0,RAM1_090
+	brset	3,RAM1_091,L0501
 	jsr	L3FBC
 	rts
 ;
-	lda	#$32
-	sta	X0090
-	rts
+	db	$A6, $32, $B7, $90
+	db	$81
 ;
+L3D06:
 	clrx
-	brset	1,X005F,L0111
-	lda	X009C
+	brset	1,RAM1_05f,L0511
+	lda	RAM1_09c
 	cmp	#$F4
-	bhi	L0114
+	bhi	L0514
 	clc
 	jsr	L3DCF
-	brclr	5,X0060,L011E
-	bclr	5,X0060
+	brclr	5,RAM1_060,L051E
+	bclr	5,RAM1_060
 	ldx	#$01
 	jsr	L3E02
 	lda	#$27
 	jsr	L25B7
 	coma
 	add	#$78
-	bcs	L012C
+	bcs	L052C
 	add	#$14
-	bcs	L0131
+	bcs	L0531
 	ldx	#$01
 	jsr	L3DD2
-	brclr	2,X00BC,L0183
-	lda	X02D1
-	bpl	L0183
+	brclr	2,RAM1_0bc,L0583
+	lda	RAM2_02d1
+	bpl	L0583
 	ldx	#$03
-	brset	6,X008F,L0147
-	bclr	4,X008F
-	brclr	0,X0091,L0147
-	bset	4,X008F
-	bset	6,X008F
+	brset	6,RAM1_08f,L0547
+	bclr	4,RAM1_08f
+	brclr	0,RAM1_091,L0547
+	bset	4,RAM1_08f
+	bset	6,RAM1_08f
 	jsr	L3DD2
-	bclr	3,X008F
-L394C:
+	bclr	3,RAM1_08f
 	ldx	#$02
-	lda	X02D2
+	lda	RAM2_02d2
 	coma
 	add	#$66
-	bcc	L0158
-	bset	3,X008F
-	bsr	L01D2
-	lda	X02C3
-	bmi	L017F
-	lda	X02C2
-	bpl	L0167
-	brclr	2,X008F,L017F
+	bcc	L0558
+	bset	3,RAM1_08f
+	bsr	L05D2
+	lda	RAM2_02c3
+	bmi	L057F
+	lda	RAM2_02c2
+	bpl	L0567
+	brclr	2,RAM1_08f,L057F
 	lsra
-	bne	L016C
-	bset	2,X008F
-	brclr	6,X008F,L0183
-	lda	X02D1
+	bne	L056C
+	bset	2,RAM1_08f
+	brclr	6,RAM1_08f,L0583
+	lda	RAM2_02d1
 	bit	#$70
-	beq	L017D
+	beq	L057D
 	sub	#$10
-	sta	X02D1
-	bra	L0183
+	sta	RAM2_02d1
+	bra	L0583
 ;
-	bset	5,X008F
-L397F:
-	bclr	2,X00BC
-	bset	4,X00BC
-	ldx	#$04
-	brclr	1,X0001,L0194
-	brset	5,X0091,L018B
-	bsr	L01D2
-	lda	X02C4
-	bpl	L0194
-	bclr	1,X0001
-	ldx	#$05
-	brset	3,X0091,L0199
-	bsr	L01CF
-	ldx	#$09
-X399D:
-	brclr	0,X0001,L01AC
-	brset	4,X0091,L01A3
-	bsr	L01D2
-	lda	X02C9
-	bpl	L01AC
-	bclr	0,X0001
-	brclr	2,X008E,L01C3
-	brset	4,X006A,L01BB
-	brclr	1,X005F,L01C3
-	lda	X009C
-	cmp	#$F4
-	bhi	L01C3
-	ldx	#$0A
-	brclr	4,X006A,L01C0
-	jsr	L3DCF
-	brclr	1,X008E,L01CE
-	ldx	#$0B
-	brclr	6,X006A,L01CB
-	jsr	L3DCF
-	rts
+	db	$1A, $8F, $15, $BC
+	db	$18, $BC, $AE, $04
+	db	$03, $01, $0C, $0A
+	db	$91, $00, $AD, $45
+	db	$C6, $02, $C4, $2A
+	db	$02, $13, $01, $AE
+	db	$05, $06, $91, $00
+	db	$AD, $34, $AE, $09
+	db	$01, $01, $0C, $08
+	db	$91, $00, $AD, $2D
+	db	$C6, $02, $C9, $2A
+	db	$02, $11, $01, $05
+	db	$8E, $14, $08, $6A
+	db	$09, $03, $5F, $0E
+	db	$B6, $9C, $A1, $F4
+	db	$22, $08, $AE, $0A
+	db	$09, $6A, $00, $CD
+	db	$3D, $CF, $03, $8E
+	db	$08, $AE, $0B, $0D
+	db	$6A, $00, $CD, $3D
+	db	$CF, $81
 ;
+L3DCF:
 	rora
 	coma
 	rola
-	lda	X02C0,x
-	bcs	L01F5
+L3DD2:
+	lda	RAM2_02c0,x
+	bcs	L05F5
 	sub	#$02
-	bcc	L01F9
-	bra	L01E5
+	bcc	L05F9
+	bra	L05E5
 ;
-	rora
-	coma
-	rola
-	lda	X02C0,x
-	bcs	L0202
+	db	$46, $43, $49
+;
+L3DE0:
+	lda	RAM2_02c0,x
+	bcs	L0602
 	lsra
-	bcs	L0217
+	bcs	L0617
 	lda	#$01
-	sta	X02C0,x
-	lda	X01C0,x
-	beq	L0217
+	sta	RAM2_02c0,x
+	lda	EEPROM_01c0,x
+	beq	L0617
 	deca
-	bra	L0204
+	bra	L0604
 ;
-	bmi	L0217
-	add	#$02
-	sta	X02C0,x
-	bmi	L0202
-	rts
+	db	$2B, $20, $AB, $02
+	db	$D7, $02, $C0, $2B
+	db	$04, $81
 ;
+L3DFF:
 	clra
-	bcs	L0204
+	bcs	L0604
+L3E02:
 	lda	#$33
-	sta	X0056
+	sta	RAM1_056
 	txa
 	add	#$C0
 	tax
-	lda	X0056
-	brset	0,X008E,L0214
+	lda	RAM1_056
+	brset	0,RAM1_08e,L0614
 	cpx	#$C2
-	bne	L0214
+	bne	L0614
 	clra
 	jsr	L38A0
 	rts
 ;
-	lda	X02B3
-	cmp	#$03
-	bne	L0230
-	lda	X02B4
-	cmp	#$53
-	bne	L0229
-	bset	0,X0090
-	rts
+	db	$C6, $02, $B3, $A1
+	db	$03, $26, $11, $C6
+	db	$02, $B4, $A1, $53
+	db	$26, $03, $10, $90
+	db	$81, $A6, $06, $CD
+	db	$25, $91, $1F, $5D
+	db	$81, $DE, $3E, $37
+	db	$DC, $3E, $3F, $00
+	db	$00, $20, $32, $4F
+	db	$6D, $72, $84, $4F
+	db	$0E, $91, $02, $A6
+	db	$08, $C7, $02, $B5
+	db	$A6, $27, $CD, $25
+	db	$B7, $C7, $02, $B8
+	db	$4F, $05, $5F, $03
+	db	$C6, $02, $A4, $C7
+	db	$02, $BB, $02, $5F
+	db	$46, $20, $44, $10
+	db	$90, $A6, $F3, $00
+	db	$8F, $07, $A6, $F2
+	db	$02, $8F, $02, $A6
+	db	$C2, $C7, $02, $B8
+	db	$81, $1A, $8F, $01
+	db	$8E, $05, $A6, $12
+	db	$C7, $02, $B5, $A6
+	db	$F2, $08, $8F, $0A
+	db	$A6, $C2, $07, $8F
+	db	$05, $01, $8E, $02
+	db	$A6, $F3, $C7, $02
+	db	$BB, $81, $C6, $02
+	db	$C4, $A4, $61, $C7
+	db	$02, $C4, $4F, $12
+	db	$01, $0B, $91, $01
+	db	$4C, $C7, $02, $B5
+	db	$06, $5F, $00, $A6
+	db	$87, $25, $01, $4C
+	db	$C7, $02, $BE, $81
+	db	$0C, $6A, $0B, $20
+	db	$09, $1A, $D5, $CD
+	db	$25, $A6, $C6, $02
+	db	$D7, $49, $A6, $C2
+	db	$25, $01, $4C, $C7
+	db	$02, $B8, $81, $C6
+	db	$02, $D3, $C7, $02
+	db	$B4, $C6, $02, $D4
+	db	$C7, $02, $B5, $81
+	db	$3F, $5B, $07, $8E
+	db	$02, $3C, $5B, $C6
+	db	$02, $B3, $AE, $80
+	db	$CD, $38, $8B, $C6
+	db	$02, $B4, $AE, $81
+	db	$CD, $38, $8B, $C6
+	db	$02, $B5, $AE, $82
+	db	$CD, $38, $8B, $C6
+	db	$02, $B6, $AE, $83
+	db	$CD, $38, $8B, $A6
+	db	$5A, $AE, $72, $CD
+	db	$38, $8B, $CD, $40
+	db	$0D, $07, $8E, $2E
+	db	$3D, $5B, $26, $2A
+	db	$AE, $12, $CD, $3F
+	db	$D1, $AE, $00, $CD
+	db	$3F, $DF, $A6, $0D
+	db	$CD, $3F, $E7, $C6
+	db	$02, $7C, $4A, $2A
+	db	$F7, $AE, $30, $CD
+	db	$3F, $D1, $AE, $02
+	db	$CD, $3F, $DF, $A6
+	db	$1B, $CD, $3F, $E7
+	db	$C6, $02, $7C, $4A
+	db	$2A, $F7, $81, $A6
+	db	$81, $B7, $D0, $A6
+	db	$41, $B7, $CE, $10
+	db	$80, $1E, $94, $1F
+	db	$60, $1D, $60, $1E
+	db	$5D, $81, $AE, $CF
+	db	$4F, $A3, $BE, $22
+	db	$03, $D6, $3E, $EE
+	db	$CD, $38, $A0, $CD
+	db	$07, $85, $5A, $A3
+	db	$A0, $24, $ED, $AE
+	db	$80, $A6, $03, $CD
+	db	$38, $8B, $AE, $81
+	db	$A6, $22, $CD, $38
+	db	$8B, $A6, $00, $AE
+	db	$72, $CD, $38, $8B
+	db	$A6, $46, $CD, $24
+	db	$DC, $CD, $1F, $1C
+	db	$CD, $39
+X3F7A:
+	db	$F4, $CD, $07, $85
+	db	$20, $FB, $AE, $63
+	db	$A6, $A0, $CD, $38
+	db	$8B, $CD, $25, $42
+	db	$A6, $C4, $20, $E4
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $02
+	db	$08, $03, $03, $03
+	db	$00, $00, $03, $00
+	db	$02, $00, $00, $10
+	db	$10, $10, $10, $10
+	db	$10, $00, $00, $00
+	db	$00, $00, $00, $00
 ;
-	lda	#$06
-	jsr	L2591
-	bclr	7,X005D
-	rts
-;
-	ldx	X3E37,x
-	jmp	L3E3F,x						;INFO: index jump
-;
-	brset	0,X0000,L025A
-;
-	db	$32
-;
-	clra
-	tst	X0072,x
-;
-	db	$84
-;
-	clra
-	brset	7,X0091,L0245
-	lda	#$08
-	sta	X02B5
-L3A48:
-	lda	#$27
-	jsr	L25B7
-	sta	X02B8
-	clra
-	brclr	2,X005F,L0257
-	lda	X02A4
-	sta	X02BB
-	brset	1,X005F,L02A3
-	bra	L02A3
-;
-	bset	0,X0090
-	lda	#$F3
-	brset	0,X008F,L026D
-	lda	#$F2
-	brset	1,X008F,L026D
-	lda	#$C2
-	sta	X02B8
-	rts
-;
-	bset	5,X008F
-	brclr	0,X008E,L027B
-	lda	#$12
-	sta	X02B5
-	lda	#$F2
-	brset	4,X008F,L028A
-	lda	#$C2
-	brclr	3,X008F,L028A
-	brclr	0,X008E,L028A
-	lda	#$F3
-	sta	X02BB
-	rts
-;
-	lda	X02C4
-	and	#$61
-	sta	X02C4
-	clra
-	bset	1,X0001
-	brclr	5,X0091,L029D
-	inca
-	sta	X02B5
-	brset	3,X005F,L02A3
-	lda	#$87
-	bcs	L02A8
-	inca
-	sta	X02BE
-	rts
-;
-	brset	6,X006A,L02BA
-	bra	L02BA
-;
-	bset	5,X00D5
-	jsr	L25A6
-	lda	X02D7
-	rola
-	lda	#$C2
-	bcs	L02BF
-	inca
-	sta	X02B8
-	rts
-;
-	lda	X02D3
-	sta	X02B4
-	lda	X02D4
-	sta	X02B5
-	rts
-;
-	clr	X005B
-	brclr	3,X008E,L02D7
-	inc	X005B
-	lda	X02B3
-	ldx	#$80
-	jsr	L388B
-	lda	X02B4
-	ldx	#$81
-	jsr	L388B
-	lda	X02B5
-	ldx	#$82
-	jsr	L388B
-	lda	X02B6
-	ldx	#$83
-	jsr	L388B
-	lda	#$5A
-	ldx	#$72
-	jsr	L388B
-	jsr	L400D
-	brclr	3,X008E,L0332
-	tst	X005B
-	bne	L0332
-	ldx	#$12
-L3B0A:
-	jsr	L3FD1
-	ldx	#$00
-	jsr	L3FDF
-	lda	#$0D
-	jsr	L3FE7
-	lda	X027C
-	deca
-	bpl	L0314
-	ldx	#$30
-	jsr	L3FD1
-	ldx	#$02
-	jsr	L3FDF
-	lda	#$1B
-	jsr	L3FE7
-	lda	X027C
-	deca
-	bpl	L0329
-	rts
-;
-	lda	#$81
-	sta	X00D0
-	lda	#$41
-	sta	X00CE
-	bset	0,X0080
-	bset	7,X0094
-	bclr	7,X0060
-	bclr	6,X0060
-	bset	7,X005D
-	rts
-;
-	ldx	#$CF
-	clra
-	cpx	#$BE
-	bhi	L0350
-	lda	X3EEE,x
-	jsr	L38A0
-	jsr	L0785
-	decx
-	cpx	#$A0
-	bcc	L0348
-	ldx	#$80
-	lda	#$03
-	jsr	L388B
-	ldx	#$81
-	lda	#$22
-	jsr	L388B
-	lda	#$00
-	ldx	#$72
-	jsr	L388B
-	lda	#$46
-	jsr	L24DC
-	jsr	L1F1C
-	jsr	L39F4
-	jsr	L0785
-	bra	L037B
-;
-	ldx	#$63
-	lda	#$A0
-	jsr	L388B
-	jsr	L2542
-	lda	#$C4
-	bra	L0372
-;
-	brset	0,X0000,L0391
-	brset	0,X0000,L0394
-	brset	0,X0002,L039F
-	brclr	1,X0003,L039D
-	brset	0,X0000,L03A0
-	brset	0,X0002,L03A0
-	brset	0,X0010,L03B3
-	bset	0,X0010
-	bset	0,X0010
-	brset	0,X0000,L03AA
-	brset	0,X0000,L03AD
-	brset	0,X0013,L033F
+L3FAE:
+	bclr	1,RAM1_08f
 	cmp	#$A9
-	bhi	L03BC
+	bhi	L07BC
 	cmp	#$0B
-	bhi	L03BE
-	bset	0,X008F
-	bra	L03C0
+	bhi	L07BE
+	bset	0,RAM1_08f
+	bra	L07C0
 ;
-	bset	1,X008F
-	bclr	0,X008F
+L3FBC:
+	bset	1,RAM1_08f
+	bclr	0,RAM1_08f
 	ldx	#$05
-	brclr	1,X008F,L03C5
+	brclr	1,RAM1_08f,L07C5
 	jsr	L3DE0
 	ldx	#$06
-	brclr	0,X008F,L03CD
+	brclr	0,RAM1_08f,L07CD
 	jsr	L3DE0
 	rts
 ;
-	lda	#$89
-	sta	X027D
-X3BD6:
-	lda	#$8A
-L3BD8:
-	sta	X027C
-	lda	#$0A
-	bra	L03EE
+	db	$A6, $89, $C7, $02
+	db	$7D, $A6, $8A, $C7
+	db	$02, $7C, $A6, $0A
+	db	$20, $0F, $4F, $C7
+	db	$02, $7C, $A6, $11
+	db	$20, $07, $C7, $02
+	db	$7C, $A6, $19, $AE
+	db	$89, $C7, $02, $7A
+	db	$CF, $02, $7B, $1E
+	db	$D6, $3F, $D9, $CD
+	db	$07, $85, $CD, $49
+	db	$55, $07, $67, $F7
+	db	$17, $67, $CD, $37
+	db	$B0, $CD, $49, $0B
+	db	$0E, $D6, $EC, $81
 ;
-	clra
-	sta	X027C
-	lda	#$11
-	bra	L03EE
-;
-	sta	X027C
-	lda	#$19
-	ldx	#$89
-	sta	X027A
-	stx	X027B
-	bset	7,X00D6
-	clr	X00D9
-	jsr	L0785
-	jsr	L4955
-L3BFE:
-	brclr	3,X0067,L03F8
-	bclr	3,X0067
-	jsr	L37B0
-	jsr	L490B
-	brset	7,X00D6,L03F8
-	rts
-;
-	ldx	X0120
-	lda	X0121
+L400D:
+	ldx	EEPROM_0120
+	lda	EEPROM_0121
 	lsrx
 	rora
-	bsr	L044C
-	lda	X0058
+	bsr	L004C
+	lda	RAM1_058
 	and	#$07
-	sta	X008E
-	brclr	0,X0056,L0422
-	bset	3,X008E
-	brclr	4,X0058,L0427
-	bset	4,X008E
-	lda	X0057
+	sta	RAM1_08e
+	brclr	0,RAM1_056,L0022
+	bset	3,RAM1_08e
+	brclr	4,RAM1_058,L0027
+	bset	4,RAM1_08e
+	lda	RAM1_057
 	and	#$07
-	beq	L043B
-	bset	5,X008E
+	beq	L003B
+	bset	5,RAM1_08e
 	cmp	#$05
-	bne	L0435
-	bset	6,X008E
+	bne	L0035
+	bset	6,RAM1_08e
 	cmp	#$01
-	bne	L043B
-	bset	7,X008E
-	brclr	5,X0069,L0444
-	bclr	4,X008E
-	bclr	3,X008E
-	bclr	1,X008E
-	bclr	1,X0081
-	brclr	4,X008E,L044B
-	bset	1,X0081
+	bne	L003B
+	bset	7,RAM1_08e
+	brclr	5,RAM1_069,L0044
+	bclr	4,RAM1_08e
+	bclr	3,RAM1_08e
+	bclr	1,RAM1_08e
+	bclr	1,RAM1_081
+	brclr	4,RAM1_08e,L004B
+	bset	1,RAM1_081
 	rts
 ;
-	stx	X0050
-	sta	X0051
-	and	#$0F
-	cmp	#$09
-	bls	L0458
-	add	#$06
-	sta	X0058
-	clr	X0057
-	clr	X0056
-	clrx
-	lda	X0051
-	bsr	L046E
-	lda	X0050
-	bsr	L046B
-	lda	X0050
-	bra	L046E
-;
-	jsr	L261E
-	jsr	L2617
-	sta	X0052
-	beq	L04A7
-	bset	7,X0059
-	lda	X40AB,x
-	add	X0058
-	bcs	L0482
-	bclr	7,X0059
-	sub	#$60
-	bhcs	L0486
-	sub	#$06
-	sta	X0058
-	rol	X0059
-	bset	7,X0059
-	lda	X40AA,x
-	adc	X0057
-	bcs	L0497
-	bclr	7,X0059
-	sub	#$60
-	bhcs	L049B
-	sub	#$06
-	sta	X0057
-	rol	X0059
-	bcc	L04A3
-	inc	X0056
-	dec	X0052
-	bne	L0475
-	incx
-	incx
-	rts
-;
-	ror	X007C,x
-	asl	X00BC,x
-	lda	#$FC
-	neg	X0030
-	add	,x
-	neg	X0031
-	ora	,x
-	neg	X0032
-	stx	,x
-	neg	X0033
-	and	,x
-	neg	X0034
-	brset	4,X0030,L04F6
-	ldx	X0030,x
-	ror	X00EF
-	neg	X0037
-	sub	,x
-	neg	X0038
-	cmp	,x
-	neg	X0039
-	sbc	,x
-;
-	db	$31
-;
-	neg	X00FD
-;
-	db	$31, $31
-;
-	jmp	,x						;INFO: index jump
-;
-	lda	#$1F
-	sta	X0090
-	bclr	4,X006B
-	bset	6,X0095
-	rts
-;
-	brclr	7,X0060,L04F8
-	brset	7,X0092,L04F8
-	bclr	7,X0060
-	bclr	7,X0093
-	bset	2,X005D
-	brclr	6,X0060,L04F3
-	bclr	6,X0060
-	brset	0,X005F,L04F3
-	bclr	0,X0061
-	bclr	3,X0001
-	bclr	1,X0001
-	rts
-;
-	brset	3,X0060,L0566
-	brset	0,X0060,L0559
-	brset	4,X0060,L0507
-	brclr	7,X0093,L050A
-	jmp	L418E
-	jmp	L41A1
-;
-	jsr	L43F6
-	beq	L0567
-	jsr	L43F6
-	beq	L0567
-	eor	X0093
-	sta	X0093
-	brclr	3,X0093,L0523
-	brclr	4,X0093,L055F
-	brclr	5,X0093,L0559
-	bra	L055F
-;
-	brset	5,X0093,L0526
-	clra
-	rola
-	eor	X0093
-	rora
-	bcc	L0548
-	and	#$03
-	tax
-	lda	X02B1
-	sub	X0068
-	cmp	#$11
-	bcs	L0548
-	cmp	#$17
-	bcs	L054E
-	cmp	#$22
-	bcs	L0548
-	cmp	#$2B
-	bhi	L0548
-	tstx
-	beq	L0555
-	lda	#$08
-	sta	X0093
-	bra	L055F
-;
-	tstx
-	beq	L0548
-	cpx	#$04
-	bhi	L0548
-	inc	X0093
-	bra	L055F
-;
-	bclr	0,X0060
-	bclr	4,X0060
-	clr	X0093
-	lda	X0068
-	sta	X02B1
-	clr	X0092
-	rts
-;
-	lda	X02B1
-	sub	X0068
-	cmp	#$C8
-	bcs	L0573
-	bset	3,X0060
-	rts
-;
-	brclr	5,X0093,L0566
-	brset	4,X0093,L0566
-	cmp	#$3C
-	bcs	L0566
-	brclr	3,X0093,L0585
-	lda	#$38
-	sta	X0093
-	rts
-;
-	lda	X0093
-	cmp	#$25
-	bne	L0566
-	bset	4,X0060
-	rts
-;
-	brset	7,X0095,L05A0
-	brset	4,X0094,L05A0
-	brclr	7,X0092,L0548
-	brset	4,X0092,L05A0
-	brset	3,X0092,L05A9
-	brset	6,X0093,L05D9
-	rts
-;
-	bclr	4,X0060
-	bclr	2,X0060
-	bclr	1,X0060
-	bra	L05F5
-;
-	bclr	3,X0092
-	clrx
-	lda	X4401,x
-	beq	L05D3
-	cmp	X02B0
-	bne	L05BE
-	lda	X4402,x
-	cmp	X02B2
-	beq	L05C3
-	incx
-	incx
-	incx
-	bra	L05AC
-;
-	cmp	#$04
-	beq	L05C7
-	bclr	6,X0093
-	lda	X0093
-	and	#$1F
-	ldx	X4403,x
-	jmp	L41F5,x						;INFO: index jump
-;
-	ldx	#$47
-	jsr	L43C0
-	rts
-;
-	bclr	6,X0093
-	lda	X0093
-	inca
-	and	#$1F
-L3DE0:
-	cmp	#$02
-	beq	L05DD
-	cmp	#$03
-	beq	L05FC
-	cmp	#$04
-	beq	L05FC
-	cmp	#$05
-	beq	L0616
-	sub	#$14
-	bcc	L0645
-	rts
-;
-	lda	#$01
-	brclr	5,X0069,L05FC
-	lda	#$02
-	jsr	L43B6
-L3DFF:
-	bset	4,X0094
-	bset	6,X0093
-	jsr	L4507
-	brset	7,X0092,L063F
-	lda	#$90
-	sta	X0092
-	lda	X02B0
-	ora	#$20
-	sta	X02B0
-	rts
-;
-	jsr	L43B6
-	bset	4,X0094
-	lda	X0120
-	sta	X02B4
-	lda	X0121
-	sta	X02B5
-	lda	X0122
-	sta	X02B6
-	lda	X0123
-	sta	X02B7
-	bset	7,X0060
-	bset	7,X005D
-X3E37:
-	bclr	0,X0081
-	lda	#$02
-	sta	X008A
-	bset	6,X0082
-L3E3F:
-	rts
-;
-	lda	#$13
-	sta	X0093
-	clra
-	sta	X0050
-	ldx	#$95
-	jsr	L43C0
-	clr	X0057
-	jmp	L433F
-;
-	ldx	#$CE
-	clra
-	jsr	L38A0
-	decx
-	cpx	#$C0
-	bcc	L0653
-	bra	L0640
-;
-	cmp	#$06
-	bcs	L066B
-	cmp	#$08
-	bcs	L066D
-	bne	L066B
-	jmp	L4345
-;
-	lda	#$05
-	inca
-	jsr	L43B6
-	bset	7,X005D
-	jsr	L3E18
-	rts
-;
-	ldx	X02B3
-	beq	L068F
-	cpx	#$07
-	bhi	L0690
-	stx	X005B
-	ldx	X4426,x
-	jsr	L43C0
-	bset	4,X0094
-	ldx	X005B
-	jsr	L3E31
-	rts
-;
-	cpx	#$19
-	bne	L068F
-	brclr	2,X0060,L068F
-	bset	1,X0060
-	rts
-;
-	jsr	L3ED0
-	jmp	L41F5
-;
-	brclr	2,X008B,L06A6
-	jmp	L41D3
-;
-	ldx	X02B3
-	lda	X02B4
-	jsr	L404C
-	lda	X0057
-	cmp	X0101
-	bne	L06C5
-	lda	X0058
-	cmp	X0102
-	bne	L06C5
-	jsr	L375F
-	bclr	2,X005D
-	bset	2,X0060
-	rts
-;
-	inc	X008B
-	jsr	L3757
-	lda	#$FF
-	sta	X008C
-	jmp	L40E3
-	bra	L0714
-;
-	brclr	1,X0060,L0713
-	lda	X02B3
-	sta	X0050
-	lda	X02B5
-	sta	X0051
-	lda	#$12
-	jsr	L43B6
-	lda	#$03
-X3EE7:
-	sta	X0052
-	ldx	X0051
-	txa
-	and	#$FC
-X3EEE:
-	beq	L06FB
-	sub	#$30
-	beq	L06FB
-	sub	#$30
-	beq	L06FB
-	jsr	L38CC
-	inc	X0051
-	ldx	X0052
-	sta	X02B0,x
-	inc	X0052
-	lda	X02B0
-	inca
-	sta	X02B0
-	cmp	#$0F
-	beq	L0713
-	dec	X0050
-	bne	L06E9
-	rts
-;
-	lda	X02B3
-	cmp	#$AB
-	bne	L0725
-	lda	X02B4
-	cmp	#$CD
-	bne	L0725
-	jmp	L3F46
-;
-	brclr	1,X0060,L0713
-	lda	X02B3
-	cmp	X0101
-	bne	L0713
-	lda	X02B4
-	cmp	X0102
-	bne	L0713
-	jmp	L3F80
-;
-	inc	X0050
-	inc	X0093
-	ldx	X0050
-	cpx	#$0E
-	bls	L074A
-	clr	X0093
-	bset	7,X0093
-	rts
-;
-	lda	X01C0,x
-	beq	L073B
-	cpx	#$02
-	beq	L0767
-	cpx	#$03
-	beq	L075F
-	cpx	#$05
-	beq	L0767
-	cpx	#$06
-	bne	L076C
-	decx
-	cmp	X01C0,x
-	bcs	L073B
-	bra	L076C
-;
-	cmp	X01C1,x
-	bls	L073B
-	cmp	#$33
-	bne	L0771
-	clra
-	sta	X0051
-	ldx	X0057
-	incx
-	incx
-	incx
-	cpx	#$0C
-X3F7A:
-	bls	L077F
-	bset	6,X0093
-	rts
-;
-	stx	X0057
-	txa
-	add	#$03
-	sta	X02B0
-	lda	X0050
-	asla
-	add	X0050
-	sta	X0058
-	ldx	X0058
-	lda	X44D9,x
-	ldx	X0057
-	sta	X02B0,x
-	ldx	X0058
-	lda	X44DA,x
-	ldx	X0057
-	sta	X02B1,x
-	ldx	X0058
-	lda	X44DB,x
-	tst	X0051
-	bne	L07AD
-	and	#$7F
-	ldx	X0057
-	sta	X02B2,x
-	bset	4,X0094
-	bra	L073B
-;
-	sta	X0093
-	lda	X0093
-	and	#$1F
-L3FBC:
-	tax
-	ldx	X441D,x
-	bset	7,X0093
-	clr	X0056
-	stx	X0057
-	bclr	5,X005D
-	cpx	#$49
-	bne	L07CE
-	bset	5,X005D
-	lda	X443F,x
-L3FD1:
-	sta	X02B0
-	and	#$0F
-	sub	#$03
-	sta	X0058
-	lda	#$FF
-	sta	X02B1
-L3FDF:
-	ldx	X0057
-	lda	X4440,x
-	ldx	X0056
-	sta	X02B2,x
-	inc	X0056
-	inc	X0057
-	dec	X0058
-	bpl	L07DF
-	bset	7,X0095
-	bset	4,X0092
-	rts
-;
-	clra
-	brclr	1,X0003,L07FC
-	lda	#$20
-	eor	X0093
-	and	#$20
-	rts
-;
-	brclr	1,X0000,L0004
-	brclr	1,X0007,L0052
-	brclr	1,X0005,L0066
-	brset	2,X0004,L0076
-L400D:
-	brset	2,X0029,L0792
-	brclr	3,X0010,L07B8
-	brset	4,X002B,L07C1
-	brclr	2,X001B,L07F5
-	brset	3,X0003,L07FA
-	brset	0,X003F,L0020
-	brclr	7,X001D,L004D
-	asl	X003B
-	clr	X0043
-	asra
-	rola
-	asrx
-;
-	db	$65
-;
-	neg	,x
-;
-	db	$7E, $86
-;
-	stop
-;
-	db	$95, $93
-;
-	cli
-	nop
-	sub	#$A3
-	lda	#$A9
-;
-	db	$AC, $AF
-;
-	sbc	X00B5
-	eor	X00BB
-	ldx	X00C1
-	and	X810F
-	lda	,x
-	lsr	X0042
-	neg	X0030
-	com	X0035
-;
-	db	$31
-;
-	asl	X0036
-	bra	L006D
-	bra	L005E
-;
-	lda	,x
-	lsr	X0042
-	neg	X0030
-	com	X0035
-;
-	db	$31, $35, $32
-;
-	bra	L007B
-	bra	L006C
-;
-	lda	,x
-	bra	L00B2
-;
-	db	$61
-;
-	lsr	X0069,x
-	clr	X0020,x
-	bra	L0087
-	bra	L0089
-	bra	L0079
-;
-	lda	,x
-	bra	L008E
-	bra	L0090
-	bra	L0092
-	bra	L00A4
-;
-	neg	X0030
-;
-	db	$31
-;
-	brset	4,X00F6,L007A
-	brclr	2,X00F5,L0080
-	comx
-	brclr	2,X00F5,L0084
-	rorx
-	brclr	2,X00F5,L0089
-	add	#$44
-	brset	5,X000F,L0071
-	bset	0,X0008
-	brset	0,X0006,L00DD
-	sub	X1764
-	rti
-;
-	bcs	L0095
-;
-	db	$87
-;
-	brclr	7,X00E7,L00BE
-	brset	0,X00F0,L00C1
-	brset	0,X00C2,L00B0
-	bra	L00C1
-;
-	bclr	0,X0020
-	bra	L00B1
-;
-	sta	X0025,x
-	brclr	0,X0011,L00CF
-X40AA:
-	brset	0,X00F4,L00D2
-	brset	0,X00C2,L00BF
+	db	$BF, $50, $B7, $51
+	db	$A4, $0F, $A1, $09
+	db	$23, $02, $AB, $06
+	db	$B7, $58, $3F, $57
+	db	$3F, $56, $5F, $B6
+	db	$51, $AD, $0B, $B6
+	db	$50, $AD, $04, $B6
+	db	$50, $20, $03, $CD
+	db	$26, $1E, $CD, $26
+	db	$17, $B7, $52, $27
+	db	$32, $1E, $59, $D6
+	db	$40, $AB, $BB, $58
+	db	$25, $04, $1F, $59
+	db	$A0, $60, $29, $02
+	db	$A0, $06, $B7, $58
+	db	$39, $59, $1E, $59
+	db	$D6, $40, $AA, $B9
+	db	$57, $25, $04, $1F
+	db	$59, $A0, $60, $29
+	db	$02, $A0, $06, $B7
+	db	$57, $39, $59, $24
+	db	$02, $3C, $56, $3A
+	db	$52, $26, $CE, $5C
+	db	$5C, $81, $66, $7C
+	db	$68, $BC, $A6, $FC
 X40B0:
-	sta	X0010,x
-	brclr	0,X0000,L00C6
-	bra	L00D7
+	db	$30
+X40B1:
+	db	$30, $FB, $30, $31
+	db	$FA, $30, $32, $FF
+	db	$30, $33, $F4, $30
+	db	$34, $08, $30, $35
+	db	$EE, $30, $36, $EF
+	db	$30, $37, $F0, $30
+	db	$38, $F1, $30, $39
+	db	$F2, $31, $30, $FD
+	db	$31, $31, $FC, $A6
+	db	$1F, $B7, $90, $19
+	db	$6B, $1C, $95, $81
 ;
-	bcs	L00B9
-	bit	,x
-	bcs	L00BC
-;
-	db	$88
-;
-	brclr	4,X00E7,L00E5
-	brset	0,X00F6,L00E8
-	brset	0,X00C2,L00CF
-	sta	X0025,x
-	brset	0,X00F7,L00F0
-	brset	0,X00C2,L00D4
-	sta	X0011,x
-	bra	L00F2
-;
-	brclr	1,X00FD,L00DB
-	jmp	,x						;INFO: index jump
-;
-	stx	,x
-	stx	,x
-;
-	db	$88
-;
-	brclr	1,X0051,L0080
-	brset	1,X009C,L0066
-	brclr	1,X0058,L0086
-	brclr	1,X0058,L0082
-	brclr	1,X0052,L0085
-	brclr	1,X0054,L0097
-	brclr	1,X0054,L0092
-	brclr	1,X0055,L009D
-	brclr	1,X0055,L0098
-	brclr	1,X0058,L0094
-	brclr	1,X0056,L00AB
-	brclr	1,X0057,L00AE
-	brclr	1,X0057,L009D
-	stx	,x
-	stx	,x
-	brset	0,X0004,L0119
-	bls	L0107
-	lda	X01D0
-	cmp	#$41
-	bne	L0140
-	lda	X02B3
-	cmp	#$34
-	bne	L0128
-	ldx	#$0A
-	lda	X01D0,x
-	brset	5,X0069,L0120
-	lda	X01E0,x
-	sta	X02B2,x
-	decx
-	bne	L0117
-	bra	L0140
-;
-	lda	X02BD
-	cmp	#$31
-	bne	L0140
-	ldx	#$05
-	lda	X01DA,x
-	brset	5,X0069,L013A
-	lda	X01EA,x
-	sta	X02B8,x
-	decx
-	bne	L0131
-	rts
+L40DD:
+	brclr	7,RAM1_060,L00F8
+	brset	7,RAM1_092,L00F8
+	bclr	7,RAM1_060
+	bclr	7,RAM1_093
+	bset	2,RAM1_05d
+	brclr	6,RAM1_060,L00F3
+	bclr	6,RAM1_060
+	brset	0,RAM1_05f,L00F3
+	bclr	0,RAM1_061
+	bclr	3,PortB
+	bclr	1,PortB
 	rts
 ;
-	lda	#$07
-	jsr	L2591
-	lda	#$14
-	jmp	L24CB
+	db	$06, $60, $6B, $00
+	db	$60, $5B, $08, $60
+	db	$06, $0F, $93, $06
+	db	$CC, $41, $8E, $CC
+	db	$41, $A1, $CD, $43
+	db	$F6, $27, $58, $CD
+	db	$43, $F6, $27, $53
+	db	$B8, $93, $B7, $93
+	db	$07, $93, $08, $09
+	db	$93, $41, $0B, $93
+	db	$38, $20, $3C, $0A
+	db	$93, $00, $4F, $49
+	db	$B8, $93, $46, $24
+	db	$1B, $A4, $03, $97
+	db	$C6, $02, $B1, $B0
+	db	$68, $A1, $11, $25
+	db	$0F, $A1, $17, $25
+	db	$11, $A1, $22, $25
+	db	$07, $A1, $2B, $22
+	db	$03, $5D, $27, $0D
+	db	$A6, $08, $B7, $93
+	db	$20, $11, $5D, $27
+	db	$F7, $A3, $04, $22
+	db	$F3, $3C, $93, $20
+	db	$06, $11, $60, $19
+	db	$60, $3F, $93, $B6
+	db	$68, $C7, $02, $B1
+	db	$3F, $92, $81, $C6
+	db	$02, $B1, $B0, $68
+	db	$A1, $C8, $25, $03
+	db	$16, $60, $81, $0B
+	db	$93, $F0, $08, $93
+	db	$ED, $A1, $3C, $25
+	db	$E9, $07, $93, $05
+	db	$A6, $38, $B7, $93
+	db	$81, $B6, $93, $A1
+	db	$25, $26, $DB, $18
+	db	$60, $81, $0E, $95
+	db	$0F, $08, $94, $0C
+	db	$0F, $92, $B1, $08
+	db	$92, $06, $06, $92
+	db	$0C, $0C, $93, $39
+	db	$81, $19, $60, $15
+	db	$60, $13, $60, $20
+	db	$4C, $17, $92, $5F
+	db	$D6, $44, $01, $27
+	db	$22, $C1, $02, $B0
+	db	$26, $08, $D6, $44
+	db	$02, $C1, $02, $B2
+	db	$27, $05, $5C, $5C
+	db	$5C, $20, $E9, $A1
+	db	$04, $27, $00, $1D
+	db	$93, $B6, $93, $A4
+	db	$1F, $DE, $44, $03
+	db	$DC, $41, $F5, $AE
+	db	$47, $CD, $43, $C0
+	db	$81, $1D, $93, $B6
+	db	$93, $4C, $A4, $1F
+	db	$A1, $02, $27, $F9
+	db	$A1, $03, $27, $14
+	db	$A1, $04, $27, $10
+	db	$A1, $05, $27, $26
+	db	$A0, $14, $24, $51
+	db	$81, $A6, $01, $0B
+	db	$69, $02, $A6, $02
+	db	$CD, $43, $B6, $18
+	db	$94, $1C, $93, $CD
+	db	$45, $07, $0E, $92
+	db	$36, $A6, $90, $B7
+	db	$92, $C6, $02, $B0
+	db	$AA, $20, $C7, $02
+	db	$B0, $81, $CD, $43
+	db	$B6, $18, $94, $C6
+	db	$01, $20, $C7, $02
+	db	$B4, $C6, $01, $21
+	db	$C7, $02, $B5, $C6
+	db	$01, $22, $C7, $02
+	db	$B6, $C6, $01, $23
+	db	$C7, $02, $B7, $1E
+	db	$60, $1E, $5D, $11
+	db	$81, $A6, $02, $B7
+	db	$8A, $1C, $82, $81
+	db	$A6, $13, $B7, $93
+	db	$4F, $B7, $50, $AE
+	db	$95, $CD, $43, $C0
+	db	$3F, $57, $CC, $43
+	db	$3F, $AE, $CE, $4F
+	db	$CD, $38, $A0, $5A
+	db	$A3, $C0, $24, $F7
+	db	$20, $E2, $A1, $06
+	db	$25, $09, $A1, $08
+	db	$25, $07, $26, $03
+	db	$CC, $43, $45, $A6
+	db	$05, $4C, $CD, $43
+	db	$B6, $1E, $5D, $CD
+	db	$3E, $18, $81, $CE
+	db	$02, $B3, $27, $13
+	db	$A3, $07, $22, $10
+	db	$BF, $5B, $DE, $44
+	db	$26, $CD, $43, $C0
+	db	$18, $94, $BE, $5B
+	db	$CD, $3E, $31, $81
+	db	$A3, $19, $26, $FB
+	db	$05, $60, $F8, $12
+	db	$60, $81, $CD, $3E
+	db	$D0, $CC, $41, $F5
+	db	$05, $8B, $03, $CC
+	db	$41, $D3, $CE, $02
+	db	$B3, $C6, $02, $B4
+	db	$CD, $40, $4C, $B6
+	db	$57, $C1, $01, $01
+	db	$26, $0F, $B6, $58
+	db	$C1, $01, $02, $26
+	db	$08, $CD, $37, $5F
+	db	$15, $5D, $14, $60
+	db	$81, $3C, $8B, $CD
+	db	$37, $57, $A6, $FF
+	db	$B7, $8C, $CC, $40
+	db	$E3, $20, $41, $03
+	db	$60, $3D, $C6, $02
+	db	$B3, $B7, $50, $C6
+	db	$02, $B5, $B7, $51
+	db	$A6, $12, $CD, $43
+	db	$B6, $A6, $03, $B7
+	db	$52, $BE, $51, $9F
+	db	$A4, $FC, $27, $0B
+	db	$A0, $30, $27, $07
+	db	$A0, $30, $27, $03
+	db	$CD, $38, $CC, $3C
+	db	$51, $BE, $52, $D7
+	db	$02, $B0, $3C, $52
+	db	$C6, $02, $B0, $4C
+	db	$C7, $02, $B0, $A1
+	db	$0F, $27, $04, $3A
+	db	$50, $26, $D6, $81
+	db	$C6, $02, $B3, $A1
+	db	$AB, $26, $0A, $C6
+	db	$02, $B4, $A1, $CD
+	db	$26, $03, $CC, $3F
+	db	$46, $03, $60, $EB
+	db	$C6, $02, $B3, $C1
+	db	$01, $01, $26, $E3
+	db	$C6, $02, $B4, $C1
+	db	$01, $02, $26, $DB
+	db	$CC, $3F, $80, $3C
+	db	$50, $3C, $93, $BE
+	db	$50, $A3, $0E, $23
+	db	$05, $3F, $93, $1E
+	db	$93, $81, $D6, $01
+	db	$C0, $27, $EC, $A3
+	db	$02, $27, $14, $A3
+	db	$03, $27, $08, $A3
+	db	$05, $27, $0C, $A3
+	db	$06, $26, $0D, $5A
+	db	$D1, $01, $C0, $25
+	db	$D6, $20, $05, $D1
+	db	$01, $C1, $23, $CF
+	db	$A1, $33, $26, $01
+	db	$4F, $B7, $51, $BE
+	db	$57, $5C, $5C, $5C
+	db	$A3, $0C, $23, $03
+	db	$1C, $93, $81, $BF
+	db	$57, $9F, $AB, $03
+	db	$C7, $02, $B0, $B6
+	db	$50, $48, $BB, $50
+	db	$B7, $58, $BE, $58
+	db	$D6, $44, $D9, $BE
+	db	$57, $D7, $02, $B0
+	db	$BE, $58, $D6, $44
+	db	$DA, $BE, $57, $D7
+	db	$02, $B1, $BE, $58
+	db	$D6, $44, $DB, $3D
+	db	$51, $26, $02, $A4
+	db	$7F, $BE, $57, $D7
+	db	$02, $B2, $18, $94
+	db	$20, $85, $B7, $93
+	db	$B6, $93, $A4, $1F
+	db	$97, $DE, $44, $1D
+	db	$1E, $93, $3F, $56
+	db	$BF, $57, $1B, $5D
+	db	$A3, $49, $26, $02
+	db	$1A, $5D, $D6, $44
+	db	$3F, $C7, $02, $B0
+	db	$A4, $0F, $A0, $03
+	db	$B7, $58, $A6, $FF
+	db	$C7, $02, $B1, $BE
+	db	$57, $D6, $44, $40
+	db	$BE, $56, $D7, $02
+	db	$B2, $3C, $56, $3C
+	db	$57, $3A, $58, $2A
+	db	$EE, $1E, $95, $18
+	db	$92, $81, $4F, $03
+	db	$03, $02, $A6, $20
+	db	$B8, $93, $A4, $20
+	db	$81, $03, $00, $00
+	db	$03, $07, $4B, $03
+	db	$05, $5C, $04, $04
+	db	$69, $04, $29, $82
+	db	$07, $10, $A5, $08
+	db	$2B, $AB, $05, $1B
+	db	$DC, $06, $03, $DE
+	db	$00, $3F, $01, $0F
+	db	$1D, $2B, $38, $3B
+	db	$3F, $43, $47, $49
+	db	$57, $65, $70, $7E
+	db	$86, $8E, $95, $93
+	db	$9A, $9D, $A0, $A3
+	db	$A6, $A9, $AC, $AF
+	db	$B2, $B5, $B8, $BB
+	db	$BE, $C1, $C4, $81
+	db	$0F, $F6, $34, $42
+	db	$30, $30, $33, $35
+	db	$31, $38, $36, $20
+	db	$20, $20, $0F, $F6
+	db	$34, $42, $30, $30
+	db	$33, $35, $31, $35
+	db	$32, $20, $20, $20
+	db	$0F, $F6, $20, $52
+	db	$61, $64, $69, $6F
+	db	$20, $20, $20, $20
+	db	$20, $20, $0E, $F6
+	db	$20, $20, $20, $20
+	db	$20, $20, $20, $30
+	db	$30, $30, $31, $08
+	db	$F6, $00, $05, $F5
+	db	$03, $53, $05, $F5
+	db	$03, $56, $05, $F5
+	db	$04, $AB, $44, $0A
+	db	$0F, $E7, $10, $08
+	db	$00, $06, $4E, $C0
+	db	$17, $64, $80, $25
+	db	$00, $87, $0F, $E7
+	db	$25, $00, $F0, $25
+	db	$00, $C2, $11, $20
+	db	$20, $11, $20, $20
+	db	$0C, $E7, $25, $01
+	db	$11, $25, $00, $F4
+	db	$25, $00, $C2, $0F
+	db	$E7, $10, $01, $00
+	db	$11, $20, $20, $25
+	db	$00, $F5, $25, $00
+	db	$88, $09, $E7, $25
+	db	$00, $F6, $25, $00
+	db	$C2, $09, $E7, $25
+	db	$00, $F7, $25, $00
+	db	$C2, $06, $E7, $11
+	db	$20, $20, $03, $FD
+	db	$06, $FC, $FF, $FF
+	db	$88, $03, $51, $A4
+	db	$02, $9C, $87, $03
+	db	$58, $A4, $03, $58
+	db	$9D, $03, $52, $9D
+	db	$03, $54, $AC, $03
+	db	$54, $A4, $03, $55
+	db	$AC, $03, $55, $A4
+	db	$03, $58, $9D, $03
+	db	$56, $B1, $03, $57
+	db	$B1, $03, $57, $9D
+	db	$FF, $FF, $00, $04
+	db	$14, $23, $00, $C6
+	db	$01, $D0, $A1, $41
+	db	$26, $32, $C6, $02
+	db	$B3, $A1, $34, $26
+	db	$13, $AE, $0A, $D6
+	db	$01, $D0, $0A, $69
+	db	$03, $D6, $01, $E0
+	db	$D7, $02, $B2, $5A
+	db	$26, $F1, $20, $18
+	db	$C6, $02, $BD, $A1
+	db	$31, $26, $11, $AE
+	db	$05, $D6, $01, $DA
+	db	$0A, $69, $03, $D6
+	db	$01, $EA, $D7, $02
+	db	$B8, $5A, $26, $F1
+	db	$81
 ;
-	brclr	6,X00CE,L0159
-	lda	X00D0
+L4541:
+	rts
+;
+	db	$A6, $07, $CD, $25
+	db	$91, $A6, $14, $CC
+	db	$24, $CB
+;
+L454C:
+	brclr	6,STACK_0ce,L0559
+	lda	STACK_0d0
 	bit	#$F0
-	bne	L0159
+	bne	L0559
 	jmp	L45EE
-	rts
-	rts
 ;
-	lda	#$01
-	bra	L0160
+L4558:
+	db	$81, $81, $A6, $01
+	db	$20, $02, $A6, $07
+	db	$07, $D0, $F6, $BB
+	db	$D0, $A4, $0F, $AA
+	db	$08, $A1, $0D, $25
+	db	$07, $26, $03, $A6
+	db	$08, $C1, $A6, $0C
+	db	$B7, $D0, $20, $00
+	db	$0B, $CE, $10, $A6
+	db	$17, $0C, $81, $5A
+	db	$BE, $84, $D6, $45
+	db	$DD, $B7, $C8, $A6
+	db	$8B, $20, $4F, $0D
+	db	$CE, $CB, $BE, $D0
+	db	$A6, $05, $0C, $6A
+	db	$02, $A6, $07, $A3
+	db	$01, $27, $3F, $A6
+	db	$CA, $A3, $08, $27
+	db	$39, $9F, $AE, $07
+	db	$A1, $09, $27, $12
+	db	$A1, $0A, $27, $18
+	db	$A1, $0B, $26, $1F
+	db	$E6, $A3, $D7, $02
+	db	$57, $5A, $2A, $F8
+	db	$20, $1E, $E6, $DA
+	db	$D7, $02, $57, $5A
+	db	$2A, $F8, $20, $14
+	db	$D6, $45, $E6, $D7
+	db	$02, $57, $5A, $2A
+	db	$F7, $20, $09, $D6
+	db	$01, $90, $D7, $02
+	db	$57, $5A, $2A, $F7
+	db	$A6, $C4, $CC, $24
+	db	$DC, $00, $01, $03
+	db	$04, $05, $06, $08
+	db	$09, $0A, $37, $42
+	db	$32, $30, $2E, $31
+	db	$20, $4D
 ;
-	lda	#$07
-	brclr	3,X00D0,L0159
-	add	X00D0
-	and	#$0F
-	ora	#$08
-	cmp	#$0D
-	bcs	L0174
-	bne	L0172
-	lda	#$08
-	cmp	XA60C
-	sta	X00D0
-	bra	L0178
-;
-	brclr	5,X00CE,L018B
-	lda	#$17
-	brset	6,X0081,L01DA
-	ldx	X0084
-	lda	X45DD,x
-	sta	X00C8
-	lda	#$8B
-	bra	L01DA
-;
-	brclr	6,X00CE,L0159
-L418E:
-	ldx	X00D0
-	lda	#$05
-	brset	6,X006A,L0197
-	lda	#$07
-	cpx	#$01
-	beq	L01DA
-	lda	#$CA
-	cpx	#$08
-	beq	L01DA
-L41A1:
-	txa
-	ldx	#$07
-	cmp	#$09
-	beq	L01BA
-	cmp	#$0A
-	beq	L01C4
-	cmp	#$0B
-	bne	L01CF
-	lda	X00A3,x
-	sta	X0257,x
-	decx
-	bpl	L01B0
-	bra	L01D8
-;
-	lda	X00DA,x
-	sta	X0257,x
-	decx
-	bpl	L01BA
-	bra	L01D8
-;
-	lda	X45E6,x
-	sta	X0257,x
-	decx
-	bpl	L01C4
-	bra	L01D8
-;
-	lda	X0190,x
-	sta	X0257,x
-	decx
-	bpl	L01CF
-	lda	#$C4
-	jmp	L24DC
-;
-	brset	0,X0001,L01E3
-	brset	2,X0005,L01E9
-	brset	4,X0009,L01F0
-	asr	X0042
-;
-	db	$32
-;
-	neg	X002E
-;
-	db	$31
-;
-	bra	L023B
-;
+L45EE:
 	clrx
 	lda	X4606,x
-	sta	X0056
+	sta	RAM1_056
 	lda	X4605,x
-	beq	L0204
+	beq	L0604
 	jsr	L2889
-	bne	L01EF
+	bne	L05EF
 	ldx	X4604,x
 	jsr	L4558,x						;INFO: index jump
+X4604:
 	rts
 ;
-	lda	,x
-	brclr	0,X00F8,L020B
-	sta	X0006,x
-	brset	0,X0003,L01E0
+X4605:
+	db	$F6
+X4606:
+	db	$01, $F8, $02, $E7
+	db	$06, $00
 ;
-	db	$75
-;
-	brset	0,X00D2,L0284
-	brclr	3,X00CB,L0219
-	bclr	3,X00CB
-	bset	7,X005D
-	brclr	6,X005D,L0284
+L460C:
+	brclr	1,STACK_0d2,L0684
+	brset	0,STACK_0d2,L0684
+	brclr	3,STACK_0cb,L0619
+	bclr	3,STACK_0cb
+	bset	7,RAM1_05d
+	brclr	6,RAM1_05d,L0684
 	jmp	L4742
 ;
-	brclr	1,X00D2,L0284
-	lda	#$06
-	eor	X00D4
-	sta	X00D4
-	ldx	#$A6
-	jsr	L38A0
-	bclr	0,X00D4
-	ldx	#$83
-	brset	2,X00D4,L0243
-	ldx	#$8D
-	bra	L0243
+L461F:
+	db	$03, $D2, $62, $A6
+	db	$06, $B8, $D4, $B7
+	db	$D4, $AE, $A6, $CD
+	db	$38, $A0, $11, $D4
+	db	$AE, $83, $04, $D4
+	db	$0F, $AE, $8D, $20
+	db	$0B, $03, $D2, $49
+	db	$AE, $89, $A6, $01
+	db	$B8, $D4, $B7, $D4
+	db	$14, $6A, $20, $14
+	db	$AE, $87, $C1, $AE
+	db	$86, $C1, $AE, $85
+	db	$C1, $AE, $84, $20
+	db	$07, $AE, $8B, $C1
+	db	$AE, $8A, $AD, $1E
+	db	$11, $D4, $C6, $02
+	db	$64, $A4, $ED, $C7
+	db	$02, $64, $BF, $7D
+	db	$1C, $94, $1E, $5D
+	db	$19, $D2, $14, $CB
+	db	$81, $08, $D2, $DA
+	db	$08, $D2, $DA, $13
+	db	$D2, $81, $A6, $50
+	db	$B7, $77, $81, $A6
+	db	$90, $B7, $77, $18
+	db	$D2, $81, $B6, $78
+	db	$A4, $07, $B7, $C8
+	db	$4A, $CD, $26, $64
+	db	$C4, $02, $66, $26
+	db	$0C, $A6, $88, $CD
+	db	$24, $E5, $B6, $C8
+	db	$AA, $20, $CD, $25
+	db	$9A, $B6, $C8, $AA
+	db	$C0, $97, $20, $B4
+	db	$A6, $05, $CD, $25
+	db	$65, $C6, $02, $60
+	db	$A4, $07, $B7, $C8
+	db	$C6, $02, $65, $A5
+	db	$06, $26, $46, $A5
+	db	$08, $26, $0C, $A4
+	db	$F0, $A1, $A0, $27
+	db	$06, $A1, $B0, $26
+	db	$0B, $16, $D4, $A6
+	db	$20, $CD, $25, $9A
+	db	$AE, $08, $20, $29
+	db	$C6, $02, $67, $2A
+	db	$08, $A4, $07, $B7
+	db	$C8, $AE, $89, $20
+	db	$1C, $C6, $02, $66
+	db	$A4, $3F, $27, $E3
+	db	$00, $D2, $10, $05
+	db	$D4, $0D, $C6, $02
+	db	$64, $A4, $24, $26
+	db	$06, $AE, $83, $BF
+	db	$7D, $1C, $94, $AE
+	db	$C8, $9F, $CC, $24
+	db	$CB, $CD, $25, $3F
+	db	$B6, $C8, $AA, $30
+	db	$C7, $02, $59, $C6
+	db	$02, $65, $44, $A4
+	db	$03, $AA, $30, $C7
+	db	$02, $5E, $A6, $C4
+	db	$CC, $24, $DC, $3F
+	db	$56, $17, $CB, $04
+	db	$6A, $12, $13, $D4
+	db	$10, $D4, $C6, $02
+	db	$64, $A5, $12, $26
+	db	$02, $11, $D4, $05
+	db	$D4, $02, $12, $D4
+	db	$4F, $01, $D4, $02
+	db	$18, $56, $03, $D4
+	db	$02, $A6, $10, $CD
+	db	$25, $0E, $81
 ;
-	brclr	1,X00D2,L0284
-	ldx	#$89
-	lda	#$01
-	eor	X00D4
-	sta	X00D4
-	bset	2,X006A
-	bra	L025B
-;
-	ldx	#$87
-	cmp	XAE86
-	cmp	XAE85
-	cmp	XAE84
-	bra	L025B
-;
-	ldx	#$8B
-	cmp	XAE8A
-	bsr	L0279
-	bclr	0,X00D4
-	lda	X0264
-	and	#$ED
-	sta	X0264
-	stx	X007D
-	bset	6,X0094
-	bset	7,X005D
-	bclr	4,X00D2
-	bset	2,X00CB
-	rts
-;
-	brset	4,X00D2,L024D
-	brset	4,X00D2,L0250
-	bclr	1,X00D2
-	rts
-;
-	lda	#$50
-	sta	X0077
-	rts
-;
-	lda	#$90
-	sta	X0077
-	bset	4,X00D2
-	rts
-;
-	lda	X0078
-	and	#$07
-	sta	X00C8
-	deca
-	jsr	L2664
-	and	X0266
-	bne	L02A0
-	lda	#$88
-	jsr	L24E5
-	lda	X00C8
-	ora	#$20
-	jsr	L259A
-	lda	X00C8
-	ora	#$C0
-	tax
-	bra	L025B
-;
-	lda	#$05
-	jsr	L2565
-	lda	X0260
-	and	#$07
-	sta	X00C8
-	lda	X0265
-	bit	#$06
-	bne	L0300
-	bit	#$08
-	bne	L02CA
-	and	#$F0
-	cmp	#$A0
-	beq	L02CA
-	cmp	#$B0
-	bne	L02D3
-	bset	3,X00D4
-	lda	#$20
-	jsr	L259A
-	ldx	#$08
-	bra	L02FC
-;
-	lda	X0267
-	bpl	L02E0
-	and	#$07
-	sta	X00C8
-	ldx	#$89
-	bra	L02FC
-;
-	lda	X0266
-	and	#$3F
-	beq	L02CA
-	brset	0,X00D2,L02FA
-	brclr	2,X00D4,L02FA
-	lda	X0264
-	and	#$24
-	bne	L02FA
-	ldx	#$83
-	stx	X007D
-	bset	6,X0094
-	ldx	#$C8
-	txa
-	jmp	L24CB
-;
-	jsr	L253F
-	lda	X00C8
-	ora	#$30
-	sta	X0259
-	lda	X0265
-	lsra
-	and	#$03
-	ora	#$30
-	sta	X025E
-	lda	#$C4
-	jmp	L24DC
-;
-	clr	X0056
-	bclr	3,X00CB
-	brset	2,X006A,L0333
-	bclr	1,X00D4
-	bset	0,X00D4
-	lda	X0264
-	bit	#$12
-	bne	L032E
-	bclr	0,X00D4
-	brclr	2,X00D4,L0333
-	bset	1,X00D4
-	clra
-	brclr	0,X00D4,L0339
-	bset	4,X0056
-	brclr	1,X00D4,L033E
-	lda	#$10
-	jsr	L250E
-	rts
-;
+L4742:
 	clrx
 	lda	X475C,x
-	sta	X0056
+	sta	RAM1_056
 	lda	X475B,x
-	beq	L035A
+	beq	L075A
 	jsr	L2889
-	bne	L0343
+	bne	L0743
 	ldx	X475A,x
 	jsr	L461F,x						;INFO: index jump
-	bclr	6,X005D
+	bclr	6,RAM1_05d
+X475A:
 	rts
 ;
-	eor	,x
-	bmi	L0345
-	bhcc	L034F
-	bmi	L0352
-	bhcc	L0351
-	clrx
+X475B:
+	db	$F8
+X475C:
+	db	$2B, $E7, $28, $EF
+	db	$2B, $F0, $28, $ED
+	db	$5F, $8D, $38, $4D
+	db	$5A, $CD, $54, $F3
+	db	$5F, $93, $35, $53
+	db	$5A, $D3, $51, $FD
+	db	$5F, $9D, $38, $5D
+	db	$5A, $DD, $54, $FC
+	db	$5F, $9C, $35, $5C
+	db	$5A, $DC, $51, $F1
+	db	$5F, $91, $38, $51
+	db	$5A, $D1, $54, $F2
+	db	$5F, $92, $35, $52
+	db	$5A, $D2, $51, $EC
+	db	$00, $08, $00, $0B
+	db	$19, $E0, $66, $00
 ;
-	db	$8D
-;
-	asl	X004D
-	decx
-	jsr	L54F3
-	clrx
-;
-	db	$93, $35
-;
-	comx
-	decx
-	cpx	X51FD,x
-	clrx
-	nop
-	asl	X005D
-	decx
-	jsr	L54FC,x						;INFO: index jump
-	clrx
-	rsp
-;
-	db	$35
-;
-	incx
-	decx
-	jmp	L51F1,x						;INFO: index jump
-;
-	clrx
-;
-	db	$91
-;
-	asl	X0051
-	decx
-	cmp	X54F2,x
-	clrx
-;
-	db	$92, $35, $52
-;
-	decx
-	sbc	X51EC,x
-	brset	0,X0008,L0397
-	brclr	5,X0019,L037A
-	ror	X0000,x
-	brclr	2,X00D2,L03B4
-	brclr	4,X00CB,L03AB
-	bclr	4,X00CB
-	bset	7,X005D
-	brclr	1,X007C,L03AB
-	bset	2,X00CB
-	brclr	6,X005D,L03B4
-	brset	7,X00D3,L03B4
+L479C:
+	brclr	2,STACK_0d2,L07B4
+	brclr	4,STACK_0cb,L07AB
+	bclr	4,STACK_0cb
+	bset	7,RAM1_05d
+	brclr	1,RAM1_07c,L07AB
+	bset	2,STACK_0cb
+	brclr	6,RAM1_05d,L07B4
+	brset	7,STACK_0d3,L07B4
 	jmp	L489A
-	rts
 ;
-	lda	#$8B
-	cmp	XA68A
-	bset	2,X00CB
-	brclr	1,X007C,L03CA
-	lda	#$88
-	brset	7,X00D3,L042A
-	bclr	2,X00D2
-	lda	#$80
-	bra	L042A
+	db	$81, $A6, $8B, $C1
+	db	$A6, $8A, $14, $CB
+	db	$03, $7C, $0B, $A6
+	db	$88, $0E, $D3, $66
+	db	$15, $D2, $A6, $80
+	db	$20, $60, $06, $7F
+	db	$E7, $0A, $7F, $E4
+	db	$B7, $7B, $13, $6A
+	db	$17, $6A, $0B, $D3
+	db	$55, $17, $7B, $20
+	db	$51, $14, $CB, $06
+	db	$6A, $44, $16, $6A
+	db	$A6, $89, $20, $42
+	db	$18, $BC, $A6, $40
+	db	$B8, $D3, $B7, $D3
+	db	$AE, $A5, $CD, $38
+	db	$A0, $20, $39, $07
+	db	$6A, $04, $1A, $D3
+	db	$20, $06, $A6, $20
+	db	$B8, $D3, $B7, $D3
+	db	$AE, $A5, $CD, $38
+	db	$A0, $03, $7C, $10
+	db	$A6, $8B, $01, $7C
+	db	$06, $04, $7C, $BC
+	db	$4A, $20, $B9, $05
+	db	$7C, $B6, $20, $F8
+	db	$07, $6A, $11, $20
+	db	$05, $A6, $8E, $03
+	db	$7C, $02, $A6, $8F
+	db	$17, $6A, $B7, $7B
+	db	$13, $6A, $1A, $94
+	db	$1E, $5D, $81, $A6
+	db	$04, $CD, $25, $73
+	db	$A6, $00, $07, $7C
+	db	$11, $02, $7C, $1D
+	db	$07, $D3, $0B, $A6
+	db	$01, $19, $D3, $00
+	db	$7C, $04, $A6, $02
+	db	$18, $D3, $CD, $24
+	db	$CB, $13, $6A, $07
+	db	$D3, $43, $B6, $D3
+	db	$AE, $A5, $CC, $38
+	db	$A0, $0B, $D3, $03
+	db	$02, $6A, $36, $01
+	db	$7C, $09, $A6, $03
+	db	$04, $7C, $0B, $A6
+	db	$04, $20, $07, $A6
+	db	$03, $05, $7C, $02
+	db	$A6, $04, $13, $6A
+	db	$CC, $24, $DC
 ;
-	brset	3,X007F,L03B4
-	brset	5,X007F,L03B4
-	sta	X007B
-	bclr	1,X006A
-	bclr	3,X006A
-	brclr	5,X00D3,L042E
-	bclr	3,X007B
-	bra	L042E
-;
-	bset	2,X00CB
-	brset	3,X006A,L0426
-	bset	3,X006A
-	lda	#$89
-	bra	L042A
-;
-	bset	4,X00BC
-	lda	#$40
-	eor	X00D3
-	sta	X00D3
-	ldx	#$A5
-	jsr	L38A0
-	bra	L0430
-;
-	brclr	3,X006A,L03FE
-	bset	5,X00D3
-	bra	L0404
-;
-	lda	#$20
-	eor	X00D3
-X4402:
-	sta	X00D3
-	ldx	#$A5
-	jsr	L38A0
-	brclr	1,X007C,L041C
-	lda	#$8B
-	brclr	0,X007C,L0417
-	brset	2,X007C,L03D0
-	deca
-	bra	L03D0
-;
-	brclr	2,X007C,L03D0
-	bra	L0414
-;
-	brclr	3,X006A,L0430
-	bra	L0426
-;
-	lda	#$8E
-	brclr	1,X007C,L0428
-X4426:
-	lda	#$8F
-	bclr	3,X006A
-	sta	X007B
-	bclr	1,X006A
-	bset	5,X0094
-	bset	7,X005D
-	rts
-;
-	lda	#$04
-	jsr	L2573
-	lda	#$00
-	brclr	3,X007C,L044E
-	brset	1,X007C,L045D
-X4440:
-	brclr	3,X00D3,L044E
-	lda	#$01
-	bclr	4,X00D3
-	brset	0,X007C,L044E
-	lda	#$02
-	bset	4,X00D3
-	jsr	L24CB
-	bclr	1,X006A
-	brclr	3,X00D3,L0499
-	lda	X00D3
-	ldx	#$A5
-	jmp	L38A0
-;
-	brclr	5,X00D3,L0463
-	brset	1,X006A,L0499
-	brclr	0,X007C,L046F
-	lda	#$03
-	brset	2,X007C,L0476
-	lda	#$04
-	bra	L0476
-;
-	lda	#$03
-	brclr	2,X007C,L0476
-	lda	#$04
-	bclr	1,X006A
-	jmp	L24DC
-;
-	bclr	4,X00CB
+L487B:
+	bclr	4,STACK_0cb
 	clra
-	brclr	7,X00D3,L0486
-	brclr	2,X00D3,L048B
-	bra	L0489
+	brclr	7,STACK_0d3,L0086
+	brclr	2,STACK_0d3,L008B
+	bra	L0089
 ;
-	brclr	3,X006A,L048B
-	ora	#$10
-	sta	X0056
-	lda	X00D3
-	and	#$60
-	brclr	4,X0056,L0496
-	and	#$40
-	jsr	L250E
-	rts
+	db	$07, $6A, $02, $AA
+	db	$10, $B7, $56, $B6
+	db	$D3, $A4, $60, $09
+	db	$56, $02, $A4, $40
+	db	$CD, $25, $0E, $81
 ;
+L489A:
 	clrx
 	lda	X48B4,x
-	sta	X0056
+	sta	RAM1_056
 	lda	X48B3,x
-	beq	L04B2
+	beq	L00B2
 	jsr	L2889
-	bne	L049B
+	bne	L009B
 	ldx	X48B2,x
 	jsr	L47B5,x						;INFO: index jump
-	bclr	6,X005D
+	bclr	6,RAM1_05d
+X48B2:
 	rts
 ;
-	adc	,x
-	inc	X000B,x
-	bhcc	L04BC
-	mul
-	brset	4,X0042,L04AF
-	brset	0,X00ED,L04C2
-	jmp	,x						;INFO: index jump
+X48B3:
+	db	$F9
+X48B4:
+	db	$6C, $0B, $28, $04
+	db	$42, $08, $42, $F3
+	db	$00, $ED, $03, $FC
+	db	$00, $FD, $03, $F2
+	db	$00, $F1, $03, $05
+	db	$33, $00
 ;
-	brset	0,X00FD,L04C6
-	sbc	,x
-	brset	0,X00F1,L04CA
-	brclr	2,X0033,L04CA
+L48CA:
 	jsr	L499F
-	bclr	4,X0000
-	bset	4,X0004
-	bclr	5,X0000
-	bset	5,X0004
-	bclr	3,X0000
-	bset	3,X0004
-X44D9:
+	bclr	4,PortA
+	bset	4,DDRA
+	bclr	5,PortA
+	bset	5,DDRA
+	bclr	3,PortA
+	bset	3,DDRA
 	jsr	L2631
-	bclr	3,X0004
+	bclr	3,DDRA
 	rts
 ;
-	bclr	3,X0004
-	brclr	5,X006A,L04E7
-	brclr	3,X0000,L050A
+L48DF:
+	bclr	3,DDRA
+	brclr	5,RAM1_06a,L00E7
+	brclr	3,PortA,L010A
 	jsr	L499F
-	bclr	5,X0001
+	bclr	5,PortB
 	jsr	L2631
-	bset	5,X0001
-	bset	7,X0094
-	bset	0,X005E
+	bset	5,PortB
+	bset	7,RAM1_094
+	bset	0,RAM1_05e
 	lda	#$05
-	sta	X0063
+	sta	RAM1_063
 	jsr	L490B
-	tst	X0094
-	beq	L050A
+	tst	RAM1_094
+	beq	L010A
 	jsr	L0785
 	jsr	L2631
-	tst	X0063
-	bne	L04F9
+	tst	RAM1_063
+	bne	L00F9
 	rts
 ;
+L490B:
 	clrx
-	lda	X0094
-	bne	L0516
-	lda	X0095
-	beq	L0552
+	lda	RAM1_094
+	bne	L0116
+	lda	RAM1_095
+	beq	L0152
 	ldx	#$08
 	incx
 	asla
-	bcc	L0516
+	bcc	L0116
 	lda	X49C8,x
-	sta	X0050
+	sta	RAM1_050
 	aslx
 	lda	X49D1,x
-	sta	X0059
+	sta	RAM1_059
 	lda	X49D2,x
-	sta	X0056
+	sta	RAM1_056
 	lda	#$07
-	sta	X0058
+	sta	RAM1_058
 	lda	X4A09
-	sta	X0057
+	sta	RAM1_057
 	lda	X4A08
 	tsta
-	beq	L053B
-	bset	0,X0059
+	beq	L013B
+	bset	0,RAM1_059
 	jsr	L2679
-	lda	X0050
+	lda	RAM1_050
 	jsr	L4A14
-	brset	0,X005E,L0552
-	brclr	0,X0050,L0561
+	brset	0,RAM1_05e,L0152
+	brclr	0,RAM1_050,L0161
 	ldx	#$94
 	tst	,x
-L454C:
-	bne	L054F
+	bne	L014F
 	incx
 	jsr	L266E
-	bclr	0,X005E
+	bclr	0,RAM1_05e
 	rts
 ;
-	brset	5,X0000,L059E
-L4558:
-	brset	0,X005E,L059E
+L4955:
+	brset	5,PortA,L019E
+	brset	0,RAM1_05e,L019E
 	jsr	L4A78
-	brset	0,X005E,L059E
+	brset	0,RAM1_05e,L019E
 	ldx	#$0B
 	decx
-	bmi	L059E
+	bmi	L019E
 	cmp	X49E7,x
-	bne	L0563
-	stx	X0050
+	bne	L0163
+	stx	RAM1_050
 	jsr	L2695
-	stx	X0058
-	ldx	X0050
+	stx	RAM1_058
+	ldx	RAM1_050
 	aslx
 	lda	X4A08
-L4578:
-	sta	X0059
+	sta	RAM1_059
 	lda	X4A09
-	sta	X0056
+	sta	RAM1_056
 	lda	X49F3,x
-	sta	X0057
+	sta	RAM1_057
 	lda	X49F2,x
 	tsta
-	beq	L058C
-	bset	0,X0059
+	beq	L018C
+	bset	0,RAM1_059
 	jsr	L2679
-	lda	X0050
-	beq	L059E
+	lda	RAM1_050
+	beq	L019E
 	cmp	#$05
-	beq	L059C
-	bhi	L059E
-	bset	3,X00CB
+	beq	L019C
+	bhi	L019E
+	bset	3,STACK_0cb
 	cmp	X18CB
 	rts
 ;
+L499F:
 	clra
 	ldx	#$07
-	sta	X0260,x
+	sta	RAM2_0260,x
 	decx
-	bne	L05A2
-X45A8:
+	bne	L01A2
 	lda	#$80
-	sta	X0260
-	clr	X006A
-	lda	X007C
+	sta	RAM2_0260
+	clr	RAM1_06a
+	lda	RAM1_07c
 	and	#$40
 	ora	#$A0
-	sta	X007C
-	brset	5,X0069,L05C0
-	bset	2,X0069
-	bset	6,X007C
-	bset	6,X006A
-	clr	X0092
-	clr	X0091
-	clr	X0094
-	clr	X0095
+	sta	RAM1_07c
+	brset	5,RAM1_069,L01C0
+	bset	2,RAM1_069
+	bset	6,RAM1_07c
+	bset	6,RAM1_06a
+	clr	RAM1_092
+	clr	RAM1_091
+	clr	RAM1_094
+	clr	RAM1_095
+X49C8:
 	rts
 ;
-	brset	5,X0002,L05D0
-	sbc	#$82
-	and	#$08
-	brset	6,X00A6,L05E1
-	brset	0,X00CE,L05D6
-	tst	,x
-	brset	0,X007B,L05DC
-	eor	X0000
-	sta	X0002
-	rti
-;
-	brset	0,X00D5,L05E2
-	ldx	X02B0
-	brset	0,X006B,L062E
-	sbc	XD4D6,x
-	sbc	X0048,x
-	lda	X0044,x
-	and	X00E8,x
-	mul
-	brset	0,X006A,L05F7
-;
-	db	$61
-;
-	brset	1,X0060,L05FB
-	lsr	X0002,x
-	neg	X0000,x
-	inc	,x
-	brset	1,X00B8,L0601
-;
-	db	$91
-;
-	brset	0,X00A3,L0607
-X4605:
-	sub	X0000
-;
+	db	$0A, $02, $04, $A2
+	db	$82, $A4, $08, $0C
+X49D1:
+	db	$A6
+X49D2:
+	db	$0E, $00, $CE, $00
+	db	$7D, $00, $7B, $02
+	db	$B8, $00, $B7, $02
+	db	$80, $00, $D5, $00
+	db	$CE, $02, $B0, $00
+	db	$6B
+X49E7:
+	db	$46, $D2, $D4, $D6
+	db	$E2, $48, $E6, $44
+	db	$E4, $E8, $42
+X49F2:
+	db	$00
+X49F3:
+	db	$6A, $02, $61, $02
+	db	$60, $02, $64, $02
+	db	$60, $00, $7C, $02
+	db	$B8, $00, $91, $00
+	db	$A3, $02, $B0, $00
 	db	$92
+X4A08:
+	db	$02
+X4A09:
+	db	$68, $02, $5E, $06
+	db	$18, $04, $19, $00
+	db	$12, $5E, $81
 ;
-	brset	1,X0068,L060D
-;
-	db	$5E
-;
-L460C:
-	brset	3,X0018,L0613
-	bclr	4,X0000
-	bset	1,X005E
-	rts
-;
-	sta	X0057
+L4A14:
+	sta	RAM1_057
 	jsr	L2695
-	stx	X0059
-	bset	1,X005E
+	stx	RAM1_059
+	bset	1,RAM1_05e
 	ldx	#$0C
-L461F:
-	brclr	4,X0000,L066E
+	brclr	4,PortA,L026E
 	decx
-	bne	L061F
-	bclr	2,X0050
-	bset	0,X0050
-	brclr	5,X0000,L0678
+	bne	L021F
+	bclr	2,RAM1_050
+	bset	0,RAM1_050
+	brclr	5,PortA,L0278
 	jsr	L4B09
 	lda	#$C8
-	sta	X0056
+	sta	RAM1_056
 	jsr	L4AF3
-	brclr	0,X005E,L063E
-	bclr	0,X005E
+	brclr	0,RAM1_05e,L023E
+	bclr	0,RAM1_05e
 	jsr	L4AFC
 	jsr	L4AFC
-	brclr	5,X0000,L0678
-	clr	X0051
+	brclr	5,PortA,L0278
+	clr	RAM1_051
 	lda	#$AA
 	jsr	L4B2A
-	lda	X0057
+	lda	RAM1_057
 	jsr	L4B2A
-X4650:
 	jsr	L4AB8
-	lda	X0051
+	lda	RAM1_051
 	jsr	L4B2A
 	jsr	L4AFE
 	jsr	L4B09
@@ -10408,296 +6134,240 @@ X4650:
 	jsr	L4AE3
 	jsr	L4B25
 	cmp	X105E
-	bclr	1,X005E
-	bclr	5,X0004
-	bclr	4,X0004
+	bclr	1,RAM1_05e
+	bclr	5,DDRA
+	bclr	4,DDRA
 	cli
 	rts
 ;
+L4A78:
 	jsr	L4AFE
 	ldx	#$50
 	decx
-	bne	L067D
-	clr	X0059
-	bclr	0,X0050
-	bclr	0,X005E
-	bclr	2,X0050
+	bne	L027D
+	clr	RAM1_059
+	bclr	0,RAM1_050
+	bclr	0,RAM1_05e
+	bclr	2,RAM1_050
 	jsr	L4AE3
 	lda	#$56
 	jsr	L4B28
-	bset	2,X0059
+	bset	2,RAM1_059
 	lda	#$56
 	jsr	L4B28
-	lda	X0052
-	sta	X0058
+	lda	RAM1_052
+	sta	RAM1_058
 	jsr	L2695
-	stx	X0059
-	inc	X0059
-	bclr	2,X0050
-	bsr	L06B8
-	bsr	L06C4
-	dec	X0056
-	bmi	L06AF
-	brclr	5,X0000,L06A8
-	brclr	2,X0050,L066E
-	bclr	0,X005E
-	lda	X0058
-	bra	L0670
+	stx	RAM1_059
+	inc	RAM1_059
+	bclr	2,RAM1_050
+	bsr	L02B8
+	bsr	L02C4
+	dec	RAM1_056
+	bmi	L02AF
+	brclr	5,PortA,L02A8
+	brclr	2,RAM1_050,L026E
+	bclr	0,RAM1_05e
+	lda	RAM1_058
+	bra	L0270
 ;
+L4AB8:
 	clrx
-	lda	X0268,x
-	bsr	L072C
+	lda	RAM2_0268,x
+	bsr	L032C
 	incx
-	dec	X0059
-	bpl	L06B9
+	dec	RAM1_059
+	bpl	L02B9
 	rts
 ;
-	brset	0,X005E,L0725
-	brclr	0,X0050,L06CD
+	db	$00, $5E, $5E, $01
+	db	$50, $03
+;
+L4ACA:
 	jsr	L4AE3
 	sei
-	bclr	4,X0004
-	clr	X0056
-	bset	7,X0056
-	brset	4,X0000,L06E3
-	dec	X0056
-	bpl	L06D4
-	bset	0,X005E
+	bclr	4,DDRA
+	clr	RAM1_056
+	bset	7,RAM1_056
+	brset	4,PortA,L02E3
+	dec	RAM1_056
+	bpl	L02D4
+	bset	0,RAM1_05e
 	jmp	L04C4
 ;
+	db	$9A, $10, $5E
+;
+L4AE3:
+	rts
+;
+	db	$00, $5E, $3E, $01
+	db	$50, $05, $CD, $4A
+	db	$E3, $20, $0F, $3F
+	db	$56, $18, $56
+;
+L4AF3:
+	brclr	4,PortA,L02FC
+	dec	RAM1_056
+	bne	L02F3
+	bra	L02DB
+;
+L4AFC:
+	bclr	5,DDRA
+L4AFE:
+	bclr	4,PortA
+	bset	4,DDRA
+	bclr	4,PortA
 	cli
-	bset	0,X005E
 	rts
 ;
-	brset	0,X005E,L0725
-	brclr	0,X0050,L06EF
-	jsr	L4AE3
-	bra	L06FE
+	db	$00, $5E, $1C
 ;
-	clr	X0056
-	bset	4,X0056
-	brclr	4,X0000,L06FC
-	dec	X0056
-	bne	L06F3
-	bra	L06DB
-;
-	bclr	5,X0004
-	bclr	4,X0000
-	bset	4,X0004
-	bclr	4,X0000
-	cli
+L4B09:
+	bclr	5,PortA
+	bset	5,DDRA
+	bclr	5,PortA
 	rts
 ;
-	brset	0,X005E,L0725
-	bclr	5,X0000
-	bset	5,X0004
-	bclr	5,X0000
+	db	$01, $50, $12, $4D
+	db	$2A, $F0, $1B, $04
+	db	$3F, $56, $18, $56
+	db	$0A, $00, $08, $3A
+	db	$56, $2A, $F9, $20
+	db	$B6
+;
+L4B25:
+	bclr	5,DDRA
 	rts
 ;
-	brclr	0,X0050,L0725
-	tsta
-	bpl	L0706
-	bclr	5,X0004
-	clr	X0056
-L471A:
-	bset	4,X0056
-	brset	5,X0000,L0727
-	dec	X0056
-	bpl	L071C
-	bra	L06DB
-;
-	bclr	5,X0004
-	rts
-;
-	sta	X0051
+L4B28:
+	sta	RAM1_051
+L4B2A:
 	ldx	#$09
-	sta	X0052
-	clr	X005A
-	bset	3,X005A
-	bsr	L0710
-	bsr	L06C4
-	brset	5,X0000,L0739
+	sta	RAM1_052
+	clr	RAM1_05a
+	bset	3,RAM1_05a
+	bsr	L0310
+	bsr	L02C4
+	brset	5,PortA,L0339
 	rola
-	bsr	L06E4
-	dec	X005A
-	bne	L0732
-	brset	0,X0050,L075C
-	sta	X0052
-	tst	X0059
-	bne	L0752
+	bsr	L02E4
+	dec	RAM1_05a
+	bne	L0332
+	brset	0,RAM1_050,L035C
+	sta	RAM1_052
+	tst	RAM1_059
+	bne	L0352
 	ldx	#$51
 	cmp	,x
-	bne	L0764
-	bset	2,X0050
-	bra	L0755
+	bne	L0364
+	bset	2,RAM1_050
+	bra	L0355
 ;
-	sta	X0268,x
-	bsr	L0706
-	jsr	L4AC4
-X475A:
-	bra	L0767
+	db	$D7, $02, $68, $AD
+	db	$AF, $CD, $4A, $C4
+	db	$20, $0B, $1B, $04
+	db	$CD, $4A, $C4, $0B
+	db	$00, $03, $10, $5E
+	db	$9A, $B6, $52, $BB
+	db	$51, $28, $02, $A0
+	db	$10, $B7, $51, $CD
+	db	$4A, $E4, $20, $9A
 ;
-X475C:
-	bclr	5,X0004
-	jsr	L4AC4
-	brclr	5,X0000,L0767
-	bset	0,X005E
-	cli
-	lda	X0052
-	add	X0051
-	bhcc	L076F
-	sub	#$10
-	sta	X0051
-	jsr	L4AE4
-	bra	L0710
-;
-	brset	2,X008B,L07B3
-	brclr	6,X005D,L07B3
+L4B76:
+	brset	2,RAM1_08b,L03B3
+	brclr	6,RAM1_05d,L03B3
 	jmp	L4C26
 ;
-	bclr	4,X00BA
-	bset	7,X005D
-	lda	#$70
-	sta	X0077
-	rts
+L4B7F:
+	db	$19, $BA, $1E, $5D
+	db	$A6, $70, $B7, $77
+	db	$81, $0E, $CE, $29
+	db	$07, $8B, $05, $0F
+	db	$8B, $1B, $17, $8B
+	db	$18, $B3, $3F, $CE
+	db	$1E, $CE, $3C, $8B
+	db	$15, $8B, $A6, $10
+	db	$C7, $02, $9E, $4F
+	db	$C7, $02, $9F, $A6
+	db	$0C, $0F, $8B, $4F
+	db	$C1, $A6, $0B, $12
+	db	$CB, $CD, $24, $E5
+	db	$81, $1F, $CE, $CE
+	db	$02, $9E, $C3, $01
+	db	$01, $26, $0F, $C6
+	db	$02, $9F, $C1, $01
+	db	$02, $26, $07, $BF
+	db	$8C, $B7, $8D, $CC
+	db	$37, $5F, $0E, $8B
+	db	$C3, $CC, $37, $57
+	db	$5F, $C1, $AE, $01
+	db	$A6, $70, $DB, $02
+	db	$9E, $25, $11, $AB
+	db	$A0, $20, $0D, $5F
+	db	$C1, $AE, $01, $A6
+	db	$F7, $DB, $02, $9E
+	db	$29, $02, $AB, $0A
+	db	$D7, $02, $9E, $A6
+	db	$50, $B7, $77, $14
+	db	$CB, $13, $CB, $1E
+	db	$5D, $81, $A6, $0B
+	db	$0E, $CE, $03, $07
+	db	$8B, $06, $A6, $C6
+	db	$CD, $24, $CB, $81
+	db	$CD, $24, $E5, $81
+	db	$06, $8B, $0C, $0E
+	db	$8B, $09, $A6, $20
+	db	$02, $8B, $05, $48
+	db	$00, $8B, $01, $4F
+	db	$5F, $CD, $24, $F5
+	db	$CC, $25, $05
 ;
-	brset	7,X00CE,L07B4
-	brclr	3,X008B,L0793
-	brclr	7,X008B,L07AC
-	bclr	3,X008B
-	bset	4,X00B3
-	clr	X00CE
-	bset	7,X00CE
-	inc	X008B
-	bclr	2,X008B
-	lda	#$10
-	sta	X029E
-	clra
-	sta	X029F
-	lda	#$0C
-	brclr	7,X008B,L07FA
-	cmp	XA60B
-	bset	1,X00CB
-	jsr	L24E5
-	rts
-;
-	bclr	7,X00CE
-	ldx	X029E
-	cpx	X0101
-	bne	L07CD
-	lda	X029F
-	cmp	X0102
-	bne	L07CD
-	stx	X008C
-	sta	X008D
-	jmp	L375F
-;
-	brset	7,X008B,L0793
-	jmp	L3757
-;
+L4C26:
 	clrx
-	cmp	XAE01
-	lda	#$70
-	add	X029E,x
-	bcs	L07EF
-	add	#$A0
-	bra	L07EF
-;
-	clrx
-	cmp	XAE01
-	lda	#$F7
-	add	X029E,x
-	bhcs	L07EF
-	add	#$0A
-	sta	X029E,x
-	lda	#$50
-	sta	X0077
-	bset	2,X00CB
-	bclr	1,X00CB
-	bset	7,X005D
-	rts
-;
-	lda	#$0B
-	brset	7,X00CE,L0005
-	brclr	3,X008B,L000B
-	lda	#$C6
-	jsr	L24CB
-	rts
-;
-	jsr	L24E5
-	rts
-;
-	brset	3,X008B,L001E
-	brset	7,X008B,L001E
-	lda	#$20
-	brset	1,X008B,L001F
-	asla
-	brset	0,X008B,L001F
-	clra
-	clrx
-	jsr	L24F5
-	jmp	L2505
-;
-	clrx
-	brset	7,X00CE,L002C
+	brset	7,STACK_0ce,L042C
 	ldx	#$10
 	lda	X4C43,x
-	sta	X0056
+	sta	RAM1_056
 	lda	X4C42,x
-	beq	L0041
+	beq	L0441
 	jsr	L2889
-	bne	L002C
+	bne	L042C
 	ldx	X4C41,x
 	jsr	L4B7F,x						;INFO: index jump
+X4C41:
 	rts
 ;
-	cmp	X0054,x
+X4C42:
+	db	$E1
+X4C43:
+	db	$54, $41, $54, $E2
+	db	$63, $42, $63, $E3
+	db	$56, $43, $56, $E4
+	db	$65, $44, $65, $FE
+	db	$00, $7E, $09, $00
+	db	$0E, $96, $0C, $B6
+	db	$1D, $B0, $97, $B7
+	db	$99, $B6, $1C, $B2
+	db	$96, $B7, $98, $1F
+	db	$96, $16, $5E, $B6
+	db	$1C, $B7, $96, $B6
+	db	$1D, $B7, $97, $81
 ;
-	db	$41
-;
-	lsrx
-	sbc	X0063,x
-	mul
-	com	X00E3,x
-	rorx
-	coma
-	rorx
-	and	X0065,x
-	lsra
-;
-	db	$65
-;
-	ldx	,x
-	brset	0,X007E,L005F
-	brset	0,X000E,L07EF
-	brset	6,X00B6,L0079
-	sub	X0097
-	sta	X0099
-	lda	X001C
-	sbc	X0096
-	sta	X0098
-	bclr	7,X0096
-	bset	3,X005E
-	lda	X001C
-	sta	X0096
-	lda	X001D
-	sta	X0097
-	rts
-;
+L4C73:
 	lda	#$40
-	brclr	3,X005E,L0064
-	bclr	3,X005E
+	brclr	3,RAM1_05e,L0464
+	bclr	3,RAM1_05e
 	rts
 ;
-L487B:
-	tst	X0098
-	beq	L00B3
-	lsr	X0098
-	ror	X0099
-	lsr	X0098
-	ror	X0099
-	ldx	X009A
-	lda	X009B
+L4C7B:
+	tst	RAM1_098
+	beq	L04B3
+	lsr	RAM1_098
+	ror	RAM1_099
+	lsr	RAM1_098
+	ror	RAM1_099
+	ldx	RAM1_09a
+	lda	RAM1_09b
 	lsrx
 	rora
 	lsrx
@@ -10707,4308 +6377,3197 @@ L487B:
 	lsrx
 	rora
 	nega
-	add	X009B
-	sta	X009B
+	add	RAM1_09b
+	sta	RAM1_09b
 	txa
-	bcs	L009C
+	bcs	L049C
 	inca
 	nega
-	add	X009A
-	sta	X009A
-	lda	X009B
-	add	X0099
-	sta	X009B
-	lda	X009A
-	adc	X0098
-	bcc	L00AF
+	add	RAM1_09a
+	sta	RAM1_09a
+	lda	RAM1_09b
+	add	RAM1_099
+	sta	RAM1_09b
+	lda	RAM1_09a
+	adc	RAM1_098
+	bcc	L04AF
 	lda	#$FF
-	sta	X009A
-	clr	X0098
-X48B3:
+	sta	RAM1_09a
+	clr	RAM1_098
 	rts
 ;
-X48B4:
+L4CB4:
 	ldx	#$AA
 	jsr	L38CC
-	beq	L010C
+	beq	L050C
 	cmp	#$05
-	bhi	L010C
+	bhi	L050C
 	tax
 	decx
-	bclr	6,X0081
+	bclr	6,RAM1_081
 	lda	#$12
 	mul
 	tax
-	lda	X009A
-	sta	X009C
-	lda	X009B
-	sta	X009D
-	clr	X0056
-	lda	X009A
+	lda	RAM1_09a
+	sta	RAM1_09c
+	lda	RAM1_09b
+	sta	RAM1_09d
+	clr	RAM1_056
+	lda	RAM1_09a
 	cmp	X4D6C,x
-	bhi	L00E7
-	bne	L00E1
-	lda	X009B
+	bhi	L04E7
+	bne	L04E1
+	lda	RAM1_09b
 	cmp	X4D6D,x
-L48DF:
-	bcc	L00E7
-	inc	X0056
+	bcc	L04E7
+	inc	RAM1_056
 	incx
 	incx
-	bra	L00D1
+	bra	L04D1
 ;
-	lda	X0056
-	cmp	X0084
-	bcc	L00FF
-	lda	X009C
-	cmp	X4DC6,x
-	bhi	L00FF
-	bne	L00FD
-	lda	X009D
-	cmp	X4DC7,x
-	bcc	L00FF
-	inc	X0056
-	lda	X0056
-	cmp	X0084
-	beq	L010C
-	sta	X0084
-	brclr	5,X00CE,L010C
-	bset	7,X005D
-	rts
-;
-	clra
-	sta	X0051
-	sta	X0053
-	lda	#$04
-	sta	X0052
-	inc	X0053
-	bne	L011F
-	inc	X0052
-	brset	6,X0052,L0130
-	bsr	L014E
-	beq	L0116
-	lda	X0052
-	sta	X02C0,x
-	lda	X0053
-	sta	X02D0,x
-	tstx
-	bne	L0116
-	lda	X0053
-	add	#$FF
-	sta	X0053
-	bcs	L013E
-	dec	X0052
-	bpl	L013E
-	bra	L0116
-;
-	bsr	L014E
-	beq	L0130
-	lda	X0052
-	sta	X02E0,x
-	lda	X0053
-	sta	X02F0,x
-	bra	L0130
-;
-	lda	#$50
-	sta	X0050
-	lda	X0084
-	sta	X0051
-	lda	X0052
-	sta	X0098
-	lda	X0053
-	sta	X0099
-	jsr	L4C7B
-	dec	X0050
-	bne	L0156
-	jsr	L4CB4
-	tax
-	cmp	X0051
-	rts
-;
-	deca
-	brset	2,X003A,L0108
-	neg	X007E
-	bhcs	L01D0
-	bcc	L0185
-	bclr	7,X00F6
-	bset	6,X00B3
-	bset	5,X000B
-	brset	0,X0000,L01DC
-	sub	X4650
-	asl	X0040
-	bil	L0166
-	bhcc	L01B6
-	bls	L01B2
-	bclr	7,X0040
-	bset	6,X0020
-	brset	0,X0000,L0206
-	neg	X0052
-	adc	X003F
-	add	X0034,x
-	bclr	2,X002B
-	sbc	,x
-	bne	L019E
-	brn	L021A
-	bclr	6,X00EC
-	brset	0,X0000,L013F
-	nega
-	lsr	X0072,x
-	deca
-	brclr	1,X003A,L0142
-	neg	X007D
-	bhcs	L020A
-	bcc	L01BF
-	bclr	7,X00F6
-	brset	0,X0000,L017D
-	and	X0075,x
-	neg	X0052
-	adc	X003F
-	add	X0034,x
-	bclr	2,X002B
-	sbc	,x
-	bne	L01C4
-	brn	L0240
-	brset	0,X0000,L0219
-	adc	X003F
-	add	X0034,x
-	bclr	2,X002B
-	sbc	,x
-	bne	L01D2
-	brn	L024E
-X49D2:
-	bclr	6,X00EC
-	bclr	5,X000B
-	brset	0,X0000,L0245
-	bms	L0229
-	bra	L021A
-;
-	bcc	L0211
-	rol	X002A
-	nop
-	bcs	L01E6
-	bra	L019A
-;
-	bclr	6,X004C
-	brset	0,X0000,L0177
-	sub	#$5D
-	sub	X4650
-	asl	X0040
-X49F2:
-	bil	L01D4
-	bhcc	L0224
-	bls	L0220
-	bclr	7,X0040
-	brset	0,X0000,L01C5
-	and	X0075,x
-	neg	X0052
-	adc	X003F
-	add	X0034,x
-	bclr	2,X002B
-	sbc	,x
-X4A08:
-	bne	L020C
-	brn	L0288
-	brset	0,X0000,L020A
-	bclr	6,X008C
-	sub	#$5D
-	sub	X4650
-	asl	X0040
-	bil	L01FA
-	bhcc	L024A
-	bls	L0246
-	brset	0,X0000,L0221
-	brset	0,X0000,L0224
-	brset	0,X0000,L0227
-	brset	0,X0000,L022A
-	brset	0,X0000,L022D
-	brset	0,X0000,L0230
-	brset	0,X0000,L0233
-	brset	0,X0000,L0236
-	brset	0,X0000,L0239
-	brset	0,X0000,L023C
-	brset	0,X0000,L023F
-	brset	0,X0000,L0242
-	brset	0,X0000,L0245
-	brset	0,X0000,L0248
-	brset	0,X0000,L024B
-	brset	0,X0000,L024E
-	brset	0,X0000,L0251
-	brset	0,X0000,L0254
-	brset	0,X0000,L0257
-	brset	0,X0000,L025A
-	brset	0,X0000,L025D
-	brset	0,X0000,L0260
-	brset	0,X0000,L0263
-	brset	0,X0000,L0266
-	brset	0,X0000,L0269
-	brset	0,X0000,L026C
-	brset	0,X0000,L026F
-	brset	0,X0000,L0272
-	brset	0,X0000,L0275
-	brset	0,X0000,L0278
-L4A78:
-	brset	0,X0000,L027B
-	brset	0,X0000,L027E
-	brset	0,X0000,L0281
-	brset	0,X0000,L0284
-	brset	0,X0000,L0287
-	brset	0,X0000,L028A
-	brset	0,X0000,L028D
-	brset	0,X0000,L0290
-	brset	0,X0000,L0293
-	brset	0,X0000,L0296
-	brset	0,X0000,L0299
-	brset	0,X0000,L029C
-	brset	0,X0000,L029F
-	brset	0,X0000,L02A2
-	brset	0,X0000,L02A5
-	brset	0,X0000,L02A8
-	brset	0,X0000,L02AB
-	brset	0,X0000,L02AE
-	brset	0,X0000,L02B1
-	brset	0,X0000,L02B4
-	brset	0,X0000,L02B7
-	brset	0,X0000,L02BA
-	brset	0,X0000,L02BD
-	brset	0,X0000,L02C0
-	brset	0,X0000,L02C3
-	brset	0,X0000,L02C6
-	brset	0,X0000,L02C9
-	brset	0,X0000,L02CC
-	brset	0,X0000,L02CF
-	brset	0,X0000,L02D2
-	brset	0,X0000,L02D5
-	brset	0,X0000,L02D8
-	brset	0,X0000,L02DB
-	brset	0,X0000,L02DE
-	brset	0,X0000,L02E1
-	brset	0,X0000,L02E4
-L4AE4:
-	brset	0,X0000,L02E7
-	brset	0,X0000,L02EA
-	brset	0,X0000,L02ED
-	brset	0,X0000,L02F0
-	brset	0,X0000,L02F3
-L4AF3:
-	brset	0,X0000,L02F6
-	brset	0,X0000,L02F9
-	brset	0,X0000,L02FC
-L4AFC:
-	brset	0,X0000,L02FF
-	brset	0,X0000,L0302
-	brset	0,X0000,L0305
-	brset	0,X0000,L0308
-	brset	0,X0000,L030B
-	brset	0,X0000,L030E
-	brset	0,X0000,L0311
-	brset	0,X0000,L0314
-	brset	0,X0000,L0317
-	brset	0,X0000,L031A
-	brset	0,X0000,L031D
-	brset	0,X0000,L0320
-	brset	0,X0000,L0323
-	brset	0,X0000,L0326
-	brset	0,X0000,L0329
-	brset	0,X0000,L032C
-	brset	0,X0000,L032F
-	brset	0,X0000,L0332
-	brset	0,X0000,L0335
-	brset	0,X0000,L0338
-	brset	0,X0000,L033B
-	brset	0,X0000,L033E
-	brset	0,X0000,L0341
-	brset	0,X0000,L0344
-	brset	0,X0000,L0347
-	brset	0,X0000,L034A
-	brset	0,X0000,L034D
-	brset	0,X0000,L0350
-	brset	0,X0000,L0353
-	brset	0,X0000,L0356
-	brset	0,X0000,L0359
-	brset	0,X0000,L035C
-	brset	0,X0000,L035F
-	brset	0,X0000,L0362
-	brset	0,X0000,L0365
-	brset	0,X0000,L0368
-	brset	0,X0000,L036B
-	brset	0,X0000,L036E
-	brset	0,X0000,L0371
-	brset	0,X0000,L0374
-	brset	0,X0000,L0377
-	brset	0,X0000,L037A
-	brset	0,X0000,L037D
-	brset	0,X0000,L0380
-	brset	0,X0000,L0383
-	brset	0,X0000,L0386
-	brset	0,X0000,L0389
-	brset	0,X0000,L038C
-	brset	0,X0000,L038F
-	brset	0,X0000,L0392
-	brset	0,X0000,L0395
-	brset	0,X0000,L0398
-	brset	0,X0000,L039B
-	brset	0,X0000,L039E
-	brset	0,X0000,L03A1
-	brset	0,X0000,L03A4
-	brset	0,X0000,L03A7
-	brset	0,X0000,L03AA
-	brset	0,X0000,L03AD
-	brset	0,X0000,L03B0
-	brset	0,X0000,L03B3
-	brset	0,X0000,L03B6
-	brset	0,X0000,L03B9
-	brset	0,X0000,L03BC
-	brset	0,X0000,L03BF
-	brset	0,X0000,L03C2
-	brset	0,X0000,L03C5
-	brset	0,X0000,L03C8
-	brset	0,X0000,L03CB
-	brset	0,X0000,L03CE
-	brset	0,X0000,L03D1
-	brset	0,X0000,L03D4
-	brset	0,X0000,L03D7
-	brset	0,X0000,L03DA
-	brset	0,X0000,L03DD
-	brset	0,X0000,L03E0
-	brset	0,X0000,L03E3
-	brset	0,X0000,L03E6
-	brset	0,X0000,L03E9
-	brset	0,X0000,L03EC
-	brset	0,X0000,L03EF
-	brset	0,X0000,L03F2
-	brset	0,X0000,L03F5
-	brset	0,X0000,L03F8
-	brset	0,X0000,L03FB
-	brset	0,X0000,L03FE
-	brset	0,X0000,L0401
-	brset	0,X0000,L0404
-	brset	0,X0000,L0407
-	brset	0,X0000,L040A
-	brset	0,X0000,L040D
-	brset	0,X0000,L0410
-	brset	0,X0000,L0413
-	brset	0,X0000,L0416
-	brset	0,X0000,L0419
-	brset	0,X0000,L041C
-	brset	0,X0000,L041F
-	brset	0,X0000,L0422
-	brset	0,X0000,L0425
-	brset	0,X0000,L0428
-	brset	0,X0000,L042B
-	brset	0,X0000,L042E
-	brset	0,X0000,L0431
-	brset	0,X0000,L0434
-	brset	0,X0000,L0437
-	brset	0,X0000,L043A
-	brset	0,X0000,L043D
-	brset	0,X0000,L0440
-	brset	0,X0000,L0443
-X4C43:
-	brset	0,X0000,L0446
-	brset	0,X0000,L0449
-	brset	0,X0000,L044C
-	brset	0,X0000,L044F
-	brset	0,X0000,L0452
-	brset	0,X0000,L0455
-	brset	0,X0000,L0458
-	brset	0,X0000,L045B
-	brset	0,X0000,L045E
-	brset	0,X0000,L0461
-	brset	0,X0000,L0464
-	brset	0,X0000,L0467
-	brset	0,X0000,L046A
-	brset	0,X0000,L046D
-	brset	0,X0000,L0470
-	brset	0,X0000,L0473
-L4C73:
-	brset	0,X0000,L0476
-	brset	0,X0000,L0479
-	brset	0,X0000,L047C
-	brset	0,X0000,L047F
-	brset	0,X0000,L0482
-	brset	0,X0000,L0485
-	brset	0,X0000,L0488
-	brset	0,X0000,L048B
-	brset	0,X0000,L048E
-	brset	0,X0000,L0491
-	brset	0,X0000,L0494
-	brset	0,X0000,L0497
-	brset	0,X0000,L049A
-	brset	0,X0000,L049D
-	brset	0,X0000,L04A0
-	brset	0,X0000,L04A3
-	brset	0,X0000,L04A6
-	brset	0,X0000,L04A9
-	brset	0,X0000,L04AC
-	brset	0,X0000,L04AF
-	brset	0,X0000,L04B2
-	brset	0,X0000,L04B5
-	brset	0,X0000,L04B8
-	brset	0,X0000,L04BB
-	brset	0,X0000,L04BE
-	brset	0,X0000,L04C1
-	brset	0,X0000,L04C4
-	brset	0,X0000,L04C7
-	brset	0,X0000,L04CA
-	brset	0,X0000,L04CD
-	brset	0,X0000,L04D0
-	brset	0,X0000,L04D3
-	brset	0,X0000,L04D6
-	brset	0,X0000,L04D9
-	brset	0,X0000,L04DC
-	brset	0,X0000,L04DF
-	brset	0,X0000,L04E2
-	brset	0,X0000,L04E5
-	brset	0,X0000,L04E8
-	brset	0,X0000,L04EB
-	brset	0,X0000,L04EE
-	brset	0,X0000,L04F1
-	brset	0,X0000,L04F4
-	brset	0,X0000,L04F7
-	brset	0,X0000,L04FA
-	brset	0,X0000,L04FD
-	brset	0,X0000,L0500
-	brset	0,X0000,L0503
-	brset	0,X0000,L0506
-	brset	0,X0000,L0509
-	brset	0,X0000,L050C
-	brset	0,X0000,L050F
-	brset	0,X0000,L0512
-	brset	0,X0000,L0515
-	brset	0,X0000,L0518
-	brset	0,X0000,L051B
-	brset	0,X0000,L051E
-	brset	0,X0000,L0521
-	brset	0,X0000,L0524
-	brset	0,X0000,L0527
-	brset	0,X0000,L052A
-	brset	0,X0000,L052D
-	brset	0,X0000,L0530
-	brset	0,X0000,L0533
-	brset	0,X0000,L0536
-	brset	0,X0000,L0539
-	brset	0,X0000,L053C
-	brset	0,X0000,L053F
-	brset	0,X0000,L0542
-	brset	0,X0000,L0545
-	brset	0,X0000,L0548
-	brset	0,X0000,L054B
-	brset	0,X0000,L054E
-	brset	0,X0000,L0551
-	brset	0,X0000,L0554
-	brset	0,X0000,L0557
-	brset	0,X0000,L055A
-	brset	0,X0000,L055D
-	brset	0,X0000,L0560
-	brset	0,X0000,L0563
-	brset	0,X0000,L0566
-	brset	0,X0000,L0569
-	brset	0,X0000,L056C
+	db	$B6, $56, $B1, $84
+	db	$24, $12, $B6, $9C
+	db	$D1, $4D, $C6, $22
+	db	$0B, $26, $07, $B6
+	db	$9D, $D1, $4D, $C7
+	db	$24, $02, $3C, $56
+	db	$B6, $56, $B1, $84
+	db	$27, $07, $B7, $84
+	db	$0B, $CE, $02, $1E
+	db	$5D, $81, $4F, $B7
+	db	$51, $B7, $53, $A6
+	db	$04, $B7, $52, $3C
+	db	$53, $26, $05, $3C
+	db	$52, $0C, $52, $11
+	db	$AD, $2D, $27, $F3
+	db	$B6, $52, $D7, $02
+	db	$C0, $B6, $53, $D7
+	db	$02, $D0, $5D, $26
+	db	$E6, $B6, $53, $AB
+	db	$FF, $B7, $53, $25
+	db	$06, $3A, $52, $2A
+	db	$02, $20, $D8, $AD
+	db	$0E, $27, $EE, $B6
+	db	$52, $D7, $02, $E0
+	db	$B6, $53, $D7, $02
+	db	$F0, $20, $E2, $A6
+	db	$50, $B7, $50, $B6
+	db	$84, $B7, $51, $B6
+	db	$52, $B7, $98, $B6
+	db	$53, $B7, $99, $CD
+	db	$4C, $7B, $3A, $50
+	db	$26, $F1, $CD, $4C
+	db	$B4, $97, $B1, $51
+	db	$81
 X4D6C:
-	brset	0,X0000,L056F
-	brset	0,X0000,L0572
-	brset	0,X0000,L0575
-	brset	0,X0000,L0578
-	brset	0,X0000,L057B
-	brset	0,X0000,L057E
-	brset	0,X0000,L0581
-	brset	0,X0000,L0584
-	brset	0,X0000,L0587
-	brset	0,X0000,L058A
-	brset	0,X0000,L058D
-	brset	0,X0000,L0590
-	brset	0,X0000,L0593
-	brset	0,X0000,L0596
-	brset	0,X0000,L0599
-	brset	0,X0000,L059C
-	brset	0,X0000,L059F
-	brset	0,X0000,L05A2
-	brset	0,X0000,L05A5
-	brset	0,X0000,L05A8
-	brset	0,X0000,L05AB
-	brset	0,X0000,L05AE
-	brset	0,X0000,L05B1
-	brset	0,X0000,L05B4
-	brset	0,X0000,L05B7
-	brset	0,X0000,L05BA
-	brset	0,X0000,L05BD
-	brset	0,X0000,L05C0
-	brset	0,X0000,L05C3
-	brset	0,X0000,L05C6
-X4DC6:
-	brset	0,X0000,L05C9
-	brset	0,X0000,L05CC
-	brset	0,X0000,L05CF
-	brset	0,X0000,L05D2
-	brset	0,X0000,L05D5
-	brset	0,X0000,L05D8
-	brset	0,X0000,L05DB
-	brset	0,X0000,L05DE
-	brset	0,X0000,L05E1
-	brset	0,X0000,L05E4
-	brset	0,X0000,L05E7
-	brset	0,X0000,L05EA
-	brset	0,X0000,L05ED
-	brset	0,X0000,L05F0
-	brset	0,X0000,L05F3
-	brset	0,X0000,L05F6
-	brset	0,X0000,L05F9
-	brset	0,X0000,L05FC
-	brset	0,X0000,L05FF
-	brset	0,X0000,L0602
-	brset	0,X0000,L0605
-	brset	0,X0000,L0608
-	brset	0,X0000,L060B
-	brset	0,X0000,L060E
-	brset	0,X0000,L0611
-	brset	0,X0000,L0614
-	brset	0,X0000,L0617
-	brset	0,X0000,L061A
-	brset	0,X0000,L061D
-	brset	0,X0000,L0620
-	brset	0,X0000,L0623
-	brset	0,X0000,L0626
-	brset	0,X0000,L0629
-	brset	0,X0000,L062C
-	brset	0,X0000,L062F
-	brset	0,X0000,L0632
-	brset	0,X0000,L0635
-	brset	0,X0000,L0638
-	brset	0,X0000,L063B
-	brset	0,X0000,L063E
-	brset	0,X0000,L0641
-	brset	0,X0000,L0644
-	brset	0,X0000,L0647
-	brset	0,X0000,L064A
-	brset	0,X0000,L064D
-	brset	0,X0000,L0650
-	brset	0,X0000,L0653
-	brset	0,X0000,L0656
-	brset	0,X0000,L0659
-	brset	0,X0000,L065C
-	brset	0,X0000,L065F
-	brset	0,X0000,L0662
-	brset	0,X0000,L0665
-	brset	0,X0000,L0668
-	brset	0,X0000,L066B
-	brset	0,X0000,L066E
-	brset	0,X0000,L0671
-	brset	0,X0000,L0674
-	brset	0,X0000,L0677
-	brset	0,X0000,L067A
-	brset	0,X0000,L067D
-	brset	0,X0000,L0680
-	brset	0,X0000,L0683
-	brset	0,X0000,L0686
-	brset	0,X0000,L0689
-	brset	0,X0000,L068C
-	brset	0,X0000,L068F
-	brset	0,X0000,L0692
-	brset	0,X0000,L0695
-	brset	0,X0000,L0698
-	brset	0,X0000,L069B
-	brset	0,X0000,L069E
-	brset	0,X0000,L06A1
-	brset	0,X0000,L06A4
-	brset	0,X0000,L06A7
-	brset	0,X0000,L06AA
-	brset	0,X0000,L06AD
-	brset	0,X0000,L06B0
-	brset	0,X0000,L06B3
-	brset	0,X0000,L06B6
-	brset	0,X0000,L06B9
-	brset	0,X0000,L06BC
-	brset	0,X0000,L06BF
-	brset	0,X0000,L06C2
-	brset	0,X0000,L06C5
-	brset	0,X0000,L06C8
-	brset	0,X0000,L06CB
-	brset	0,X0000,L06CE
-	brset	0,X0000,L06D1
-	brset	0,X0000,L06D4
-	brset	0,X0000,L06D7
-	brset	0,X0000,L06DA
-	brset	0,X0000,L06DD
-	brset	0,X0000,L06E0
-	brset	0,X0000,L06E3
-	brset	0,X0000,L06E6
-	brset	0,X0000,L06E9
-	brset	0,X0000,L06EC
-	brset	0,X0000,L06EF
-	brset	0,X0000,L06F2
-	brset	0,X0000,L06F5
-	brset	0,X0000,L06F8
-	brset	0,X0000,L06FB
-	brset	0,X0000,L06FE
-	brset	0,X0000,L0701
-	brset	0,X0000,L0704
-	brset	0,X0000,L0707
-	brset	0,X0000,L070A
-	brset	0,X0000,L070D
-	brset	0,X0000,L0710
-	brset	0,X0000,L0713
-	brset	0,X0000,L0716
-	brset	0,X0000,L0719
-	brset	0,X0000,L071C
-	brset	0,X0000,L071F
-	brset	0,X0000,L0722
-	brset	0,X0000,L0725
-	brset	0,X0000,L0728
-	brset	0,X0000,L072B
-	brset	0,X0000,L072E
-	brset	0,X0000,L0731
-	brset	0,X0000,L0734
-	brset	0,X0000,L0737
-	brset	0,X0000,L073A
-	brset	0,X0000,L073D
-	brset	0,X0000,L0740
-	brset	0,X0000,L0743
-	brset	0,X0000,L0746
-	brset	0,X0000,L0749
-	brset	0,X0000,L074C
-	brset	0,X0000,L074F
-	brset	0,X0000,L0752
-	brset	0,X0000,L0755
-	brset	0,X0000,L0758
-	brset	0,X0000,L075B
-	brset	0,X0000,L075E
-	brset	0,X0000,L0761
-	brset	0,X0000,L0764
-	brset	0,X0000,L0767
-	brset	0,X0000,L076A
-	brset	0,X0000,L076D
-	brset	0,X0000,L0770
-	brset	0,X0000,L0773
-	brset	0,X0000,L0776
-	brset	0,X0000,L0779
-	brset	0,X0000,L077C
-	brset	0,X0000,L077F
-	brset	0,X0000,L0782
-	brset	0,X0000,L0785
-	brset	0,X0000,L0788
-	brset	0,X0000,L078B
-	brset	0,X0000,L078E
-	brset	0,X0000,L0791
-	brset	0,X0000,L0794
-	brset	0,X0000,L0797
-	brset	0,X0000,L079A
-	brset	0,X0000,L079D
-	brset	0,X0000,L07A0
-	brset	0,X0000,L07A3
-	brset	0,X0000,L07A6
-	brset	0,X0000,L07A9
-	brset	0,X0000,L07AC
-	brset	0,X0000,L07AF
-	brset	0,X0000,L07B2
-	brset	0,X0000,L07B5
-	brset	0,X0000,L07B8
-	brset	0,X0000,L07BB
-	brset	0,X0000,L07BE
-	brset	0,X0000,L07C1
-	brset	0,X0000,L07C4
-	brset	0,X0000,L07C7
-	brset	0,X0000,L07CA
-	brset	0,X0000,L07CD
-	brset	0,X0000,L07D0
-	brset	0,X0000,L07D3
-	brset	0,X0000,L07D6
-	brset	0,X0000,L07D9
-	brset	0,X0000,L07DC
-	brset	0,X0000,L07DF
-	brset	0,X0000,L07E2
-	brset	0,X0000,L07E5
-	brset	0,X0000,L07E8
-	brset	0,X0000,L07EB
-	brset	0,X0000,L07EE
-	brset	0,X0000,L07F1
-	brset	0,X0000,L07F4
-	brset	0,X0000,L07F7
-	brset	0,X0000,L07FA
-	brset	0,X0000,L07FD
-	brset	0,X0000,L0000
-	brset	0,X0000,L0003
-	brset	0,X0000,L0006
-	brset	0,X0000,L0009
-	brset	0,X0000,L000C
-	brset	0,X0000,L000F
-	brset	0,X0000,L0012
-	brset	0,X0000,L0015
-	brset	0,X0000,L0018
-	brset	0,X0000,L001B
-	brset	0,X0000,L001E
-	brset	0,X0000,L0021
-	brset	0,X0000,L0024
-	brset	0,X0000,L0027
-	brset	0,X0000,L002A
-	brset	0,X0000,L002D
-	brset	0,X0000,L0030
-	brset	0,X0000,L0033
-	brset	0,X0000,L0036
-	brset	0,X0000,L0039
-	brset	0,X0000,L003C
-	brset	0,X0000,L003F
-	brset	0,X0000,L0042
-	brset	0,X0000,L0045
-	brset	0,X0000,L0048
-	brset	0,X0000,L004B
-	brset	0,X0000,L004E
-	brset	0,X0000,L0051
-	brset	0,X0000,L0054
-	brset	0,X0000,L0057
-	brset	0,X0000,L005A
-	brset	0,X0000,L005D
-	brset	0,X0000,L0060
-	brset	0,X0000,L0063
-	brset	0,X0000,L0066
-	brset	0,X0000,L0069
-	brset	0,X0000,L006C
-	brset	0,X0000,L006F
-	brset	0,X0000,L0072
-	brset	0,X0000,L0075
-	brset	0,X0000,L0078
-	brset	0,X0000,L007B
-	brset	0,X0000,L007E
-	brset	0,X0000,L0081
-	brset	0,X0000,L0084
-	brset	0,X0000,L0087
-	brset	0,X0000,L008A
-	brset	0,X0000,L008D
-	brset	0,X0000,L0090
-	brset	0,X0000,L0093
-	brset	0,X0000,L0096
-	brset	0,X0000,L0099
-	brset	0,X0000,L009C
-	brset	0,X0000,L009F
-	brset	0,X0000,L00A2
-	brset	0,X0000,L00A5
-	brset	0,X0000,L00A8
-	brset	0,X0000,L00AB
-	brset	0,X0000,L00AE
-	brset	0,X0000,L00B1
-	brset	0,X0000,L00B4
-	brset	0,X0000,L00B7
-	brset	0,X0000,L00BA
-	brset	0,X0000,L00BD
-	brset	0,X0000,L00C0
-	brset	0,X0000,L00C3
-	brset	0,X0000,L00C6
-	brset	0,X0000,L00C9
-	brset	0,X0000,L00CC
-	brset	0,X0000,L00CF
-	brset	0,X0000,L00D2
-	brset	0,X0000,L00D5
-	brset	0,X0000,L00D8
-	brset	0,X0000,L00DB
-	brset	0,X0000,L00DE
-	brset	0,X0000,L00E1
-	brset	0,X0000,L00E4
-	brset	0,X0000,L00E7
-	brset	0,X0000,L00EA
-	brset	0,X0000,L00ED
-	brset	0,X0000,L00F0
-	brset	0,X0000,L00F3
-	brset	0,X0000,L00F6
-	brset	0,X0000,L00F9
-	brset	0,X0000,L00FC
-	brset	0,X0000,L00FF
-	brset	0,X0000,L0102
-	brset	0,X0000,L0105
-	brset	0,X0000,L0108
-	brset	0,X0000,L010B
-	brset	0,X0000,L010E
-	brset	0,X0000,L0111
-	brset	0,X0000,L0114
-	brset	0,X0000,L0117
-	brset	0,X0000,L011A
-	brset	0,X0000,L011D
-	brset	0,X0000,L0120
-	brset	0,X0000,L0123
-	brset	0,X0000,L0126
-	brset	0,X0000,L0129
-	brset	0,X0000,L012C
-	brset	0,X0000,L012F
-	brset	0,X0000,L0132
-	brset	0,X0000,L0135
-	brset	0,X0000,L0138
-	brset	0,X0000,L013B
-	brset	0,X0000,L013E
-	brset	0,X0000,L0141
-	brset	0,X0000,L0144
-	brset	0,X0000,L0147
-	brset	0,X0000,L014A
-	brset	0,X0000,L014D
-	brset	0,X0000,L0150
-	brset	0,X0000,L0153
-	brset	0,X0000,L0156
-	brset	0,X0000,L0159
-	brset	0,X0000,L015C
-	brset	0,X0000,L015F
-	brset	0,X0000,L0162
-	brset	0,X0000,L0165
-	brset	0,X0000,L0168
-	brset	0,X0000,L016B
-	brset	0,X0000,L016E
-	brset	0,X0000,L0171
-	brset	0,X0000,L0174
-	brset	0,X0000,L0177
-	brset	0,X0000,L017A
-	brset	0,X0000,L017D
-	brset	0,X0000,L0180
-	brset	0,X0000,L0183
-	brset	0,X0000,L0186
-	brset	0,X0000,L0189
-	brset	0,X0000,L018C
-	brset	0,X0000,L018F
-	brset	0,X0000,L0192
-	brset	0,X0000,L0195
-	brset	0,X0000,L0198
-	brset	0,X0000,L019B
-	brset	0,X0000,L019E
-	brset	0,X0000,L01A1
-	brset	0,X0000,L01A4
-	brset	0,X0000,L01A7
-	brset	0,X0000,L01AA
-	brset	0,X0000,L01AD
-	brset	0,X0000,L01B0
-	brset	0,X0000,L01B3
-	brset	0,X0000,L01B6
-	brset	0,X0000,L01B9
-	brset	0,X0000,L01BC
-	brset	0,X0000,L01BF
-	brset	0,X0000,L01C2
-	brset	0,X0000,L01C5
-	brset	0,X0000,L01C8
-	brset	0,X0000,L01CB
-	brset	0,X0000,L01CE
-	brset	0,X0000,L01D1
-	brset	0,X0000,L01D4
-	brset	0,X0000,L01D7
-	brset	0,X0000,L01DA
-	brset	0,X0000,L01DD
-	brset	0,X0000,L01E0
-	brset	0,X0000,L01E3
-	brset	0,X0000,L01E6
-	brset	0,X0000,L01E9
-	brset	0,X0000,L01EC
-X51EC:
-	brset	0,X0000,L01EF
-	brset	0,X0000,L01F2
-	brset	0,X0000,L01F5
-	brset	0,X0000,L01F8
-	brset	0,X0000,L01FB
-	brset	0,X0000,L01FE
-	brset	0,X0000,L0201
-	brset	0,X0000,L0204
-	brset	0,X0000,L0207
-	brset	0,X0000,L020A
-	brset	0,X0000,L020D
-	brset	0,X0000,L0210
-	brset	0,X0000,L0213
-	brset	0,X0000,L0216
-	brset	0,X0000,L0219
-	brset	0,X0000,L021C
-	brset	0,X0000,L021F
-	brset	0,X0000,L0222
-	brset	0,X0000,L0225
-	brset	0,X0000,L0228
-	brset	0,X0000,L022B
-	brset	0,X0000,L022E
-	brset	0,X0000,L0231
-	brset	0,X0000,L0234
-	brset	0,X0000,L0237
-	brset	0,X0000,L023A
-	brset	0,X0000,L023D
-	brset	0,X0000,L0240
-	brset	0,X0000,L0243
-	brset	0,X0000,L0246
-	brset	0,X0000,L0249
-	brset	0,X0000,L024C
-	brset	0,X0000,L024F
-	brset	0,X0000,L0252
-	brset	0,X0000,L0255
-	brset	0,X0000,L0258
-	brset	0,X0000,L025B
-	brset	0,X0000,L025E
-	brset	0,X0000,L0261
-	brset	0,X0000,L0264
-	brset	0,X0000,L0267
-	brset	0,X0000,L026A
-	brset	0,X0000,L026D
-	brset	0,X0000,L0270
-	brset	0,X0000,L0273
-	brset	0,X0000,L0276
-	brset	0,X0000,L0279
-	brset	0,X0000,L027C
-	brset	0,X0000,L027F
-	brset	0,X0000,L0282
-	brset	0,X0000,L0285
-	brset	0,X0000,L0288
-	brset	0,X0000,L028B
-	brset	0,X0000,L028E
-	brset	0,X0000,L0291
-	brset	0,X0000,L0294
-	brset	0,X0000,L0297
-	brset	0,X0000,L029A
-	brset	0,X0000,L029D
-	brset	0,X0000,L02A0
-	brset	0,X0000,L02A3
-	brset	0,X0000,L02A6
-	brset	0,X0000,L02A9
-	brset	0,X0000,L02AC
-	brset	0,X0000,L02AF
-	brset	0,X0000,L02B2
-	brset	0,X0000,L02B5
-	brset	0,X0000,L02B8
-	brset	0,X0000,L02BB
-	brset	0,X0000,L02BE
-	brset	0,X0000,L02C1
-	brset	0,X0000,L02C4
-	brset	0,X0000,L02C7
-	brset	0,X0000,L02CA
-	brset	0,X0000,L02CD
-	brset	0,X0000,L02D0
-	brset	0,X0000,L02D3
-	brset	0,X0000,L02D6
-	brset	0,X0000,L02D9
-	brset	0,X0000,L02DC
-	brset	0,X0000,L02DF
-	brset	0,X0000,L02E2
-	brset	0,X0000,L02E5
-	brset	0,X0000,L02E8
-	brset	0,X0000,L02EB
-	brset	0,X0000,L02EE
-	brset	0,X0000,L02F1
-	brset	0,X0000,L02F4
-	brset	0,X0000,L02F7
-	brset	0,X0000,L02FA
-	brset	0,X0000,L02FD
-	brset	0,X0000,L0300
-	brset	0,X0000,L0303
-	brset	0,X0000,L0306
-	brset	0,X0000,L0309
-	brset	0,X0000,L030C
-	brset	0,X0000,L030F
-	brset	0,X0000,L0312
-	brset	0,X0000,L0315
-	brset	0,X0000,L0318
-	brset	0,X0000,L031B
-	brset	0,X0000,L031E
-	brset	0,X0000,L0321
-	brset	0,X0000,L0324
-	brset	0,X0000,L0327
-	brset	0,X0000,L032A
-	brset	0,X0000,L032D
-	brset	0,X0000,L0330
-	brset	0,X0000,L0333
-	brset	0,X0000,L0336
-	brset	0,X0000,L0339
-	brset	0,X0000,L033C
-	brset	0,X0000,L033F
-	brset	0,X0000,L0342
-	brset	0,X0000,L0345
-	brset	0,X0000,L0348
-	brset	0,X0000,L034B
-	brset	0,X0000,L034E
-	brset	0,X0000,L0351
-	brset	0,X0000,L0354
-	brset	0,X0000,L0357
-	brset	0,X0000,L035A
-	brset	0,X0000,L035D
-	brset	0,X0000,L0360
-	brset	0,X0000,L0363
-	brset	0,X0000,L0366
-	brset	0,X0000,L0369
-	brset	0,X0000,L036C
-	brset	0,X0000,L036F
-	brset	0,X0000,L0372
-	brset	0,X0000,L0375
-	brset	0,X0000,L0378
-	brset	0,X0000,L037B
-	brset	0,X0000,L037E
-	brset	0,X0000,L0381
-	brset	0,X0000,L0384
-	brset	0,X0000,L0387
-	brset	0,X0000,L038A
-	brset	0,X0000,L038D
-	brset	0,X0000,L0390
-	brset	0,X0000,L0393
-	brset	0,X0000,L0396
-	brset	0,X0000,L0399
-	brset	0,X0000,L039C
-	brset	0,X0000,L039F
-	brset	0,X0000,L03A2
-	brset	0,X0000,L03A5
-	brset	0,X0000,L03A8
-	brset	0,X0000,L03AB
-	brset	0,X0000,L03AE
-	brset	0,X0000,L03B1
-	brset	0,X0000,L03B4
-	brset	0,X0000,L03B7
-	brset	0,X0000,L03BA
-	brset	0,X0000,L03BD
-	brset	0,X0000,L03C0
-	brset	0,X0000,L03C3
-	brset	0,X0000,L03C6
-	brset	0,X0000,L03C9
-	brset	0,X0000,L03CC
-	brset	0,X0000,L03CF
-	brset	0,X0000,L03D2
-	brset	0,X0000,L03D5
-	brset	0,X0000,L03D8
-	brset	0,X0000,L03DB
-	brset	0,X0000,L03DE
-	brset	0,X0000,L03E1
-	brset	0,X0000,L03E4
-	brset	0,X0000,L03E7
-	brset	0,X0000,L03EA
-	brset	0,X0000,L03ED
-	brset	0,X0000,L03F0
-	brset	0,X0000,L03F3
-	brset	0,X0000,L03F6
-	brset	0,X0000,L03F9
-	brset	0,X0000,L03FC
-	brset	0,X0000,L03FF
-	brset	0,X0000,L0402
-	brset	0,X0000,L0405
-	brset	0,X0000,L0408
-	brset	0,X0000,L040B
-	brset	0,X0000,L040E
-	brset	0,X0000,L0411
-	brset	0,X0000,L0414
-	brset	0,X0000,L0417
-	brset	0,X0000,L041A
-	brset	0,X0000,L041D
-	brset	0,X0000,L0420
-	brset	0,X0000,L0423
-	brset	0,X0000,L0426
-	brset	0,X0000,L0429
-	brset	0,X0000,L042C
-	brset	0,X0000,L042F
-	brset	0,X0000,L0432
-	brset	0,X0000,L0435
-	brset	0,X0000,L0438
-	brset	0,X0000,L043B
-	brset	0,X0000,L043E
-	brset	0,X0000,L0441
-	brset	0,X0000,L0444
-	brset	0,X0000,L0447
-	brset	0,X0000,L044A
-	brset	0,X0000,L044D
-	brset	0,X0000,L0450
-	brset	0,X0000,L0453
-	brset	0,X0000,L0456
-	brset	0,X0000,L0459
-	brset	0,X0000,L045C
-	brset	0,X0000,L045F
-	brset	0,X0000,L0462
-	brset	0,X0000,L0465
-	brset	0,X0000,L0468
-	brset	0,X0000,L046B
-	brset	0,X0000,L046E
-	brset	0,X0000,L0471
-	brset	0,X0000,L0474
-	brset	0,X0000,L0477
-	brset	0,X0000,L047A
-	brset	0,X0000,L047D
-	brset	0,X0000,L0480
-	brset	0,X0000,L0483
-	brset	0,X0000,L0486
-	brset	0,X0000,L0489
-	brset	0,X0000,L048C
-	brset	0,X0000,L048F
-	brset	0,X0000,L0492
-	brset	0,X0000,L0495
-	brset	0,X0000,L0498
-	brset	0,X0000,L049B
-	brset	0,X0000,L049E
-	brset	0,X0000,L04A1
-	brset	0,X0000,L04A4
-	brset	0,X0000,L04A7
-	brset	0,X0000,L04AA
-	brset	0,X0000,L04AD
-	brset	0,X0000,L04B0
-	brset	0,X0000,L04B3
-	brset	0,X0000,L04B6
-	brset	0,X0000,L04B9
-	brset	0,X0000,L04BC
-	brset	0,X0000,L04BF
-	brset	0,X0000,L04C2
-	brset	0,X0000,L04C5
-	brset	0,X0000,L04C8
-	brset	0,X0000,L04CB
-	brset	0,X0000,L04CE
-	brset	0,X0000,L04D1
-	brset	0,X0000,L04D4
-	brset	0,X0000,L04D7
-	brset	0,X0000,L04DA
-	brset	0,X0000,L04DD
-	brset	0,X0000,L04E0
-	brset	0,X0000,L04E3
-	brset	0,X0000,L04E6
-	brset	0,X0000,L04E9
-	brset	0,X0000,L04EC
-	brset	0,X0000,L04EF
-	brset	0,X0000,L04F2
-X54F2:
-	brset	0,X0000,L04F5
-	brset	0,X0000,L04F8
-	brset	0,X0000,L04FB
-	brset	0,X0000,L04FE
-	brset	0,X0000,L0501
-	brset	0,X0000,L0504
-	brset	0,X0000,L0507
-	brset	0,X0000,L050A
-	brset	0,X0000,L050D
-	brset	0,X0000,L0510
-	brset	0,X0000,L0513
-	brset	0,X0000,L0516
-	brset	0,X0000,L0519
-	brset	0,X0000,L051C
-	brset	0,X0000,L051F
-	brset	0,X0000,L0522
-	brset	0,X0000,L0525
-	brset	0,X0000,L0528
-	brset	0,X0000,L052B
-	brset	0,X0000,L052E
-	brset	0,X0000,L0531
-	brset	0,X0000,L0534
-	brset	0,X0000,L0537
-	brset	0,X0000,L053A
-	brset	0,X0000,L053D
-	brset	0,X0000,L0540
-	brset	0,X0000,L0543
-	brset	0,X0000,L0546
-	brset	0,X0000,L0549
-	brset	0,X0000,L054C
-	brset	0,X0000,L054F
-	brset	0,X0000,L0552
-	brset	0,X0000,L0555
-	brset	0,X0000,L0558
-	brset	0,X0000,L055B
-	brset	0,X0000,L055E
-	brset	0,X0000,L0561
-	brset	0,X0000,L0564
-	brset	0,X0000,L0567
-	brset	0,X0000,L056A
-	brset	0,X0000,L056D
-	brset	0,X0000,L0570
-	brset	0,X0000,L0573
-	brset	0,X0000,L0576
-	brset	0,X0000,L0579
-	brset	0,X0000,L057C
-	brset	0,X0000,L057F
-	brset	0,X0000,L0582
-	brset	0,X0000,L0585
-	brset	0,X0000,L0588
-	brset	0,X0000,L058B
-	brset	0,X0000,L058E
-	brset	0,X0000,L0591
-	brset	0,X0000,L0594
-	brset	0,X0000,L0597
-	brset	0,X0000,L059A
-	brset	0,X0000,L059D
-	brset	0,X0000,L05A0
-	brset	0,X0000,L05A3
-	brset	0,X0000,L05A6
-	brset	0,X0000,L05A9
-	brset	0,X0000,L05AC
-	brset	0,X0000,L05AF
-	brset	0,X0000,L05B2
-	brset	0,X0000,L05B5
-	brset	0,X0000,L05B8
-	brset	0,X0000,L05BB
-	brset	0,X0000,L05BE
-	brset	0,X0000,L05C1
-	brset	0,X0000,L05C4
-	brset	0,X0000,L05C7
-	brset	0,X0000,L05CA
-	brset	0,X0000,L05CD
-	brset	0,X0000,L05D0
-	brset	0,X0000,L05D3
-	brset	0,X0000,L05D6
-	brset	0,X0000,L05D9
-	brset	0,X0000,L05DC
-	brset	0,X0000,L05DF
-	brset	0,X0000,L05E2
-	brset	0,X0000,L05E5
-	brset	0,X0000,L05E8
-	brset	0,X0000,L05EB
-	brset	0,X0000,L05EE
-	brset	0,X0000,L05F1
-	brset	0,X0000,L05F4
-	brset	0,X0000,L05F7
-	brset	0,X0000,L05FA
-	brset	0,X0000,L05FD
-	brset	0,X0000,L0600
-	brset	0,X0000,L0603
-	brset	0,X0000,L0606
-	brset	0,X0000,L0609
-	brset	0,X0000,L060C
-	brset	0,X0000,L060F
-	brset	0,X0000,L0612
-	brset	0,X0000,L0615
-	brset	0,X0000,L0618
-	brset	0,X0000,L061B
-	brset	0,X0000,L061E
-	brset	0,X0000,L0621
-	brset	0,X0000,L0624
-	brset	0,X0000,L0627
-	brset	0,X0000,L062A
-	brset	0,X0000,L062D
-	brset	0,X0000,L0630
-	brset	0,X0000,L0633
-	brset	0,X0000,L0636
-	brset	0,X0000,L0639
-	brset	0,X0000,L063C
-	brset	0,X0000,L063F
-	brset	0,X0000,L0642
-	brset	0,X0000,L0645
-	brset	0,X0000,L0648
-	brset	0,X0000,L064B
-	brset	0,X0000,L064E
-	brset	0,X0000,L0651
-	brset	0,X0000,L0654
-	brset	0,X0000,L0657
-	brset	0,X0000,L065A
-	brset	0,X0000,L065D
-	brset	0,X0000,L0660
-	brset	0,X0000,L0663
-	brset	0,X0000,L0666
-	brset	0,X0000,L0669
-	brset	0,X0000,L066C
-	brset	0,X0000,L066F
-	brset	0,X0000,L0672
-	brset	0,X0000,L0675
-	brset	0,X0000,L0678
-	brset	0,X0000,L067B
-	brset	0,X0000,L067E
-	brset	0,X0000,L0681
-	brset	0,X0000,L0684
-	brset	0,X0000,L0687
-	brset	0,X0000,L068A
-	brset	0,X0000,L068D
-	brset	0,X0000,L0690
-	brset	0,X0000,L0693
-	brset	0,X0000,L0696
-	brset	0,X0000,L0699
-	brset	0,X0000,L069C
-	brset	0,X0000,L069F
-	brset	0,X0000,L06A2
-	brset	0,X0000,L06A5
-	brset	0,X0000,L06A8
-	brset	0,X0000,L06AB
-	brset	0,X0000,L06AE
-	brset	0,X0000,L06B1
-	brset	0,X0000,L06B4
-	brset	0,X0000,L06B7
-	brset	0,X0000,L06BA
-	brset	0,X0000,L06BD
-	brset	0,X0000,L06C0
-	brset	0,X0000,L06C3
-	brset	0,X0000,L06C6
-	brset	0,X0000,L06C9
-	brset	0,X0000,L06CC
-	brset	0,X0000,L06CF
-	brset	0,X0000,L06D2
-	brset	0,X0000,L06D5
-	brset	0,X0000,L06D8
-	brset	0,X0000,L06DB
-	brset	0,X0000,L06DE
-	brset	0,X0000,L06E1
-	brset	0,X0000,L06E4
-	brset	0,X0000,L06E7
-	brset	0,X0000,L06EA
-	brset	0,X0000,L06ED
-	brset	0,X0000,L06F0
-	brset	0,X0000,L06F3
-	brset	0,X0000,L06F6
-	brset	0,X0000,L06F9
-	brset	0,X0000,L06FC
-	brset	0,X0000,L06FF
-	brset	0,X0000,L0702
-	brset	0,X0000,L0705
-	brset	0,X0000,L0708
-	brset	0,X0000,L070B
-	brset	0,X0000,L070E
-	brset	0,X0000,L0711
-	brset	0,X0000,L0714
-	brset	0,X0000,L0717
-	brset	0,X0000,L071A
-	brset	0,X0000,L071D
-	brset	0,X0000,L0720
-	brset	0,X0000,L0723
-	brset	0,X0000,L0726
-	brset	0,X0000,L0729
-	brset	0,X0000,L072C
-	brset	0,X0000,L072F
-	brset	0,X0000,L0732
-	brset	0,X0000,L0735
-	brset	0,X0000,L0738
-	brset	0,X0000,L073B
-	brset	0,X0000,L073E
-	brset	0,X0000,L0741
-	brset	0,X0000,L0744
-	brset	0,X0000,L0747
-	brset	0,X0000,L074A
-	brset	0,X0000,L074D
-	brset	0,X0000,L0750
-	brset	0,X0000,L0753
-	brset	0,X0000,L0756
-	brset	0,X0000,L0759
-	brset	0,X0000,L075C
-	brset	0,X0000,L075F
-	brset	0,X0000,L0762
-	brset	0,X0000,L0765
-	brset	0,X0000,L0768
-	brset	0,X0000,L076B
-	brset	0,X0000,L076E
-	brset	0,X0000,L0771
-	brset	0,X0000,L0774
-	brset	0,X0000,L0777
-	brset	0,X0000,L077A
-	brset	0,X0000,L077D
-	brset	0,X0000,L0780
-	brset	0,X0000,L0783
-	brset	0,X0000,L0786
-	brset	0,X0000,L0789
-	brset	0,X0000,L078C
-	brset	0,X0000,L078F
-	brset	0,X0000,L0792
-	brset	0,X0000,L0795
-	brset	0,X0000,L0798
-	brset	0,X0000,L079B
-	brset	0,X0000,L079E
-	brset	0,X0000,L07A1
-	brset	0,X0000,L07A4
-	brset	0,X0000,L07A7
-	brset	0,X0000,L07AA
-	brset	0,X0000,L07AD
-	brset	0,X0000,L07B0
-	brset	0,X0000,L07B3
-	brset	0,X0000,L07B6
-	brset	0,X0000,L07B9
-	brset	0,X0000,L07BC
-	brset	0,X0000,L07BF
-	brset	0,X0000,L07C2
-	brset	0,X0000,L07C5
-	brset	0,X0000,L07C8
-	brset	0,X0000,L07CB
-	brset	0,X0000,L07CE
-	brset	0,X0000,L07D1
-	brset	0,X0000,L07D4
-	brset	0,X0000,L07D7
-	brset	0,X0000,L07DA
-	brset	0,X0000,L07DD
-	brset	0,X0000,L07E0
-	brset	0,X0000,L07E3
-	brset	0,X0000,L07E6
-	brset	0,X0000,L07E9
-	brset	0,X0000,L07EC
-	brset	0,X0000,L07EF
-	brset	0,X0000,L07F2
-	brset	0,X0000,L07F5
-	brset	0,X0000,L07F8
-	brset	0,X0000,L07FB
-	brset	0,X0000,L07FE
-	brset	0,X0000,L0001
-	brset	0,X0000,L0004
-	brset	0,X0000,L0007
-	brset	0,X0000,L000A
-	brset	0,X0000,L000D
-	brset	0,X0000,L0010
-	brset	0,X0000,L0013
-	brset	0,X0000,L0016
-	brset	0,X0000,L0019
-	brset	0,X0000,L001C
-	brset	0,X0000,L001F
-	brset	0,X0000,L0022
-	brset	0,X0000,L0025
-	brset	0,X0000,L0028
-	brset	0,X0000,L002B
-	brset	0,X0000,L002E
-	brset	0,X0000,L0031
-	brset	0,X0000,L0034
-	brset	0,X0000,L0037
-	brset	0,X0000,L003A
-	brset	0,X0000,L003D
-	brset	0,X0000,L0040
-	brset	0,X0000,L0043
-	brset	0,X0000,L0046
-	brset	0,X0000,L0049
-	brset	0,X0000,L004C
-	brset	0,X0000,L004F
-	brset	0,X0000,L0052
-	brset	0,X0000,L0055
-	brset	0,X0000,L0058
-	brset	0,X0000,L005B
-	brset	0,X0000,L005E
-	brset	0,X0000,L0061
-	brset	0,X0000,L0064
-	brset	0,X0000,L0067
-	brset	0,X0000,L006A
-	brset	0,X0000,L006D
-	brset	0,X0000,L0070
-	brset	0,X0000,L0073
-	brset	0,X0000,L0076
-	brset	0,X0000,L0079
-	brset	0,X0000,L007C
-	brset	0,X0000,L007F
-	brset	0,X0000,L0082
-	brset	0,X0000,L0085
-	brset	0,X0000,L0088
-	brset	0,X0000,L008B
-	brset	0,X0000,L008E
-	brset	0,X0000,L0091
-	brset	0,X0000,L0094
-	brset	0,X0000,L0097
-	brset	0,X0000,L009A
-	brset	0,X0000,L009D
-	brset	0,X0000,L00A0
-	brset	0,X0000,L00A3
-	brset	0,X0000,L00A6
-	brset	0,X0000,L00A9
-	brset	0,X0000,L00AC
-	brset	0,X0000,L00AF
-	brset	0,X0000,L00B2
-	brset	0,X0000,L00B5
-	brset	0,X0000,L00B8
-	brset	0,X0000,L00BB
-	brset	0,X0000,L00BE
-	brset	0,X0000,L00C1
-	brset	0,X0000,L00C4
-	brset	0,X0000,L00C7
-	brset	0,X0000,L00CA
-	brset	0,X0000,L00CD
-	brset	0,X0000,L00D0
-	brset	0,X0000,L00D3
-	brset	0,X0000,L00D6
-	brset	0,X0000,L00D9
-	brset	0,X0000,L00DC
-	brset	0,X0000,L00DF
-	brset	0,X0000,L00E2
-	brset	0,X0000,L00E5
-	brset	0,X0000,L00E8
-	brset	0,X0000,L00EB
-	brset	0,X0000,L00EE
-	brset	0,X0000,L00F1
-	brset	0,X0000,L00F4
-	brset	0,X0000,L00F7
-	brset	0,X0000,L00FA
-	brset	0,X0000,L00FD
-	brset	0,X0000,L0100
-	brset	0,X0000,L0103
-	brset	0,X0000,L0106
-	brset	0,X0000,L0109
-	brset	0,X0000,L010C
-	brset	0,X0000,L010F
-	brset	0,X0000,L0112
-	brset	0,X0000,L0115
-	brset	0,X0000,L0118
-	brset	0,X0000,L011B
-	brset	0,X0000,L011E
-	brset	0,X0000,L0121
-	brset	0,X0000,L0124
-	brset	0,X0000,L0127
-	brset	0,X0000,L012A
-	brset	0,X0000,L012D
-	brset	0,X0000,L0130
-	brset	0,X0000,L0133
-	brset	0,X0000,L0136
-	brset	0,X0000,L0139
-	brset	0,X0000,L013C
-	brset	0,X0000,L013F
-	brset	0,X0000,L0142
-	brset	0,X0000,L0145
-	brset	0,X0000,L0148
-	brset	0,X0000,L014B
-	brset	0,X0000,L014E
-	brset	0,X0000,L0151
-	brset	0,X0000,L0154
-	brset	0,X0000,L0157
-	brset	0,X0000,L015A
-	brset	0,X0000,L015D
-	brset	0,X0000,L0160
-	brset	0,X0000,L0163
-	brset	0,X0000,L0166
-	brset	0,X0000,L0169
-	brset	0,X0000,L016C
-	brset	0,X0000,L016F
-	brset	0,X0000,L0172
-	brset	0,X0000,L0175
-	brset	0,X0000,L0178
-	brset	0,X0000,L017B
-	brset	0,X0000,L017E
-	brset	0,X0000,L0181
-	brset	0,X0000,L0184
-	brset	0,X0000,L0187
-	brset	0,X0000,L018A
-	brset	0,X0000,L018D
-	brset	0,X0000,L0190
-	brset	0,X0000,L0193
-	brset	0,X0000,L0196
-	brset	0,X0000,L0199
-	brset	0,X0000,L019C
-	brset	0,X0000,L019F
-	brset	0,X0000,L01A2
-	brset	0,X0000,L01A5
-	brset	0,X0000,L01A8
-	brset	0,X0000,L01AB
-	brset	0,X0000,L01AE
-	brset	0,X0000,L01B1
-	brset	0,X0000,L01B4
-	brset	0,X0000,L01B7
-	brset	0,X0000,L01BA
-	brset	0,X0000,L01BD
-	brset	0,X0000,L01C0
-	brset	0,X0000,L01C3
-	brset	0,X0000,L01C6
-	brset	0,X0000,L01C9
-	brset	0,X0000,L01CC
-	brset	0,X0000,L01CF
-	brset	0,X0000,L01D2
-	brset	0,X0000,L01D5
-	brset	0,X0000,L01D8
-	brset	0,X0000,L01DB
-	brset	0,X0000,L01DE
-	brset	0,X0000,L01E1
-	brset	0,X0000,L01E4
-	brset	0,X0000,L01E7
-	brset	0,X0000,L01EA
-	brset	0,X0000,L01ED
-	brset	0,X0000,L01F0
-	brset	0,X0000,L01F3
-	brset	0,X0000,L01F6
-	brset	0,X0000,L01F9
-	brset	0,X0000,L01FC
-	brset	0,X0000,L01FF
-	brset	0,X0000,L0202
-	brset	0,X0000,L0205
-	brset	0,X0000,L0208
-	brset	0,X0000,L020B
-	brset	0,X0000,L020E
-	brset	0,X0000,L0211
-	brset	0,X0000,L0214
-	brset	0,X0000,L0217
-	brset	0,X0000,L021A
-	brset	0,X0000,L021D
-	brset	0,X0000,L0220
-	brset	0,X0000,L0223
-	brset	0,X0000,L0226
-	brset	0,X0000,L0229
-	brset	0,X0000,L022C
-	brset	0,X0000,L022F
-	brset	0,X0000,L0232
-	brset	0,X0000,L0235
-	brset	0,X0000,L0238
-	brset	0,X0000,L023B
-	brset	0,X0000,L023E
-	brset	0,X0000,L0241
-	brset	0,X0000,L0244
-	brset	0,X0000,L0247
-	brset	0,X0000,L024A
-	brset	0,X0000,L024D
-	brset	0,X0000,L0250
-	brset	0,X0000,L0253
-	brset	0,X0000,L0256
-	brset	0,X0000,L0259
-	brset	0,X0000,L025C
-	brset	0,X0000,L025F
-	brset	0,X0000,L0262
-	brset	0,X0000,L0265
-	brset	0,X0000,L0268
-	brset	0,X0000,L026B
-	brset	0,X0000,L026E
-	brset	0,X0000,L0271
-	brset	0,X0000,L0274
-	brset	0,X0000,L0277
-	brset	0,X0000,L027A
-	brset	0,X0000,L027D
-	brset	0,X0000,L0280
-	brset	0,X0000,L0283
-	brset	0,X0000,L0286
-	brset	0,X0000,L0289
-	brset	0,X0000,L028C
-	brset	0,X0000,L028F
-	brset	0,X0000,L0292
-	brset	0,X0000,L0295
-	brset	0,X0000,L0298
-	brset	0,X0000,L029B
-	brset	0,X0000,L029E
-	brset	0,X0000,L02A1
-	brset	0,X0000,L02A4
-	brset	0,X0000,L02A7
-	brset	0,X0000,L02AA
-	brset	0,X0000,L02AD
-	brset	0,X0000,L02B0
-	brset	0,X0000,L02B3
-	brset	0,X0000,L02B6
-	brset	0,X0000,L02B9
-	brset	0,X0000,L02BC
-	brset	0,X0000,L02BF
-	brset	0,X0000,L02C2
-	brset	0,X0000,L02C5
-	brset	0,X0000,L02C8
-	brset	0,X0000,L02CB
-	brset	0,X0000,L02CE
-	brset	0,X0000,L02D1
-	brset	0,X0000,L02D4
-	brset	0,X0000,L02D7
-	brset	0,X0000,L02DA
-	brset	0,X0000,L02DD
-	brset	0,X0000,L02E0
-	brset	0,X0000,L02E3
-	brset	0,X0000,L02E6
-	brset	0,X0000,L02E9
-	brset	0,X0000,L02EC
-	brset	0,X0000,L02EF
-	brset	0,X0000,L02F2
-	brset	0,X0000,L02F5
-	brset	0,X0000,L02F8
-	brset	0,X0000,L02FB
-	brset	0,X0000,L02FE
-	brset	0,X0000,L0301
-	brset	0,X0000,L0304
-	brset	0,X0000,L0307
-	brset	0,X0000,L030A
-	brset	0,X0000,L030D
-	brset	0,X0000,L0310
-	brset	0,X0000,L0313
-	brset	0,X0000,L0316
-	brset	0,X0000,L0319
-	brset	0,X0000,L031C
-	brset	0,X0000,L031F
-	brset	0,X0000,L0322
-	brset	0,X0000,L0325
-	brset	0,X0000,L0328
-	brset	0,X0000,L032B
-	brset	0,X0000,L032E
-	brset	0,X0000,L0331
-	brset	0,X0000,L0334
-	brset	0,X0000,L0337
-	brset	0,X0000,L033A
-	brset	0,X0000,L033D
-	brset	0,X0000,L0340
-	brset	0,X0000,L0343
-	brset	0,X0000,L0346
-	brset	0,X0000,L0349
-	brset	0,X0000,L034C
-	brset	0,X0000,L034F
-	brset	0,X0000,L0352
-	brset	0,X0000,L0355
-	brset	0,X0000,L0358
-	brset	0,X0000,L035B
-	brset	0,X0000,L035E
-	brset	0,X0000,L0361
-	brset	0,X0000,L0364
-	brset	0,X0000,L0367
-	brset	0,X0000,L036A
-	brset	0,X0000,L036D
-	brset	0,X0000,L0370
-	brset	0,X0000,L0373
-	brset	0,X0000,L0376
-	brset	0,X0000,L0379
-	brset	0,X0000,L037C
-	brset	0,X0000,L037F
-	brset	0,X0000,L0382
-	brset	0,X0000,L0385
-	brset	0,X0000,L0388
-	brset	0,X0000,L038B
-	brset	0,X0000,L038E
-	brset	0,X0000,L0391
-	brset	0,X0000,L0394
-	brset	0,X0000,L0397
-	brset	0,X0000,L039A
-	brset	0,X0000,L039D
-	brset	0,X0000,L03A0
-	brset	0,X0000,L03A3
-	brset	0,X0000,L03A6
-	brset	0,X0000,L03A9
-	brset	0,X0000,L03AC
-	brset	0,X0000,L03AF
-	brset	0,X0000,L03B2
-	brset	0,X0000,L03B5
-	brset	0,X0000,L03B8
-	brset	0,X0000,L03BB
-	brset	0,X0000,L03BE
-	brset	0,X0000,L03C1
-	brset	0,X0000,L03C4
-	brset	0,X0000,L03C7
-	brset	0,X0000,L03CA
-	brset	0,X0000,L03CD
-	brset	0,X0000,L03D0
-	brset	0,X0000,L03D3
-	brset	0,X0000,L03D6
-	brset	0,X0000,L03D9
-	brset	0,X0000,L03DC
-	brset	0,X0000,L03DF
-	brset	0,X0000,L03E2
-	brset	0,X0000,L03E5
-	brset	0,X0000,L03E8
-	brset	0,X0000,L03EB
-	brset	0,X0000,L03EE
-	brset	0,X0000,L03F1
-	brset	0,X0000,L03F4
-	brset	0,X0000,L03F7
-	brset	0,X0000,L03FA
-	brset	0,X0000,L03FD
-	brset	0,X0000,L0400
-	brset	0,X0000,L0403
-	brset	0,X0000,L0406
-	brset	0,X0000,L0409
-	brset	0,X0000,L040C
-	brset	0,X0000,L040F
-	brset	0,X0000,L0412
-	brset	0,X0000,L0415
-	brset	0,X0000,L0418
-	brset	0,X0000,L041B
-	brset	0,X0000,L041E
-	brset	0,X0000,L0421
-	brset	0,X0000,L0424
-	brset	0,X0000,L0427
-	brset	0,X0000,L042A
-	brset	0,X0000,L042D
-	brset	0,X0000,L0430
-	brset	0,X0000,L0433
-	brset	0,X0000,L0436
-	brset	0,X0000,L0439
-	brset	0,X0000,L043C
-	brset	0,X0000,L043F
-	brset	0,X0000,L0442
-	brset	0,X0000,L0445
-	brset	0,X0000,L0448
-	brset	0,X0000,L044B
-	brset	0,X0000,L044E
-	brset	0,X0000,L0451
-	brset	0,X0000,L0454
-	brset	0,X0000,L0457
-	brset	0,X0000,L045A
-	brset	0,X0000,L045D
-	brset	0,X0000,L0460
-	brset	0,X0000,L0463
-	brset	0,X0000,L0466
-	brset	0,X0000,L0469
-	brset	0,X0000,L046C
-	brset	0,X0000,L046F
-	brset	0,X0000,L0472
-	brset	0,X0000,L0475
-	brset	0,X0000,L0478
-	brset	0,X0000,L047B
-	brset	0,X0000,L047E
-	brset	0,X0000,L0481
-	brset	0,X0000,L0484
-	brset	0,X0000,L0487
-	brset	0,X0000,L048A
-	brset	0,X0000,L048D
-	brset	0,X0000,L0490
-	brset	0,X0000,L0493
-	brset	0,X0000,L0496
-	brset	0,X0000,L0499
-	brset	0,X0000,L049C
-	brset	0,X0000,L049F
-	brset	0,X0000,L04A2
-	brset	0,X0000,L04A5
-	brset	0,X0000,L04A8
-	brset	0,X0000,L04AB
-	brset	0,X0000,L04AE
-	brset	0,X0000,L04B1
-	brset	0,X0000,L04B4
-	brset	0,X0000,L04B7
-	brset	0,X0000,L04BA
-	brset	0,X0000,L04BD
-	brset	0,X0000,L04C0
-	brset	0,X0000,L04C3
-	brset	0,X0000,L04C6
-	brset	0,X0000,L04C9
-	brset	0,X0000,L04CC
-	brset	0,X0000,L04CF
-	brset	0,X0000,L04D2
-	brset	0,X0000,L04D5
-	brset	0,X0000,L04D8
-	brset	0,X0000,L04DB
-	brset	0,X0000,L04DE
-	brset	0,X0000,L04E1
-	brset	0,X0000,L04E4
-	brset	0,X0000,L04E7
-	brset	0,X0000,L04EA
-	brset	0,X0000,L04ED
-	brset	0,X0000,L04F0
-	brset	0,X0000,L04F3
-	brset	0,X0000,L04F6
-	brset	0,X0000,L04F9
-	brset	0,X0000,L04FC
-	brset	0,X0000,L04FF
-	brset	0,X0000,L0502
-	brset	0,X0000,L0505
-	brset	0,X0000,L0508
-	brset	0,X0000,L050B
-	brset	0,X0000,L050E
-	brset	0,X0000,L0511
-	brset	0,X0000,L0514
-	brset	0,X0000,L0517
-	brset	0,X0000,L051A
-	brset	0,X0000,L051D
-	brset	0,X0000,L0520
-	brset	0,X0000,L0523
-	brset	0,X0000,L0526
-	brset	0,X0000,L0529
-	brset	0,X0000,L052C
-	brset	0,X0000,L052F
-	brset	0,X0000,L0532
-	brset	0,X0000,L0535
-	brset	0,X0000,L0538
-	brset	0,X0000,L053B
-	brset	0,X0000,L053E
-	brset	0,X0000,L0541
-	brset	0,X0000,L0544
-	brset	0,X0000,L0547
-	brset	0,X0000,L054A
-	brset	0,X0000,L054D
-	brset	0,X0000,L0550
-	brset	0,X0000,L0553
-	brset	0,X0000,L0556
-	brset	0,X0000,L0559
-	brset	0,X0000,L055C
-	brset	0,X0000,L055F
-	brset	0,X0000,L0562
-	brset	0,X0000,L0565
-	brset	0,X0000,L0568
-	brset	0,X0000,L056B
-	brset	0,X0000,L056E
-	brset	0,X0000,L0571
-	brset	0,X0000,L0574
-	brset	0,X0000,L0577
-	brset	0,X0000,L057A
-	brset	0,X0000,L057D
-	brset	0,X0000,L0580
-	brset	0,X0000,L0583
-	brset	0,X0000,L0586
-	brset	0,X0000,L0589
-	brset	0,X0000,L058C
-	brset	0,X0000,L058F
-	brset	0,X0000,L0592
-	brset	0,X0000,L0595
-	brset	0,X0000,L0598
-	brset	0,X0000,L059B
-	brset	0,X0000,L059E
-	brset	0,X0000,L05A1
-	brset	0,X0000,L05A4
-	brset	0,X0000,L05A7
-	brset	0,X0000,L05AA
-	brset	0,X0000,L05AD
-	brset	0,X0000,L05B0
-	brset	0,X0000,L05B3
-	brset	0,X0000,L05B6
-	brset	0,X0000,L05B9
-	brset	0,X0000,L05BC
-	brset	0,X0000,L05BF
-	brset	0,X0000,L05C2
-	brset	0,X0000,L05C5
-	brset	0,X0000,L05C8
-	brset	0,X0000,L05CB
-	brset	0,X0000,L05CE
-	brset	0,X0000,L05D1
-	brset	0,X0000,L05D4
-	brset	0,X0000,L05D7
-	brset	0,X0000,L05DA
-	brset	0,X0000,L05DD
-	brset	0,X0000,L05E0
-	brset	0,X0000,L05E3
-	brset	0,X0000,L05E6
-	brset	0,X0000,L05E9
-	brset	0,X0000,L05EC
-	brset	0,X0000,L05EF
-	brset	0,X0000,L05F2
-	brset	0,X0000,L05F5
-	brset	0,X0000,L05F8
-	brset	0,X0000,L05FB
-	brset	0,X0000,L05FE
-	brset	0,X0000,L0601
-	brset	0,X0000,L0604
-	brset	0,X0000,L0607
-	brset	0,X0000,L060A
-	brset	0,X0000,L060D
-	brset	0,X0000,L0610
-	brset	0,X0000,L0613
-	brset	0,X0000,L0616
-	brset	0,X0000,L0619
-	brset	0,X0000,L061C
-	brset	0,X0000,L061F
-	brset	0,X0000,L0622
-	brset	0,X0000,L0625
-	brset	0,X0000,L0628
-	brset	0,X0000,L062B
-	brset	0,X0000,L062E
-	brset	0,X0000,L0631
-	brset	0,X0000,L0634
-	brset	0,X0000,L0637
-	brset	0,X0000,L063A
-	brset	0,X0000,L063D
-	brset	0,X0000,L0640
-	brset	0,X0000,L0643
-	brset	0,X0000,L0646
-	brset	0,X0000,L0649
-	brset	0,X0000,L064C
-	brset	0,X0000,L064F
-	brset	0,X0000,L0652
-	brset	0,X0000,L0655
-	brset	0,X0000,L0658
-	brset	0,X0000,L065B
-	brset	0,X0000,L065E
-	brset	0,X0000,L0661
-	brset	0,X0000,L0664
-	brset	0,X0000,L0667
-	brset	0,X0000,L066A
-	brset	0,X0000,L066D
-	brset	0,X0000,L0670
-	brset	0,X0000,L0673
-	brset	0,X0000,L0676
-	brset	0,X0000,L0679
-	brset	0,X0000,L067C
-	brset	0,X0000,L067F
-	brset	0,X0000,L0682
-	brset	0,X0000,L0685
-	brset	0,X0000,L0688
-	brset	0,X0000,L068B
-	brset	0,X0000,L068E
-	brset	0,X0000,L0691
-	brset	0,X0000,L0694
-	brset	0,X0000,L0697
-	brset	0,X0000,L069A
-	brset	0,X0000,L069D
-	brset	0,X0000,L06A0
-	brset	0,X0000,L06A3
-	brset	0,X0000,L06A6
-	brset	0,X0000,L06A9
-	brset	0,X0000,L06AC
-	brset	0,X0000,L06AF
-	brset	0,X0000,L06B2
-	brset	0,X0000,L06B5
-	brset	0,X0000,L06B8
-	brset	0,X0000,L06BB
-	brset	0,X0000,L06BE
-	brset	0,X0000,L06C1
-	brset	0,X0000,L06C4
-	brset	0,X0000,L06C7
-	brset	0,X0000,L06CA
-	brset	0,X0000,L06CD
-	brset	0,X0000,L06D0
-	brset	0,X0000,L06D3
-	brset	0,X0000,L06D6
-	brset	0,X0000,L06D9
-	brset	0,X0000,L06DC
-	brset	0,X0000,L06DF
-	brset	0,X0000,L06E2
-	brset	0,X0000,L06E5
-	brset	0,X0000,L06E8
-	brset	0,X0000,L06EB
-	brset	0,X0000,L06EE
-	brset	0,X0000,L06F1
-	brset	0,X0000,L06F4
-	brset	0,X0000,L06F7
-	brset	0,X0000,L06FA
-	brset	0,X0000,L06FD
-	brset	0,X0000,L0700
-	brset	0,X0000,L0703
-	brset	0,X0000,L0706
-	brset	0,X0000,L0709
-	brset	0,X0000,L070C
-	brset	0,X0000,L070F
-	brset	0,X0000,L0712
-	brset	0,X0000,L0715
-	brset	0,X0000,L0718
-	brset	0,X0000,L071B
-	brset	0,X0000,L071E
-	brset	0,X0000,L0721
-	brset	0,X0000,L0724
-	brset	0,X0000,L0727
-	brset	0,X0000,L072A
-	brset	0,X0000,L072D
-	brset	0,X0000,L0730
-	brset	0,X0000,L0733
-	brset	0,X0000,L0736
-	brset	0,X0000,L0739
-	brset	0,X0000,L073C
-	brset	0,X0000,L073F
-	brset	0,X0000,L0742
-	brset	0,X0000,L0745
-	brset	0,X0000,L0748
-	brset	0,X0000,L074B
-	brset	0,X0000,L074E
-	brset	0,X0000,L0751
-	brset	0,X0000,L0754
-	brset	0,X0000,L0757
-	brset	0,X0000,L075A
-	brset	0,X0000,L075D
-	brset	0,X0000,L0760
-	brset	0,X0000,L0763
-	brset	0,X0000,L0766
-	brset	0,X0000,L0769
-	brset	0,X0000,L076C
-	brset	0,X0000,L076F
-	brset	0,X0000,L0772
-	brset	0,X0000,L0775
-	brset	0,X0000,L0778
-	brset	0,X0000,L077B
-	brset	0,X0000,L077E
-	brset	0,X0000,L0781
-	brset	0,X0000,L0784
-	brset	0,X0000,L0787
-	brset	0,X0000,L078A
-	brset	0,X0000,L078D
-	brset	0,X0000,L0790
-	brset	0,X0000,L0793
-	brset	0,X0000,L0796
-	brset	0,X0000,L0799
-	brset	0,X0000,L079C
-	brset	0,X0000,L079F
-	brset	0,X0000,L07A2
-	brset	0,X0000,L07A5
-	brset	0,X0000,L07A8
-	brset	0,X0000,L07AB
-	brset	0,X0000,L07AE
-	brset	0,X0000,L07B1
-	brset	0,X0000,L07B4
-	brset	0,X0000,L07B7
-	brset	0,X0000,L07BA
-	brset	0,X0000,L07BD
-	brset	0,X0000,L07C0
-	brset	0,X0000,L07C3
-	brset	0,X0000,L07C6
-	brset	0,X0000,L07C9
-	brset	0,X0000,L07CC
-	brset	0,X0000,L07CF
-	brset	0,X0000,L07D2
-	brset	0,X0000,L07D5
-	brset	0,X0000,L07D8
-	brset	0,X0000,L07DB
-	brset	0,X0000,L07DE
-	brset	0,X0000,L07E1
-	brset	0,X0000,L07E4
-	brset	0,X0000,L07E7
-	brset	0,X0000,L07EA
-	brset	0,X0000,L07ED
-	brset	0,X0000,L07F0
-	brset	0,X0000,L07F3
-	brset	0,X0000,L07F6
-	brset	0,X0000,L07F9
-	brset	0,X0000,L07FC
-	brset	0,X0000,L07FF
-	brset	0,X0000,L0002
-	brset	0,X0000,L0005
-	brset	0,X0000,L0008
-	brset	0,X0000,L000B
-	brset	0,X0000,L000E
-	brset	0,X0000,L0011
-	brset	0,X0000,L0014
-	brset	0,X0000,L0017
-	brset	0,X0000,L001A
-	brset	0,X0000,L001D
-	brset	0,X0000,L0020
-	brset	0,X0000,L0023
-	brset	0,X0000,L0026
-	brset	0,X0000,L0029
-	brset	0,X0000,L002C
-	brset	0,X0000,L002F
-	brset	0,X0000,L0032
-	brset	0,X0000,L0035
-	brset	0,X0000,L0038
-	brset	0,X0000,L003B
-	brset	0,X0000,L003E
-	brset	0,X0000,L0041
-	brset	0,X0000,L0044
-	brset	0,X0000,L0047
-	brset	0,X0000,L004A
-	brset	0,X0000,L004D
-	brset	0,X0000,L0050
-	brset	0,X0000,L0053
-	brset	0,X0000,L0056
-	brset	0,X0000,L0059
-	brset	0,X0000,L005C
-	brset	0,X0000,L005F
-	brset	0,X0000,L0062
-	brset	0,X0000,L0065
-	brset	0,X0000,L0068
-	brset	0,X0000,L006B
-	brset	0,X0000,L006E
-	brset	0,X0000,L0071
-	brset	0,X0000,L0074
-	brset	0,X0000,L0077
-	brset	0,X0000,L007A
-	brset	0,X0000,L007D
-	brset	0,X0000,L0080
-	brset	0,X0000,L0083
-	brset	0,X0000,L0086
-	brset	0,X0000,L0089
-	brset	0,X0000,L008C
-	brset	0,X0000,L008F
-	brset	0,X0000,L0092
-	brset	0,X0000,L0095
-	brset	0,X0000,L0098
-	brset	0,X0000,L009B
-	brset	0,X0000,L009E
-	brset	0,X0000,L00A1
-	brset	0,X0000,L00A4
-	brset	0,X0000,L00A7
-	brset	0,X0000,L00AA
-	brset	0,X0000,L00AD
-	brset	0,X0000,L00B0
-	brset	0,X0000,L00B3
-	brset	0,X0000,L00B6
-	brset	0,X0000,L00B9
-	brset	0,X0000,L00BC
-	brset	0,X0000,L00BF
-	brset	0,X0000,L00C2
-	brset	0,X0000,L00C5
-	brset	0,X0000,L00C8
-	brset	0,X0000,L00CB
-	brset	0,X0000,L00CE
-	brset	0,X0000,L00D1
-	brset	0,X0000,L00D4
-	brset	0,X0000,L00D7
-	brset	0,X0000,L00DA
-	brset	0,X0000,L00DD
-	brset	0,X0000,L00E0
-	brset	0,X0000,L00E3
-	brset	0,X0000,L00E6
-	brset	0,X0000,L00E9
-	brset	0,X0000,L00EC
-	brset	0,X0000,L00EF
-	brset	0,X0000,L00F2
-	brset	0,X0000,L00F5
-	brset	0,X0000,L00F8
-	brset	0,X0000,L00FB
-	brset	0,X0000,L00FE
-	brset	0,X0000,L0101
-	brset	0,X0000,L0104
-	brset	0,X0000,L0107
-	brset	0,X0000,L010A
-	brset	0,X0000,L010D
-	brset	0,X0000,L0110
-	brset	0,X0000,L0113
-	brset	0,X0000,L0116
-	brset	0,X0000,L0119
-	brset	0,X0000,L011C
-	brset	0,X0000,L011F
-	brset	0,X0000,L0122
-	brset	0,X0000,L0125
-	brset	0,X0000,L0128
-	brset	0,X0000,L012B
-	brset	0,X0000,L012E
-	brset	0,X0000,L0131
-	brset	0,X0000,L0134
-	brset	0,X0000,L0137
-	brset	0,X0000,L013A
-	brset	0,X0000,L013D
-	brset	0,X0000,L0140
-	brset	0,X0000,L0143
-	brset	0,X0000,L0146
-	brset	0,X0000,L0149
-	brset	0,X0000,L014C
-	brset	0,X0000,L014F
-	brset	0,X0000,L0152
-	brset	0,X0000,L0155
-	brset	0,X0000,L0158
-	brset	0,X0000,L015B
-	brset	0,X0000,L015E
-	brset	0,X0000,L0161
-	brset	0,X0000,L0164
-	brset	0,X0000,L0167
-	brset	0,X0000,L016A
-	brset	0,X0000,L016D
-	brset	0,X0000,L0170
-	brset	0,X0000,L0173
-	brset	0,X0000,L0176
-	brset	0,X0000,L0179
-	brset	0,X0000,L017C
-	brset	0,X0000,L017F
-	brset	0,X0000,L0182
-	brset	0,X0000,L0185
-	brset	0,X0000,L0188
-	brset	0,X0000,L018B
-	brset	0,X0000,L018E
-	brset	0,X0000,L0191
-	brset	0,X0000,L0194
-	brset	0,X0000,L0197
-	brset	0,X0000,L019A
-	brset	0,X0000,L019D
-	brset	0,X0000,L01A0
-	brset	0,X0000,L01A3
-	brset	0,X0000,L01A6
-	brset	0,X0000,L01A9
-	brset	0,X0000,L01AC
-	brset	0,X0000,L01AF
-	brset	0,X0000,L01B2
-	brset	0,X0000,L01B5
-	brset	0,X0000,L01B8
-	brset	0,X0000,L01BB
-	brset	0,X0000,L01BE
-	brset	0,X0000,L01C1
-	brset	0,X0000,L01C4
-	brset	0,X0000,L01C7
-	brset	0,X0000,L01CA
-	brset	0,X0000,L01CD
-	brset	0,X0000,L01D0
-	brset	0,X0000,L01D3
-	brset	0,X0000,L01D6
-	brset	0,X0000,L01D9
-	brset	0,X0000,L01DC
-	brset	0,X0000,L01DF
-	brset	0,X0000,L01E2
-	brset	0,X0000,L01E5
-	brset	0,X0000,L01E8
-	brset	0,X0000,L01EB
-	brset	0,X0000,L01EE
-	brset	0,X0000,L01F1
-	brset	0,X0000,L01F4
-	brset	0,X0000,L01F7
-	brset	0,X0000,L01FA
-	brset	0,X0000,L01FD
-	brset	0,X0000,L0200
-	brset	0,X0000,L0203
-	brset	0,X0000,L0206
-	brset	0,X0000,L0209
-	brset	0,X0000,L020C
-	brset	0,X0000,L020F
-	brset	0,X0000,L0212
-	brset	0,X0000,L0215
-	brset	0,X0000,L0218
-	brset	0,X0000,L021B
-	brset	0,X0000,L021E
-	brset	0,X0000,L0221
-	brset	0,X0000,L0224
-	brset	0,X0000,L0227
-	brset	0,X0000,L022A
-	brset	0,X0000,L022D
-	brset	0,X0000,L0230
-	brset	0,X0000,L0233
-	brset	0,X0000,L0236
-	brset	0,X0000,L0239
-	brset	0,X0000,L023C
-	brset	0,X0000,L023F
-	brset	0,X0000,L0242
-	brset	0,X0000,L0245
-	brset	0,X0000,L0248
-	brset	0,X0000,L024B
-	brset	0,X0000,L024E
-	brset	0,X0000,L0251
-	brset	0,X0000,L0254
-	brset	0,X0000,L0257
-	brset	0,X0000,L025A
-	brset	0,X0000,L025D
-	brset	0,X0000,L0260
-	brset	0,X0000,L0263
-	brset	0,X0000,L0266
-	brset	0,X0000,L0269
-	brset	0,X0000,L026C
-	brset	0,X0000,L026F
-	brset	0,X0000,L0272
-	brset	0,X0000,L0275
-	brset	0,X0000,L0278
-	brset	0,X0000,L027B
-	brset	0,X0000,L027E
-	brset	0,X0000,L0281
-	brset	0,X0000,L0284
-	brset	0,X0000,L0287
-	brset	0,X0000,L028A
-	brset	0,X0000,L028D
-	brset	0,X0000,L0290
-	brset	0,X0000,L0293
-	brset	0,X0000,L0296
-	brset	0,X0000,L0299
-	brset	0,X0000,L029C
-	brset	0,X0000,L029F
-	brset	0,X0000,L02A2
-	brset	0,X0000,L02A5
-	brset	0,X0000,L02A8
-	brset	0,X0000,L02AB
-	brset	0,X0000,L02AE
-	brset	0,X0000,L02B1
-	brset	0,X0000,L02B4
-	brset	0,X0000,L02B7
-	brset	0,X0000,L02BA
-	brset	0,X0000,L02BD
-	brset	0,X0000,L02C0
-	brset	0,X0000,L02C3
-	brset	0,X0000,L02C6
-	brset	0,X0000,L02C9
-	brset	0,X0000,L02CC
-	brset	0,X0000,L02CF
-	brset	0,X0000,L02D2
-	brset	0,X0000,L02D5
-	brset	0,X0000,L02D8
-	brset	0,X0000,L02DB
-	brset	0,X0000,L02DE
-	brset	0,X0000,L02E1
-	brset	0,X0000,L02E4
-	brset	0,X0000,L02E7
-	brset	0,X0000,L02EA
-	brset	0,X0000,L02ED
-	brset	0,X0000,L02F0
-	brset	0,X0000,L02F3
-	brset	0,X0000,L02F6
-	brset	0,X0000,L02F9
-	brset	0,X0000,L02FC
-	brset	0,X0000,L02FF
-	brset	0,X0000,L0302
-	brset	0,X0000,L0305
-	brset	0,X0000,L0308
-	brset	0,X0000,L030B
-	brset	0,X0000,L030E
-	brset	0,X0000,L0311
-	brset	0,X0000,L0314
-	brset	0,X0000,L0317
-	brset	0,X0000,L031A
-	brset	0,X0000,L031D
-	brset	0,X0000,L0320
-	brset	0,X0000,L0323
-	brset	0,X0000,L0326
-	brset	0,X0000,L0329
-	brset	0,X0000,L032C
-	brset	0,X0000,L032F
-	brset	0,X0000,L0332
-	brset	0,X0000,L0335
-	brset	0,X0000,L0338
-	brset	0,X0000,L033B
-	brset	0,X0000,L033E
-	brset	0,X0000,L0341
-	brset	0,X0000,L0344
-	brset	0,X0000,L0347
-	brset	0,X0000,L034A
-	brset	0,X0000,L034D
-	brset	0,X0000,L0350
-	brset	0,X0000,L0353
-	brset	0,X0000,L0356
-	brset	0,X0000,L0359
-	brset	0,X0000,L035C
-	brset	0,X0000,L035F
-	brset	0,X0000,L0362
-	brset	0,X0000,L0365
-	brset	0,X0000,L0368
-	brset	0,X0000,L036B
-	brset	0,X0000,L036E
-	brset	0,X0000,L0371
-	brset	0,X0000,L0374
-	brset	0,X0000,L0377
-	brset	0,X0000,L037A
-	brset	0,X0000,L037D
-	brset	0,X0000,L0380
-	brset	0,X0000,L0383
-	brset	0,X0000,L0386
-	brset	0,X0000,L0389
-	brset	0,X0000,L038C
-	brset	0,X0000,L038F
-	brset	0,X0000,L0392
-	brset	0,X0000,L0395
-	brset	0,X0000,L0398
-	brset	0,X0000,L039B
-	brset	0,X0000,L039E
-	brset	0,X0000,L03A1
-	brset	0,X0000,L03A4
-	brset	0,X0000,L03A7
-	brset	0,X0000,L03AA
-	brset	0,X0000,L03AD
-	brset	0,X0000,L03B0
-	brset	0,X0000,L03B3
-	brset	0,X0000,L03B6
-	brset	0,X0000,L03B9
-	brset	0,X0000,L03BC
-	brset	0,X0000,L03BF
-	brset	0,X0000,L03C2
-	brset	0,X0000,L03C5
-	brset	0,X0000,L03C8
-	brset	0,X0000,L03CB
-	brset	0,X0000,L03CE
-	brset	0,X0000,L03D1
-	brset	0,X0000,L03D4
-	brset	0,X0000,L03D7
-	brset	0,X0000,L03DA
-	brset	0,X0000,L03DD
-	brset	0,X0000,L03E0
-	brset	0,X0000,L03E3
-	brset	0,X0000,L03E6
-	brset	0,X0000,L03E9
-	brset	0,X0000,L03EC
-	brset	0,X0000,L03EF
-	brset	0,X0000,L03F2
-	brset	0,X0000,L03F5
-	brset	0,X0000,L03F8
-	brset	0,X0000,L03FB
-	brset	0,X0000,L03FE
-	brset	0,X0000,L0401
-	brset	0,X0000,L0404
-	brset	0,X0000,L0407
-	brset	0,X0000,L040A
-	brset	0,X0000,L040D
-	brset	0,X0000,L0410
-	brset	0,X0000,L0413
-	brset	0,X0000,L0416
-	brset	0,X0000,L0419
-	brset	0,X0000,L041C
-	brset	0,X0000,L041F
-	brset	0,X0000,L0422
-	brset	0,X0000,L0425
-	brset	0,X0000,L0428
-	brset	0,X0000,L042B
-	brset	0,X0000,L042E
-	brset	0,X0000,L0431
-	brset	0,X0000,L0434
-	brset	0,X0000,L0437
-	brset	0,X0000,L043A
-	brset	0,X0000,L043D
-	brset	0,X0000,L0440
-	brset	0,X0000,L0443
-	brset	0,X0000,L0446
-	brset	0,X0000,L0449
-	brset	0,X0000,L044C
-	brset	0,X0000,L044F
-	brset	0,X0000,L0452
-	brset	0,X0000,L0455
-	brset	0,X0000,L0458
-	brset	0,X0000,L045B
-	brset	0,X0000,L045E
-	brset	0,X0000,L0461
-	brset	0,X0000,L0464
-	brset	0,X0000,L0467
-	brset	0,X0000,L046A
-	brset	0,X0000,L046D
-	brset	0,X0000,L0470
-	brset	0,X0000,L0473
-	brset	0,X0000,L0476
-	brset	0,X0000,L0479
-	brset	0,X0000,L047C
-	brset	0,X0000,L047F
-	brset	0,X0000,L0482
-	brset	0,X0000,L0485
-	brset	0,X0000,L0488
-	brset	0,X0000,L048B
-	brset	0,X0000,L048E
-	brset	0,X0000,L0491
-	brset	0,X0000,L0494
-	brset	0,X0000,L0497
-	brset	0,X0000,L049A
-	brset	0,X0000,L049D
-	brset	0,X0000,L04A0
-	brset	0,X0000,L04A3
-	brset	0,X0000,L04A6
-	brset	0,X0000,L04A9
-	brset	0,X0000,L04AC
-	brset	0,X0000,L04AF
-	brset	0,X0000,L04B2
-	brset	0,X0000,L04B5
-	brset	0,X0000,L04B8
-	brset	0,X0000,L04BB
-	brset	0,X0000,L04BE
-	brset	0,X0000,L04C1
-	brset	0,X0000,L04C4
-	brset	0,X0000,L04C7
-	brset	0,X0000,L04CA
-	brset	0,X0000,L04CD
-	brset	0,X0000,L04D0
-	brset	0,X0000,L04D3
-	brset	0,X0000,L04D6
-	brset	0,X0000,L04D9
-	brset	0,X0000,L04DC
-	brset	0,X0000,L04DF
-	brset	0,X0000,L04E2
-	brset	0,X0000,L04E5
-	brset	0,X0000,L04E8
-	brset	0,X0000,L04EB
-	brset	0,X0000,L04EE
-	brset	0,X0000,L04F1
-	brset	0,X0000,L04F4
-	brset	0,X0000,L04F7
-	brset	0,X0000,L04FA
-	brset	0,X0000,L04FD
-	brset	0,X0000,L0500
-	brset	0,X0000,L0503
-	brset	0,X0000,L0506
-	brset	0,X0000,L0509
-	brset	0,X0000,L050C
-	brset	0,X0000,L050F
-	brset	0,X0000,L0512
-	brset	0,X0000,L0515
-	brset	0,X0000,L0518
-	brset	0,X0000,L051B
-	brset	0,X0000,L051E
-	brset	0,X0000,L0521
-	brset	0,X0000,L0524
-	brset	0,X0000,L0527
-	brset	0,X0000,L052A
-	brset	0,X0000,L052D
-	brset	0,X0000,L0530
-	brset	0,X0000,L0533
-	brset	0,X0000,L0536
-	brset	0,X0000,L0539
-	brset	0,X0000,L053C
-	brset	0,X0000,L053F
-	brset	0,X0000,L0542
-	brset	0,X0000,L0545
-	brset	0,X0000,L0548
-	brset	0,X0000,L054B
-	brset	0,X0000,L054E
-	brset	0,X0000,L0551
-	brset	0,X0000,L0554
-	brset	0,X0000,L0557
-	brset	0,X0000,L055A
-	brset	0,X0000,L055D
-	brset	0,X0000,L0560
-	brset	0,X0000,L0563
-	brset	0,X0000,L0566
-	brset	0,X0000,L0569
-	brset	0,X0000,L056C
-	brset	0,X0000,L056F
-	brset	0,X0000,L0572
-	brset	0,X0000,L0575
-	brset	0,X0000,L0578
-	brset	0,X0000,L057B
-	brset	0,X0000,L057E
-	brset	0,X0000,L0581
-	brset	0,X0000,L0584
-	brset	0,X0000,L0587
-	brset	0,X0000,L058A
-	brset	0,X0000,L058D
-	brset	0,X0000,L0590
-	brset	0,X0000,L0593
-	brset	0,X0000,L0596
-	brset	0,X0000,L0599
-	brset	0,X0000,L059C
-	brset	0,X0000,L059F
-	brset	0,X0000,L05A2
-	brset	0,X0000,L05A5
-	brset	0,X0000,L05A8
-	brset	0,X0000,L05AB
-	brset	0,X0000,L05AE
-	brset	0,X0000,L05B1
-	brset	0,X0000,L05B4
-	brset	0,X0000,L05B7
-	brset	0,X0000,L05BA
-	brset	0,X0000,L05BD
-	brset	0,X0000,L05C0
-	brset	0,X0000,L05C3
-	brset	0,X0000,L05C6
-	brset	0,X0000,L05C9
-	brset	0,X0000,L05CC
-	brset	0,X0000,L05CF
-	brset	0,X0000,L05D2
-	brset	0,X0000,L05D5
-	brset	0,X0000,L05D8
-	brset	0,X0000,L05DB
-	brset	0,X0000,L05DE
-	brset	0,X0000,L05E1
-	brset	0,X0000,L05E4
-	brset	0,X0000,L05E7
-	brset	0,X0000,L05EA
-	brset	0,X0000,L05ED
-	brset	0,X0000,L05F0
-	brset	0,X0000,L05F3
-	brset	0,X0000,L05F6
-	brset	0,X0000,L05F9
-	brset	0,X0000,L05FC
-	brset	0,X0000,L05FF
-	brset	0,X0000,L0602
-	brset	0,X0000,L0605
-	brset	0,X0000,L0608
-	brset	0,X0000,L060B
-	brset	0,X0000,L060E
-	brset	0,X0000,L0611
-	brset	0,X0000,L0614
-	brset	0,X0000,L0617
-	brset	0,X0000,L061A
-	brset	0,X0000,L061D
-	brset	0,X0000,L0620
-	brset	0,X0000,L0623
-	brset	0,X0000,L0626
-	brset	0,X0000,L0629
-	brset	0,X0000,L062C
-	brset	0,X0000,L062F
-	brset	0,X0000,L0632
-	brset	0,X0000,L0635
-	brset	0,X0000,L0638
-	brset	0,X0000,L063B
-	brset	0,X0000,L063E
-	brset	0,X0000,L0641
-	brset	0,X0000,L0644
-	brset	0,X0000,L0647
-	brset	0,X0000,L064A
-	brset	0,X0000,L064D
-	brset	0,X0000,L0650
-	brset	0,X0000,L0653
-	brset	0,X0000,L0656
-	brset	0,X0000,L0659
-	brset	0,X0000,L065C
-	brset	0,X0000,L065F
-	brset	0,X0000,L0662
-	brset	0,X0000,L0665
-	brset	0,X0000,L0668
-	brset	0,X0000,L066B
-	brset	0,X0000,L066E
-	brset	0,X0000,L0671
-	brset	0,X0000,L0674
-	brset	0,X0000,L0677
-	brset	0,X0000,L067A
-	brset	0,X0000,L067D
-	brset	0,X0000,L0680
-	brset	0,X0000,L0683
-	brset	0,X0000,L0686
-	brset	0,X0000,L0689
-	brset	0,X0000,L068C
-	brset	0,X0000,L068F
-	brset	0,X0000,L0692
-	brset	0,X0000,L0695
-	brset	0,X0000,L0698
-	brset	0,X0000,L069B
-	brset	0,X0000,L069E
-	brset	0,X0000,L06A1
-	brset	0,X0000,L06A4
-	brset	0,X0000,L06A7
-	brset	0,X0000,L06AA
-	brset	0,X0000,L06AD
-	brset	0,X0000,L06B0
-	brset	0,X0000,L06B3
-	brset	0,X0000,L06B6
-	brset	0,X0000,L06B9
-	brset	0,X0000,L06BC
-	brset	0,X0000,L06BF
-	brset	0,X0000,L06C2
-	brset	0,X0000,L06C5
-	brset	0,X0000,L06C8
-	brset	0,X0000,L06CB
-	brset	0,X0000,L06CE
-	brset	0,X0000,L06D1
-	brset	0,X0000,L06D4
-	brset	0,X0000,L06D7
-	brset	0,X0000,L06DA
-	brset	0,X0000,L06DD
-	brset	0,X0000,L06E0
-	brset	0,X0000,L06E3
-	brset	0,X0000,L06E6
-	brset	0,X0000,L06E9
-	brset	0,X0000,L06EC
-	brset	0,X0000,L06EF
-	brset	0,X0000,L06F2
-	brset	0,X0000,L06F5
-	brset	0,X0000,L06F8
-	brset	0,X0000,L06FB
-	brset	0,X0000,L06FE
-	brset	0,X0000,L0701
-	brset	0,X0000,L0704
-	brset	0,X0000,L0707
-	brset	0,X0000,L070A
-	brset	0,X0000,L070D
-	brset	0,X0000,L0710
-	brset	0,X0000,L0713
-	brset	0,X0000,L0716
-	brset	0,X0000,L0719
-	brset	0,X0000,L071C
-	brset	0,X0000,L071F
-	brset	0,X0000,L0722
-	brset	0,X0000,L0725
-	brset	0,X0000,L0728
-	brset	0,X0000,L072B
-	brset	0,X0000,L072E
-	brset	0,X0000,L0731
-	brset	0,X0000,L0734
-	brset	0,X0000,L0737
-	brset	0,X0000,L073A
-	brset	0,X0000,L073D
-	brset	0,X0000,L0740
-	brset	0,X0000,L0743
-	brset	0,X0000,L0746
-	brset	0,X0000,L0749
-	brset	0,X0000,L074C
-	brset	0,X0000,L074F
-	brset	0,X0000,L0752
-	brset	0,X0000,L0755
-	brset	0,X0000,L0758
-	brset	0,X0000,L075B
-	brset	0,X0000,L075E
-	brset	0,X0000,L0761
-	brset	0,X0000,L0764
-	brset	0,X0000,L0767
-	brset	0,X0000,L076A
-	brset	0,X0000,L076D
-	brset	0,X0000,L0770
-	brset	0,X0000,L0773
-	brset	0,X0000,L0776
-	brset	0,X0000,L0779
-	brset	0,X0000,L077C
-	brset	0,X0000,L077F
-	brset	0,X0000,L0782
-	brset	0,X0000,L0785
-	brset	0,X0000,L0788
-	brset	0,X0000,L078B
-	brset	0,X0000,L078E
-	brset	0,X0000,L0791
-	brset	0,X0000,L0794
-	brset	0,X0000,L0797
-	brset	0,X0000,L079A
-	brset	0,X0000,L079D
-	brset	0,X0000,L07A0
-	brset	0,X0000,L07A3
-	brset	0,X0000,L07A6
-	brset	0,X0000,L07A9
-	brset	0,X0000,L07AC
-	brset	0,X0000,L07AF
-	brset	0,X0000,L07B2
-	brset	0,X0000,L07B5
-	brset	0,X0000,L07B8
-	brset	0,X0000,L07BB
-	brset	0,X0000,L07BE
-	brset	0,X0000,L07C1
-	brset	0,X0000,L07C4
-	brset	0,X0000,L07C7
-	brset	0,X0000,L07CA
-	brset	0,X0000,L07CD
-	brset	0,X0000,L07D0
-	brset	0,X0000,L07D3
-	brset	0,X0000,L07D6
-	brset	0,X0000,L07D9
-	brset	0,X0000,L07DC
-	brset	0,X0000,L07DF
-	brset	0,X0000,L07E2
-	brset	0,X0000,L07E5
-	brset	0,X0000,L07E8
-	brset	0,X0000,L07EB
-	brset	0,X0000,L07EE
-	brset	0,X0000,L07F1
-	brset	0,X0000,L07F4
-	brset	0,X0000,L07F7
-	brset	0,X0000,L07FA
-	brset	0,X0000,L07FD
-	brset	0,X0000,L0000
-	brset	0,X0000,L0003
-	brset	0,X0000,L0006
-	brset	0,X0000,L0009
-	brset	0,X0000,L000C
-	brset	0,X0000,L000F
-	brset	0,X0000,L0012
-	brset	0,X0000,L0015
-	brset	0,X0000,L0018
-	brset	0,X0000,L001B
-	brset	0,X0000,L001E
-	brset	0,X0000,L0021
-	brset	0,X0000,L0024
-	brset	0,X0000,L0027
-	brset	0,X0000,L002A
-	brset	0,X0000,L002D
-	brset	0,X0000,L0030
-	brset	0,X0000,L0033
-	brset	0,X0000,L0036
-	brset	0,X0000,L0039
-	brset	0,X0000,L003C
-	brset	0,X0000,L003F
-	brset	0,X0000,L0042
-	brset	0,X0000,L0045
-	brset	0,X0000,L0048
-	brset	0,X0000,L004B
-	brset	0,X0000,L004E
-	brset	0,X0000,L0051
-	brset	0,X0000,L0054
-	brset	0,X0000,L0057
-	brset	0,X0000,L005A
-	brset	0,X0000,L005D
-	brset	0,X0000,L0060
-	brset	0,X0000,L0063
-	brset	0,X0000,L0066
-	brset	0,X0000,L0069
-	brset	0,X0000,L006C
-	brset	0,X0000,L006F
-	brset	0,X0000,L0072
-	brset	0,X0000,L0075
-	brset	0,X0000,L0078
-	brset	0,X0000,L007B
-	brset	0,X0000,L007E
-	brset	0,X0000,L0081
-	brset	0,X0000,L0084
-	brset	0,X0000,L0087
-	brset	0,X0000,L008A
-	brset	0,X0000,L008D
-	brset	0,X0000,L0090
-	brset	0,X0000,L0093
-	brset	0,X0000,L0096
-	brset	0,X0000,L0099
-	brset	0,X0000,L009C
-	brset	0,X0000,L009F
-	brset	0,X0000,L00A2
-	brset	0,X0000,L00A5
-	brset	0,X0000,L00A8
-	brset	0,X0000,L00AB
-	brset	0,X0000,L00AE
-	brset	0,X0000,L00B1
-	brset	0,X0000,L00B4
-	brset	0,X0000,L00B7
-	brset	0,X0000,L00BA
-	brset	0,X0000,L00BD
-	brset	0,X0000,L00C0
-	brset	0,X0000,L00C3
-	brset	0,X0000,L00C6
-	brset	0,X0000,L00C9
-	brset	0,X0000,L00CC
-	brset	0,X0000,L00CF
-	brset	0,X0000,L00D2
-	brset	0,X0000,L00D5
-	brset	0,X0000,L00D8
-	brset	0,X0000,L00DB
-	brset	0,X0000,L00DE
-	brset	0,X0000,L00E1
-	brset	0,X0000,L00E4
-	brset	0,X0000,L00E7
-	brset	0,X0000,L00EA
-	brset	0,X0000,L00ED
-	brset	0,X0000,L00F0
-	brset	0,X0000,L00F3
-	brset	0,X0000,L00F6
-	brset	0,X0000,L00F9
-	brset	0,X0000,L00FC
-	brset	0,X0000,L00FF
-	brset	0,X0000,L0102
-	brset	0,X0000,L0105
-	brset	0,X0000,L0108
-	brset	0,X0000,L010B
-	brset	0,X0000,L010E
-	brset	0,X0000,L0111
-	brset	0,X0000,L0114
-	brset	0,X0000,L0117
-	brset	0,X0000,L011A
-	brset	0,X0000,L011D
-	brset	0,X0000,L0120
-	brset	0,X0000,L0123
-	brset	0,X0000,L0126
-	brset	0,X0000,L0129
-	brset	0,X0000,L012C
-	brset	0,X0000,L012F
-	brset	0,X0000,L0132
-	brset	0,X0000,L0135
-	brset	0,X0000,L0138
-	brset	0,X0000,L013B
-	brset	0,X0000,L013E
-	brset	0,X0000,L0141
-	brset	0,X0000,L0144
-	brset	0,X0000,L0147
-	brset	0,X0000,L014A
-	brset	0,X0000,L014D
-	brset	0,X0000,L0150
-	brset	0,X0000,L0153
-	brset	0,X0000,L0156
-	brset	0,X0000,L0159
-	brset	0,X0000,L015C
-	brset	0,X0000,L015F
-	brset	0,X0000,L0162
-	brset	0,X0000,L0165
-	brset	0,X0000,L0168
-	brset	0,X0000,L016B
-	brset	0,X0000,L016E
-	brset	0,X0000,L0171
-	brset	0,X0000,L0174
-	brset	0,X0000,L0177
-	brset	0,X0000,L017A
-	brset	0,X0000,L017D
-	brset	0,X0000,L0180
-	brset	0,X0000,L0183
-	brset	0,X0000,L0186
-	brset	0,X0000,L0189
-	brset	0,X0000,L018C
-	brset	0,X0000,L018F
-	brset	0,X0000,L0192
-	brset	0,X0000,L0195
-	brset	0,X0000,L0198
-	brset	0,X0000,L019B
-	brset	0,X0000,L019E
-	brset	0,X0000,L01A1
-	brset	0,X0000,L01A4
-	brset	0,X0000,L01A7
-	brset	0,X0000,L01AA
-	brset	0,X0000,L01AD
-	brset	0,X0000,L01B0
-	brset	0,X0000,L01B3
-	brset	0,X0000,L01B6
-	brset	0,X0000,L01B9
-	brset	0,X0000,L01BC
-	brset	0,X0000,L01BF
-	brset	0,X0000,L01C2
-	brset	0,X0000,L01C5
-	brset	0,X0000,L01C8
-	brset	0,X0000,L01CB
-	brset	0,X0000,L01CE
-	brset	0,X0000,L01D1
-	brset	0,X0000,L01D4
-	brset	0,X0000,L01D7
-	brset	0,X0000,L01DA
-	brset	0,X0000,L01DD
-	brset	0,X0000,L01E0
-	brset	0,X0000,L01E3
-	brset	0,X0000,L01E6
-	brset	0,X0000,L01E9
-	brset	0,X0000,L01EC
-	brset	0,X0000,L01EF
-	brset	0,X0000,L01F2
-	brset	0,X0000,L01F5
-	brset	0,X0000,L01F8
-	brset	0,X0000,L01FB
-	brset	0,X0000,L01FE
-	brset	0,X0000,L0201
-	brset	0,X0000,L0204
-	brset	0,X0000,L0207
-	brset	0,X0000,L020A
-	brset	0,X0000,L020D
-	brset	0,X0000,L0210
-	brset	0,X0000,L0213
-	brset	0,X0000,L0216
-	brset	0,X0000,L0219
-	brset	0,X0000,L021C
-	brset	0,X0000,L021F
-	brset	0,X0000,L0222
-	brset	0,X0000,L0225
-	brset	0,X0000,L0228
-	brset	0,X0000,L022B
-	brset	0,X0000,L022E
-	brset	0,X0000,L0231
-	brset	0,X0000,L0234
-	brset	0,X0000,L0237
-	brset	0,X0000,L023A
-	brset	0,X0000,L023D
-	brset	0,X0000,L0240
-	brset	0,X0000,L0243
-	brset	0,X0000,L0246
-	brset	0,X0000,L0249
-	brset	0,X0000,L024C
-	brset	0,X0000,L024F
-	brset	0,X0000,L0252
-	brset	0,X0000,L0255
-	brset	0,X0000,L0258
-	brset	0,X0000,L025B
-	brset	0,X0000,L025E
-	brset	0,X0000,L0261
-	brset	0,X0000,L0264
-	brset	0,X0000,L0267
-	brset	0,X0000,L026A
-	brset	0,X0000,L026D
-	brset	0,X0000,L0270
-	brset	0,X0000,L0273
-	brset	0,X0000,L0276
-	brset	0,X0000,L0279
-	brset	0,X0000,L027C
-	brset	0,X0000,L027F
-	brset	0,X0000,L0282
-	brset	0,X0000,L0285
-	brset	0,X0000,L0288
-	brset	0,X0000,L028B
-	brset	0,X0000,L028E
-	brset	0,X0000,L0291
-	brset	0,X0000,L0294
-	brset	0,X0000,L0297
-	brset	0,X0000,L029A
-	brset	0,X0000,L029D
-	brset	0,X0000,L02A0
-	brset	0,X0000,L02A3
-	brset	0,X0000,L02A6
-	brset	0,X0000,L02A9
-	brset	0,X0000,L02AC
-	brset	0,X0000,L02AF
-	brset	0,X0000,L02B2
-	brset	0,X0000,L02B5
-	brset	0,X0000,L02B8
-	brset	0,X0000,L02BB
-	brset	0,X0000,L02BE
-	brset	0,X0000,L02C1
-	brset	0,X0000,L02C4
-	brset	0,X0000,L02C7
-	brset	0,X0000,L02CA
-	brset	0,X0000,L02CD
-	brset	0,X0000,L02D0
-	brset	0,X0000,L02D3
-	brset	0,X0000,L02D6
-	brset	0,X0000,L02D9
-	brset	0,X0000,L02DC
-	brset	0,X0000,L02DF
-	brset	0,X0000,L02E2
-	brset	0,X0000,L02E5
-	brset	0,X0000,L02E8
-	brset	0,X0000,L02EB
-	brset	0,X0000,L02EE
-	brset	0,X0000,L02F1
-	brset	0,X0000,L02F4
-	brset	0,X0000,L02F7
-	brset	0,X0000,L02FA
-	brset	0,X0000,L02FD
-	brset	0,X0000,L0300
-	brset	0,X0000,L0303
-	brset	0,X0000,L0306
-	brset	0,X0000,L0309
-	brset	0,X0000,L030C
-	brset	0,X0000,L030F
-	brset	0,X0000,L0312
-	brset	0,X0000,L0315
-	brset	0,X0000,L0318
-	brset	0,X0000,L031B
-	brset	0,X0000,L031E
-	brset	0,X0000,L0321
-	brset	0,X0000,L0324
-	brset	0,X0000,L0327
-	brset	0,X0000,L032A
-	brset	0,X0000,L032D
-	brset	0,X0000,L0330
-	brset	0,X0000,L0333
-	brset	0,X0000,L0336
-	brset	0,X0000,L0339
-	brset	0,X0000,L033C
-	brset	0,X0000,L033F
-	brset	0,X0000,L0342
-	brset	0,X0000,L0345
-	brset	0,X0000,L0348
-	brset	0,X0000,L034B
-	brset	0,X0000,L034E
-	brset	0,X0000,L0351
-	brset	0,X0000,L0354
-	brset	0,X0000,L0357
-	brset	0,X0000,L035A
-	brset	0,X0000,L035D
-	brset	0,X0000,L0360
-	brset	0,X0000,L0363
-	brset	0,X0000,L0366
-	brset	0,X0000,L0369
-	brset	0,X0000,L036C
-	brset	0,X0000,L036F
-	brset	0,X0000,L0372
-	brset	0,X0000,L0375
-	brset	0,X0000,L0378
-	brset	0,X0000,L037B
-	brset	0,X0000,L037E
-	brset	0,X0000,L0381
-	brset	0,X0000,L0384
-	brset	0,X0000,L0387
-	brset	0,X0000,L038A
-	brset	0,X0000,L038D
-	brset	0,X0000,L0390
-	brset	0,X0000,L0393
-	brset	0,X0000,L0396
-	brset	0,X0000,L0399
-	brset	0,X0000,L039C
-	brset	0,X0000,L039F
-	brset	0,X0000,L03A2
-	brset	0,X0000,L03A5
-	brset	0,X0000,L03A8
-	brset	0,X0000,L03AB
-	brset	0,X0000,L03AE
-	brset	0,X0000,L03B1
-	brset	0,X0000,L03B4
-	brset	0,X0000,L03B7
-	brset	0,X0000,L03BA
-	brset	0,X0000,L03BD
-	brset	0,X0000,L03C0
-	brset	0,X0000,L03C3
-	brset	0,X0000,L03C6
-	brset	0,X0000,L03C9
-	brset	0,X0000,L03CC
-	brset	0,X0000,L03CF
-	brset	0,X0000,L03D2
-	brset	0,X0000,L03D5
-	brset	0,X0000,L03D8
-	brset	0,X0000,L03DB
-	brset	0,X0000,L03DE
-	brset	0,X0000,L03E1
-	brset	0,X0000,L03E4
-	brset	0,X0000,L03E7
-	brset	0,X0000,L03EA
-	brset	0,X0000,L03ED
-	brset	0,X0000,L03F0
-	brset	0,X0000,L03F3
-	brset	0,X0000,L03F6
-	brset	0,X0000,L03F9
-	brset	0,X0000,L03FC
-	brset	0,X0000,L03FF
-	brset	0,X0000,L0402
-	brset	0,X0000,L0405
-	brset	0,X0000,L0408
-	brset	0,X0000,L040B
-	brset	0,X0000,L040E
-	brset	0,X0000,L0411
-	brset	0,X0000,L0414
-	brset	0,X0000,L0417
-	brset	0,X0000,L041A
-	brset	0,X0000,L041D
-	brset	0,X0000,L0420
-	brset	0,X0000,L0423
-	brset	0,X0000,L0426
-	brset	0,X0000,L0429
-	brset	0,X0000,L042C
-	brset	0,X0000,L042F
-	brset	0,X0000,L0432
-	brset	0,X0000,L0435
-	brset	0,X0000,L0438
-	brset	0,X0000,L043B
-	brset	0,X0000,L043E
-	brset	0,X0000,L0441
-	brset	0,X0000,L0444
-	brset	0,X0000,L0447
-	brset	0,X0000,L044A
-	brset	0,X0000,L044D
-	brset	0,X0000,L0450
-	brset	0,X0000,L0453
-	brset	0,X0000,L0456
-	brset	0,X0000,L0459
-	brset	0,X0000,L045C
-	brset	0,X0000,L045F
-	brset	0,X0000,L0462
-	brset	0,X0000,L0465
-	brset	0,X0000,L0468
-	brset	0,X0000,L046B
-	brset	0,X0000,L046E
-	brset	0,X0000,L0471
-	brset	0,X0000,L0474
-	brset	0,X0000,L0477
-	brset	0,X0000,L047A
-	brset	0,X0000,L047D
-	brset	0,X0000,L0480
-	brset	0,X0000,L0483
-	brset	0,X0000,L0486
-	brset	0,X0000,L0489
-	brset	0,X0000,L048C
-	brset	0,X0000,L048F
-	brset	0,X0000,L0492
-	brset	0,X0000,L0495
-	brset	0,X0000,L0498
-	brset	0,X0000,L049B
-	brset	0,X0000,L049E
-	brset	0,X0000,L04A1
-	brset	0,X0000,L04A4
-	brset	0,X0000,L04A7
-	brset	0,X0000,L04AA
-	brset	0,X0000,L04AD
-	brset	0,X0000,L04B0
-	brset	0,X0000,L04B3
-	brset	0,X0000,L04B6
-	brset	0,X0000,L04B9
-	brset	0,X0000,L04BC
-	brset	0,X0000,L04BF
-	brset	0,X0000,L04C2
-	brset	0,X0000,L04C5
-	brset	0,X0000,L04C8
-	brset	0,X0000,L04CB
-	brset	0,X0000,L04CE
-	brset	0,X0000,L04D1
-	brset	0,X0000,L04D4
-	brset	0,X0000,L04D7
-	brset	0,X0000,L04DA
-	brset	0,X0000,L04DD
-	brset	0,X0000,L04E0
-	brset	0,X0000,L04E3
-	brset	0,X0000,L04E6
-	brset	0,X0000,L04E9
-	brset	0,X0000,L04EC
-	brset	0,X0000,L04EF
-	brset	0,X0000,L04F2
-	brset	0,X0000,L04F5
-	brset	0,X0000,L04F8
-	brset	0,X0000,L04FB
-	brset	0,X0000,L04FE
-	brset	0,X0000,L0501
-	brset	0,X0000,L0504
-	brset	0,X0000,L0507
-	brset	0,X0000,L050A
-	brset	0,X0000,L050D
-	brset	0,X0000,L0510
-	brset	0,X0000,L0513
-	brset	0,X0000,L0516
-	brset	0,X0000,L0519
-	brset	0,X0000,L051C
-	brset	0,X0000,L051F
-	brset	0,X0000,L0522
-	brset	0,X0000,L0525
-	brset	0,X0000,L0528
-	brset	0,X0000,L052B
-	brset	0,X0000,L052E
-	brset	0,X0000,L0531
-	brset	0,X0000,L0534
-	brset	0,X0000,L0537
-	brset	0,X0000,L053A
-	brset	0,X0000,L053D
-	brset	0,X0000,L0540
-	brset	0,X0000,L0543
-	brset	0,X0000,L0546
-	brset	0,X0000,L0549
-	brset	0,X0000,L054C
-	brset	0,X0000,L054F
-	brset	0,X0000,L0552
-	brset	0,X0000,L0555
-	brset	0,X0000,L0558
-	brset	0,X0000,L055B
-	brset	0,X0000,L055E
-	brset	0,X0000,L0561
-	brset	0,X0000,L0564
-	brset	0,X0000,L0567
-	brset	0,X0000,L056A
-	brset	0,X0000,L056D
-	brset	0,X0000,L0570
-	brset	0,X0000,L0573
-	brset	0,X0000,L0576
-	brset	0,X0000,L0579
-	brset	0,X0000,L057C
-	brset	0,X0000,L057F
-	brset	0,X0000,L0582
-	brset	0,X0000,L0585
-	brset	0,X0000,L0588
-	brset	0,X0000,L058B
-	brset	0,X0000,L058E
-	brset	0,X0000,L0591
-	brset	0,X0000,L0594
-	brset	0,X0000,L0597
-	brset	0,X0000,L059A
-	brset	0,X0000,L059D
-	brset	0,X0000,L05A0
-	brset	0,X0000,L05A3
-	brset	0,X0000,L05A6
-	brset	0,X0000,L05A9
-	brset	0,X0000,L05AC
-	brset	0,X0000,L05AF
-	brset	0,X0000,L05B2
-	brset	0,X0000,L05B5
-	brset	0,X0000,L05B8
-	brset	0,X0000,L05BB
-	brset	0,X0000,L05BE
-	brset	0,X0000,L05C1
-	brset	0,X0000,L05C4
-	brset	0,X0000,L05C7
-	brset	0,X0000,L05CA
-	brset	0,X0000,L05CD
-	brset	0,X0000,L05D0
-	brset	0,X0000,L05D3
-	brset	0,X0000,L05D6
-	brset	0,X0000,L05D9
-	brset	0,X0000,L05DC
-	brset	0,X0000,L05DF
-	brset	0,X0000,L05E2
-	brset	0,X0000,L05E5
-	brset	0,X0000,L05E8
-	brset	0,X0000,L05EB
-	brset	0,X0000,L05EE
-	brset	0,X0000,L05F1
-	brset	0,X0000,L05F4
-	brset	0,X0000,L05F7
-	brset	0,X0000,L05FA
-	brset	0,X0000,L05FD
-	brset	0,X0000,L0600
-	brset	0,X0000,L0603
-	brset	0,X0000,L0606
-	brset	0,X0000,L0609
-	brset	0,X0000,L060C
-	brset	0,X0000,L060F
-	brset	0,X0000,L0612
-	brset	0,X0000,L0615
-	brset	0,X0000,L0618
-	brset	0,X0000,L061B
-	brset	0,X0000,L061E
-	brset	0,X0000,L0621
-	brset	0,X0000,L0624
-	brset	0,X0000,L0627
-	brset	0,X0000,L062A
-	brset	0,X0000,L062D
-	brset	0,X0000,L0630
-	brset	0,X0000,L0633
-	brset	0,X0000,L0636
-	brset	0,X0000,L0639
-	brset	0,X0000,L063C
-	brset	0,X0000,L063F
-	brset	0,X0000,L0642
-	brset	0,X0000,L0645
-	brset	0,X0000,L0648
-	brset	0,X0000,L064B
-	brset	0,X0000,L064E
-	brset	0,X0000,L0651
-	brset	0,X0000,L0654
-	brset	0,X0000,L0657
-	brset	0,X0000,L065A
-	brset	0,X0000,L065D
-	brset	0,X0000,L0660
-	brset	0,X0000,L0663
-	brset	0,X0000,L0666
-	brset	0,X0000,L0669
-	brset	0,X0000,L066C
-	brset	0,X0000,L066F
-	brset	0,X0000,L0672
-	brset	0,X0000,L0675
-	brset	0,X0000,L0678
-	brset	0,X0000,L067B
-	brset	0,X0000,L067E
-	brset	0,X0000,L0681
-	brset	0,X0000,L0684
-	brset	0,X0000,L0687
-	brset	0,X0000,L068A
-	brset	0,X0000,L068D
-	brset	0,X0000,L0690
-	brset	0,X0000,L0693
-	brset	0,X0000,L0696
-	brset	0,X0000,L0699
-	brset	0,X0000,L069C
-	brset	0,X0000,L069F
-	brset	0,X0000,L06A2
-	brset	0,X0000,L06A5
-	brset	0,X0000,L06A8
-	brset	0,X0000,L06AB
-	brset	0,X0000,L06AE
-	brset	0,X0000,L06B1
-	brset	0,X0000,L06B4
-	brset	0,X0000,L06B7
-	brset	0,X0000,L06BA
-	brset	0,X0000,L06BD
-	brset	0,X0000,L06C0
-	brset	0,X0000,L06C3
-	brset	0,X0000,L06C6
-	brset	0,X0000,L06C9
-	brset	0,X0000,L06CC
-	brset	0,X0000,L06CF
-	brset	0,X0000,L06D2
-	brset	0,X0000,L06D5
-	brset	0,X0000,L06D8
-	brset	0,X0000,L06DB
-	brset	0,X0000,L06DE
-	brset	0,X0000,L06E1
-	brset	0,X0000,L06E4
-	brset	0,X0000,L06E7
-	brset	0,X0000,L06EA
-	brset	0,X0000,L06ED
-	brset	0,X0000,L06F0
-	brset	0,X0000,L06F3
-	brset	0,X0000,L06F6
-	brset	0,X0000,L06F9
-	brset	0,X0000,L06FC
-	brset	0,X0000,L06FF
-	brset	0,X0000,L0702
-	brset	0,X0000,L0705
-	brset	0,X0000,L0708
-	brset	0,X0000,L070B
-	brset	0,X0000,L070E
-	brset	0,X0000,L0711
-	brset	0,X0000,L0714
-	brset	0,X0000,L0717
-	brset	0,X0000,L071A
-	brset	0,X0000,L071D
-	brset	0,X0000,L0720
-	brset	0,X0000,L0723
-	brset	0,X0000,L0726
-	brset	0,X0000,L0729
-	brset	0,X0000,L072C
-	brset	0,X0000,L072F
-	brset	0,X0000,L0732
-	brset	0,X0000,L0735
-	brset	0,X0000,L0738
-	brset	0,X0000,L073B
-	brset	0,X0000,L073E
-	brset	0,X0000,L0741
-	brset	0,X0000,L0744
-	brset	0,X0000,L0747
-	brset	0,X0000,L074A
-	brset	0,X0000,L074D
-	brset	0,X0000,L0750
-	brset	0,X0000,L0753
-	brset	0,X0000,L0756
-	brset	0,X0000,L0759
-	brset	0,X0000,L075C
-	brset	0,X0000,L075F
-	brset	0,X0000,L0762
-	brset	0,X0000,L0765
-	brset	0,X0000,L0768
-	brset	0,X0000,L076B
-	brset	0,X0000,L076E
-	brset	0,X0000,L0771
-	brset	0,X0000,L0774
-	brset	0,X0000,L0777
-	brset	0,X0000,L077A
-	brset	0,X0000,L077D
-	brset	0,X0000,L0780
-	brset	0,X0000,L0783
-	brset	0,X0000,L0786
-	brset	0,X0000,L0789
-	brset	0,X0000,L078C
-	brset	0,X0000,L078F
-	brset	0,X0000,L0792
-	brset	0,X0000,L0795
-	brset	0,X0000,L0798
-	brset	0,X0000,L079B
-	brset	0,X0000,L079E
-	brset	0,X0000,L07A1
-	brset	0,X0000,L07A4
-	brset	0,X0000,L07A7
-	brset	0,X0000,L07AA
-	brset	0,X0000,L07AD
-	brset	0,X0000,L07B0
-	brset	0,X0000,L07B3
-	brset	0,X0000,L07B6
-	brset	0,X0000,L07B9
-	brset	0,X0000,L07BC
-	brset	0,X0000,L07BF
-	brset	0,X0000,L07C2
-	brset	0,X0000,L07C5
-	brset	0,X0000,L07C8
-	brset	0,X0000,L07CB
-	brset	0,X0000,L07CE
-	brset	0,X0000,L07D1
-	brset	0,X0000,L07D4
-	brset	0,X0000,L07D7
-	brset	0,X0000,L07DA
-	brset	0,X0000,L07DD
-	brset	0,X0000,L07E0
-	brset	0,X0000,L07E3
-	brset	0,X0000,L07E6
-	brset	0,X0000,L07E9
-	brset	0,X0000,L07EC
-	brset	0,X0000,L07EF
-	brset	0,X0000,L07F2
-	brset	0,X0000,L07F5
-	brset	0,X0000,L07F8
-	brset	0,X0000,L07FB
-	brset	0,X0000,L07FE
-	brset	0,X0000,L0001
-	brset	0,X0000,L0004
-	brset	0,X0000,L0007
-	brset	0,X0000,L000A
-	brset	0,X0000,L000D
-	brset	0,X0000,L0010
-	brset	0,X0000,L0013
-	brset	0,X0000,L0016
-	brset	0,X0000,L0019
-	brset	0,X0000,L001C
-	brset	0,X0000,L001F
-	brset	0,X0000,L0022
-	brset	0,X0000,L0025
-	brset	0,X0000,L0028
-	brset	0,X0000,L002B
-	brset	0,X0000,L002E
-	brset	0,X0000,L0031
-	brset	0,X0000,L0034
-	brset	0,X0000,L0037
-	brset	0,X0000,L003A
-	brset	0,X0000,L003D
-	brset	0,X0000,L0040
-	brset	0,X0000,L0043
-	brset	0,X0000,L0046
-	brset	0,X0000,L0049
-	brset	0,X0000,L004C
-	brset	0,X0000,L004F
-	brset	0,X0000,L0052
-	brset	0,X0000,L0055
-	brset	0,X0000,L0058
-	brset	0,X0000,L005B
-	brset	0,X0000,L005E
-	brset	0,X0000,L0061
-	brset	0,X0000,L0064
-	brset	0,X0000,L0067
-	brset	0,X0000,L006A
-	brset	0,X0000,L006D
-	brset	0,X0000,L0070
-	brset	0,X0000,L0073
-	brset	0,X0000,L0076
-	brset	0,X0000,L0079
-	brset	0,X0000,L007C
-	brset	0,X0000,L007F
-	brset	0,X0000,L0082
-	brset	0,X0000,L0085
-	brset	0,X0000,L0088
-	brset	0,X0000,L008B
-	brset	0,X0000,L008E
-	brset	0,X0000,L0091
-	brset	0,X0000,L0094
-	brset	0,X0000,L0097
-	brset	0,X0000,L009A
-	brset	0,X0000,L009D
-	brset	0,X0000,L00A0
-	brset	0,X0000,L00A3
-	brset	0,X0000,L00A6
-	brset	0,X0000,L00A9
-	brset	0,X0000,L00AC
-	brset	0,X0000,L00AF
-	brset	0,X0000,L00B2
-	brset	0,X0000,L00B5
-	brset	0,X0000,L00B8
-	brset	0,X0000,L00BB
-	brset	0,X0000,L00BE
-	brset	0,X0000,L00C1
-	brset	0,X0000,L00C4
-	brset	0,X0000,L00C7
-	brset	0,X0000,L00CA
-	brset	0,X0000,L00CD
-	brset	0,X0000,L00D0
-	brset	0,X0000,L00D3
-	brset	0,X0000,L00D6
-	brset	0,X0000,L00D9
-	brset	0,X0000,L00DC
-	brset	0,X0000,L00DF
-	brset	0,X0000,L00E2
-	brset	0,X0000,L00E5
-	brset	0,X0000,L00E8
-	brset	0,X0000,L00EB
-	brset	0,X0000,L00EE
-	brset	0,X0000,L00F1
-	brset	0,X0000,L00F4
-	brset	0,X0000,L00F7
-	brset	0,X0000,L00FA
-	brset	0,X0000,L00FD
-	brset	0,X0000,L0100
-	brset	0,X0000,L0103
-	brset	0,X0000,L0106
-	brset	0,X0000,L0109
-	brset	0,X0000,L010C
-	brset	0,X0000,L010F
-	brset	0,X0000,L0112
-	brset	0,X0000,L0115
-	brset	0,X0000,L0118
-	brset	0,X0000,L011B
-	brset	0,X0000,L011E
-	brset	0,X0000,L0121
-	brset	0,X0000,L0124
-	brset	0,X0000,L0127
-	brset	0,X0000,L012A
-	brset	0,X0000,L012D
-	brset	0,X0000,L0130
-	brset	0,X0000,L0133
-	brset	0,X0000,L0136
-	brset	0,X0000,L0139
-	brset	0,X0000,L013C
-	brset	0,X0000,L013F
-	brset	0,X0000,L0142
-	brset	0,X0000,L0145
-	brset	0,X0000,L0148
-	brset	0,X0000,L014B
-	brset	0,X0000,L014E
-	brset	0,X0000,L0151
-	brset	0,X0000,L0154
-	brset	0,X0000,L0157
-	brset	0,X0000,L015A
-	brset	0,X0000,L015D
-	brset	0,X0000,L0160
-	brset	0,X0000,L0163
-	brset	0,X0000,L0166
-	brset	0,X0000,L0169
-	brset	0,X0000,L016C
-	brset	0,X0000,L016F
-	brset	0,X0000,L0172
-	brset	0,X0000,L0175
-	brset	0,X0000,L0178
-	brset	0,X0000,L017B
-	brset	0,X0000,L017E
-	brset	0,X0000,L0181
-	brset	0,X0000,L0184
-	brset	0,X0000,L0187
-	brset	0,X0000,L018A
-	brset	0,X0000,L018D
-	brset	0,X0000,L0190
-	brset	0,X0000,L0193
-	brset	0,X0000,L0196
-	brset	0,X0000,L0199
-	brset	0,X0000,L019C
-	brset	0,X0000,L019F
-	brset	0,X0000,L01A2
-	brset	0,X0000,L01A5
-	brset	0,X0000,L01A8
-	brset	0,X0000,L01AB
-	brset	0,X0000,L01AE
-	brset	0,X0000,L01B1
-	brset	0,X0000,L01B4
-	brset	0,X0000,L01B7
-	brset	0,X0000,L01BA
-	brset	0,X0000,L01BD
-	brset	0,X0000,L01C0
-	brset	0,X0000,L01C3
-	brset	0,X0000,L01C6
-	brset	0,X0000,L01C9
-	brset	0,X0000,L01CC
-	brset	0,X0000,L01CF
-	brset	0,X0000,L01D2
-	brset	0,X0000,L01D5
-	brset	0,X0000,L01D8
-	brset	0,X0000,L01DB
-	brset	0,X0000,L01DE
-	brset	0,X0000,L01E1
-	brset	0,X0000,L01E4
-	brset	0,X0000,L01E7
-	brset	0,X0000,L01EA
-	brset	0,X0000,L01ED
-	brset	0,X0000,L01F0
-	brset	0,X0000,L01F3
-	brset	0,X0000,L01F6
-	brset	0,X0000,L01F9
-	brset	0,X0000,L01FC
-	brset	0,X0000,L01FF
-	brset	0,X0000,L0202
-	brset	0,X0000,L0205
-	brset	0,X0000,L0208
-	brset	0,X0000,L020B
-	brset	0,X0000,L020E
-	brset	0,X0000,L0211
-	brset	0,X0000,L0214
-	brset	0,X0000,L0217
-	brset	0,X0000,L021A
-	brset	0,X0000,L021D
-	brset	0,X0000,L0220
-	brset	0,X0000,L0223
-	brset	0,X0000,L0226
-	brset	0,X0000,L0229
-	brset	0,X0000,L022C
-	brset	0,X0000,L022F
-	brset	0,X0000,L0232
-	brset	0,X0000,L0235
-	brset	0,X0000,L0238
-	brset	0,X0000,L023B
-	brset	0,X0000,L023E
-	brset	0,X0000,L0241
-	brset	0,X0000,L0244
-	brset	0,X0000,L0247
-	brset	0,X0000,L024A
-	brset	0,X0000,L024D
-	brset	0,X0000,L0250
-	brset	0,X0000,L0253
-	brset	0,X0000,L0256
-	brset	0,X0000,L0259
-	brset	0,X0000,L025C
-	brset	0,X0000,L025F
-	brset	0,X0000,L0262
-	brset	0,X0000,L0265
-	brset	0,X0000,L0268
-	brset	0,X0000,L026B
-	brset	0,X0000,L026E
-	brset	0,X0000,L0271
-	brset	0,X0000,L0274
-	brset	0,X0000,L0277
-	brset	0,X0000,L027A
-	brset	0,X0000,L027D
-	brset	0,X0000,L0280
-	brset	0,X0000,L0283
-	brset	0,X0000,L0286
-	brset	0,X0000,L0289
-	brset	0,X0000,L028C
-	brset	0,X0000,L028F
-	brset	0,X0000,L0292
-	brset	0,X0000,L0295
-	brset	0,X0000,L0298
-	brset	0,X0000,L029B
-	brset	0,X0000,L029E
-	brset	0,X0000,L02A1
-	brset	0,X0000,L02A4
-	brset	0,X0000,L02A7
-	brset	0,X0000,L02AA
-	brset	0,X0000,L02AD
-	brset	0,X0000,L02B0
-	brset	0,X0000,L02B3
-	brset	0,X0000,L02B6
-	brset	0,X0000,L02B9
-	brset	0,X0000,L02BC
-	brset	0,X0000,L02BF
-	brset	0,X0000,L02C2
-	brset	0,X0000,L02C5
-	brset	0,X0000,L02C8
-	brset	0,X0000,L02CB
-	brset	0,X0000,L02CE
-	brset	0,X0000,L02D1
-	brset	0,X0000,L02D4
-	brset	0,X0000,L02D7
-	brset	0,X0000,L02DA
-	brset	0,X0000,L02DD
-	brset	0,X0000,L02E0
-	brset	0,X0000,L02E3
-	brset	0,X0000,L02E6
-	brset	0,X0000,L02E9
-	brset	0,X0000,L02EC
-	brset	0,X0000,L02EF
-	brset	0,X0000,L02F2
-	brset	0,X0000,L02F5
-	brset	0,X0000,L02F8
-	brset	0,X0000,L02FB
-	brset	0,X0000,L02FE
-	brset	0,X0000,L0301
-	brset	0,X0000,L0304
-	brset	0,X0000,L0307
-	brset	0,X0000,L030A
-	brset	0,X0000,L030D
-	brset	0,X0000,L0310
-	brset	0,X0000,L0313
-	brset	0,X0000,L0316
-	brset	0,X0000,L0319
-	brset	0,X0000,L031C
-	brset	0,X0000,L031F
-	brset	0,X0000,L0322
-	brset	0,X0000,L0325
-	brset	0,X0000,L0328
-	brset	0,X0000,L032B
-	brset	0,X0000,L032E
-	brset	0,X0000,L0331
-	brset	0,X0000,L0334
-	brset	0,X0000,L0337
-	brset	0,X0000,L033A
-	brset	0,X0000,L033D
-	brset	0,X0000,L0340
-	brset	0,X0000,L0343
-	brset	0,X0000,L0346
-	brset	0,X0000,L0349
-	brset	0,X0000,L034C
-	brset	0,X0000,L034F
-	brset	0,X0000,L0352
-	brset	0,X0000,L0355
-	brset	0,X0000,L0358
-	brset	0,X0000,L035B
-	brset	0,X0000,L035E
-	brset	0,X0000,L0361
-	brset	0,X0000,L0364
-	brset	0,X0000,L0367
-	brset	0,X0000,L036A
-	brset	0,X0000,L036D
-	brset	0,X0000,L0370
-	brset	0,X0000,L0373
-	brset	0,X0000,L0376
-	brset	0,X0000,L0379
-	brset	0,X0000,L037C
-	brset	0,X0000,L037F
-	brset	0,X0000,L0382
-	brset	0,X0000,L0385
-	brset	0,X0000,L0388
-	brset	0,X0000,L038B
-	brset	0,X0000,L038E
-	brset	0,X0000,L0391
-	brset	0,X0000,L0394
-	brset	0,X0000,L0397
-	brset	0,X0000,L039A
-	brset	0,X0000,L039D
-	brset	0,X0000,L03A0
-	brset	0,X0000,L03A3
-	brset	0,X0000,L03A6
-	brset	0,X0000,L03A9
-	brset	0,X0000,L03AC
-	brset	0,X0000,L03AF
-	brset	0,X0000,L03B2
-	brset	0,X0000,L03B5
-	brset	0,X0000,L03B8
-	brset	0,X0000,L03BB
-	brset	0,X0000,L03BE
-	brset	0,X0000,L03C1
-	brset	0,X0000,L03C4
-	brset	0,X0000,L03C7
-	brset	0,X0000,L03CA
-	brset	0,X0000,L03CD
-	brset	0,X0000,L03D0
-	brset	0,X0000,L03D3
-	brset	0,X0000,L03D6
-	brset	0,X0000,L03D9
-	brset	0,X0000,L03DC
-	brset	0,X0000,L03DF
-	brset	0,X0000,L03E2
-	brset	0,X0000,L03E5
-	brset	0,X0000,L03E8
-	brset	0,X0000,L03EB
-	brset	0,X0000,L03EE
-	brset	0,X0000,L03F1
-	brset	0,X0000,L03F4
-	brset	0,X0000,L03F7
-	brset	0,X0000,L03FA
-	brset	0,X0000,L03FD
-	brset	0,X0000,L0400
-	brset	0,X0000,L0403
-	brset	0,X0000,L0406
-	brset	0,X0000,L0409
-	brset	0,X0000,L040C
-	brset	0,X0000,L040F
-	brset	0,X0000,L0412
-	brset	0,X0000,L0415
-	brset	0,X0000,L0418
-	brset	0,X0000,L041B
-	brset	0,X0000,L041E
-	brset	0,X0000,L0421
-	brset	0,X0000,L0424
-	brset	0,X0000,L0427
-	brset	0,X0000,L042A
-	brset	0,X0000,L042D
-	brset	0,X0000,L0430
-	brset	0,X0000,L0433
-	brset	0,X0000,L0436
-	brset	0,X0000,L0439
-	brset	0,X0000,L043C
-	brset	0,X0000,L043F
-	brset	0,X0000,L0442
-	brset	0,X0000,L0445
-	brset	0,X0000,L0448
-	brset	0,X0000,L044B
-	brset	0,X0000,L044E
-	brset	0,X0000,L0451
-	brset	0,X0000,L0454
-	brset	0,X0000,L0457
-	brset	0,X0000,L045A
-	brset	0,X0000,L045D
-	brset	0,X0000,L0460
-	brset	0,X0000,L0463
-	brset	0,X0000,L0466
-	brset	0,X0000,L0469
-	brset	0,X0000,L046C
-	brset	0,X0000,L046F
-	brset	0,X0000,L0472
-	brset	0,X0000,L0475
-	brset	0,X0000,L0478
-	brset	0,X0000,L047B
-	brset	0,X0000,L047E
-	brset	0,X0000,L0481
-	brset	0,X0000,L0484
-	brset	0,X0000,L0487
-	brset	0,X0000,L048A
-	brset	0,X0000,L048D
-	brset	0,X0000,L0490
-	brset	0,X0000,L0493
-	brset	0,X0000,L0496
-	brset	0,X0000,L0499
-	brset	0,X0000,L049C
-	brset	0,X0000,L049F
-	brset	0,X0000,L04A2
-	brset	0,X0000,L04A5
-	brset	0,X0000,L04A8
-	brset	0,X0000,L04AB
-	brset	0,X0000,L04AE
-	brset	0,X0000,L04B1
-	brset	0,X0000,L04B4
-	brset	0,X0000,L04B7
-	brset	0,X0000,L04BA
-	brset	0,X0000,L04BD
-	brset	0,X0000,L04C0
-	brset	0,X0000,L04C3
-	brset	0,X0000,L04C6
-	brset	0,X0000,L04C9
-	brset	0,X0000,L04CC
-	brset	0,X0000,L04CF
-	brset	0,X0000,L04D2
-	brset	0,X0000,L04D5
-	brset	0,X0000,L04D8
-	brset	0,X0000,L04DB
-	brset	0,X0000,L04DE
-	brset	0,X0000,L04E1
-	brset	0,X0000,L04E4
-	brset	0,X0000,L04E7
-	brset	0,X0000,L04EA
-	brset	0,X0000,L04ED
-	brset	0,X0000,L04F0
-	brset	0,X0000,L04F3
-	brset	0,X0000,L04F6
-	brset	0,X0000,L04F9
-	brset	0,X0000,L04FC
-	brset	0,X0000,L04FF
-	brset	0,X0000,L0502
-	brset	0,X0000,L0505
-	brset	0,X0000,L0508
-	brset	0,X0000,L050B
-	brset	0,X0000,L050E
-	brset	0,X0000,L0511
-	brset	0,X0000,L0514
-	brset	0,X0000,L0517
-	brset	0,X0000,L051A
-	brset	0,X0000,L051D
-	brset	0,X0000,L0520
-	brset	0,X0000,L0523
-	brset	0,X0000,L0526
-	brset	0,X0000,L0529
-	brset	0,X0000,L052C
-	brset	0,X0000,L052F
-	brset	0,X0000,L0532
-	brset	0,X0000,L0535
-	brset	0,X0000,L0538
-	brset	0,X0000,L053B
-	brset	0,X0000,L053E
-	brset	0,X0000,L0541
-	brset	0,X0000,L0544
-	brset	0,X0000,L0547
-	brset	0,X0000,L054A
-	brset	0,X0000,L054D
-	brset	0,X0000,L0550
-	brset	0,X0000,L0553
-	brset	0,X0000,L0556
-	brset	0,X0000,L0559
-	brset	0,X0000,L055C
-	brset	0,X0000,L055F
-	brset	0,X0000,L0562
-	brset	0,X0000,L0565
-	brset	0,X0000,L0568
-	brset	0,X0000,L056B
-	brset	0,X0000,L056E
-	brset	0,X0000,L0571
-	brset	0,X0000,L0574
-	brset	0,X0000,L0577
-	brset	0,X0000,L057A
-	brset	0,X0000,L057D
-	brset	0,X0000,L0580
-	brset	0,X0000,L0583
-	brset	0,X0000,L0586
-	brset	0,X0000,L0589
-	brset	0,X0000,L058C
-	brset	0,X0000,L058F
-	brset	0,X0000,L0592
-	brset	0,X0000,L0595
-	brset	0,X0000,L0598
-	brset	0,X0000,L059B
-	brset	0,X0000,L059E
-	brset	0,X0000,L05A1
-	brset	0,X0000,L05A4
-	brset	0,X0000,L05A7
-	brset	0,X0000,L05AA
-	brset	0,X0000,L05AD
-	brset	0,X0000,L05B0
-	brset	0,X0000,L05B3
-	brset	0,X0000,L05B6
-	brset	0,X0000,L05B9
-	brset	0,X0000,L05BC
-	brset	0,X0000,L05BF
-	brset	0,X0000,L05C2
-	brset	0,X0000,L05C5
-	brset	0,X0000,L05C8
-	brset	0,X0000,L05CB
-	brset	0,X0000,L05CE
-	brset	0,X0000,L05D1
-	brset	0,X0000,L05D4
-	brset	0,X0000,L05D7
-	brset	0,X0000,L05DA
-	brset	0,X0000,L05DD
-	brset	0,X0000,L05E0
-	brset	0,X0000,L05E3
-	brset	0,X0000,L05E6
-	brset	0,X0000,L05E9
-	brset	0,X0000,L05EC
-	brset	0,X0000,L05EF
-	brset	0,X0000,L05F2
-	brset	0,X0000,L05F5
-	brset	0,X0000,L05F8
-	brset	0,X0000,L05FB
-	brset	0,X0000,L05FE
-	brset	0,X0000,L0601
-	brset	0,X0000,L0604
-	brset	0,X0000,L0607
-	brset	0,X0000,L060A
-	brset	0,X0000,L060D
-	brset	0,X0000,L0610
-	brset	0,X0000,L0613
-	brset	0,X0000,L0616
-	brset	0,X0000,L0619
-	brset	0,X0000,L061C
-	brset	0,X0000,L061F
-	brset	0,X0000,L0622
-	brset	0,X0000,L0625
-	brset	0,X0000,L0628
-	brset	0,X0000,L062B
-	brset	0,X0000,L062E
-	brset	0,X0000,L0631
-	brset	0,X0000,L0634
-	brset	0,X0000,L0637
-	brset	0,X0000,L063A
-	brset	0,X0000,L063D
-	brset	0,X0000,L0640
-	brset	0,X0000,L0643
-	brset	0,X0000,L0646
-	brset	0,X0000,L0649
-	brset	0,X0000,L064C
-	brset	0,X0000,L064F
-	brset	0,X0000,L0652
-	brset	0,X0000,L0655
-	brset	0,X0000,L0658
-	brset	0,X0000,L065B
-	brset	0,X0000,L065E
-	brset	0,X0000,L0661
-	brset	0,X0000,L0664
-	brset	0,X0000,L0667
-	brset	0,X0000,L066A
-	brset	0,X0000,L066D
-	brset	0,X0000,L0670
-	brset	0,X0000,L0673
-	brset	0,X0000,L0676
-	brset	0,X0000,L0679
-	brset	0,X0000,L067C
-	brset	0,X0000,L067F
-	brset	0,X0000,L0682
-	brset	0,X0000,L0685
-	brset	0,X0000,L0688
-	brset	0,X0000,L068B
-	brset	0,X0000,L068E
-	brset	0,X0000,L0691
-	brset	0,X0000,L0694
-	brset	0,X0000,L0697
-	brset	0,X0000,L069A
-	brset	0,X0000,L069D
-	brset	0,X0000,L06A0
-	brset	0,X0000,L06A3
-	brset	0,X0000,L06A6
-	brset	0,X0000,L06A9
-	brset	0,X0000,L06AC
-	brset	0,X0000,L06AF
-	brset	0,X0000,L06B2
-	brset	0,X0000,L06B5
-	brset	0,X0000,L06B8
-	brset	0,X0000,L06BB
-	brset	0,X0000,L06BE
-	brset	0,X0000,L06C1
-	brset	0,X0000,L06C4
-	brset	0,X0000,L06C7
-	brset	0,X0000,L06CA
-	brset	0,X0000,L06CD
-	brset	0,X0000,L06D0
-	brset	0,X0000,L06D3
-	brset	0,X0000,L06D6
-	brset	0,X0000,L06D9
-	brset	0,X0000,L06DC
-	brset	0,X0000,L06DF
-	brset	0,X0000,L06E2
-	brset	0,X0000,L06E5
-	brset	0,X0000,L06E8
-	brset	0,X0000,L06EB
-	brset	0,X0000,L06EE
-	brset	0,X0000,L06F1
-	brset	0,X0000,L06F4
-	brset	0,X0000,L06F7
-	brset	0,X0000,L06FA
-	brset	0,X0000,L06FD
-	brset	0,X0000,L0700
-	brset	0,X0000,L0703
-	brset	0,X0000,L0706
-	brset	0,X0000,L0709
-	brset	0,X0000,L070C
-	brset	0,X0000,L070F
-	brset	0,X0000,L0712
-	brset	0,X0000,L0715
-	brset	0,X0000,L0718
-	brset	0,X0000,L071B
-	brset	0,X0000,L071E
-	brset	0,X0000,L0721
-	brset	0,X0000,L0724
-	brset	0,X0000,L0727
-	brset	0,X0000,L072A
-	brset	0,X0000,L072D
-	brset	0,X0000,L0730
-	brset	0,X0000,L0733
-	brset	0,X0000,L0736
-	brset	0,X0000,L0739
-	brset	0,X0000,L073C
-	brset	0,X0000,L073F
-	brset	0,X0000,L0742
-	brset	0,X0000,L0745
-	brset	0,X0000,L0748
-	brset	0,X0000,L074B
-	brset	0,X0000,L074E
-	brset	0,X0000,L0751
-	brset	0,X0000,L0754
-	brset	0,X0000,L0757
-	brset	0,X0000,L075A
-	brset	0,X0000,L075D
-	brset	0,X0000,L0760
-	brset	0,X0000,L0763
-	brset	0,X0000,L0766
-	brset	0,X0000,L0769
-	brset	0,X0000,L076C
-	brset	0,X0000,L076F
-	brset	0,X0000,L0772
-	brset	0,X0000,L0775
-	brset	0,X0000,L0778
-	brset	0,X0000,L077B
-	brset	0,X0000,L077E
-	brset	0,X0000,L0781
-	brset	0,X0000,L0784
-	brset	0,X0000,L0787
-	brset	0,X0000,L078A
-	brset	0,X0000,L078D
-	brset	0,X0000,L0790
-	brset	0,X0000,L0793
-	brset	0,X0000,L0796
-	brset	0,X0000,L0799
-	brset	0,X0000,L079C
-	brset	0,X0000,L079F
-	brset	0,X0000,L07A2
-	brset	0,X0000,L07A5
-	brset	0,X0000,L07A8
-	brset	0,X0000,L07AB
-	brset	0,X0000,L07AE
-	brset	0,X0000,L07B1
-	brset	0,X0000,L07B4
-	brset	0,X0000,L07B7
-	brset	0,X0000,L07BA
-	brset	0,X0000,L07BD
-	brset	0,X0000,L07C0
-	brset	0,X0000,L07C3
-	brset	0,X0000,L07C6
-	brset	0,X0000,L07C9
-	brset	0,X0000,L07CC
-	brset	0,X0000,L07CF
-	brset	0,X0000,L07D2
-	brset	0,X0000,L07D5
-	brset	0,X0000,L07D8
-	brset	0,X0000,L07DB
-	brset	0,X0000,L07DE
-	brset	0,X0000,L07E1
-	brset	0,X0000,L07E4
-	brset	0,X0000,L07E7
-	brset	0,X0000,L07EA
-	brset	0,X0000,L07ED
-	brset	0,X0000,L07F0
-	brset	0,X0000,L07F3
-	brset	0,X0000,L07F6
-	brset	0,X0000,L07F9
-	brset	0,X0000,L07FC
-	brset	0,X0000,L07FF
-	brset	0,X0000,L0002
-	brset	0,X0000,L0005
-	brset	0,X0000,L0008
-	brset	0,X0000,L000B
-	brset	0,X0000,L000E
-	brset	0,X0000,L0011
-	brset	0,X0000,L0014
-	brset	0,X0000,L0017
-	brset	0,X0000,L001A
-	brset	0,X0000,L001D
-	brset	0,X0000,L0020
-	brset	0,X0000,L0023
-	brset	0,X0000,L0026
-	brset	0,X0000,L0029
-	brset	0,X0000,L002C
-	brset	0,X0000,L002F
-	brset	0,X0000,L0032
-	brset	0,X0000,L0035
-	brset	0,X0000,L0038
-	brset	0,X0000,L003B
-	brset	0,X0000,L003E
-	brset	0,X0000,L0041
-	brset	0,X0000,L0044
-	brset	0,X0000,L0047
-	brset	0,X0000,L004A
-	brset	0,X0000,L004D
-	brset	0,X0000,L0050
-	brset	0,X0000,L0053
-	brset	0,X0000,L0056
-	brset	0,X0000,L0059
-	brset	0,X0000,L005C
-	brset	0,X0000,L005F
-	brset	0,X0000,L0062
-	brset	0,X0000,L0065
-	brset	0,X0000,L0068
-	brset	0,X0000,L006B
-	brset	0,X0000,L006E
-	brset	0,X0000,L0071
-	brset	0,X0000,L0074
-	brset	0,X0000,L0077
-	brset	0,X0000,L007A
-	brset	0,X0000,L007D
-	brset	0,X0000,L0080
-	brset	0,X0000,L0083
-	brset	0,X0000,L0086
-	brset	0,X0000,L0089
-	brset	0,X0000,L008C
-	brset	0,X0000,L008F
-	brset	0,X0000,L0092
-	brset	0,X0000,L0095
-	brset	0,X0000,L0098
-	brset	0,X0000,L009B
-	brset	0,X0000,L009E
-	brset	0,X0000,L00A1
-	brset	0,X0000,L00A4
-	brset	0,X0000,L00A7
-	brset	0,X0000,L00AA
-	brset	0,X0000,L00AD
-	brset	0,X0000,L00B0
-	brset	0,X0000,L00B3
-	brset	0,X0000,L00B6
-	brset	0,X0000,L00B9
-	brset	0,X0000,L00BC
-	brset	0,X0000,L00BF
-	brset	0,X0000,L00C2
-	brset	0,X0000,L00C5
-	brset	0,X0000,L00C8
-	brset	0,X0000,L00CB
-	brset	0,X0000,L00CE
-	brset	0,X0000,L00D1
-	brset	0,X0000,L00D4
-	brset	0,X0000,L00D7
-	brset	0,X0000,L00DA
-	brset	0,X0000,L00DD
-	brset	0,X0000,L00E0
-	brset	0,X0000,L00E3
-	brset	0,X0000,L00E6
-	brset	0,X0000,L00E9
-	brset	0,X0000,L00EC
-	brset	0,X0000,L00EF
-	brset	0,X0000,L00F2
-	brset	0,X0000,L00F5
-	brset	0,X0000,L00F8
-	brset	0,X0000,L00FB
-	brset	0,X0000,L00FE
-	brset	0,X0000,L0101
-	brset	0,X0000,L0104
-	brset	0,X0000,L0107
-	brset	0,X0000,L010A
-	brset	0,X0000,L010D
-	brset	0,X0000,L0110
-	brset	0,X0000,L0113
-	brset	0,X0000,L0116
-	brset	0,X0000,L0119
-	brset	0,X0000,L011C
-	brset	0,X0000,L011F
-	brset	0,X0000,L0122
-	brset	0,X0000,L0125
-	brset	0,X0000,L0128
-	brset	0,X0000,L012B
-	brset	0,X0000,L012E
-	brset	0,X0000,L0131
-	brset	0,X0000,L0134
-	brset	0,X0000,L0137
-	brset	0,X0000,L013A
-	brset	0,X0000,L013D
-	brset	0,X0000,L0140
-	brset	0,X0000,L0143
-	brset	0,X0000,L0146
-	brset	0,X0000,L0149
-	brset	0,X0000,L014C
-	brset	0,X0000,L014F
-	brset	0,X0000,L0152
-	brset	0,X0000,L0155
-	brset	0,X0000,L0158
-	brset	0,X0000,L015B
-	brset	0,X0000,L015E
-	brset	0,X0000,L0161
-	brset	0,X0000,L0164
-	brset	0,X0000,L0167
-	brset	0,X0000,L016A
-	brset	0,X0000,L016D
-	brset	0,X0000,L0170
-	brset	0,X0000,L0173
-	brset	0,X0000,L0176
-	brset	0,X0000,L0179
-	brset	0,X0000,L017C
-	brset	0,X0000,L017F
-	brset	0,X0000,L0182
-	brset	0,X0000,L0185
-	brset	0,X0000,L0188
-	brset	0,X0000,L018B
-	brset	0,X0000,L018E
-	brset	0,X0000,L0191
-	brset	0,X0000,L0194
-	brset	0,X0000,L0197
-	brset	0,X0000,L019A
-	brset	0,X0000,L019D
-	brset	0,X0000,L01A0
-	brset	0,X0000,L01A3
-	brset	0,X0000,L01A6
-	brset	0,X0000,L01A9
-	brset	0,X0000,L01AC
-	brset	0,X0000,L01AF
-	brset	0,X0000,L01B2
-	brset	0,X0000,L01B5
-	brset	0,X0000,L01B8
-	brset	0,X0000,L01BB
-	brset	0,X0000,L01BE
-	brset	0,X0000,L01C1
-	brset	0,X0000,L01C4
-	brset	0,X0000,L01C7
-	brset	0,X0000,L01CA
-	brset	0,X0000,L01CD
-	brset	0,X0000,L01D0
-	brset	0,X0000,L01D3
-	brset	0,X0000,L01D6
-	brset	0,X0000,L01D9
-	brset	0,X0000,L01DC
-	brset	0,X0000,L01DF
-	brset	0,X0000,L01E2
-	brset	0,X0000,L01E5
-	brset	0,X0000,L01E8
-	brset	0,X0000,L01EB
-	brset	0,X0000,L01EE
-	brset	0,X0000,L01F1
-	brset	0,X0000,L01F4
-	brset	0,X0000,L01F7
-	brset	0,X0000,L01FA
-	brset	0,X0000,L01FD
-	brset	0,X0000,L0200
+	db	$4A
+X4D6D:
+	db	$04, $3A, $98, $30
+	db	$7E, $29, $5C, $24
+	db	$0F, $1F, $F6, $1C
+	db	$B3, $1A, $0B, $00
+	db	$00, $5D, $C0, $46
+	db	$50, $38, $40, $2E
+	db	$E0, $28, $2E, $23
+	db	$28, $1F, $40, $1C
+	db	$20, $00, $00, $75
+	db	$30, $52, $B9, $3F
+	db	$EB, $34, $15, $2B
+	db	$F2, $26, $02, $21
+	db	$7C, $1D, $EC, $00
+	db	$00, $9C, $40, $64
+	db	$72, $4A, $03, $3A
+	db	$98, $30, $7D, $29
+	db	$5C, $24, $0F, $1F
+	db	$F6, $00, $00, $C8
+	db	$E4, $75, $30, $52
+	db	$B9, $3F, $EB, $34
+	db	$15, $2B, $F2, $26
+	db	$02, $21, $7C, $00
+	db	$00, $52, $B9, $3F
+	db	$EB, $34, $15, $2B
+	db	$F2, $26, $02, $21
+	db	$7C, $1D, $EC, $1B
+	db	$0B, $00, $00, $6C
+	db	$2D, $4E, $20, $3D
+	db	$24, $32, $39, $2A
+	db	$9D, $25, $02, $20
+	db	$B4, $1D, $4C, $00
+	db	$00, $8C, $A0, $5D
+	db	$C0, $46, $50, $38
+	db	$40, $2E, $E0, $28
+	db	$2E, $23, $28, $1F
+	db	$40, $00, $00, $C8
+	db	$E4, $75, $30, $52
+	db	$B9, $3F, $EB, $34
+	db	$15, $2B, $F2, $26
+	db	$02, $21, $7C, $00
+	db	$00, $FB, $1D, $8C
+	db	$A0, $5D, $C0, $46
+	db	$50, $38, $40, $2E
+	db	$E0, $28, $2E, $23
+	db	$28, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00, $00
+	db	$00, $00, $00

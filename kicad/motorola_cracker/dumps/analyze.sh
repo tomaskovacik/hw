@@ -100,7 +100,7 @@ case ${1} in
 #	;;
 	20)
 		#SPACE
-		echo "\" \""
+		echo "SPACE"
 	;;
 	21)
 		echo "!"
@@ -109,7 +109,7 @@ case ${1} in
 		echo "\""
 	;;
 	23)
-		echo "#"
+		echo " #"
 	;;
 	24)
 		echo "$"
@@ -403,7 +403,8 @@ case ${1} in
 		echo "DEL"
 	;;
 	*)
-		echo ${1}
+		#echo ${1}
+		echo " "
 	;;
 esac
 }
@@ -571,176 +572,176 @@ case ${param2} in
 		PortA) # Port A data (PORTA)
 			case ${param1} in
 				0)	
-					param1="PANEL_STATUS"#PA0"
+					param1="PANEL_STATUS" #PA0"
 				;;
 
                                 1)
-                                        param1="PANEL_DATA"#PA1"
+                                        param1="PANEL_DATA" #PA1"
                                 ;;
 
                                 2)
-                                        param1="PANEL_CLOCK"#PA2"
+                                        param1="PANEL_CLOCK" #PA2"
                                 ;;
 
                                 3)
-                                        param1="SLAVE_STATUS"#PA3"
+                                        param1="SLAVE_STATUS" #PA3"
                                 ;;
 
                                 4)
-                                        param1="SLAVE_CLOCK"#PA4"
+                                        param1="SLAVE_CLOCK" #PA4"
                                 ;;
 
                                 5)
-                                        param1="SLAVE_DATA"#PA5"
+                                        param1="SLAVE_DATA" #PA5"
                                 ;;
 
                                 6)
-                                        param1="SDA_TDA"#PA6"
+                                        param1="SDA_TDA" #PA6"
                                 ;;
 
                                 7)
-                                        param1="SCL_TDA"#PA7"
+                                        param1="SCL_TDA" #PA7"
                                 ;;
 
 			esac
 		;;
-                PortB*) # Port B data (PORTB)
+                PortB) # Port B data (PORTB)
                         case ${param1} in
                                 0)
-                                        param1="ENA_12V_ANTENE"#PB0"
+                                        param1="ENA_12V_ANTENE" #PB0"
                                 ;;
 
                                 1)
-                                        param1="ENA_12V_WOOFER"#PB1"
+                                        param1="ENA_12V_WOOFER" #PB1"
                                 ;;
 
                                 2)
-                                        param1="ENA_12V_CDC"#PB2"
+                                        param1="ENA_12V_CDC" #PB2"
                                 ;;
 
                                 3)
-                                        param1="MUTE_WOOFER"#PB3"
+                                        param1="MUTE_WOOFER" #PB3"
                                 ;;
                                 
                                 4)
-                                        param1="RESET_RDS"#PB4"
+                                        param1="RESET_RDS" #PB4"
                                 ;;
 
                                 5)
-                                        param1="RESET_SLAVE"#PB5"
+                                        param1="RESET_SLAVE" #PB5"
                                 ;;
 
                                 6)
-                                        param1="PANEL_RESET"#PB6"
+                                        param1="PANEL_RESET" #PB6"
                                 ;;
 
                                 7)
-                                        param1="CONTROL"#PB7"
+                                        param1="CONTROL" #PB7"
                                 ;;
                         esac
                 ;;
-                PortC) # Port C data (PORTC)
-                        case ${param1} in
+                PortC) # Port C data (PORTC)	
+			case "${param1}" in
                                 0)
-                                        param1="ENA_8V"#PC0"
+                                        param1="ENA_8V" #PC0"
                                 ;;
 
-                                1)
-                                        param1="WDOG_TEL"#PC1"
+                                *1*)
+                                        param1="WDOG_TEL" #PC1"
                                 ;;
 
                                 2)
-                                        param1="WR_SP"#PC2/ECLK"
+                                        param1="WR_SP" #PC2/ECLK"
                                 ;;
 
                                 3)
-                                        param1="RD_SP"#PC3"
+                                        param1="RD_SP" #PC3"
                                 ;;
                                 
                                 4)
-                                        param1="D0-SP"#PC4"
+                                        param1="D0-SP" #PC4"
                                 ;;
 
                                 5)
-                                        param1="D1-SP"#PC5"
+                                        param1="D1-SP" #PC5"
                                 ;;
 
                                 6)
-                                        param1="D2-SP"#PC6"
+                                        param1="D2-SP" #PC6"
                                 ;;
 
                                 7)
-                                        param1="D3-SP"#PC7"
+                                        param1="D3-SP" #PC7"
                                 ;;
                         esac
                 ;;
                 PortD) # Port D data (PORTD)
                         case ${param1} in
                                 0)
-                                        param1="S-KONT"#PD0"
+                                        param1="S-KONT" #PD0"
                                 ;;
 
                                 1)
-                                        param1="DIAG"#PD1"
+                                        param1="DIAG" #PD1"
                                 ;;
 
                                 2)
-                                        param1="PANEL_ON_OFF"#PD2"
+                                        param1="PANEL_ON_OFF" #PD2"
                                 ;;
 
                                 3)
-                                        param1="LSR_TEST_PHANTOM"#PD3"
+                                        param1="LSR_TEST_PHANTOM" #PD3"
                                 ;;
 
                                 4)
-                                        param1="LSL_TEST_PHANTOM"#PD4"
+                                        param1="LSL_TEST_PHANTOM" #PD4"
                                 ;;
 
                                 5)
-                                        param1="BEL"#PD5"
+                                        param1="BEL" #PD5"
                                 ;;
 
                                 6)
-                                        param1="NAVI_IN"#PD6"
+                                        param1="NAVI_IN" #PD6"
                                 ;;
 
                                 7)
-                                        param1="ENA_U141"#PD7"
+                                        param1="ENA_U141" #PD7"
                                 ;;
                         esac
                 ;;
                 DDRA) # Port A data direction (DDRA)
                         case ${param1} in
                                 0)
-                                        param1="PANEL_STATUS"#DDRA0"
+                                        param1="PANEL_STATUS" #DDRA0"
                                 ;;
 
                                 1)
-                                        param1="PANEL_DATA"#DDRA1"
+                                        param1="PANEL_DATA" #DDRA1"
                                 ;;
 
                                 2)
-                                        param1="PANEL_CLOCK"#DDRA2"
+                                        param1="PANEL_CLOCK" #DDRA2"
                                 ;;
 
                                 3)
-                                        param1="SLAVE_STATUS"#DDRA3"
+                                        param1="SLAVE_STATUS" #DDRA3"
                                 ;;
 
                                 4)
-                                        param1="SLAVE_CLOCK"#DDRA4"
+                                        param1="SLAVE_CLOCK" #DDRA4"
                                 ;;
 
                                 5)
-                                        param1="SLAVE_DATA"#DDRA5"
+                                        param1="SLAVE_DATA" #DDRA5"
                                 ;;
 
                                 6)
-                                        param1="SDA_TDA"#DDRA6"
+                                        param1="SDA_TDA" #DDRA6"
                                 ;;
 
                                 7)
-                                        param1="SCL_TDA"#DDRA7"
+                                        param1="SCL_TDA" #DDRA7"
                                 ;;
 
                         esac
@@ -748,70 +749,70 @@ case ${param2} in
                 DDRB) # Port B data direction (DDRB)
                         case ${param1} in
                                 0)
-                                        param1="ENA_12V_ANTENE"#DDRB0"
+                                        param1="ENA_12V_ANTENE" #DDRB0"
                                 ;;
 
                                 1)
-                                        param1="ENA_12V_WOOFER"#DDRB1"
+                                        param1="ENA_12V_WOOFER" #DDRB1"
                                 ;;
 
                                 2)
-                                        param1="ENA_12V_CDC"#DDRB2"
+                                        param1="ENA_12V_CDC" #DDRB2"
                                 ;;
 
                                 3)
-                                        param1="MUTE_WOOFER"#DDRB3"
+                                        param1="MUTE_WOOFER" #DDRB3"
                                 ;;
 
                                 4)
-                                        param1="RESET_RDS"#DDRB4"
+                                        param1="RESET_RDS" #DDRB4"
                                 ;;
 
                                 5)
-                                        param1="RESET_SLAVE"#DDRB5"
+                                        param1="RESET_SLAVE" #DDRB5"
                                 ;;
 
                                 6)
-                                        param1="PANEL_RESET"#DDRB6"
+                                        param1="PANEL_RESET" #DDRB6"
                                 ;;
 
                                 7)
-                                        param1="CONTROL"#DDRB7"
+                                        param1="CONTROL" #DDRB7"
                                 ;;
                         esac
                 ;;
                 DDRC) # Port C data direction (DDRC)
                         case ${param1} in
                                 0)
-                                        param1="ENA_8V"#DDRC0"
+                                        param1="ENA_8V" #DDRC0"
                                 ;;
 
                                 1)
-                                        param1="WDOG_TEL"#DDRC1"
+                                        param1="WDOG_TEL" #DDRC1"
                                 ;;
 
                                 2)
-                                        param1="WR_SP"#DDRC2"
+                                        param1="WR_SP" #DDRC2"
                                 ;;
 
                                 3)
-                                        param1="RD_SP"#DDRC3"
+                                        param1="RD_SP" #DDRC3"
                                 ;;
 
                                 4)
-                                        param1="D0-SP"#DDRC4"
+                                        param1="D0-SP" #DDRC4"
                                 ;;
 
                                 5)
-                                        param1="D1-SP"#DDRC5"
+                                        param1="D1-SP" #DDRC5"
                                 ;;
 
                                 6)
-                                        param1="D2-SP"#DDRC6"
+                                        param1="D2-SP" #DDRC6"
                                 ;;
 
                                 7)
-                                        param1="D3-SP"#DDRC7"
+                                        param1="D3-SP" #DDRC7"
                                 ;;
                         esac
                 ;;

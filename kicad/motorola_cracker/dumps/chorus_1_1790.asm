@@ -10,7 +10,7 @@
 ;	Checksum:	C58F
 ;	CRC-32:		BCD74340
 ;
-;	Date:		Tue Jun 19 17:08:11 2018
+;	Date:		Thu Jun 21 11:35:23 2018
 ;
 ;	CPU:		Motorola 68HC05 (68HC05 family)
 ;
@@ -20,502 +20,687 @@
 ;
 L0400:
 	rsp
+L0401:
 	sei
+L0402:
 	bset	6,RAM1_0ba
+L0404:
 	bclr	5,RAM1_0ba
+L0406:
 	brset	7,Miscell,L0423
 L0409:
 	jsr	L3648
+L040C:
 	bne	L0423
+L040E:
 	lda	#$53
+L0410:
 	cmp	RAM1_06b
+L0412:
 	bne	L0423
+L0414:
 	jsr	L20A7
+L0417:
+X0417:
 	jsr	L1FE6
+L041A:
 	clr	RAM1_06b
+L041C:
 	bclr	3,PortB
+L041E:
 	bset	3,DDRB
+L0420:
 	jmp	L0506
 ;
 L0423:
 	jsr	L1FC3
+L0426:
+	jmp	L04F1
 ;
-	db	$CC
-;
-L0427:
-	brset	2,STACK_0f1,L03F7
-	ror	RAM1_076
+L0429:
+	jsr	L3676
+L042C:
 	lda	SCDR
+L042E:
 	jmp	L04B0
 ;
-	db	$B6, $13
-;
+L0431:
+	lda	TSR
 L0433:
 	lda	TCL
+L0435:
 	rti
 ;
-	db	$0E, $13, $6A, $07
-	db	$13, $4F, $B6, $1F
-	db	$AB, $88, $97, $B6
-	db	$1E, $A9
-;
-L0444:
-	bclr	1,RAM1_0b7
-	bset	7,RAM1_0b6
-	bclr	1,RAM1_0bf
-	bclr	7,OCH1
-	asr	PortD,x
-	brset	3,PortD,L0453
-;
-	db	$02, $02
-;
+L0436:
+	brset	7,TSR,L04A3
+L0439:
+	brclr	3,TSR,L048B
+L043C:
+	lda	OCL2
+L043E:
+	add	#$88
+L0440:
+	tax
+L0441:
+	lda	OCH2
+L0443:
+	adc	#$13
+L0445:
+	sta	OCH2
+L0447:
+	lda	TSR
+L0449:
+	stx	OCL2
+L044B:
+	bset	3,RAM1_067
+L044D:
+	brclr	1,DDRC,L0453
+L0450:
+	brset	1,PortC,L0455
 L0453:
 	bset	4,RAM1_05d
+L0455:
 	bclr	1,PortC
-;
-	db	$3D
-;
-L0458:
-	com	X0027,x
-	brset	1,X003A,L04C0
+L0457:
+	tst	RAM1_063
+L0459:
+	beq	L045D
+L045B:
+	dec	RAM1_063
+L045D:
 	dec	RAM1_068
+L045F:
 	bne	L0463
+L0461:
 	bset	7,RAM1_067
 L0463:
 	jsr	L3669
+L0466:
 	lda	RAM1_068
-;
-	db	$A5
-;
-L0469:
-	clr	X0026
-;
-L046B:
-	db	$02, $1C
-;
-L046D:
-	asr	RAM1_0a5,x
-L046F:
-	brclr	1,X0026,L047C
+L0468:
+	bit	#$3F
+L046A:
+	bne	L046E
+L046C:
+	bset	6,RAM1_067
+L046E:
+	bit	#$03
+L0470:
+	bne	L047C
+L0472:
 	bset	4,RAM1_067
+L0474:
 	jsr	L4B0F
+L0477:
 	jsr	L21A2
+L047A:
 	lda	RAM1_068
 L047C:
 	bit	#$0F
+L047E:
 	bne	L048B
+L0480:
 	bset	5,RAM1_067
 L0482:
 	brset	2,RAM1_05e,L0489
 L0485:
 	lda	ACH
+L0487:
 	bra	L049A
 ;
 L0489:
 	bclr	2,RAM1_05e
-;
 L048B:
-	db	$0D
-;
-L048C:
-	bclr	1,X0022
+	brclr	6,TSR,L04B0
 L048E:
 	bset	2,RAM1_05e
+L0490:
 	ldx	OCL1
+L0492:
 	lda	OCH1
+L0494:
 	brclr	0,RAM1_061,L049A
+L0497:
 	jsr	L0B8C
 L049A:
 	sta	OCH1
+L049C:
 	stx	OCL1
+L049E:
 	bra	L04B0
 ;
 L04A0:
 	brclr	7,TSR,L04A8
-;
-	db	$CD
-;
-L04A4:
-	brn	L04E9
+L04A3:
+	jsr	L2143
+L04A6:
 	bra	L04B0
 ;
 L04A8:
 	brclr	4,TSR,L04B0
+L04AB:
 	jsr	L4AF3
+L04AE:
 	lda	ICL2
 L04B0:
 	brclr	7,TSR,L04BE
+L04B3:
 	brset	4,RAM1_05e,L04BE
 L04B6:
 	bset	4,RAM1_05e
+L04B8:
 	bclr	1,TCR
+L04BA:
 	bset	3,RAM1_076
+L04BC:
 	lda	ICL1
 L04BE:
 	brclr	4,TSR,L04C3
+L04C1:
 	bset	7,RAM1_096
 L04C3:
 	rti
 ;
 L04C4:
 	brclr	7,TSR,L04D2
+L04C7:
 	brset	4,RAM1_05e,L04D2
+L04CA:
 	bset	4,RAM1_05e
+L04CC:
 	bclr	1,TCR
 L04CE:
 	bset	3,RAM1_076
+L04D0:
 	lda	ICL1
 L04D2:
 	cli
+L04D3:
 	rts
 ;
 L04D4:
 	lda	#$53
+L04D6:
 	sta	RAM1_06b
 L04D8:
 	bset	0,Miscell
+L04DA:
 	stop
+L04DB:
 	bra	L04D4
 ;
 L04DD:
 	lda	#$28
 L04DF:
 	deca
+L04E0:
 	beq	L04E5
 L04E2:
 	bil	L04DF
+L04E4:
 	rti
 ;
 L04E5:
 	brset	7,RAM1_0ba,L04ED
+L04E8:
 	brset	6,RAM1_0b9,L04ED
 L04EB:
 	bset	7,RAM1_061
 L04ED:
 	bclr	6,RAM1_0ba
+L04EF:
 	clr	STACK_0d6
 L04F1:
 	sei
+L04F2:
 	bclr	4,Miscell
+L04F4:
 	bclr	5,RAM1_0ba
+L04F6:
 	bclr	3,RAM1_061
+L04F8:
 	jsr	L0725
+L04FB:
 	bset	3,RAM1_061
 L04FD:
 	bclr	5,PortB
+L04FF:
 	bclr	5,RAM1_06a
+L0501:
 	jsr	L2551
+L0504:
 	bset	5,PortB
 L0506:
 	rsp
+L0507:
 	bclr	2,RAM1_05d
 L0509:
 	brset	1,Miscell,L04D4
+L050C:
 	sei
+L050D:
 	jsr	L207E
+L0510:
 	cli
+L0511:
 	brset	0,RAM1_061,L051E
+L0514:
 	bclr	7,RAM1_061
+L0516:
 	brset	6,RAM1_061,L051B
+L0519:
 	bclr	6,RAM1_05f
 L051B:
 	jmp	L08AD
 ;
 L051E:
 	bil	L04ED
+L0520:
 	brclr	3,RAM1_061,L04F1
+L0523:
 	jsr	L3713
+L0526:
 	bclr	3,STACK_0ce
+L0528:
 	bclr	6,RAM1_05f
+L052A:
 	brset	2,TCR,L052F
+L052D:
 	bclr	3,PortB
 L052F:
 	bset	2,TCR
+L0531:
 	bset	4,TCR
 L0533:
 	bset	0,PortB
+L0535:
 	brset	3,RAM1_07f,L0541
+L0538:
 	brset	2,RAM1_07f,L0541
+L053B:
 	brset	7,RAM1_069,L0541
+L053E:
 	jsr	L0B7A
 L0541:
 	jsr	L1FFF
-;
-	db	$CD
-;
-L0545:
-	bclr	7,STACK_0f6
+L0544:
+	jsr	L1FF6
+L0547:
 	brset	0,RAM1_0a1,L055C
+L054A:
 	bclr	2,DDRC
+L054C:
 	bclr	3,DDRC
+L054E:
 	jsr	L2551
 L0551:
 	lda	PortC
 L0553:
 	and	#$0C
+L0555:
 	bne	L0560
+L0557:
 	bclr	5,RAM1_069
+L0559:
 	brset	3,RAM1_08e,L0566
 L055C:
 	bset	4,RAM1_069
+L055E:
 	bra	L0568
 ;
 L0560:
 	bset	5,RAM1_069
+L0562:
 	bclr	1,RAM1_081
+L0564:
 	bclr	3,RAM1_08e
 L0566:
 	bclr	4,RAM1_069
 L0568:
 	bset	2,DDRC
+L056A:
 	bset	3,DDRC
+L056C:
 	cli
+L056D:
 	brclr	6,RAM1_0ba,L0573
 L0570:
 	brset	5,RAM1_061,L057D
 L0573:
 	jsr	L132A
+L0576:
 	bset	5,RAM1_061
+L0578:
 	jsr	L0719
+L057B:
 	bclr	2,RAM1_09e
 L057D:
 	brset	6,RAM1_061,L0585
+L0580:
 	jsr	L305D
+L0583:
 	bset	6,RAM1_061
 L0585:
 	brset	4,RAM1_061,L0591
+L0588:
 	jsr	L2633
+L058B:
 	jsr	L1E8B
+L058E:
 	jsr	L477E
 L0591:
 	bset	4,RAM1_061
+L0593:
 	brset	2,RAM1_09e,L0599
+L0596:
 	jsr	L38BC
 L0599:
 	jsr	L0719
 L059C:
 	jsr	L35FA
+L059F:
 	jsr	L3A05
+L05A2:
 	jsr	L0B1D
+L05A5:
 	clrx
+L05A6:
 	jsr	L2557
+L05A9:
 	brclr	3,RAM1_08b,L05BB
+L05AC:
 	lda	#$0B
+L05AE:
 	brset	4,RAM1_08b,L05B6
+L05B1:
 	lda	#$1A
+L05B3:
 	brclr	1,RAM1_081,L05BB
 L05B6:
 	jsr	L23F3
+L05B9:
 	bset	1,STACK_0cb
 L05BB:
 	clr	RAM1_067
+L05BD:
 	clr	RAM1_068
+L05BF:
 	brclr	4,RAM1_0bb,L05C4
+L05C2:
 	bset	2,RAM1_094
 L05C4:
 	sei
+L05C5:
 	bset	4,Miscell
+L05C7:
 	bset	7,TCR
+L05C9:
 	cli
+L05CA:
 	brset	7,RAM1_069,L05D4
+L05CD:
 	brclr	5,RAM1_0bb,L05D4
+L05D0:
 	bset	7,RAM1_069
+L05D2:
 	bset	1,RAM1_05d
 L05D4:
 	jsr	L0789
+L05D7:
 	brset	2,RAM1_05d,L05E3
+L05DA:
 	clra
 L05DB:
 	brclr	3,PortA,L05E6
+L05DE:
 	deca
+L05DF:
 	bne	L05DB
+L05E1:
 	bclr	4,RAM1_061
 L05E3:
 	jmp	L0506
 ;
 L05E6:
 	bih	L05EB
+L05E8:
 	jmp	L04E5
 ;
 L05EB:
 	jsr	L2223
+L05EE:
 	jsr	L306C
+L05F1:
 	jsr	L4B17
+L05F4:
 	jsr	L13E0
 L05F7:
 	jsr	L36F2
+L05FA:
 	jsr	L4639
+L05FD:
 	jsr	L44A8
+L0600:
 	jsr	L4A15
+L0603:
 	jsr	L3FBE
+L0606:
 	jsr	L47F4
+L0609:
 	jsr	L26DD
 L060C:
 	jsr	L26D0
 L060F:
 	jsr	L1EB4
+L0612:
 	jsr	L3943
+L0615:
 	jsr	L3A83
+L0618:
 	jsr	L061D
+L061B:
 	bra	L05C4
 ;
 L061D:
 	brset	3,RAM1_067,L0636
+L0620:
 	brset	2,RAM1_067,L0646
+L0623:
 	brset	1,RAM1_067,L064D
+L0626:
 	brset	0,RAM1_067,L0676
+L0629:
 	brset	4,RAM1_067,L064F
+L062C:
 	brset	5,RAM1_067,L0660
+L062F:
 	brset	6,RAM1_067,L066B
+L0632:
 	brset	7,RAM1_067,L0673
 L0635:
 	rts
 ;
 L0636:
 	bclr	3,RAM1_067
+L0638:
 	bset	2,RAM1_067
+L063A:
 	jsr	L1FA3
+L063D:
 	jsr	L3769
+L0640:
 	jsr	L265C
+L0643:
 	jmp	L38EF
 ;
 L0646:
-	db	$15
+	bclr	2,RAM1_067
+L0648:
+	bset	1,RAM1_067
+L064A:
+	jmp	L071F
+L064D:
+	bra	L06BB
 ;
-L0647:
-	asr	TCR,x
-	asr	STACK_0cc,x
-	brclr	3,OCL2,L066E
-	inc	TCL,x
-	asr	STACK_0cd,x
-	bne	L0692
+L064F:
+	bclr	4,RAM1_067
+L0651:
+	jsr	L263E
+L0654:
 	jsr	L1E8C
+L0657:
 	jsr	L307B
+L065A:
 	jsr	L3BCD
+L065D:
 	jmp	L26D1
 ;
 L0660:
 	bclr	5,RAM1_067
+L0662:
 	jsr	L13CE
+L0665:
 	jsr	L3BF2
+L0668:
 	jmp	L362E
 ;
 L066B:
 	bclr	6,RAM1_067
+L066D:
 	jsr	L3A9D
+L0670:
 	jmp	L4B50
 ;
 L0673:
 	bclr	7,RAM1_067
+L0675:
 	rts
 ;
 L0676:
 	bclr	0,RAM1_067
+L0678:
 	jsr	L47AA
+L067B:
 	jsr	L3072
+L067E:
 	jsr	L3AF9
+L0681:
 	brset	7,RAM1_060,L06AA
+L0684:
 	brclr	3,RAM1_08b,L06A4
+L0687:
 	brset	3,STACK_0ce,L06A1
+L068A:
 	brclr	6,RAM1_05d,L0698
+L068D:
 	bclr	1,STACK_0cb
+L068F:
 	jsr	L37CB
 L0692:
 	jsr	L43E8
+L0695:
 	jsr	L20DA
 L0698:
 	jsr	L33FF
 L069B:
 	jsr	L463B
+L069E:
 	jsr	L44A9
 L06A1:
 	jsr	L27BE
-;
 L06A4:
-	db	$CD, $2C
-;
-L06A6:
-	neg	STACK_0cd,x
-	deca
-	bset	3,STACK_0cd
-	coma
-;
-	db	$DD, $CD
-;
-L06AE:
-	dec	STACK_0d3
+	jsr	L2C60
+L06A7:
+	jsr	L4A16
+L06AA:
+	jsr	L43DD
+L06AD:
+	jsr	L3AD3
+L06B0:
 	bclr	6,RAM1_05d
+L06B2:
 	brclr	7,RAM1_060,L06B8
+L06B5:
 	jsr	L2C60
 L06B8:
 	jmp	L0BAC
 ;
-	db	$13, $67, $10, $67
-	db	$0F, $5D, $56, $1F
-	db	$5D, $B6
-;
-L06C5:
-	ora	XA40F
-;
-	db	$AE
-;
-L06C9:
-	brclr	1,X0042,L0663
-	cpx	#$21
-	bcc	L0718
-	jsr	L06EB,x						;INFO: index jump
+L06BB:
+	bclr	1,RAM1_067
+L06BD:
+	bset	0,RAM1_067
+L06BF:
+	brclr	7,RAM1_05d,L0718
+L06C2:
+	bclr	7,RAM1_05d
+L06C4:
 	lda	STACK_0ca
+L06C6:
+	and	#$0F
+L06C8:
+	ldx	#$03
+L06CA:
+	mul
+L06CB:
+	tax
+L06CC:
+	cpx	#$21
+L06CE:
+	bcc	L0718
+L06D0:
+	jsr	L06EB,x						;INFO: index jump
+L06D3:
+	lda	STACK_0ca
+L06D5:
 	jsr	L2525
 L06D8:
 	and	#$03
+L06DA:
 	ldx	#$03
+L06DC:
 	mul
+L06DD:
 	tax
+L06DE:
 	cpx	#$0C
-;
-	db	$24
-;
-L06E1:
-	ror	STACK_0dd
-	brclr	3,Miscell,L06F3
-	ora	X30CC
-	bmi	L06C9
+L06E0:
+	bcc	L0718
+L06E2:
+	jsr	L070C,x						;INFO: index jump
+L06E5:
+	brclr	6,STACK_0ca,L0718
+L06E8:
+	jmp	L2BDE
 L06EB:
 	jmp	L0635
-;
-	db	$CC
-;
-L06EF:
-	bpl	L074D
+L06EE:
+	jmp	L2A5C
 L06F1:
 	jmp	L46D2
-;
-	db	$CC, $45, $44, $CC
-L06F8:
-	db	$35, $A9, $CC, $38
-;
-L06FC:
-	asra
+L06F4:
+	jmp	L4544
+L06F7:
+	jmp	L35A9
+L06FA:
+	jmp	L3847
 L06FD:
 	jmp	L2FC9
-;
-	db	$CC, $06, $35
-;
+L0700:
+	jmp	L0635
 L0703:
 	jmp	L4A9D
 L0706:
 	jmp	L4414
-;
-	db	$CC, $43, $DE, $CC
-	db	$4A, $AB, $CC, $2B
-L0711:
-	db	$41
-;
+L0709:
+	jmp	L43DE
+L070C:
+	jmp	L4AAB
+L070F:
+	jmp	L2B41
 L0712:
 	jmp	L471A
-;
-	db	$CC, $45, $B7
-;
+L0715:
+	jmp	L45B7
 L0718:
 	rts
 ;
@@ -523,151 +708,197 @@ L0719:
 	jsr	L13E0
 L071C:
 	jsr	L36F2
+L071F:
 	jsr	L13BC
+L0722:
 	jmp	L36AE
 ;
 L0725:
 	clr	RAM1_066
+L0727:
 	lda	RAM1_065
+L0729:
 	sta	RAM2_02b0
 L072C:
 	brclr	4,RAM1_061,L0737
+L072F:
 	jsr	L0B7A
+L0732:
 	jsr	L4769
 L0735:
 	bclr	4,RAM1_061
 L0737:
 	lda	#$0A
+L0739:
 	sta	RAM1_050
+L073B:
 	bset	2,TCR
+L073D:
 	bset	4,TCR
+L073F:
 	bih	L0743
+L0741:
 	bclr	6,RAM1_0ba
 L0743:
 	jsr	L253F
+L0746:
 	brset	1,PortC,L074B
+L0749:
 	bset	4,RAM1_05d
 L074B:
 	bclr	1,PortC
 L074D:
 	jsr	L0789
+L0750:
 	lda	RAM1_065
+L0752:
 	sub	RAM2_02b0
+L0755:
 	cmp	#$03
+L0757:
 	bcs	L075B
+L0759:
 	bset	5,RAM1_060
 L075B:
 	lda	#$27
+L075D:
 	jsr	L24C5
+L0760:
 	cmp	#$19
+L0762:
 	bcs	L0776
+L0764:
 	cmp	#$53
+L0766:
 	bhi	L0772
+L0768:
 	bclr	6,RAM1_061
+L076A:
 	bclr	5,RAM1_061
+L076C:
 	bclr	7,RAM1_061
+L076E:
 	bclr	6,RAM1_05f
+L0770:
 	bra	L0743
 ;
 L0772:
 	cmp	#$73
+L0774:
 	bcs	L0737
 L0776:
 	bil	L0737
+L0778:
 	dec	RAM1_050
 L077A:
 	bne	L0743
+L077C:
 	rts
 ;
 L077D:
 	jsr	L0B7A
-;
-	db	$CD
-;
-L0781:
-	asra
-	rol	STACK_0cd,x
-;
-	db	$20
-;
-L0785:
-	bclr	5,STACK_0cc
-;
-L0787:
-	db	$05, $06
+L0780:
+	jsr	L4769
+L0783:
+	jsr	L201B
+L0786:
+	jmp	L0506
 ;
 L0789:
 	brset	4,RAM1_05d,L0793
+L078C:
 	brclr	1,Miscell,L0792
+L078F:
 	brclr	1,PortD,L07BB
 L0792:
 	rts
 ;
 L0793:
 	lda	#$06
+L0795:
 	brset	1,Miscell,L079A
 L0798:
 	lda	#$01
 L079A:
 	add	RAM1_066
+L079C:
 	sta	RAM1_066
-;
-	db	$24
-;
-L079F:
-	bclr	5,RAM1_0a6
-	brclr	0,RAM1_0bb,L0009
-	sta	RAM1_065
+L079E:
 	bcc	L07BB
+L07A0:
+	lda	#$01
+L07A2:
+	add	RAM1_065
+L07A4:
+	sta	RAM1_065
+L07A6:
+	bcc	L07BB
+L07A8:
 	brset	7,RAM1_064,L07BB
+L07AB:
 	inc	RAM1_064
+L07AD:
 	bpl	L07BB
 L07AF:
 	brset	2,RAM1_08b,L07BB
+L07B2:
 	brset	1,RAM1_05f,L07BB
 L07B5:
 	brclr	0,RAM1_061,L07BB
+L07B8:
 	jmp	L08A3
 ;
 L07BB:
 	bclr	4,RAM1_05d
 L07BD:
 	brclr	1,DDRC,L07C4
+L07C0:
 	bclr	1,DDRC
 L07C2:
 	bra	L07D7
 ;
 L07C4:
 	lda	RAM1_062
+L07C6:
 	brclr	1,PortC,L07CD
+L07C9:
 	add	#$20
+L07CB:
 	bra	L07CF
 ;
 L07CD:
 	sub	#$20
 L07CF:
 	bcs	L07D3
+L07D1:
 	sta	RAM1_062
 L07D3:
 	bset	1,DDRC
+L07D5:
 	bset	1,PortC
 L07D7:
 	clra
+L07D8:
 	brset	2,PortD,L07DD
+L07DB:
 	ora	#$01
 L07DD:
 	brset	0,PortD,L07E2
+L07E0:
 	ora	#$02
 L07E2:
 	brclr	7,RAM1_05e,L07E7
+L07E5:
 	ora	#$04
 L07E7:
 	brclr	1,PortD,L07EC
+L07EA:
 	ora	#$10
 L07EC:
 	tst	RAM1_062
 L07EE:
 	bpl	L07F2
+L07F0:
 	ora	#$08
 L07F2:
 	brclr	6,PortD,L07F7
@@ -675,55 +906,83 @@ L07F5:
 	ora	#$80
 L07F7:
 	eor	RAM1_05f
+L07F9:
 	and	#$9F
 L07FB:
 	beq	L0068
+L07FD:
 	sta	RAM1_05b
+L07FF:
 	eor	RAM1_05f
 	sta	RAM1_05f
 	brclr	3,RAM1_05f,L000A
 	bset	5,RAM1_05f
 	bra	L0014
 ;
-	db	$0F, $5F, $02, $1A
-	db	$5F, $02, $5F, $02
-	db	$1B, $5F, $01, $5B
-	db	$0D, $00, $5F, $7C
-	db	$0C, $5F, $03, $01
-	db	$61, $04, $1D, $5F
-	db	$20, $94, $0F, $60
-	db	$03, $0A, $5D, $22
-	db	$1B, $5D, $02, $5F
-	db	$0A, $03, $5B, $1A
-	db	$01, $61, $75, $12
-	db	$61, $20, $6A, $00
-	db	$61, $08, $03, $5B
-	db	$0D, $00, $5F, $56
-	db	$1A, $5F, $13, $61
-	db	$03, $5B, $03, $06
-	db	$CE, $4C, $09, $5B
-	db	$13, $00, $61, $03
-	db	$03, $5F, $0D, $07
-	db	$60, $0A, $17, $60
-	db	$08, $5F, $02, $10
-	db	$60, $02, $0C, $03
-	db	$05, $5B, $03, $01
-	db	$61, $42, $81, $CD
-	db	$1F, $FF, $CD, $1F
-	db	$F6, $CD, $47, $7E
-	db	$A6, $C8, $B7, $63
-	db	$3D, $63, $27, $30
-	db	$07, $67, $05, $17
-	db	$67, $CD, $47, $AA
-	db	$CD, $47, $F4, $CD
-	db	$3F, $BE, $0F, $92
-	db	$EB, $08, $92, $E8
-	db	$10, $61, $1E, $60
-	db	$1C, $60, $20, $14
-	db	$19, $61, $10, $61
-	db	$3F, $93, $03, $5F
-	db	$0B, $13, $61, $20
-	db	$07
+	brclr	7,RAM1_05f,L000F
+	bset	5,RAM1_05f
+	brset	1,RAM1_05f,L0014
+	bclr	5,RAM1_05f
+	brclr	0,RAM1_05b,L0024
+	brset	0,RAM1_05f,L0096
+	brset	6,RAM1_05f,L0020
+	brclr	0,RAM1_061,L0024
+	bclr	6,RAM1_05f
+	bra	L07B8
+;
+	brclr	7,RAM1_060,L002A
+	brset	5,RAM1_05d,L004C
+	bclr	5,RAM1_05d
+	brset	1,RAM1_05f,L0039
+	brclr	1,RAM1_05b,L004C
+	brclr	0,RAM1_061,L00AA
+	bset	1,RAM1_061
+	bra	L00A3
+;
+	brset	0,RAM1_061,L0044
+	brclr	1,RAM1_05b,L004C
+	brset	0,RAM1_05f,L0098
+	bset	5,RAM1_05f
+	bclr	1,RAM1_061
+	brclr	1,RAM1_05b,L004C
+	brset	3,STACK_0ce,L0098
+	brclr	4,RAM1_05b,L0062
+	brset	0,RAM1_061,L0055
+	brclr	1,RAM1_05f,L0062
+	brclr	3,RAM1_060,L0062
+	bclr	3,RAM1_060
+	brset	4,RAM1_05f,L005F
+	bset	0,RAM1_060
+	brset	1,Miscell,L0065
+	brclr	2,RAM1_05b,L0068
+	brclr	0,RAM1_061,L00AA
+	rts
+;
+	jsr	L1FFF
+	jsr	L1FF6
+	jsr	L477E
+	lda	#$C8
+	sta	RAM1_063
+	tst	RAM1_063
+	beq	L00AA
+	brclr	3,RAM1_067,L0082
+	bclr	3,RAM1_067
+	jsr	L47AA
+	jsr	L47F4
+	jsr	L3FBE
+	brclr	7,RAM1_092,L0076
+	brset	4,RAM1_092,L0076
+	bset	0,RAM1_061
+	bset	7,RAM1_060
+	bset	6,RAM1_060
+	bra	L00AA
+;
+	bclr	4,RAM1_061
+	bset	0,RAM1_061
+	clr	RAM1_093
+	brclr	1,RAM1_05f,L00AA
+	bclr	1,RAM1_061
+	bra	L00AA
 ;
 L08A3:
 	bclr	0,RAM1_061
@@ -748,152 +1007,277 @@ L08AD:
 	bih	L00D5
 	jmp	L04E5
 ;
-	db	$05, $9E, $03, $CD
-	db	$38, $9F, $0C, $5F
-	db	$03, $CD, $30, $69
-	db	$0A, $5F, $03, $CD
-	db	$20, $1B, $CD, $07
-	db	$89, $0C, $5F, $07
-	db	$11, $01, $AE, $02
-	db	$CD, $25, $57, $0A
-	db	$5F, $0B, $0D, $5F
-	db	$21, $0B, $61, $05
-	db	$00, $A1, $2D, $20
-	db	$19, $CD, $1F, $FF
-	db	$0D, $5F, $1D, $17
-	db	$00, $16, $04, $CD
-	db	$13, $2A, $A6, $89
-	db	$B7, $B3, $B6, $C4
-	db	$B7, $B7, $1A, $61
-	db	$20, $12, $0F, $64
-	db	$07, $1D, $5F, $AE
-	db	$02, $CD, $25, $57
-	db	$1B, $61, $CD, $30
-	db	$69, $CD, $13, $7A
-	db	$0B, $5F, $2D, $13
-	db	$81, $14, $12, $18
-	db	$12, $CD, $1F, $F6
-	db	$CD, $47, $7E, $CD
-	db	$0B, $1D, $18, $61
-	db	$10, $80, $A6, $80
-	db	$B7, $7D, $B7, $7B
-	db	$07, $8E, $02, $AA
-	db	$10, $B7, $D5, $1C
-	db	$94, $1A, $94, $12
-	db	$94, $19, $6B, $1C
-	db	$95, $CC, $09, $B7
-	db	$15, $12, $0A, $61
-	db	$F8, $CD, $30, $69
-	db	$07, $60, $29, $04
-	db	$5F, $03, $CC, $0A
-	db	$5B, $CD, $20, $31
-	db	$A6, $FA, $B7, $12
-	db	$A6, $64, $B7, $63
-	db	$CD, $07, $89, $CD
-	db	$3F, $BE, $08, $60
-	db	$32, $0A, $5F, $2F
-	db	$CD, $22, $23, $0D
-	db	$5F, $EE, $3D, $63
-	db	$26, $EA, $20, $23
-	db	$CD, $1F, $E2, $A6
-	db	$5A, $B7, $12, $A6
-	db	$FA, $B7, $63, $CD
-	db	$07, $89, $CD, $3F
-	db	$BE, $08, $60, $0F
-	db	$0A, $5F, $0C, $06
-	db	$60, $09, $09, $5F
-	db	$EA, $3D, $63, $26
-	db	$EA, $16, $60, $CC
-	db	$05, $06, $A6, $64
-	db	$B7, $63, $A6, $1E
-	db	$B7, $68, $1D, $67
-	db	$13, $01, $A6, $5B
-	db	$B7, $A6, $9A, $0D
-	db	$5F, $0E, $CD, $13
-	db	$E0, $CD, $36, $F2
-	db	$CD, $33, $FF, $CD
-	db	$30, $6C, $10, $01
-	db	$CD, $07, $89, $CD
-	db	$3F, $BE, $08, $60
-	db	$D2, $2E, $70, $CD
-	db	$4B, $17, $CD, $22
-	db	$23, $05, $12, $03
-	db	$CD, $47, $F4, $07
-	db	$67, $D4, $17, $67
-	db	$0D, $5F, $11, $CD
-	db	$13, $BC, $CD, $36
-	db	$AE, $CD, $30, $72
-	db	$0B, $67, $05, $1B
-	db	$67, $CD, $13, $CE
-	db	$05, $12, $32, $0B
-	db	$5F, $A5, $CD, $2C
-	db	$60, $CD, $0B, $AC
-	db	$CD, $47, $AA, $09
-	db	$67, $AC, $19, $67
-	db	$3A, $A7, $27, $15
-	db	$0E, $5F, $9F, $B6
-	db	$9A, $A1, $F0, $25
-	db	$99, $07, $5F, $9A
-	db	$02, $5F, $97, $A6
-	db	$02, $B7, $A6, $20
-	db	$91, $3A, $A6, $26
-	db	$8D, $1B, $5F, $20
-	db	$89, $0A, $5F, $68
-	db	$01, $A1, $03, $CC
-	db	$09, $B7, $0D, $67
-	db	$07, $06, $B9, $5C
-	db	$3D, $63, $27, $58
-	db	$CC, $09, $C7, $14
-	db	$12, $18, $12, $CC
-	db	$04, $E5, $9B, $19
-	db	$0C, $CD, $1F, $E2
-	db	$A6, $5A, $B7, $12
-	db	$12, $0C, $A6, $14
-	db	$B7, $63, $3F, $0B
-	db	$3F, $76, $3F, $5E
-	db	$3F, $A8, $3F, $A6
-	db	$3F, $09, $3F, $0F
-	db	$9A, $CD, $07, $89
-	db	$A6, $08, $BB, $1A
-	db	$B7, $1E, $3F, $1F
-	db	$8F, $00, $00, $00
-	db	$A6, $27, $B7, $09
-	db	$CD, $21, $A2, $0A
-	db	$5F, $16, $3D, $63
-	db	$26, $1C, $06, $00
-	db	$0C, $17, $00, $16
-	db	$04, $4F, $4A, $26
-	db	$FD, $17, $04, $3F
-	db	$6A, $0D, $5F, $03
-	db	$CC, $05, $06, $11
-	db	$05, $0F, $64, $02
-	db	$1D, $61, $0C, $5F
-	db	$BF, $2E, $9C, $05
-	db	$12, $0C, $3D, $63
-	db	$26, $B6, $1A, $01
-	db	$17, $00, $16, $04
-	db	$20, $9A, $0F, $09
-	db	$FD, $3D, $A8, $26
-	db	$0B, $07, $A6, $22
-	db	$B6, $A4, $BE, $A5
-	db	$AD, $3F, $20, $30
-	db	$B6, $A8, $B0, $08
-	db	$25, $14, $A1, $03
-	db	$25, $10, $14, $12
-	db	$18, $12, $17, $01
-	db	$16, $05, $A6, $30
-	db	$B7, $63, $1B, $01
-	db	$20, $1A, $B6, $08
-	db	$BB, $A5, $B7, $A5
-	db	$24, $02, $3C, $A4
-	db	$3C, $A6, $B6, $A6
-	db	$A5, $3F, $26, $0E
-	db	$B6, $A4, $BE, $A5
-	db	$AD, $0D, $B7, $A8
-	db	$3F, $A5, $3F, $A4
-	db	$3F, $A6, $CC, $0A
-	db	$75, $59, $49, $59
-	db	$49, $59, $49, $81
+	brclr	2,RAM1_09e,L00DB
+	jsr	L389F
+	brset	6,RAM1_05f,L00E1
+	jsr	L3069
+	brset	5,RAM1_05f,L00E7
+	jsr	L201B
+	jsr	L0789
+	brset	6,RAM1_05f,L00F4
+	bclr	0,PortB
+	ldx	#$02
+	jsr	L2557
+	brset	5,RAM1_05f,L0102
+	brclr	6,RAM1_05f,L011B
+	brclr	5,RAM1_061,L0102
+	brset	0,RAM1_0a1,L012D
+	bra	L011B
+;
+	jsr	L1FFF
+	brclr	6,RAM1_05f,L0125
+	bclr	3,PortA
+	bset	3,DDRA
+	jsr	L132A
+	lda	#$89
+	sta	RAM1_0b3
+	lda	STACK_0c4
+	sta	RAM1_0b7
+	bset	5,RAM1_061
+	bra	L012D
+;
+	brclr	7,RAM1_064,L0125
+	bclr	6,RAM1_05f
+	ldx	#$02
+	jsr	L2557
+	bclr	5,RAM1_061
+	jsr	L3069
+	jsr	L137A
+	brclr	5,RAM1_05f,L015D
+	bclr	1,RAM1_081
+	bset	2,TCR
+	bset	4,TCR
+	jsr	L1FF6
+	jsr	L477E
+	jsr	L0B1D
+	bset	4,RAM1_061
+	bset	0,RAM1_080
+	lda	#$80
+	sta	RAM1_07d
+	sta	RAM1_07b
+	brclr	3,RAM1_08e,L014E
+	ora	#$10
+	sta	STACK_0d5
+	bset	6,RAM1_094
+	bset	5,RAM1_094
+	bset	1,RAM1_094
+	bclr	4,RAM1_06b
+	bset	6,RAM1_095
+	jmp	L09B7
+;
+	bclr	2,TCR
+	brset	5,RAM1_061,L015A
+	jsr	L3069
+	brclr	3,RAM1_060,L0191
+	brset	2,RAM1_05f,L016E
+	jmp	L0A5B
+;
+	jsr	L2031
+	lda	#$FA
+	sta	TCR
+	lda	#$64
+	sta	RAM1_063
+	jsr	L0789
+	jsr	L3FBE
+	brset	4,RAM1_060,L01B4
+	brset	5,RAM1_05f,L01B4
+	jsr	L2223
+	brclr	6,RAM1_05f,L0179
+	tst	RAM1_063
+	bne	L0179
+	bra	L01B4
+;
+	jsr	L1FE2
+	lda	#$5A
+	sta	TCR
+	lda	#$FA
+	sta	RAM1_063
+	jsr	L0789
+	jsr	L3FBE
+	brset	4,RAM1_060,L01B4
+	brset	5,RAM1_05f,L01B4
+	brset	3,RAM1_060,L01B4
+	brclr	4,RAM1_05f,L0198
+	tst	RAM1_063
+	bne	L019C
+	bset	3,RAM1_060
+	jmp	L0506
+;
+L09B7:
+	lda	#$64
+	sta	RAM1_063
+	lda	#$1E
+	sta	RAM1_068
+	bclr	6,RAM1_067
+	bclr	1,PortB
+	lda	#$5B
+	sta	RAM1_0a6
+L09C7:
+	cli
+	brclr	6,RAM1_05f,L01D9
+	jsr	L13E0
+	jsr	L36F2
+	jsr	L33FF
+	jsr	L306C
+	bset	0,PortB
+	jsr	L0789
+	jsr	L3FBE
+	brset	4,RAM1_060,L01B4
+	bil	L0254
+	jsr	L4B17
+	jsr	L2223
+	brclr	2,TCR,L01F0
+	jsr	L47F4
+	brclr	3,RAM1_067,L01C7
+	bclr	3,RAM1_067
+	brclr	6,RAM1_05f,L0209
+	jsr	L13BC
+	jsr	L36AE
+	jsr	L3072
+	brclr	5,RAM1_067,L0209
+	bclr	5,RAM1_067
+	jsr	L13CE
+	brclr	2,TCR,L023E
+	brclr	5,RAM1_05f,L01B4
+	jsr	L2C60
+	jsr	L0BAC
+	jsr	L47AA
+	brclr	4,RAM1_067,L01C7
+	bclr	4,RAM1_067
+	dec	RAM1_0a7
+	beq	L0236
+	brset	7,RAM1_05f,L01C3
+	lda	RAM1_09a
+	cmp	#$F0
+	bcs	L01C3
+	brclr	3,RAM1_05f,L01C7
+	brset	1,RAM1_05f,L01C7
+	lda	#$02
+	sta	RAM1_0a6
+	bra	L01C7
+;
+	dec	RAM1_0a6
+	bne	L01C7
+	bclr	5,RAM1_05f
+	bra	L01C7
+;
+	brset	5,RAM1_05f,L02A9
+	brclr	0,RAM1_0a1,L0247
+	jmp	L09B7
+;
+	brclr	6,RAM1_067,L0251
+	brset	3,RAM1_0b9,L02A9
+	tst	RAM1_063
+	beq	L02A9
+	jmp	L09C7
+;
+	bset	2,TCR
+	bset	4,TCR
+	jmp	L04E5
+;
+L0A5B:
+	sei
+	bclr	4,Miscell
+	jsr	L1FE2
+	lda	#$5A
+	sta	TCR
+	bset	1,Miscell
+	lda	#$14
+	sta	RAM1_063
+	clr	PLMB
+	clr	RAM1_076
+	clr	RAM1_05e
+	clr	RAM1_0a8
+	clr	RAM1_0a6
+L0A75:
+	clr	ADSTAT
+	clr	SCCR2
+	cli
+	jsr	L0789
+	lda	#$08
+	add	ACH
+	sta	OCH2
+	clr	OCL2
+	wait
+	brset	0,PortA,L0289
+	lda	#$27
+	sta	ADSTAT
+	jsr	L21A2
+	brset	5,RAM1_05f,L02A9
+	tst	RAM1_063
+	bne	L02B3
+	brset	3,PortA,L02A6
+	bclr	3,PortA
+	bset	3,DDRA
+	clra
+	deca
+	bne	L029F
+	bclr	3,DDRA
+	clr	RAM1_06a
+	brclr	6,RAM1_05f,L02AC
+	jmp	L0506
+;
+	bclr	0,DDRB
+	brclr	7,RAM1_064,L02B3
+	bclr	6,RAM1_061
+	brset	6,RAM1_05f,L0275
+	bil	L0254
+	brclr	2,TCR,L02C7
+	tst	RAM1_063
+	bne	L0275
+	bset	5,PortB
+	bclr	3,PortA
+	bset	3,DDRA
+	bra	L0261
+;
+	brclr	7,ADSTAT,L02C7
+	tst	RAM1_0a8
+	bne	L02D9
+	brclr	3,RAM1_0a6,L02F3
+	lda	RAM1_0a4
+	ldx	RAM1_0a5
+	bsr	L0316
+	bra	L0309
+;
+	lda	RAM1_0a8
+	sub	ADDATA
+	bcs	L02F3
+	cmp	#$03
+	bcs	L02F3
+	bset	2,TCR
+	bset	4,TCR
+	bclr	3,PortB
+	bset	3,DDRB
+	lda	#$30
+	sta	RAM1_063
+	bclr	5,PortB
+	bra	L030D
+;
+	lda	ADDATA
+	add	RAM1_0a5
+	sta	RAM1_0a5
+	bcc	L02FD
+	inc	RAM1_0a4
+	inc	RAM1_0a6
+	lda	RAM1_0a6
+	bit	#$3F
+	bne	L0313
+	lda	RAM1_0a4
+	ldx	RAM1_0a5
+	bsr	L0318
+	sta	RAM1_0a8
+	clr	RAM1_0a5
+	clr	RAM1_0a4
+	clr	RAM1_0a6
+	jmp	L0A75
+;
+	rolx
+	rola
+	rolx
+	rola
+	rolx
+	rola
+	rts
 ;
 L0B1D:
 	brset	7,RAM1_061,L0343
@@ -993,227 +1377,433 @@ L0BAC:
 	jsr	L0F4C
 	jmp	L0CFB
 ;
-	db	$0B, $7E, $08, $1B
-	db	$7E, $0D, $82, $03
-	db	$CC, $0C, $E4, $0D
-	db	$82, $03, $CC, $0C
-	db	$A7, $04, $BE, $03
-	db	$06, $7F, $39, $0E
-	db	$87, $64, $00, $80
-	db	$33, $0A, $7F, $52
-	db	$0E, $7F, $55, $0C
-	db	$7F, $46, $08, $82
-	db	$0E, $0B, $80, $0B
-	db	$B6, $88, $AB, $34
-	db	$24, $05, $1B, $82
-	db	$CC, $0C, $D0, $B6
-	db	$7F, $A4, $03, $26
-	db	$16, $C6, $02, $66
-	db	$2A, $0E, $C6, $02
-	db	$65, $A1, $40, $27
-	db	$04, $A1, $30, $26
-	db	$03, $CC, $0C, $DA
-	db	$CC, $0C, $C6, $4A
-	db	$26, $13, $AE, $AD
-	db	$CD, $37, $C7, $27
-	db	$03, $02, $7C, $0C
-	db	$0E, $7C, $ED, $02
-	db	$7C, $EA, $CC, $0C
-	db	$DA, $4A, $26, $06
-	db	$00, $BA, $77, $CC
-	db	$0C, $DA, $0C, $80
-	db	$71, $CC, $0C, $DA
-	db	$A6, $80, $B7, $87
-	db	$20, $7C, $3A, $8A
-	db	$2A, $63, $B6, $87
-	db	$A4, $1F, $A1, $1F
-	db	$26, $04, $13, $87
-	db	$1D, $87, $3C, $87
-	db	$0C, $87, $03, $01
-	db	$87, $23, $CD, $12
-	db	$2E, $27, $05, $0C
-	db	$87, $7B, $20, $76
-	db	$0B, $7F, $0C, $1F
-	db	$7F, $1F, $82, $1D
-	db	$82, $3F, $8A, $11
-	db	$82, $20, $67, $01
-	db	$87, $07, $CD, $0F
-	db	$67, $A6, $14, $20
-	db	$09, $A6, $FE, $B7
-	db	$88, $CD, $0F, $4C
-	db	$A6, $50, $B7, $8A
-	db	$CC, $0D, $77, $3A
-	db	$8A, $26, $1A, $01
-	db	$81, $53, $A6, $02
-	db	$B7, $8A, $CD, $12
-	db	$2E, $27, $2D, $0F
-	db	$82, $19, $B8, $82
-	db	$B7, $82, $16, $7E
-	db	$16, $BC, $CD, $0F
-	db	$3F, $81, $0B, $82
-	db	$03, $09, $82, $04
-	db	$1A, $82, $20, $D4
-	db	$0E, $82, $D1, $0E
-	db	$82, $04, $CD, $0F
-	db	$4C, $81, $CD, $12
-	db	$2E, $26, $17, $1B
-	db	$82, $0F, $82, $C0
-	db	$1D, $82, $19, $80
-	db	$0F, $82, $DA, $3F
-	db	$8A, $00, $80, $D5
-	db	$CD, $0F, $67, $CC
-	db	$0B, $EB, $0F, $82
-	db	$CD, $A6, $02
+	brclr	5,RAM1_07e,L03EB
+	bclr	5,RAM1_07e
+	brclr	6,RAM1_082,L03EB
+	jmp	L0CE4
 ;
+L0BEB:
+	brclr	6,RAM1_082,L03F1
+	jmp	L0CA7
+;
+	brset	2,RAM1_0be,L03F7
+	brset	3,RAM1_07f,L0430
+	brset	7,RAM1_087,L045E
+	brset	0,RAM1_080,L0430
+	brset	5,RAM1_07f,L0452
+	brset	7,RAM1_07f,L0458
+	brset	6,RAM1_07f,L044C
+	brset	4,RAM1_082,L0417
+	brclr	5,RAM1_080,L0417
+	lda	RAM1_088
+	add	#$34
+	bcc	L0417
+	bclr	5,RAM1_082
+	jmp	L0CD0
+;
+	lda	RAM1_07f
+	and	#$03
+	bne	L0433
+	lda	RAM2_0266
+	bpl	L0430
+	lda	RAM2_0265
+	cmp	#$40
+	beq	L042D
+	cmp	#$30
+	bne	L0430
+	jmp	L0CDA
+	jmp	L0CC6
+;
+	deca
+	bne	L0449
+	ldx	#$AD
+	jsr	L37C7
+	beq	L0440
+	brset	1,RAM1_07c,L044C
+	brset	7,RAM1_07c,L0430
+	brset	1,RAM1_07c,L0430
+	jmp	L0CDA
+;
+	deca
+	bne	L0452
+	brset	0,RAM1_0ba,L04C6
+	jmp	L0CDA
+;
+	brset	6,RAM1_080,L04C6
+	jmp	L0CDA
+;
+	lda	#$80
+	sta	RAM1_087
+	bra	L04DA
+;
+	dec	RAM1_08a
+	bpl	L04C5
+	lda	RAM1_087
+	and	#$1F
+	cmp	#$1F
+	bne	L046E
+	bclr	1,RAM1_087
+	bclr	6,RAM1_087
+	inc	RAM1_087
+	brset	6,RAM1_087,L0476
+	brclr	0,RAM1_087,L0499
+	jsr	L122E
+	beq	L0480
+	brset	6,RAM1_087,L04F9
+	bra	L04F6
+;
+	brclr	5,RAM1_07f,L048F
+	bclr	7,RAM1_07f
+	bclr	7,RAM1_082
+	bclr	6,RAM1_082
+	clr	RAM1_08a
+	bclr	0,RAM1_082
+	bra	L04F6
+;
+	brclr	0,RAM1_087,L0499
+	jsr	L0F67
+	lda	#$14
+	bra	L04A2
+;
+	lda	#$FE
+	sta	RAM1_088
+	jsr	L0F4C
+	lda	#$50
+	sta	RAM1_08a
+	jmp	L0D77
+;
+L0CA7:
+	dec	RAM1_08a
+	bne	L04C5
+	brclr	0,RAM1_081,L0501
+	lda	#$02
+	sta	RAM1_08a
+	jsr	L122E
+	beq	L04E4
+	brclr	7,RAM1_082,L04D3
+	eor	RAM1_082
+	sta	RAM1_082
+	bset	3,RAM1_07e
+	bset	3,RAM1_0bc
+	jsr	L0F3F
+	rts
+;
+L0CC6:
+	brclr	5,RAM1_082,L04CC
+	brclr	4,RAM1_082,L04D0
+	bset	5,RAM1_082
+	bra	L04A4
+;
+L0CD0:
+	brset	7,RAM1_082,L04A4
+	brset	7,RAM1_082,L04DA
+	jsr	L0F4C
+	rts
+;
+L0CDA:
+	jsr	L122E
+	bne	L04F6
+	bclr	5,RAM1_082
+	brclr	7,RAM1_082,L04A4
+L0CE4:
+	bclr	6,RAM1_082
+	bclr	4,RAM1_080
+	brclr	7,RAM1_082,L04C5
+	clr	RAM1_08a
+	brset	0,RAM1_080,L04C5
+	jsr	L0F67
+	jmp	L0BEB
+;
+	brclr	7,RAM1_082,L04C6
+	lda	#$02
 L0CFB:
 	sta	RAM1_08a
 	bset	6,RAM1_082
 	bra	L0577
 ;
-	db	$03, $81, $48, $04
-	db	$82, $5F, $07, $82
-	db	$0E, $03, $01, $06
-	db	$13, $01, $AE, $04
-	db	$20, $4F, $0F, $6B
-	db	$50, $20, $46, $04
-	db	$BE, $AA, $07, $01
-	db	$0C, $17, $01, $AE
-	db	$01, $0F, $6B, $4A
-	db	$03, $01, $47, $20
-	db	$41, $AE, $02, $01
-	db	$61, $3E, $0E, $6B
-	db	$06, $1E, $6B, $1C
-	db	$95, $20, $37, $02
-	db	$01, $06, $12, $01
-	db	$AE, $01, $20, $2E
-	db	$AE, $03, $03, $90
-	db	$27, $16, $01, $AE
-	db	$06, $20, $23, $00
-	db	$61, $0A, $0E, $5F
-	db	$14, $06, $5F, $11
-	db	$17, $01, $20, $12
-	db	$02, $01, $0A, $12
-	db	$01, $1F, $6B, $1C
-	db	$95, $AE, $04, $20
-	db	$09, $01, $02, $02
-	db	$16, $01, $AE, $05
-	db	$10, $81, $D6, $13
-	db	$20, $B7, $8A, $18
-	db	$12, $81, $BE, $85
-	db	$D6, $12, $D0, $03
-	db	$81, $03, $D6, $12
-	db	$F0, $B7, $58, $08
-	db	$80, $0F, $0C, $82
-	db	$09, $0E, $87, $09
-	db	$0E, $82, $03, $0B
-	db	$82, $03, $CC, $0E
-	db	$6D, $CD, $12, $4C
-	db	$0E, $87, $1D, $08
-	db	$7F, $41, $AE, $A9
-	db	$CD, $12, $5B, $0B
-	db	$7F, $03, $02, $A1
-	db	$09, $0D, $7F, $33
-	db	$3D, $58, $27, $12
-	db	$3A, $58, $BF, $86
-	db	$B6, $57, $20, $0A
-	db	$0D, $87, $07, $CB
-	db	$13, $27, $24, $02
-	db	$A6, $FF, $B1, $58
-	db	$22, $02, $B7, $58
-	db	$0F, $87, $14, $0C
-	db	$87, $11, $B6, $87
-	db	$44, $A4, $0F, $97
-	db	$B6, $58, $DB, $13
-	db	$10, $24, $02, $A6
-	db	$FF, $B7, $58, $0C
-	db	$81, $0C, $B6, $84
-	db	$27, $08, $48, $40
-	db	$BB, $58, $25, $04
-	db	$4F, $C1, $B6, $58
-	db	$07, $81, $04, $A6
-	db	$80, $B0, $85, $B7
-	db	$58, $04, $BE, $32
-	db	$06, $82, $6D, $04
-	db	$82, $19, $04, $6B
-	db	$03, $03, $6B, $06
-	db	$15, $6B, $13, $6B
-	db	$1C, $95, $03, $81
-	db	$1D, $02, $01, $1A
-	db	$08, $82, $17, $16
-	db	$82, $20, $51, $AE
-	db	$AE, $CD, $37, $C7
-	db	$A4, $07, $4A, $48
-	db	$48, $CB, $13, $28
-	db	$BB, $58, $25, $40
-	db	$B7, $58, $0E, $81
-	db	$18, $0A, $7F, $15
-	db	$0C, $7F, $12, $06
-	db	$81, $0F, $AE, $00
-	db	$03, $81, $02, $AE
-	db	$10, $CD, $12, $79
-	db	$43, $A4, $0F, $20
-	db	$01, $4F, $B7, $59
-	db	$B1, $83, $27, $10
-	db	$24, $09, $B6, $83
-	db	$4A, $A4, $0F, $B7
-	db	$83, $20, $02, $B7
-	db	$83, $CD, $0F, $73
-	db	$38, $59, $B6, $58
-	db	$B0, $59, $24, $01
-	db	$4F, $48, $24, $02
-	db	$A6, $FF, $B7, $58
-	db	$B7, $59, $0C, $82
-	db	$0F, $0E, $87, $0C
-	db	$B6, $88, $B0, $58
-	db	$27, $5E, $46, $A8
-	db	$7F, $09, $81, $04
-	db	$B6, $58, $20, $41
-	db	$AE, $20, $CD, $12
-	db	$79, $48, $0A, $82
-	db	$02, $AB, $10, $AB
-	db	$00, $97, $D6, $12
-	db	$B0, $3A, $8A, $2B
-	db	$1C, $4D, $2B, $0A
-	db	$3D, $89, $2B, $1C
-	db	$B1, $89, $22, $0A
-	db	$20, $3A, $3D, $89
-	db	$2A, $12, $B1, $89
-	db	$24, $F6, $97, $B0
-	db	$89, $BF, $89, $20
-	db	$0E, $4D, $26, $04
-	db	$B6, $58, $B0, $88
-	db	$DE, $12, $B1, $BF
-	db	$8A, $B7, $89, $BB
-	db	$88, $18, $82, $B1
-	db	$59, $26, $02, $19
-	db	$82, $B1, $88, $27
-	db	$09, $B7, $88, $CD
-	db	$0F, $82, $20, $08
-	db	$19, $82, $08, $7E
-	db	$F6, $06, $7E, $F3
-	db	$B6, $82, $A4, $0C
-	db	$97, $01, $80, $03
-	db	$00, $61, $02, $B8
-	db	$7F, $A4, $0C, $27
-	db	$48, $0B, $82, $03
-	db	$0F, $82, $42, $5D
-	db	$27, $01, $9F, $B8
-	db	$82, $B7, $82, $1C
-	db	$95, $15, $6B, $13
-	db	$6B, $03, $81, $13
-	db	$06, $82, $05, $05
-	db	$82, $04, $14, $6B
-	db	$12, $6B, $11, $81
-	db	$A6, $05, $B7, $8A
-	db	$1C, $82, $81, $07
-	db	$82, $0C, $AE, $AF
-	db	$CD, $37, $C7, $46
-	db	$24, $09, $14, $6B
-	db	$20, $07, $05, $82
-	db	$07, $14, $6B, $12
-	db	$6B, $16, $01, $81
-	db	$00, $61, $02, $17
-	db	$01, $81
+	brclr	1,RAM1_081,L054C
+	brset	2,RAM1_082,L0566
+	brclr	3,RAM1_082,L0518
+	brclr	1,PortB,L0513
+	bclr	1,PortB
+	ldx	#$04
+	bra	L0562
+;
+	brclr	7,RAM1_06b,L0566
+	bra	L055E
+;
+	brset	2,RAM1_0be,L04C5
+	brclr	3,PortB,L052A
+	bclr	3,PortB
+	ldx	#$01
+	brclr	7,RAM1_06b,L056F
+	brclr	1,PortB,L056F
+	bra	L056B
+;
+	ldx	#$02
+	brclr	0,RAM1_061,L056D
+	brset	7,RAM1_06b,L0538
+	bset	7,RAM1_06b
+	bset	6,RAM1_095
+	bra	L056F
+;
+	brset	1,PortB,L0541
+	bset	1,PortB
+	ldx	#$01
+	bra	L056F
+;
+	ldx	#$03
+	brclr	1,RAM1_090,L056D
+	bset	3,PortB
+	ldx	#$06
+	bra	L056F
+;
+	brset	0,RAM1_061,L0559
+	brset	7,RAM1_05f,L0566
+	brset	3,RAM1_05f,L0566
+	bclr	3,PortB
+	bra	L056B
+;
+	brset	1,PortB,L0566
+	bset	1,PortB
+	bclr	7,RAM1_06b
+	bset	6,RAM1_095
+	ldx	#$04
+	bra	L056F
+;
+	brclr	0,PortC,L056B
+	bset	3,PortB
+	ldx	#$05
+	bset	0,RAM1_081
+	lda	X1320,x
+	sta	RAM1_08a
+	bset	4,TCR
+	rts
+;
+L0D77:
+	ldx	RAM1_085
+	lda	X12D0,x
+	brclr	1,RAM1_081,L0582
+	lda	X12F0,x
+	sta	RAM1_058
+	brset	4,RAM1_080,L0596
+	brset	6,RAM1_082,L0593
+	brset	7,RAM1_087,L0596
+	brset	7,RAM1_082,L0593
+	brclr	5,RAM1_082,L0596
+	jmp	L0E6D
+;
+	jsr	L124C
+	brset	7,RAM1_087,L05B9
+	brset	4,RAM1_07f,L05E0
+	ldx	#$A9
+	jsr	L125B
+	brclr	5,RAM1_07f,L05AA
+	brset	1,RAM1_0a1,L05B3
+	brclr	6,RAM1_07f,L05E0
+	tst	RAM1_058
+	beq	L05C3
+	dec	RAM1_058
+	stx	RAM1_086
+	lda	RAM1_057
+	bra	L05C3
+;
+	brclr	6,RAM1_087,L05C3
+	add	X1327
+	bcc	L05C3
+	lda	#$FF
+	cmp	RAM1_058
+	bhi	L05C9
+	sta	RAM1_058
+	brclr	7,RAM1_087,L05E0
+	brset	6,RAM1_087,L05E0
+	lda	RAM1_087
+	lsra
+	and	#$0F
+	tax
+	lda	RAM1_058
+	add	X1310,x
+	bcc	L05DE
+	lda	#$FF
+	sta	RAM1_058
+	brset	6,RAM1_081,L05EF
+	lda	RAM1_084
+	beq	L05EF
+	asla
+	nega
+	add	RAM1_058
+	bcs	L05F1
+	clra
+	cmp	XB658
+	brclr	3,RAM1_081,L05F8
+	lda	#$80
+	sub	RAM1_085
+	sta	RAM1_058
+	brset	2,RAM1_0be,L062F
+	brset	3,RAM1_082,L066D
+	brset	2,RAM1_082,L061C
+	brset	2,RAM1_06b,L0609
+	brclr	1,RAM1_06b,L060F
+	bclr	2,RAM1_06b
+	bclr	1,RAM1_06b
+	bset	6,RAM1_095
+	brclr	1,RAM1_081,L062F
+	brset	1,PortB,L062F
+	brset	4,RAM1_082,L062F
+	bset	3,RAM1_082
+	bra	L066D
+;
+	ldx	#$AE
+	jsr	L37C7
+	and	#$07
+	deca
+	asla
+	asla
+	add	X1328
+	add	RAM1_058
+	bcs	L066D
+	sta	RAM1_058
+	brset	7,RAM1_081,L064A
+	brset	5,RAM1_07f,L064A
+	brset	6,RAM1_07f,L064A
+	brset	3,RAM1_081,L064A
+	ldx	#$00
+	brclr	1,RAM1_081,L0642
+	ldx	#$10
+	jsr	L1279
+	coma
+	and	#$0F
+	bra	L064B
+;
+	clra
+	sta	RAM1_059
+	cmp	RAM1_083
+	beq	L0661
+	bcc	L065C
+	lda	RAM1_083
+	deca
+	and	#$0F
+	sta	RAM1_083
+	bra	L065E
+;
+	sta	RAM1_083
+	jsr	L0F73
+	asl	RAM1_059
+	lda	RAM1_058
+	sub	RAM1_059
+	bcc	L066A
+	clra
+	asla
+	bcc	L066F
+L0E6D:
+	lda	#$FF
+	sta	RAM1_058
+	sta	RAM1_059
+	brset	6,RAM1_082,L0685
+	brset	7,RAM1_087,L0685
+	lda	RAM1_088
+	sub	RAM1_058
+	beq	L06DD
+	rora
+	eor	#$7F
+	brclr	4,RAM1_081,L0689
+	lda	RAM1_058
+	bra	L06CA
+;
+	ldx	#$20
+	jsr	L1279
+	asla
+	brset	5,RAM1_082,L0694
+	add	#$10
+	add	#$00
+	tax
+	lda	X12B0,x
+	dec	RAM1_08a
+	bmi	L06BA
+	tsta
+	bmi	L06AB
+	tst	RAM1_089
+	bmi	L06C1
+	cmp	RAM1_089
+	bhi	L06B3
+	bra	L06E5
+;
+	tst	RAM1_089
+	bpl	L06C1
+	cmp	RAM1_089
+	bcc	L06A9
+	tax
+	sub	RAM1_089
+	stx	RAM1_089
+	bra	L06C8
+;
+	tsta
+	bne	L06C1
+	lda	RAM1_058
+	sub	RAM1_088
+	ldx	X12B1,x
+	stx	RAM1_08a
+	sta	RAM1_089
+	add	RAM1_088
+	bset	4,RAM1_082
+	cmp	RAM1_059
+	bne	L06D2
+	bclr	4,RAM1_082
+	cmp	RAM1_088
+	beq	L06DF
+	sta	RAM1_088
+	jsr	L0F82
+	bra	L06E5
+;
+	bclr	4,RAM1_082
+	brset	4,RAM1_07e,L06D8
+	brset	3,RAM1_07e,L06D8
+	lda	RAM1_082
+	and	#$0C
+	tax
+	brclr	0,RAM1_080,L06F0
+	brset	0,RAM1_061,L06F2
+	eor	RAM1_07f
+	and	#$0C
+	beq	L073E
+	brclr	5,RAM1_082,L06FC
+	brclr	7,RAM1_082,L073E
+	tstx
+	beq	L0700
+	txa
+	eor	RAM1_082
+	sta	RAM1_082
+	bset	6,RAM1_095
+	bclr	2,RAM1_06b
+	bclr	1,RAM1_06b
+	brclr	1,RAM1_081,L0720
+	brset	3,RAM1_082,L0715
+	brclr	2,RAM1_082,L0717
+	bset	2,RAM1_06b
+	bset	1,RAM1_06b
+	bclr	0,RAM1_081
+	lda	#$05
+	sta	RAM1_08a
+	bset	6,RAM1_082
+	rts
+;
+	brclr	3,RAM1_082,L072F
+	ldx	#$AF
+	jsr	L37C7
+	rora
+	bcc	L0734
+	bset	2,RAM1_06b
+	bra	L0736
+;
+	brclr	2,RAM1_082,L0739
+	bset	2,RAM1_06b
+	bset	1,RAM1_06b
+	bset	3,PortB
+	rts
+;
+	brset	0,RAM1_061,L073E
+	bclr	3,PortB
+	rts
 ;
 L0F3F:
 	lda	RAM1_082
@@ -1239,13 +1829,23 @@ L0F4C:
 	lda	#$81
 	bra	L076D
 ;
-	db	$1F, $82, $16, $7E
-	db	$A6, $80, $B7, $50
-	db	$A6, $08, $20, $06
-	db	$B6, $83, $B7, $50
-	db	$A6, $01, $AE, $88
-	db	$01, $02, $03, $CD
-	db	$11, $B5, $81
+L0F67:
+	bclr	7,RAM1_082
+	bset	3,RAM1_07e
+	lda	#$80
+	sta	RAM1_050
+	lda	#$08
+	bra	L0779
+;
+L0F73:
+	lda	RAM1_083
+	sta	RAM1_050
+	lda	#$01
+L0F79:
+	ldx	#$88
+	brclr	0,PortC,L0781
+	jsr	L11B5
+	rts
 ;
 L0F82:
 	lda	RAM1_088
@@ -1262,181 +1862,401 @@ L0F82:
 	lda	#$08
 	bra	L07A9
 ;
-	db	$A6, $14, $01, $82
-	db	$02, $A6, $0C, $40
-	db	$BB, $88, $25, $01
-	db	$4F, $A1, $30, $24
-	db	$02, $A6, $30, $A1
-	db	$44, $24, $02, $16
-	db	$7E, $B7, $56, $1F
-	db	$5B, $AE, $A0, $CD
-	db	$10, $A5, $B7, $59
-	db	$AE, $A1, $CD, $10
-	db	$A5, $B7, $58, $0A
-	db	$82, $28, $07, $7E
-	db	$25, $17, $7E, $2B
-	db	$02, $43, $C1, $AB
-	db	$07, $A4, $0F, $B7
-	db	$50, $B6, $59, $2B
-	db	$07, $43, $A5, $08
-	db	$26, $04, $A0, $0D
-	db	$AB, $07, $CD, $25
-	db	$2C, $BB, $50, $B7
-	db	$50, $A6, $03, $CD
-	db	$0F, $79, $B6, $58
-	db	$26, $0C, $B6, $59
-	db	$AB, $08, $B7, $57
-	db	$97, $D6, $10, $ED
-	db	$20, $15, $AB, $08
-	db	$B7, $57, $B6, $59
-	db	$2A, $01, $40, $CD
-	db	$25, $2C, $BB, $57
-	db	$97, $D6, $10, $ED
-	db	$0F, $59, $03, $CD
-	db	$25, $2C, $CD, $25
-	db	$25, $06, $57, $0E
-	db	$0E, $5B, $0A, $40
-	db	$27, $07, $BB, $56
-	db	$25, $0A, $4F, $20
-	db	$07, $4F, $BB, $56
-	db	$24, $02, $A6, $FF
-	db	$B7, $50, $A6, $02
-	db	$CD, $0F, $79, $09
-	db	$7E, $60, $19, $7E
-	db	$A6, $88, $B7, $55
-	db	$A6, $14, $B7, $54
-	db	$A6, $E0, $AE, $53
-	db	$BF, $57, $BE, $57
-	db	$7F, $B7, $56, $AE
-	db	$A3, $CD, $37, $C7
+	lda	#$14
+	brclr	0,RAM1_082,L07A9
+	lda	#$0C
+	nega
+	add	RAM1_088
+	bcs	L07AF
+	clra
+	cmp	#$30
+	bcc	L07B5
+	lda	#$30
+	cmp	#$44
+	bcc	L07BB
+	bset	3,RAM1_07e
+	sta	RAM1_056
+	bclr	7,RAM1_05b
+	ldx	#$A0
+	jsr	L10A5
+	sta	RAM1_059
+	ldx	#$A1
+	jsr	L10A5
+	sta	RAM1_058
+	brset	5,RAM1_082,L07F8
+	brclr	3,RAM1_07e,L07F8
+	bclr	3,RAM1_07e
+	bmi	L07D9
+	coma
+	cmp	XAB07
+	and	#$0F
+	sta	RAM1_050
+	lda	RAM1_059
+	bmi	L07EA
+	coma
+	bit	#$08
+	bne	L07EC
+	sub	#$0D
+	add	#$07
+	jsr	L252C
+	add	RAM1_050
+	sta	RAM1_050
+	lda	#$03
+	jsr	L0F79
+	lda	RAM1_058
+	bne	L0008
+	lda	RAM1_059
+	add	#$08
+	sta	RAM1_057
+	tax
+	lda	X10ED,x
+	bra	L001D
+;
+	add	#$08
+	sta	RAM1_057
+	lda	RAM1_059
+	bpl	L0011
+	nega
+	jsr	L252C
+	add	RAM1_057
+	tax
+	lda	X10ED,x
+	brclr	7,RAM1_059,L0020
+	jsr	L252C
+	jsr	L2525
+	brset	3,RAM1_057,L0034
+	brset	7,RAM1_05b,L0033
+	nega
+	beq	L0033
+	add	RAM1_056
+	bcs	L003A
+	clra
+	bra	L003A
+;
+	clra
+	add	RAM1_056
+	bcc	L003A
+	lda	#$FF
+	sta	RAM1_050
+	lda	#$02
+	jsr	L0F79
+	brclr	4,RAM1_07e,L00A4
+	bclr	4,RAM1_07e
+	lda	#$88
+	sta	RAM1_055
+	lda	#$14
+	sta	RAM1_054
+	lda	#$E0
+	ldx	#$53
+	stx	RAM1_057
+	ldx	RAM1_057
+	clr	,x
+	sta	RAM1_056
+	ldx	#$A3
+	jsr	L37C7
 X105E:
-	db	$0D, $8E, $01, $4F
-	db	$B8, $56, $A5, $20
-	db	$26, $0E, $CD, $37
-	db	$C7, $0D, $8E, $01
-	db	$4F, $2A, $01, $40
-	db	$AB, $10, $AD, $20
-	db	$AE, $A2, $CD, $37
-	db	$C7, $B8, $56, $A5
-	db	$40, $27, $08, $CD
-	db	$37, $C7, $2A, $01
-	db	$40, $AD, $0D, $3A
-	db	$57, $B6, $56, $A0
-	db	$20, $2B, $C3, $AE
-	db	$55, $CC, $11, $BB
-	db	$97, $D6, $11, $91
-	db	$BE, $57, $FB, $A1
-	db	$1F, $23, $02, $A6
-	db	$1F, $F7, $81, $4F
-	db	$0A, $82, $09, $0A
-	db	$7F, $3F, $0C, $7F
-	db	$3C, $06, $81, $39
-	db	$CD, $37, $C7, $AB
-	db	$06, $2A, $02, $A6
-	db	$06, $A3, $A0, $26
-	db	$02, $AB, $0D, $03
-	db	$81, $02, $AB, $1A
-	db	$97, $D6, $11, $5D
-	db	$2B, $1F, $03, $81
-	db	$1C, $BE, $56, $A3
-	db	$44, $24, $16, $3F
-	db	$53, $A3, $36, $25
-	db	$08, $3C, $53, $A3
-	db	$3C, $25, $02, $3C
-	db	$53, $B1, $53, $23
-	db	$04, $B6, $53, $1E
-	db	$5B, $4D, $81, $00
-	db	$00, $70, $72, $62
-	db	$51, $41, $21, $00
-	db	$21, $41, $52, $62
-	db	$72, $70, $00, $00
-	db	$00, $78, $67, $57
-	db	$56, $35, $13, $00
-	db	$32, $53, $65, $75
-	db	$76, $86, $00, $00
-	db	$00, $68, $68, $57
-	db	$46, $35, $13, $00
-	db	$41, $53, $74, $75
-	db	$85, $86, $00, $00
-	db	$00, $69, $58, $58
-	db	$47, $25, $14, $00
-	db	$41, $63, $74, $75
-	db	$85, $86, $00, $00
-	db	$00, $59, $58, $48
-	db	$47, $26, $14, $00
-	db	$41, $63, $74, $84
-	db	$85, $95, $00, $00
-	db	$00, $59, $58, $48
-	db	$47, $25, $14, $00
-	db	$41, $62, $74, $84
-	db	$85, $95, $00, $00
-	db	$00, $59, $58, $48
-	db	$47, $25, $14, $00
-	db	$41, $62, $74, $84
-	db	$85, $95, $00, $FA
-	db	$FB, $FC, $FD, $FE
-	db	$FF, $00, $01, $02
-	db	$03, $04, $05, $06
-	db	$FB, $FC, $FD, $FD
-	db	$FE, $FE, $FF, $00
-	db	$01, $01, $02, $03
-	db	$03, $FB, $FB, $FC
-	db	$FD, $FE, $FF, $00
-	db	$01, $01, $02, $02
-	db	$03, $03, $FB, $FB
-	db	$FC, $FD, $FE, $FF
-	db	$00, $01, $01, $02
-	db	$02, $03, $03, $00
-	db	$01, $02, $03, $04
-	db	$05, $06, $07, $08
-	db	$09, $0A, $0B, $0C
-	db	$0D, $0E, $0F, $00
-	db	$01, $02, $03, $04
-	db	$05, $06, $07, $08
-	db	$09, $0A, $0B, $0C
-	db	$0D, $0E, $1F
+	brclr	6,RAM1_08e,L0062
+	clra
+	eor	RAM1_056
+	bit	#$20
+	bne	L0076
+	jsr	L37C7
+	brclr	6,RAM1_08e,L006F
+	clra
+	bpl	L0072
+	nega
+	add	#$10
+	bsr	L0096
+	ldx	#$A2
+	jsr	L37C7
+	eor	RAM1_056
+	bit	#$40
+	beq	L0089
+	jsr	L37C7
+	bpl	L0087
+	nega
+	bsr	L0096
+	dec	RAM1_057
+	lda	RAM1_056
+	sub	#$20
+	bmi	L0054
+	ldx	#$55
+	jmp	L11BB
+;
+	tax
+	lda	X1191,x
+	ldx	RAM1_057
+	add	,x
+	cmp	#$1F
+	bls	L00A3
+	lda	#$1F
+	sta	,x
+	rts
+;
+L10A5:
+	clra
+	brset	5,RAM1_082,L00B2
+	brset	5,RAM1_07f,L00EB
+	brset	6,RAM1_07f,L00EB
+	brset	3,RAM1_081,L00EB
+	jsr	L37C7
+	add	#$06
+	bpl	L00BB
+	lda	#$06
+	cpx	#$A0
+	bne	L00C1
+	add	#$0D
+	brclr	1,RAM1_081,L00C6
+	add	#$1A
+	tax
+	lda	X115D,x
+	bmi	L00EB
+	brclr	1,RAM1_081,L00EB
+	ldx	RAM1_056
+	cpx	#$44
+	bcc	L00EB
+	clr	RAM1_053
+	cpx	#$36
+	bcs	L00E3
+	inc	RAM1_053
+	cpx	#$3C
+	bcs	L00E3
+	inc	RAM1_053
+	cmp	RAM1_053
+	bls	L00EB
+	lda	RAM1_053
+	bset	7,RAM1_05b
+	tsta
+	rts
+;
+X10ED:
+	brset	0,PortA,L0160
+;
+	db	$72, $62, $51, $41
+;
+	brn	L00F6
+	brn	L0139
+;
+	db	$52, $62, $72
+;
+	neg	,x
+	brset	0,PortA,L00FF
+	asl	,x
+	asr	RAM1_057,x
+	rorx
+;
+	db	$35
+;
+	bclr	1,PortA
+;
+	db	$32
+;
+	comx
+;
+	db	$65, $75
+;
+	ror	,x
+;
+	db	$86
+;
+	brset	0,PortA,L010F
+	asl	RAM1_068,x
+	asrx
+	rora
+;
+	db	$35
+;
+	bclr	1,PortA
+;
+	db	$41
+;
+	comx
+	lsr	,x
+;
+	db	$75, $85, $86
+;
+	brset	0,PortA,L011F
+	rol	RAM1_058,x
+	aslx
+	asra
+	bcs	L0139
+	brset	0,X0041,L018B
+	lsr	,x
+;
+	db	$75, $85, $86
+;
+	brset	0,PortA,L012F
+	rolx
+	aslx
+	asla
+	asra
+	bne	L0149
+	brset	0,X0041,L019B
+	lsr	,x
+;
+	db	$84, $85, $95
+;
+	brset	0,PortA,L013F
+	rolx
+	aslx
+	asla
+	asra
+	bcs	L0159
+	brset	0,X0041,L01AA
+	lsr	,x
+;
+	db	$84, $85, $95
+;
+	brset	0,PortA,L014F
+	rolx
+	aslx
+	asla
+	asra
+	bcs	L0169
+	brset	0,X0041,L01BA
+	lsr	,x
+;
+	db	$84, $85
+X115B:
+	db	$95
+;
+	brset	0,STACK_0fa,L015A
+	jmp	,x						;INFO: index jump
+;
+	jsr	,x						;INFO: index jump
+	ldx	,x
+	stx	,x
+	brset	0,PortB,L0168
+	brclr	1,DDRA,L016E
+	brset	3,STACK_0fb,L0168
+	jsr	,x						;INFO: index jump
+	jsr	,x						;INFO: index jump
+	ldx	,x
+	ldx	,x
+	stx	,x
+	brset	0,PortB,L0175
+	brset	1,PortD,L017A
+	add	,x
+	add	,x
+	jmp	,x						;INFO: index jump
+;
+	jsr	,x						;INFO: index jump
+	ldx	,x
+	stx	,x
+	brset	0,PortB,L0181
+	brset	1,PortC,L0186
+	brclr	1,STACK_0fb,L0181
+	jmp	,x						;INFO: index jump
+;
+	jsr	,x						;INFO: index jump
+	ldx	,x
+	stx	,x
+	brset	0,PortB,L018E
+	brset	1,PortC,L0193
+	brclr	1,PortA,L0194
+	brset	1,PortD,L019A
+	brclr	2,DDRC,L01A0
+	brset	4,ADSTAT,L01A6
+	brclr	5,Miscell,L01AC
+	brset	7,SCCR2,L01A2
+	brclr	0,PortC,L01A8
+	brset	2,DDRB,L01AE
+	brclr	3,ADDATA,L01B4
+	brset	5,PLMB,L01BA
+	brclr	6,SCCR1,L01D0
 X11B1:
-	db	$38, $39, $3A, $2B
-	db	$B7, $51, $BF, $52
-	db	$AE, $52, $BF, $5A
-	db	$AD, $06, $24, $63
-	db	$AD, $02, $24, $5F
-	db	$BE, $5A, $AD, $5C
-	db	$F6, $AD, $0A, $25
-	db	$4C, $5A, $A3, $50
-	db	$24, $F6, $98, $20
-	db	$44, $99, $49, $25
-	db	$04, $AD, $14, $20
-	db	$04, $1D, $04, $20
-	db	$00, $AD, $05, $48
-	db	$26, $F1, $1D, $04
-	db	$1F, $04, $0C, $00
-	db	$00, $20, $39, $1C
-	db	$04, $1D, $00, $81
-	db	$AD, $2E, $AD, $DD
-	db	$25, $1F, $AD, $2C
-	db	$A6, $01, $1D, $04
-	db	$1F
-X1202:
-	db	$04, $0C, $00, $00
-	db	$49, $AD, $20, $24
-	db	$F4, $F7, $3A, $59
-	db	$2B, $07, $AD, $DE
-	db	$5A, $1F, $04, $20
-	db	$E4, $AD, $CE, $98
-	db	$AD, $0D, $AD, $D2
-	db	$1F, $04, $AD, $02
-	db	$1D, $04, $81, $AD
-	db	$F7, $AD, $C7, $1E
-	db	$04, $1F, $00, $81
-	db	$A6, $03, $0A, $7F
-	db	$12, $0E, $7F, $11
-	db	$0C, $87, $0E, $4A
-	db	$0C, $7F, $08, $01
-	db	$7F, $03, $02, $7C
-	db	$02, $B6, $7F, $3F
-	db	$87, $B8, $82, $A4
-	db	$03, $81
+	asl	X0039
+	dec	X002B
+L11B5:
+	sta	RAM1_051
+	stx	RAM1_052
+	ldx	#$52
+L11BB:
+	stx	RAM1_05a
+	bsr	L01C5
+	bcc	L0224
+	bsr	L01C5
+	bcc	L0224
+	ldx	RAM1_05a
+	bsr	L0225
+	lda	,x
+	bsr	L01D6
+	bcs	L021A
+	decx
+	cpx	#$50
+	bcc	L01C9
+	clc
+	bra	L021A
+;
+	sec
+	rola
+	bcs	L01DE
+	bsr	L01F0
+	bra	L01E2
+;
+	bclr	6,DDRA
+	bra	L01E2
+;
+	bsr	L01E9
+	asla
+	bne	L01D8
+	bclr	6,DDRA
+	bclr	7,DDRA
+	brset	6,PortA,L01EE
+	bra	L0229
+;
+	bset	6,DDRA
+	bclr	6,PortA
+	rts
+;
+	bsr	L0225
+	bsr	L01D6
+	bcs	L021A
+	bsr	L0229
+	lda	#$01
+	bclr	6,DDRA
+	bclr	7,DDRA
+	brset	6,PortA,L0206
+	rola
+	bsr	L0229
+	bcc	L01FF
+	sta	,x
+	dec	RAM1_059
+	bmi	L0217
+	bsr	L01F0
+	decx
+	bclr	7,DDRA
+	bra	L01FB
+;
+	bsr	L01E7
+	clc
+	bsr	L0229
+	bsr	L01F0
+	bclr	7,DDRA
+	bsr	L0224
+	bclr	6,DDRA
+	rts
+;
+	bsr	L021E
+	bsr	L01F0
+	bset	7,DDRA
+	bclr	7,PortA
+	rts
+;
+L122E:
+	lda	#$03
+	brset	5,RAM1_07f,L0245
+	brset	7,RAM1_07f,L0247
+	brset	6,RAM1_087,L0247
+	deca
+	brset	6,RAM1_07f,L0245
+	brclr	0,RAM1_07f,L0243
+	brset	1,RAM1_07c,L0245
+	lda	RAM1_07f
+	clr	RAM1_087
+	eor	RAM1_082
+	and	#$03
+	rts
 ;
 L124C:
 	ldx	#$10
@@ -1447,10 +2267,15 @@ L124C:
 	lda	#$FF
 	rts
 ;
-	db	$B7, $57, $CD, $37
-	db	$C7, $48, $48, $AB
-	db	$F4, $40, $BB, $57
-;
+L125B:
+X125B:
+	sta	RAM1_057
+	jsr	L37C7
+	asla
+	asla
+	add	#$F4
+	nega
+	add	RAM1_057
 L1267:
 	sta	RAM1_057
 	clrx
@@ -1462,95 +2287,178 @@ L1267:
 	bhi	L026A
 	rts
 ;
-	db	$3F, $57, $DB, $12
-	db	$88, $25, $05, $3C
-	db	$57, $5C, $20, $F6
-	db	$B6, $57, $81, $B7
-	db	$04, $04, $04, $04
-	db	$04, $04, $04, $04
-	db	$FF, $00, $00, $00
-	db	$00, $00, $00, $8F
-	db	$06, $06, $06, $06
-	db	$06, $06, $06, $06
-	db	$06, $06, $06, $06
-	db	$06, $06, $FF, $20
-	db	$40, $16, $0A, $02
-	db	$0E, $20, $FF, $20
-	db	$00, $10, $00, $08
-	db	$00, $00, $00, $00
-	db	$00, $FE, $03, $FC
-	db	$00, $F8, $00, $0C
-	db	$00, $06, $00, $02
-	db	$00, $00, $00, $00
-	db	$00, $FE, $03, $FC
-	db	$00, $F8, $00
-X12D0:
-	db	$9C, $9C, $90, $84
-	db	$78, $6C, $64, $5C
-	db	$54, $4E, $48, $44
-	db	$40, $3C, $38, $34
-	db	$30, $2C, $28, $26
-	db	$24, $22, $20, $1E
-	db	$1C, $1A, $18, $16
-	db	$14, $12, $10, $10
-X12F0:
-	db	$9C, $92, $88, $7E
-	db	$74, $6A, $62, $5A
-	db	$54, $4E, $48, $44
-	db	$40, $3C, $38, $36
-	db	$34, $32, $30, $2E
-	db	$2C, $2A, $28, $26
-	db	$24, $22, $20, $1E
-	db	$1C, $1A, $18, $18
-	db	$1E, $1C, $1A, $18
-	db	$16, $14, $12, $10
-	db	$0E, $0C, $0A, $08
-	db	$06, $04, $02, $00
-X1320:
-	db	$0A, $14, $03, $50
-	db	$28, $05, $3C, $18
-	db	$00, $10
+L1279:
+	clr	RAM1_057
+	add	X1288,x
+	bcs	L0285
+	inc	RAM1_057
+	incx
+	bra	L027B
 ;
-L132A:
-	brclr	6,RAM1_061,L0338
-	brset	6,RAM1_0ba,L0335
-	brset	5,RAM1_0ba,L034A
-	bra	L0338
+	lda	RAM1_057
+	rts
 ;
-	db	$0B, $BA, $12, $19
-	db	$01, $1D, $BA, $1A
-	db	$BA, $3F, $D6, $3F
-	db	$C1, $CD, $1E, $26
-	db	$10, $BA, $CD, $25
-	db	$4E, $18, $01, $AE
-	db	$B0, $CD, $37, $C7
-	db	$A4, $62, $AA, $80
-	db	$09, $B5, $02, $AA
-	db	$10, $B7, $B5, $3F
-	db	$BF, $CD, $25, $3F
-	db	$01, $61, $13, $3F
-	db	$BC, $14, $BC, $09
-	db	$69, $0C, $02, $5F
-	db	$09, $1D, $B5, $B6
-	db	$B5, $AE, $B0, $CD
-	db	$37, $9B, $18, $BC
-	db	$81, $0D, $61, $08
-	db	$0C, $BA, $05, $A6
-	db	$05, $0B, $BA, $02
-	db	$A6, $28, $B7, $63
-	db	$1C, $BA, $1A, $BA
-	db	$A6, $30, $AE, $01
-	db	$CD, $1B, $82, $07
-	db	$67, $08, $17, $67
-	db	$CD, $13, $BC, $CD
-	db	$36, $AE, $CD, $07
-	db	$89, $CD, $36, $F2
-	db	$CD, $13, $E0, $0D
-	db	$BA, $06, $1D, $D6
-	db	$3D, $63, $26, $E3
-	db	$CD, $36, $F2, $CD
-	db	$1E, $26, $1B, $BA
-	db	$1D, $BA, $81
+X1288:
+	sta	DDRA
+	brset	2,DDRA,L0291
+	brset	2,DDRA,L0294
+	brset	2,STACK_0ff,L0293
+	brset	0,PortA,L0296
+	brset	0,PortA,L0228
+	brset	3,DDRC,L02A2
+	brset	3,DDRC,L02A5
+	brset	3,DDRC,L02A8
+	brset	3,DDRC,L02AB
+	brset	3,DDRC,L02A7
+	bra	L02EA
+;
+	bset	3,PLMA
+	brset	1,SCCR1,L02CF
+	stx	,x
+X12B0:
+	bra	L02B2
+;
+	bset	0,PortA
+	brset	4,PortA,L02B7
+	brset	0,PortA,L02BA
+	ldx	,x
+	brclr	1,STACK_0fc,L02BE
+	eor	,x
+	brset	0,Miscell,L02C2
+	brset	3,PortA,L02C7
+	brset	0,PortA,L02C8
+	brset	0,PortA,L02C9
+	brclr	1,STACK_0fc,L02CE
+	eor	,x
+	brset	0,RAM1_09c,L026E
+;
+	db	$90, $84
+;
+	asl	,x
+	inc	RAM1_064,x
+	incx
+	lsrx
+;
+	db	$4E
+;
+	asla
+	lsra
+	nega
+	inc	X0038
+	lsr	X0030
+	bmc	L030B
+	bne	L0309
+	bhi	L0307
+	bset	7,ICH2
+	bset	5,TCH
+	bset	3,ICH1
+	bset	1,SCSR
+	bset	0,RAM1_09c
+;
+	db	$92, $88, $7E
+;
+	lsr	,x
+	dec	RAM1_062,x
+	decx
+	lsrx
+;
+	db	$4E
+;
+	asla
+	lsra
+	nega
+	inc	X0038
+	ror	X0034
+;
+	db	$32
+;
+	neg	X002E
+	bmc	L0330
+	bhcc	L032E
+	bcc	L032C
+	bra	L032A
+;
+	bset	6,ACH
+	bset	4,TCH
+X1310:
+	bset	7,ICH2
+	bset	5,TCH
+	bset	3,ICH1
+	bset	1,SCSR
+	brset	7,Miscell,L0325
+	brset	4,DDRC,L0322
+	brset	1,PortA,L032B
+	bset	2,PortD
+	negx
+	bhcc	L032B
+	inc	TCH
+X1328:
+	brset	0,SCSR,L0338
+;
+	db	$61
+;
+	brclr	5,Miscell,L02E9
+	brclr	2,PLMA,L02EC
+	bclr	3,X0020
+	brclr	1,PLMB,L02F1
+	bset	1,TCL
+	brclr	0,ICL2,L02F6
+	bset	5,RAM1_0ba
+	clr	STACK_0d6
+	clr	STACK_0c1
+	jsr	L1E26
+	bset	0,RAM1_0ba
+	jsr	L254E
+	bset	4,PortB
+	ldx	#$B0
+	jsr	L37C7
+	and	#$62
+	ora	#$80
+	brclr	4,RAM1_0b5,L035A
+	ora	#$10
+	sta	RAM1_0b5
+	clr	RAM1_0bf
+	jsr	L253F
+	brclr	0,RAM1_061,L0377
+	clr	RAM1_0bc
+	bset	2,RAM1_0bc
+	brclr	4,RAM1_069,L0377
+	brset	1,RAM1_05f,L0377
+	bclr	6,RAM1_0b5
+	lda	RAM1_0b5
+	ldx	#$B0
+	jsr	L379B
+	bset	4,RAM1_0bc
+	rts
+;
+L137A:
+	brclr	6,RAM1_061,L0385
+	brset	6,RAM1_0ba,L0385
+	lda	#$05
+	brclr	5,RAM1_0ba,L0387
+	lda	#$28
+	sta	RAM1_063
+	bset	6,RAM1_0ba
+	bset	5,RAM1_0ba
+	lda	#$30
+	ldx	#$01
+	jsr	L1B82
+	brclr	3,RAM1_067,L039F
+	bclr	3,RAM1_067
+	jsr	L13BC
+	jsr	L36AE
+	jsr	L0789
+	jsr	L36F2
+	jsr	L13E0
+	brclr	6,RAM1_0ba,L03B1
+	bclr	6,STACK_0d6
+	tst	RAM1_063
+	bne	L0394
+	jsr	L36F2
+	jsr	L1E26
+	bclr	5,RAM1_0ba
+	bclr	6,RAM1_0ba
+	rts
 ;
 L13BC:
 	brset	7,STACK_0d6,L03FA
@@ -1576,82 +2484,147 @@ L13E0:
 	jsr	L157D
 	bra	L03F0
 ;
-	db	$01, $61, $04, $1B
-	db	$61, $14, $5D, $B6
-	db	$BB, $B1, $58, $27
-	db	$04, $1C, $CB, $1A
-	db	$CB, $81
+	brclr	0,RAM1_061,L03F0
+	bclr	5,RAM1_061
+	bset	2,RAM1_05d
+	lda	RAM1_0bb
+	cmp	RAM1_058
+	beq	L03FA
+	bset	6,STACK_0cb
+	bset	5,STACK_0cb
+	rts
 ;
 L13FB:
 	brclr	4,RAM1_0bc,L0403
 	bclr	4,RAM1_0bc
 	jmp	L1A4E
 ;
-	db	$0E, $C1, $03, $0C
-	db	$C1, $06, $07, $BC
-	db	$03, $CC, $18, $FF
-	db	$05, $C0, $03, $CC
-	db	$1C, $56, $B6, $B3
-	db	$26, $07, $CD, $14
-	db	$94, $CD, $14, $CB
-	db	$81, $2B, $3F, $08
-	db	$B3, $19, $A5, $60
-	db	$27, $05, $CD, $18
-	db	$4C, $20, $02, $3F
-	db	$B3, $11, $BA, $0E
-	db	$B9, $06, $0D, $BA
-	db	$03, $0D, $C1, $02
-	db	$10, $BA, $81, $B6
-	db	$C1, $A4, $86, $A1
-	db	$86, $26, $03, $CD
-	db	$1C, $2B, $A6, $B4
-	db	$0A, $B6, $11, $A6
-	db	$88, $0F, $BA, $DB
-	db	$05, $B6, $D8, $03
-	db	$B6, $06, $0A, $B3
-	db	$03, $01, $B6, $CF
-	db	$B7, $B3, $1F, $B3
-	db	$15, $BB, $A4, $07
-	db	$97, $B6, $B4, $2A
-	db	$06, $A4, $7F, $B7
-	db	$B4, $B7, $B8, $DE
-	db	$19, $89, $DD, $19
-	db	$E9, $0E, $B3, $B5
-	db	$B6, $B3, $A1, $70
-	db	$24, $AD, $17, $BB
-	db	$08, $B3, $A8, $B7
-	db	$B6, $1B, $BC, $A4
-	db	$07, $A1, $07, $26
-	db	$9E, $18, $B6, $20
-	db	$9A, $B6, $C1, $A5
-	db	$C0, $27, $11, $A4
-	db	$86, $A1, $86, $26
-	db	$29, $1B, $BC, $15
-	db	$BB, $CD, $1E, $12
-	db	$27, $0B, $15, $BA
-	db	$19, $C0, $A6, $97
-	db	$AE, $C0, $CD, $1C
-	db	$2D, $CD, $1E, $1D
-	db	$09, $BF, $0B, $04
-	db	$BE, $0C, $02, $BE
-	db	$09, $0F, $BF, $06
-	db	$1F, $BF, $18, $BF
-	db	$16, $BC, $81, $81
-	db	$08, $C1, $37, $3A
-	db	$C3, $26, $33, $B6
-	db	$C1, $A1, $60, $27
-	db	$08, $07, $BC, $05
-	db	$3C, $C3, $CC, $18
-	db	$FF, $0F, $C1, $0F
-	db	$1F, $C1, $1D, $C1
-	db	$B6, $C1, $A4, $07
-	db	$97, $DE, $1C, $C1
-	db	$DC, $1C, $C9, $0D
-	db	$C1, $0E, $1D, $C1
-	db	$B6, $B6, $A4, $07
-	db	$97, $DE, $1B, $B7
-	db	$DD, $1B, $BF, $C1
-	db	$3F, $C1, $81
+	brset	7,STACK_0c1,L0409
+	brset	6,STACK_0c1,L040F
+	brclr	3,RAM1_0bc,L040F
+	jmp	L18FF
+;
+	brclr	2,STACK_0c0,L0415
+	jmp	L1C56
+;
+	lda	RAM1_0b3
+	bne	L0420
+	jsr	L1494
+	jsr	L14CB
+	rts
+;
+	bmi	L0461
+	brset	4,RAM1_0b3,L043E
+	bit	#$60
+	beq	L042E
+	jsr	L184C
+	bra	L0430
+;
+	clr	RAM1_0b3
+L1430:
+	bclr	0,RAM1_0ba
+	brset	7,RAM1_0b9,L043B
+	brclr	6,RAM1_0ba,L043B
+	brclr	6,STACK_0c1,L043D
+	bset	0,RAM1_0ba
+	rts
+;
+	lda	STACK_0c1
+	and	#$86
+	cmp	#$86
+	bne	L0449
+	jsr	L1C2B
+	lda	#$B4
+	brset	5,RAM1_0b6,L045F
+	lda	#$88
+	brclr	7,RAM1_0ba,L042E
+	brclr	2,RAM1_0b6,L042E
+	brclr	1,RAM1_0b6,L045F
+	brset	5,RAM1_0b3,L045F
+	brclr	0,RAM1_0b6,L042E
+	sta	RAM1_0b3
+	bclr	7,RAM1_0b3
+	bclr	2,RAM1_0bb
+	and	#$07
+	tax
+	lda	RAM1_0b4
+	bpl	L0472
+	and	#$7F
+	sta	RAM1_0b4
+	sta	RAM1_0b8
+	ldx	X1989,x
+	jsr	L19E9,x						;INFO: index jump
+	brset	7,RAM1_0b3,L0430
+	lda	RAM1_0b3
+	cmp	#$70
+	bcc	L042E
+	bclr	3,RAM1_0bb
+	brset	4,RAM1_0b3,L042E
+	sta	RAM1_0b6
+	bclr	5,RAM1_0bc
+	and	#$07
+	cmp	#$07
+	bne	L042E
+	bset	4,RAM1_0b6
+	bra	L042E
+;
+L1494:
+	lda	STACK_0c1
+	bit	#$C0
+	beq	L04AB
+	and	#$86
+	cmp	#$86
+	bne	L04C9
+	bclr	5,RAM1_0bc
+	bclr	2,RAM1_0bb
+	jsr	L1E12
+	beq	L04B4
+	bclr	2,RAM1_0ba
+	bclr	4,STACK_0c0
+	lda	#$97
+	ldx	#$C0
+	jsr	L1C2D
+	jsr	L1E1D
+	brclr	4,RAM1_0bf,L04C5
+	brset	2,RAM1_0be,L04C9
+	brset	1,RAM1_0be,L04C9
+	brclr	7,RAM1_0bf,L04C9
+	bclr	7,RAM1_0bf
+	bset	4,RAM1_0bf
+	bset	3,RAM1_0bc
+	rts
+	rts
+;
+L14CB:
+	brset	4,STACK_0c1,L0505
+L14CE:
+	dec	STACK_0c3
+	bne	L0505
+	lda	STACK_0c1
+	cmp	#$60
+	beq	L04E0
+	brclr	3,RAM1_0bc,L04E0
+	inc	STACK_0c3
+	jmp	L18FF
+;
+	brclr	7,STACK_0c1,L04F2
+	bclr	7,STACK_0c1
+	bclr	6,STACK_0c1
+	lda	STACK_0c1
+	and	#$07
+	tax
+	ldx	X1CC1,x
+	jmp	L1CC9,x						;INFO: index jump
+;
+	brclr	6,STACK_0c1,L0503
+	bclr	6,STACK_0c1
+	lda	RAM1_0b6
+	and	#$07
+	tax
+	ldx	X1BB7,x
+	jsr	L1BBF,x						;INFO: index jump
+	cmp	X3FC1
+	rts
 ;
 L1506:
 	brset	7,RAM1_0ba,L0551
@@ -1664,31 +2637,52 @@ L1506:
 	brclr	3,RAM1_0b9,L0521
 	bra	L054D
 ;
-	db	$06, $BA, $2C, $A5
-	db	$F0, $27, $2C, $AA
-	db	$F0, $20, $2C, $03
-	db	$BE, $03, $00, $BE
-	db	$15, $A6, $02, $20
-	db	$08, $05, $BE, $03
-	db	$00, $BE, $0B, $A6
-	db	$04, $1E, $BF, $1A
-	db	$CB, $16, $BC, $4C
-	db	$18, $BA, $A4, $07
-	db	$AA, $20, $0D, $B9
-	db	$02, $AA, $C0, $AB
-	db	$F0, $25, $04, $CD
-	db	$1E, $30, $4F, $B7
-	db	$BE, $09, $C1, $AB
-	db	$CC, $14, $CE
+	brset	3,RAM1_0ba,L054D
+	bit	#$F0
+	beq	L0551
+	ora	#$F0
+	bra	L0555
+;
+	brclr	1,RAM1_0be,L052F
+	brset	0,RAM1_0be,L0544
+	lda	#$02
+	bra	L053B
+;
+	brclr	2,RAM1_0be,L0539
+	brset	0,RAM1_0be,L0544
+	lda	#$04
+	bset	7,RAM1_0bf
+	bset	5,STACK_0cb
+	bset	3,RAM1_0bc
+	inca
+	bset	4,RAM1_0ba
+	and	#$07
+	ora	#$20
+	brclr	6,RAM1_0b9,L054D
+	ora	#$C0
+	add	#$F0
+	bcs	L0555
+	jsr	L1E30
+	clra
+	sta	RAM1_0be
+	brclr	4,STACK_0c1,L0505
+	jmp	L14CE
+;
 X155D:
-	db	$03, $6C, $AB, $00
-	db	$CD, $F5, $03, $03
-	db	$03, $2F, $03, $06
-	db	$B7, $56, $AD, $05
-	db	$B6, $56, $CD, $25
-	db	$2C, $CD, $24, $41
-	db	$C1, $A6, $20, $D7
-	db	$02, $88, $5C, $81
+	brclr	1,RAM1_06c,L050B
+	brset	0,STACK_0cd,L0558
+	brclr	1,PortD,L0569
+	bih	L056B
+	brset	3,RAM1_0b7,L05C1
+	bsr	L0572
+	lda	RAM1_056
+	jsr	L252C
+L1572:
+	jsr	L2441
+	cmp	XA620
+	sta	RAM2_0288,x
+	incx
+	rts
 ;
 L157D:
 	brclr	3,STACK_0d6,L057C
@@ -1704,311 +2698,619 @@ L157D:
 	ldx	X155D,x
 	lda	RAM2_0272
 	jmp	L1599,x						;INFO: index jump
-;
 L1599:
-	db	$CC, $16, $C2, $CC
-	db	$16, $BF, $1C, $BB
-	db	$14, $BF, $C1, $02
-	db	$73, $25, $02, $15
-	db	$BF, $09, $CE, $EF
-	db	$5F, $C6, $02, $74
-	db	$AD, $BF, $AD, $C1
-	db	$C6, $02, $73, $CD
-	db	$15, $72, $AD, $B9
-	db	$00, $BB, $40, $AD
-	db	$B4, $A3, $08, $26
-	db	$FA, $20, $38, $03
-	db	$5B, $37, $C6, $02
-	db	$74, $2B, $13, $B8
-	db	$C5, $A4, $1F, $26
-	db	$03, $0E, $C5, $0A
-	db	$B8, $C5, $B7, $C5
-	db	$1A, $C5, $1C, $C5
-	db	$1E, $C5, $09, $CE
-	db	$1A, $0C, $BB, $07
-	db	$5F, $AD, $8A, $A3
-	db	$04, $26, $FA, $10
-	db	$BB, $AE, $04, $C6
-	db	$02, $73, $CD, $15
-	db	$69, $C6, $02, $72
-	db	$CD, $15, $69, $1C
-	db	$CB, $CC, $16, $BF
-	db	$BE, $5B, $A3, $08
-	db	$27, $0D, $A3, $0B
-	db	$26, $F3, $0D, $CE
-	db	$03, $CD, $1E, $5C
-	db	$C6, $02, $75, $1B
-	db	$BA, $1D, $BA, $4D
-	db	$2A, $02, $1C, $BA
-	db	$17, $BA, $A5, $40
-	db	$27, $14, $16, $BA
-	db	$A5, $20, $27, $0E
-	db	$97, $B6, $B8, $A4
-	db	$0F, $AA, $80, $B7
-	db	$B4, $A6, $CA, $B7
-	db	$B3, $9F, $CD, $25
-	db	$25, $B8, $B9, $A4
-	db	$07, $20, $65, $19
-	db	$BB, $05, $5B, $B9
-	db	$AE, $07, $BF, $56
-	db	$A6, $07, $B0, $56
-	db	$97, $D6, $02, $72
-	db	$BE, $56, $D7, $02
-	db	$80, $3A, $56, $2A
-	db	$EF, $18, $BB, $14
-	db	$94, $1A, $BB, $20
-	db	$9A, $13, $BB, $A5
-	db	$10, $27, $02, $12
-	db	$BB, $A4, $87, $2A
-	db	$0C, $AA, $10, $0E
-	db	$B9, $0E, $19, $BB
-	db	$CD, $17, $4C, $20
-	db	$05, $0F, $B9, $04
-	db	$1F, $BA, $1E, $CB
-	db	$CD, $25, $2D, $B8
-	db	$B9, $A4, $B8, $20
-	db	$1B, $00, $BF, $16
-	db	$C6, $02, $71, $A4
-	db	$03, $97, $D6, $02
-	db	$72, $B7, $56, $A4
-	db	$07, $97, $DE, $17
-	db	$20, $1F, $BA, $DD
-	db	$17, $26, $20, $16
-	db	$1A, $CB, $27, $12
-	db	$B8, $B9, $B7, $B9
-	db	$04, $B8, $0B, $07
-	db	$B9, $08, $AE, $B2
-	db	$CD, $37, $C7, $CD
-	db	$1D, $EE, $1C, $D6
-	db	$81, $00, $BF, $E2
-	db	$C6, $02, $73, $06
-	db	$B6, $04, $A1, $FF
-	db	$27, $40, $B7, $B7
-	db	$B6, $B6, $A4, $07
-	db	$A1, $04, $26, $0B
-	db	$CD, $1E, $35, $B8
-	db	$C0, $A4, $03, $27
-	db	$02, $14, $C0, $C6
-	db	$02, $72, $2B, $0A
-	db	$0D, $B9, $0E, $19
-	db	$BB, $CD, $1E, $28
-	db	$20, $05, $0C, $B9
-	db	$04, $1C, $B9, $1A
-	db	$CB, $0B, $B6, $17
-	db	$B6, $B7, $BE, $C2
-	db	$5C, $27, $0E, $0F
-	db	$C1, $0D, $B1, $C2
-	db	$26, $09, $1B, $B6
-	db	$20, $05, $16, $BB
-	db	$C1, $B7, $C2, $B6
-	db	$C3, $A1, $40, $27
-	db	$04, $1A, $BB, $1C
-	db	$CB, $20, $87, $C2
-	db	$27, $44, $44, $00
-	db	$26, $0F, $61, $02
-	db	$1F, $61, $09, $B6
-	db	$0B, $0E, $B6, $4C
-	db	$B6, $C1, $A4, $07
-	db	$A1, $02, $27, $46
-	db	$0A, $BC, $09, $0C
-	db	$BC, $06, $B6, $B8
-	db	$A4, $70, $26, $04
-	db	$AD, $38, $1E, $BB
-	db	$0E, $56, $00, $81
-	db	$0F, $56, $17, $18
-	db	$B8, $04, $B8, $0D
-	db	$11, $B8, $A6, $FF
-	db	$AE, $BC, $CD, $37
-	db	$9B, $5C, $CD, $37
-	db	$9B, $A6, $80, $B7
-	db	$B3, $81, $CC, $1D
-	db	$33, $17, $BF, $0F
-	db	$56, $78, $CD, $1C
-	db	$25, $14, $7E, $B6
-	db	$B8, $B7, $BD, $14
-	db	$BB, $1D, $BC, $81
-	db	$19, $BB, $0C, $56
-	db	$0C, $1D, $BC, $15
-	db	$BB, $1D, $B8, $1B
-	db	$B8, $19, $B8, $20
-	db	$57, $B6, $B8, $0C
-	db	$BC, $04, $A5, $70
-	db	$26, $50, $A4, $0C
-	db	$B7, $BD, $C6, $02
-	db	$72, $A0, $06, $27
-	db	$09, $2B, $05, $4A
-	db	$3C, $BD, $20, $F5
-	db	$AB, $07, $CD, $25
-	db	$2C, $BB, $BD, $B7
-	db	$BD, $05, $B8, $09
-	db	$CD, $25, $2D, $B8
-	db	$B8, $A4, $08, $20
-	db	$0B, $0B, $69, $04
-	db	$A5, $01, $26, $12
-	db	$B8, $B8, $A4, $03
-	db	$27, $10, $0D, $BC
-	db	$06, $1D, $B8, $1B
-	db	$B8, $19, $B8, $0A
-	db	$BC, $A1, $0C, $BC
-	db	$AA, $81, $1A, $BB
-	db	$B6, $BD, $B7, $B8
-	db	$1C, $BC, $15, $BB
-	db	$1E, $CB, $81, $0D
-	db	$D2, $03, $CC, $17
-	db	$4D, $0F, $56, $2A
-	db	$15, $C0, $CD, $1D
-	db	$EB, $AD, $87, $0A
-	db	$B6, $1A, $0D, $BF
-	db	$10, $02, $BA, $04
-	db	$12, $BA, $16, $BC
-	db	$A6, $E3, $08, $C1
-	db	$06, $AE, $01, $20
-	db	$04, $A6, $60, $AE
-	db	$28, $CC, $1C, $2D
-	db	$05, $C1, $F6, $1A
-	db	$C1, $81, $0B, $B6
-	db	$05, $CD, $1D, $33
-	db	$20, $1A, $B6, $B6
-	db	$A4, $07, $A1, $05
-	db	$27, $0B, $A1, $04
-	db	$26, $0E, $0D, $B5
-	db	$0B, $3F, $C2, $10
-	db	$B6, $34, $C2, $26
-	db	$03, $CD, $1C, $F4
-	db	$1E, $BA, $B6, $B6
-	db	$AA, $D0, $A5, $20
-	db	$27, $02, $A4, $A7
-	db	$B7, $B3, $81, $B6
-	db	$B3, $A5, $0F, $27
-	db	$72, $A4, $07, $97
-	db	$4F, $99, $49, $5A
-	db	$2A, $FC, $B7, $56
-	db	$AE, $B5, $07, $B3
-	db	$02, $AE, $BC, $0D
-	db	$B3, $09, $0A, $B3
-	db	$04, $43, $F4, $20
-	db	$03, $F8, $B1, $FA
-	db	$06, $B3, $09, $03
-	db	$56, $06, $A5, $02
-	db	$27, $02, $AA, $0C
-	db	$07, $8E, $0F, $09
-	db	$56, $06, $A5, $10
-	db	$27, $02, $AA, $08
-	db	$A5, $08, $26, $02
-	db	$A4, $AF, $F7, $AE
-	db	$F3, $06, $B3, $46
-	db	$A4, $62, $AE, $B0
-	db	$CD, $37, $9B, $1A
-	db	$CB, $0A, $56, $06
-	db	$0D, $56, $51, $04
-	db	$B8, $0C, $B6, $B6
-	db	$A4, $17, $A1, $04
-	db	$26, $04, $AD, $8C
-	db	$20, $4C, $0D, $56
-	db	$3F, $AE, $10, $A1
-	db	$05, $27, $3E, $0C
-	db	$59, $07, $AE, $F1
-	db	$0C, $B9, $36, $20
-	db	$2F, $18, $C0, $17
-	db	$C0, $05
-X18CB:
-	db	$B8, $11, $16, $C0
-	db	$AE, $B2, $CD, $37
-	db	$C7, $B7, $B8, $1B
-	db	$BB, $CC, $17, $62
-	db	$CC, $1A, $4E, $0C
-	db	$C1, $14, $CD, $1E
-	db	$12, $26, $0F, $A6
-	db	$01, $B7, $C3, $B6
-	db	$C1, $A1, $95, $27
-	db	$05, $A6, $86, $CD
-	db	$1C, $2B, $B6, $B3
-	db	$A4, $10, $97, $BF
-	db	$B3, $16, $BC, $81
-	db	$A6, $C8, $0C, $5F
-	db	$27, $CD, $1E, $03
-	db	$0E, $61, $30, $03
-	db	$BA, $02, $A4, $BF
-	db	$AA, $08, $AA, $04
-	db	$A4, $4E, $0F, $B5
-	db	$05, $06, $B5, $02
-	db	$A4, $4A, $0D, $CE
-	db	$02, $AA, $30, $08
-	db	$CE, $03, $07, $CE
-	db	$02, $AA, $10, $4C
-	db	$A5, $04, $27, $0D
-	db	$06, $5D, $03, $07
-	db	$BF, $02, $A4, $F3
-	db	$0F, $BF, $02, $A4
-	db	$FB, $AE, $01, $07
-	db	$8E, $06, $AA, $02
-	db	$A4, $BB, $AE, $09
-	db	$01, $61, $0F, $03
-	db	$82, $07, $00, $82
-	db	$04, $AA, $80, $20
-	db	$05, $09, $69, $02
-	db	$AA, $40, $C7, $02
-	db	$7C, $9F, $0D, $5F
-	db	$02, $AA, $40, $13
-	db	$BC, $AA, $80, $09
-	db	$BF, $07, $0E, $B5
-	db	$04, $12, $BC, $A4
-	db	$7F, $C7, $02, $7D
-	db	$A6, $20, $05, $B8
-	db	$05, $0C, $5F, $02
-	db	$A6, $02, $AA, $10
-	db	$14, $B5, $97, $17
-	db	$BC, $A6, $0A, $CC
-	db	$1A, $21, $7B, $78
-	db	$00, $5B, $D9, $BE
-	db	$CD, $F2, $17, $5D
-	db	$B6, $B8, $A4, $74
-	db	$A1, $60, $27, $3C
-	db	$AE, $02, $A1, $10
-	db	$26, $04, $16, $BF
-	db	$20, $2E, $AE, $83
-	db	$A1, $50, $27, $28
-	db	$5F, $05, $B8, $05
-	db	$07, $B8, $07, $20
-	db	$03, $03, $B8, $02
-	db	$AE, $04, $A4, $70
-	db	$A1, $20, $27, $0E
-	db	$04, $B8, $0A, $5C
-	db	$A1, $30, $27, $06
-	db	$5C, $A1, $40, $27
-	db	$01, $81, $58, $58
-	db	$99, $59, $99, $59
-	db	$A6, $18, $20, $4A
-	db	$B6, $88, $44, $B7
-	db	$56, $B6, $83, $48
-	db	$BB, $56, $AE, $70
-	db	$CD, $37, $86, $CC
-	db	$17, $6F, $07, $B3
-	db	$A5, $3F, $B6, $0D
-	db	$B3, $0F, $0B, $B3
-	db	$06, $AE, $09, $3F
-	db	$B3, $20, $24, $AE
-	db	$EA, $BF, $B3, $20
-	db	$19, $1B, $BC, $1D
-	db	$BC, $16, $94, $CD
-	db	$1D, $9B, $AA, $80
-	db	$06, $B5, $04, $43
-	db	$B4, $56, $C1, $BA
-	db	$56, $BE, $57, $CD
-	db	$37, $9B, $CD, $1D
-	db	$D2, $AE, $89, $CD
-	db	$1D, $AF, $B7, $50
-	db	$BF, $51, $0F, $D6
-	db	$0D, $CD, $07, $89
-	db	$07, $67, $F7, $17
-	db	$67, $CD, $36, $AE
-	db	$20, $F0, $B6, $50
-	db	$BE, $51, $C7, $02
-	db	$7A, $CF, $02, $7B
-	db	$1E, $D6, $3F, $D9
-	db	$81, $07, $B3, $07
-	db	$0E, $BA, $82, $AE
-	db	$0A, $20, $85
+	jmp	L16C2
+	jmp	L16BF
+;
+	bset	6,RAM1_0bb
+	bset	2,RAM1_0bf
+	cmp	RAM2_0273
+	bcs	L05AA
+	bclr	2,RAM1_0bf
+	brclr	4,STACK_0ce,L059C
+	clrx
+	lda	RAM2_0274
+	bsr	L0572
+	bsr	L0576
+	lda	RAM2_0273
+	jsr	L1572
+	bsr	L0576
+	brset	0,RAM1_0bb,L0600
+	bsr	L0576
+	cpx	#$08
+	bne	L05C0
+	bra	L0600
+;
+	brclr	1,RAM1_05b,L0602
+	lda	RAM2_0274
+	bmi	L05E3
+	eor	STACK_0c5
+	and	#$1F
+	bne	L05D9
+	brset	7,STACK_0c5,L05E3
+	eor	STACK_0c5
+	sta	STACK_0c5
+	bset	5,STACK_0c5
+	bset	6,STACK_0c5
+	bset	7,STACK_0c5
+	brclr	4,STACK_0ce,L0600
+	brset	6,RAM1_0bb,L05F0
+	clrx
+	bsr	L0576
+	cpx	#$04
+	bne	L05EA
+	bset	0,RAM1_0bb
+	ldx	#$04
+	lda	RAM2_0273
+	jsr	L1569
+	lda	RAM2_0272
+	jsr	L1569
+	bset	6,STACK_0cb
+	jmp	L16BF
+;
+	ldx	RAM1_05b
+	cpx	#$08
+	beq	L0618
+	cpx	#$0B
+	bne	L0602
+	brclr	6,STACK_0ce,L0615
+	jsr	L1E5C
+	lda	RAM2_0275
+	bclr	5,RAM1_0ba
+	bclr	6,RAM1_0ba
+	tsta
+	bpl	L0621
+	bset	6,RAM1_0ba
+	bclr	3,RAM1_0ba
+	bit	#$40
+	beq	L063B
+	bset	3,RAM1_0ba
+	bit	#$20
+	beq	L063B
+	tax
+	lda	RAM1_0b8
+	and	#$0F
+	ora	#$80
+	sta	RAM1_0b4
+	lda	#$CA
+	sta	RAM1_0b3
+	txa
+	jsr	L2525
+	eor	RAM1_0b9
+	and	#$07
+	bra	L06A9
+;
+	bclr	4,RAM1_0bb
+	brclr	2,RAM1_05b,L0602
+	ldx	#$07
+	stx	RAM1_056
+	lda	#$07
+	sub	RAM1_056
+	tax
+	lda	RAM2_0272,x
+	ldx	RAM1_056
+	sta	RAM2_0280,x
+	dec	RAM1_056
+	bpl	L064D
+	bset	4,RAM1_0bb
+	bset	2,RAM1_094
+	bset	5,RAM1_0bb
+	bra	L0600
+;
+	bclr	1,RAM1_0bb
+	bit	#$10
+	beq	L066E
+	bset	1,RAM1_0bb
+	and	#$87
+	bpl	L067E
+	ora	#$10
+	brset	7,RAM1_0b9,L0685
+	bclr	4,RAM1_0bb
+	jsr	L174C
+	bra	L0683
+;
+	brclr	7,RAM1_0b9,L0685
+	bclr	7,RAM1_0ba
+	bset	7,STACK_0cb
+	jsr	L252D
+	eor	RAM1_0b9
+	and	#$B8
+	bra	L06A9
+;
+	brset	0,RAM1_0bf,L06A7
+	lda	RAM2_0271
+	and	#$03
+	tax
+	lda	RAM2_0272,x
+	sta	RAM1_056
+	and	#$07
+	tax
+	ldx	X1720,x
+	bclr	7,RAM1_0ba
+	jsr	L1726,x						;INFO: index jump
+	bra	L06BF
+;
+	bset	5,STACK_0cb
+	beq	L06BF
+	eor	RAM1_0b9
+	sta	RAM1_0b9
+	brset	2,RAM1_0b8,L06BF
+	brclr	3,RAM1_0b9,L06BF
+	ldx	#$B2
+	jsr	L37C7
+	jsr	L1DEE
+L16BF:
+	bset	6,STACK_0d6
+	rts
+;
+L16C2:
+	brset	0,RAM1_0bf,L06A7
+	lda	RAM2_0273
+	brset	3,RAM1_0b6,L06CF
+	cmp	#$FF
+	beq	L070F
+	sta	RAM1_0b7
+	lda	RAM1_0b6
+	and	#$07
+	cmp	#$04
+	bne	L06E4
+	jsr	L1E35
+	eor	STACK_0c0
+	and	#$03
+	beq	L06E4
+	bset	2,STACK_0c0
+	lda	RAM2_0272
+	bmi	L06F3
+	brclr	6,RAM1_0b9,L06FA
+	bclr	4,RAM1_0bb
+	jsr	L1E28
+	bra	L06F8
+;
+	brset	6,RAM1_0b9,L06FA
+	bset	6,RAM1_0b9
+	bset	5,STACK_0cb
+	brclr	5,RAM1_0b6,L0714
+	lda	RAM1_0b7
+	ldx	STACK_0c2
+	incx
+	beq	L0712
+	brclr	7,STACK_0c1,L0714
+	cmp	STACK_0c2
+	bne	L0714
+	bclr	5,RAM1_0b6
+	bra	L0714
+;
+	bset	3,RAM1_0bb
+	cmp	XB7C2
+	lda	STACK_0c3
+	cmp	#$40
+	beq	L071E
+	bset	5,RAM1_0bb
+	bset	6,STACK_0cb
+	bra	L06A7
+;
+X1720:
+	sbc	X2744
+	lsra
+	brset	0,X0026,L0736
+;
+	db	$61
+;
+	brset	1,OCL2,L078C
+	brclr	4,RAM1_0b6,L0739
+	brset	7,RAM1_0b6,L077D
+	lda	STACK_0c1
+	and	#$07
+	cmp	#$02
+	beq	L077F
+	brset	5,RAM1_0bc,L0745
+	brset	6,RAM1_0bc,L0745
+	lda	RAM1_0b8
+	and	#$70
+	bne	L0749
+	bsr	L077F
+	bset	7,RAM1_0bb
+	brset	7,RAM1_056,L074C
+L174C:
+	rts
+;
+L174D:
+	brclr	7,RAM1_056,L0767
+	bset	4,RAM1_0b8
+	brset	2,RAM1_0b8,L0762
+	bclr	0,RAM1_0b8
+	lda	#$FF
+	ldx	#$BC
+	jsr	L379B
+	incx
+	jsr	L379B
+L1762:
+	lda	#$80
+X1764:
+	sta	RAM1_0b3
+	rts
+	jmp	L1D33
+;
+	bclr	3,RAM1_0bf
+	brclr	7,RAM1_056,L07E7
+L176F:
+	jsr	L1C25
+	bset	2,RAM1_07e
+L1774:
+	lda	RAM1_0b8
+	sta	RAM1_0bd
+	bset	2,RAM1_0bb
+	bclr	6,RAM1_0bc
+	rts
+;
+	bclr	4,RAM1_0bb
+	brset	6,RAM1_056,L078E
+	bclr	6,RAM1_0bc
+	bclr	2,RAM1_0bb
+	bclr	6,RAM1_0b8
+	bclr	5,RAM1_0b8
+	bclr	4,RAM1_0b8
+	bra	L07E5
+;
+	lda	RAM1_0b8
+	brset	6,RAM1_0bc,L0797
+	bit	#$70
+	bne	L07E7
+	and	#$0C
+	sta	RAM1_0bd
+	lda	RAM2_0272
+	sub	#$06
+	beq	L07AB
+	bmi	L07A9
+	deca
+	inc	RAM1_0bd
+	bra	L079E
+;
+	add	#$07
+	jsr	L252C
+	add	RAM1_0bd
+	sta	RAM1_0bd
+	brclr	2,RAM1_0b8,L07BE
+	jsr	L252D
+	eor	RAM1_0b8
+	and	#$08
+	bra	L07C9
+;
+	brclr	5,RAM1_069,L07C5
+	bit	#$01
+	bne	L07D7
+	eor	RAM1_0b8
+	and	#$03
+	beq	L07DB
+	brclr	6,RAM1_0bc,L07D4
+	bclr	6,RAM1_0b8
+	bclr	5,RAM1_0b8
+	bclr	4,RAM1_0b8
+	brset	5,RAM1_0bc,L0778
+	brset	6,RAM1_0bc,L0784
+	rts
+;
+	bset	5,RAM1_0bb
+	lda	RAM1_0bd
+	sta	RAM1_0b8
+	bset	6,RAM1_0bc
+	bclr	2,RAM1_0bb
+	bset	7,STACK_0cb
+	rts
+;
+	brclr	6,STACK_0d2,L07EE
+	jmp	L174D
+;
+	brclr	7,RAM1_056,L001B
+	bclr	2,STACK_0c0
+	jsr	L1DEB
+	bsr	L077F
+	brset	5,RAM1_0b6,L0015
+	brclr	6,RAM1_0bf,L000E
+	brset	1,RAM1_0ba,L0005
+	bset	1,RAM1_0ba
+	bset	3,RAM1_0bc
+	lda	#$E3
+	brset	4,STACK_0c1,L0010
+	ldx	#$01
+	bra	L0012
+;
+L180E:
+	lda	#$60
+	ldx	#$28
+	jmp	L1C2D
+;
+	brclr	2,STACK_0c1,L000E
+	bset	5,STACK_0c1
+	rts
+;
+	brclr	5,RAM1_0b6,L0023
+	jsr	L1D33
+	bra	L003D
+;
+	lda	RAM1_0b6
+	and	#$07
+	cmp	#$05
+	beq	L0036
+	cmp	#$04
+	bne	L003D
+	brclr	6,RAM1_0b5,L003D
+	clr	STACK_0c2
+	bset	0,RAM1_0b6
+	lsr	STACK_0c2
+	bne	L003D
+	jsr	L1CF4
+	bset	7,RAM1_0ba
+	lda	RAM1_0b6
+	ora	#$D0
+	bit	#$20
+	beq	L0049
+	and	#$A7
+	sta	RAM1_0b3
+	rts
+;
+L184C:
+	lda	RAM1_0b3
+	bit	#$0F
+	beq	L00C4
+	and	#$07
+	tax
+	clra
+	sec
+	rola
+	decx
+	bpl	L0057
+	sta	RAM1_056
+	ldx	#$B5
+	brclr	3,RAM1_0b3,L0064
+	ldx	#$BC
+	brclr	6,RAM1_0b3,L0070
+	brset	5,RAM1_0b3,L006E
+	coma
+	and	,x
+	bra	L0071
+;
+	eor	,x
+	cmp	STACK_0fa
+	brset	3,RAM1_0b3,L007D
+	brclr	1,RAM1_056,L007D
+	bit	#$02
+	beq	L007D
+	ora	#$0C
+	brclr	3,RAM1_08e,L008F
+	brclr	4,RAM1_056,L0089
+	bit	#$10
+	beq	L0089
+	ora	#$08
+	bit	#$08
+	bne	L008F
+	and	#$AF
+	sta	,x
+	ldx	#$F3
+	brset	3,RAM1_0b3,L00DB
+	and	#$62
+	ldx	#$B0
+	jsr	L379B
+	bset	5,STACK_0cb
+	brset	5,RAM1_056,L00A7
+	brclr	6,RAM1_056,L00F5
+	brset	2,RAM1_0b8,L00B3
+	lda	RAM1_0b6
+	and	#$17
+	cmp	#$04
+	bne	L00B3
+	bsr	L003D
+	bra	L00FF
+;
+	brclr	6,RAM1_056,L00F5
+	ldx	#$10
+	cmp	#$05
+	beq	L00FA
+	brset	6,RAM1_059,L00C6
+	ldx	#$F1
+	brset	6,RAM1_0b9,L00FA
+	bra	L00F5
+;
+	bset	4,STACK_0c0
+	bclr	3,STACK_0c0
+	brclr	2,RAM1_0b8,L00DE
+	bset	3,STACK_0c0
+	ldx	#$B2
+	jsr	L37C7
+	sta	RAM1_0b8
+	bclr	5,RAM1_0bb
+	jmp	L1762
+	jmp	L1A4E
+;
+	brset	6,STACK_0c1,L00F5
+	jsr	L1E12
+	bne	L00F5
+	lda	#$01
+	sta	STACK_0c3
+	lda	STACK_0c1
+	cmp	#$95
+X18EE:
+	beq	L00F5
+	lda	#$86
+	jsr	L1C2B
+	lda	RAM1_0b3
+	and	#$10
+	tax
+	stx	RAM1_0b3
+	bset	3,RAM1_0bc
+	rts
+;
+L18FF:
+	lda	#$C8
+	brset	6,RAM1_05f,L012B
+	jsr	L1E03
+	brset	7,RAM1_061,L013A
+	brclr	1,RAM1_0ba,L010F
+	and	#$BF
+	ora	#$08
+	ora	#$04
+	and	#$4E
+	brclr	7,RAM1_0b5,L011D
+	brset	3,RAM1_0b5,L011D
+	and	#$4A
+	brclr	6,STACK_0ce,L0122
+	ora	#$30
+	brset	4,STACK_0ce,L0128
+	brclr	3,STACK_0ce,L012A
+	ora	#$10
+	inca
+	bit	#$04
+	beq	L013C
+	brset	3,RAM1_05d,L0135
+	brclr	3,RAM1_0bf,L0137
+	and	#$F3
+	brclr	7,RAM1_0bf,L013C
+	and	#$FB
+	ldx	#$01
+	brclr	3,RAM1_08e,L0147
+	ora	#$02
+	and	#$BB
+	ldx	#$09
+	brclr	0,RAM1_061,L0159
+	brclr	1,RAM1_082,L0154
+	brset	0,RAM1_082,L0154
+	ora	#$80
+	bra	L0159
+;
+	brclr	4,RAM1_069,L0159
+	ora	#$40
+	sta	RAM2_027c
+	txa
+	brclr	6,RAM1_05f,L0162
+	ora	#$40
+	bclr	1,RAM1_0bc
+	ora	#$80
+	brclr	4,RAM1_0bf,L0170
+	brset	7,RAM1_0b5,L0170
+	bset	1,RAM1_0bc
+	and	#$7F
+	sta	RAM2_027d
+	lda	#$20
+	brclr	2,RAM1_0b8,L017D
+	brset	6,RAM1_05f,L017D
+	lda	#$02
+	ora	#$10
+	bset	2,RAM1_0b5
+	tax
+	bclr	3,RAM1_0bc
+	lda	#$0A
+	jmp	L1A21
+;
+X1989:
+	db	$7B
+;
+	asl	,x
+	brset	0,RAM1_05b,L0167
+	ldx	STACK_0cd
+	sbc	,x
+	bclr	3,RAM1_05d
+	lda	RAM1_0b8
+	and	#$74
+	cmp	#$60
+	beq	L01D7
+	ldx	#$02
+	cmp	#$10
+	bne	L01A5
+	bset	3,RAM1_0bf
+	bra	L01D3
+;
+	ldx	#$83
+	cmp	#$50
+	beq	L01D3
+	clrx
+	brclr	2,RAM1_0b8,L01B4
+	brclr	3,RAM1_0b8,L01B9
+	bra	L01B7
+;
+	brclr	1,RAM1_0b8,L01B9
+	ldx	#$04
+	and	#$70
+	cmp	#$20
+	beq	L01CD
+	brset	2,RAM1_0b8,L01CC
+	incx
+	cmp	#$30
+	beq	L01CD
+	incx
+	cmp	#$40
+	beq	L01CD
+	rts
+;
+	aslx
+	aslx
+	sec
+	rolx
+	sec
+	rolx
+	lda	#$18
+	bra	L0221
+;
+	lda	RAM1_088
+	lsra
+	sta	RAM1_056
+	lda	RAM1_083
+	asla
+	add	RAM1_056
+	ldx	#$70
+	jsr	L3786
+	jmp	L176F
+;
+L19E9:
+	brclr	3,RAM1_0b3,L0191
+	clr	RAM1_0b6
+	brclr	6,RAM1_0b3,L0200
+	brclr	5,RAM1_0b3,L01FA
+	ldx	#$09
+	clr	RAM1_0b3
+	bra	L021E
+;
+	ldx	#$EA
+	stx	RAM1_0b3
+	bra	L0219
+;
+L1A00:
+	bclr	5,RAM1_0bc
+	bclr	6,RAM1_0bc
+	bset	3,RAM1_094
+	jsr	L1D9B
+	ora	#$80
+	brset	3,RAM1_0b5,L0212
+	coma
+	and	RAM1_056
+	cmp	XBA56
+	ldx	RAM1_057
+	jsr	L379B
+L1A19:
+	jsr	L1DD2
+	ldx	#$89
+	jsr	L1DAF
+L1A21:
+	sta	RAM1_050
+	stx	RAM1_051
+	brclr	7,STACK_0d6,L0235
+	jsr	L0789
+	brclr	3,RAM1_067,L0225
+	bclr	3,RAM1_067
+	jsr	L36AE
+	bra	L0225
+;
+	lda	RAM1_050
+	ldx	RAM1_051
+	sta	RAM2_027a
+	stx	RAM2_027b
+	bset	7,STACK_0d6
+	clr	STACK_0d9
+	rts
+;
+	brclr	3,RAM1_0b3,L024E
+	brset	7,RAM1_0ba,L01CC
+	ldx	#$0A
+	bra	L01D3
 ;
 L1A4E:
 	brset	3,RAM1_0bf,L0243
@@ -2020,243 +3322,498 @@ L1A4E:
 	tax
 	lda	#$20
 	bra	L0221
+	jmp	L1B2A
 ;
-	db	$CC, $1B, $2A, $17
-	db	$BF, $1B, $BB, $19
-	db	$BB, $07, $B3, $16
-	db	$AE, $B1, $CD, $37
-	db	$C7, $0B, $B6, $07
-	db	$A5, $70, $26, $05
-	db	$CC, $1D, $4E, $AA
-	db	$70, $B7, $B8, $04
-	db	$B8, $00, $1F, $BF
-	db	$B6, $B8, $A4, $70
-	db	$A1, $70, $26, $03
-	db	$CD, $1D, $73, $CD
-	db	$1D, $9B, $10, $56
-	db	$B4, $56, $16, $B5
-	db	$26, $04, $17, $B5
-	db	$19, $B5, $16, $BC
-	db	$13, $BA, $12, $BF
-	db	$10, $BF, $A6, $40
-	db	$AE, $0C, $0D, $5F
-	db	$02, $AE, $01, $CD
-	db	$1E, $26, $CC, $1C
-	db	$2D, $04, $B8, $05
-	db	$12, $B8, $11, $B8
-	db	$C1, $16, $B8, $20
-	db	$DD, $0A, $B3, $79
-	db	$07, $BF, $04, $10
-	db	$B3, $12, $B3, $0C
-	db	$B3, $0C, $09, $B3
-	db	$46, $03, $BA, $40
-	db	$13, $BA, $16, $BC
-	db	$20, $3A, $0D, $B3
-	db	$08, $09, $B3, $05
-	db	$19, $B3, $1D, $BF
-	db	$C1, $1C, $BF, $1D
-	db	$B3, $B6, $B6, $A4
-	db	$07, $A1, $06, $26
-	db	$0B, $AE, $B1, $CD
-	db	$37, $C7, $B7, $B8
-	db	$1F, $BF, $20, $15
-	db	$A1, $04, $26, $11
-	db	$08, $B3, $0E, $B6
-	db	$B6, $B8, $B3, $A5
-	db	$08, $27, $06, $CD
-	db	$1A, $A7, $CC, $1A
-	db	$19, $09, $B3, $03
-	db	$1D, $BF, $81, $0E
-	db	$BF, $8C, $06, $BF
-	db	$89, $1E, $BF, $CD
-	db	$1A, $8D, $A6, $48
-	db	$20, $82, $CC, $1A
-	db	$A7, $07, $B3, $05
-	db	$1E, $BF, $CC, $1A
-	db	$9F, $0D, $B9, $E2
-	db	$CD, $1E, $2A, $A6
-	db	$48, $5F, $CC, $1A
-	db	$21, $1D, $BF, $08
-	db	$B3, $0B, $0A, $B6
-	db	$E1, $AD, $2A, $A6
-	db	$FF, $B7, $C2, $20
-	db	$D0, $B6, $BD, $B8
-	db	$B8, $A4, $07, $26
-	db	$04, $B6, $BD, $B7
-	db	$B8, $3F, $C3, $CD
-	db	$1E, $1D, $B6, $C1
-	db	$A1, $95, $26, $07
-	db	$3F, $C1, $16, $BC
-	db	$CC, $1D, $D2, $CD
-	db	$17, $62, $CC, $1A
-	db	$83, $B6, $B8, $B7
-	db	$BD, $BE, $C1, $CC
-	db	$1D, $E1, $A6, $64
-	db	$C7, $02, $7C, $A6
-	db	$19, $1D, $B8, $1B
-	db	$B8, $19, $B8, $1A
-	db	$BC, $16, $B5, $17
-	db	$BB, $01, $B6, $06
-	db	$02, $B6, $03, $04
-	db	$B6, $02, $15, $BA
-	db	$05, $C0, $03, $15
-	db	$C0, $C1, $3F, $BB
-	db	$3F, $C5, $CD, $1E
-	db	$26, $1E, $BA, $1E
-	db	$CB, $1D, $BC, $06
-	db	$C0, $02, $19, $C0
-	db	$17, $C0, $1E, $B5
-	db	$20, $84, $A8, $11
-	db	$43, $43, $75, $44
-	db	$00, $1B, $CD, $1D
-	db	$2D, $AE, $C7, $06
-	db	$8E, $03, $0B, $69
-	db	$02, $AE, $E7, $1E
-	db	$BF, $20, $AB, $BE
-	db	$B7, $4F, $C7, $02
-	db	$7C, $A6, $11, $20
-	db	$B4, $06, $C1, $19
-	db	$AE, $50, $10, $5B
-	db	$C1, $11, $5B, $A6
-	db	$C1, $AD, $45, $AE
-	db	$86, $07, $B6, $02
-	db	$AE, $06, $A6, $18
-	db	$01, $5B, $A5, $20
-	db	$8C, $A6, $40, $AE
-	db	$02, $AD, $31, $CD
-	db	$1D, $73, $CC, $1C
-	db	$A0, $81, $0A, $C1
-	db	$19, $1E, $BF, $CD
-	db	$1D, $2D, $AE, $A0
-	db	$04, $C2, $07, $A6
-	db	$6C, $02, $C2, $04
-	db	$AE, $20, $A6, $64
-	db	$CC, $1B, $7D, $CC
-	db	$1C, $BA, $0A, $B6
-	db	$FA, $CD, $1E, $1D
-	db	$A6, $92, $AE, $10
-	db	$20, $02, $AE, $C8
-	db	$B7, $C1, $BF, $C3
-	db	$CC, $14, $30, $06
-	db	$C1, $BF, $0A, $C1
-	db	$E5, $A6, $C4, $AE
-	db	$64, $0A, $B6, $04
-	db	$A6, $D3, $AE, $FF
-	db	$AD, $E6, $1B, $B5
-	db	$06, $CE, $0A, $AE
-	db	$AC, $CD, $37, $C7
-	db	$46, $24, $02, $1A
-	db	$B5, $CD, $1E, $35
-	db	$B8, $C0, $A4, $03
-	db	$B8, $C0, $B7, $C0
-	db	$B6, $5B, $5F, $CC
-	db	$1B, $7D, $A6, $60
-	db	$0B, $C1, $30, $AE
-	db	$02, $0E, $B9, $05
-	db	$0E, $BA, $B9, $1A
-	db	$BB, $03, $BA, $07
-	db	$13, $BA, $0D, $B5
-	db	$02, $16, $BC, $07
-	db	$5D, $06, $17, $5D
-	db	$A6, $82, $B7, $B3
-	db	$A6, $C0, $06, $BB
-	db	$9D, $CD, $1D, $D2
-	db	$08, $BF, $04, $AE
-	db	$2D, $20, $24, $A6
-	db	$C7, $20, $8F, $AE
-	db	$1E, $AD, $8D, $CD
-	db	$1D, $AF, $BE, $B7
-	db	$CF, $02, $7D, $27
-	db	$08, $0F, $61, $05
-	db	$AE, $29, $A6, $1A
-	db	$C1, $AE, $09, $CC
-	db	$1B, $8E, $CD, $17
-	db	$74, $AE, $23, $A6
-	db	$95, $CC, $1C, $2D
-	db	$6A, $6F, $36, $9C
-	db	$5E, $47, $00, $16
-	db	$A6, $86, $04, $CE
-	db	$50, $0E, $B9, $4D
-	db	$CD, $1D, $F8, $27
-	db	$08, $A6, $85, $B7
-	db	$B3, $A6, $04, $B7
-	db	$C2, $81, $A6, $87
-	db	$3F, $BE, $04, $CE
-	db	$38, $0E, $B9, $35
-	db	$0A, $80, $DD, $B6
-	db	$7F, $A4, $2B, $A1
-	db	$02, $26, $D5, $04
-	db	$B8, $E7, $08, $C0
-	db	$CF, $14, $BA, $19
-	db	$BA, $81, $3F, $C1
-	db	$19, $B6, $15, $BB
-	db	$A6, $87, $01, $BA
-	db	$02, $A6, $D7, $AE
-	db	$10, $20, $AE, $05
-	db	$BE, $03, $08, $BA
-	db	$0B, $0A, $B6, $0B
-	db	$08, $BF, $C2, $A6
-	db	$86, $CC, $1C, $2B
-	db	$1B, $B6, $81, $CC
-	db	$1B, $23, $0B, $C1
-	db	$03, $CC, $18, $0E
-	db	$A6, $D3, $AE, $FF
-	db	$20, $DB, $A6, $88
-	db	$B7, $B3, $81, $0D
-	db	$BF, $09, $AE, $06
-	db	$05, $B8, $01, $58
-	db	$CC, $1B, $E2, $0A
-	db	$C1, $07, $A6, $A1
-	db	$AE, $30, $CC, $1C
-	db	$2D, $15, $BB, $B6
-	db	$B8, $A4, $70, $26
-	db	$09, $06, $BF, $06
-	db	$0E, $B6, $03, $CD
-	db	$1A, $00, $CD, $1D
-	db	$D2, $CC, $1C, $25
-	db	$0C, $BF, $06, $0B
-	db	$C1, $03, $CC, $18
-	db	$0E, $A6, $C3, $CC
-	db	$1C, $43, $AD, $09
-	db	$B8, $B8, $A4, $70
-	db	$B8, $B8, $B7, $B8
-	db	$81, $AD, $0D, $AB
-	db	$B3, $CD, $37, $C6
-	db	$A4, $70, $A1, $70
-	db	$26, $01, $4F, $81
-	db	$B6, $B8, $A4, $03
-	db	$05, $B8, $06, $A6
-	db	$04, $07, $B8, $01
-	db	$4C, $81, $AD, $F0
-	db	$AB, $BA, $B7, $57
-	db	$CD, $37, $C6, $B7
-	db	$56, $B6, $B8, $CD
-	db	$25, $25, $CD, $25
-	db	$72, $81, $B6, $B8
-	db	$48, $CD, $25, $24
-	db	$26, $02, $A6, $07
-	db	$4A, $05, $B8, $05
-	db	$07, $B8, $0C, $20
-	db	$08, $03, $B8, $02
-	db	$AB, $0E, $01, $B8
-	db	$02, $AB, $07, $C7
-	db	$02, $7C, $A6, $19
-	db	$81, $3F, $BD, $15
-	db	$BB, $AE, $B1, $CD
-	db	$37, $C7, $B8, $B8
-	db	$A4, $0F, $27, $0A
-	db	$AE, $B1, $CD, $37
-	db	$C7, $04, $B8, $00
-	db	$AD, $06, $CD, $1D
-	db	$7E, $0E, $BB, $E0
-	db	$B6, $B8, $A4, $7F
-	db	$CC, $37, $9B
+	bclr	3,RAM1_0bf
+	bclr	5,RAM1_0bb
+	bclr	4,RAM1_0bb
+	brclr	3,RAM1_0b3,L0283
+	ldx	#$B1
+	jsr	L37C7
+	brclr	5,RAM1_0b6,L027C
+	bit	#$70
+	bne	L027E
+	jmp	L1D4E
+;
+	ora	#$70
+	sta	RAM1_0b8
+	brset	2,RAM1_0b8,L0283
+L1A83:
+	bclr	7,RAM1_0bf
+	lda	RAM1_0b8
+	and	#$70
+	cmp	#$70
+	bne	L0290
+L1A8D:
+	jsr	L1D73
+	jsr	L1D9B
+	bset	0,RAM1_056
+	and	RAM1_056
+	bset	3,RAM1_0b5
+	bne	L029F
+	bclr	3,RAM1_0b5
+	bclr	4,RAM1_0b5
+L1A9F:
+	bset	3,RAM1_0bc
+	bclr	1,RAM1_0ba
+	bset	1,RAM1_0bf
+	bset	0,RAM1_0bf
+L1AA7:
+	lda	#$40
+	ldx	#$0C
+	brclr	6,RAM1_05f,L02B0
+	ldx	#$01
+	jsr	L1E26
+	jmp	L1C2D
+;
+	brset	2,RAM1_0b8,L02BE
+	bset	1,RAM1_0b8
+	bclr	0,RAM1_0b8
+	cmp	X16B8
+	bra	L029F
+;
+	brset	5,RAM1_0b3,L033E
+	brclr	3,RAM1_0bf,L02CC
+	bset	0,RAM1_0b3
+	bset	1,RAM1_0b3
+	brset	6,RAM1_0b3,L02DB
+	brclr	4,RAM1_0b3,L0318
+	brclr	1,RAM1_0ba,L0315
+	bclr	1,RAM1_0ba
+	bset	3,RAM1_0bc
+	bra	L0315
+;
+	brclr	6,RAM1_0b3,L02E6
+	brclr	4,RAM1_0b3,L02E6
+	bclr	4,RAM1_0b3
+	bclr	6,RAM1_0bf
+	cmp	X1CBF
+	bclr	6,RAM1_0b3
+	lda	RAM1_0b6
+	and	#$07
+	cmp	#$06
+	bne	L02FD
+	ldx	#$B1
+	jsr	L37C7
+	sta	RAM1_0b8
+	bclr	7,RAM1_0bf
+	bra	L0312
+;
+	cmp	#$04
+	bne	L0312
+	brset	4,RAM1_0b3,L0312
+	lda	RAM1_0b6
+	eor	RAM1_0b3
+	bit	#$08
+	beq	L0312
+	jsr	L1AA7
+	jmp	L1A19
+;
+	brclr	4,RAM1_0b3,L0318
+	bclr	6,RAM1_0bf
+	rts
+;
+	brset	7,RAM1_0bf,L02A7
+	brset	3,RAM1_0bf,L02A7
+	bset	7,RAM1_0bf
+	jsr	L1A8D
+L1B23:
+	lda	#$48
+	bra	L02A9
+	jmp	L1AA7
+;
+L1B2A:
+	brclr	3,RAM1_0b3,L0332
+	bset	7,RAM1_0bf
+	jmp	L1A9F
+;
+	brclr	6,RAM1_0b9,L0317
+	jsr	L1E2A
+	lda	#$48
+	clrx
+	jmp	L1A21
+;
+	bclr	6,RAM1_0bf
+	brset	4,RAM1_0b3,L034E
+	brset	5,RAM1_0b6,L0327
+	bsr	L0372
+	lda	#$FF
+	sta	STACK_0c2
+	bra	L031E
+;
+	lda	RAM1_0bd
+	eor	RAM1_0b8
+	and	#$07
+	bne	L035A
+	lda	RAM1_0bd
+	sta	RAM1_0b8
+	clr	STACK_0c3
+	jsr	L1E1D
+	lda	STACK_0c1
+	cmp	#$95
+	bne	L036C
+	clr	STACK_0c1
+	bset	3,RAM1_0bc
+	jmp	L1DD2
+;
+	jsr	L1762
+	jmp	L1A83
+;
+	lda	RAM1_0b8
+	sta	RAM1_0bd
+	ldx	STACK_0c1
+	jmp	L1DE1
+;
+	lda	#$64
+L1B7D:
+	sta	RAM2_027c
+	lda	#$19
+L1B82:
+	bclr	6,RAM1_0b8
+	bclr	5,RAM1_0b8
+	bclr	4,RAM1_0b8
+	bset	5,RAM1_0bc
+	bset	3,RAM1_0b5
+	bclr	3,RAM1_0bb
+L1B8E:
+	brclr	0,RAM1_0b6,L0397
+	brset	1,RAM1_0b6,L0397
+	brset	2,RAM1_0b6,L0399
+	bclr	2,RAM1_0ba
+	brclr	2,STACK_0c0,L039F
+	bclr	2,STACK_0c0
+	cmp	X3FBB
+	clr	STACK_0c5
+	jsr	L1E26
+	bset	7,RAM1_0ba
+	bset	7,STACK_0cb
+	bclr	6,RAM1_0bc
+	brset	3,STACK_0c0,L03B1
+	bclr	4,STACK_0c0
+	bclr	3,STACK_0c0
+	bset	7,RAM1_0b5
+	bra	L033B
+;
+X1BB7:
+	eor	#$11
+	coma
+	coma
+;
+	db	$75
+;
+	lsra
+	brset	0,ACL,L038D
+	bclr	6,X002D
+	ldx	#$C7
+	brset	3,RAM1_08e,L03CA
+	brclr	5,RAM1_069,L03CC
+	ldx	#$E7
+	bset	7,RAM1_0bf
+	bra	L037B
+;
+	ldx	RAM1_0b7
+	clra
+	sta	RAM2_027c
+	lda	#$11
+	bra	L038E
+;
+	brset	3,STACK_0c1,L03F6
+	ldx	#$50
+	bset	0,RAM1_05b
+	cmp	X115B
+	lda	#$C1
+	bsr	L042D
+	ldx	#$86
+	brclr	3,RAM1_0b6,L03EF
+	ldx	#$06
+	lda	#$18
+	brclr	0,RAM1_05b,L0399
+	bra	L0382
+;
+	lda	#$40
+	ldx	#$02
+	bsr	L042D
+	jsr	L1D73
+	jmp	L1CA0
+	rts
+;
+	brset	5,STACK_0c1,L041F
+	bset	7,RAM1_0bf
+	jsr	L1D2D
+	ldx	#$A0
+	brset	2,STACK_0c2,L0417
+	lda	#$6C
+	brset	1,STACK_0c2,L0419
+	ldx	#$20
+	lda	#$64
+	jmp	L1B7D
+	jmp	L1CBA
+;
+	brset	5,RAM1_0b6,L041C
+	jsr	L1E1D
+L1C25:
+	lda	#$92
+	ldx	#$10
+	bra	L042D
+;
+L1C2B:
+	ldx	#$C8
+L1C2D:
+	sta	STACK_0c1
+	stx	STACK_0c3
+	jmp	L1430
+;
+	brset	3,STACK_0c1,L03F6
+	brset	5,STACK_0c1,L041F
+	lda	#$C4
+	ldx	#$64
+	brset	5,RAM1_0b6,L0445
+	lda	#$D3
+L1C43:
+	ldx	#$FF
+	bsr	L042D
+	bclr	5,RAM1_0b5
+	brset	3,STACK_0ce,L0456
+	ldx	#$AC
+	jsr	L37C7
+	rora
+	bcc	L0456
+	bset	5,RAM1_0b5
+L1C56:
+	jsr	L1E35
+	eor	STACK_0c0
+	and	#$03
+	eor	STACK_0c0
+	sta	STACK_0c0
+	lda	RAM1_05b
+	clrx
+	jmp	L1B7D
+;
+	lda	#$60
+	brclr	5,STACK_0c1,L049C
+	ldx	#$02
+	brset	7,RAM1_0b9,L0476
+	brset	7,RAM1_0ba,L042D
+	bset	5,RAM1_0bb
+	brclr	1,RAM1_0ba,L0480
+	bclr	1,RAM1_0ba
+	brclr	6,RAM1_0b5,L0480
+	bset	3,RAM1_0bc
+	brclr	3,RAM1_05d,L0489
+	bclr	3,RAM1_05d
+	lda	#$82
+	sta	RAM1_0b3
+	lda	#$C0
+	brset	3,RAM1_0bb,L042B
+	jsr	L1DD2
+	brset	4,RAM1_0bf,L0498
+	ldx	#$2D
+	bra	L04BC
+;
+	lda	#$C7
+	bra	L042B
+;
+	ldx	#$1E
+	bsr	L042D
+L1CA0:
+	jsr	L1DAF
+	ldx	RAM1_0b7
+	stx	RAM2_027d
+	beq	L04B2
+	brclr	7,RAM1_061,L04B2
+	ldx	#$29
+	lda	#$1A
+	cmp	XAE09
+	jmp	L1B8E
+;
+	jsr	L1774
+L1CBA:
+	ldx	#$23
+	lda	#$95
+	jmp	L1C2D
+;
+X1CC1:
+	dec	RAM1_06f,x
+	ror	RAM1_09c
+;
+	db	$5E
+;
+	asra
+	brset	0,OCH1,L0470
+;
+	db	$86
+;
+	brset	2,STACK_0ce,L051E
+	brset	7,RAM1_0b9,L051E
+	jsr	L1DF8
+	beq	L04DE
+	lda	#$85
+	sta	RAM1_0b3
+	lda	#$04
+	sta	STACK_0c2
+	rts
+;
+	lda	#$87
+	clr	RAM1_0be
+	brset	2,STACK_0ce,L051E
+	brset	7,RAM1_0b9,L051E
+	brset	5,RAM1_080,L04C9
+	lda	RAM1_07f
+	and	#$2B
+	cmp	#$02
+	bne	L04C9
+L1CF4:
+	brset	2,RAM1_0b8,L04DE
+	brset	4,STACK_0c0,L04C9
+	bset	2,RAM1_0ba
+	bclr	4,RAM1_0ba
+	rts
+;
+	clr	STACK_0c1
+	bclr	4,RAM1_0b6
+	bclr	2,RAM1_0bb
+	lda	#$87
+	brclr	0,RAM1_0ba,L050C
+	lda	#$D7
+	ldx	#$10
+	bra	L04BE
+;
+	brclr	2,RAM1_0be,L0516
+	brset	4,RAM1_0ba,L0521
+	brset	5,RAM1_0b6,L0524
+	brset	4,RAM1_0bf,L04DE
+	lda	#$86
+	jmp	L1C2B
+;
+	bclr	5,RAM1_0b6
+	rts
+	jmp	L1B23
+;
+	brclr	5,STACK_0c1,L052D
+	jmp	L180E
+;
+L1D2D:
+	lda	#$D3
+	ldx	#$FF
+	bra	L050E
+;
+L1D33:
+	lda	#$88
+	sta	RAM1_0b3
+	rts
+;
+	brclr	6,RAM1_0bf,L0544
+	ldx	#$06
+	brclr	2,RAM1_0b8,L0541
+	aslx
+	jmp	L1BE2
+;
+	brset	5,STACK_0c1,L054E
+	lda	#$A1
+	ldx	#$30
+	jmp	L1C2D
+;
+L1D4E:
+	bclr	2,RAM1_0bb
+	lda	RAM1_0b8
+	and	#$70
+	bne	L055F
+	brset	3,RAM1_0bf,L055F
+	brset	7,RAM1_0b6,L055F
+	jsr	L1A00
+	jsr	L1DD2
+	jmp	L1C25
+;
+	brset	6,RAM1_0bf,L056E
+	brclr	5,STACK_0c1,L056E
+	jmp	L180E
+;
+	lda	#$C3
+	jmp	L1C43
+;
+L1D73:
+	bsr	L057E
+	eor	RAM1_0b8
+	and	#$70
+	eor	RAM1_0b8
+	sta	RAM1_0b8
+	rts
+;
+L1D7E:
+	bsr	L058D
+	add	#$B3
+	jsr	L37C6
+	and	#$70
+	cmp	#$70
+	bne	L058C
+	clra
+	rts
+;
+	lda	RAM1_0b8
+	and	#$03
+	brclr	2,RAM1_0b8,L059A
+	lda	#$04
+	brclr	3,RAM1_0b8,L059A
+	inca
+	rts
+;
+L1D9B:
+	bsr	L058D
+	add	#$BA
+	sta	RAM1_057
+	jsr	L37C6
+	sta	RAM1_056
+	lda	RAM1_0b8
+	jsr	L2525
+	jsr	L2572
+	rts
+;
+L1DAF:
+	lda	RAM1_0b8
+	asla
+	jsr	L2524
+	bne	L05B9
+	lda	#$07
+	deca
+	brclr	2,RAM1_0b8,L05C2
+	brclr	3,RAM1_0b8,L05CC
+	bra	L05CA
+;
+	brclr	1,RAM1_0b8,L05C7
+	add	#$0E
+	brclr	0,RAM1_0b8,L05CC
+	add	#$07
+	sta	RAM2_027c
+	lda	#$19
+	rts
+;
+L1DD2:
+	clr	RAM1_0bd
+	bclr	2,RAM1_0bb
+	ldx	#$B1
+	jsr	L37C7
+	eor	RAM1_0b8
+	and	#$0F
+	beq	L05EB
+L1DE1:
+	ldx	#$B1
+	jsr	L37C7
+	brset	2,RAM1_0b8,L05E9
+	bsr	L05F1
+L1DEB:
+	jsr	L1D7E
+L1DEE:
+	brset	7,RAM1_0bb,L05D1
+	lda	RAM1_0b8
+	and	#$7F
+	jmp	L379B
 ;
 L1DF8:
 	lda	#$01
 	brset	2,RAM1_0b8,L060F
 	brset	2,RAM1_0be,L0611
 	brset	5,RAM1_0b9,L0611
+L1E03:
 	lda	RAM1_0b5
 	and	#$4E
 	brset	3,RAM1_08e,L060D
@@ -2265,38 +3822,83 @@ L1DF8:
 	bit	#$40
 	rts
 ;
-	db	$AD, $E4, $26, $02
-	db	$43, $81, $B6, $B9
-	db	$A4, $38, $81, $B6
-	db	$B6, $27, $04, $3F
-	db	$B6, $1C, $CB, $81
-	db	$3F, $B9, $1D, $B9
-	db	$1A, $CB, $1B, $B9
-	db	$19, $B9, $3F, $BE
-	db	$19, $BA, $81, $3F
-	db	$5B, $06, $B6, $02
-	db	$1A, $5B, $0B, $B5
-	db	$02, $14, $5B, $05
-	db	$B8, $04, $1E, $5B
-	db	$20, $11, $1C, $5B
-	db	$B6, $B7, $A1, $41
-	db	$22, $07, $A1, $12
-	db	$25, $05, $10, $5B
-	db	$C1, $12, $5B, $B6
-	db	$5B, $81, $5F, $C6
-	db	$02, $74, $AD, $17
-	db	$C6, $02, $73, $AD
-	db	$12, $C6, $02, $72
-	db	$AD, $0D, $A6, $2E
-	db	$B7, $DE, $A6, $20
-	db	$B7, $E0, $A6, $52
-	db	$B7, $E1, $81, $B7
-	db	$5B, $AD, $05, $B6
-	db	$5B, $CD, $25, $2C
-	db	$CD, $25, $25, $AB
-	db	$30, $E7, $DA, $5C
-	db	$81
+L1E12:
+	bsr	L05F8
+	bne	L0618
+	coma
+	rts
 ;
+	lda	RAM1_0b9
+	and	#$38
+	rts
+;
+L1E1D:
+	lda	RAM1_0b6
+	beq	L0625
+	clr	RAM1_0b6
+	bset	6,STACK_0cb
+	rts
+;
+L1E26:
+	clr	RAM1_0b9
+L1E28:
+	bclr	6,RAM1_0b9
+L1E2A:
+	bset	5,STACK_0cb
+	bclr	5,RAM1_0b9
+	bclr	4,RAM1_0b9
+L1E30:
+	clr	RAM1_0be
+	bclr	4,RAM1_0ba
+	rts
+;
+L1E35:
+	clr	RAM1_05b
+	brset	3,RAM1_0b6,L063C
+	bset	5,RAM1_05b
+	brclr	5,RAM1_0b5,L0641
+	bset	2,RAM1_05b
+	brclr	2,RAM1_0b8,L0648
+	bset	7,RAM1_05b
+	bra	L0659
+;
+	bset	6,RAM1_05b
+	lda	RAM1_0b7
+	cmp	#$41
+	bhi	L0657
+	cmp	#$12
+	bcs	L0659
+	bset	0,RAM1_05b
+	cmp	X125B
+	lda	RAM1_05b
+	rts
+;
+L1E5C:
+	clrx
+X1E5D:
+	lda	RAM2_0274
+	bsr	L0679
+	lda	RAM2_0273
+	bsr	L0679
+	lda	RAM2_0272
+	bsr	L0679
+	lda	#$2E
+	sta	STACK_0de
+	lda	#$20
+	sta	STACK_0e0
+	lda	#$52
+	sta	STACK_0e1
+	rts
+;
+	sta	RAM1_05b
+	bsr	L0682
+	lda	RAM1_05b
+	jsr	L252C
+	jsr	L2525
+	add	#$30
+	sta	STACK_0da,x
+	incx
+	rts
 L1E8B:
 	rts
 ;
@@ -2311,11 +3913,16 @@ L1E8C:
 	bset	4,RAM1_09e
 	bra	L06B1
 ;
-	db	$AE, $CC, $CD, $25
-	db	$6C, $2A, $02, $13
-	db	$CB, $26, $07, $7A
-	db	$1B, $C5, $13, $CB
-	db	$1E, $5D, $81
+	ldx	#$CC
+	jsr	L256C
+	bpl	L06AA
+	bclr	1,STACK_0cb
+	bne	L06B3
+	dec	,x
+	bclr	5,STACK_0c5
+	bclr	1,STACK_0cb
+	bset	7,RAM1_05d
+	rts
 ;
 L1EB4:
 	brset	6,STACK_0c6,L06C9
@@ -2328,62 +3935,120 @@ L1EB4:
 	bclr	7,STACK_0c6
 	rts
 ;
-	db	$1E, $50, $B6, $9E
-	db	$A4, $F0, $26, $73
-	db	$B6, $C6, $A4, $1F
-	db	$48, $B7, $56, $48
-	db	$BB, $56, $A1, $BA
-	db	$26, $02, $A6, $FF
-	db	$0B, $C6, $07, $18
-	db	$9E, $1A, $9E, $1B
-	db	$C6, $81, $4D, $2B
-	db	$02, $26, $05, $02
-	db	$CB, $51, $27, $02
-	db	$B7, $CC, $3F, $C6
-	db	$B6, $C7, $2A, $48
-	db	$0D, $C7, $5C, $A4
-	db	$0E, $97, $D6, $1F
-	db	$83, $B7, $59, $D6
-	db	$1F, $84, $B7, $56
-	db	$54, $D6, $1F, $93
-	db	$C7, $02, $56, $A4
-	db	$0F, $27, $13, $4A
-	db	$B7, $58, $CE, $1F
-	db	$82, $BF, $57, $C6
-	db	$1F, $81, $4D, $27
-	db	$02, $10, $59, $CD
-	db	$25, $87, $0B, $C7
-	db	$03, $1C, $9E, $C1
-	db	$1E, $9E, $0F, $50
-	db	$0E, $15, $CB, $B6
-	db	$CE, $A4, $07, $A1
-	db	$06, $26, $04, $B8
-	db	$CE, $B7, $CE, $81
-	db	$AE, $61, $CF, $02
-	db	$56, $C7, $02, $57
-	db	$A1, $70, $25, $E0
-	db	$A4, $07, $97, $D6
-	db	$1F, $9B, $C7, $02
-	db	$57, $20, $D2, $BE
-	db	$C8, $A4, $0F, $A5
-	db	$08, $26, $07, $1F
-	db	$50, $5D, $2A, $02
-	db	$50, $4C, $CD, $25
-	db	$2C, $C7, $02, $57
-	db	$9F, $A4, $0F, $CB
-	db	$02, $57, $C7, $02
-	db	$57, $A6, $71, $C7
-	db	$02, $56, $20, $AA
-	db	$02, $57, $00, $C8
-	db	$02, $80, $02, $57
-	db	$02, $9E, $02, $60
-	db	$00, $00, $00, $6C
-	db	$02, $88, $32, $48
-	db	$58, $92, $A2, $B0
-	db	$E1, $48, $15, $0E
-	db	$00, $00, $00, $00
-	db	$00, $00
+	bset	7,RAM1_050
+	lda	RAM1_09e
+	and	#$F0
+	bne	L0744
+	lda	STACK_0c6
+	and	#$1F
+	asla
+	sta	RAM1_056
+	asla
+	add	RAM1_056
+	cmp	#$BA
+	bne	L06E1
+	lda	#$FF
+	brclr	5,STACK_0c6,L06EB
+	bset	4,RAM1_09e
+	bset	5,RAM1_09e
+	bclr	5,STACK_0c6
+	rts
 ;
+	tsta
+	bmi	L06F0
+	bne	L06F5
+	brset	1,STACK_0cb,L0744
+	beq	L06F7
+	sta	STACK_0cc
+	clr	STACK_0c6
+	lda	STACK_0c7
+	bpl	L0745
+	brclr	6,STACK_0c7,L075C
+	and	#$0E
+	tax
+	lda	X1F83,x
+	sta	RAM1_059
+	lda	X1F84,x
+	sta	RAM1_056
+	lsrx
+	lda	X1F93,x
+	sta	RAM2_0256
+	and	#$0F
+	beq	L072B
+	deca
+	sta	RAM1_058
+	ldx	X1F82
+	stx	RAM1_057
+	lda	X1F81
+	tsta
+	beq	L0728
+	bset	0,RAM1_059
+	jsr	L2587
+	brclr	5,STACK_0c7,L0731
+	bset	6,RAM1_09e
+	cmp	X1E9E
+	brclr	7,RAM1_050,L0744
+	bclr	2,STACK_0cb
+	lda	STACK_0ce
+	and	#$07
+	cmp	#$06
+	bne	L0744
+	eor	STACK_0ce
+	sta	STACK_0ce
+	rts
+;
+	ldx	#$61
+	stx	RAM2_0256
+	sta	RAM2_0257
+	cmp	#$70
+	bcs	L0731
+	and	#$07
+	tax
+	lda	X1F9B,x
+	sta	RAM2_0257
+	bra	L072E
+;
+	ldx	STACK_0c8
+	and	#$0F
+	bit	#$08
+	bne	L076B
+	bclr	7,RAM1_050
+	tstx
+	bpl	L076B
+	negx
+	inca
+	jsr	L252C
+	sta	RAM2_0257
+	txa
+	and	#$0F
+	add	RAM2_0257
+	sta	RAM2_0257
+	lda	#$71
+	sta	RAM2_0256
+	bra	L072B
+;
+X1F81:
+	brset	1,RAM1_057,L0784
+X1F84:
+	eor	RAM2_0280
+	brset	1,RAM1_057,L078C
+;
+	db	$9E
+;
+	brset	1,RAM1_060,L078E
+	brset	0,PortA,L07FD
+	brset	1,RAM1_088,L07C6
+	asla
+	aslx
+;
+	db	$92
+;
+	sbc	#$B0
+	cmp	X0048,x
+X1F9B:
+	bclr	2,SCCR1
+	brset	0,PortA,L07A0
+	brset	0,PortA,L07A3
 L1FA3:
 	brset	6,RAM1_069,L07A9
 	brset	0,RAM1_080,L07C2
@@ -2395,9 +4060,12 @@ L1FA3:
 	bset	6,RAM1_069
 	rts
 ;
-	db	$A1, $D2, $22, $07
-	db	$0D, $69, $04, $1D
-	db	$69, $11, $80, $81
+	cmp	#$D2
+	bhi	L07C2
+	brclr	6,RAM1_069,L07C2
+	bclr	6,RAM1_069
+	bclr	0,RAM1_080
+	rts
 ;
 L1FC3:
 	jsr	L209C
@@ -2416,8 +4084,9 @@ L1FD7:
 	clr	OCL2
 	rts
 ;
-	db	$AD, $37, $AD, $4B
-;
+L1FE2:
+	bsr	L001B
+	bsr	L0031
 L1FE6:
 	lda	#$30
 	brclr	6,RAM1_05f,L07EF
@@ -2428,9 +4097,11 @@ L1FE6:
 	sta	DDRC
 	rts
 ;
-	db	$04, $01, $14, $14
-	db	$01, $AE, $08, $20
-	db	$0C
+L1FF6:
+	brset	2,PortB,L000D
+	bset	2,PortB
+	ldx	#$08
+	bra	L000B
 ;
 L1FFF:
 	brset	0,PortC,L000D
@@ -2447,19 +4118,34 @@ L1FFF:
 	lda	SCDR
 	rts
 ;
-	db	$19, $61, $11, $81
-	db	$04, $12, $03, $05
-	db	$01, $0A, $AE, $32
-	db	$AD, $26, $15, $01
-	db	$AE, $05, $AD, $20
-	db	$9A, $81, $A6, $04
-	db	$CD, $25, $41, $3F
-	db	$0F, $A6, $07, $B7
-	db	$04, $3F, $00, $1D
-	db	$01, $1B, $61, $01
-	db	$02, $EA, $11, $02
-	db	$09, $0C, $26, $AE
-	db	$32, $AD, $01, $81
+L201B:
+	bclr	4,RAM1_061
+	bclr	0,RAM1_081
+	brset	2,TCR,L0025
+	brclr	2,PortB,L002F
+	ldx	#$32
+	bsr	L004F
+	bclr	2,PortB
+	ldx	#$05
+	bsr	L004F
+	cli
+	rts
+;
+L2031:
+	lda	#$04
+	jsr	L2541
+	clr	SCCR2
+	lda	#$07
+	sta	DDRA
+	clr	PortA
+	bclr	6,PortB
+	bclr	5,RAM1_061
+	brclr	0,PortC,L002F
+	bclr	0,PortC
+	brclr	4,Miscell,L0070
+	ldx	#$32
+	bsr	L004F
+	rts
 ;
 L204F:
 	sei
@@ -2477,7 +4163,8 @@ L204F:
 	brclr	7,RAM1_08f,L006F
 	jmp	L04ED
 ;
-	db	$9A, $81
+	cli
+	rts
 ;
 L2071:
 	ldx	#$90
@@ -2522,50 +4209,64 @@ L20A7:
 	jmp	L1FD7
 ;
 X20B4:
-	db	$FF, $B0, $FC, $00
-X20B8:
-	db	$04
-X20B9:
-	db	$FF
+	stx	,x
+	sub	STACK_0fc
+	brset	0,DDRA,L00B9
 X20BA:
-	db	$0F, $40, $00, $20
-	db	$00, $00
-X20C0:
-	db	$BC
-X20C1:
-	db	$C0, $00, $2C, $00
-	db	$00, $FA
-X20C7:
-	db	$F8, $B8, $FE, $00
-	db	$07, $31, $02, $40
-	db	$00, $20, $00, $00
-	db	$BC, $C0, $00, $2C
-	db	$00, $00, $FA
+	brclr	7,X0040,L00BD
+	bra	L00BF
 ;
-L20DA:
-	brclr	6,RAM1_05d,L0114
-	brclr	2,STACK_0ce,L0114
-	brset	1,STACK_0ce,L0114
-	brclr	0,STACK_0ce,L0114
-	jmp	L2121
+	brset	0,RAM1_0bc,L0082
+	brset	0,X002C,L00C5
+	brset	0,STACK_0fa,L00C0
+	eor	STACK_0fe
+	brset	0,EEPROM_ECLK_control,L00FE
+	brset	1,X0040,L00D0
+	bra	L00D2
 ;
+	brset	0,RAM1_0bc,L0095
+	brset	0,X002C,L00D8
+	brset	0,STACK_0fa,L00E8
+	tstx
+	asr	DDRB
+	ldx	X3402
+	ldx	X3101
+	ldx	X2ECC
+	brn	L010A
 L20E9:
-	db	$B6, $78, $A4, $07
-	db	$AE, $81, $A1, $04
-	db	$24, $21, $A1, $01
-	db	$26, $03, $18, $CE
-	db	$81, $AE, $02, $A1
-	db	$02, $26, $03, $1A
-	db	$CE, $81, $16, $BC
-	db	$AE, $08, $C1, $AE
-	db	$01, $10, $80, $BF
-	db	$D0, $1C, $CE, $1E
-	db	$94, $1D, $B5, $81
-	db	$A6, $48, $B7, $9F
-	db	$AE, $71, $A6, $41
-	db	$B7, $CE, $20, $E9
+	lda	RAM1_078
+	and	#$07
+	ldx	#$81
+	cmp	#$04
+	bcc	L0114
+	cmp	#$01
+	bne	L00FA
+	bset	4,STACK_0ce
+	rts
 ;
-L2121:
+	ldx	#$02
+	cmp	#$02
+	bne	L0103
+	bset	5,STACK_0ce
+	rts
+;
+	bset	3,RAM1_0bc
+	ldx	#$08
+	cmp	XAE01
+	bset	0,RAM1_080
+	stx	STACK_0d0
+	bset	6,STACK_0ce
+	bset	7,RAM1_094
+	bclr	6,RAM1_0b5
+	rts
+;
+	lda	#$48
+	sta	RAM1_09f
+	ldx	#$71
+	lda	#$41
+	sta	STACK_0ce
+	bra	L010A
+;
 	clrx
 	lda	X213B,x
 	sta	RAM1_056
@@ -2580,71 +4281,126 @@ X2139:
 	rts
 ;
 X213A:
-	db	$E0
-X213B:
-	db	$00, $EB, $1F, $E8
-	db	$2C, $07, $2C, $00
-	db	$A6, $02, $B8, $12
-	db	$B7, $12, $16, $76
-	db	$B6, $14, $B7, $6D
-	db	$B6, $15, $B7, $6E
-	db	$09, $5E, $05, $02
-	db	$12, $31, $20, $1C
-	db	$B0, $70, $97, $B6
-	db	$6D, $B2, $6F, $A5
-	db	$E0, $26, $11, $02
-	db	$0C, $0B, $03, $12
-	db	$08, $B7, $71, $BF
-	db	$72, $11, $76, $20
-	db	$0E, $CD, $21, $E4
-	db	$B6, $6E, $B7, $70
-	db	$B6, $6D, $B7, $6F
-	db	$08, $5E, $06, $0A
-	db	$03, $06, $03, $12
-	db	$06, $19, $5E, $81
-	db	$03, $12, $FC, $A6
-	db	$02, $B8, $12, $B7
-	db	$12, $A6, $10, $BB
-	db	$6E, $B7, $6E, $24
-	db	$02, $3C, $6D, $B6
-	db	$15, $20, $B1
+	sub	PortA,x
+	add	OCL2,x
+	eor	X002C,x
+	brclr	3,X002C,L0143
+L2143:
+	lda	#$02
+	eor	TCR
+	sta	TCR
+	bset	3,RAM1_076
+	lda	ICH1
+	sta	RAM1_06d
+	lda	ICL1
+	sta	RAM1_06e
+	brclr	4,RAM1_05e,L015B
+	brset	1,TCR,L018A
+	bra	L0177
+;
+	sub	RAM1_070
+	tax
+	lda	RAM1_06d
+	sbc	RAM1_06f
+	bit	#$E0
+	bne	L0177
+	brset	1,Miscell,L0174
+	brclr	1,TCR,L0174
+	sta	RAM1_071
+	stx	RAM1_072
+	bclr	0,RAM1_076
+	bra	L0182
+;
+	jsr	L21E4
+	lda	RAM1_06e
+	sta	RAM1_070
+	lda	RAM1_06d
+	sta	RAM1_06f
+	brset	4,RAM1_05e,L0188
+	brset	5,PortD,L018B
+	brclr	1,TCR,L018E
+	bclr	4,RAM1_05e
+	rts
+;
+	brclr	1,TCR,L018A
+	lda	#$02
+	eor	TCR
+	sta	TCR
+	lda	#$10
+	add	RAM1_06e
+	sta	RAM1_06e
+	bcc	L019E
+	inc	RAM1_06d
+	lda	ICL1
+	bra	L0153
 ;
 L21A2:
 	brclr	3,RAM1_076,L01A8
 	bclr	3,RAM1_076
 	rts
 ;
-	db	$18, $5E, $13, $12
-	db	$B6, $15, $A6, $20
-	db	$BB, $76, $AA, $40
-	db	$A4, $DF, $B7, $76
-	db	$0B, $03, $1D, $0E
-	db	$01, $0E, $B6, $5E
-	db	$A0, $20, $25, $02
-	db	$B7, $5E, $2B, $32
-	db	$1D, $5E, $20, $09
-	db	$04, $76, $1E, $14
-	db	$76, $12, $76, $20
-	db	$18, $01, $61, $22
-	db	$A6, $14, $5F, $BF
-	db	$71, $B7, $72, $10
-	db	$76, $01, $61, $05
-	db	$0F, $01, $02, $15
-	db	$76, $B7, $73, $BF
-	db	$74, $18, $76, $0E
-	db	$01, $08, $A6, $20
-	db	$BB, $5E, $25, $02
-	db	$B7, $5E, $A6, $20
-	db	$BB, $76, $B7, $76
-	db	$A4, $60, $A1, $60
-	db	$26, $1C, $0E, $76
-	db	$05, $00, $61, $07
-	db	$1D, $76, $1F, $01
-	db	$18, $5E, $81, $A6
-	db	$24, $B7, $09, $0F
-	db	$09, $FD, $B6, $08
-	db	$B7, $75, $1E, $01
-	db	$18, $5E, $81
+	bset	4,RAM1_05e
+	bclr	1,TCR
+	lda	ICL1
+	lda	#$20
+	add	RAM1_076
+	ora	#$40
+	and	#$DF
+	sta	RAM1_076
+	brclr	5,PortD,L01D8
+	brset	7,PortB,L01CC
+	lda	RAM1_05e
+	sub	#$20
+	bcs	L01C6
+	sta	RAM1_05e
+	bmi	L01FA
+	bclr	6,RAM1_05e
+	bra	L01D5
+;
+	brset	2,RAM1_076,L01ED
+	bset	2,RAM1_076
+	bset	1,RAM1_076
+	bra	L01ED
+;
+	brclr	0,RAM1_061,L01FA
+	lda	#$14
+	clrx
+	stx	RAM1_071
+	sta	RAM1_072
+	bset	0,RAM1_076
+	brclr	0,RAM1_061,L01E9
+L21E4:
+	brclr	7,PortB,L01E9
+	bclr	2,RAM1_076
+	sta	RAM1_073
+	stx	RAM1_074
+	bset	4,RAM1_076
+	brset	7,PortB,L01FA
+	lda	#$20
+	add	RAM1_05e
+	bcs	L01FA
+	sta	RAM1_05e
+	lda	#$20
+	add	RAM1_076
+	sta	RAM1_076
+	and	#$60
+	cmp	#$60
+	bne	L0222
+	brset	7,RAM1_076,L020E
+	brset	0,RAM1_061,L0213
+	bclr	6,RAM1_076
+	bclr	7,PortB
+	bset	4,RAM1_05e
+	rts
+;
+	lda	#$24
+	sta	ADSTAT
+	brclr	7,ADSTAT,L0217
+	lda	ADDATA
+	sta	RAM1_075
+	bset	7,PortB
+	bset	4,RAM1_05e
+	rts
 ;
 L2223:
 	clra
@@ -2656,6 +4412,7 @@ L2223:
 	lda	RAM1_073
 	sta	RAM1_050
 	lda	RAM1_074
+X2236:
 	sta	RAM1_051
 	lda	RAM1_071
 	sta	RAM1_052
@@ -2695,47 +4452,79 @@ L2223:
 	sta	PLMB
 	rts
 ;
-	db	$4F, $C7, $02, $AA
-	db	$AE, $0D, $CD, $23
-	db	$9D, $B6, $75, $CB
-	db	$02, $AE, $C7, $02
-	db	$AE, $4F, $C9, $02
-	db	$AD, $C7, $02, $AD
-	db	$C6, $02, $AE, $CE
-	db	$02, $AD, $56, $46
-	db	$56, $46, $56, $46
-	db	$AE, $0B, $CD, $23
-	db	$C2, $25, $4B, $AE
-	db	$19, $CD, $23, $2C
-	db	$20, $34, $04, $76
-	db	$CB, $AE, $06, $CD
-	db	$23, $9D, $CD, $23
-	db	$9B, $AE, $03, $E6
-	db	$50, $DB, $02, $A6
-	db	$D7, $02, $A6, $E7
-	db	$56, $E6, $4F, $D9
-	db	$02, $A5, $D7, $02
-	db	$A5, $E7, $55, $5A
-	db	$5A, $2A, $E8, $CD
-	db	$24, $F2, $AE, $06
-	db	$CD, $23, $C1, $25
-	db	$15, $AE, $0F, $CD
-	db	$23, $2C, $A6, $24
-	db	$CD, $23, $4D, $C7
-	db	$02, $AB, $A6, $2A
-	db	$CD, $23, $4D, $C7
-	db	$02, $AC, $01, $61
-	db	$28, $C6, $02, $AB
-	db	$BE, $0A, $CD, $23
-	db	$7C, $B7, $0A, $C6
-	db	$02, $AC, $BE, $6C
-	db	$CD, $23, $7C, $97
-	db	$02, $76, $0C, $C6
-	db	$02, $AC, $B0, $6C
-	db	$24, $01, $40, $A4
-	db	$FC, $27, $06, $13
-	db	$76, $BF, $6C, $12
-	db	$5D, $81
+	clra
+	sta	RAM2_02aa
+	ldx	#$0D
+	jsr	L239D
+	lda	RAM1_075
+	add	RAM2_02ae
+	sta	RAM2_02ae
+	clra
+	adc	RAM2_02ad
+	sta	RAM2_02ad
+	lda	RAM2_02ae
+	ldx	RAM2_02ad
+	rorx
+	rora
+	rorx
+	rora
+	rorx
+	rora
+	ldx	#$0B
+	jsr	L23C2
+	bcs	L0300
+	ldx	#$19
+	jsr	L232C
+	bra	L02F0
+;
+	brset	2,RAM1_076,L028A
+	ldx	#$06
+	jsr	L239D
+	jsr	L239B
+	ldx	#$03
+	lda	RAM1_050,x
+	add	RAM2_02a6,x
+	sta	RAM2_02a6,x
+	sta	RAM1_056,x
+	lda	X004F,x
+	adc	RAM2_02a5,x
+	sta	RAM2_02a5,x
+	sta	RAM1_055,x
+	decx
+	decx
+	bpl	L02C9
+	jsr	L24F2
+	ldx	#$06
+	jsr	L23C1
+	bcs	L0300
+	ldx	#$0F
+	jsr	L232C
+	lda	#$24
+	jsr	L234D
+	sta	RAM2_02ab
+	lda	#$2A
+	jsr	L234D
+	sta	RAM2_02ac
+	brclr	0,RAM1_061,L032B
+	lda	RAM2_02ab
+	ldx	PLMA
+	jsr	L237C
+	sta	PLMA
+	lda	RAM2_02ac
+	ldx	RAM1_06c
+	jsr	L237C
+	tax
+	brset	1,RAM1_076,L0325
+	lda	RAM2_02ac
+	sub	RAM1_06c
+	bcc	L0321
+	nega
+	and	#$FC
+	beq	L032B
+	bclr	1,RAM1_076
+	stx	RAM1_06c
+	bset	1,RAM1_05d
+	rts
 ;
 L232C:
 	lda	#$05
@@ -2793,10 +4582,14 @@ L237C:
 	ldx	#$08
 	bra	L0396
 ;
-	db	$AE, $FF, $A1, $F0
-	db	$22, $02, $AE, $F8
-	db	$9F, $BB, $56, $81
-	db	$81
+	ldx	#$FF
+	cmp	#$F0
+	bhi	L0396
+	ldx	#$F8
+	txa
+	add	RAM1_056
+	rts
+	rts
 ;
 L239B:
 	incx
@@ -2822,6 +4615,7 @@ L239D:
 ;
 L23C1:
 	coma
+L23C2:
 	sta	RAM1_052
 	brset	1,RAM1_076,L03D1
 	sub	RAM2_02a4,x
@@ -2844,9 +4638,11 @@ L23D9:
 	brclr	6,STACK_0c6,L03FC
 	rts
 ;
-	db	$AE, $5F, $C1, $AE
-	db	$20, $1B, $C5, $20
-	db	$09
+L23EA:
+	ldx	#$5F
+	cmp	XAE20
+	bclr	5,STACK_0c5
+	bra	L03FC
 ;
 L23F3:
 	ldx	#$4C
@@ -2858,39 +4654,81 @@ L23F3:
 	sta	STACK_0c7
 	rts
 ;
-	db	$D8, $02, $50, $27
-	db	$08, $D8, $02, $50
-	db	$D7, $02, $50, $1A
-	db	$C6, $5C, $81, $5F
-	db	$A6, $00, $AD, $EC
-	db	$A3, $06, $26, $F8
-	db	$81, $AE, $01, $AD
-	db	$E3, $B6, $56, $AA
-	db	$40, $0B, $69, $01
-	db	$4F, $04, $B8, $05
-	db	$0D, $B5, $02, $AA
-	db	$04, $AD, $E3, $5F
-	db	$A6, $00, $20, $CC
-	db	$B7, $56, $AD, $06
-	db	$97, $B6, $56, $CD
-	db	$25, $2C, $CD, $25
-	db	$25, $A1, $0A, $25
-	db	$02, $AB, $07, $AB
-	db	$30, $81, $A6, $68
-	db	$C1, $A6, $70, $C1
-	db	$A6, $60, $C1, $A6
-	db	$78, $C1, $A6, $80
-	db	$4A, $B7, $56, $AE
-	db	$07, $BF, $57, $BE
-	db	$56, $D6, $25, $B3
-	db	$3A, $56, $BE, $57
-	db	$D7, $02, $57, $3A
-	db	$57, $2A, $F0, $81
-	db	$02, $CB, $0B, $3C
-	db	$CC, $3D, $CC, $27
-	db	$03, $3A, $CC, $81
-	db	$3A, $CC
+L2403:
+	eor	RAM2_0250,x
+	beq	L0410
+	eor	RAM2_0250,x
+	sta	RAM2_0250,x
+	bset	5,STACK_0c6
+	incx
+	rts
 ;
+L2412:
+	clrx
+L2413:
+	lda	#$00
+	bsr	L0403
+	cpx	#$06
+	bne	L0413
+	rts
+;
+L241C:
+	ldx	#$01
+	bsr	L0403
+	lda	RAM1_056
+	ora	#$40
+	brclr	5,RAM1_069,L0428
+	clra
+	brset	2,RAM1_0b8,L0430
+	brclr	6,RAM1_0b5,L0430
+	ora	#$04
+	bsr	L0415
+	clrx
+	lda	#$00
+	bra	L0403
+;
+	sta	RAM1_056
+	bsr	L0441
+	tax
+	lda	RAM1_056
+	jsr	L252C
+L2441:
+	jsr	L2525
+	cmp	#$0A
+	bcs	L044A
+	add	#$07
+	add	#$30
+	rts
+;
+L244D:
+	lda	#$68
+	cmp	XA670
+	cmp	XA660
+	cmp	XA678
+	cmp	XA680
+L245B:
+	deca
+	sta	RAM1_056
+	ldx	#$07
+	stx	RAM1_057
+	ldx	RAM1_056
+	lda	X25B3,x
+	dec	RAM1_056
+	ldx	RAM1_057
+	sta	RAM2_0257,x
+	dec	RAM1_057
+	bpl	L0462
+	rts
+;
+L2473:
+	brset	1,STACK_0cb,L0481
+	inc	STACK_0cc
+	tst	STACK_0cc
+	beq	L047F
+	dec	STACK_0cc
+	rts
+;
+	dec	STACK_0cc
 L2481:
 	cmp	#$03
 	bne	L048E
@@ -2899,22 +4737,26 @@ L2481:
 	lda	#$36
 	bra	L04A8
 ;
-	db	$A1, $01, $26, $05
-	db	$0B, $BB, $2F, $16
-	db	$94, $0D, $B5, $05
-	db	$04, $B8, $02, $AA
-	db	$08
-;
+	cmp	#$01
+	bne	L0497
+	brclr	5,RAM1_0bb,L04C4
+	bset	3,RAM1_094
+	brclr	6,RAM1_0b5,L049F
+	brset	2,RAM1_0b8,L049F
+	ora	#$08
 L249F:
 	brclr	3,RAM1_08e,L04A4
 	ora	#$10
 	sta	STACK_0d5
 	bra	L04B4
 ;
-	db	$AA, $40, $B8, $D5
-	db	$A4, $7F, $27, $14
-	db	$B8, $D5, $B7, $D5
-;
+L24A8:
+	ora	#$40
+	eor	STACK_0d5
+	and	#$7F
+	beq	L04C4
+	eor	STACK_0d5
+	sta	STACK_0d5
 L24B4:
 	brclr	0,RAM1_061,L04BB
 	brclr	3,STACK_0ce,L04C0
@@ -2938,13 +4780,20 @@ L24C5:
 	cli
 	bra	L04DD
 ;
-	db	$BF, $09, $0F, $09
-	db	$FD, $BB, $08, $24
-	db	$02, $3C, $57, $3A
-	db	$56, $26, $E6, $34
-	db	$57, $46, $34, $57
-	db	$46, $A9, $00, $B7
-	db	$56, $81
+	stx	ADSTAT
+	brclr	7,ADSTAT,L04DA
+	add	ADDATA
+	bcc	L04E3
+	inc	RAM1_057
+	dec	RAM1_056
+	bne	L04CD
+	lsr	RAM1_057
+	rora
+	lsr	RAM1_057
+	rora
+	adc	#$00
+	sta	RAM1_056
+	rts
 ;
 L24F2:
 	clrx
@@ -2974,8 +4823,10 @@ L24F2:
 	bcc	L0509
 	bra	L04F3
 ;
-	db	$9F, $81, $44
+	txa
+	rts
 ;
+	lsra
 L2524:
 	lsra
 L2525:
@@ -2985,19 +4836,29 @@ L2525:
 	lsra
 	rts
 ;
-	db	$48, $48, $48, $48
-	db	$48, $48, $81
+	asla
+	asla
+L252C:
+	asla
+L252D:
+	asla
+	asla
+	asla
+	rts
 ;
 L2531:
 	sta	RAM1_050
 	bra	L053A
 ;
-	db	$CD, $07, $89, $AD
-	db	$05, $3A, $50, $2A
-	db	$F7, $81
+	jsr	L0789
+	bsr	L053F
+	dec	RAM1_050
+	bpl	L0535
+	rts
 ;
 L253F:
 	lda	#$14
+L2541:
 	add	ACH
 	tst	ACL
 	bih	L0549
@@ -3008,11 +4869,7 @@ L253F:
 ;
 L254E:
 	lda	#$85
-;
-	db	$C1
-;
-L2551:
-	lda	#$21
+	cmp	XA621
 	deca
 	bne	L0553
 	rts
@@ -3026,21 +4883,29 @@ L2557:
 	rts
 ;
 X2564:
-	db	$7C
-X2565:
-	db	$52, $69, $EB, $2C
-	db	$00, $7F, $E0
-;
-L256C:
 	inc	,x
+;
+X2565:
+	db	$52
+;
+	rol	STACK_0eb,x
+	bmc	L056A
+	clr	,x
+	sub	RAM1_07c,x
 	beq	L0570
 	dec	,x
 	dec	,x
 	rts
 ;
-	db	$A4, $07, $97, $4F
-	db	$99, $49, $5A, $2A
-	db	$FC, $81
+L2572:
+	and	#$07
+	tax
+	clra
+	sec
+	rola
+	decx
+	bpl	L0577
+	rts
 ;
 L257C:
 	lda	#$80
@@ -3081,56 +4946,170 @@ L25A3:
 	lsrx
 	rts
 ;
-	db	$54, $41, $20, $20
-	db	$20, $31, $20, $20
-	db	$47, $41, $4C, $41
-	db	$20, $31, $20, $20
-	db	$56, $4F, $4C, $20
-	db	$20, $31, $20, $20
-	db	$53, $45, $4E, $53
-	db	$20, $44, $58, $20
-	db	$52, $4D, $20, $20
-	db	$20, $4F, $4E, $20
-	db	$4E, $41, $56, $20
-	db	$20, $31, $20, $20
-	db	$54, $45, $4C, $20
-	db	$20, $52, $20, $20
-	db	$47, $41, $4C, $41
-	db	$20, $4F, $46, $46
-	db	$53, $45, $4E, $53
-	db	$20, $4C, $4F, $20
-	db	$52, $4D, $20, $20
-	db	$20, $4F, $46, $46
-	db	$54, $45, $4C, $20
-	db	$20, $4C, $20, $20
-	db	$45, $31, $20, $50
-	db	$33, $3A, $30, $30
-	db	$43, $44, $31, $20
-	db	$45, $52, $52, $31
-	db	$4E, $4F, $20, $43
-	db	$4F, $44, $45, $20
-	db	$52, $30, $20, $30
-	db	$30, $3A, $20, $20
-	db	$46, $41, $44, $20
-	db	$4F, $46, $46, $20
+X25B3:
+	lsrx
 ;
-L2633:
-	clr	STACK_0ca
-	lda	#$0A
+	db	$41
+;
+	bra	L05D7
+	bra	L05EA
+	bra	L05DB
+;
+	asra
+;
+	db	$41
+;
+	inca
+;
+	db	$41
+;
+	bra	L05F2
+	bra	L05E3
+;
+	rorx
+	clra
+	inca
+	bra	L05E8
+;
+	db	$31
+;
+	bra	L05EB
+;
+	comx
+;
+	db	$45, $4E
+;
+	comx
+	bra	L0615
+;
+	aslx
+	bra	L0626
+;
+	tsta
+	bra	L05F7
+	bra	L0628
+;
+	db	$4E
+;
+	bra	L062A
+;
+	db	$41
+;
+	rorx
+	bra	L0600
+;
+	db	$31
+;
+	bra	L0603
+;
+	lsrx
+;
+	db	$45
+;
+	inca
+	bra	L0608
+;
+	db	$52
+;
+	bra	L060B
+;
+	asra
+;
+	db	$41
+;
+	inca
+;
+	db	$41
+;
+	bra	L0640
+;
+	rora
+	rora
+	comx
+;
+	db	$45, $4E
+;
+	comx
+	bra	L0645
+;
+	clra
+	bra	L064E
+;
+	tsta
+	bra	L061F
+	bra	L0650
+;
+	rora
+	rora
+	lsrx
+;
+	db	$45
+;
+	inca
+	bra	L0628
+;
+	inca
+	bra	L062B
+;
+	db	$45, $31
+;
+	bra	L065F
+;
+	com	X003A
+	neg	X0030
+	coma
+	lsra
+;
+	db	$31
+;
+	bra	L065D
+;
+	db	$52, $52, $31, $4E
+;
+	clra
+	bra	L0662
+;
+	clra
+	lsra
+;
+	db	$45
+;
+	bra	L0676
+;
+	neg	X0020
+	neg	X0030
+	dec	X0020
+	bra	L0672
+;
+	db	$41
+;
+	lsra
+	bra	L067F
+;
+	rora
+	rora
+	bra	L0673
+;
+	ora	XA60A
 	sta	STACK_0cf
 	lda	#$05
 	sta	STACK_0ce
 	rts
 ;
-	db	$AE, $D1, $CD, $25
-	db	$6C, $26, $02, $1F
-	db	$D2, $AE, $CF, $CD
-	db	$25, $6C, $26, $EF
-	db	$07, $CE, $02, $1E
-	db	$5D, $05, $CE, $79
-	db	$B6, $CE, $A4, $F8
-	db	$B7, $CE
-;
+L263E:
+	ldx	#$D1
+	jsr	L256C
+	bne	L0647
+	bclr	7,STACK_0d2
+	ldx	#$CF
+	jsr	L256C
+	bne	L063D
+	brclr	3,STACK_0ce,L0653
+	bset	7,RAM1_05d
+	brclr	2,STACK_0ce,L06CF
+	lda	STACK_0ce
+	and	#$F8
+	sta	STACK_0ce
 L265C:
 	lda	#$0A
 	brset	7,RAM1_060,L06C5
@@ -3146,28 +5125,44 @@ L265C:
 	lda	#$04
 	bra	L06B6
 ;
-	db	$0A, $CE, $08, $0D
-	db	$CE, $19, $A6, $05
-	db	$00, $CE, $3E, $A6
-	db	$09, $0D, $67, $2A
-	db	$1E, $5D, $20, $26
-	db	$03, $CE, $08, $04
-	db	$CB, $05, $A6, $06
-	db	$01, $CE, $19, $A6
-	db	$01, $06, $CE, $16
-	db	$A6, $06, $0C, $7F
-	db	$11, $06, $7F, $0E
-	db	$A6, $04, $0A, $7F
-	db	$07, $B6, $7F, $43
-	db	$A4, $03, $27, $02
-	db	$AA, $40, $0A, $7F
-	db	$0C, $B7, $56, $B6
-	db	$7F, $43, $A4, $03
-	db	$CD, $25, $2C, $BB
-	db	$56, $B8, $CA, $27
-	db	$06, $B8, $CA, $B7
-	db	$CA, $1E, $5D, $81
+	brset	5,STACK_0ce,L0687
+	brclr	6,STACK_0ce,L069B
+	lda	#$05
+	brset	0,STACK_0ce,L06C5
+	lda	#$09
+	brclr	6,RAM1_067,L06B6
+	bset	7,RAM1_05d
+	bra	L06B6
 ;
+	brclr	1,STACK_0ce,L069B
+	brset	2,STACK_0cb,L069B
+	lda	#$06
+	brclr	0,STACK_0ce,L06B4
+	lda	#$01
+	brset	3,STACK_0ce,L06B6
+	lda	#$06
+	brset	6,RAM1_07f,L06B6
+	brset	3,RAM1_07f,L06B6
+	lda	#$04
+	brset	5,RAM1_07f,L06B4
+	lda	RAM1_07f
+	coma
+	and	#$03
+	beq	L06B6
+	ora	#$40
+	brset	5,RAM1_07f,L06C5
+	sta	RAM1_056
+	lda	RAM1_07f
+	coma
+	and	#$03
+	jsr	L252C
+	add	RAM1_056
+	eor	STACK_0ca
+	beq	L06CF
+	eor	STACK_0ca
+	sta	STACK_0ca
+	bset	7,RAM1_05d
+	rts
 L26D0:
 	rts
 ;
@@ -3204,42 +5199,86 @@ L26DD:
 	bclr	6,RAM1_09f
 	rts
 ;
-	db	$3F, $7A, $A4, $1F
-	db	$AA, $C0, $20, $14
-	db	$1D, $9F, $B6, $9F
-	db	$2A, $04, $A8, $90
-	db	$20, $0A, $97, $D6
-	db	$27, $69, $0B, $69
-	db	$03, $D6, $27, $3B
-	db	$B7, $78, $A1, $01
-	db	$27, $02, $1C, $5D
-X2735:
-	db	$81, $19, $0A, $4B
-	db	$25, $32, $00, $E1
-	db	$E2, $E3, $E4, $E5
-	db	$E6, $E7, $07, $E9
-	db	$01, $01, $01, $ED
-	db	$0D, $09, $0A, $F6
-	db	$01, $F3, $0C, $F5
-	db	$01, $F7, $F8, $F9
-	db	$FA, $FB, $FC, $FD
-	db	$FE, $06, $EA, $01
-	db	$02, $0F, $0F, $03
-	db	$FF, $F4, $08, $EE
-	db	$EF, $F0, $F1, $F2
-	db	$00, $E1, $E2, $E3
-	db	$E4, $E5, $E6, $E7
-	db	$E8, $E9, $04, $EB
-	db	$EC, $ED, $0D, $09
-	db	$0A, $F6, $05, $F3
-	db	$0C, $F5, $0B, $F7
-	db	$F8, $F9, $FA, $FB
-	db	$FC, $FD, $FE, $06
-	db	$EA, $01, $02, $0F
-	db	$0F, $03, $FF, $F4
-	db	$08, $EE, $EF, $F0
-	db	$F1, $F2
+	clr	RAM1_07a
+	and	#$1F
+	ora	#$C0
+	bra	L072D
 ;
+	bclr	6,RAM1_09f
+	lda	RAM1_09f
+	bpl	L0723
+	eor	#$90
+	bra	L072D
+;
+	tax
+	lda	X2769,x
+	brclr	5,RAM1_069,L072D
+	lda	X273B,x
+	sta	RAM1_078
+	cmp	#$01
+	beq	L0735
+	bset	6,RAM1_05d
+X2735:
+	rts
+;
+	bclr	4,PLMA
+;
+	db	$4B
+;
+	bcs	L076D
+X273B:
+	brset	0,STACK_0e1,L0720
+	cpx	STACK_0e4,x
+	bit	STACK_0e6,x
+	sta	EEPROM_ECLK_control,x
+X2744:
+	adc	PortB,x
+	brclr	0,PortB,L0736
+	brclr	6,ADSTAT,L0756
+	lda	,x
+	brclr	0,STACK_0f3,L075C
+	bit	,x
+	brclr	0,STACK_0f7,L074C
+	adc	,x
+	ora	,x
+	add	,x
+	jmp	,x						;INFO: index jump
+;
+	jsr	,x						;INFO: index jump
+	ldx	,x
+	brset	3,STACK_0ea,L075E
+	brset	1,SCCR2,L076F
+	brclr	1,STACK_0ff,L0757
+	brset	4,STACK_0ee,L0755
+	sub	,x
+	cmp	,x
+	sbc	,x
+X2769:
+	brset	0,STACK_0e1,L074E
+	cpx	STACK_0e4,x
+	bit	STACK_0e6,x
+	sta	STACK_0e8,x
+	adc	DDRA,x
+	add	STACK_0ec,x
+	jsr	L000D,x						;INFO: index jump
+	brclr	4,PLMA,L0771
+	brclr	2,STACK_0f3,L078A
+	bit	,x
+	brclr	5,STACK_0f7,L077A
+	adc	,x
+	ora	,x
+	add	,x
+	jmp	,x						;INFO: index jump
+;
+	jsr	,x						;INFO: index jump
+	ldx	,x
+	brset	3,STACK_0ea,L078C
+	brset	1,SCCR2,L079D
+	brclr	1,STACK_0ff,L0785
+	brset	4,STACK_0ee,L0783
+	sub	,x
+	cmp	,x
+	sbc	,x
 L2797:
 	incx
 	incx
@@ -3251,12 +5290,20 @@ L2797:
 	and	#$F0
 	bra	L07BD
 ;
-	db	$A5, $E0, $27, $0F
-	db	$A5, $1F, $26, $0B
-	db	$B8, $78, $27, $07
-	db	$A1, $06, $22, $03
-	db	$A5, $00, $81, $A6
-	db	$01, $81, $81
+	bit	#$E0
+	beq	L07BA
+	bit	#$1F
+	bne	L07BA
+	eor	RAM1_078
+	beq	L07BA
+	cmp	#$06
+	bhi	L07BA
+	bit	#$00
+	rts
+;
+	lda	#$01
+	rts
+	rts
 ;
 L27BE:
 	brset	6,RAM1_05f,L003D
@@ -3314,241 +5361,479 @@ L27BE:
 	brset	6,STACK_0ce,L003D
 	brclr	6,RAM1_05d,L003D
 	jmp	L2BDF
+	rts
 ;
-	db	$81, $B6, $B8, $A4
-	db	$60, $A1, $60, $26
-	db	$08, $B6, $B8, $A4
-	db	$0F, $AA, $10, $20
-	db	$16, $A6, $10, $20
-	db	$08, $B6, $B8, $A4
-	db	$60, $27, $06, $A6
-	db	$F0, $BB, $B8, $20
-	db	$0B, $B6, $B8, $A4
-	db	$0F, $AA, $60, $04
-	db	$B8, $02, $A8, $01
-	db	$AA, $80, $20, $2B
-	db	$B6, $B8, $04, $B8
-	db	$05, $A4, $03, $4C
-	db	$20, $1F, $A6, $08
-	db	$07, $B8, $18, $4F
-	db	$20, $17, $B6, $B8
-	db	$04, $B8, $08, $48
-	db	$48, $B8, $B8, $A4
-	db	$08, $20, $06, $44
-	db	$44, $B8, $B8, $A4
-	db	$02, $AA, $04, $B8
-	db	$B8, $AA, $F0, $B7
-	db	$B4, $A6, $80, $20
-	db	$57, $20, $B2, $20
-	db	$9C, $20, $C9, $20
-	db	$D9, $04, $B8, $FB
-	db	$0A, $69, $20, $A6
-	db	$01, $20, $E4, $05
-	db	$B8, $05, $18, $B3
-	db	$1A, $B3, $81, $09
-	db	$CE, $E9, $A6, $30
-	db	$CC, $29, $76, $CC
-	db	$2A, $1F, $04, $B6
-	db	$06, $06, $8E, $13
-	db	$05, $B8, $17, $81
-	db	$A6, $19, $02, $B5
-	db	$02, $A6, $18, $CD
-	db	$23, $F3, $A6, $61
-	db	$CC, $29, $62, $1C
-	db	$C5, $A6, $63, $CC
-	db	$29, $64, $CC, $29
-	db	$9C, $1E, $D2, $AE
-	db	$FA, $BF, $D1, $20
-	db	$34, $A6, $A4, $0B
-	db	$B6, $02, $A6, $B4
-	db	$1F, $D2, $20, $69
-	db	$A6, $86, $B7, $B3
-	db	$1F, $D2, $14, $CB
-	db	$81, $A6, $08, $04
-	db	$B8, $12, $AE, $D4
-	db	$CD, $37, $C7, $B7
-	db	$5B, $B6, $B8, $CD
-	db	$37, $9B, $B8, $5B
-	db	$A4, $01, $AA, $02
-	db	$CC, $28, $94, $1E
-	db	$D2, $20, $05, $1E
-	db	$D2, $A6, $C4, $C1
-	db	$A6, $CC, $0F, $D2
-	db	$B9, $AE, $FA, $BF
-	db	$D1, $20, $17, $0E
-	db	$D2, $2D, $A6, $D4
-	db	$20, $05, $0E, $D2
-	db	$26, $A6, $DC, $19
-	db	$BB, $1B, $BB, $20
-	db	$20, $A6, $C4, $C1
-	db	$A6, $CC, $06, $5D
-	db	$2E, $19, $BB, $1B
-	db	$BB, $0F, $D2, $02
-	db	$AA, $07, $B7, $B3
-	db	$14, $CB, $0F, $D2
-	db	$1A, $AE, $FA, $BF
-	db	$D1, $20, $14, $A6
-	db	$94, $14, $CB, $1A
-	db	$D2, $B7, $B3, $CC
-	db	$2A, $15, $A6, $8A
-	db	$CD, $2A, $41, $1B
-	db	$D2, $1E, $7E, $A6
-	db	$90, $B7, $77, $81
-	db	$1A, $7E, $0B, $D2
-	db	$FA, $13, $CB, $A6
-	db	$80, $CD, $2A, $41
-	db	$20, $25, $5F, $1A
-	db	$D2, $04, $BA, $0C
-	db	$06, $CE, $09, $08
-	db	$B6, $09, $0F, $BA
-	db	$06, $05, $B6, $03
-	db	$CC, $2A, $06, $0B
-	db	$B6, $03, $A6, $B4
-	db	$C1, $A6, $42, $B7
-	db	$B3, $18, $CC, $A6
-	db	$B0, $20, $CA, $A6
-	db	$27, $CD, $24, $C5
-	db	$A1, $19, $24, $0A
-	db	$16, $5D, $B6, $B4
-	db	$A4, $74, $A1, $60
-	db	$27, $11, $07, $81
-	db	$09, $17, $81, $AE
-	db	$A8, $CD, $37, $C7
-	db	$B7, $85, $07, $5D
-	db	$16, $20, $3B, $AE
-	db	$82, $B8, $B8, $A4
-	db	$74, $27, $2A, $17
-	db	$5D, $16, $7E, $16
-	db	$81, $B6, $88, $40
-	db	$44, $B7, $85, $06
-	db	$8E, $24, $B6, $B4
-	db	$A4, $7F, $B1, $B8
-	db	$26, $1C, $05, $CE
-	db	$19, $02, $CE, $16
-	db	$00, $CE, $13, $CD
-	db	$1D, $9B, $B4, $56
-	db	$27, $0C, $1F, $B5
-	db	$C1, $BF, $B3, $20
-	db	$05, $A6, $80, $CD
-	db	$2A, $41, $14, $CE
-	db	$13, $CE, $11, $CE
-	db	$A6, $7D, $B7, $CF
-	db	$07, $CE, $06, $13
-	db	$CE, $A6, $32, $B7
-	db	$CF, $81, $0A, $D2
-	db	$0E, $1A, $D2, $09
-	db	$BB, $04, $A6, $C2
-	db	$20, $13, $A6, $01
-	db	$B7, $CC, $81, $B6
-	db	$CC, $A1, $FF, $26
-	db	$F5, $1B, $D2, $B6
-	db	$B7, $B7, $C8, $A6
-	db	$C0, $CC, $23, $F6
-	db	$B7, $B3, $14, $CB
-	db	$1F, $D2, $B6, $78
-	db	$CD, $25, $2C, $B8
-	db	$B8, $A4, $70, $B8
-	db	$B8, $AA, $80, $B7
-	db	$B4, $0B, $69, $02
-	db	$11, $B4, $81, $07
-	db	$CE, $03, $CC, $2A
-	db	$E3, $0E, $B9, $26
-	db	$0F, $BA, $03, $04
-	db	$B6, $20, $07, $8E
-	db	$1D, $0F, $C5, $1A
-	db	$09, $B5, $17, $0D
-	db	$C5, $14, $1D, $C5
-	db	$1A, $C5, $B6, $C5
-	db	$A4, $1F, $CD, $24
-	db	$A8, $B6, $C5, $A4
-	db	$1F, $AB, $23, $CC
-	db	$23, $F6, $A6, $01
-	db	$09, $BB, $04, $07
-	db	$B5, $01, $4C, $0E
-	db	$B9, $06, $0F, $BA
-	db	$05, $05, $B6, $02
-	db	$A6, $03, $CD, $24
-	db	$73, $A6, $13, $0C
-	db	$D2, $32, $07, $B5
-	db	$19, $0F, $BA, $03
-	db	$04, $B6, $13, $09
-	db	$CE, $0B, $0C, $BB
-	db	$03, $01, $BB, $0A
-	db	$A6, $CE, $CC, $23
-	db	$D9, $A6, $C2, $08
-	db	$BB, $F8, $0B, $BB
-	db	$1C, $4F, $05, $B8
-	db	$07, $AA, $10, $07
-	db	$8E, $02, $AA, $20
-	db	$B7, $C9, $B6, $B7
-	db	$B7, $C8, $A6, $C0
-	db	$0F, $CB, $03, $CC
-	db	$23, $EA, $CC, $23
-	db	$D9, $81, $0C, $5F
-	db	$4E, $05, $B6, $07
-	db	$CD, $2A, $15, $A6
-	db	$70, $20, $E9, $B6
-	db	$CF, $4A, $02, $CE
-	db	$28, $01, $B9, $08
-	db	$0C, $BB, $02, $2B
-	db	$18, $04, $BF, $15
-	db	$2A, $0E, $A6, $32
-	db	$B7, $CF, $A6, $D4
-	db	$07, $B6, $02, $A6
-	db	$DC, $CC, $29, $62
-	db	$0B, $D2, $96, $20
-	db	$D6, $A6, $0A, $B7
-	db	$CE, $A6, $7D, $B7
-	db	$CF, $2A, $8A, $A6
-	db	$4B, $B7, $CF, $AE
-	db	$04, $CD, $25, $57
-	db	$1C, $5F, $B6, $B7
-	db	$B7, $C4, $A6, $15
-	db	$CC, $23, $EA, $B6
-	db	$CF, $4A, $2A, $F6
-	db	$11, $61, $14, $5D
-	db	$81, $CC, $24, $12
-	db	$1F, $CB, $0C, $5F
-	db	$F8, $0F, $69, $F5
-	db	$B6, $B8, $04, $B8
-	db	$20, $A4, $07, $97
-	db	$D6, $2B, $DA, $0B
-	db	$69, $02, $A4, $0C
-	db	$0F, $BA, $03, $04
-	db	$B6, $03, $07, $B5
-	db	$02, $AA, $02, $06
-	db	$8E, $0E, $03, $BB
-	db	$0B, $AA, $01, $20
-	db	$07, $A6, $18, $07
-	db	$B8, $02, $A6, $1C
-	db	$5F, $CD, $24, $03
-	db	$06, $CE, $05, $B6
-	db	$BD, $04, $BB, $02
-	db	$B6, $B8, $A4, $70
-	db	$0F, $B9, $01, $4F
-	db	$CD, $25, $25, $CD
-	db	$24, $03, $A6, $02
-	db	$04, $B8, $24, $A6
-	db	$08, $0F, $BA, $03
-	db	$04, $B6, $03, $07
-	db	$B5, $02, $AA, $01
-	db	$06, $CE, $03, $0D
-	db	$B5, $02, $AA, $04
-	db	$07, $8E, $05, $09
-	db	$B5, $02, $AA, $04
-	db	$03, $B8, $09, $AA
-	db	$20, $20, $05, $07
-	db	$B8, $02, $AA, $20
-	db	$0B, $B6, $02, $AA
-	db	$10, $0B, $69, $02
-	db	$A4, $2F, $CD, $24
-	db	$03, $4F, $5C, $05
-	db	$BB, $07, $B6, $BD
-	db	$A4, $70, $CD, $25
-	db	$25, $CD, $24, $03
-	db	$81, $48, $28, $4C
-	db	$2C, $81
+	lda	RAM1_0b8
+	and	#$60
+	cmp	#$60
+	bne	L004E
+	lda	RAM1_0b8
+	and	#$0F
+	ora	#$10
+	bra	L0064
 ;
+	lda	#$10
+	bra	L005A
+;
+	lda	RAM1_0b8
+	and	#$60
+	beq	L005E
+	lda	#$F0
+	add	RAM1_0b8
+	bra	L0069
+;
+	lda	RAM1_0b8
+	and	#$0F
+	ora	#$60
+	brset	2,RAM1_0b8,L0069
+	eor	#$01
+	ora	#$80
+	bra	L0098
+;
+	lda	RAM1_0b8
+	brset	2,RAM1_0b8,L0077
+	and	#$03
+	inca
+	bra	L0096
+;
+	lda	#$08
+	brclr	3,RAM1_0b8,L0094
+	clra
+	bra	L0096
+;
+	lda	RAM1_0b8
+	brset	2,RAM1_0b8,L008C
+	asla
+	asla
+	eor	RAM1_0b8
+	and	#$08
+	bra	L0092
+;
+	lsra
+	lsra
+	eor	RAM1_0b8
+	and	#$02
+	ora	#$04
+L2894:
+	eor	RAM1_0b8
+	ora	#$F0
+	sta	RAM1_0b4
+	lda	#$80
+	bra	L00F5
+L289E:
+	bra	L0052
+	bra	L003E
+	bra	L006D
+	bra	L007F
+;
+	brset	2,RAM1_0b8,L00A4
+	brset	5,RAM1_069,L00CC
+	lda	#$01
+	bra	L0094
+;
+	brclr	2,RAM1_0b8,L00B8
+	bset	4,RAM1_0b3
+	bset	5,RAM1_0b3
+	rts
+;
+	brclr	4,STACK_0ce,L00A4
+	lda	#$30
+	jmp	L2976
+	jmp	L2A1F
+;
+	brset	2,RAM1_0b6,L00CC
+	brset	3,RAM1_08e,L00DC
+	brclr	2,RAM1_0b8,L00E3
+	rts
+;
+	lda	#$19
+	brset	1,RAM1_0b5,L00D4
+	lda	#$18
+	jsr	L23F3
+	lda	#$61
+	jmp	L2962
+;
+	bset	6,STACK_0c5
+	lda	#$63
+	jmp	L2964
+	jmp	L299C
+;
+	bset	7,STACK_0d2
+	ldx	#$FA
+	stx	STACK_0d1
+	bra	L0122
+;
+	lda	#$A4
+	brclr	5,RAM1_0b6,L00F5
+	lda	#$B4
+	bclr	7,STACK_0d2
+	bra	L0162
+;
+	lda	#$86
+	sta	RAM1_0b3
+	bclr	7,STACK_0d2
+	bset	2,STACK_0cb
+	rts
+;
+	lda	#$08
+	brset	2,RAM1_0b8,L0119
+	ldx	#$D4
+	jsr	L37C7
+	sta	RAM1_05b
+	lda	RAM1_0b8
+	jsr	L379B
+	eor	RAM1_05b
+	and	#$01
+	ora	#$02
+	jmp	L2894
+;
+	bset	7,STACK_0d2
+	bra	L0125
+;
+	bset	7,STACK_0d2
+	lda	#$C4
+	cmp	XA6CC
+	brclr	7,STACK_0d2,L00E3
+	ldx	#$FA
+	stx	STACK_0d1
+	bra	L0147
+;
+	brset	7,STACK_0d2,L0160
+	lda	#$D4
+	bra	L013C
+;
+	brset	7,STACK_0d2,L0160
+	lda	#$DC
+	bclr	4,RAM1_0bb
+	bclr	5,RAM1_0bb
+	bra	L0162
+;
+	lda	#$C4
+	cmp	XA6CC
+	brset	3,RAM1_05d,L0178
+	bclr	4,RAM1_0bb
+	bclr	5,RAM1_0bb
+	brclr	7,STACK_0d2,L0153
+	ora	#$07
+	sta	RAM1_0b3
+	bset	2,STACK_0cb
+	brclr	7,STACK_0d2,L0174
+	ldx	#$FA
+	stx	STACK_0d1
+	bra	L0174
+;
+	lda	#$94
+L2962:
+	bset	2,STACK_0cb
+L2964:
+	bset	5,STACK_0d2
+	sta	RAM1_0b3
+	jmp	L2A15
+;
+	lda	#$8A
+	jsr	L2A41
+	bclr	5,STACK_0d2
+	bset	7,RAM1_07e
+	lda	#$90
+L2976:
+	sta	RAM1_077
+	rts
+;
+	bset	5,RAM1_07e
+	brclr	5,STACK_0d2,L0178
+	bclr	1,STACK_0cb
+	lda	#$80
+	jsr	L2A41
+	bra	L01AC
+;
+	clrx
+	bset	5,STACK_0d2
+	brset	2,RAM1_0ba,L0199
+	brset	3,STACK_0ce,L0199
+	brset	4,RAM1_0b6,L019C
+	brclr	7,RAM1_0ba,L019C
+	brclr	2,RAM1_0b6,L019C
+	jmp	L2A06
+;
+L299C:
+	brclr	5,RAM1_0b6,L01A2
+	lda	#$B4
+	cmp	XA642
+	sta	RAM1_0b3
+	bset	4,STACK_0cc
+	lda	#$B0
+	bra	L0176
+;
+	lda	#$27
+	jsr	L24C5
+	cmp	#$19
+	bcc	L01BF
+	bset	3,RAM1_05d
+	lda	RAM1_0b4
+	and	#$74
+	cmp	#$60
+	beq	L01D0
+	brclr	3,RAM1_081,L01CB
+	bclr	3,RAM1_081
+	ldx	#$A8
+	jsr	L37C7
+	sta	RAM1_085
+	brclr	3,RAM1_05d,L01E4
+	bra	L020B
+;
+	ldx	#$82
+	eor	RAM1_0b8
+	and	#$74
+	beq	L0202
+	bclr	3,RAM1_05d
+	bset	3,RAM1_07e
+	bset	3,RAM1_081
+	lda	RAM1_088
+	nega
+	lsra
+	sta	RAM1_085
+	brset	3,RAM1_08e,L020B
+	lda	RAM1_0b4
+	and	#$7F
+	cmp	RAM1_0b8
+	bne	L020B
+	brclr	2,STACK_0ce,L020B
+	brset	1,STACK_0ce,L020B
+	brset	0,STACK_0ce,L020B
+	jsr	L1D9B
+	and	RAM1_056
+	beq	L020B
+	bclr	7,RAM1_0b5
+	cmp	XBFB3
+	bra	L020B
+;
+L2A06:
+	lda	#$80
+	jsr	L2A41
+	bset	2,STACK_0ce
+	bclr	1,STACK_0ce
+	bclr	0,STACK_0ce
+	lda	#$7D
+	sta	STACK_0cf
+L2A15:
+	brclr	3,STACK_0ce,L021E
+	bclr	1,STACK_0ce
+	lda	#$32
+	sta	STACK_0cf
+	rts
+;
+L2A1F:
+	brset	5,STACK_0d2,L0230
+	bset	5,STACK_0d2
+	brclr	4,RAM1_0bb,L022B
+	lda	#$C2
+	bra	L023E
+;
+	lda	#$01
+	sta	STACK_0cc
+	rts
+;
+	lda	STACK_0cc
+	cmp	#$FF
+	bne	L022B
+	bclr	5,STACK_0d2
+	lda	RAM1_0b7
+	sta	STACK_0c8
+	lda	#$C0
+	jmp	L23F6
+;
+L2A41:
+	sta	RAM1_0b3
+	bset	2,STACK_0cb
+	bclr	7,STACK_0d2
+	lda	RAM1_078
+	jsr	L252C
+	eor	RAM1_0b8
+	and	#$70
+	eor	RAM1_0b8
+	ora	#$80
+	sta	RAM1_0b4
+	brclr	5,RAM1_069,L025B
+	bclr	0,RAM1_0b4
+	rts
+;
+L2A5C:
+	brclr	3,STACK_0ce,L0262
+	jmp	L2AE3
+;
+	brset	7,RAM1_0b9,L028B
+	brclr	7,RAM1_0ba,L026B
+	brset	2,RAM1_0b6,L028B
+	brclr	3,RAM1_08e,L028B
+	brclr	7,STACK_0c5,L028B
+	brclr	4,RAM1_0b5,L028B
+	brclr	6,STACK_0c5,L028B
+	bclr	6,STACK_0c5
+	bset	5,STACK_0c5
+	lda	STACK_0c5
+	and	#$1F
+	jsr	L24A8
+	lda	STACK_0c5
+	and	#$1F
+	add	#$23
+	jmp	L23F6
+;
+	lda	#$01
+	brclr	4,RAM1_0bb,L0294
+	brclr	3,RAM1_0b5,L0294
+	inca
+	brset	7,RAM1_0b9,L029D
+	brclr	7,RAM1_0ba,L029F
+	brclr	2,RAM1_0b6,L029F
+	lda	#$03
+	jsr	L2473
+	lda	#$13
+	brset	6,STACK_0d2,L02D9
+	brclr	3,RAM1_0b5,L02C3
+	brclr	7,RAM1_0ba,L02B0
+	brset	2,RAM1_0b6,L02C3
+	brclr	4,STACK_0ce,L02BE
+	brset	6,RAM1_0bb,L02B9
+	brclr	0,RAM1_0bb,L02C3
+	lda	#$CE
+	jmp	L23D9
+;
+	lda	#$C2
+	brset	4,RAM1_0bb,L02BB
+	brclr	5,RAM1_0bb,L02E2
+	clra
+	brclr	2,RAM1_0b8,L02D1
+	ora	#$10
+	brclr	3,RAM1_08e,L02D1
+	ora	#$20
+	sta	STACK_0c9
+	lda	RAM1_0b7
+	sta	STACK_0c8
+	lda	#$C0
+	brclr	7,STACK_0cb,L02DF
+	jmp	L23EA
+	jmp	L23D9
+	rts
+;
+L2AE3:
+	brset	6,RAM1_05f,L0334
+	brclr	2,RAM1_0b6,L02F0
+	jsr	L2A15
+	lda	#$70
+	bra	L02D9
+;
+	lda	STACK_0cf
+	deca
+	brset	1,STACK_0ce,L031E
+	brclr	0,RAM1_0b9,L0301
+	brset	6,RAM1_0bb,L02FE
+	bmi	L0316
+	brset	2,RAM1_0bf,L0316
+	bpl	L0311
+	lda	#$32
+	sta	STACK_0cf
+	lda	#$D4
+	brclr	3,RAM1_0b6,L030E
+	lda	#$DC
+	jmp	L2962
+;
+	brclr	5,STACK_0d2,L02AA
+	bra	L02EC
+;
+	lda	#$0A
+	sta	STACK_0ce
+	lda	#$7D
+	sta	STACK_0cf
+	bpl	L02AA
+	lda	#$4B
+	sta	STACK_0cf
+	ldx	#$04
+	jsr	L2557
+	bset	6,RAM1_05f
+	lda	RAM1_0b7
+	sta	STACK_0c4
+	lda	#$15
+	jmp	L23EA
+;
+	lda	STACK_0cf
+	deca
+	bpl	L032F
+	bclr	0,RAM1_061
+	bset	2,RAM1_05d
+	rts
+	jmp	L2412
+;
+L2B41:
+	bclr	7,STACK_0cb
+	brset	6,RAM1_05f,L033E
+	brclr	7,RAM1_069,L033E
+	lda	RAM1_0b8
+	brset	2,RAM1_0b8,L036E
+	and	#$07
+	tax
+	lda	X2BDA,x
+	brclr	5,RAM1_069,L0359
+	and	#$0C
+	brclr	7,RAM1_0ba,L035F
+	brset	2,RAM1_0b6,L0362
+	brclr	3,RAM1_0b5,L0364
+	ora	#$02
+	brset	3,RAM1_08e,L0375
+	brclr	1,RAM1_0bb,L0375
+	ora	#$01
+	bra	L0375
+;
+	lda	#$18
+	brclr	3,RAM1_0b8,L0375
+	lda	#$1C
+	clrx
+	jsr	L2403
+	brset	3,STACK_0ce,L0381
+	lda	RAM1_0bd
+	brset	2,RAM1_0bb,L0383
+	lda	RAM1_0b8
+	and	#$70
+	brclr	7,RAM1_0b9,L0389
+	clra
+	jsr	L2525
+	jsr	L2403
+	lda	#$02
+	brset	2,RAM1_0b8,L03B8
+	lda	#$08
+	brclr	7,RAM1_0ba,L039C
+	brset	2,RAM1_0b6,L039F
+	brclr	3,RAM1_0b5,L03A1
+	ora	#$01
+	brset	3,STACK_0ce,L03A7
+	brclr	6,RAM1_0b5,L03A9
+	ora	#$04
+	brclr	3,RAM1_08e,L03B1
+	brclr	4,RAM1_0b5,L03B1
+	ora	#$04
+	brclr	1,RAM1_0b8,L03BD
+	ora	#$20
+	bra	L03BD
+;
+	brclr	3,RAM1_0b8,L03BD
+	ora	#$20
+	brclr	5,RAM1_0b6,L03C2
+	ora	#$10
+	brclr	5,RAM1_069,L03C7
+	and	#$2F
+	jsr	L2403
+	clra
+	incx
+	brclr	2,RAM1_0bb,L03D6
+	lda	RAM1_0bd
+	and	#$70
+	jsr	L2525
+	jsr	L2403
+	rts
+;
+X2BDA:
+	asla
+	bhcc	L0429
+	bmc	L0360
 L2BDF:
 	clrx
 	brclr	3,STACK_0ce,L03E5
@@ -3565,36 +5850,91 @@ X2BFA:
 	rts
 ;
 X2BFB:
-	db	$E0
-X2BFC:
-	db	$E9, $A0, $CD, $80
-	db	$D2, $C0, $DB, $FF
-	db	$00, $F4, $02, $E9
-	db	$25, $A9, $2F, $C9
-	db	$3E, $E7, $84, $F8
-	db	$87, $87, $B9, $98
-	db	$B9, $A7, $82, $B8
-	db	$7E, $C7, $92, $D8
-	db	$99, $FC, $84, $FD
-	db	$87, $9C, $B9, $9D
-	db	$B9, $BC, $82, $BD
-	db	$7E, $DC, $92, $DD
-	db	$99, $F0, $84, $EF
-	db	$87, $90, $B9, $8F
-	db	$B9, $B0, $82, $AF
-	db	$7E, $D0, $92, $CF
-	db	$99, $0B, $50, $F5
-	db	$45, $B5, $5B, $D5
-	db	$64, $08, $04, $F6
-	db	$12, $D6, $22, $36
-	db	$06, $E7, $95, $F8
-	db	$9C, $FC, $95, $FD
-	db	$9C, $F0, $95, $EF
-	db	$9C, $F5, $64, $E0
-	db	$E2, $F7, $08, $00
+	sub	STACK_0e9,x
+	sub	#$CD
+	rti
 ;
-L2C60:
-	brset	7,RAM1_060,L0482
+	sbc	XC0DB,x
+	stx	,x
+	brset	0,STACK_0f4,L0409
+	adc	X0025,x
+	adc	#$2F
+	adc	X3EE7
+;
+	db	$84
+;
+	eor	,x
+;
+	db	$87, $87
+;
+	adc	RAM1_098
+	adc	RAM1_0a7
+;
+	db	$82
+;
+	eor	RAM1_07e
+	sta	X92D8
+	sec
+	jmp	,x						;INFO: index jump
+;
+	db	$84
+;
+	jsr	,x						;INFO: index jump
+;
+	db	$87
+;
+	rsp
+	adc	RAM1_09d
+	adc	RAM1_0bc
+;
+	db	$82
+;
+	jsr	L007E
+	jmp	L92DD,x						;INFO: index jump
+;
+	sec
+	sub	,x
+;
+	db	$84
+;
+	stx	RAM1_087,x
+;
+	db	$90
+;
+	adc	RAM1_08f
+	adc	RAM1_0b0
+;
+	db	$82, $AF, $7E
+;
+	sub	X92CF,x
+	sec
+	brclr	5,RAM1_050,L0435
+;
+	db	$45
+;
+	bit	RAM1_05b
+	bit	X6408,x
+	brset	2,STACK_0f6,L045B
+	lda	X2236,x
+	brset	3,STACK_0e7,L03E4
+	eor	,x
+	rsp
+	jmp	,x						;INFO: index jump
+;
+	db	$95
+;
+	jsr	,x						;INFO: index jump
+	rsp
+	sub	,x
+;
+	db	$95
+;
+	stx	RAM1_09c,x
+	bit	,x
+	lsr	STACK_0e0,x
+	sbc	STACK_0f7,x
+	brset	4,PortA,L046F
+	neg	OCL2,x
 	brclr	3,RAM1_08b,L0482
 	lda	#$48
 	brset	2,RAM1_0be,L046D
@@ -3610,257 +5950,496 @@ L2C60:
 	clra
 	bra	L048C
 ;
-	db	$0B, $CB, $04, $1B
-	db	$CB, $1E, $5D, $B8
-	db	$7F, $A4, $CC, $B7
-	db	$5B, $B8, $7F, $B7
-	db	$7F, $A4, $60, $26
-	db	$0C, $09, $7F, $09
-	db	$19, $7F, $AE, $A8
-	db	$CD, $37, $C7, $B7
-	db	$85, $01, $61, $5D
-	db	$3D, $5B, $27, $27
-	db	$1E, $5D, $10, $CB
-	db	$16, $7E, $14, $CB
-	db	$06, $CE, $4F, $07
-	db	$5B, $08, $1E, $5D
-	db	$10, $CB, $18, $B3
-	db	$1F, $D2, $0D, $5B
-	db	$0E, $1E, $5D, $0C
-	db	$7F, $09, $AE, $A8
-	db	$CD, $37, $C7, $B7
-	db	$85, $20, $00, $0B
-	db	$7C, $30, $0C, $7C
-	db	$19, $05, $69, $2A
-	db	$15, $69, $15, $D2
-	db	$19, $D3, $AE, $A5
-	db	$CD, $37, $9B, $02
-	db	$7F, $1C, $01, $7F
-	db	$19, $04, $81, $12
-	db	$20, $2E, $04, $69
-	db	$11, $14, $69, $14
-	db	$81, $03, $7F, $02
-	db	$15, $81, $14, $CB
-	db	$18, $B3, $CC, $2E
-	db	$5F, $81, $B6, $7F
-	db	$00, $80, $04, $A5
-	db	$EA, $27, $4A, $A5
-	db	$03, $26, $10, $03
-	db	$D2, $52, $00, $D2
-	db	$4F, $10, $D2, $AE
-	db	$88, $CC, $2D, $CF
-	db	$CC, $2E, $1A, $01
-	db	$7F, $3F, $05, $D2
-	db	$7E, $0A, $7F, $39
-	db	$07, $5F, $03, $02
-	db	$7C, $75, $0E, $D3
-	db	$72, $1E, $D3, $15
-	db	$D3, $07, $6A, $02
-	db	$14, $D3, $13, $D3
-	db	$03, $7C, $11, $12
-	db	$D3, $10, $D3, $01
-	db	$7C, $05, $04, $7C
-	db	$07, $20, $03, $05
-	db	$7C, $02, $11, $D3
-	db	$A6, $88, $CC, $2E
-	db	$0E, $07, $8B, $09
-	db	$0E, $60, $06, $B6
-	db	$CE, $A4, $C8, $27
-	db	$0C, $02, $D2, $62
-	db	$04, $D2, $03, $07
-	db	$7C, $39, $CC, $2E
-	db	$08, $01, $7F, $14
-	db	$02, $D2, $53, $0D
-	db	$7C, $2D, $08, $7C
-	db	$2A, $05, $D2, $54
-	db	$0E, $D3, $51, $20
-	db	$22, $CC, $2C, $DD
-	db	$04, $D2, $7C, $06
-	db	$7C, $79, $0D, $6A
-	db	$8F, $C6, $02, $65
-	db	$A4, $F0, $A1, $B0
-	db	$27, $07, $07, $D4
-	db	$04, $17, $D4, $20
-	db	$1A, $03, $D2, $17
-	db	$00, $D2, $14, $1B
-	db	$80, $B6, $85, $26
-	db	$02, $1A, $80, $0D
-	db	$5D, $75, $07, $8B
-	db	$72, $00, $80, $6F
-	db	$CC, $30, $12, $12
-	db	$D2, $11, $D2, $18
-	db	$B3, $AE, $8D, $05
-	db	$D4, $08, $AE, $83
-	db	$20, $04, $AE, $80
-	db	$13, $D2, $BF, $7D
-	db	$1C, $94, $20, $49
-	db	$14, $D2, $18, $B3
-	db	$13, $7F, $10, $7F
-	db	$06, $D3, $0D, $16
-	db	$D3, $A6, $8C, $08
-	db	$D3, $27, $A6, $8D
-	db	$10, $7C, $20, $21
-	db	$A6, $8F, $0F, $D3
-	db	$1C, $1F, $D3, $B6
-	db	$D3, $A4, $07, $0B
-	db	$D3, $02, $AA, $08
-	db	$97, $D6, $30, $02
-	db	$05, $D3, $0A, $16
-	db	$6A, $20, $08, $A6
-	db	$80, $15, $D2, $17
-	db	$7C, $17, $6A, $B7
-	db	$7B, $1A, $94, $A1
-	db	$81, $27, $0A, $20
-	db	$04, $12, $7F, $11
-	db	$7F, $1F, $D2, $14
-	db	$CB, $18, $5C, $1E
-	db	$5D, $16, $BC, $81
-	db	$0D, $7C, $14, $0A
-	db	$7F, $11, $A6, $81
-	db	$20, $DB, $06, $8E
-	db	$1C, $03, $A1, $03
-	db	$07, $D2, $04, $A6
-	db	$B0, $B7, $77, $81
-	db	$0B, $7F, $0E, $1B
-	db	$7F, $13, $CE, $11
-	db	$CE, $A6, $80, $B7
-	db	$A0, $17, $D2, $20
-	db	$CC, $06, $7F, $EB
-	db	$15, $81, $1C, $C5
-	db	$00, $7F, $19, $03
-	db	$7F, $BB, $0A, $7C
-	db	$08, $A6, $84, $B7
-	db	$7B, $1A, $94, $20
-	db	$0B, $05, $69, $08
-	db	$10, $7F, $19, $7C
-	db	$17, $6A, $20, $0B
-	db	$0D, $6A, $A2, $4F
-	db	$C7, $02, $64, $11
-	db	$D4, $11, $7F, $13
-	db	$7F, $15, $BA, $20
-	db	$98, $AE, $00, $C1
-	db	$AE, $06, $20, $18
-	db	$AE, $06, $0D, $8E
-	db	$13, $B6, $CE, $A4
-	db	$F8, $B7, $CE, $CD
-	db	$24, $59, $A6, $C4
-	db	$CC, $23, $F6, $AE
-	db	$04, $C1, $AE, $02
-	db	$0A, $7F, $98, $05
-	db	$CE, $11, $03, $CE
-	db	$0E, $00, $CE, $0B
-	db	$B3, $D0, $26, $07
-	db	$3F, $CF, $10, $CF
-	db	$3F, $CC, $81, $0E
-	db	$7F, $FC, $0A, $80
-	db	$F9, $B6, $82, $A4
-	db	$8F, $27, $25, $A1
-	db	$01, $27, $21, $A4
-	db	$0F, $27, $1D, $A1
-	db	$02, $26, $E7, $0E
-	db	$B9, $E4, $05, $B6
-	db	$13, $B6, $B6, $A1
-	db	$05, $27, $DB, $0E
-	db	$B5, $04, $1E, $B5
-	db	$16, $BC, $18, $B3
-	db	$1A, $B3, $1F, $D2
-	db	$BF, $D0, $14, $CE
-	db	$12, $CE, $11, $CE
-	db	$A6, $96, $B7, $CF
-	db	$CC, $2F, $C9, $A6
-	db	$01, $C1, $A6, $FF
-	db	$AE, $50, $20, $07
-	db	$A6, $01, $C1, $A6
-	db	$FF, $AE, $30, $BF
-	db	$77, $20, $62, $B6
-	db	$78, $A4, $0F, $AB
-	db	$F9, $40, $27, $A2
-	db	$05, $CE, $56, $03
-	db	$CE, $53, $00, $CE
-	db	$50, $B7, $57, $CD
-	db	$2F, $C9, $AD, $37
-	db	$22, $26, $CD, $2F
-	db	$EA, $26, $08, $3D
-	db	$63, $26, $C1, $BB
-	db	$57, $20, $13, $2A
-	db	$0B, $BB, $57, $2B
-	db	$0D, $A6, $28, $B7
-	db	$63, $4F, $20, $06
-	db	$BB, $57, $2B, $F5
-	db	$27, $F3, $AD, $13
-	db	$22, $A6, $20, $02
-	db	$3F, $56, $AD, $74
-	db	$B6, $56, $CD, $37
-	db	$9B, $18, $7E, $16
-	db	$7E, $20, $95, $BE
-	db	$D0, $58, $B7, $56
-	db	$2A, $02, $40, $5C
-	db	$03, $81, $02, $5C
-	db	$5C, $D1, $2F, $B9
-	db	$81, $0A, $82, $43
-	db	$0E, $87, $40, $0C
-	db	$7F, $03, $0B, $7F
-	db	$0D, $08, $7F, $0D
-	db	$BE, $86, $B3, $85
-	db	$23, $07, $BF, $85
-	db	$20, $03, $06, $82
-	db	$2A, $18, $7F, $BB
-	db	$85, $2B, $13, $06
-	db	$81, $06, $A1, $1E
-	db	$23, $02, $A6, $1E
-	db	$0F, $82, $08, $3D
-	db	$85, $26, $14, $A6
-	db	$01, $B1, $4F, $B7
-	db	$85, $0C, $7F, $0B
-	db	$0E, $7F, $08, $0A
-	db	$7F, $05, $06, $81
-	db	$02, $16, $5C, $81
-	db	$06, $06, $05, $05
-	db	$06, $06, $05, $05
-	db	$0F, $0F, $0F, $0F
-	db	$0F, $0F, $0F, $0F
+	brclr	5,STACK_0cb,L048C
+	bclr	5,STACK_0cb
+	bset	7,RAM1_05d
+	eor	RAM1_07f
+	and	#$CC
+	sta	RAM1_05b
+	eor	RAM1_07f
+	sta	RAM1_07f
+	and	#$60
+	bne	L04A6
+	brclr	4,RAM1_07f,L04A6
+	bclr	4,RAM1_07f
+	ldx	#$A8
+	jsr	L37C7
+	sta	RAM1_085
+	brclr	0,RAM1_061,L0506
+	tst	RAM1_05b
+	beq	L04D4
+	bset	7,RAM1_05d
+	bset	0,STACK_0cb
+	bset	3,RAM1_07e
+	bset	2,STACK_0cb
+	brset	3,STACK_0ce,L0507
+	brclr	3,RAM1_05b,L04C3
+	bset	7,RAM1_05d
+	bset	0,STACK_0cb
+	bset	4,RAM1_0b3
+	bclr	7,STACK_0d2
+	brclr	6,RAM1_05b,L04D4
+	bset	7,RAM1_05d
+	brset	6,RAM1_07f,L04D4
+	ldx	#$A8
+	jsr	L37C7
+	sta	RAM1_085
+	bra	L04D4
 ;
-L2FC9:
-	brclr	6,RAM1_07f,L07DC
-	ldx	#$0E
-	lda	#$2B
+	brclr	5,RAM1_07c,L0507
+	brset	6,RAM1_07c,L04F3
+	brclr	2,RAM1_069,L0507
+L2CDD:
+	bclr	2,RAM1_069
+	bclr	2,STACK_0d2
+	bclr	4,STACK_0d3
+	ldx	#$A5
+	jsr	L379B
+	brset	1,RAM1_07f,L0507
+	brclr	0,RAM1_07f,L0507
+	brset	2,RAM1_081,L0503
+	bra	L0521
+;
+	brset	2,RAM1_069,L0507
+	bset	2,RAM1_069
+	bset	2,RAM1_081
+	brclr	1,RAM1_07f,L04FF
+	bclr	2,RAM1_081
+	bset	2,STACK_0cb
+	bset	4,RAM1_0b3
+	jmp	L2E5F
+	rts
+;
+	lda	RAM1_07f
+	brset	0,RAM1_080,L0510
+	bit	#$EA
+	beq	L055A
+	bit	#$03
+	bne	L0524
+	brclr	1,STACK_0d2,L0569
+	brset	0,STACK_0d2,L0569
+	bset	0,STACK_0d2
+	ldx	#$88
+	jmp	L2DCF
+	jmp	L2E1A
+;
+	brclr	0,RAM1_07f,L0566
+	brclr	2,STACK_0d2,L05A8
+	brset	5,RAM1_07f,L0566
+	brclr	3,RAM1_05f,L0533
+	brset	1,RAM1_07c,L05A8
+	brset	7,STACK_0d3,L05A8
+	bset	7,STACK_0d3
+	bclr	2,STACK_0d3
+	brclr	3,RAM1_06a,L053F
+	bset	2,STACK_0d3
+	bclr	1,STACK_0d3
+	brclr	1,RAM1_07c,L0555
+	bset	1,STACK_0d3
+	bset	0,STACK_0d3
+	brclr	0,RAM1_07c,L0550
+	brset	2,RAM1_07c,L0555
+	bra	L0553
+;
+	brclr	2,RAM1_07c,L0555
+	bclr	0,STACK_0d3
+	lda	#$88
+	jmp	L2E0E
+;
+	brclr	3,RAM1_08b,L0566
+	brset	7,RAM1_060,L0566
+	lda	STACK_0ce
+	and	#$C8
+	beq	L0572
+	brset	1,STACK_0d2,L05CB
+	brset	2,STACK_0d2,L056F
+	brclr	3,RAM1_07c,L05A8
+	jmp	L2E08
+;
+	brclr	0,RAM1_07f,L0589
+	brset	1,STACK_0d2,L05CB
+	brclr	6,RAM1_07c,L05A8
+	brset	4,RAM1_07c,L05A8
+	brclr	2,STACK_0d2,L05D5
+	brset	7,STACK_0d3,L05D5
+	bra	L05A8
+	jmp	L2CDD
+;
+	brset	2,STACK_0d2,L0608
+	brset	3,RAM1_07c,L0608
+	brclr	6,RAM1_06a,L0521
+	lda	RAM2_0265
+	and	#$F0
+	cmp	#$B0
+	beq	L05A2
+	brclr	3,STACK_0d4,L05A2
+	bclr	3,STACK_0d4
+	bra	L05BC
+;
+	brclr	1,STACK_0d2,L05BC
+	brset	0,STACK_0d2,L05BC
+	bclr	5,RAM1_080
+	lda	RAM1_085
+	bne	L05B0
+	bset	5,RAM1_080
+	brclr	6,RAM1_05d,L0628
+	brclr	3,RAM1_08b,L0628
+	brset	0,RAM1_080,L0628
+	jmp	L3012
+;
+	bset	1,STACK_0d2
+	bclr	0,STACK_0d2
+	bset	4,RAM1_0b3
+	ldx	#$8D
+	brclr	2,STACK_0d4,L05CF
+	ldx	#$83
+	bra	L05CF
+;
+	ldx	#$80
+	bclr	1,STACK_0d2
+L2DCF:
+	stx	RAM1_07d
+	bset	6,RAM1_094
+	bra	L061E
+;
+	bset	2,STACK_0d2
+	bset	4,RAM1_0b3
+	bclr	1,RAM1_07f
+	bset	0,RAM1_07f
+	brset	3,STACK_0d3,L05ED
+	bset	3,STACK_0d3
+	lda	#$8C
+	brset	4,STACK_0d3,L060E
+	lda	#$8D
+	bset	0,RAM1_07c
+	bra	L060E
+;
+	lda	#$8F
+	brclr	7,STACK_0d3,L060E
+	bclr	7,STACK_0d3
+	lda	STACK_0d3
+	and	#$07
+	brclr	5,STACK_0d3,L05FD
+	ora	#$08
+	tax
+	lda	X3002,x
+	brclr	2,STACK_0d3,L060E
+	bset	3,RAM1_06a
+	bra	L0610
+;
+L2E08:
+	lda	#$80
+	bclr	2,STACK_0d2
+	bclr	3,RAM1_07c
+L2E0E:
+	bclr	3,RAM1_06a
+	sta	RAM1_07b
+	bset	5,RAM1_094
+	cmp	#$81
+	beq	L0622
+	bra	L061E
+;
+L2E1A:
+	bset	1,RAM1_07f
+	bclr	0,RAM1_07f
+	bclr	7,STACK_0d2
+	bset	2,STACK_0cb
+	bset	4,RAM1_05c
+	bset	7,RAM1_05d
+	bset	3,RAM1_0bc
+	rts
+;
+L2E29:
+	brclr	6,RAM1_07c,L0640
+	brset	5,RAM1_07f,L0640
+	lda	#$81
+	bra	L060E
+;
+	brset	3,RAM1_08e,L0652
+	brclr	1,RAM1_0a1,L063C
+	brclr	3,STACK_0d2,L0640
+	lda	#$B0
+	sta	RAM1_077
+	rts
+;
+	brclr	5,RAM1_07f,L0652
+	bclr	5,RAM1_07f
+	bclr	1,STACK_0ce
+	bclr	0,STACK_0ce
+	lda	#$80
+	sta	RAM1_0a0
+	bclr	3,STACK_0d2
+	bra	L061E
+;
+	brset	3,RAM1_07f,L0640
+	bclr	2,RAM1_081
+	bset	6,STACK_0c5
+	brset	0,RAM1_07f,L0675
+	brclr	1,RAM1_07f,L061A
+L2E5F:
+	brset	5,RAM1_07c,L066A
+	lda	#$84
+	sta	RAM1_07b
+	bset	5,RAM1_094
+	bra	L0675
+;
+	brclr	2,RAM1_069,L0675
+	bset	0,RAM1_07f
+	bclr	4,RAM1_07c
+	bclr	3,RAM1_06a
+	bra	L0680
+;
+	brclr	6,RAM1_06a,L061A
+	clra
+	sta	RAM2_0264
+	bclr	0,STACK_0d4
+	bclr	0,RAM1_07f
+	bclr	1,RAM1_07f
+	bclr	2,RAM1_0ba
+	bra	L061E
+;
+	ldx	#$00
+	cmp	XAE06
+	bra	L06A5
+;
+	ldx	#$06
+	brclr	6,RAM1_08e,L06A5
+	lda	STACK_0ce
+	and	#$F8
+	sta	STACK_0ce
+	jsr	L2459
+	lda	#$C4
+	jmp	L23F6
+;
+	ldx	#$04
+	cmp	XAE02
+	brset	5,RAM1_07f,L0640
+	brclr	2,STACK_0ce,L06BC
+	brclr	1,STACK_0ce,L06BC
+	brset	0,STACK_0ce,L06BC
+	cpx	STACK_0d0
+	bne	L06BC
+	clr	STACK_0cf
+	bset	0,STACK_0cf
+	clr	STACK_0cc
+	rts
+;
+	brset	7,RAM1_07f,L06BB
+	brset	5,RAM1_080,L06BB
+	lda	RAM1_082
+	and	#$8F
+	beq	L06ED
+	cmp	#$01
+	beq	L06ED
+X2ECC:
+	and	#$0F
+	beq	L06ED
+	cmp	#$02
+	bne	L06BB
+	brset	7,RAM1_0b9,L06BB
+	brclr	2,RAM1_0b6,L06ED
+	lda	RAM1_0b6
+	cmp	#$05
+	beq	L06BB
+	brset	7,RAM1_0b5,L06E7
+	bset	7,RAM1_0b5
+	bset	3,RAM1_0bc
+	bset	4,RAM1_0b3
+	bset	5,RAM1_0b3
+	bclr	7,STACK_0d2
+	stx	STACK_0d0
+	bset	2,STACK_0ce
+	bset	1,STACK_0ce
+	bclr	0,STACK_0ce
+	lda	#$96
+	sta	STACK_0cf
+	jmp	L2FC9
+;
+	lda	#$01
+	cmp	XA6FF
+	ldx	#$50
+	bra	L070C
+;
+	lda	#$01
+	cmp	XA6FF
+	ldx	#$30
+	stx	RAM1_077
+	bra	L0772
+;
+	lda	RAM1_078
+	and	#$0F
+	add	#$F9
+	nega
+	beq	L06BB
+	brclr	2,STACK_0ce,L0772
+	brclr	1,STACK_0ce,L0772
+	brset	0,STACK_0ce,L0772
+	sta	RAM1_057
+	jsr	L2FC9
+	bsr	L0760
+	bhi	L0751
+	jsr	L2FEA
+	bne	L0738
+	tst	RAM1_063
+	bne	L06F5
+	add	RAM1_057
+	bra	L074B
+;
+	bpl	L0745
+	add	RAM1_057
+	bmi	L074B
+	lda	#$28
+	sta	RAM1_063
+	clra
+	bra	L074B
+;
+	add	RAM1_057
+	bmi	L073E
+	beq	L073E
+	bsr	L0760
+	bhi	L06F5
+	bra	L0753
+;
+	clr	RAM1_056
+	bsr	L07C9
+	lda	RAM1_056
+	jsr	L379B
+	bset	4,RAM1_07e
+	bset	3,RAM1_07e
+	bra	L06F5
+;
+	ldx	STACK_0d0
+	aslx
+	sta	RAM1_056
+	bpl	L0769
+	nega
+	incx
+	brclr	1,RAM1_081,L076E
+	incx
+	incx
+	cmp	X2FB9,x
+	rts
+;
+	brset	5,RAM1_082,L07B8
+	brset	7,RAM1_087,L07B8
+	brset	6,RAM1_07f,L077E
+	brclr	5,RAM1_07f,L078B
+	brset	4,RAM1_07f,L078E
+	ldx	RAM1_086
+	cpx	RAM1_085
+	bls	L078E
+	stx	RAM1_085
+	bra	L078E
+;
+	brset	3,RAM1_082,L07B8
+	bset	4,RAM1_07f
+	add	RAM1_085
+	bmi	L07A7
+	brset	3,RAM1_081,L079D
+	cmp	#$1E
+	bls	L079D
+	lda	#$1E
+	brclr	7,RAM1_082,L07A8
+	tst	RAM1_085
+	bne	L07B8
+	lda	#$01
+	cmp	X004F
+	sta	RAM1_085
+	brset	6,RAM1_07f,L07B8
+	brset	7,RAM1_07f,L07B8
+	brset	5,RAM1_07f,L07B8
+	brset	3,RAM1_081,L07B8
+	bset	3,RAM1_05c
+	rts
+;
+X2FB9:
+	brset	3,DDRC,L07C1
+	brclr	2,DDRC,L07C5
+	brclr	2,DDRB,L07D1
+	brclr	7,SCCR2,L07D4
+	brclr	7,SCCR2,L07D7
+	brclr	7,BAUD,L004A
+	bset	0,RAM1_0ae
+	brset	7,RAM1_0a6,L07FB
 	brset	2,RAM1_0be,L07FB
 	brset	5,RAM1_0b9,L07FB
 	ldx	#$10
 	lda	#$2A
 	bra	L07FB
 ;
-	db	$AE, $12, $A6, $38
-	db	$06, $8E, $04, $AE
-	db	$11, $A6, $37, $06
-	db	$7F, $11, $B6, $D0
-	db	$B7, $C7, $1E, $C7
-	db	$44, $AB, $A0, $CD
-	db	$37, $C6, $B7, $C8
-	db	$1C, $C6, $81, $CD
-	db	$24, $A8, $9F, $CC
-	db	$23, $D9, $8F, $8F
-	db	$8A, $8B, $90, $90
-	db	$89, $89, $8F, $8F
-	db	$82, $83, $90, $90
-	db	$89, $89, $5F, $07
-	db	$CE, $02, $AE, $22
-	db	$D6, $30, $2F, $B7
-	db	$56, $D6, $30, $2E
-	db	$27, $0B, $CD, $27
-	db	$97, $26, $F1, $DE
-	db	$30, $2D, $DD, $2E
-	db	$29, $81, $0D, $64
-	db	$09, $77, $0A, $5D
-	db	$0C, $7A, $1F, $E7
-	db	$FA, $DC, $3A, $D3
-	db	$5A, $D3, $DA, $92
-	db	$FB, $DF, $3B, $D6
-	db	$5B, $D6, $DB, $92
-	db	$EB, $0A, $CB, $18
-	db	$EE, $0A, $CE, $18
-	db	$06, $00, $00
+	ldx	#$12
+	lda	#$38
+	brset	3,RAM1_08e,L07E7
+	ldx	#$11
+	lda	#$37
+	brset	3,RAM1_07f,L07FB
+L2FEA:
+	lda	STACK_0d0
+	sta	STACK_0c7
+	bset	7,STACK_0c7
+	lsra
+	add	#$A0
+	jsr	L37C6
+	sta	STACK_0c8
+	bset	6,STACK_0c6
+	rts
 ;
+	jsr	L24A8
+	txa
+	jmp	L23D9
+;
+X3002:
+	wait
+	wait
+;
+	db	$8A, $8B, $90, $90
+	db	$89, $89
+;
+	wait
+	wait
+;
+	db	$82
+;
+	swi
+;
+	db	$90, $90, $89, $89
+;
+L3012:
+	clrx
+	brclr	3,STACK_0ce,L0018
+	ldx	#$22
+	lda	X302F,x
+	sta	RAM1_056
+	lda	X302E,x
+	beq	L002D
+	jsr	L2797
+	bne	L0018
+	ldx	X302D,x
+	jsr	L2E29,x						;INFO: index jump
+X302D:
+	rts
+;
+X302E:
+	brclr	6,RAM1_064,L003A
+	asr	,x
+	brset	5,RAM1_05d,L0041
+	dec	,x
+	bclr	7,STACK_0e7
+	ora	,x
+	jmp	L3AD3,x						;INFO: index jump
+;
+	decx
+	cpx	XDA92,x
+	add	,x
+	stx	X3BD6,x
+;
+	db	$5B
+;
+	lda	XDB92,x
+	add	PLMA,x
+	add	X18EE
+	brset	5,STACK_0ce,L0068
+	brset	3,PortA,L0053
 L3053:
 	jmp	L253F
 ;
@@ -3877,8 +6456,8 @@ L305D:
 	clr	RAM1_0b2
 	brclr	4,RAM1_069,L0078
 	jmp	L30A1
-;
-	db	$CC, $31, $33
+L3069:
+	jmp	L3133
 ;
 L306C:
 	brclr	4,RAM1_069,L0078
@@ -3888,8 +6467,8 @@ L3072:
 	brclr	4,RAM1_069,L0078
 	jmp	L3106
 ;
-	db	$1F, $A0, $81
-;
+	bclr	7,RAM1_0a0
+	rts
 L307B:
 	jmp	L307E
 ;
@@ -3900,12 +6479,17 @@ L307E:
 	brset	7,RAM1_0a1,L008B
 	jmp	L3133
 ;
-	db	$04, $A1, $11, $A6
-	db	$14, $B7, $AF, $CD
-	db	$33, $5B, $A1, $03
-	db	$23, $06, $3C, $B1
-	db	$26, $02, $12, $B1
-	db	$99, $81
+	brset	2,RAM1_0a1,L009F
+	lda	#$14
+	sta	RAM1_0af
+	jsr	L335B
+	cmp	#$03
+	bls	L009F
+	inc	RAM1_0b1
+	bne	L009F
+	bset	1,RAM1_0b1
+	sec
+	rts
 ;
 L30A1:
 	sei
@@ -3927,15 +6511,20 @@ L30A1:
 	bclr	4,RAM1_0b2
 	rts
 ;
-	db	$00, $A1, $FC, $CD
-	db	$31, $66, $A6, $4C
-X30CC:
-	db	$AD, $0E, $A6, $A6
-	db	$AD, $0A, $A6, $07
-	db	$AD, $06, $4F, $CD
-	db	$32, $57, $A6, $0E
-	db	$AE, $50, $F7, $CC
-	db	$31, $FB
+	brset	0,RAM1_0a1,L00C3
+	jsr	L3166
+	lda	#$4C
+	bsr	L00DC
+	lda	#$A6
+	bsr	L00DC
+	lda	#$07
+	bsr	L00DC
+	clra
+	jsr	L3257
+	lda	#$0E
+	ldx	#$50
+	sta	,x
+	jmp	L31FB
 ;
 L30E2:
 	brclr	7,RAM1_0a0,L0111
@@ -3962,15 +6551,23 @@ L3106:
 	clr	RAM1_0a1
 	rts
 ;
-	db	$CD, $32, $40, $A4
-	db	$20, $26, $F8, $02
-	db	$A1, $10, $B6, $AE
-	db	$A1, $02, $27, $03
-	db	$09, $A1, $03, $1A
-	db	$A1, $81, $A6, $91
-	db	$20, $2F, $07, $A1
-	db	$E0, $A6, $92, $20
-	db	$5D
+	jsr	L3240
+	and	#$20
+	bne	L0111
+	brset	1,RAM1_0a1,L012C
+	lda	RAM1_0ae
+	cmp	#$02
+	beq	L0125
+	brclr	4,RAM1_0a1,L0128
+	bset	5,RAM1_0a1
+	rts
+;
+	lda	#$91
+	bra	L015B
+;
+	brclr	3,RAM1_0a1,L010F
+	lda	#$92
+	bra	L0190
 ;
 L3133:
 	bsr	L015F
@@ -3978,56 +6575,116 @@ L3133:
 	bsr	L0166
 	jmp	L337F
 ;
-	db	$00, $A1, $D1, $AD
-	db	$1D, $B6, $A2, $A4
-	db	$0F, $B7, $A2, $CD
-	db	$33, $F2, $B6, $AD
-	db	$27, $04, $AB, $01
-	db	$24, $02, $A6, $02
-	db	$B7, $AE, $B7, $B1
-	db	$A6, $89, $B7, $A1
-	db	$20, $33, $03, $A1
-	db	$AF, $3F, $A1, $AD
-	db	$00, $A6, $05, $CC
-	db	$32, $57, $B6, $A2
-	db	$A4, $0F, $27, $71
-	db	$AD, $EC, $AE, $AD
-	db	$CD, $32, $99, $0D
-	db	$A0, $05, $AE, $A3
-	db	$CD, $32, $BD, $CD
-	db	$32, $E3, $BE, $AE
-	db	$BF, $B1, $B3, $AD
-	db	$25, $03, $A6, $8A
-	db	$C1, $A6, $82, $B7
-	db	$A1, $A6, $08, $AD
-	db	$D2, $B6, $AD, $05
-	db	$A1, $04, $B6, $B1
-	db	$1C, $A1, $B7, $58
-	db	$4F, $07, $A1, $03
-	db	$4A, $B7, $58, $AE
-	db	$56, $B7, $57, $A6
-	db	$00, $F7, $AD, $32
-	db	$AE, $56, $A6, $7F
-	db	$F7, $B6, $B1, $A1
-	db	$02, $25, $03, $09
-	db	$A1, $02, $A6, $02
-	db	$E7, $01, $7F, $AD
-	db	$1F, $A6, $03, $00
-	db	$A1, $02, $A6, $02
-	db	$AD, $99, $A6, $04
-	db	$AD, $95, $CD, $33
-	db	$FA, $5F, $AD, $67
-	db	$A4, $20, $26, $05
-	db	$5A, $26, $F7, $3F
-	db	$A1, $81, $AD, $16
-	db	$64, $01, $76, $64
-	db	$01, $76, $64, $01
-	db	$76, $64, $01, $76
-	db	$0D, $A1, $05, $7C
-	db	$7C, $7C, $1D, $A1
-	db	$AD, $00, $F6, $AD
-	db	$59, $F6, $CD, $25
-	db	$25, $5C, $20, $52
+	brset	0,RAM1_0a1,L0111
+	bsr	L015F
+	lda	RAM1_0a2
+	and	#$0F
+	sta	RAM1_0a2
+	jsr	L33F2
+	lda	RAM1_0ad
+	beq	L0153
+	add	#$01
+	bcc	L0155
+	lda	#$02
+	sta	RAM1_0ae
+	sta	RAM1_0b1
+	lda	#$89
+	sta	RAM1_0a1
+	bra	L0192
+;
+L315F:
+	brclr	1,RAM1_0a1,L0111
+	clr	RAM1_0a1
+	bsr	L0166
+L3166:
+	lda	#$05
+	jmp	L3257
+;
+L316B:
+	lda	RAM1_0a2
+	and	#$0F
+	beq	L01E2
+	bsr	L015F
+	ldx	#$AD
+	jsr	L3299
+	brclr	6,RAM1_0a0,L0180
+	ldx	#$A3
+	jsr	L32BD
+	jsr	L32E3
+	ldx	RAM1_0ae
+	stx	RAM1_0b1
+L3187:
+	cpx	RAM1_0ad
+	bcs	L018E
+	lda	#$8A
+	cmp	XA682
+	sta	RAM1_0a1
+	lda	#$08
+	bsr	L0168
+	lda	RAM1_0ad
+	brclr	2,RAM1_0a1,L019F
+	lda	RAM1_0b1
+	bset	6,RAM1_0a1
+	sta	RAM1_058
+	clra
+	brclr	3,RAM1_0a1,L01A8
+	deca
+	sta	RAM1_058
+	ldx	#$56
+	sta	RAM1_057
+	lda	#$00
+	sta	,x
+	bsr	L01E3
+	ldx	#$56
+	lda	#$7F
+	sta	,x
+	lda	RAM1_0b1
+	cmp	#$02
+	bcs	L01BF
+	brclr	4,RAM1_0a1,L01C1
+	lda	#$02
+	sta	PortB,x
+	clr	,x
+	bsr	L01E5
+	lda	#$03
+	brset	0,RAM1_0a1,L01CD
+	lda	#$02
+	bsr	L0168
+	lda	#$04
+	bsr	L0168
+	jsr	L33FA
+	clrx
+	bsr	L0240
+	and	#$20
+	bne	L01E2
+	decx
+	bne	L01D7
+L31E0:
+	clr	RAM1_0a1
+	rts
+;
+	bsr	L01FB
+	lsr	PortB,x
+	ror	,x
+	lsr	PortB,x
+	ror	,x
+	lsr	PortB,x
+	ror	,x
+	lsr	PortB,x
+	ror	,x
+	brclr	6,RAM1_0a1,L01F9
+	inc	,x
+	inc	,x
+	inc	,x
+	bclr	6,RAM1_0a1
+	bsr	L01FB
+L31FB:
+	lda	,x
+	bsr	L0257
+	lda	,x
+	jsr	L2525
+	incx
+	bra	L0257
 ;
 L3205:
 	lda	#$09
@@ -4052,36 +6709,72 @@ L3205:
 	incx
 	rts
 ;
-	db	$AD, $0C, $CD, $25
-	db	$25, $B7, $59, $AD
-	db	$0A, $A4, $F0, $BA
-	db	$59, $81, $A6, $31
-	db	$4A, $26, $FD, $A6
-	db	$1B, $4A, $26, $FD
-	db	$9B, $B6, $06, $A4
-	db	$03, $AB, $0C, $B7
-	db	$06, $9A, $14, $02
-	db	$17, $02, $AD, $45
-	db	$B6, $02, $16, $02
-	db	$81, $A6, $03, $3F
-	db	$5A, $16, $02, $3A
-	db	$5A, $26, $03, $CC
-	db	$31, $E0, $AD, $31
-	db	$17, $02, $CD, $33
-	db	$FA, $08, $02, $ED
-	db	$A1, $05, $27, $06
-	db	$0A, $02, $E6, $C1
-	db	$A6, $02, $CD, $25
-	db	$2C, $AA, $0F, $9B
-	db	$B7, $02, $B6, $06
-	db	$A4, $03, $AB, $FC
-	db	$B7, $06, $9A, $15
-	db	$02, $AD, $0A, $14
-	db	$02, $B6, $06, $A4
-	db	$03, $AB, $0C, $B7
-	db	$06, $CD, $33, $FA
-	db	$81, $11, $58, $20
-	db	$04
+	bsr	L0236
+	jsr	L2525
+	sta	RAM1_059
+	bsr	L023B
+	and	#$F0
+	ora	RAM1_059
+	rts
+;
+	lda	#$31
+	deca
+	bne	L0238
+	lda	#$1B
+	deca
+	bne	L023D
+L3240:
+	sei
+	lda	DDRC
+	and	#$03
+	add	#$0C
+	sta	DDRC
+	cli
+	bset	2,PortC
+	bclr	3,PortC
+	bsr	L0295
+	lda	PortC
+	bset	3,PortC
+	rts
+;
+	lda	#$03
+L3257:
+	clr	RAM1_05a
+	bset	3,PortC
+	dec	RAM1_05a
+	bne	L0262
+	jmp	L31E0
+;
+	bsr	L0295
+	bclr	3,PortC
+	jsr	L33FA
+	brset	4,PortC,L0259
+	cmp	#$05
+	beq	L0276
+	brset	5,PortC,L0259
+	cmp	XA602
+	jsr	L252C
+	ora	#$0F
+	sei
+	sta	PortC
+	lda	DDRC
+	and	#$03
+	add	#$FC
+	sta	DDRC
+	cli
+	bclr	2,PortC
+	bsr	L0295
+	bset	2,PortC
+	lda	DDRC
+	and	#$03
+	add	#$0C
+	sta	DDRC
+	jsr	L33FA
+	rts
+;
+L3299:
+	bclr	0,RAM1_058
+	bra	L02A1
 ;
 L329D:
 	bset	0,RAM1_058
@@ -4111,55 +6804,121 @@ L329D:
 	inc	RAM1_059
 	bra	L02DE
 ;
-	db	$BF, $5A, $BE, $59
-	db	$3C, $59, $D6, $02
-	db	$D8, $BE, $5A, $F7
-	db	$5C, $3A, $56, $26
-	db	$DE
-;
+	stx	RAM1_05a
+	ldx	RAM1_059
+	inc	RAM1_059
+	lda	RAM2_02d8,x
+	ldx	RAM1_05a
+	sta	,x
+	incx
+	dec	RAM1_056
+	bne	L02C1
 L32E3:
 	rts
 ;
-	db	$B6, $A2, $A1, $0F
-	db	$27, $2B, $AB, $10
-	db	$A1, $A0, $24, $25
-	db	$97, $CD, $25, $25
-	db	$B7, $56, $B6, $A2
-	db	$A4, $0F, $B1, $56
-	db	$25, $17, $9F, $20
-	db	$0C, $B6, $A2, $A1
-	db	$0F, $27, $0E, $A4
-	db	$F0, $27, $0A, $A0
-	db	$10, $B8, $A2, $A4
-	db	$F0, $B8, $A2, $20
-	db	$06, $4F, $81, $B6
-	db	$A2, $A4, $0F, $B7
-	db	$A2, $A4, $0F, $81
+	lda	RAM1_0a2
+	cmp	#$0F
+	beq	L0315
+	add	#$10
+	cmp	#$A0
+	bcc	L0315
+	tax
+	jsr	L2525
+	sta	RAM1_056
+	lda	RAM1_0a2
+	and	#$0F
+	cmp	RAM1_056
+	bcs	L0315
+	txa
+	bra	L030D
+;
+	lda	RAM1_0a2
+	cmp	#$0F
+	beq	L0315
+	and	#$F0
+	beq	L0315
+	sub	#$10
+	eor	RAM1_0a2
+	and	#$F0
+	eor	RAM1_0a2
+	bra	L031B
+;
+	clra
+	rts
+;
+	lda	RAM1_0a2
+	and	#$0F
+	sta	RAM1_0a2
+	and	#$0F
+	rts
+;
 X3320:
-	db	$6B, $00, $00, $00
-	db	$50, $54, $58, $00
-	db	$5C, $4D, $81, $81
-	db	$82, $68, $60, $64
-	db	$CC, $31, $3D, $AD
-	db	$AF, $20, $17, $AD
-	db	$C8, $20, $13, $AD
-	db	$DA, $20, $0F, $AD
-	db	$D6, $20, $06, $AD
-	db	$9F, $20, $02, $AD
-	db	$B8, $27, $98, $CC
-	db	$31, $6B, $02, $A1
-	db	$03, $CC, $30, $69
-	db	$1F, $A1, $A6, $01
-	db	$B7, $AF, $81, $B6
-	db	$AD, $B0, $B1, $24
-	db	$02, $A0, $02, $81
-	db	$81, $CD, $31, $5F
-	db	$15, $A1, $AE, $50
-	db	$CD, $32, $99, $CD
-	db	$32, $E3, $B6, $52
-	db	$B7, $AB, $B6, $53
-	db	$B7, $AC, $BE, $B1
-	db	$CC, $31, $87
+	db	$6B
+;
+	brset	0,PortA,L0324
+	negx
+	lsrx
+	aslx
+	brset	0,RAM1_05c,L0377
+	rts
+	rts
+;
+	db	$82
+;
+	asl	RAM1_060,x
+	lsr	STACK_0cc,x
+;
+	db	$31
+;
+	tst	RAM1_0ad
+;
+	db	$AF
+;
+	bra	L034E
+;
+	bsr	L0301
+	bra	L034E
+;
+	bsr	L0317
+	bra	L034E
+;
+	bsr	L0317
+	bra	L0349
+;
+	bsr	L02E4
+	bra	L0349
+;
+	bsr	L0301
+	beq	L02E3
+	jmp	L316B
+;
+	brset	1,RAM1_0a1,L0354
+	jmp	L3069
+;
+	bclr	7,RAM1_0a1
+	lda	#$01
+	sta	RAM1_0af
+	rts
+;
+L335B:
+	lda	RAM1_0ad
+	sub	RAM1_0b1
+	bcc	L0363
+	sub	#$02
+	rts
+	rts
+;
+	jsr	L315F
+	bclr	2,RAM1_0a1
+	ldx	#$50
+	jsr	L3299
+	jsr	L32E3
+	lda	RAM1_052
+	sta	RAM1_0ab
+	lda	RAM1_053
+	sta	RAM1_0ac
+	ldx	RAM1_0b1
+	jmp	L3187
 ;
 L337F:
 	jsr	L3205
@@ -4207,150 +6966,292 @@ L337F:
 	bset	1,RAM1_0a1
 	bra	L03DE
 ;
-	db	$B1, $AE, $24, $04
-	db	$B1, $B1, $24, $D6
-	db	$B6, $A2, $27, $09
-	db	$0B, $A1, $02, $AA
-	db	$0F, $A4, $0F, $B7
-	db	$A2, $3F, $A1, $81
-	db	$AE, $AD, $CD, $32
-	db	$99, $CC, $32, $E3
-	db	$6D, $FF, $6D, $FF
-	db	$81
+	cmp	RAM1_0ae
+	bcc	L03E2
+	cmp	RAM1_0b1
+	bcc	L03B8
+	lda	RAM1_0a2
+	beq	L03EF
+	brclr	5,RAM1_0a1,L03EB
+	ora	#$0F
+	and	#$0F
+	sta	RAM1_0a2
+	clr	RAM1_0a1
+	rts
+;
+L33F2:
+	ldx	#$AD
+	jsr	L3299
+	jmp	L32E3
+;
+L33FA:
+	tst	STACK_0ff,x
+	tst	STACK_0ff,x
+	rts
 ;
 L33FF:
 	brset	7,RAM1_0a0,L0408
+X3402:
 	lda	STACK_0ce
 	and	#$C0
 	beq	L0409
 	rts
 ;
-	db	$0A, $CE, $3C, $03
-	db	$A1, $05, $0F, $A1
-	db	$02, $1A, $7F, $0B
-	db	$7F, $0F, $06, $7F
-	db	$09, $0A, $B9, $06
-	db	$00, $5D, $06, $09
-	db	$BA, $03, $CC, $34
-	db	$EB, $01, $A1, $09
-	db	$0B, $7F, $06, $10
-	db	$5D, $A6, $80, $20
-	db	$14, $0A, $B9, $0C
-	db	$09, $B9, $12, $02
-	db	$A1, $14, $0A, $7F
-	db	$11, $00, $5D, $0E
-	db	$00, $A1, $4C, $A6
-	db	$89, $B7, $A0, $20
-	db	$46, $11, $5D, $00
-	db	$A1, $DF, $0B, $7F
-	db	$3E, $19, $BA, $06
-	db	$CE, $39, $03, $A1
-	db	$06, $14, $CE, $1A
-	db	$CF, $20, $30, $BE
-	db	$CF, $05, $CE, $1E
-	db	$07, $D2, $09, $B6
-	db	$A2, $A4, $F0, $26
-	db	$0E, $CC, $35, $84
-	db	$5C, $26, $77, $1F
-	db	$CF, $A6, $88, $10
-	db	$5D, $20, $0F, $CD
-	db	$35, $A3, $A6, $85
-	db	$20, $0A, $5C, $26
-	db	$0A, $07, $D2, $62
-	db	$A6, $8D, $1D, $80
-	db	$CC, $35, $39, $0D
-	db	$5D, $2B, $06, $7F
-	db	$28, $CC, $35, $CB
-	db	$A6, $44, $1C, $C5
-	db	$20, $30, $06, $CE
-	db	$1C, $06, $8E, $19
-	db	$06, $D2, $76, $0A
-	db	$7F, $46, $81, $06
-	db	$CE, $0F, $A6, $30
-	db	$06, $8E, $08, $03
-	db	$A1, $03, $07, $D2
-	db	$1A, $A6, $B0, $B7
-	db	$77, $81, $09, $BA
-	db	$06, $19, $BA, $A6
-	db	$F1, $20, $07, $A6
-	db	$66, $05, $B8, $02
-	db	$A6, $26, $B7, $B3
-	db	$CC, $35, $68, $A6
-	db	$24, $06, $8E, $C2
-	db	$06, $D2, $42, $0A
-	db	$7F, $06, $0D, $B5
-	db	$E6, $04, $B8, $E3
-	db	$04, $BE, $D6, $03
-	db	$A1, $06, $A6, $80
-	db	$B7, $A0, $20, $77
-	db	$B6, $A2, $A4, $0F
-	db	$0B, $7F, $07, $27
-	db	$6E, $CD, $35, $A3
-	db	$20, $35, $00, $A1
-	db	$02, $27, $0D, $19
-	db	$BA, $A6, $FF, $B7
-	db	$CF, $14, $CE, $A6
-	db	$80, $CC, $34, $8B
-	db	$3F, $C8, $A6, $8A
-	db	$CD, $23, $F3, $A6
-	db	$2C, $CD, $24, $A8
-	db	$81, $CD, $35, $A3
-	db	$A6, $80, $02, $A1
-	db	$13, $B6, $A2, $A1
-	db	$0F, $27, $08, $4A
-	db	$CD, $25, $2C, $B1
-	db	$A2, $24, $03, $A6
-	db	$86, $C1, $A6, $84
-	db	$1A, $7F, $B7, $A0
-	db	$20, $57, $03, $5F
-	db	$03, $CC, $34, $C8
-	db	$0A, $7F, $5A, $14
-	db	$7E, $10, $80, $A6
-	db	$02, $B7, $7F, $AE
-	db	$06, $CD, $25, $57
-	db	$A6, $08, $B7, $CE
-	db	$A6, $26, $B7, $B3
-	db	$1B, $D2, $A6, $14
-	db	$AD, $31, $19, $B3
-	db	$1B, $B6, $81, $1B
-	db	$7F, $13, $CE, $11
-	db	$CE, $17, $D2, $20
-	db	$2A, $0A, $7F, $2D
-	db	$08, $BA, $2A, $B6
-	db	$A2, $A4, $0F, $27
-	db	$93, $A6, $86, $B7
-	db	$A0, $19, $BA, $17
-	db	$D2, $A6, $7D, $1C
-	db	$80, $15, $CE, $B7
-	db	$CF, $12, $CE, $10
-	db	$CE, $1A, $7F, $B7
-	db	$CF, $18, $B3, $1A
-	db	$B3, $1F, $D2, $14
-	db	$CB, $16, $7E, $1E
-	db	$5D, $81, $16, $D2
-	db	$A6, $32, $20, $DF
-	db	$B6, $A2, $A1, $0F
-	db	$26, $04, $A6, $01
-	db	$20, $0B, $CD, $25
-	db	$25, $B7, $5B, $B6
-	db	$A2, $B0, $5B, $A4
-	db	$0F, $B7, $C8, $AB
-	db	$2C, $CD, $24, $A8
-	db	$A6, $8A, $CD, $23
-	db	$EA, $81, $5F, $0B
-	db	$CE, $02, $AE, $0E
-	db	$D6, $35, $E8, $B7
-	db	$56, $D6, $35, $E7
-	db	$27, $0B, $CD, $27
-	db	$97, $26, $F1, $DE
-	db	$35, $E6, $DD, $34
-	db	$99, $81, $E8, $13
-	db	$C8, $3B, $A8, $A6
-	db	$28, $00, $AB, $D9
-	db	$AE, $D9, $08, $06
-	db	$07, $26, $E8, $26
-	db	$00
+	brset	5,STACK_0ce,L0448
+	brclr	1,RAM1_0a1,L0414
+	brclr	7,RAM1_0a1,L0414
+	bset	5,RAM1_07f
+	brclr	5,RAM1_07f,L0426
+	brset	3,RAM1_07f,L0423
+	brset	5,RAM1_0b9,L0423
+	brset	0,RAM1_05d,L0426
+	brclr	4,RAM1_0ba,L0426
+	jmp	L34EB
 ;
+	brclr	0,RAM1_0a1,L0432
+	brclr	5,RAM1_07f,L0432
+	bset	0,RAM1_05d
+	lda	#$80
+	bra	L0446
+;
+	brset	5,RAM1_0b9,L0441
+	brclr	4,RAM1_0b9,L044A
+	brset	1,RAM1_0a1,L044F
+	brset	5,RAM1_07f,L044F
+	brset	0,RAM1_05d,L044F
+	brset	0,RAM1_0a1,L0490
+	lda	#$89
+	sta	RAM1_0a0
+	bra	L0490
+;
+	bclr	0,RAM1_05d
+	brset	0,RAM1_0a1,L042E
+	brclr	5,RAM1_07f,L0490
+	bclr	4,RAM1_0ba
+	brset	3,STACK_0ce,L0490
+	brclr	1,RAM1_0a1,L0460
+	bset	2,STACK_0ce
+	bset	5,STACK_0cf
+	bra	L0490
+;
+	ldx	STACK_0cf
+	brclr	2,STACK_0ce,L0483
+	brclr	3,STACK_0d2,L0471
+	lda	RAM1_0a2
+	and	#$F0
+	bne	L047C
+	jmp	L3584
+;
+	incx
+	bne	L04EB
+	bclr	7,STACK_0cf
+	lda	#$88
+	bset	0,RAM1_05d
+	bra	L048B
+;
+	jsr	L35A3
+	lda	#$85
+	bra	L048D
+;
+	incx
+	bne	L0490
+	brclr	3,STACK_0d2,L04EB
+	lda	#$8D
+L348B:
+	bclr	6,RAM1_080
+	jmp	L3539
+;
+	brclr	6,RAM1_05d,L04BE
+	brset	3,RAM1_07f,L04BE
+	jmp	L35CB
+;
+L3499:
+	lda	#$44
+	bset	6,STACK_0c5
+	bra	L04CF
+;
+	brset	3,STACK_0ce,L04BE
+	brset	3,RAM1_08e,L04BE
+	brset	3,STACK_0d2,L051E
+	brset	5,RAM1_07f,L04F1
+	rts
+;
+	brset	3,STACK_0ce,L04BE
+	lda	#$30
+	brset	3,RAM1_08e,L04BC
+	brclr	1,RAM1_0a1,L04BA
+	brclr	3,STACK_0d2,L04D4
+	lda	#$B0
+	sta	RAM1_077
+	rts
+;
+	brclr	4,RAM1_0ba,L04C8
+	bclr	4,RAM1_0ba
+	lda	#$F1
+	bra	L04CF
+;
+L34C8:
+	lda	#$66
+	brclr	2,RAM1_0b8,L04CF
+	lda	#$26
+	sta	RAM1_0b3
+	jmp	L3568
+;
+	lda	#$24
+	brset	3,RAM1_08e,L049B
+	brset	3,STACK_0d2,L051E
+	brset	5,RAM1_07f,L04E5
+	brclr	6,RAM1_0b5,L04C8
+	brset	2,RAM1_0b8,L04C8
+	brset	2,RAM1_0be,L04BE
+	brclr	1,RAM1_0a1,L04F1
+L34EB:
+	lda	#$80
+	sta	RAM1_0a0
+	bra	L0568
+;
+	lda	RAM1_0a2
+	and	#$0F
+	brclr	5,RAM1_07f,L04FF
+	beq	L0568
+	jsr	L35A3
+	bra	L0534
+;
+	brset	0,RAM1_0a1,L0504
+	beq	L0511
+	bclr	4,RAM1_0ba
+	lda	#$FF
+	sta	STACK_0cf
+	bset	2,STACK_0ce
+	lda	#$80
+	jmp	L348B
+;
+	clr	STACK_0c8
+	lda	#$8A
+	jsr	L23F3
+	lda	#$2C
+	jsr	L24A8
+	rts
+;
+	jsr	L35A3
+	lda	#$80
+	brset	1,RAM1_0a1,L0539
+	lda	RAM1_0a2
+	cmp	#$0F
+	beq	L0534
+	deca
+	jsr	L252C
+	cmp	RAM1_0a2
+	bcc	L0537
+	lda	#$86
+	cmp	XA684
+L3539:
+	bset	5,RAM1_07f
+	sta	RAM1_0a0
+	bra	L0596
+;
+	brclr	1,RAM1_05f,L0545
+	jmp	L34C8
+;
+	brset	5,RAM1_07f,L05A2
+	bset	2,RAM1_07e
+	bset	0,RAM1_080
+	lda	#$02
+	sta	RAM1_07f
+	ldx	#$06
+	jsr	L2557
+	lda	#$08
+	sta	STACK_0ce
+	lda	#$26
+	sta	RAM1_0b3
+	bclr	5,STACK_0d2
+	lda	#$14
+	bsr	L0594
+	bclr	4,RAM1_0b3
+	bclr	5,RAM1_0b6
+	rts
+;
+L3568:
+	bclr	5,RAM1_07f
+	bclr	1,STACK_0ce
+	bclr	0,STACK_0ce
+	bclr	3,STACK_0d2
+	bra	L059C
+;
+	brset	5,RAM1_07f,L05A2
+	brset	4,RAM1_0ba,L05A2
+	lda	RAM1_0a2
+	and	#$0F
+	beq	L0511
+	lda	#$86
+	sta	RAM1_0a0
+	bclr	4,RAM1_0ba
+L3584:
+	bclr	3,STACK_0d2
+	lda	#$7D
+	bset	6,RAM1_080
+	bclr	2,STACK_0ce
+	sta	STACK_0cf
+	bset	1,STACK_0ce
+	bset	0,STACK_0ce
+	bset	5,RAM1_07f
+	sta	STACK_0cf
+	bset	4,RAM1_0b3
+	bset	5,RAM1_0b3
+	bclr	7,STACK_0d2
+	bset	2,STACK_0cb
+	bset	3,RAM1_07e
+	bset	7,RAM1_05d
+	rts
+;
+L35A3:
+	bset	3,STACK_0d2
+	lda	#$32
+	bra	L0588
+;
+L35A9:
+	lda	RAM1_0a2
+	cmp	#$0F
+	bne	L05B3
+	lda	#$01
+	bra	L05BE
+;
+	jsr	L2525
+	sta	RAM1_05b
+	lda	RAM1_0a2
+	sub	RAM1_05b
+	and	#$0F
+	sta	STACK_0c8
+	add	#$2C
+	jsr	L24A8
+	lda	#$8A
+	jsr	L23EA
+	rts
+;
+L35CB:
+	clrx
+	brclr	5,STACK_0ce,L05D1
+	ldx	#$0E
+	lda	X35E8,x
+	sta	RAM1_056
+	lda	X35E7,x
+	beq	L05E6
+	jsr	L2797
+	bne	L05D1
+	ldx	X35E6,x
+	jsr	L3499,x						;INFO: index jump
+X35E6:
+	rts
+;
+X35E7:
+	eor	TSR,x
+	eor	X3BA8
+	lda	#$28
+	brset	0,RAM1_0ab,L05CA
+	ldx	#$D9
+	brset	4,DDRC,L05FD
+	bne	L05E0
+	bne	L05FA
 L35FA:
 	bsr	L0648
 	beq	L060C
@@ -4398,10 +7299,11 @@ L3648:
 	cmp	RAM1_08d
 	rts
 ;
-	db	$03, $8B, $02, $14
-	db	$8B, $B6, $8B, $C1
-	db	$A6, $08
-;
+L3655:
+	brclr	1,RAM1_08b,L065A
+	bset	2,RAM1_08b
+	lda	RAM1_08b
+	cmp	XA608
 L365F:
 	ldx	#$63
 	jsr	L3786
@@ -4416,20 +7318,36 @@ L3669:
 	bset	1,STACK_0d6
 	rts
 ;
-	db	$13, $D6, $06, $10
-	db	$2E, $04, $D6, $2B
-	db	$B6, $11, $0C, $BA
-	db	$03, $0B, $BA, $23
-	db	$00, $D6, $0F, $2B
-	db	$1B, $06, $D6, $1B
-	db	$C7, $02, $71, $10
-	db	$D6, $A4, $07, $B7
-	db	$D7, $81, $BE, $D7
-	db	$D7, $02, $72, $3A
-	db	$D7, $2A, $04, $16
-	db	$D6, $11, $D6, $81
-	db	$B7, $D8, $81, $14
-	db	$D6, $10, $D6, $81
+L3676:
+	bclr	1,STACK_0d6
+	brset	3,SCSR,L06A9
+	brset	2,STACK_0d6,L06A9
+	lda	SCDR
+	brset	6,RAM1_0ba,L0686
+	brclr	5,RAM1_0ba,L06A9
+	brset	0,STACK_0d6,L0698
+	bmi	L06A6
+	brset	3,STACK_0d6,L06A9
+	sta	RAM2_0271
+	bset	0,STACK_0d6
+	and	#$07
+	sta	STACK_0d7
+	rts
+;
+	ldx	STACK_0d7
+	sta	RAM2_0272,x
+	dec	STACK_0d7
+	bpl	L06A5
+	bset	3,STACK_0d6
+	bclr	0,STACK_0d6
+	rts
+;
+	sta	STACK_0d8
+	rts
+;
+	bset	2,STACK_0d6
+	bset	0,STACK_0d6
+	rts
 ;
 L36AE:
 	brclr	7,STACK_0d6,L06F1
@@ -4465,7 +7383,8 @@ L36AE:
 	bclr	1,RAM1_0bf
 	rts
 ;
-	db	$11, $BF, $81
+	bclr	0,RAM1_0bf
+	rts
 ;
 L36F2:
 	brclr	6,STACK_0d6,L0712
@@ -4479,10 +7398,13 @@ L36F2:
 	sta	SCDR
 	rts
 ;
-	db	$4F, $4A, $27, $03
-	db	$0F, $10, $FA, $D6
-	db	$02, $7A, $B7, $11
-	db	$81
+	clra
+	deca
+	beq	L070D
+	brclr	7,SCSR,L0707
+	lda	RAM2_027a,x
+	sta	SCDR
+	rts
 ;
 L3713:
 	clr	RAM1_05d
@@ -4525,8 +7447,7 @@ L3713:
 	lda	#$02
 	sta	RAM1_07f
 	rts
-;
-	db	$81
+	rts
 ;
 L3769:
 	tst	RAM1_05c
@@ -4573,11 +7494,17 @@ L379B:
 	cli
 	rts
 ;
-	db	$D7, $01, $00, $10
-	db	$07, $9A, $CD, $25
-	db	$3F, $9B, $B6, $59
-	db	$13, $07, $81, $97
+	sta	OPTR,x
+	bset	0,EEPROM_ECLK_control
+	cli
+	jsr	L253F
+	sei
+	lda	RAM1_059
+	bclr	1,EEPROM_ECLK_control
+	rts
 ;
+L37C6:
+	tax
 L37C7:
 	lda	OPTR,x
 	rts
@@ -4590,47 +7517,100 @@ L37CB:
 	jmp	L387A
 ;
 L37D7:
-	db	$B6, $D0, $2B, $5D
-	db	$A4, $70, $A1, $60
-	db	$22, $05, $03, $81
-	db	$08, $26, $06, $4F
-	db	$07, $8E, $02, $AB
-	db	$10, $AB, $10, $B7
-	db	$D0, $CD, $25, $25
-	db	$AB, $A8, $CD, $37
-	db	$C6, $A4, $07, $BB
-	db	$D0, $20, $28, $B6
-	db	$D0, $CD, $25, $25
-	db	$97, $B6, $78, $A1
-	db	$17, $27, $2E, $22
-	db	$0C, $B6, $D0, $D1
-	db	$38, $38, $22, $0E
-	db	$27, $11, $4C, $20
-	db	$0E, $B6, $D0, $D1
-	db	$38, $3F, $22, $06
-	db	$27, $05, $D6, $38
-	db	$38, $B1, $4A, $B7
-	db	$D0, $CD, $25, $25
-	db	$AB, $A8, $97, $B6
-	db	$D0, $A4, $07, $CD
-	db	$37, $9B, $CC, $38
-	db	$47, $81, $15, $25
+	lda	STACK_0d0
+	bmi	L0038
+	and	#$70
+	cmp	#$60
+	bhi	L07E6
+	brclr	1,RAM1_081,L07EC
+	bne	L07EC
+	clra
+	brclr	3,RAM1_08e,L07EC
+	add	#$10
+	add	#$10
+	sta	STACK_0d0
+	jsr	L2525
+	add	#$A8
+	jsr	L37C6
+	and	#$07
+	add	STACK_0d0
+	bra	L0026
+;
+	lda	STACK_0d0
+	jsr	L2525
+	tax
+	lda	RAM1_078
+	cmp	#$17
+	beq	L0038
+	bhi	L0018
+	lda	STACK_0d0
+	cmp	X3838,x
+	bhi	L0021
+	beq	L0026
+	inca
+	bra	L0026
+;
+	lda	STACK_0d0
+	cmp	X383F,x
+	bhi	L0025
+	beq	L0026
+	lda	X3838,x
+	cmp	X004A
+	sta	STACK_0d0
+	jsr	L2525
+	add	#$A8
+	tax
+	lda	STACK_0d0
+	and	#$07
+	jsr	L379B
+	jmp	L3847
+X3838:
+	rts
+;
+	bclr	2,X0025
+;
 	db	$35, $41, $51, $65
-	db	$71, $11, $20, $31
-	db	$40, $50, $61, $70
-	db	$A6, $00, $CD, $24
-	db	$81, $B6, $D0, $2A
-	db	$01, $81, $A4, $70
-	db	$44, $CD, $24, $5B
-	db	$B6, $D0, $A4, $07
-	db	$A1, $01, $27, $16
-	db	$25, $07, $AA, $30
-	db	$C7, $02, $5C, $20
-	db	$0D, $B6, $D0, $A0
-	db	$10, $44, $44, $A4
-	db	$18, $AB, $40, $CD
-	db	$24, $5B, $A6, $C4
-	db	$CC, $23, $EA
+X383F:
+	db	$71
+;
+	bclr	0,X0020
+;
+	db	$31
+;
+	nega
+	negx
+;
+	db	$61
+;
+	neg	,x
+L3847:
+	lda	#$00
+	jsr	L2481
+	lda	STACK_0d0
+	bpl	L0051
+	rts
+;
+	and	#$70
+	lsra
+	jsr	L245B
+	lda	STACK_0d0
+	and	#$07
+	cmp	#$01
+	beq	L0075
+	bcs	L0068
+	ora	#$30
+	sta	RAM2_025c
+	bra	L0075
+;
+	lda	STACK_0d0
+	sub	#$10
+	lsra
+	lsra
+	and	#$18
+	add	#$40
+	jsr	L245B
+	lda	#$C4
+	jmp	L23EA
 ;
 L387A:
 	clrx
@@ -4649,17 +7629,23 @@ X3897:
 	rts
 ;
 X3898:
-	db	$E8
-X3899:
-	db	$00, $07, $00, $1F
-	db	$27, $00, $A6, $05
-	db	$B7, $63, $A6, $80
-	db	$CD, $39, $79, $27
-	db	$0A, $CD, $07, $89
-	db	$CD, $25, $3F, $3D
-	db	$63, $26, $EF, $CD
-	db	$25, $3F, $1D, $01
-	db	$3F, $9E, $81
+	eor	PortA,x
+	brclr	3,PortA,L00BC
+	beq	L009F
+L389F:
+	lda	#$05
+	sta	RAM1_063
+	lda	#$80
+	jsr	L3979
+	beq	L00B4
+	jsr	L0789
+	jsr	L253F
+	tst	RAM1_063
+	bne	L00A3
+	jsr	L253F
+	bclr	6,PortB
+	clr	RAM1_09e
+	rts
 ;
 L38BC:
 	bset	1,RAM1_05d
@@ -4678,10 +7664,13 @@ L38BC:
 	bclr	2,RAM1_09e
 	jmp	L077D
 ;
-	db	$CD, $25, $3F, $CD
-	db	$25, $3F, $AD, $5C
-	db	$3F, $9F, $CD, $24
-	db	$12, $81, $20, $EB
+	jsr	L253F
+	jsr	L253F
+	bsr	L0143
+	clr	RAM1_09f
+	jsr	L2412
+	rts
+	bra	L00DA
 ;
 L38EF:
 	lda	RAM1_09e
@@ -4698,21 +7687,34 @@ L38EF:
 	bclr	1,RAM1_05d
 	rts
 ;
-	db	$05, $9E, $13, $C6
-	db	$02, $56, $AE, $07
-	db	$0F, $9E, $0C, $07
-	db	$9E, $22, $A6, $D0
-	db	$AD, $5E, $26, $02
-	db	$17, $9E, $81, $0D
-	db	$9E, $0C, $06, $9E
-	db	$13, $A6, $C0, $AD
-	db	$4F, $26, $F3, $16
-	db	$9E, $81, $A6, $13
-	db	$5F, $0A, $9E, $04
-	db	$A6, $23, $AE, $03
-	db	$CD, $39, $79, $26
-	db	$E1, $AE, $9E, $CC
-	db	$25, $7C
+	brclr	2,RAM1_09e,L011F
+	lda	RAM2_0256
+	ldx	#$07
+	brclr	7,RAM1_09e,L0120
+	brclr	3,RAM1_09e,L0139
+	lda	#$D0
+	bsr	L0179
+	bne	L011F
+	bclr	3,RAM1_09e
+	rts
+;
+	brclr	6,RAM1_09e,L012F
+	brset	3,RAM1_09e,L0139
+	lda	#$C0
+	bsr	L0179
+	bne	L011F
+	bset	3,RAM1_09e
+	rts
+;
+	lda	#$13
+	clrx
+	brset	5,RAM1_09e,L0139
+	lda	#$23
+	ldx	#$03
+	jsr	L3979
+	bne	L011F
+	ldx	#$9E
+	jmp	L257C
 ;
 L3943:
 	brclr	2,RAM1_09e,L00ED
@@ -4741,16 +7743,27 @@ L3943:
 	bset	6,RAM1_09f
 	bra	L0194
 ;
-	db	$B7, $56, $A4, $0F
-	db	$4C, $B7, $57, $A6
-	db	$9A, $AD, $20, $27
-	db	$15, $B6, $56, $AD
-	db	$39, $27, $0F, $D6
-	db	$02, $50, $5C, $3D
-	db	$57, $2A, $F4, $12
-	db	$9E, $10, $9E, $4F
-	db	$20, $02, $3A, $9E
+L3979:
+	sta	RAM1_056
+	and	#$0F
+	inca
+	sta	RAM1_057
+	lda	#$9A
+	bsr	L01A4
+	beq	L019B
+	lda	RAM1_056
+	bsr	L01C3
+	beq	L019B
+	lda	RAM2_0250,x
+	incx
+	tst	RAM1_057
+	bpl	L0188
+	bset	1,RAM1_09e
+	bset	0,RAM1_09e
+	clra
+	bra	L019D
 ;
+	dec	RAM1_09e
 L399D:
 	bclr	1,DDRA
 	bset	2,PortA
@@ -4773,23 +7786,46 @@ L39A4:
 	clra
 	rts
 ;
-	db	$B6, $58, $99, $49
-	db	$15, $00, $13, $00
-	db	$24, $04, $13, $04
-	db	$20, $02, $12, $04
-	db	$14, $00, $48, $26
-	db	$EF, $15, $00, $CD
-	db	$3A, $04, $13, $04
-	db	$3D, $57, $26, $01
-	db	$9B, $A6, $38, $01
-	db	$00, $05, $4A, $26
-	db	$FA, $9A, $81, $14
-	db	$00, $9A, $3A, $57
-	db	$2B, $11, $CD, $25
-	db	$4E, $4F, $00, $00
-	db	$0A, $A6, $38, $15
-	db	$00, $00, $00, $03
-	db	$4A, $26, $FA, $81
+	lda	RAM1_058
+	sec
+	rola
+	bclr	2,PortA
+	bclr	1,PortA
+	bcc	L01CF
+	bclr	1,DDRA
+	bra	L01D1
+;
+	bset	1,DDRA
+	bset	2,PortA
+	asla
+	bne	L01C5
+	bclr	2,PortA
+	jsr	L3A04
+	bclr	1,DDRA
+	tst	RAM1_057
+	bne	L01E2
+	sei
+	lda	#$38
+	brclr	0,PortA,L01EC
+	deca
+	bne	L01E4
+	cli
+	rts
+;
+	bset	2,PortA
+	cli
+	dec	RAM1_057
+	bmi	L0204
+	jsr	L254E
+	clra
+	brset	0,PortA,L0204
+	lda	#$38
+	bclr	2,PortA
+	brset	0,PortA,L0204
+	deca
+	bne	L01FE
+L3A04:
+	rts
 ;
 L3A05:
 	clra
@@ -4875,25 +7911,41 @@ L3A9D:
 	bset	0,RAM1_05b
 	bra	L02BF
 ;
-	db	$09, $7C, $EB, $AE
-	db	$0D, $CD, $3C, $BB
-	db	$C6, $02, $CD, $2A
-	db	$E1, $A6, $04, $20
-	db	$0F, $B7, $50, $AE
-	db	$0D, $01, $5B, $00
-	db	$CD, $3C, $C9, $01
-	db	$5B, $D0, $B6, $50
-	db	$AE, $CF, $CC, $37
-	db	$9B, $0F, $60, $22
-	db	$0D, $5D, $1F, $AE
-	db	$23, $D6, $3F, $91
-	db	$5A, $5A, $B1, $78
-	db	$26, $11, $D6, $3F
-	db	$91, $C7, $02, $D3
-	db	$D6, $3F, $92, $C7
-	db	$02, $D4, $A6, $FF
-	db	$C7, $02, $D5, $5A
-	db	$26, $E3, $81
+	brclr	4,RAM1_07c,L029C
+	ldx	#$0D
+	jsr	L3CBB
+	lda	RAM2_02cd
+	bpl	L029C
+	lda	#$04
+	bra	L02CE
+;
+	sta	RAM1_050
+	ldx	#$0D
+	brclr	0,RAM1_05b,L02C6
+	jsr	L3CC9
+	brclr	0,RAM1_05b,L029C
+	lda	RAM1_050
+	ldx	#$CF
+	jmp	L379B
+;
+L3AD3:
+	brclr	7,RAM1_060,L02F8
+	brclr	6,RAM1_05d,L02F8
+	ldx	#$23
+	lda	X3F91,x
+	decx
+	decx
+	cmp	RAM1_078
+	bne	L02F5
+	lda	X3F91,x
+	sta	RAM2_02d3
+	lda	X3F92,x
+	sta	RAM2_02d4
+	lda	#$FF
+	sta	RAM2_02d5
+	decx
+	bne	L02DB
+	rts
 ;
 L3AF9:
 	brclr	2,RAM1_091,L0334
@@ -4964,21 +8016,34 @@ L3AF9:
 	sta	RAM2_02d1
 	bra	L03B3
 ;
-	db	$C6, $02, $D1, $A5
-	db	$08, $26, $06, $4C
-	db	$C7, $02, $D1, $20
-	db	$14, $9B, $0E, $01
-	db	$10, $A6, $23, $CD
-	db	$24, $C5, $C7, $02
-	db	$D2, $C6, $02, $D1
-	db	$AA, $80, $C7, $02
-	db	$D1, $9A, $0F, $60
-	db	$15, $10, $80, $C6
-	db	$02, $D5, $27, $0E
-	db	$4A, $C7, $02, $D5
-	db	$26, $08, $A6, $20
-	db	$C7, $02, $D3, $C7
-	db	$02, $D4, $81
+	lda	RAM2_02d1
+	bit	#$08
+	bne	L039F
+	inca
+	sta	RAM2_02d1
+	bra	L03B3
+;
+	sei
+	brset	7,PortB,L03B3
+	lda	#$23
+	jsr	L24C5
+X3BA8:
+	sta	RAM2_02d2
+	lda	RAM2_02d1
+	ora	#$80
+	sta	RAM2_02d1
+	cli
+	brclr	7,RAM1_060,L03CC
+	bset	0,RAM1_080
+	lda	RAM2_02d5
+	beq	L03CC
+	deca
+	sta	RAM2_02d5
+	bne	L03CC
+	lda	#$20
+	sta	RAM2_02d3
+	sta	RAM2_02d4
+	rts
 ;
 L3BCD:
 	lda	RAM2_02d7
@@ -4995,8 +8060,9 @@ L3BCD:
 	jsr	L3E9D
 	rts
 ;
-	db	$A6, $32, $B7, $90
-	db	$81
+	lda	#$32
+	sta	RAM1_090
+	rts
 ;
 L3BF2:
 	clrx
@@ -5053,26 +8119,39 @@ L3BF2:
 	sta	RAM2_02d1
 	bra	L046F
 ;
-	db	$1A, $8F, $15, $BC
-	db	$18, $BC, $AE, $04
-	db	$03, $01, $0C, $0A
-	db	$91, $00, $AD, $42
-	db	$C6, $02, $C4, $2A
-	db	$02, $13, $01, $AE
-	db	$05, $06, $91, $00
-	db	$AD, $31, $AE, $09
-	db	$01, $01, $0C, $08
-	db	$91, $00, $AD, $2A
-	db	$C6, $02, $C9, $2A
-	db	$02, $11, $01, $05
-	db	$8E, $11, $03, $5F
-	db	$0E, $B6, $9C, $A1
-	db	$F4, $22, $08, $AE
-	db	$0A, $09, $6A, $00
-	db	$CD, $3C, $B8, $03
-	db	$8E, $08, $AE, $0B
-	db	$0D, $6A, $00, $CD
-	db	$3C, $B8, $81
+	bset	5,RAM1_08f
+	bclr	2,RAM1_0bc
+	bset	4,RAM1_0bc
+	ldx	#$04
+	brclr	1,PortB,L0480
+	brset	5,RAM1_091,L0477
+	bsr	L04BB
+	lda	RAM2_02c4
+	bpl	L0480
+	bclr	1,PortB
+	ldx	#$05
+	brset	3,RAM1_091,L0485
+	bsr	L04B8
+	ldx	#$09
+	brclr	0,PortB,L0498
+	brset	4,RAM1_091,L048F
+	bsr	L04BB
+	lda	RAM2_02c9
+	bpl	L0498
+	bclr	0,PortB
+	brclr	2,RAM1_08e,L04AC
+	brclr	1,RAM1_05f,L04AC
+	lda	RAM1_09c
+	cmp	#$F4
+	bhi	L04AC
+	ldx	#$0A
+	brclr	4,RAM1_06a,L04A9
+	jsr	L3CB8
+	brclr	1,RAM1_08e,L04B7
+	ldx	#$0B
+	brclr	6,RAM1_06a,L04B4
+	jsr	L3CB8
+	rts
 ;
 L3CB8:
 	rora
@@ -5085,8 +8164,9 @@ L3CBB:
 	bcc	L04E2
 	bra	L04CE
 ;
-	db	$46, $43, $49
-;
+	rora
+	coma
+	rola
 L3CC9:
 	lda	RAM2_02c0,x
 	bcs	L04EB
@@ -5099,9 +8179,11 @@ L3CC9:
 	deca
 	bra	L04ED
 ;
-	db	$2B, $20, $AB, $02
-	db	$D7, $02, $C0, $2B
-	db	$04, $81
+	bmi	L0500
+	add	#$02
+	sta	RAM2_02c0,x
+	bmi	L04EB
+	rts
 ;
 L3CE8:
 	clra
@@ -5120,109 +8202,204 @@ L3CEB:
 	jsr	L379B
 	rts
 ;
-	db	$C6, $02, $B3, $A1
-	db	$03, $26, $11, $C6
-	db	$02, $B4, $A1, $53
-	db	$26, $03, $10, $90
-	db	$81, $A6, $06, $CD
-	db	$24, $9F, $1F, $5D
-	db	$81, $DE, $3D, $20
-	db	$DC, $3D, $28, $00
-	db	$00, $20, $32, $4F
-	db	$65, $6A, $7C, $4F
-	db	$0E, $91, $02, $A6
-	db	$08, $C7, $02, $B5
-	db	$A6, $27, $CD, $24
-	db	$C5, $C7, $02, $B8
-	db	$4F, $05, $5F, $03
-	db	$C6, $02, $A4, $C7
-	db	$02, $BB, $02, $5F
-	db	$3E, $20, $3C, $10
-	db	$90, $A6, $F3, $00
-	db	$8F, $07, $A6, $F2
-	db	$02, $8F, $02, $A6
-	db	$C2, $C7, $02, $B8
-	db	$81, $1A, $8F, $01
-	db	$8E, $05, $A6, $12
-	db	$C7, $02, $B5, $A6
-	db	$F2, $08, $8F, $0A
-	db	$A6, $C2, $07, $8F
-	db	$05, $01, $8E, $02
-	db	$A6, $F3, $C7, $02
-	db	$BB, $81, $4F, $12
-	db	$01, $0B, $91, $01
-	db	$4C, $C7, $02, $B5
-	db	$06, $5F, $00, $A6
-	db	$87, $25, $01, $4C
-	db	$C7, $02, $BE, $81
-	db	$0C, $6A, $0B, $20
-	db	$09, $1A, $D5, $CD
-	db	$24, $B4, $C6, $02
-	db	$D7, $49, $A6, $C2
-	db	$25, $01, $4C, $C7
-	db	$02, $B8, $81, $C6
-	db	$02, $D3, $C7, $02
-	db	$B4, $C6, $02, $D4
-	db	$C7, $02, $B5, $81
-	db	$3F, $5B, $07, $8E
-	db	$02, $3C, $5B, $C6
-	db	$02, $B3, $AE, $80
-	db	$CD, $37, $86, $C6
-	db	$02, $B4, $AE, $81
-	db	$CD, $37, $86, $C6
-	db	$02, $B5, $AE, $82
-	db	$CD, $37, $86, $C6
-	db	$02, $B6, $AE, $83
-	db	$CD, $37, $86, $A6
-	db	$5A, $AE, $72, $CD
-	db	$37, $86, $CD, $3E
-	db	$EE, $07, $8E, $2E
-	db	$3D, $5B, $26, $2A
-	db	$AE, $12, $CD, $3E
-	db	$B2, $AE, $00, $CD
-	db	$3E, $C0, $A6, $0D
-	db	$CD, $3E, $C8, $C6
-	db	$02, $7C, $4A, $2A
-	db	$F7, $AE, $30, $CD
-	db	$3E, $B2, $AE, $02
-	db	$CD, $3E, $C0, $A6
-	db	$1B, $CD, $3E, $C8
-	db	$C6, $02, $7C, $4A
-	db	$2A, $F7, $81, $A6
-	db	$81, $B7, $D0, $A6
-	db	$41, $B7, $CE, $10
-	db	$80, $1E, $94, $1F
-	db	$60, $1D, $60, $1E
-	db	$5D, $81, $AE, $CF
-	db	$4F, $A3, $BE, $22
-	db	$03, $D6, $3D, $CF
-	db	$CD, $37, $9B, $CD
-	db	$07, $89, $5A, $A3
-	db	$A0, $24, $ED, $AE
-	db	$80, $A6, $03, $CD
-	db	$37, $86, $AE, $81
-	db	$A6, $22, $CD, $37
-	db	$86, $A6, $00, $AE
-	db	$72, $CD, $37, $86
-	db	$A6, $46, $CD, $23
-	db	$EA, $CD, $1E, $B4
-	db	$CD, $38, $EF, $CD
-	db	$07, $89, $20, $FB
-	db	$AE, $63, $A6, $A0
-	db	$CD, $37, $86, $CD
-	db	$24, $50, $A6, $C4
-	db	$20, $E4, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $02, $08, $03
-	db	$03, $03, $00, $00
-	db	$03, $00, $02, $00
-	db	$00, $10, $10, $10
-	db	$10, $10, $10, $00
-	db	$00, $00, $00, $00
-	db	$00, $00
+L3D01:
+	lda	RAM2_02b3
+	cmp	#$03
+	bne	L0519
+	lda	RAM2_02b4
+	cmp	#$53
+	bne	L0512
+	bset	0,RAM1_090
+	rts
 ;
-L3E8F:
-	bclr	1,RAM1_08f
+	lda	#$06
+	jsr	L249F
+	bclr	7,RAM1_05d
+	rts
+;
+L3D1A:
+	ldx	X3D20,x
+	jmp	L3D28,x						;INFO: index jump
+;
+X3D20:
+	brset	0,PortA,L0543
+;
+	db	$32
+;
+	clra
+;
+	db	$65
+;
+	dec	RAM1_07c,x
+L3D28:
+	clra
+	brset	7,RAM1_091,L052E
+	lda	#$08
+	sta	RAM2_02b5
+	lda	#$27
+	jsr	L24C5
+	sta	RAM2_02b8
+	clra
+	brclr	2,RAM1_05f,L0540
+	lda	RAM2_02a4
+	sta	RAM2_02bb
+	brset	1,RAM1_05f,L0584
+	bra	L0584
+;
+	bset	0,RAM1_090
+	lda	#$F3
+	brset	0,RAM1_08f,L0556
+	lda	#$F2
+	brset	1,RAM1_08f,L0556
+	lda	#$C2
+	sta	RAM2_02b8
+	rts
+;
+	bset	5,RAM1_08f
+	brclr	0,RAM1_08e,L0564
+	lda	#$12
+	sta	RAM2_02b5
+	lda	#$F2
+	brset	4,RAM1_08f,L0573
+	lda	#$C2
+	brclr	3,RAM1_08f,L0573
+	brclr	0,RAM1_08e,L0573
+	lda	#$F3
+	sta	RAM2_02bb
+	rts
+;
+	clra
+	bset	1,PortB
+	brclr	5,RAM1_091,L057E
+	inca
+	sta	RAM2_02b5
+	brset	3,RAM1_05f,L0584
+	lda	#$87
+	bcs	L0589
+	inca
+	sta	RAM2_02be
+	rts
+;
+	brset	6,RAM1_06a,L059B
+	bra	L059B
+;
+	bset	5,STACK_0d5
+	jsr	L24B4
+	lda	RAM2_02d7
+	rola
+	lda	#$C2
+	bcs	L05A0
+	inca
+	sta	RAM2_02b8
+	rts
+;
+	lda	RAM2_02d3
+	sta	RAM2_02b4
+	lda	RAM2_02d4
+	sta	RAM2_02b5
+	rts
+;
+L3DB1:
+	clr	RAM1_05b
+	brclr	3,RAM1_08e,L05B8
+	inc	RAM1_05b
+	lda	RAM2_02b3
+	ldx	#$80
+	jsr	L3786
+	lda	RAM2_02b4
+	ldx	#$81
+	jsr	L3786
+	lda	RAM2_02b5
+	ldx	#$82
+	jsr	L3786
+	lda	RAM2_02b6
+	ldx	#$83
+	jsr	L3786
+	lda	#$5A
+	ldx	#$72
+	jsr	L3786
+	jsr	L3EEE
+	brclr	3,RAM1_08e,L0613
+	tst	RAM1_05b
+	bne	L0613
+	ldx	#$12
+	jsr	L3EB2
+	ldx	#$00
+	jsr	L3EC0
+	lda	#$0D
+	jsr	L3EC8
+	lda	RAM2_027c
+	deca
+	bpl	L05F5
+	ldx	#$30
+	jsr	L3EB2
+	ldx	#$02
+	jsr	L3EC0
+	lda	#$1B
+	jsr	L3EC8
+	lda	RAM2_027c
+	deca
+	bpl	L060A
+	rts
+;
+	lda	#$81
+	sta	STACK_0d0
+	lda	#$41
+	sta	STACK_0ce
+	bset	0,RAM1_080
+	bset	7,RAM1_094
+	bclr	7,RAM1_060
+	bclr	6,RAM1_060
+	bset	7,RAM1_05d
+	rts
+;
+L3E27:
+	ldx	#$CF
+	clra
+	cpx	#$BE
+	bhi	L0631
+	lda	X3DCF,x
+	jsr	L379B
+	jsr	L0789
+	decx
+	cpx	#$A0
+	bcc	L0629
+	ldx	#$80
+	lda	#$03
+	jsr	L3786
+	ldx	#$81
+	lda	#$22
+	jsr	L3786
+	lda	#$00
+	ldx	#$72
+	jsr	L3786
+	lda	#$46
+	jsr	L23EA
+	jsr	L1EB4
+	jsr	L38EF
+	jsr	L0789
+	bra	L065C
+;
+L3E61:
+	ldx	#$63
+	lda	#$A0
+	jsr	L3786
+	jsr	L2450
+	lda	#$C4
+	bra	L0653
+;
+	brset	0,PortA,L0672
+	brset	0,PortA,L0675
+	brset	0,PortC,L0680
+	brclr	1,PortD,L067E
+	brset	0,PortA,L0681
+	brset	0,PortC,L0681
+	brset	0,SCSR,L0694
+	bset	0,SCSR
+	bset	0,SCSR
+	brset	0,PortA,L068B
+	brset	0,PortA,L068E
+	brset	0,TSR,L0620
 	cmp	#$A9
 	bhi	L069D
 	cmp	#$0B
@@ -5241,21 +8418,37 @@ L3E9D:
 	jsr	L3CC9
 	rts
 ;
-	db	$A6, $89, $C7, $02
-	db	$7D, $A6, $8A, $C7
-	db	$02, $7C, $A6, $0A
-	db	$20, $0F, $4F, $C7
-	db	$02, $7C, $A6, $11
-	db	$20, $07, $C7, $02
-	db	$7C, $A6, $19, $AE
-	db	$89, $C7, $02, $7A
-	db	$CF, $02, $7B, $1E
-	db	$D6, $3F, $D9, $CD
-	db	$07, $89, $CD, $47
-	db	$F4, $07, $67, $F7
-	db	$17, $67, $CD, $36
-	db	$AE, $CD, $47, $AA
-	db	$0E, $D6, $EC, $81
+L3EB2:
+	lda	#$89
+	sta	RAM2_027d
+	lda	#$8A
+	sta	RAM2_027c
+	lda	#$0A
+	bra	L06CF
+;
+L3EC0:
+	clra
+	sta	RAM2_027c
+	lda	#$11
+	bra	L06CF
+;
+L3EC8:
+	sta	RAM2_027c
+	lda	#$19
+	ldx	#$89
+	sta	RAM2_027a
+	stx	RAM2_027b
+	bset	7,STACK_0d6
+	clr	STACK_0d9
+	jsr	L0789
+	jsr	L47F4
+	brclr	3,RAM1_067,L06D9
+	bclr	3,RAM1_067
+	jsr	L36AE
+X3EE7:
+	jsr	L47AA
+	brset	7,STACK_0d6,L06D9
+	rts
 ;
 L3EEE:
 	ldx	EEPROM_0120
@@ -5289,48 +8482,101 @@ L3EEE:
 	bset	1,RAM1_081
 	rts
 ;
-	db	$BF, $50, $B7, $51
-	db	$A4, $0F, $A1, $09
-	db	$23, $02, $AB, $06
-	db	$B7, $58, $3F, $57
-	db	$3F, $56, $5F, $B6
-	db	$51, $AD, $0B, $B6
-	db	$50, $AD, $04, $B6
-	db	$50, $20, $03, $CD
-	db	$25, $2C, $CD, $25
-	db	$25, $B7, $52, $27
-	db	$32, $1E, $59, $D6
-	db	$3F, $8C, $BB, $58
-	db	$25, $04, $1F, $59
-	db	$A0, $60, $29, $02
-	db	$A0, $06, $B7, $58
-	db	$39, $59, $1E, $59
-	db	$D6, $3F, $8B, $B9
-	db	$57, $25, $04, $1F
-	db	$59, $A0, $60, $29
-	db	$02
+L3F2D:
+	stx	RAM1_050
+	sta	RAM1_051
+	and	#$0F
+	cmp	#$09
+	bls	L0739
+	add	#$06
+	sta	RAM1_058
+	clr	RAM1_057
+	clr	RAM1_056
+	clrx
+	lda	RAM1_051
+	bsr	L074F
+	lda	RAM1_050
+	bsr	L074C
+	lda	RAM1_050
+	bra	L074F
+;
+	jsr	L252C
+	jsr	L2525
+	sta	RAM1_052
+	beq	L0788
+	bset	7,RAM1_059
+	lda	X3F8C,x
+	add	RAM1_058
+	bcs	L0763
+	bclr	7,RAM1_059
+	sub	#$60
+	bhcs	L0767
+	sub	#$06
+	sta	RAM1_058
+	rol	RAM1_059
+	bset	7,RAM1_059
+	lda	X3F8B,x
+	adc	RAM1_057
+	bcs	L0778
+	bclr	7,RAM1_059
+	sub	#$60
+	bhcs	L077C
 X3F7A:
-	db	$A0, $06, $B7, $57
-	db	$39, $59, $24, $02
-	db	$3C, $56, $3A, $52
-	db	$26, $CE, $5C, $5C
-	db	$81, $66, $7C, $68
-	db	$BC, $A6, $FC, $30
-	db	$30, $FB, $30, $31
-	db	$FA, $30, $32, $FF
-	db	$30, $33, $F4, $30
-	db	$34, $08, $30, $35
-	db	$EE, $30, $36, $EF
-	db	$30, $37, $F0, $30
-	db	$38, $F1, $30, $39
-	db	$F2, $31, $30, $FD
-	db	$31, $31, $FC, $A6
-	db	$1F, $B7, $90, $19
-	db	$6B, $1C, $95, $81
+	sub	#$06
+	sta	RAM1_057
+	rol	RAM1_059
+	bcc	L0784
+	inc	RAM1_056
+	dec	RAM1_052
+	bne	L0756
+	incx
+	incx
+	rts
+;
+X3F8B:
+	ror	RAM1_07c,x
+	asl	RAM1_0bc,x
+	lda	#$FC
+X3F91:
+	neg	X0030
+	add	,x
+	neg	X0031
+	ora	,x
+	neg	X0032
+	stx	,x
+	neg	X0033
+	and	,x
+	neg	X0034
+	brset	4,X0030,L07D7
+	ldx	X0030,x
+	ror	STACK_0ef
+	neg	X0037
+	sub	,x
+	neg	X0038
+	cmp	,x
+	neg	X0039
+	sbc	,x
+;
+	db	$31
+;
+	neg	STACK_0fd
+;
+	db	$31, $31
+;
+	jmp	,x						;INFO: index jump
+;
+	lda	#$1F
+	sta	RAM1_090
+	bclr	4,RAM1_06b
+X3FBB:
+	bset	6,RAM1_095
+	rts
 ;
 L3FBE:
 	brclr	7,RAM1_060,L07D9
+X3FC1:
 	brset	7,RAM1_092,L07D9
+L3FC4:
 	bclr	7,RAM1_060
 	bclr	7,RAM1_093
 	bset	2,RAM1_05d
@@ -5342,266 +8588,568 @@ L3FBE:
 	bclr	1,PortB
 	rts
 ;
-	db	$06, $60, $6B, $00
-	db	$60, $5B, $08, $60
-	db	$06, $0F, $93, $06
-	db	$CC, $40, $6F, $CC
-	db	$40, $82, $CD, $42
-	db	$CC, $27, $58, $CD
-	db	$42, $CC, $27, $53
-	db	$B8, $93, $B7, $93
-	db	$07, $93, $08, $09
-	db	$93, $41, $0B, $93
-	db	$38, $20, $3C, $0A
-	db	$93, $00, $4F, $49
-	db	$B8, $93, $46, $24
-	db	$1B, $A4, $03, $97
-	db	$C6, $02, $B1, $B0
-	db	$68, $A1, $11, $25
-	db	$0F, $A1, $17, $25
-	db	$11, $A1, $22, $25
-	db	$07, $A1, $2B, $22
-	db	$03, $5D, $27, $0D
-	db	$A6, $08, $B7, $93
-	db	$20, $11, $5D, $27
-	db	$F7, $A3, $04, $22
-	db	$F3, $3C, $93, $20
-	db	$06, $11, $60, $19
-	db	$60, $3F, $93, $B6
-	db	$68, $C7, $02, $B1
-	db	$3F, $92, $81, $C6
-	db	$02, $B1, $B0, $68
-	db	$A1, $C8, $25, $03
-	db	$16, $60, $81, $0B
-	db	$93, $F0, $08, $93
-	db	$ED, $A1, $3C, $25
-	db	$E9, $07, $93, $05
-	db	$A6, $38, $B7, $93
-	db	$81, $B6, $93, $A1
-	db	$25, $26, $DB, $18
-	db	$60, $81, $0E, $95
-	db	$0F, $08, $94, $0C
-	db	$0F, $92, $B1, $08
-	db	$92, $06, $06, $92
-	db	$0C, $0C, $93, $39
-	db	$81, $19, $60, $15
-	db	$60, $13, $60, $20
-	db	$4C, $17, $92, $5F
-	db	$D6, $42, $D7, $27
-	db	$22, $C1, $02, $B0
-	db	$26, $08, $D6, $42
-	db	$D8, $C1, $02, $B2
-	db	$27, $05, $5C, $5C
-	db	$5C, $20, $E9, $A1
-	db	$04, $27, $00, $1D
-	db	$93, $B6, $93, $A4
-	db	$1F, $DE, $42, $D9
-	db	$DC, $40, $D6, $AE
-	db	$47, $CD, $42, $96
-	db	$81, $1D, $93, $B6
-	db	$93, $4C, $A4, $1F
-	db	$A1, $02, $27, $F9
-	db	$A1, $03, $27, $14
-	db	$A1, $04, $27, $10
-	db	$A1, $05, $27, $23
-	db	$A0, $14, $24, $46
-	db	$81, $A6, $01, $0B
-	db	$69, $02, $A6, $02
-	db	$CD, $42, $8C, $18
-	db	$94, $1C, $93, $0E
-	db	$92, $2E, $A6, $90
-	db	$B7, $92, $C6, $02
-	db	$B0, $AA, $20, $C7
-	db	$02, $B0, $81, $CD
-	db	$42, $8C, $18, $94
-	db	$C6, $01, $20, $C7
-	db	$02, $B4, $C6, $01
-	db	$21, $C7, $02, $B5
-	db	$C6, $01, $22, $C7
-	db	$02, $B6, $C6, $01
-	db	$23, $C7, $02, $B7
-	db	$1E, $60, $1E, $5D
-	db	$81, $A6, $13, $B7
-	db	$93, $4F, $B7, $50
-	db	$AE, $95, $CD, $42
-	db	$96, $3F, $57, $CC
-	db	$42, $15, $AE, $CE
-	db	$4F, $CD, $37, $9B
-	db	$5A, $A3, $C0, $24
-	db	$F7, $20, $E2, $A1
-	db	$06, $25, $09, $A1
-	db	$08, $25, $07, $26
-	db	$03, $CC, $42, $1B
-	db	$A6, $05, $4C, $CD
-	db	$42, $8C, $1E, $5D
-	db	$CD, $3D, $01, $81
-	db	$CE, $02, $B3, $27
-	db	$13, $A3, $07, $22
-	db	$10, $BF, $5B, $DE
-	db	$42, $FC, $CD, $42
-	db	$96, $18, $94, $BE
-	db	$5B, $CD, $3D, $1A
-	db	$81, $A3, $19, $26
-	db	$FB, $05, $60, $F8
-	db	$12, $60, $81, $CD
-	db	$3D, $B1, $CC, $40
-	db	$D6, $05, $8B, $03
-	db	$CC, $40, $B4, $CE
-	db	$02, $B3, $C6, $02
-	db	$B4, $CD, $3F, $2D
-	db	$B6, $57, $C1, $01
-	db	$01, $26, $0F, $B6
-	db	$58, $C1, $01, $02
-	db	$26, $08, $CD, $36
-	db	$5D, $15, $5D, $14
-	db	$60, $81, $3C, $8B
-	db	$CD, $36, $55, $A6
-	db	$FF, $B7, $8C, $CC
-	db	$3F, $C4, $20, $41
-	db	$03, $60, $3D, $C6
-	db	$02, $B3, $B7, $50
-	db	$C6, $02, $B5, $B7
-	db	$51, $A6, $12, $CD
-	db	$42, $8C, $A6, $03
-	db	$B7, $52, $BE, $51
-	db	$9F, $A4, $FC, $27
-	db	$0B, $A0, $30, $27
-	db	$07, $A0, $30, $27
-	db	$03, $CD, $37, $C7
-	db	$3C, $51, $BE, $52
-	db	$D7, $02, $B0, $3C
-	db	$52, $C6, $02, $B0
-	db	$4C, $C7, $02, $B0
-	db	$A1, $0F, $27, $04
-	db	$3A, $50, $26, $D6
-	db	$81, $C6, $02, $B3
-	db	$A1, $AB, $26, $0A
-	db	$C6, $02, $B4, $A1
-	db	$CD, $26, $03, $CC
-	db	$3E, $27, $03, $60
-	db	$EB, $C6, $02, $B3
-	db	$C1, $01, $01, $26
-	db	$E3, $C6, $02, $B4
-	db	$C1, $01, $02, $26
-	db	$DB, $CC, $3E, $61
-	db	$3C, $50, $3C, $93
-	db	$BE, $50, $A3, $0E
-	db	$23, $05, $3F, $93
-	db	$1E, $93, $81, $D6
-	db	$01, $C0, $27, $EC
-	db	$A3, $02, $27, $14
-	db	$A3, $03, $27, $08
-	db	$A3, $05, $27, $0C
-	db	$A3, $06, $26, $0D
-	db	$5A, $D1, $01, $C0
-	db	$25, $D6, $20, $05
-	db	$D1, $01, $C1, $23
-	db	$CF, $A1, $33, $26
-	db	$01, $4F, $B7, $51
-	db	$BE, $57, $5C, $5C
-	db	$5C, $A3, $0C, $23
-	db	$03, $1C, $93, $81
-	db	$BF, $57, $9F, $AB
-	db	$03, $C7, $02, $B0
-	db	$B6, $50, $48, $BB
-	db	$50, $B7, $58, $BE
-	db	$58, $D6, $43, $AF
-	db	$BE, $57, $D7, $02
-	db	$B0, $BE, $58, $D6
-	db	$43, $B0, $BE, $57
-	db	$D7, $02, $B1, $BE
-	db	$58, $D6, $43, $B1
-	db	$3D, $51, $26, $02
-	db	$A4, $7F, $BE, $57
-	db	$D7, $02, $B2, $18
-	db	$94, $20, $85, $B7
-	db	$93, $B6, $93, $A4
-	db	$1F, $97, $DE, $42
-	db	$F3, $1E, $93, $3F
-	db	$56, $BF, $57, $1B
-	db	$5D, $A3, $49, $26
-	db	$02, $1A, $5D, $D6
-	db	$43, $15, $C7, $02
-	db	$B0, $A4, $0F, $A0
-	db	$03, $B7, $58, $A6
-	db	$FF, $C7, $02, $B1
-	db	$BE, $57, $D6, $43
-	db	$16, $BE, $56, $D7
-	db	$02, $B2, $3C, $56
-	db	$3C, $57, $3A, $58
-	db	$2A, $EE, $1E, $95
-	db	$18, $92, $81, $4F
-	db	$03, $03, $02, $A6
-	db	$20, $B8, $93, $A4
-	db	$20, $81, $03, $00
-	db	$00, $03, $07, $40
-	db	$03, $05, $51, $04
-	db	$04, $5E, $04, $29
-	db	$77, $07, $10, $9A
-	db	$08, $2B, $A0, $05
-	db	$1B, $D1, $06, $03
-	db	$D3, $00, $15, $01
-	db	$0F, $1D, $2B, $38
-	db	$3B, $3F, $43, $47
-	db	$49, $57, $65, $70
-	db	$7E, $86, $8E, $95
-	db	$93, $9A, $9D, $A0
-	db	$A3, $A6, $A9, $AC
-	db	$AF, $B2, $B5, $B8
-	db	$BB, $BE, $C1, $C4
-	db	$81, $0F, $F6, $34
-	db	$42, $30, $30, $33
-	db	$35, $31, $38, $36
-	db	$20, $20, $20, $0F
-	db	$F6, $34, $42, $30
-	db	$30, $33, $35, $31
-	db	$35, $32, $20, $20
-	db	$20, $0F, $F6, $20
-	db	$52, $61, $64, $69
-	db	$6F, $20, $20, $20
-	db	$20, $20, $20, $0E
-	db	$F6, $20, $20, $20
-	db	$20, $20, $20, $20
-	db	$30, $30, $30, $31
-	db	$08, $F6, $00, $05
-	db	$F5, $03, $53, $05
-	db	$F5, $03, $56, $05
-	db	$F5, $04, $AB, $44
-	db	$0A, $0F, $E7, $10
-	db	$08, $00, $06, $4E
-	db	$C0, $17, $64, $80
-	db	$25, $00, $87, $0F
-	db	$E7, $25, $00, $F0
-	db	$25, $00, $C2, $11
-	db	$20, $20, $11, $20
-	db	$20, $0C, $E7, $25
-	db	$01, $11, $25, $00
-	db	$F4, $25, $00, $C2
-	db	$0F, $E7, $10, $01
-	db	$00, $11, $20, $20
-	db	$25, $00, $F5, $25
-	db	$00, $88, $09, $E7
-	db	$25, $00, $F6, $25
-	db	$00, $C2, $09, $E7
-	db	$25, $00, $F7, $25
-	db	$00, $C2, $06, $E7
-	db	$11, $20, $20, $03
-	db	$FD, $06, $FC, $FF
-	db	$FF, $88, $03, $51
-	db	$A4, $02, $9C, $87
-	db	$03, $58, $A4, $03
-	db	$58, $9D, $03, $52
-	db	$9D, $03, $54, $AC
-	db	$03, $54, $A4, $03
-	db	$55, $AC, $03, $55
-	db	$A4, $03, $58, $9D
-	db	$03, $56, $B1, $03
-	db	$57, $B1, $03, $57
-	db	$9D, $FF, $FF, $00
-	db	$04, $14, $23, $00
-	db	$81, $A6, $07, $CD
-	db	$24, $9F, $A6, $14
-	db	$CC, $23, $D9
+	brset	3,RAM1_060,L0047
+	brset	0,RAM1_060,L003A
+	brset	4,RAM1_060,L07E8
+	brclr	7,RAM1_093,L07EB
+	jmp	L406F
+	jmp	L4082
+;
+	jsr	L42CC
+	beq	L0048
+	jsr	L42CC
+	beq	L0048
+	eor	RAM1_093
+	sta	RAM1_093
+	brclr	3,RAM1_093,L0004
+	brclr	4,RAM1_093,L0040
+	brclr	5,RAM1_093,L003A
+	bra	L0040
+;
+	brset	5,RAM1_093,L0007
+	clra
+	rola
+	eor	RAM1_093
+	rora
+	bcc	L0029
+	and	#$03
+	tax
+	lda	RAM2_02b1
+	sub	RAM1_068
+	cmp	#$11
+	bcs	L0029
+	cmp	#$17
+	bcs	L002F
+	cmp	#$22
+	bcs	L0029
+	cmp	#$2B
+	bhi	L0029
+	tstx
+	beq	L0036
+	lda	#$08
+	sta	RAM1_093
+	bra	L0040
+;
+	tstx
+	beq	L0029
+	cpx	#$04
+	bhi	L0029
+	inc	RAM1_093
+	bra	L0040
+;
+	bclr	0,RAM1_060
+	bclr	4,RAM1_060
+	clr	RAM1_093
+	lda	RAM1_068
+	sta	RAM2_02b1
+	clr	RAM1_092
+	rts
+;
+	lda	RAM2_02b1
+	sub	RAM1_068
+	cmp	#$C8
+	bcs	L0054
+	bset	3,RAM1_060
+	rts
+;
+	brclr	5,RAM1_093,L0047
+	brset	4,RAM1_093,L0047
+	cmp	#$3C
+	bcs	L0047
+	brclr	3,RAM1_093,L0066
+	lda	#$38
+	sta	RAM1_093
+	rts
+;
+	lda	RAM1_093
+	cmp	#$25
+	bne	L0047
+	bset	4,RAM1_060
+	rts
+;
+L406F:
+	brset	7,RAM1_095,L0081
+	brset	4,RAM1_094,L0081
+	brclr	7,RAM1_092,L0029
+	brset	4,RAM1_092,L0081
+	brset	3,RAM1_092,L008A
+	brset	6,RAM1_093,L00BA
+	rts
+;
+L4082:
+	bclr	4,RAM1_060
+	bclr	2,RAM1_060
+	bclr	1,RAM1_060
+	bra	L00D6
+;
+	bclr	3,RAM1_092
+	clrx
+	lda	X42D7,x
+	beq	L00B4
+	cmp	RAM2_02b0
+	bne	L009F
+	lda	X42D8,x
+	cmp	RAM2_02b2
+	beq	L00A4
+	incx
+	incx
+	incx
+	bra	L008D
+;
+	cmp	#$04
+	beq	L00A8
+	bclr	6,RAM1_093
+	lda	RAM1_093
+	and	#$1F
+	ldx	X42D9,x
+	jmp	L40D6,x						;INFO: index jump
+;
+L40B4:
+	ldx	#$47
+	jsr	L4296
+	rts
+;
+	bclr	6,RAM1_093
+	lda	RAM1_093
+	inca
+	and	#$1F
+	cmp	#$02
+	beq	L00BE
+	cmp	#$03
+	beq	L00DD
+	cmp	#$04
+	beq	L00DD
+	cmp	#$05
+	beq	L00F4
+	sub	#$14
+	bcc	L011B
+	rts
+;
+L40D6:
+	lda	#$01
+	brclr	5,RAM1_069,L00DD
+	lda	#$02
+	jsr	L428C
+	bset	4,RAM1_094
+	bset	6,RAM1_093
+	brset	7,RAM1_092,L0115
+	lda	#$90
+	sta	RAM1_092
+	lda	RAM2_02b0
+	ora	#$20
+	sta	RAM2_02b0
+	rts
+;
+	jsr	L428C
+	bset	4,RAM1_094
+	lda	EEPROM_0120
+	sta	RAM2_02b4
+	lda	EEPROM_0121
+	sta	RAM2_02b5
+	lda	EEPROM_0122
+	sta	RAM2_02b6
+	lda	EEPROM_0123
+	sta	RAM2_02b7
+	bset	7,RAM1_060
+	bset	7,RAM1_05d
+	rts
+;
+	lda	#$13
+	sta	RAM1_093
+	clra
+	sta	RAM1_050
+	ldx	#$95
+	jsr	L4296
+	clr	RAM1_057
+	jmp	L4215
+;
+	ldx	#$CE
+	clra
+	jsr	L379B
+	decx
+	cpx	#$C0
+	bcc	L0129
+	bra	L0116
+;
+	cmp	#$06
+	bcs	L0141
+	cmp	#$08
+	bcs	L0143
+	bne	L0141
+	jmp	L421B
+;
+	lda	#$05
+	inca
+	jsr	L428C
+	bset	7,RAM1_05d
+	jsr	L3D01
+	rts
+;
+	ldx	RAM2_02b3
+	beq	L0165
+	cpx	#$07
+	bhi	L0166
+	stx	RAM1_05b
+	ldx	X42FC,x
+	jsr	L4296
+	bset	4,RAM1_094
+	ldx	RAM1_05b
+	jsr	L3D1A
+	rts
+;
+	cpx	#$19
+	bne	L0165
+	brclr	2,RAM1_060,L0165
+	bset	1,RAM1_060
+	rts
+;
+	jsr	L3DB1
+	jmp	L40D6
+;
+	brclr	2,RAM1_08b,L017C
+	jmp	L40B4
+;
+	ldx	RAM2_02b3
+	lda	RAM2_02b4
+	jsr	L3F2D
+	lda	RAM1_057
+	cmp	SEC_CODE1
+	bne	L019B
+	lda	RAM1_058
+	cmp	SEC_CODE2
+	bne	L019B
+	jsr	L365D
+	bclr	2,RAM1_05d
+	bset	2,RAM1_060
+	rts
+;
+	inc	RAM1_08b
+	jsr	L3655
+	lda	#$FF
+	sta	RAM1_08c
+	jmp	L3FC4
+	bra	L01EA
+;
+	brclr	1,RAM1_060,L01E9
+	lda	RAM2_02b3
+	sta	RAM1_050
+	lda	RAM2_02b5
+	sta	RAM1_051
+	lda	#$12
+	jsr	L428C
+	lda	#$03
+	sta	RAM1_052
+	ldx	RAM1_051
+	txa
+	and	#$FC
+	beq	L01D1
+	sub	#$30
+	beq	L01D1
+	sub	#$30
+	beq	L01D1
+	jsr	L37C7
+	inc	RAM1_051
+	ldx	RAM1_052
+	sta	RAM2_02b0,x
+	inc	RAM1_052
+	lda	RAM2_02b0
+	inca
+	sta	RAM2_02b0
+	cmp	#$0F
+	beq	L01E9
+	dec	RAM1_050
+	bne	L01BF
+	rts
+;
+	lda	RAM2_02b3
+	cmp	#$AB
+	bne	L01FB
+	lda	RAM2_02b4
+	cmp	#$CD
+	bne	L01FB
+	jmp	L3E27
+;
+	brclr	1,RAM1_060,L01E9
+	lda	RAM2_02b3
+	cmp	SEC_CODE1
+	bne	L01E9
+	lda	RAM2_02b4
+	cmp	SEC_CODE2
+	bne	L01E9
+	jmp	L3E61
+;
+	inc	RAM1_050
+	inc	RAM1_093
+L4215:
+	ldx	RAM1_050
+	cpx	#$0E
+	bls	L0220
+L421B:
+	clr	RAM1_093
+	bset	7,RAM1_093
+	rts
+;
+	lda	EEPROM_01c0,x
+	beq	L0211
+	cpx	#$02
+	beq	L023D
+	cpx	#$03
+	beq	L0235
+	cpx	#$05
+	beq	L023D
+	cpx	#$06
+	bne	L0242
+	decx
+	cmp	EEPROM_01c0,x
+	bcs	L0211
+	bra	L0242
+;
+	cmp	EEPROM_01c1,x
+	bls	L0211
+	cmp	#$33
+	bne	L0247
+	clra
+	sta	RAM1_051
+	ldx	RAM1_057
+	incx
+	incx
+	incx
+	cpx	#$0C
+	bls	L0255
+	bset	6,RAM1_093
+	rts
+;
+	stx	RAM1_057
+	txa
+	add	#$03
+	sta	RAM2_02b0
+	lda	RAM1_050
+	asla
+	add	RAM1_050
+	sta	RAM1_058
+	ldx	RAM1_058
+	lda	X43AF,x
+	ldx	RAM1_057
+	sta	RAM2_02b0,x
+	ldx	RAM1_058
+	lda	X43B0,x
+	ldx	RAM1_057
+	sta	RAM2_02b1,x
+	ldx	RAM1_058
+	lda	X43B1,x
+	tst	RAM1_051
+	bne	L0283
+	and	#$7F
+	ldx	RAM1_057
+	sta	RAM2_02b2,x
+	bset	4,RAM1_094
+	bra	L0211
+;
+L428C:
+	sta	RAM1_093
+	lda	RAM1_093
+	and	#$1F
+	tax
+	ldx	X42F3,x
+L4296:
+	bset	7,RAM1_093
+	clr	RAM1_056
+	stx	RAM1_057
+	bclr	5,RAM1_05d
+	cpx	#$49
+	bne	L02A4
+	bset	5,RAM1_05d
+	lda	X4315,x
+	sta	RAM2_02b0
+	and	#$0F
+	sub	#$03
+	sta	RAM1_058
+	lda	#$FF
+	sta	RAM2_02b1
+	ldx	RAM1_057
+	lda	X4316,x
+	ldx	RAM1_056
+	sta	RAM2_02b2,x
+	inc	RAM1_056
+	inc	RAM1_057
+	dec	RAM1_058
+	bpl	L02B5
+	bset	7,RAM1_095
+	bset	4,RAM1_092
+	rts
+;
+L42CC:
+	clra
+	brclr	1,PortD,L02D2
+	lda	#$20
+	eor	RAM1_093
+	and	#$20
+	rts
+;
+X42D7:
+	brclr	1,PortA,L02DA
+	brclr	1,EEPROM_ECLK_control,L031D
+	brclr	1,DDRB,L0331
+	brset	2,DDRA,L0341
+	brset	2,X0029,L035D
+	brclr	3,SCSR,L0283
+	brset	4,X002B,L028C
+	brclr	2,ACL,L02C0
+	brset	3,PortD,L02C5
+	brset	0,ICL1,L02F6
+	brclr	7,ICL2,L0323
+	asl	X003B
+	clr	X0043
+X42FC:
+	asra
+	rola
+	asrx
+;
+	db	$65
+;
+	neg	,x
+;
+	db	$7E, $86
+;
+	stop
+;
+	db	$95, $93
+;
+	cli
+	nop
+	sub	#$A3
+	lda	#$A9
+;
+	db	$AC, $AF
+;
+	sbc	RAM1_0b5
+	eor	RAM1_0bb
+	ldx	STACK_0c1
+	and	X810F
+	lda	,x
+	lsr	X0042
+	neg	X0030
+	com	X0035
+;
+	db	$31
+;
+	asl	X0036
+	bra	L0343
+	bra	L0334
+;
+	lda	,x
+	lsr	X0042
+	neg	X0030
+	com	X0035
+;
+	db	$31, $35, $32
+;
+	bra	L0351
+	bra	L0342
+;
+	lda	,x
+	bra	L0388
+;
+	db	$61
+;
+	lsr	RAM1_069,x
+	clr	X0020,x
+	bra	L035D
+	bra	L035F
+	bra	L034F
+;
+	lda	,x
+	bra	L0364
+	bra	L0366
+	bra	L0368
+	bra	L037A
+;
+	neg	X0030
+;
+	db	$31
+;
+	brset	4,STACK_0f6,L0350
+	brclr	2,STACK_0f5,L0356
+	comx
+	brclr	2,STACK_0f5,L035A
+	rorx
+	brclr	2,STACK_0f5,L035F
+	add	#$44
+	brset	5,SCCR2,L0347
+	bset	0,ADDATA
+	brset	0,DDRC,L03B3
+	sub	X1764
+	rti
+;
+	bcs	L036B
+;
+	db	$87
+;
+	brclr	7,STACK_0e7,L0394
+	brset	0,STACK_0f0,L0397
+	brset	0,STACK_0c2,L0386
+	bra	L0397
+;
+	bclr	0,X0020
+	bra	L0387
+;
+	sta	X0025,x
+	brclr	0,SCDR,L03A5
+	brset	0,STACK_0f4,L03A8
+	brset	0,STACK_0c2,L0395
+	sta	SCSR,x
+	brclr	0,PortA,L039C
+	bra	L03AD
+;
+	bcs	L038F
+	bit	,x
+	bcs	L0392
+;
+	db	$88
+;
+	brclr	4,STACK_0e7,L03BB
+	brset	0,STACK_0f6,L03BE
+	brset	0,STACK_0c2,L03A5
+	sta	X0025,x
+	brset	0,STACK_0f7,L03C6
+	brset	0,STACK_0c2,L03AA
+	sta	SCDR,x
+	bra	L03C8
+;
+	brclr	1,STACK_0fd,L03B1
+	jmp	,x						;INFO: index jump
+;
+	stx	,x
+	stx	,x
+;
+	db	$88
+;
+X43AF:
+	brclr	1,RAM1_051,L0356
+	brset	1,RAM1_09c,L033C
+	brclr	1,RAM1_058,L035C
+	brclr	1,RAM1_058,L0358
+	brclr	1,RAM1_052,L035B
+	brclr	1,RAM1_054,L036D
+	brclr	1,RAM1_054,L0368
+	brclr	1,RAM1_055,L0373
+	brclr	1,RAM1_055,L036E
+	brclr	1,RAM1_058,L036A
+	brclr	1,RAM1_056,L0381
+	brclr	1,RAM1_057,L0384
+	brclr	1,RAM1_057,L0373
+	stx	,x
+	stx	,x
+	brset	0,DDRA,L03EF
+	bls	L03DD
+L43DD:
+	rts
+;
+L43DE:
+	lda	#$07
+	jsr	L249F
+	lda	#$14
+	jmp	L23D9
 ;
 L43E8:
 	brclr	6,STACK_0ce,L03F5
@@ -5609,16 +9157,25 @@ L43E8:
 	bit	#$F0
 	bne	L03F5
 	jmp	L448A
-;
 L43F4:
-	db	$81, $81, $A6, $01
-	db	$20, $02, $A6, $07
-	db	$07, $D0, $F6, $BB
-	db	$D0, $A4, $0F, $AA
-	db	$08, $A1, $0D, $25
-	db	$07, $26, $03, $A6
-	db	$08, $C1, $A6, $0C
-	db	$B7, $D0, $20, $00
+	rts
+	rts
+;
+	lda	#$01
+	bra	L03FC
+;
+	lda	#$07
+	brclr	3,STACK_0d0,L03F5
+	add	STACK_0d0
+	and	#$0F
+	ora	#$08
+	cmp	#$0D
+	bcs	L0410
+	bne	L040E
+	lda	#$08
+	cmp	XA60C
+	sta	STACK_0d0
+	bra	L0414
 ;
 L4414:
 	brclr	5,STACK_0ce,L0427
@@ -5630,33 +9187,63 @@ L4414:
 	lda	#$8B
 	bra	L0476
 ;
-	db	$0D, $CE, $CB, $BE
-	db	$D0, $A6, $05, $0C
-	db	$6A, $02, $A6, $07
-	db	$A3, $01, $27, $3F
-	db	$A6, $CA, $A3, $08
-	db	$27, $39, $9F, $AE
-	db	$07, $A1, $09, $27
-	db	$12, $A1, $0A, $27
-	db	$18, $A1, $0B, $26
-	db	$1F, $E6, $A3, $D7
-	db	$02, $57, $5A, $2A
-	db	$F8, $20, $1E, $E6
-	db	$DA, $D7, $02, $57
-	db	$5A, $2A, $F8, $20
-	db	$14, $D6, $44, $82
-	db	$D7, $02, $57, $5A
-	db	$2A, $F7, $20, $09
-	db	$D6, $01, $90, $D7
-	db	$02, $57, $5A, $2A
-	db	$F7, $A6, $C4, $CC
-	db	$23, $EA
+	brclr	6,STACK_0ce,L03F5
+	ldx	STACK_0d0
+	lda	#$05
+	brset	6,RAM1_06a,L0433
+	lda	#$07
+	cpx	#$01
+	beq	L0476
+	lda	#$CA
+	cpx	#$08
+	beq	L0476
+	txa
+	ldx	#$07
+	cmp	#$09
+	beq	L0456
+	cmp	#$0A
+	beq	L0460
+	cmp	#$0B
+	bne	L046B
+	lda	RAM1_0a3,x
+	sta	RAM2_0257,x
+	decx
+	bpl	L044C
+	bra	L0474
+;
+	lda	STACK_0da,x
+	sta	RAM2_0257,x
+	decx
+	bpl	L0456
+	bra	L0474
+;
+	lda	X4482,x
+	sta	RAM2_0257,x
+	decx
+	bpl	L0460
+	bra	L0474
+;
+	lda	EEPROM_0190,x
+	sta	RAM2_0257,x
+	decx
+	bpl	L046B
+	lda	#$C4
+	jmp	L23EA
+;
 X4479:
-	db	$00, $01, $03, $04
-	db	$05, $06, $08, $09
-	db	$0A, $37, $31, $32
-	db	$38, $2E, $31, $20
-	db	$4D
+	brset	0,PortB,L047F
+	brset	2,DDRB,L0485
+	brset	4,ADSTAT,L048C
+X4482:
+	asr	X0031
+;
+	db	$32
+;
+	asl	X002E
+;
+	db	$31
+;
+	bra	L04D7
 ;
 L448A:
 	clrx
@@ -5672,97 +9259,165 @@ X44A0:
 	rts
 ;
 X44A1:
-	db	$F6
+	lda	,x
 X44A2:
-	db	$01, $F8, $02, $E7
-	db	$06, $00
-;
-L44A8:
-	rts
-;
-L44A9:
-	brclr	1,STACK_0d2,L0521
-	brset	0,STACK_0d2,L0521
-	brclr	3,STACK_0cb,L04B6
-	bclr	3,STACK_0cb
-	bset	7,RAM1_05d
+	brclr	0,STACK_0f8,L04A7
+	sta	DDRC,x
+	brset	0,RAM1_081,L04AD
+	sbc	X7500,x
+	sbc	X7207,x
+	add	X0417
+	add	X1E5D
 	brclr	6,RAM1_05d,L0521
 	jmp	L45DF
 ;
 L44BC:
-	db	$03, $D2, $62, $A6
-	db	$06, $B8, $D4, $B7
-	db	$D4, $AE, $A6, $CD
-	db	$37, $9B, $11, $D4
-	db	$AE, $83, $04, $D4
-	db	$0F, $AE, $8D, $20
-	db	$0B, $03, $D2, $49
-	db	$AE, $89, $A6, $01
-	db	$B8, $D4, $B7, $D4
-	db	$14, $6A, $20, $14
-	db	$AE, $87, $C1, $AE
-	db	$86, $C1, $AE, $85
-	db	$C1, $AE, $84, $20
-	db	$07, $AE, $8B, $C1
-	db	$AE, $8A, $AD, $1E
-	db	$11, $D4, $C6, $02
-	db	$64, $A4, $ED, $C7
-	db	$02, $64, $BF, $7D
-	db	$1C, $94, $1E, $5D
-	db	$19, $D2, $14, $CB
-	db	$81, $08, $D2, $DA
-	db	$08, $D2, $DA, $13
-	db	$D2, $81, $A6, $50
-	db	$B7, $77, $81, $A6
-	db	$90, $B7, $77, $18
-	db	$D2, $81, $B6, $78
-	db	$A4, $07, $B7, $C8
-	db	$4A, $CD, $25, $72
-	db	$C4, $02, $66, $26
-	db	$0C, $A6, $88, $CD
-	db	$23, $F3, $B6, $C8
-	db	$AA, $20, $CD, $24
-	db	$A8, $B6, $C8, $AA
-	db	$C0, $97, $20, $B4
-	db	$A6, $05, $CD, $24
-	db	$73, $C6, $02, $60
-	db	$A4, $07, $B7, $C8
-	db	$C6, $02, $65, $A5
-	db	$06, $26, $46, $A5
-	db	$08, $26, $0C, $A4
-	db	$F0, $A1, $A0, $27
-	db	$06, $A1, $B0, $26
-	db	$0B, $16, $D4, $A6
-	db	$20, $CD, $24, $A8
-	db	$AE, $08, $20, $29
-	db	$C6, $02, $67, $2A
-	db	$08, $A4, $07, $B7
-	db	$C8, $AE, $89, $20
-	db	$1C, $C6, $02, $66
-	db	$A4, $3F, $27, $E3
-	db	$00, $D2, $10, $05
-	db	$D4, $0D, $C6, $02
-	db	$64, $A4, $24, $26
-	db	$06, $AE, $83, $BF
-	db	$7D, $1C, $94, $AE
-	db	$C8, $9F, $CC, $23
-	db	$D9, $CD, $24, $4D
-	db	$B6, $C8, $AA, $30
-	db	$C7, $02, $59, $C6
-	db	$02, $65, $44, $A4
-	db	$03, $AA, $30, $C7
-	db	$02, $5E, $A6, $C4
-	db	$CC, $23, $EA, $3F
-	db	$56, $17, $CB, $04
-	db	$6A, $12, $13, $D4
-	db	$10, $D4, $C6, $02
-	db	$64, $A5, $12, $26
-	db	$02, $11, $D4, $05
-	db	$D4, $02, $12, $D4
-	db	$4F, $01, $D4, $02
-	db	$18, $56, $03, $D4
-	db	$02, $A6, $10, $CD
-	db	$24, $1C, $81
+	brclr	1,STACK_0d2,L0521
+	lda	#$06
+	eor	STACK_0d4
+	sta	STACK_0d4
+	ldx	#$A6
+	jsr	L379B
+	bclr	0,STACK_0d4
+	ldx	#$83
+	brset	2,STACK_0d4,L04E0
+	ldx	#$8D
+	bra	L04E0
+;
+	brclr	1,STACK_0d2,L0521
+	ldx	#$89
+	lda	#$01
+	eor	STACK_0d4
+	sta	STACK_0d4
+	bset	2,RAM1_06a
+	bra	L04F8
+;
+	ldx	#$87
+	cmp	XAE86
+	cmp	XAE85
+	cmp	XAE84
+	bra	L04F8
+;
+	ldx	#$8B
+	cmp	XAE8A
+	bsr	L0516
+	bclr	0,STACK_0d4
+	lda	RAM2_0264
+	and	#$ED
+	sta	RAM2_0264
+	stx	RAM1_07d
+	bset	6,RAM1_094
+	bset	7,RAM1_05d
+	bclr	4,STACK_0d2
+	bset	2,STACK_0cb
+	rts
+;
+	brset	4,STACK_0d2,L04EA
+	brset	4,STACK_0d2,L04ED
+	bclr	1,STACK_0d2
+	rts
+;
+	lda	#$50
+	sta	RAM1_077
+	rts
+;
+	lda	#$90
+	sta	RAM1_077
+	bset	4,STACK_0d2
+	rts
+;
+	lda	RAM1_078
+	and	#$07
+	sta	STACK_0c8
+	deca
+	jsr	L2572
+	and	RAM2_0266
+	bne	L053D
+	lda	#$88
+	jsr	L23F3
+	lda	STACK_0c8
+	ora	#$20
+	jsr	L24A8
+	lda	STACK_0c8
+	ora	#$C0
+	tax
+	bra	L04F8
+;
+L4544:
+	lda	#$05
+	jsr	L2473
+	lda	RAM2_0260
+	and	#$07
+	sta	STACK_0c8
+	lda	RAM2_0265
+	bit	#$06
+	bne	L059D
+	bit	#$08
+	bne	L0567
+	and	#$F0
+	cmp	#$A0
+	beq	L0567
+	cmp	#$B0
+	bne	L0570
+	bset	3,STACK_0d4
+	lda	#$20
+	jsr	L24A8
+	ldx	#$08
+	bra	L0599
+;
+	lda	RAM2_0267
+	bpl	L057D
+	and	#$07
+	sta	STACK_0c8
+	ldx	#$89
+	bra	L0599
+;
+	lda	RAM2_0266
+	and	#$3F
+	beq	L0567
+	brset	0,STACK_0d2,L0597
+	brclr	2,STACK_0d4,L0597
+	lda	RAM2_0264
+	and	#$24
+	bne	L0597
+	ldx	#$83
+	stx	RAM1_07d
+	bset	6,RAM1_094
+	ldx	#$C8
+	txa
+	jmp	L23D9
+;
+	jsr	L244D
+	lda	STACK_0c8
+	ora	#$30
+	sta	RAM2_0259
+	lda	RAM2_0265
+	lsra
+	and	#$03
+	ora	#$30
+	sta	RAM2_025e
+	lda	#$C4
+	jmp	L23EA
+;
+L45B7:
+	clr	RAM1_056
+	bclr	3,STACK_0cb
+	brset	2,RAM1_06a,L05D0
+	bclr	1,STACK_0d4
+	bset	0,STACK_0d4
+	lda	RAM2_0264
+	bit	#$12
+	bne	L05CB
+	bclr	0,STACK_0d4
+	brclr	2,STACK_0d4,L05D0
+	bset	1,STACK_0d4
+	clra
+	brclr	0,STACK_0d4,L05D6
+	bset	4,RAM1_056
+	brclr	1,STACK_0d4,L05DB
+	lda	#$10
+	jsr	L241C
+	rts
 ;
 L45DF:
 	clrx
@@ -5779,29 +9434,59 @@ X45F7:
 	rts
 ;
 X45F8:
-	db	$F8
+	eor	,x
 X45F9:
-	db	$2B, $E7, $28, $EF
-	db	$2B, $F0, $28, $ED
-	db	$5F, $8D, $38, $4D
-	db	$5A, $CD, $54, $F3
-	db	$5F, $93, $35, $53
-	db	$5A, $D3, $51, $FD
-	db	$5F, $9D, $38, $5D
-	db	$5A, $DD, $54, $FC
-	db	$5F, $9C, $35, $5C
-	db	$5A, $DC, $51, $F1
-	db	$5F, $91, $38, $51
-	db	$5A, $D1, $54, $F2
-	db	$5F, $92, $35, $52
-	db	$5A, $D2, $51, $EC
-	db	$00, $08, $00, $0B
-	db	$19, $E0, $66, $00
+	bmi	L05E2
+	bhcc	L05EC
+	bmi	L05EF
+	bhcc	L05EE
+	clrx
 ;
+	db	$8D
+;
+	asl	X004D
+	decx
+	jsr	L54F3
+	clrx
+;
+	db	$93, $35
+;
+	comx
+	decx
+	cpx	X51FD,x
+	clrx
+	nop
+	asl	RAM1_05d
+	decx
+	jsr	L54FC,x						;INFO: index jump
+	clrx
+	rsp
+;
+	db	$35
+;
+	incx
+	decx
+	jmp	L51F1,x						;INFO: index jump
+;
+	clrx
+;
+	db	$91
+;
+	asl	RAM1_051
+	decx
+	cmp	X54F2,x
+	clrx
+;
+	db	$92, $35, $52
+;
+	decx
+	sbc	X51EC,x
+	brset	0,ADDATA,L0634
+	brclr	5,TCL,L0617
+	ror	PortA,x
 L4639:
 	rts
-;
-	db	$81
+	rts
 ;
 L463B:
 	brclr	2,STACK_0d2,L0653
@@ -5812,40 +9497,75 @@ L463B:
 	bset	2,STACK_0cb
 	brclr	6,RAM1_05d,L0653
 	brset	7,STACK_0d3,L0653
+X4650:
 	jmp	L4739
+	rts
 ;
-	db	$81, $A6, $8B, $C1
-	db	$A6, $8A, $14, $CB
-	db	$03, $7C, $0B, $A6
-	db	$88, $0E, $D3, $66
-	db	$15, $D2, $A6, $80
-	db	$20, $60, $06, $7F
-	db	$E7, $0A, $7F, $E4
-	db	$B7, $7B, $13, $6A
-	db	$17, $6A, $0B, $D3
-	db	$55, $17, $7B, $20
-	db	$51, $14, $CB, $06
-	db	$6A, $44, $16, $6A
-	db	$A6, $89, $20, $42
-	db	$18, $BC, $A6, $40
-	db	$B8, $D3, $B7, $D3
-	db	$AE, $A5, $CD, $37
-	db	$9B, $20, $39, $07
-	db	$6A, $04, $1A, $D3
-	db	$20, $06, $A6, $20
-	db	$B8, $D3, $B7, $D3
-	db	$AE, $A5, $CD, $37
-	db	$9B, $03, $7C, $10
-	db	$A6, $8B, $01, $7C
-	db	$06, $04, $7C, $BC
-	db	$4A, $20, $B9, $05
-	db	$7C, $B6, $20, $F8
-	db	$07, $6A, $11, $20
-	db	$05, $A6, $8E, $03
-	db	$7C, $02, $A6, $8F
-	db	$17, $6A, $B7, $7B
-	db	$13, $6A, $1A, $94
-	db	$1E, $5D, $81
+L4654:
+	lda	#$8B
+	cmp	XA68A
+	bset	2,STACK_0cb
+	brclr	1,RAM1_07c,L0669
+	lda	#$88
+	brset	7,STACK_0d3,L06C9
+	bclr	2,STACK_0d2
+	lda	#$80
+	bra	L06C9
+;
+	brset	3,RAM1_07f,L0653
+	brset	5,RAM1_07f,L0653
+	sta	RAM1_07b
+	bclr	1,RAM1_06a
+	bclr	3,RAM1_06a
+	brclr	5,STACK_0d3,L06CD
+	bclr	3,RAM1_07b
+	bra	L06CD
+;
+	bset	2,STACK_0cb
+	brset	3,RAM1_06a,L06C5
+	bset	3,RAM1_06a
+	lda	#$89
+	bra	L06C9
+;
+	bset	4,RAM1_0bc
+	lda	#$40
+	eor	STACK_0d3
+	sta	STACK_0d3
+	ldx	#$A5
+	jsr	L379B
+	bra	L06CF
+;
+	brclr	3,RAM1_06a,L069D
+	bset	5,STACK_0d3
+	bra	L06A3
+;
+	lda	#$20
+	eor	STACK_0d3
+	sta	STACK_0d3
+	ldx	#$A5
+	jsr	L379B
+	brclr	1,RAM1_07c,L06BB
+	lda	#$8B
+	brclr	0,RAM1_07c,L06B6
+	brset	2,RAM1_07c,L066F
+	deca
+	bra	L066F
+;
+	brclr	2,RAM1_07c,L066F
+	bra	L06B3
+;
+	brclr	3,RAM1_06a,L06CF
+	bra	L06C5
+;
+	lda	#$8E
+	brclr	1,RAM1_07c,L06C7
+	lda	#$8F
+	bclr	3,RAM1_06a
+	sta	RAM1_07b
+	bclr	1,RAM1_06a
+	bset	5,RAM1_094
+	bset	7,RAM1_05d
+	rts
 ;
 L46D2:
 	lda	#$04
@@ -5866,14 +9586,19 @@ L46D2:
 	ldx	#$A5
 	jmp	L379B
 ;
-	db	$0B, $D3, $03, $02
-	db	$6A, $36, $01, $7C
-	db	$09, $A6, $03, $04
-	db	$7C, $0B, $A6, $04
-	db	$20, $07, $A6, $03
-	db	$05, $7C, $02, $A6
-	db	$04, $13, $6A, $CC
-	db	$23, $EA
+	brclr	5,STACK_0d3,L0702
+	brset	1,RAM1_06a,L0738
+	brclr	0,RAM1_07c,L070E
+	lda	#$03
+	brset	2,RAM1_07c,L0715
+	lda	#$04
+	bra	L0715
+;
+	lda	#$03
+	brclr	2,RAM1_07c,L0715
+	lda	#$04
+	bclr	1,RAM1_06a
+	jmp	L23EA
 ;
 L471A:
 	bclr	4,STACK_0cb
@@ -5882,11 +9607,15 @@ L471A:
 	brclr	2,STACK_0d3,L072A
 	bra	L0728
 ;
-	db	$07, $6A, $02, $AA
-	db	$10, $B7, $56, $B6
-	db	$D3, $A4, $60, $09
-	db	$56, $02, $A4, $40
-	db	$CD, $24, $1C, $81
+	brclr	3,RAM1_06a,L072A
+	ora	#$10
+	sta	RAM1_056
+	lda	STACK_0d3
+	and	#$60
+	brclr	4,RAM1_056,L0735
+	and	#$40
+	jsr	L241C
+	rts
 ;
 L4739:
 	clrx
@@ -5903,15 +9632,19 @@ X4751:
 	rts
 ;
 X4752:
-	db	$F9
+	adc	,x
 X4753:
-	db	$6C, $0B, $28, $04
-	db	$42, $08, $42, $F3
-	db	$00, $ED, $03, $FC
-	db	$00, $FD, $03, $F2
-	db	$00, $F1, $03, $05
-	db	$33, $00
+	inc	PLMB,x
+	bhcc	L075B
+	mul
+	brset	4,X0042,L074E
+	brset	0,STACK_0ed,L0761
+	jmp	,x						;INFO: index jump
 ;
+	brset	0,STACK_0fd,L0765
+	sbc	,x
+	brset	0,STACK_0f1,L0769
+	brclr	2,X0033,L0769
 L4769:
 	jsr	L483E
 	bclr	4,PortA
@@ -6042,36 +9775,52 @@ L483E:
 X4867:
 	rts
 ;
-	db	$0A, $02, $04, $A2
-	db	$82, $A4, $08, $0C
-X4870:
-	db	$A6
-X4871:
-	db	$0E, $00, $CE, $00
-	db	$7D, $00, $7B, $02
-	db	$B8, $00, $B7, $02
-	db	$80, $00, $D5, $00
-	db	$CE, $02, $B0, $00
-	db	$6B
-X4886:
-	db	$46, $D2, $D4, $D6
-	db	$E2, $48, $E6, $44
-	db	$E4, $E8, $42
+	brset	5,PortC,L006F
+	sbc	#$82
+	and	#$08
+	brset	6,RAM1_0a6,L0080
+	brset	0,STACK_0ce,L0075
+	tst	,x
+	brset	0,RAM1_07b,L007B
+	eor	PortA
+	sta	PortC
+	rti
+;
+	brset	0,STACK_0d5,L0081
+	ldx	RAM2_02b0
+	brset	0,RAM1_06b,L00CD
+	sbc	XD4D6,x
+	sbc	X0048,x
+	lda	X0044,x
+	and	STACK_0e8,x
+	mul
 X4891:
-	db	$00
-X4892:
-	db	$6A, $02, $61, $02
-	db	$60, $02, $64, $02
-	db	$60, $00, $7C, $02
-	db	$B8, $00, $91, $00
-	db	$A3, $02, $B0, $00
+	brset	0,RAM1_06a,L0096
+;
+	db	$61
+;
+	brset	1,RAM1_060,L009A
+	lsr	PortC,x
+	neg	PortA,x
+	inc	,x
+	brset	1,RAM1_0b8,L00A0
+;
+	db	$91
+;
+	brset	0,RAM1_0a3,L00A6
+	sub	PortA
+;
 	db	$92
+;
 X48A7:
-	db	$02
-X48A8:
-	db	$68, $02, $5E, $06
-	db	$18, $04, $19, $00
-	db	$12, $5E, $81
+	brset	1,RAM1_068,L00AC
+;
+	db	$5E
+;
+	brset	3,TCH,L00B2
+	bclr	4,PortA
+	bset	1,RAM1_05e
+	rts
 ;
 L48B3:
 	sta	RAM1_057
@@ -6156,9 +9905,9 @@ L4957:
 	bpl	L0158
 	rts
 ;
-	db	$00, $5E, $5E, $01
-	db	$50, $03
-;
+L4963:
+	brset	0,RAM1_05e,L01C4
+	brclr	0,RAM1_050,L016C
 L4969:
 	jsr	L4982
 	sei
@@ -6171,16 +9920,19 @@ L4969:
 	bset	0,RAM1_05e
 	jmp	L04C4
 ;
-	db	$9A, $10, $5E
-;
+	cli
+	bset	0,RAM1_05e
 L4982:
 	rts
 ;
-	db	$00, $5E, $3E, $01
-	db	$50, $05, $CD, $49
-	db	$82, $20, $0F, $3F
-	db	$56, $18, $56
+L4983:
+	brset	0,RAM1_05e,L01C4
+	brclr	0,RAM1_050,L018E
+	jsr	L4982
+	bra	L019D
 ;
+	clr	RAM1_056
+	bset	4,RAM1_056
 L4992:
 	brclr	4,PortA,L019B
 	dec	RAM1_056
@@ -6196,20 +9948,23 @@ L499D:
 	cli
 	rts
 ;
-	db	$00, $5E, $1C
-;
+	brset	0,RAM1_05e,L01C4
 L49A8:
 	bclr	5,PortA
 	bset	5,DDRA
 	bclr	5,PortA
 	rts
 ;
-	db	$01, $50, $12, $4D
-	db	$2A, $F0, $1B, $04
-	db	$3F, $56, $18, $56
-	db	$0A, $00, $08, $3A
-	db	$56, $2A, $F9, $20
-	db	$B6
+	brclr	0,RAM1_050,L01C4
+	tsta
+	bpl	L01A5
+	bclr	5,DDRA
+	clr	RAM1_056
+	bset	4,RAM1_056
+	brset	5,PortA,L01C6
+	dec	RAM1_056
+	bpl	L01BB
+	bra	L017A
 ;
 L49C4:
 	bclr	5,DDRA
@@ -6239,53 +9994,93 @@ L49C9:
 	bset	2,RAM1_050
 	bra	L01F4
 ;
-	db	$D7, $02, $68, $AD
-	db	$AF, $CD, $49, $63
-	db	$20, $0B, $1B, $04
-	db	$CD, $49, $63, $0B
-	db	$00, $03, $10, $5E
-	db	$9A, $B6, $52, $BB
-	db	$51, $28, $02, $A0
-	db	$10, $B7, $51, $CD
-	db	$49, $83, $20, $9A
+	sta	RAM2_0268,x
+	bsr	L01A5
+	jsr	L4963
+	bra	L0206
 ;
+	bclr	5,DDRA
+	jsr	L4963
+	brclr	5,PortA,L0206
+	bset	0,RAM1_05e
+	cli
+	lda	RAM1_052
+	add	RAM1_051
+	bhcc	L020E
+	sub	#$10
+	sta	RAM1_051
+	jsr	L4983
+	bra	L01AF
 L4A15:
 	rts
 ;
-	db	$04, $8B, $3A, $0D
-	db	$5D, $37, $CC, $4A
-	db	$C2, $19, $BA, $1E
-	db	$5D, $A6, $70, $B7
-	db	$77, $81, $0E, $CE
-	db	$29, $07, $8B, $05
-	db	$0F, $8B, $1B, $17
-	db	$8B, $18, $B3, $3F
-	db	$CE, $1E, $CE, $3C
-	db	$8B, $15, $8B, $A6
-	db	$10, $C7, $02, $9E
-	db	$4F, $C7, $02, $9F
-	db	$A6, $0C, $0F, $8B
-	db	$4F, $C1, $A6, $0B
-	db	$12, $CB, $CD, $23
-	db	$F3, $81, $1F, $CE
-	db	$CE, $02, $9E, $C3
-	db	$01, $01, $26, $0F
-	db	$C6, $02, $9F, $C1
-	db	$01, $02, $26, $07
-	db	$BF, $8C, $B7, $8D
-	db	$CC, $36, $5D, $0E
-	db	$8B, $C3, $CC, $36
-	db	$55, $5F, $C1, $AE
-	db	$01, $A6, $70, $DB
-	db	$02, $9E, $25, $11
-	db	$AB, $A0, $20, $0D
-	db	$5F, $C1, $AE, $01
-	db	$A6, $F7, $DB, $02
-	db	$9E, $29, $02, $AB
-	db	$0A, $D7, $02, $9E
-	db	$A6, $50, $B7, $77
-	db	$14, $CB, $13, $CB
-	db	$1E, $5D, $81
+L4A16:
+	brset	2,RAM1_08b,L0253
+	brclr	6,RAM1_05d,L0253
+	jmp	L4AC2
+;
+L4A1F:
+	bclr	4,RAM1_0ba
+	bset	7,RAM1_05d
+	lda	#$70
+	sta	RAM1_077
+	rts
+;
+	brset	7,STACK_0ce,L0254
+	brclr	3,RAM1_08b,L0233
+	brclr	7,RAM1_08b,L024C
+	bclr	3,RAM1_08b
+	bset	4,RAM1_0b3
+	clr	STACK_0ce
+	bset	7,STACK_0ce
+	inc	RAM1_08b
+	bclr	2,RAM1_08b
+	lda	#$10
+	sta	RAM2_029e
+	clra
+	sta	RAM2_029f
+	lda	#$0C
+	brclr	7,RAM1_08b,L029A
+	cmp	XA60B
+	bset	1,STACK_0cb
+	jsr	L23F3
+	rts
+;
+	bclr	7,STACK_0ce
+	ldx	RAM2_029e
+	cpx	SEC_CODE1
+	bne	L026D
+	lda	RAM2_029f
+	cmp	SEC_CODE2
+	bne	L026D
+	stx	RAM1_08c
+	sta	RAM1_08d
+	jmp	L365D
+;
+	brset	7,RAM1_08b,L0233
+	jmp	L3655
+;
+	clrx
+	cmp	XAE01
+	lda	#$70
+	add	RAM2_029e,x
+	bcs	L028F
+	add	#$A0
+	bra	L028F
+;
+	clrx
+	cmp	XAE01
+	lda	#$F7
+	add	RAM2_029e,x
+	bhcs	L028F
+	add	#$0A
+	sta	RAM2_029e,x
+	lda	#$50
+	sta	RAM1_077
+	bset	2,STACK_0cb
+	bclr	1,STACK_0cb
+	bset	7,RAM1_05d
+	rts
 ;
 L4A9D:
 	lda	#$0B
@@ -6295,28 +10090,54 @@ L4A9D:
 	jsr	L23D9
 	rts
 ;
-	db	$06, $8B, $0C, $0E
-	db	$8B, $09, $A6, $20
-	db	$02, $8B, $05, $48
-	db	$00, $8B, $01, $4F
-	db	$5F, $CD, $24, $03
-	db	$CC, $24, $13, $5F
-	db	$0E, $CE, $02, $AE
-	db	$10, $D6, $4A, $DF
-	db	$B7, $56, $D6, $4A
-	db	$DE, $27, $0B, $CD
-	db	$27, $97, $26, $F1
-	db	$DE, $4A, $DD, $DD
-	db	$4A, $1F, $81, $E1
-	db	$54, $41, $54, $E2
-	db	$63, $42, $63, $E3
-	db	$56, $43, $56, $E4
-	db	$65, $44, $65, $FE
-	db	$00, $7E, $09, $00
+L4AAB:
+	brset	3,RAM1_08b,L02BA
+	brset	7,RAM1_08b,L02BA
+	lda	#$20
+	brset	1,RAM1_08b,L02BB
+	asla
+	brset	0,RAM1_08b,L02BB
+	clra
+	clrx
+	jsr	L2403
+	jmp	L2413
 ;
-L4AF3:
-	brset	7,RAM1_096,L0302
-	lda	ICL2
+L4AC2:
+	clrx
+	brset	7,STACK_0ce,L02C8
+	ldx	#$10
+	lda	X4ADF,x
+	sta	RAM1_056
+	lda	X4ADE,x
+	beq	L02DD
+	jsr	L2797
+	bne	L02C8
+	ldx	X4ADD,x
+	jsr	L4A1F,x						;INFO: index jump
+X4ADD:
+	rts
+;
+X4ADE:
+	cmp	RAM1_054,x
+;
+	db	$41
+;
+	lsrx
+	sbc	RAM1_063,x
+	mul
+	com	STACK_0e3,x
+	rorx
+	coma
+	rorx
+	and	RAM1_065,x
+	lsra
+;
+	db	$65
+;
+	ldx	,x
+	brset	0,RAM1_07e,L02FB
+	brset	0,SCCR1,L028B
+	brset	6,RAM1_0b6,L0315
 	sub	RAM1_097
 	sta	RAM1_099
 	lda	ICH2
@@ -6402,3238 +10223,4371 @@ L4B50:
 	incx
 	bra	L036D
 ;
-	db	$B6, $56, $B1, $84
-	db	$24, $12, $B6, $9C
-	db	$D1, $4C, $62, $22
-	db	$0B, $26, $07, $B6
-	db	$9D, $D1, $4C, $63
-	db	$24, $02, $3C, $56
-	db	$B6, $56, $B1, $84
-	db	$27, $07, $B7, $84
-	db	$0B, $CE, $02, $1E
-	db	$5D, $81, $4F, $B7
-	db	$51, $B7, $53, $A6
-	db	$04, $B7, $52, $3C
-	db	$53, $26, $05, $3C
-	db	$52, $0C, $52, $11
-	db	$AD, $2D, $27, $F3
-	db	$B6, $52, $D7, $02
-	db	$C0, $B6, $53, $D7
-	db	$02, $D0, $5D, $26
-	db	$E6, $B6, $53, $AB
-	db	$FF, $B7, $53, $25
-	db	$06, $3A, $52, $2A
-	db	$02, $20, $D8, $AD
-	db	$0E, $27, $EE, $B6
-	db	$52, $D7, $02, $E0
-	db	$B6, $53, $D7, $02
-	db	$F0, $20, $E2, $A6
-	db	$50, $B7, $50, $B6
-	db	$84, $B7, $51, $B6
-	db	$52, $B7, $98, $B6
-	db	$53, $B7, $99, $CD
-	db	$4B, $17, $3A, $50
-	db	$26, $F1, $CD, $4B
-	db	$50, $97, $B1, $51
-	db	$81
+	lda	RAM1_056
+	cmp	RAM1_084
+	bcc	L039B
+	lda	RAM1_09c
+	cmp	X4C62,x
+	bhi	L039B
+	bne	L0399
+	lda	RAM1_09d
+	cmp	X4C63,x
+	bcc	L039B
+	inc	RAM1_056
+	lda	RAM1_056
+	cmp	RAM1_084
+	beq	L03A8
+	sta	RAM1_084
+	brclr	5,STACK_0ce,L03A8
+	bset	7,RAM1_05d
+	rts
+;
+	clra
+	sta	RAM1_051
+	sta	RAM1_053
+	lda	#$04
+	sta	RAM1_052
+	inc	RAM1_053
+	bne	L03BB
+	inc	RAM1_052
+	brset	6,RAM1_052,L03CC
+	bsr	L03EA
+	beq	L03B2
+	lda	RAM1_052
+	sta	RAM2_02c0,x
+	lda	RAM1_053
+	sta	RAM2_02d0,x
+	tstx
+	bne	L03B2
+	lda	RAM1_053
+	add	#$FF
+	sta	RAM1_053
+	bcs	L03DA
+	dec	RAM1_052
+	bpl	L03DA
+	bra	L03B2
+;
+	bsr	L03EA
+	beq	L03CC
+	lda	RAM1_052
+	sta	RAM2_02e0,x
+	lda	RAM1_053
+	sta	RAM2_02f0,x
+	bra	L03CC
+;
+	lda	#$50
+	sta	RAM1_050
+	lda	RAM1_084
+	sta	RAM1_051
+	lda	RAM1_052
+	sta	RAM1_098
+	lda	RAM1_053
+	sta	RAM1_099
+	jsr	L4B17
+	dec	RAM1_050
+	bne	L03F2
+	jsr	L4B50
+	tax
+	cmp	RAM1_051
+	rts
+;
 X4C08:
-	db	$4A
+	deca
 X4C09:
-	db	$04, $3A, $98, $30
-	db	$7E, $29, $5C, $24
-	db	$0F, $1F, $F6, $1C
-	db	$B3, $1A, $0B, $00
-	db	$00, $5D, $C0, $46
-	db	$50, $38, $40, $2E
-	db	$E0, $28, $2E, $23
-	db	$28, $1F, $40, $1C
-	db	$20, $00, $00, $75
-	db	$30, $52, $B9, $3F
-	db	$EB, $34, $15, $2B
-	db	$F2, $26, $02, $21
-	db	$7C, $1D, $EC, $00
-	db	$00, $9C, $40, $64
-	db	$72, $4A, $03, $3A
-	db	$98, $30, $7D, $29
-	db	$5C, $24, $0F, $1F
-	db	$F6, $00, $00, $C8
-	db	$E4, $75, $30, $52
-	db	$B9, $3F, $EB, $34
-	db	$15, $2B, $F2, $26
-	db	$02, $21, $7C, $00
-	db	$00, $52, $B9, $3F
-	db	$EB, $34, $15, $2B
-	db	$F2, $26, $02, $21
-	db	$7C, $1D, $EC, $1B
-	db	$0B, $00, $00, $6C
-	db	$2D, $4E, $20, $3D
-	db	$24, $32, $39, $2A
-	db	$9D, $25, $02, $20
-	db	$B4, $1D, $4C, $00
-	db	$00, $8C, $A0, $5D
-	db	$C0, $46, $50, $38
-	db	$40, $2E, $E0, $28
-	db	$2E, $23, $28, $1F
-	db	$40, $00, $00, $C8
-	db	$E4, $75, $30, $52
-	db	$B9, $3F, $EB, $34
-	db	$15, $2B, $F2, $26
-	db	$02, $21, $7C, $00
-	db	$00, $FB, $1D, $8C
-	db	$A0, $5D, $C0, $46
-	db	$50, $38, $40, $2E
-	db	$E0, $28, $2E, $23
-	db	$28, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00, $00
-	db	$00, $00, $00
+	brset	2,X003A,L03A4
+	neg	RAM1_07e
+	bhcs	L046C
+	bcc	L0421
+	bclr	7,STACK_0f6
+	bset	6,RAM1_0b3
+	bset	5,PLMB
+	brset	0,PortA,L0478
+	sub	X4650
+	asl	X0040
+	bil	L0402
+	bhcc	L0452
+	bls	L044E
+	bclr	7,X0040
+	bset	6,X0020
+	brset	0,PortA,L04A2
+	neg	RAM1_052
+	adc	X003F
+	add	X0034,x
+	bclr	2,X002B
+	sbc	,x
+	bne	L043A
+	brn	L04B6
+	bclr	6,STACK_0ec
+	brset	0,PortA,L03DB
+	nega
+	lsr	RAM1_072,x
+	deca
+	brclr	1,X003A,L03DE
+	neg	RAM1_07d
+	bhcs	L04A6
+	bcc	L045B
+	bclr	7,STACK_0f6
+	brset	0,PortA,L0419
+	and	RAM1_075,x
+	neg	RAM1_052
+	adc	X003F
+	add	X0034,x
+	bclr	2,X002B
+	sbc	,x
+	bne	L0460
+	brn	L04DC
+	brset	0,PortA,L04B5
+X4C63:
+	adc	X003F
+	add	X0034,x
+	bclr	2,X002B
+	sbc	,x
+	bne	L046E
+	brn	L04EA
+	bclr	6,STACK_0ec
+	bclr	5,PLMB
+	brset	0,PortA,L04E1
+	bms	L04C5
+	bra	L04B6
+;
+	bcc	L04AD
+	rol	X002A
+	nop
+	bcs	L0482
+	bra	L0436
+;
+	bclr	6,X004C
+	brset	0,PortA,L0413
+	sub	#$5D
+	sub	X4650
+	asl	X0040
+	bil	L0470
+	bhcc	L04C0
+	bls	L04BC
+	bclr	7,X0040
+	brset	0,PortA,L0461
+	and	RAM1_075,x
+	neg	RAM1_052
+	adc	X003F
+	add	X0034,x
+	bclr	2,X002B
+	sbc	,x
+	bne	L04A8
+	brn	L0524
+	brset	0,PortA,L04A6
+	bclr	6,RAM1_08c
+	sub	#$5D
+	sub	X4650
+	asl	X0040
+	bil	L0496
+	bhcc	L04E6
+	bls	L04E2
+	brset	0,PortA,L04BD
+	brset	0,PortA,L04C0
+	brset	0,PortA,L04C3
+	brset	0,PortA,L04C6
+	brset	0,PortA,L04C9
+	brset	0,PortA,L04CC
+	brset	0,PortA,L04CF
+	brset	0,PortA,L04D2
+	brset	0,PortA,L04D5
+	brset	0,PortA,L04D8
+	brset	0,PortA,L04DB
+	brset	0,PortA,L04DE
+	brset	0,PortA,L04E1
+	brset	0,PortA,L04E4
+	brset	0,PortA,L04E7
+	brset	0,PortA,L04EA
+	brset	0,PortA,L04ED
+	brset	0,PortA,L04F0
+	brset	0,PortA,L04F3
+	brset	0,PortA,L04F6
+	brset	0,PortA,L04F9
+	brset	0,PortA,L04FC
+	brset	0,PortA,L04FF
+	brset	0,PortA,L0502
+	brset	0,PortA,L0505
+	brset	0,PortA,L0508
+	brset	0,PortA,L050B
+	brset	0,PortA,L050E
+	brset	0,PortA,L0511
+	brset	0,PortA,L0514
+	brset	0,PortA,L0517
+	brset	0,PortA,L051A
+	brset	0,PortA,L051D
+	brset	0,PortA,L0520
+	brset	0,PortA,L0523
+	brset	0,PortA,L0526
+	brset	0,PortA,L0529
+	brset	0,PortA,L052C
+	brset	0,PortA,L052F
+	brset	0,PortA,L0532
+	brset	0,PortA,L0535
+	brset	0,PortA,L0538
+	brset	0,PortA,L053B
+	brset	0,PortA,L053E
+	brset	0,PortA,L0541
+	brset	0,PortA,L0544
+	brset	0,PortA,L0547
+	brset	0,PortA,L054A
+	brset	0,PortA,L054D
+	brset	0,PortA,L0550
+	brset	0,PortA,L0553
+	brset	0,PortA,L0556
+	brset	0,PortA,L0559
+	brset	0,PortA,L055C
+	brset	0,PortA,L055F
+	brset	0,PortA,L0562
+	brset	0,PortA,L0565
+	brset	0,PortA,L0568
+	brset	0,PortA,L056B
+	brset	0,PortA,L056E
+	brset	0,PortA,L0571
+	brset	0,PortA,L0574
+	brset	0,PortA,L0577
+	brset	0,PortA,L057A
+	brset	0,PortA,L057D
+	brset	0,PortA,L0580
+	brset	0,PortA,L0583
+	brset	0,PortA,L0586
+	brset	0,PortA,L0589
+	brset	0,PortA,L058C
+	brset	0,PortA,L058F
+	brset	0,PortA,L0592
+	brset	0,PortA,L0595
+	brset	0,PortA,L0598
+	brset	0,PortA,L059B
+	brset	0,PortA,L059E
+	brset	0,PortA,L05A1
+	brset	0,PortA,L05A4
+	brset	0,PortA,L05A7
+	brset	0,PortA,L05AA
+	brset	0,PortA,L05AD
+	brset	0,PortA,L05B0
+	brset	0,PortA,L05B3
+	brset	0,PortA,L05B6
+	brset	0,PortA,L05B9
+	brset	0,PortA,L05BC
+	brset	0,PortA,L05BF
+	brset	0,PortA,L05C2
+	brset	0,PortA,L05C5
+	brset	0,PortA,L05C8
+	brset	0,PortA,L05CB
+	brset	0,PortA,L05CE
+	brset	0,PortA,L05D1
+	brset	0,PortA,L05D4
+	brset	0,PortA,L05D7
+	brset	0,PortA,L05DA
+	brset	0,PortA,L05DD
+	brset	0,PortA,L05E0
+	brset	0,PortA,L05E3
+	brset	0,PortA,L05E6
+	brset	0,PortA,L05E9
+	brset	0,PortA,L05EC
+	brset	0,PortA,L05EF
+	brset	0,PortA,L05F2
+	brset	0,PortA,L05F5
+	brset	0,PortA,L05F8
+	brset	0,PortA,L05FB
+	brset	0,PortA,L05FE
+	brset	0,PortA,L0601
+	brset	0,PortA,L0604
+	brset	0,PortA,L0607
+	brset	0,PortA,L060A
+	brset	0,PortA,L060D
+	brset	0,PortA,L0610
+	brset	0,PortA,L0613
+	brset	0,PortA,L0616
+	brset	0,PortA,L0619
+	brset	0,PortA,L061C
+	brset	0,PortA,L061F
+	brset	0,PortA,L0622
+	brset	0,PortA,L0625
+	brset	0,PortA,L0628
+	brset	0,PortA,L062B
+	brset	0,PortA,L062E
+	brset	0,PortA,L0631
+	brset	0,PortA,L0634
+	brset	0,PortA,L0637
+	brset	0,PortA,L063A
+	brset	0,PortA,L063D
+	brset	0,PortA,L0640
+	brset	0,PortA,L0643
+	brset	0,PortA,L0646
+	brset	0,PortA,L0649
+	brset	0,PortA,L064C
+	brset	0,PortA,L064F
+	brset	0,PortA,L0652
+	brset	0,PortA,L0655
+	brset	0,PortA,L0658
+	brset	0,PortA,L065B
+	brset	0,PortA,L065E
+	brset	0,PortA,L0661
+	brset	0,PortA,L0664
+	brset	0,PortA,L0667
+	brset	0,PortA,L066A
+	brset	0,PortA,L066D
+	brset	0,PortA,L0670
+	brset	0,PortA,L0673
+	brset	0,PortA,L0676
+	brset	0,PortA,L0679
+	brset	0,PortA,L067C
+	brset	0,PortA,L067F
+	brset	0,PortA,L0682
+	brset	0,PortA,L0685
+	brset	0,PortA,L0688
+	brset	0,PortA,L068B
+	brset	0,PortA,L068E
+	brset	0,PortA,L0691
+	brset	0,PortA,L0694
+	brset	0,PortA,L0697
+	brset	0,PortA,L069A
+	brset	0,PortA,L069D
+	brset	0,PortA,L06A0
+	brset	0,PortA,L06A3
+	brset	0,PortA,L06A6
+	brset	0,PortA,L06A9
+	brset	0,PortA,L06AC
+	brset	0,PortA,L06AF
+	brset	0,PortA,L06B2
+	brset	0,PortA,L06B5
+	brset	0,PortA,L06B8
+	brset	0,PortA,L06BB
+	brset	0,PortA,L06BE
+	brset	0,PortA,L06C1
+	brset	0,PortA,L06C4
+	brset	0,PortA,L06C7
+	brset	0,PortA,L06CA
+	brset	0,PortA,L06CD
+	brset	0,PortA,L06D0
+	brset	0,PortA,L06D3
+	brset	0,PortA,L06D6
+	brset	0,PortA,L06D9
+	brset	0,PortA,L06DC
+	brset	0,PortA,L06DF
+	brset	0,PortA,L06E2
+	brset	0,PortA,L06E5
+	brset	0,PortA,L06E8
+	brset	0,PortA,L06EB
+	brset	0,PortA,L06EE
+	brset	0,PortA,L06F1
+	brset	0,PortA,L06F4
+	brset	0,PortA,L06F7
+	brset	0,PortA,L06FA
+	brset	0,PortA,L06FD
+	brset	0,PortA,L0700
+	brset	0,PortA,L0703
+	brset	0,PortA,L0706
+	brset	0,PortA,L0709
+	brset	0,PortA,L070C
+	brset	0,PortA,L070F
+	brset	0,PortA,L0712
+	brset	0,PortA,L0715
+	brset	0,PortA,L0718
+	brset	0,PortA,L071B
+	brset	0,PortA,L071E
+	brset	0,PortA,L0721
+	brset	0,PortA,L0724
+	brset	0,PortA,L0727
+	brset	0,PortA,L072A
+	brset	0,PortA,L072D
+	brset	0,PortA,L0730
+	brset	0,PortA,L0733
+	brset	0,PortA,L0736
+	brset	0,PortA,L0739
+	brset	0,PortA,L073C
+	brset	0,PortA,L073F
+	brset	0,PortA,L0742
+	brset	0,PortA,L0745
+	brset	0,PortA,L0748
+	brset	0,PortA,L074B
+	brset	0,PortA,L074E
+	brset	0,PortA,L0751
+	brset	0,PortA,L0754
+	brset	0,PortA,L0757
+	brset	0,PortA,L075A
+	brset	0,PortA,L075D
+	brset	0,PortA,L0760
+	brset	0,PortA,L0763
+	brset	0,PortA,L0766
+	brset	0,PortA,L0769
+	brset	0,PortA,L076C
+	brset	0,PortA,L076F
+	brset	0,PortA,L0772
+	brset	0,PortA,L0775
+	brset	0,PortA,L0778
+	brset	0,PortA,L077B
+	brset	0,PortA,L077E
+	brset	0,PortA,L0781
+	brset	0,PortA,L0784
+	brset	0,PortA,L0787
+	brset	0,PortA,L078A
+	brset	0,PortA,L078D
+	brset	0,PortA,L0790
+	brset	0,PortA,L0793
+	brset	0,PortA,L0796
+	brset	0,PortA,L0799
+	brset	0,PortA,L079C
+	brset	0,PortA,L079F
+	brset	0,PortA,L07A2
+	brset	0,PortA,L07A5
+	brset	0,PortA,L07A8
+	brset	0,PortA,L07AB
+	brset	0,PortA,L07AE
+	brset	0,PortA,L07B1
+	brset	0,PortA,L07B4
+	brset	0,PortA,L07B7
+	brset	0,PortA,L07BA
+	brset	0,PortA,L07BD
+	brset	0,PortA,L07C0
+	brset	0,PortA,L07C3
+	brset	0,PortA,L07C6
+	brset	0,PortA,L07C9
+	brset	0,PortA,L07CC
+	brset	0,PortA,L07CF
+	brset	0,PortA,L07D2
+	brset	0,PortA,L07D5
+	brset	0,PortA,L07D8
+	brset	0,PortA,L07DB
+	brset	0,PortA,L07DE
+	brset	0,PortA,L07E1
+	brset	0,PortA,L07E4
+	brset	0,PortA,L07E7
+	brset	0,PortA,L07EA
+	brset	0,PortA,L07ED
+	brset	0,PortA,L07F0
+	brset	0,PortA,L07F3
+	brset	0,PortA,L07F6
+	brset	0,PortA,L07F9
+	brset	0,PortA,L07FC
+	brset	0,PortA,L07FF
+	brset	0,PortA,L0002
+	brset	0,PortA,L0005
+	brset	0,PortA,L0008
+	brset	0,PortA,L000B
+	brset	0,PortA,L000E
+	brset	0,PortA,L0011
+	brset	0,PortA,L0014
+	brset	0,PortA,L0017
+	brset	0,PortA,L001A
+	brset	0,PortA,L001D
+	brset	0,PortA,L0020
+	brset	0,PortA,L0023
+	brset	0,PortA,L0026
+	brset	0,PortA,L0029
+	brset	0,PortA,L002C
+	brset	0,PortA,L002F
+	brset	0,PortA,L0032
+	brset	0,PortA,L0035
+	brset	0,PortA,L0038
+	brset	0,PortA,L003B
+	brset	0,PortA,L003E
+	brset	0,PortA,L0041
+	brset	0,PortA,L0044
+	brset	0,PortA,L0047
+	brset	0,PortA,L004A
+	brset	0,PortA,L004D
+	brset	0,PortA,L0050
+	brset	0,PortA,L0053
+	brset	0,PortA,L0056
+	brset	0,PortA,L0059
+	brset	0,PortA,L005C
+	brset	0,PortA,L005F
+	brset	0,PortA,L0062
+	brset	0,PortA,L0065
+	brset	0,PortA,L0068
+	brset	0,PortA,L006B
+	brset	0,PortA,L006E
+	brset	0,PortA,L0071
+	brset	0,PortA,L0074
+	brset	0,PortA,L0077
+	brset	0,PortA,L007A
+	brset	0,PortA,L007D
+	brset	0,PortA,L0080
+	brset	0,PortA,L0083
+	brset	0,PortA,L0086
+	brset	0,PortA,L0089
+	brset	0,PortA,L008C
+	brset	0,PortA,L008F
+	brset	0,PortA,L0092
+	brset	0,PortA,L0095
+	brset	0,PortA,L0098
+	brset	0,PortA,L009B
+	brset	0,PortA,L009E
+	brset	0,PortA,L00A1
+	brset	0,PortA,L00A4
+	brset	0,PortA,L00A7
+	brset	0,PortA,L00AA
+	brset	0,PortA,L00AD
+	brset	0,PortA,L00B0
+	brset	0,PortA,L00B3
+	brset	0,PortA,L00B6
+	brset	0,PortA,L00B9
+	brset	0,PortA,L00BC
+	brset	0,PortA,L00BF
+	brset	0,PortA,L00C2
+	brset	0,PortA,L00C5
+	brset	0,PortA,L00C8
+	brset	0,PortA,L00CB
+	brset	0,PortA,L00CE
+	brset	0,PortA,L00D1
+	brset	0,PortA,L00D4
+	brset	0,PortA,L00D7
+	brset	0,PortA,L00DA
+	brset	0,PortA,L00DD
+	brset	0,PortA,L00E0
+	brset	0,PortA,L00E3
+	brset	0,PortA,L00E6
+	brset	0,PortA,L00E9
+	brset	0,PortA,L00EC
+	brset	0,PortA,L00EF
+	brset	0,PortA,L00F2
+	brset	0,PortA,L00F5
+	brset	0,PortA,L00F8
+	brset	0,PortA,L00FB
+	brset	0,PortA,L00FE
+	brset	0,PortA,L0101
+	brset	0,PortA,L0104
+	brset	0,PortA,L0107
+	brset	0,PortA,L010A
+	brset	0,PortA,L010D
+	brset	0,PortA,L0110
+	brset	0,PortA,L0113
+	brset	0,PortA,L0116
+	brset	0,PortA,L0119
+	brset	0,PortA,L011C
+	brset	0,PortA,L011F
+	brset	0,PortA,L0122
+	brset	0,PortA,L0125
+	brset	0,PortA,L0128
+	brset	0,PortA,L012B
+	brset	0,PortA,L012E
+	brset	0,PortA,L0131
+	brset	0,PortA,L0134
+	brset	0,PortA,L0137
+	brset	0,PortA,L013A
+	brset	0,PortA,L013D
+	brset	0,PortA,L0140
+	brset	0,PortA,L0143
+	brset	0,PortA,L0146
+	brset	0,PortA,L0149
+	brset	0,PortA,L014C
+	brset	0,PortA,L014F
+	brset	0,PortA,L0152
+	brset	0,PortA,L0155
+	brset	0,PortA,L0158
+	brset	0,PortA,L015B
+	brset	0,PortA,L015E
+	brset	0,PortA,L0161
+	brset	0,PortA,L0164
+	brset	0,PortA,L0167
+	brset	0,PortA,L016A
+	brset	0,PortA,L016D
+	brset	0,PortA,L0170
+	brset	0,PortA,L0173
+	brset	0,PortA,L0176
+	brset	0,PortA,L0179
+	brset	0,PortA,L017C
+	brset	0,PortA,L017F
+	brset	0,PortA,L0182
+	brset	0,PortA,L0185
+	brset	0,PortA,L0188
+	brset	0,PortA,L018B
+	brset	0,PortA,L018E
+	brset	0,PortA,L0191
+	brset	0,PortA,L0194
+	brset	0,PortA,L0197
+	brset	0,PortA,L019A
+	brset	0,PortA,L019D
+	brset	0,PortA,L01A0
+	brset	0,PortA,L01A3
+	brset	0,PortA,L01A6
+	brset	0,PortA,L01A9
+	brset	0,PortA,L01AC
+	brset	0,PortA,L01AF
+	brset	0,PortA,L01B2
+	brset	0,PortA,L01B5
+	brset	0,PortA,L01B8
+	brset	0,PortA,L01BB
+	brset	0,PortA,L01BE
+	brset	0,PortA,L01C1
+	brset	0,PortA,L01C4
+	brset	0,PortA,L01C7
+	brset	0,PortA,L01CA
+	brset	0,PortA,L01CD
+	brset	0,PortA,L01D0
+	brset	0,PortA,L01D3
+	brset	0,PortA,L01D6
+	brset	0,PortA,L01D9
+	brset	0,PortA,L01DC
+	brset	0,PortA,L01DF
+	brset	0,PortA,L01E2
+	brset	0,PortA,L01E5
+	brset	0,PortA,L01E8
+	brset	0,PortA,L01EB
+	brset	0,PortA,L01EE
+	brset	0,PortA,L01F1
+L51F1:
+	brset	0,PortA,L01F4
+	brset	0,PortA,L01F7
+	brset	0,PortA,L01FA
+	brset	0,PortA,L01FD
+X51FD:
+	brset	0,PortA,L0200
+	brset	0,PortA,L0203
+	brset	0,PortA,L0206
+	brset	0,PortA,L0209
+	brset	0,PortA,L020C
+	brset	0,PortA,L020F
+	brset	0,PortA,L0212
+	brset	0,PortA,L0215
+	brset	0,PortA,L0218
+	brset	0,PortA,L021B
+	brset	0,PortA,L021E
+	brset	0,PortA,L0221
+	brset	0,PortA,L0224
+	brset	0,PortA,L0227
+	brset	0,PortA,L022A
+	brset	0,PortA,L022D
+	brset	0,PortA,L0230
+	brset	0,PortA,L0233
+	brset	0,PortA,L0236
+	brset	0,PortA,L0239
+	brset	0,PortA,L023C
+	brset	0,PortA,L023F
+	brset	0,PortA,L0242
+	brset	0,PortA,L0245
+	brset	0,PortA,L0248
+	brset	0,PortA,L024B
+	brset	0,PortA,L024E
+	brset	0,PortA,L0251
+	brset	0,PortA,L0254
+	brset	0,PortA,L0257
+	brset	0,PortA,L025A
+	brset	0,PortA,L025D
+	brset	0,PortA,L0260
+	brset	0,PortA,L0263
+	brset	0,PortA,L0266
+	brset	0,PortA,L0269
+	brset	0,PortA,L026C
+	brset	0,PortA,L026F
+	brset	0,PortA,L0272
+	brset	0,PortA,L0275
+	brset	0,PortA,L0278
+	brset	0,PortA,L027B
+	brset	0,PortA,L027E
+	brset	0,PortA,L0281
+	brset	0,PortA,L0284
+	brset	0,PortA,L0287
+	brset	0,PortA,L028A
+	brset	0,PortA,L028D
+	brset	0,PortA,L0290
+	brset	0,PortA,L0293
+	brset	0,PortA,L0296
+	brset	0,PortA,L0299
+	brset	0,PortA,L029C
+	brset	0,PortA,L029F
+	brset	0,PortA,L02A2
+	brset	0,PortA,L02A5
+	brset	0,PortA,L02A8
+	brset	0,PortA,L02AB
+	brset	0,PortA,L02AE
+	brset	0,PortA,L02B1
+	brset	0,PortA,L02B4
+	brset	0,PortA,L02B7
+	brset	0,PortA,L02BA
+	brset	0,PortA,L02BD
+	brset	0,PortA,L02C0
+	brset	0,PortA,L02C3
+	brset	0,PortA,L02C6
+	brset	0,PortA,L02C9
+	brset	0,PortA,L02CC
+	brset	0,PortA,L02CF
+	brset	0,PortA,L02D2
+	brset	0,PortA,L02D5
+	brset	0,PortA,L02D8
+	brset	0,PortA,L02DB
+	brset	0,PortA,L02DE
+	brset	0,PortA,L02E1
+	brset	0,PortA,L02E4
+	brset	0,PortA,L02E7
+	brset	0,PortA,L02EA
+	brset	0,PortA,L02ED
+	brset	0,PortA,L02F0
+	brset	0,PortA,L02F3
+	brset	0,PortA,L02F6
+	brset	0,PortA,L02F9
+	brset	0,PortA,L02FC
+	brset	0,PortA,L02FF
+	brset	0,PortA,L0302
+	brset	0,PortA,L0305
+	brset	0,PortA,L0308
+	brset	0,PortA,L030B
+	brset	0,PortA,L030E
+	brset	0,PortA,L0311
+	brset	0,PortA,L0314
+	brset	0,PortA,L0317
+	brset	0,PortA,L031A
+	brset	0,PortA,L031D
+	brset	0,PortA,L0320
+	brset	0,PortA,L0323
+	brset	0,PortA,L0326
+	brset	0,PortA,L0329
+	brset	0,PortA,L032C
+	brset	0,PortA,L032F
+	brset	0,PortA,L0332
+	brset	0,PortA,L0335
+	brset	0,PortA,L0338
+	brset	0,PortA,L033B
+	brset	0,PortA,L033E
+	brset	0,PortA,L0341
+	brset	0,PortA,L0344
+	brset	0,PortA,L0347
+	brset	0,PortA,L034A
+	brset	0,PortA,L034D
+	brset	0,PortA,L0350
+	brset	0,PortA,L0353
+	brset	0,PortA,L0356
+	brset	0,PortA,L0359
+	brset	0,PortA,L035C
+	brset	0,PortA,L035F
+	brset	0,PortA,L0362
+	brset	0,PortA,L0365
+	brset	0,PortA,L0368
+	brset	0,PortA,L036B
+	brset	0,PortA,L036E
+	brset	0,PortA,L0371
+	brset	0,PortA,L0374
+	brset	0,PortA,L0377
+	brset	0,PortA,L037A
+	brset	0,PortA,L037D
+	brset	0,PortA,L0380
+	brset	0,PortA,L0383
+	brset	0,PortA,L0386
+	brset	0,PortA,L0389
+	brset	0,PortA,L038C
+	brset	0,PortA,L038F
+	brset	0,PortA,L0392
+	brset	0,PortA,L0395
+	brset	0,PortA,L0398
+	brset	0,PortA,L039B
+	brset	0,PortA,L039E
+	brset	0,PortA,L03A1
+	brset	0,PortA,L03A4
+	brset	0,PortA,L03A7
+	brset	0,PortA,L03AA
+	brset	0,PortA,L03AD
+	brset	0,PortA,L03B0
+	brset	0,PortA,L03B3
+	brset	0,PortA,L03B6
+	brset	0,PortA,L03B9
+	brset	0,PortA,L03BC
+	brset	0,PortA,L03BF
+	brset	0,PortA,L03C2
+	brset	0,PortA,L03C5
+	brset	0,PortA,L03C8
+	brset	0,PortA,L03CB
+	brset	0,PortA,L03CE
+	brset	0,PortA,L03D1
+	brset	0,PortA,L03D4
+	brset	0,PortA,L03D7
+	brset	0,PortA,L03DA
+	brset	0,PortA,L03DD
+	brset	0,PortA,L03E0
+	brset	0,PortA,L03E3
+	brset	0,PortA,L03E6
+	brset	0,PortA,L03E9
+	brset	0,PortA,L03EC
+	brset	0,PortA,L03EF
+	brset	0,PortA,L03F2
+	brset	0,PortA,L03F5
+	brset	0,PortA,L03F8
+	brset	0,PortA,L03FB
+	brset	0,PortA,L03FE
+	brset	0,PortA,L0401
+	brset	0,PortA,L0404
+	brset	0,PortA,L0407
+	brset	0,PortA,L040A
+	brset	0,PortA,L040D
+	brset	0,PortA,L0410
+	brset	0,PortA,L0413
+	brset	0,PortA,L0416
+	brset	0,PortA,L0419
+	brset	0,PortA,L041C
+	brset	0,PortA,L041F
+	brset	0,PortA,L0422
+	brset	0,PortA,L0425
+	brset	0,PortA,L0428
+	brset	0,PortA,L042B
+	brset	0,PortA,L042E
+	brset	0,PortA,L0431
+	brset	0,PortA,L0434
+	brset	0,PortA,L0437
+	brset	0,PortA,L043A
+	brset	0,PortA,L043D
+	brset	0,PortA,L0440
+	brset	0,PortA,L0443
+	brset	0,PortA,L0446
+	brset	0,PortA,L0449
+	brset	0,PortA,L044C
+	brset	0,PortA,L044F
+	brset	0,PortA,L0452
+	brset	0,PortA,L0455
+	brset	0,PortA,L0458
+	brset	0,PortA,L045B
+	brset	0,PortA,L045E
+	brset	0,PortA,L0461
+	brset	0,PortA,L0464
+	brset	0,PortA,L0467
+	brset	0,PortA,L046A
+	brset	0,PortA,L046D
+	brset	0,PortA,L0470
+	brset	0,PortA,L0473
+	brset	0,PortA,L0476
+	brset	0,PortA,L0479
+	brset	0,PortA,L047C
+	brset	0,PortA,L047F
+	brset	0,PortA,L0482
+	brset	0,PortA,L0485
+	brset	0,PortA,L0488
+	brset	0,PortA,L048B
+	brset	0,PortA,L048E
+	brset	0,PortA,L0491
+	brset	0,PortA,L0494
+	brset	0,PortA,L0497
+	brset	0,PortA,L049A
+	brset	0,PortA,L049D
+	brset	0,PortA,L04A0
+	brset	0,PortA,L04A3
+	brset	0,PortA,L04A6
+	brset	0,PortA,L04A9
+	brset	0,PortA,L04AC
+	brset	0,PortA,L04AF
+	brset	0,PortA,L04B2
+	brset	0,PortA,L04B5
+	brset	0,PortA,L04B8
+	brset	0,PortA,L04BB
+	brset	0,PortA,L04BE
+	brset	0,PortA,L04C1
+	brset	0,PortA,L04C4
+	brset	0,PortA,L04C7
+	brset	0,PortA,L04CA
+	brset	0,PortA,L04CD
+	brset	0,PortA,L04D0
+	brset	0,PortA,L04D3
+	brset	0,PortA,L04D6
+	brset	0,PortA,L04D9
+	brset	0,PortA,L04DC
+	brset	0,PortA,L04DF
+	brset	0,PortA,L04E2
+	brset	0,PortA,L04E5
+	brset	0,PortA,L04E8
+	brset	0,PortA,L04EB
+	brset	0,PortA,L04EE
+	brset	0,PortA,L04F1
+	brset	0,PortA,L04F4
+	brset	0,PortA,L04F7
+	brset	0,PortA,L04FA
+	brset	0,PortA,L04FD
+	brset	0,PortA,L0500
+	brset	0,PortA,L0503
+	brset	0,PortA,L0506
+	brset	0,PortA,L0509
+	brset	0,PortA,L050C
+	brset	0,PortA,L050F
+	brset	0,PortA,L0512
+	brset	0,PortA,L0515
+	brset	0,PortA,L0518
+	brset	0,PortA,L051B
+	brset	0,PortA,L051E
+	brset	0,PortA,L0521
+	brset	0,PortA,L0524
+	brset	0,PortA,L0527
+	brset	0,PortA,L052A
+	brset	0,PortA,L052D
+	brset	0,PortA,L0530
+	brset	0,PortA,L0533
+	brset	0,PortA,L0536
+	brset	0,PortA,L0539
+	brset	0,PortA,L053C
+	brset	0,PortA,L053F
+	brset	0,PortA,L0542
+	brset	0,PortA,L0545
+	brset	0,PortA,L0548
+	brset	0,PortA,L054B
+	brset	0,PortA,L054E
+	brset	0,PortA,L0551
+	brset	0,PortA,L0554
+	brset	0,PortA,L0557
+	brset	0,PortA,L055A
+	brset	0,PortA,L055D
+	brset	0,PortA,L0560
+	brset	0,PortA,L0563
+	brset	0,PortA,L0566
+	brset	0,PortA,L0569
+	brset	0,PortA,L056C
+	brset	0,PortA,L056F
+	brset	0,PortA,L0572
+	brset	0,PortA,L0575
+	brset	0,PortA,L0578
+	brset	0,PortA,L057B
+	brset	0,PortA,L057E
+	brset	0,PortA,L0581
+	brset	0,PortA,L0584
+	brset	0,PortA,L0587
+	brset	0,PortA,L058A
+	brset	0,PortA,L058D
+	brset	0,PortA,L0590
+	brset	0,PortA,L0593
+	brset	0,PortA,L0596
+	brset	0,PortA,L0599
+	brset	0,PortA,L059C
+	brset	0,PortA,L059F
+	brset	0,PortA,L05A2
+	brset	0,PortA,L05A5
+	brset	0,PortA,L05A8
+	brset	0,PortA,L05AB
+	brset	0,PortA,L05AE
+	brset	0,PortA,L05B1
+	brset	0,PortA,L05B4
+	brset	0,PortA,L05B7
+	brset	0,PortA,L05BA
+	brset	0,PortA,L05BD
+	brset	0,PortA,L05C0
+	brset	0,PortA,L05C3
+	brset	0,PortA,L05C6
+	brset	0,PortA,L05C9
+	brset	0,PortA,L05CC
+	brset	0,PortA,L05CF
+	brset	0,PortA,L05D2
+	brset	0,PortA,L05D5
+	brset	0,PortA,L05D8
+	brset	0,PortA,L05DB
+	brset	0,PortA,L05DE
+	brset	0,PortA,L05E1
+	brset	0,PortA,L05E4
+	brset	0,PortA,L05E7
+	brset	0,PortA,L05EA
+	brset	0,PortA,L05ED
+	brset	0,PortA,L05F0
+	brset	0,PortA,L05F3
+	brset	0,PortA,L05F6
+	brset	0,PortA,L05F9
+	brset	0,PortA,L05FC
+	brset	0,PortA,L05FF
+	brset	0,PortA,L0602
+	brset	0,PortA,L0605
+	brset	0,PortA,L0608
+	brset	0,PortA,L060B
+	brset	0,PortA,L060E
+	brset	0,PortA,L0611
+	brset	0,PortA,L0614
+	brset	0,PortA,L0617
+	brset	0,PortA,L061A
+	brset	0,PortA,L061D
+	brset	0,PortA,L0620
+	brset	0,PortA,L0623
+	brset	0,PortA,L0626
+	brset	0,PortA,L0629
+	brset	0,PortA,L062C
+	brset	0,PortA,L062F
+	brset	0,PortA,L0632
+	brset	0,PortA,L0635
+	brset	0,PortA,L0638
+	brset	0,PortA,L063B
+	brset	0,PortA,L063E
+	brset	0,PortA,L0641
+	brset	0,PortA,L0644
+	brset	0,PortA,L0647
+	brset	0,PortA,L064A
+	brset	0,PortA,L064D
+	brset	0,PortA,L0650
+	brset	0,PortA,L0653
+	brset	0,PortA,L0656
+	brset	0,PortA,L0659
+	brset	0,PortA,L065C
+	brset	0,PortA,L065F
+	brset	0,PortA,L0662
+	brset	0,PortA,L0665
+	brset	0,PortA,L0668
+	brset	0,PortA,L066B
+	brset	0,PortA,L066E
+	brset	0,PortA,L0671
+	brset	0,PortA,L0674
+	brset	0,PortA,L0677
+	brset	0,PortA,L067A
+	brset	0,PortA,L067D
+	brset	0,PortA,L0680
+	brset	0,PortA,L0683
+	brset	0,PortA,L0686
+	brset	0,PortA,L0689
+	brset	0,PortA,L068C
+	brset	0,PortA,L068F
+	brset	0,PortA,L0692
+	brset	0,PortA,L0695
+	brset	0,PortA,L0698
+	brset	0,PortA,L069B
+	brset	0,PortA,L069E
+	brset	0,PortA,L06A1
+	brset	0,PortA,L06A4
+	brset	0,PortA,L06A7
+	brset	0,PortA,L06AA
+	brset	0,PortA,L06AD
+	brset	0,PortA,L06B0
+	brset	0,PortA,L06B3
+	brset	0,PortA,L06B6
+	brset	0,PortA,L06B9
+	brset	0,PortA,L06BC
+	brset	0,PortA,L06BF
+	brset	0,PortA,L06C2
+	brset	0,PortA,L06C5
+	brset	0,PortA,L06C8
+	brset	0,PortA,L06CB
+	brset	0,PortA,L06CE
+	brset	0,PortA,L06D1
+	brset	0,PortA,L06D4
+	brset	0,PortA,L06D7
+	brset	0,PortA,L06DA
+	brset	0,PortA,L06DD
+	brset	0,PortA,L06E0
+	brset	0,PortA,L06E3
+	brset	0,PortA,L06E6
+	brset	0,PortA,L06E9
+	brset	0,PortA,L06EC
+	brset	0,PortA,L06EF
+	brset	0,PortA,L06F2
+	brset	0,PortA,L06F5
+	brset	0,PortA,L06F8
+	brset	0,PortA,L06FB
+	brset	0,PortA,L06FE
+	brset	0,PortA,L0701
+	brset	0,PortA,L0704
+	brset	0,PortA,L0707
+	brset	0,PortA,L070A
+	brset	0,PortA,L070D
+	brset	0,PortA,L0710
+	brset	0,PortA,L0713
+	brset	0,PortA,L0716
+	brset	0,PortA,L0719
+	brset	0,PortA,L071C
+	brset	0,PortA,L071F
+	brset	0,PortA,L0722
+	brset	0,PortA,L0725
+	brset	0,PortA,L0728
+	brset	0,PortA,L072B
+	brset	0,PortA,L072E
+	brset	0,PortA,L0731
+	brset	0,PortA,L0734
+	brset	0,PortA,L0737
+	brset	0,PortA,L073A
+	brset	0,PortA,L073D
+	brset	0,PortA,L0740
+	brset	0,PortA,L0743
+	brset	0,PortA,L0746
+	brset	0,PortA,L0749
+	brset	0,PortA,L074C
+	brset	0,PortA,L074F
+	brset	0,PortA,L0752
+	brset	0,PortA,L0755
+	brset	0,PortA,L0758
+	brset	0,PortA,L075B
+	brset	0,PortA,L075E
+	brset	0,PortA,L0761
+	brset	0,PortA,L0764
+	brset	0,PortA,L0767
+	brset	0,PortA,L076A
+	brset	0,PortA,L076D
+	brset	0,PortA,L0770
+	brset	0,PortA,L0773
+	brset	0,PortA,L0776
+	brset	0,PortA,L0779
+	brset	0,PortA,L077C
+	brset	0,PortA,L077F
+	brset	0,PortA,L0782
+	brset	0,PortA,L0785
+	brset	0,PortA,L0788
+	brset	0,PortA,L078B
+	brset	0,PortA,L078E
+	brset	0,PortA,L0791
+	brset	0,PortA,L0794
+	brset	0,PortA,L0797
+	brset	0,PortA,L079A
+	brset	0,PortA,L079D
+	brset	0,PortA,L07A0
+	brset	0,PortA,L07A3
+	brset	0,PortA,L07A6
+	brset	0,PortA,L07A9
+	brset	0,PortA,L07AC
+	brset	0,PortA,L07AF
+	brset	0,PortA,L07B2
+	brset	0,PortA,L07B5
+	brset	0,PortA,L07B8
+	brset	0,PortA,L07BB
+	brset	0,PortA,L07BE
+	brset	0,PortA,L07C1
+	brset	0,PortA,L07C4
+	brset	0,PortA,L07C7
+	brset	0,PortA,L07CA
+	brset	0,PortA,L07CD
+	brset	0,PortA,L07D0
+	brset	0,PortA,L07D3
+	brset	0,PortA,L07D6
+	brset	0,PortA,L07D9
+	brset	0,PortA,L07DC
+	brset	0,PortA,L07DF
+	brset	0,PortA,L07E2
+	brset	0,PortA,L07E5
+	brset	0,PortA,L07E8
+	brset	0,PortA,L07EB
+	brset	0,PortA,L07EE
+	brset	0,PortA,L07F1
+	brset	0,PortA,L07F4
+	brset	0,PortA,L07F7
+	brset	0,PortA,L07FA
+	brset	0,PortA,L07FD
+	brset	0,PortA,L0000
+	brset	0,PortA,L0003
+	brset	0,PortA,L0006
+	brset	0,PortA,L0009
+	brset	0,PortA,L000C
+	brset	0,PortA,L000F
+	brset	0,PortA,L0012
+	brset	0,PortA,L0015
+	brset	0,PortA,L0018
+	brset	0,PortA,L001B
+	brset	0,PortA,L001E
+	brset	0,PortA,L0021
+	brset	0,PortA,L0024
+	brset	0,PortA,L0027
+	brset	0,PortA,L002A
+	brset	0,PortA,L002D
+	brset	0,PortA,L0030
+	brset	0,PortA,L0033
+	brset	0,PortA,L0036
+	brset	0,PortA,L0039
+	brset	0,PortA,L003C
+	brset	0,PortA,L003F
+	brset	0,PortA,L0042
+	brset	0,PortA,L0045
+	brset	0,PortA,L0048
+	brset	0,PortA,L004B
+	brset	0,PortA,L004E
+	brset	0,PortA,L0051
+	brset	0,PortA,L0054
+	brset	0,PortA,L0057
+	brset	0,PortA,L005A
+	brset	0,PortA,L005D
+	brset	0,PortA,L0060
+	brset	0,PortA,L0063
+	brset	0,PortA,L0066
+	brset	0,PortA,L0069
+	brset	0,PortA,L006C
+	brset	0,PortA,L006F
+	brset	0,PortA,L0072
+	brset	0,PortA,L0075
+	brset	0,PortA,L0078
+	brset	0,PortA,L007B
+	brset	0,PortA,L007E
+	brset	0,PortA,L0081
+	brset	0,PortA,L0084
+	brset	0,PortA,L0087
+	brset	0,PortA,L008A
+	brset	0,PortA,L008D
+	brset	0,PortA,L0090
+	brset	0,PortA,L0093
+	brset	0,PortA,L0096
+	brset	0,PortA,L0099
+	brset	0,PortA,L009C
+	brset	0,PortA,L009F
+	brset	0,PortA,L00A2
+	brset	0,PortA,L00A5
+	brset	0,PortA,L00A8
+	brset	0,PortA,L00AB
+	brset	0,PortA,L00AE
+	brset	0,PortA,L00B1
+	brset	0,PortA,L00B4
+	brset	0,PortA,L00B7
+	brset	0,PortA,L00BA
+	brset	0,PortA,L00BD
+	brset	0,PortA,L00C0
+	brset	0,PortA,L00C3
+	brset	0,PortA,L00C6
+	brset	0,PortA,L00C9
+	brset	0,PortA,L00CC
+	brset	0,PortA,L00CF
+	brset	0,PortA,L00D2
+	brset	0,PortA,L00D5
+	brset	0,PortA,L00D8
+	brset	0,PortA,L00DB
+	brset	0,PortA,L00DE
+	brset	0,PortA,L00E1
+	brset	0,PortA,L00E4
+	brset	0,PortA,L00E7
+	brset	0,PortA,L00EA
+	brset	0,PortA,L00ED
+	brset	0,PortA,L00F0
+	brset	0,PortA,L00F3
+	brset	0,PortA,L00F6
+	brset	0,PortA,L00F9
+	brset	0,PortA,L00FC
+	brset	0,PortA,L00FF
+	brset	0,PortA,L0102
+	brset	0,PortA,L0105
+	brset	0,PortA,L0108
+	brset	0,PortA,L010B
+	brset	0,PortA,L010E
+	brset	0,PortA,L0111
+	brset	0,PortA,L0114
+	brset	0,PortA,L0117
+	brset	0,PortA,L011A
+	brset	0,PortA,L011D
+	brset	0,PortA,L0120
+	brset	0,PortA,L0123
+	brset	0,PortA,L0126
+	brset	0,PortA,L0129
+	brset	0,PortA,L012C
+	brset	0,PortA,L012F
+	brset	0,PortA,L0132
+	brset	0,PortA,L0135
+	brset	0,PortA,L0138
+	brset	0,PortA,L013B
+	brset	0,PortA,L013E
+	brset	0,PortA,L0141
+	brset	0,PortA,L0144
+	brset	0,PortA,L0147
+	brset	0,PortA,L014A
+	brset	0,PortA,L014D
+	brset	0,PortA,L0150
+	brset	0,PortA,L0153
+	brset	0,PortA,L0156
+	brset	0,PortA,L0159
+	brset	0,PortA,L015C
+	brset	0,PortA,L015F
+	brset	0,PortA,L0162
+	brset	0,PortA,L0165
+	brset	0,PortA,L0168
+	brset	0,PortA,L016B
+	brset	0,PortA,L016E
+	brset	0,PortA,L0171
+	brset	0,PortA,L0174
+	brset	0,PortA,L0177
+	brset	0,PortA,L017A
+	brset	0,PortA,L017D
+	brset	0,PortA,L0180
+	brset	0,PortA,L0183
+	brset	0,PortA,L0186
+	brset	0,PortA,L0189
+	brset	0,PortA,L018C
+	brset	0,PortA,L018F
+	brset	0,PortA,L0192
+	brset	0,PortA,L0195
+	brset	0,PortA,L0198
+	brset	0,PortA,L019B
+	brset	0,PortA,L019E
+	brset	0,PortA,L01A1
+	brset	0,PortA,L01A4
+	brset	0,PortA,L01A7
+	brset	0,PortA,L01AA
+	brset	0,PortA,L01AD
+	brset	0,PortA,L01B0
+	brset	0,PortA,L01B3
+	brset	0,PortA,L01B6
+	brset	0,PortA,L01B9
+	brset	0,PortA,L01BC
+	brset	0,PortA,L01BF
+	brset	0,PortA,L01C2
+	brset	0,PortA,L01C5
+	brset	0,PortA,L01C8
+	brset	0,PortA,L01CB
+	brset	0,PortA,L01CE
+	brset	0,PortA,L01D1
+	brset	0,PortA,L01D4
+	brset	0,PortA,L01D7
+	brset	0,PortA,L01DA
+	brset	0,PortA,L01DD
+	brset	0,PortA,L01E0
+	brset	0,PortA,L01E3
+	brset	0,PortA,L01E6
+	brset	0,PortA,L01E9
+	brset	0,PortA,L01EC
+	brset	0,PortA,L01EF
+	brset	0,PortA,L01F2
+	brset	0,PortA,L01F5
+	brset	0,PortA,L01F8
+	brset	0,PortA,L01FB
+	brset	0,PortA,L01FE
+	brset	0,PortA,L0201
+	brset	0,PortA,L0204
+	brset	0,PortA,L0207
+	brset	0,PortA,L020A
+	brset	0,PortA,L020D
+	brset	0,PortA,L0210
+	brset	0,PortA,L0213
+	brset	0,PortA,L0216
+	brset	0,PortA,L0219
+	brset	0,PortA,L021C
+	brset	0,PortA,L021F
+	brset	0,PortA,L0222
+	brset	0,PortA,L0225
+	brset	0,PortA,L0228
+	brset	0,PortA,L022B
+	brset	0,PortA,L022E
+	brset	0,PortA,L0231
+	brset	0,PortA,L0234
+	brset	0,PortA,L0237
+	brset	0,PortA,L023A
+	brset	0,PortA,L023D
+	brset	0,PortA,L0240
+	brset	0,PortA,L0243
+	brset	0,PortA,L0246
+	brset	0,PortA,L0249
+	brset	0,PortA,L024C
+	brset	0,PortA,L024F
+	brset	0,PortA,L0252
+	brset	0,PortA,L0255
+	brset	0,PortA,L0258
+	brset	0,PortA,L025B
+	brset	0,PortA,L025E
+	brset	0,PortA,L0261
+	brset	0,PortA,L0264
+	brset	0,PortA,L0267
+	brset	0,PortA,L026A
+	brset	0,PortA,L026D
+	brset	0,PortA,L0270
+	brset	0,PortA,L0273
+	brset	0,PortA,L0276
+	brset	0,PortA,L0279
+	brset	0,PortA,L027C
+	brset	0,PortA,L027F
+	brset	0,PortA,L0282
+	brset	0,PortA,L0285
+	brset	0,PortA,L0288
+	brset	0,PortA,L028B
+	brset	0,PortA,L028E
+	brset	0,PortA,L0291
+	brset	0,PortA,L0294
+	brset	0,PortA,L0297
+	brset	0,PortA,L029A
+	brset	0,PortA,L029D
+	brset	0,PortA,L02A0
+	brset	0,PortA,L02A3
+	brset	0,PortA,L02A6
+	brset	0,PortA,L02A9
+	brset	0,PortA,L02AC
+	brset	0,PortA,L02AF
+	brset	0,PortA,L02B2
+	brset	0,PortA,L02B5
+	brset	0,PortA,L02B8
+	brset	0,PortA,L02BB
+	brset	0,PortA,L02BE
+	brset	0,PortA,L02C1
+	brset	0,PortA,L02C4
+	brset	0,PortA,L02C7
+	brset	0,PortA,L02CA
+	brset	0,PortA,L02CD
+	brset	0,PortA,L02D0
+	brset	0,PortA,L02D3
+	brset	0,PortA,L02D6
+	brset	0,PortA,L02D9
+	brset	0,PortA,L02DC
+	brset	0,PortA,L02DF
+	brset	0,PortA,L02E2
+	brset	0,PortA,L02E5
+	brset	0,PortA,L02E8
+	brset	0,PortA,L02EB
+	brset	0,PortA,L02EE
+	brset	0,PortA,L02F1
+	brset	0,PortA,L02F4
+	brset	0,PortA,L02F7
+	brset	0,PortA,L02FA
+	brset	0,PortA,L02FD
+	brset	0,PortA,L0300
+	brset	0,PortA,L0303
+	brset	0,PortA,L0306
+	brset	0,PortA,L0309
+	brset	0,PortA,L030C
+	brset	0,PortA,L030F
+	brset	0,PortA,L0312
+	brset	0,PortA,L0315
+	brset	0,PortA,L0318
+	brset	0,PortA,L031B
+	brset	0,PortA,L031E
+	brset	0,PortA,L0321
+	brset	0,PortA,L0324
+	brset	0,PortA,L0327
+	brset	0,PortA,L032A
+	brset	0,PortA,L032D
+	brset	0,PortA,L0330
+	brset	0,PortA,L0333
+	brset	0,PortA,L0336
+	brset	0,PortA,L0339
+	brset	0,PortA,L033C
+	brset	0,PortA,L033F
+	brset	0,PortA,L0342
+	brset	0,PortA,L0345
+	brset	0,PortA,L0348
+	brset	0,PortA,L034B
+	brset	0,PortA,L034E
+	brset	0,PortA,L0351
+	brset	0,PortA,L0354
+	brset	0,PortA,L0357
+	brset	0,PortA,L035A
+	brset	0,PortA,L035D
+	brset	0,PortA,L0360
+	brset	0,PortA,L0363
+	brset	0,PortA,L0366
+	brset	0,PortA,L0369
+	brset	0,PortA,L036C
+	brset	0,PortA,L036F
+	brset	0,PortA,L0372
+	brset	0,PortA,L0375
+	brset	0,PortA,L0378
+	brset	0,PortA,L037B
+	brset	0,PortA,L037E
+	brset	0,PortA,L0381
+	brset	0,PortA,L0384
+	brset	0,PortA,L0387
+	brset	0,PortA,L038A
+	brset	0,PortA,L038D
+	brset	0,PortA,L0390
+	brset	0,PortA,L0393
+	brset	0,PortA,L0396
+	brset	0,PortA,L0399
+	brset	0,PortA,L039C
+	brset	0,PortA,L039F
+	brset	0,PortA,L03A2
+	brset	0,PortA,L03A5
+	brset	0,PortA,L03A8
+	brset	0,PortA,L03AB
+	brset	0,PortA,L03AE
+	brset	0,PortA,L03B1
+	brset	0,PortA,L03B4
+	brset	0,PortA,L03B7
+	brset	0,PortA,L03BA
+	brset	0,PortA,L03BD
+	brset	0,PortA,L03C0
+	brset	0,PortA,L03C3
+	brset	0,PortA,L03C6
+	brset	0,PortA,L03C9
+	brset	0,PortA,L03CC
+	brset	0,PortA,L03CF
+	brset	0,PortA,L03D2
+	brset	0,PortA,L03D5
+	brset	0,PortA,L03D8
+	brset	0,PortA,L03DB
+	brset	0,PortA,L03DE
+	brset	0,PortA,L03E1
+	brset	0,PortA,L03E4
+	brset	0,PortA,L03E7
+	brset	0,PortA,L03EA
+	brset	0,PortA,L03ED
+	brset	0,PortA,L03F0
+	brset	0,PortA,L03F3
+	brset	0,PortA,L03F6
+	brset	0,PortA,L03F9
+	brset	0,PortA,L03FC
+	brset	0,PortA,L03FF
+	brset	0,PortA,L0402
+	brset	0,PortA,L0405
+	brset	0,PortA,L0408
+	brset	0,PortA,L040B
+	brset	0,PortA,L040E
+	brset	0,PortA,L0411
+	brset	0,PortA,L0414
+	brset	0,PortA,L0417
+	brset	0,PortA,L041A
+	brset	0,PortA,L041D
+	brset	0,PortA,L0420
+	brset	0,PortA,L0423
+	brset	0,PortA,L0426
+	brset	0,PortA,L0429
+	brset	0,PortA,L042C
+	brset	0,PortA,L042F
+	brset	0,PortA,L0432
+	brset	0,PortA,L0435
+	brset	0,PortA,L0438
+	brset	0,PortA,L043B
+	brset	0,PortA,L043E
+	brset	0,PortA,L0441
+	brset	0,PortA,L0444
+	brset	0,PortA,L0447
+	brset	0,PortA,L044A
+	brset	0,PortA,L044D
+	brset	0,PortA,L0450
+	brset	0,PortA,L0453
+	brset	0,PortA,L0456
+	brset	0,PortA,L0459
+	brset	0,PortA,L045C
+	brset	0,PortA,L045F
+	brset	0,PortA,L0462
+	brset	0,PortA,L0465
+	brset	0,PortA,L0468
+	brset	0,PortA,L046B
+	brset	0,PortA,L046E
+	brset	0,PortA,L0471
+	brset	0,PortA,L0474
+	brset	0,PortA,L0477
+	brset	0,PortA,L047A
+	brset	0,PortA,L047D
+	brset	0,PortA,L0480
+	brset	0,PortA,L0483
+	brset	0,PortA,L0486
+	brset	0,PortA,L0489
+	brset	0,PortA,L048C
+	brset	0,PortA,L048F
+	brset	0,PortA,L0492
+	brset	0,PortA,L0495
+	brset	0,PortA,L0498
+	brset	0,PortA,L049B
+	brset	0,PortA,L049E
+	brset	0,PortA,L04A1
+	brset	0,PortA,L04A4
+	brset	0,PortA,L04A7
+	brset	0,PortA,L04AA
+	brset	0,PortA,L04AD
+	brset	0,PortA,L04B0
+	brset	0,PortA,L04B3
+	brset	0,PortA,L04B6
+	brset	0,PortA,L04B9
+	brset	0,PortA,L04BC
+	brset	0,PortA,L04BF
+	brset	0,PortA,L04C2
+	brset	0,PortA,L04C5
+	brset	0,PortA,L04C8
+	brset	0,PortA,L04CB
+	brset	0,PortA,L04CE
+	brset	0,PortA,L04D1
+	brset	0,PortA,L04D4
+	brset	0,PortA,L04D7
+	brset	0,PortA,L04DA
+	brset	0,PortA,L04DD
+	brset	0,PortA,L04E0
+	brset	0,PortA,L04E3
+	brset	0,PortA,L04E6
+	brset	0,PortA,L04E9
+	brset	0,PortA,L04EC
+	brset	0,PortA,L04EF
+	brset	0,PortA,L04F2
+	brset	0,PortA,L04F5
+	brset	0,PortA,L04F8
+	brset	0,PortA,L04FB
+	brset	0,PortA,L04FE
+	brset	0,PortA,L0501
+	brset	0,PortA,L0504
+	brset	0,PortA,L0507
+	brset	0,PortA,L050A
+	brset	0,PortA,L050D
+	brset	0,PortA,L0510
+	brset	0,PortA,L0513
+	brset	0,PortA,L0516
+	brset	0,PortA,L0519
+	brset	0,PortA,L051C
+	brset	0,PortA,L051F
+	brset	0,PortA,L0522
+	brset	0,PortA,L0525
+	brset	0,PortA,L0528
+	brset	0,PortA,L052B
+	brset	0,PortA,L052E
+	brset	0,PortA,L0531
+	brset	0,PortA,L0534
+	brset	0,PortA,L0537
+	brset	0,PortA,L053A
+	brset	0,PortA,L053D
+	brset	0,PortA,L0540
+	brset	0,PortA,L0543
+	brset	0,PortA,L0546
+	brset	0,PortA,L0549
+	brset	0,PortA,L054C
+	brset	0,PortA,L054F
+	brset	0,PortA,L0552
+	brset	0,PortA,L0555
+	brset	0,PortA,L0558
+	brset	0,PortA,L055B
+	brset	0,PortA,L055E
+	brset	0,PortA,L0561
+	brset	0,PortA,L0564
+	brset	0,PortA,L0567
+	brset	0,PortA,L056A
+	brset	0,PortA,L056D
+	brset	0,PortA,L0570
+	brset	0,PortA,L0573
+	brset	0,PortA,L0576
+	brset	0,PortA,L0579
+	brset	0,PortA,L057C
+	brset	0,PortA,L057F
+	brset	0,PortA,L0582
+	brset	0,PortA,L0585
+	brset	0,PortA,L0588
+	brset	0,PortA,L058B
+	brset	0,PortA,L058E
+	brset	0,PortA,L0591
+	brset	0,PortA,L0594
+	brset	0,PortA,L0597
+	brset	0,PortA,L059A
+	brset	0,PortA,L059D
+	brset	0,PortA,L05A0
+	brset	0,PortA,L05A3
+	brset	0,PortA,L05A6
+	brset	0,PortA,L05A9
+	brset	0,PortA,L05AC
+	brset	0,PortA,L05AF
+	brset	0,PortA,L05B2
+	brset	0,PortA,L05B5
+	brset	0,PortA,L05B8
+	brset	0,PortA,L05BB
+	brset	0,PortA,L05BE
+	brset	0,PortA,L05C1
+	brset	0,PortA,L05C4
+	brset	0,PortA,L05C7
+	brset	0,PortA,L05CA
+	brset	0,PortA,L05CD
+	brset	0,PortA,L05D0
+	brset	0,PortA,L05D3
+	brset	0,PortA,L05D6
+	brset	0,PortA,L05D9
+	brset	0,PortA,L05DC
+	brset	0,PortA,L05DF
+	brset	0,PortA,L05E2
+	brset	0,PortA,L05E5
+	brset	0,PortA,L05E8
+	brset	0,PortA,L05EB
+	brset	0,PortA,L05EE
+	brset	0,PortA,L05F1
+	brset	0,PortA,L05F4
+	brset	0,PortA,L05F7
+	brset	0,PortA,L05FA
+	brset	0,PortA,L05FD
+	brset	0,PortA,L0600
+	brset	0,PortA,L0603
+	brset	0,PortA,L0606
+	brset	0,PortA,L0609
+	brset	0,PortA,L060C
+	brset	0,PortA,L060F
+	brset	0,PortA,L0612
+	brset	0,PortA,L0615
+	brset	0,PortA,L0618
+	brset	0,PortA,L061B
+	brset	0,PortA,L061E
+	brset	0,PortA,L0621
+	brset	0,PortA,L0624
+	brset	0,PortA,L0627
+	brset	0,PortA,L062A
+	brset	0,PortA,L062D
+	brset	0,PortA,L0630
+	brset	0,PortA,L0633
+	brset	0,PortA,L0636
+	brset	0,PortA,L0639
+	brset	0,PortA,L063C
+	brset	0,PortA,L063F
+	brset	0,PortA,L0642
+	brset	0,PortA,L0645
+	brset	0,PortA,L0648
+	brset	0,PortA,L064B
+	brset	0,PortA,L064E
+	brset	0,PortA,L0651
+	brset	0,PortA,L0654
+	brset	0,PortA,L0657
+	brset	0,PortA,L065A
+	brset	0,PortA,L065D
+	brset	0,PortA,L0660
+	brset	0,PortA,L0663
+	brset	0,PortA,L0666
+	brset	0,PortA,L0669
+	brset	0,PortA,L066C
+	brset	0,PortA,L066F
+	brset	0,PortA,L0672
+	brset	0,PortA,L0675
+	brset	0,PortA,L0678
+	brset	0,PortA,L067B
+	brset	0,PortA,L067E
+	brset	0,PortA,L0681
+	brset	0,PortA,L0684
+	brset	0,PortA,L0687
+	brset	0,PortA,L068A
+	brset	0,PortA,L068D
+	brset	0,PortA,L0690
+	brset	0,PortA,L0693
+	brset	0,PortA,L0696
+	brset	0,PortA,L0699
+	brset	0,PortA,L069C
+	brset	0,PortA,L069F
+	brset	0,PortA,L06A2
+	brset	0,PortA,L06A5
+	brset	0,PortA,L06A8
+	brset	0,PortA,L06AB
+	brset	0,PortA,L06AE
+	brset	0,PortA,L06B1
+	brset	0,PortA,L06B4
+	brset	0,PortA,L06B7
+	brset	0,PortA,L06BA
+	brset	0,PortA,L06BD
+	brset	0,PortA,L06C0
+	brset	0,PortA,L06C3
+	brset	0,PortA,L06C6
+	brset	0,PortA,L06C9
+	brset	0,PortA,L06CC
+	brset	0,PortA,L06CF
+	brset	0,PortA,L06D2
+	brset	0,PortA,L06D5
+	brset	0,PortA,L06D8
+	brset	0,PortA,L06DB
+	brset	0,PortA,L06DE
+	brset	0,PortA,L06E1
+	brset	0,PortA,L06E4
+	brset	0,PortA,L06E7
+	brset	0,PortA,L06EA
+	brset	0,PortA,L06ED
+	brset	0,PortA,L06F0
+	brset	0,PortA,L06F3
+	brset	0,PortA,L06F6
+	brset	0,PortA,L06F9
+	brset	0,PortA,L06FC
+	brset	0,PortA,L06FF
+	brset	0,PortA,L0702
+	brset	0,PortA,L0705
+	brset	0,PortA,L0708
+	brset	0,PortA,L070B
+	brset	0,PortA,L070E
+	brset	0,PortA,L0711
+	brset	0,PortA,L0714
+	brset	0,PortA,L0717
+	brset	0,PortA,L071A
+	brset	0,PortA,L071D
+	brset	0,PortA,L0720
+	brset	0,PortA,L0723
+	brset	0,PortA,L0726
+	brset	0,PortA,L0729
+	brset	0,PortA,L072C
+	brset	0,PortA,L072F
+	brset	0,PortA,L0732
+	brset	0,PortA,L0735
+	brset	0,PortA,L0738
+	brset	0,PortA,L073B
+	brset	0,PortA,L073E
+	brset	0,PortA,L0741
+	brset	0,PortA,L0744
+	brset	0,PortA,L0747
+	brset	0,PortA,L074A
+	brset	0,PortA,L074D
+	brset	0,PortA,L0750
+	brset	0,PortA,L0753
+	brset	0,PortA,L0756
+	brset	0,PortA,L0759
+	brset	0,PortA,L075C
+	brset	0,PortA,L075F
+	brset	0,PortA,L0762
+	brset	0,PortA,L0765
+	brset	0,PortA,L0768
+	brset	0,PortA,L076B
+	brset	0,PortA,L076E
+	brset	0,PortA,L0771
+	brset	0,PortA,L0774
+	brset	0,PortA,L0777
+	brset	0,PortA,L077A
+	brset	0,PortA,L077D
+	brset	0,PortA,L0780
+	brset	0,PortA,L0783
+	brset	0,PortA,L0786
+	brset	0,PortA,L0789
+	brset	0,PortA,L078C
+	brset	0,PortA,L078F
+	brset	0,PortA,L0792
+	brset	0,PortA,L0795
+	brset	0,PortA,L0798
+	brset	0,PortA,L079B
+	brset	0,PortA,L079E
+	brset	0,PortA,L07A1
+	brset	0,PortA,L07A4
+	brset	0,PortA,L07A7
+	brset	0,PortA,L07AA
+	brset	0,PortA,L07AD
+	brset	0,PortA,L07B0
+	brset	0,PortA,L07B3
+	brset	0,PortA,L07B6
+	brset	0,PortA,L07B9
+	brset	0,PortA,L07BC
+	brset	0,PortA,L07BF
+	brset	0,PortA,L07C2
+	brset	0,PortA,L07C5
+	brset	0,PortA,L07C8
+	brset	0,PortA,L07CB
+	brset	0,PortA,L07CE
+	brset	0,PortA,L07D1
+	brset	0,PortA,L07D4
+	brset	0,PortA,L07D7
+	brset	0,PortA,L07DA
+	brset	0,PortA,L07DD
+	brset	0,PortA,L07E0
+	brset	0,PortA,L07E3
+	brset	0,PortA,L07E6
+	brset	0,PortA,L07E9
+	brset	0,PortA,L07EC
+	brset	0,PortA,L07EF
+	brset	0,PortA,L07F2
+	brset	0,PortA,L07F5
+	brset	0,PortA,L07F8
+	brset	0,PortA,L07FB
+	brset	0,PortA,L07FE
+	brset	0,PortA,L0001
+	brset	0,PortA,L0004
+	brset	0,PortA,L0007
+	brset	0,PortA,L000A
+	brset	0,PortA,L000D
+	brset	0,PortA,L0010
+	brset	0,PortA,L0013
+	brset	0,PortA,L0016
+	brset	0,PortA,L0019
+	brset	0,PortA,L001C
+	brset	0,PortA,L001F
+	brset	0,PortA,L0022
+	brset	0,PortA,L0025
+	brset	0,PortA,L0028
+	brset	0,PortA,L002B
+	brset	0,PortA,L002E
+	brset	0,PortA,L0031
+	brset	0,PortA,L0034
+	brset	0,PortA,L0037
+	brset	0,PortA,L003A
+	brset	0,PortA,L003D
+	brset	0,PortA,L0040
+	brset	0,PortA,L0043
+	brset	0,PortA,L0046
+	brset	0,PortA,L0049
+	brset	0,PortA,L004C
+	brset	0,PortA,L004F
+	brset	0,PortA,L0052
+	brset	0,PortA,L0055
+	brset	0,PortA,L0058
+	brset	0,PortA,L005B
+	brset	0,PortA,L005E
+	brset	0,PortA,L0061
+	brset	0,PortA,L0064
+	brset	0,PortA,L0067
+	brset	0,PortA,L006A
+	brset	0,PortA,L006D
+	brset	0,PortA,L0070
+	brset	0,PortA,L0073
+	brset	0,PortA,L0076
+	brset	0,PortA,L0079
+	brset	0,PortA,L007C
+	brset	0,PortA,L007F
+	brset	0,PortA,L0082
+	brset	0,PortA,L0085
+	brset	0,PortA,L0088
+	brset	0,PortA,L008B
+	brset	0,PortA,L008E
+	brset	0,PortA,L0091
+	brset	0,PortA,L0094
+	brset	0,PortA,L0097
+	brset	0,PortA,L009A
+	brset	0,PortA,L009D
+	brset	0,PortA,L00A0
+	brset	0,PortA,L00A3
+	brset	0,PortA,L00A6
+	brset	0,PortA,L00A9
+	brset	0,PortA,L00AC
+	brset	0,PortA,L00AF
+	brset	0,PortA,L00B2
+	brset	0,PortA,L00B5
+	brset	0,PortA,L00B8
+	brset	0,PortA,L00BB
+	brset	0,PortA,L00BE
+	brset	0,PortA,L00C1
+	brset	0,PortA,L00C4
+	brset	0,PortA,L00C7
+	brset	0,PortA,L00CA
+	brset	0,PortA,L00CD
+	brset	0,PortA,L00D0
+	brset	0,PortA,L00D3
+	brset	0,PortA,L00D6
+	brset	0,PortA,L00D9
+	brset	0,PortA,L00DC
+	brset	0,PortA,L00DF
+	brset	0,PortA,L00E2
+	brset	0,PortA,L00E5
+	brset	0,PortA,L00E8
+	brset	0,PortA,L00EB
+	brset	0,PortA,L00EE
+	brset	0,PortA,L00F1
+	brset	0,PortA,L00F4
+	brset	0,PortA,L00F7
+	brset	0,PortA,L00FA
+	brset	0,PortA,L00FD
+	brset	0,PortA,L0100
+	brset	0,PortA,L0103
+	brset	0,PortA,L0106
+	brset	0,PortA,L0109
+	brset	0,PortA,L010C
+	brset	0,PortA,L010F
+	brset	0,PortA,L0112
+	brset	0,PortA,L0115
+	brset	0,PortA,L0118
+	brset	0,PortA,L011B
+	brset	0,PortA,L011E
+	brset	0,PortA,L0121
+	brset	0,PortA,L0124
+	brset	0,PortA,L0127
+	brset	0,PortA,L012A
+	brset	0,PortA,L012D
+	brset	0,PortA,L0130
+	brset	0,PortA,L0133
+	brset	0,PortA,L0136
+	brset	0,PortA,L0139
+	brset	0,PortA,L013C
+	brset	0,PortA,L013F
+	brset	0,PortA,L0142
+	brset	0,PortA,L0145
+	brset	0,PortA,L0148
+	brset	0,PortA,L014B
+	brset	0,PortA,L014E
+	brset	0,PortA,L0151
+	brset	0,PortA,L0154
+	brset	0,PortA,L0157
+	brset	0,PortA,L015A
+	brset	0,PortA,L015D
+	brset	0,PortA,L0160
+	brset	0,PortA,L0163
+	brset	0,PortA,L0166
+	brset	0,PortA,L0169
+	brset	0,PortA,L016C
+	brset	0,PortA,L016F
+	brset	0,PortA,L0172
+	brset	0,PortA,L0175
+	brset	0,PortA,L0178
+	brset	0,PortA,L017B
+	brset	0,PortA,L017E
+	brset	0,PortA,L0181
+	brset	0,PortA,L0184
+	brset	0,PortA,L0187
+	brset	0,PortA,L018A
+	brset	0,PortA,L018D
+	brset	0,PortA,L0190
+	brset	0,PortA,L0193
+	brset	0,PortA,L0196
+	brset	0,PortA,L0199
+	brset	0,PortA,L019C
+	brset	0,PortA,L019F
+	brset	0,PortA,L01A2
+	brset	0,PortA,L01A5
+	brset	0,PortA,L01A8
+	brset	0,PortA,L01AB
+	brset	0,PortA,L01AE
+	brset	0,PortA,L01B1
+	brset	0,PortA,L01B4
+	brset	0,PortA,L01B7
+	brset	0,PortA,L01BA
+	brset	0,PortA,L01BD
+	brset	0,PortA,L01C0
+	brset	0,PortA,L01C3
+	brset	0,PortA,L01C6
+	brset	0,PortA,L01C9
+	brset	0,PortA,L01CC
+	brset	0,PortA,L01CF
+	brset	0,PortA,L01D2
+	brset	0,PortA,L01D5
+	brset	0,PortA,L01D8
+	brset	0,PortA,L01DB
+	brset	0,PortA,L01DE
+	brset	0,PortA,L01E1
+	brset	0,PortA,L01E4
+	brset	0,PortA,L01E7
+	brset	0,PortA,L01EA
+	brset	0,PortA,L01ED
+	brset	0,PortA,L01F0
+	brset	0,PortA,L01F3
+	brset	0,PortA,L01F6
+	brset	0,PortA,L01F9
+	brset	0,PortA,L01FC
+	brset	0,PortA,L01FF
+	brset	0,PortA,L0202
+	brset	0,PortA,L0205
+	brset	0,PortA,L0208
+	brset	0,PortA,L020B
+	brset	0,PortA,L020E
+	brset	0,PortA,L0211
+	brset	0,PortA,L0214
+	brset	0,PortA,L0217
+	brset	0,PortA,L021A
+	brset	0,PortA,L021D
+	brset	0,PortA,L0220
+	brset	0,PortA,L0223
+	brset	0,PortA,L0226
+	brset	0,PortA,L0229
+	brset	0,PortA,L022C
+	brset	0,PortA,L022F
+	brset	0,PortA,L0232
+	brset	0,PortA,L0235
+	brset	0,PortA,L0238
+	brset	0,PortA,L023B
+	brset	0,PortA,L023E
+	brset	0,PortA,L0241
+	brset	0,PortA,L0244
+	brset	0,PortA,L0247
+	brset	0,PortA,L024A
+	brset	0,PortA,L024D
+	brset	0,PortA,L0250
+	brset	0,PortA,L0253
+	brset	0,PortA,L0256
+	brset	0,PortA,L0259
+	brset	0,PortA,L025C
+	brset	0,PortA,L025F
+	brset	0,PortA,L0262
+	brset	0,PortA,L0265
+	brset	0,PortA,L0268
+	brset	0,PortA,L026B
+	brset	0,PortA,L026E
+	brset	0,PortA,L0271
+	brset	0,PortA,L0274
+	brset	0,PortA,L0277
+	brset	0,PortA,L027A
+	brset	0,PortA,L027D
+	brset	0,PortA,L0280
+	brset	0,PortA,L0283
+	brset	0,PortA,L0286
+	brset	0,PortA,L0289
+	brset	0,PortA,L028C
+	brset	0,PortA,L028F
+	brset	0,PortA,L0292
+	brset	0,PortA,L0295
+	brset	0,PortA,L0298
+	brset	0,PortA,L029B
+	brset	0,PortA,L029E
+	brset	0,PortA,L02A1
+	brset	0,PortA,L02A4
+	brset	0,PortA,L02A7
+	brset	0,PortA,L02AA
+	brset	0,PortA,L02AD
+	brset	0,PortA,L02B0
+	brset	0,PortA,L02B3
+	brset	0,PortA,L02B6
+	brset	0,PortA,L02B9
+	brset	0,PortA,L02BC
+	brset	0,PortA,L02BF
+	brset	0,PortA,L02C2
+	brset	0,PortA,L02C5
+	brset	0,PortA,L02C8
+	brset	0,PortA,L02CB
+	brset	0,PortA,L02CE
+	brset	0,PortA,L02D1
+	brset	0,PortA,L02D4
+	brset	0,PortA,L02D7
+	brset	0,PortA,L02DA
+	brset	0,PortA,L02DD
+	brset	0,PortA,L02E0
+	brset	0,PortA,L02E3
+	brset	0,PortA,L02E6
+	brset	0,PortA,L02E9
+	brset	0,PortA,L02EC
+	brset	0,PortA,L02EF
+	brset	0,PortA,L02F2
+	brset	0,PortA,L02F5
+	brset	0,PortA,L02F8
+	brset	0,PortA,L02FB
+	brset	0,PortA,L02FE
+	brset	0,PortA,L0301
+	brset	0,PortA,L0304
+	brset	0,PortA,L0307
+	brset	0,PortA,L030A
+	brset	0,PortA,L030D
+	brset	0,PortA,L0310
+	brset	0,PortA,L0313
+	brset	0,PortA,L0316
+	brset	0,PortA,L0319
+	brset	0,PortA,L031C
+	brset	0,PortA,L031F
+	brset	0,PortA,L0322
+	brset	0,PortA,L0325
+	brset	0,PortA,L0328
+	brset	0,PortA,L032B
+	brset	0,PortA,L032E
+	brset	0,PortA,L0331
+	brset	0,PortA,L0334
+	brset	0,PortA,L0337
+	brset	0,PortA,L033A
+	brset	0,PortA,L033D
+	brset	0,PortA,L0340
+	brset	0,PortA,L0343
+	brset	0,PortA,L0346
+	brset	0,PortA,L0349
+	brset	0,PortA,L034C
+	brset	0,PortA,L034F
+	brset	0,PortA,L0352
+	brset	0,PortA,L0355
+	brset	0,PortA,L0358
+	brset	0,PortA,L035B
+	brset	0,PortA,L035E
+	brset	0,PortA,L0361
+	brset	0,PortA,L0364
+	brset	0,PortA,L0367
+	brset	0,PortA,L036A
+	brset	0,PortA,L036D
+	brset	0,PortA,L0370
+	brset	0,PortA,L0373
+	brset	0,PortA,L0376
+	brset	0,PortA,L0379
+	brset	0,PortA,L037C
+	brset	0,PortA,L037F
+	brset	0,PortA,L0382
+	brset	0,PortA,L0385
+	brset	0,PortA,L0388
+	brset	0,PortA,L038B
+	brset	0,PortA,L038E
+	brset	0,PortA,L0391
+	brset	0,PortA,L0394
+	brset	0,PortA,L0397
+	brset	0,PortA,L039A
+	brset	0,PortA,L039D
+	brset	0,PortA,L03A0
+	brset	0,PortA,L03A3
+	brset	0,PortA,L03A6
+	brset	0,PortA,L03A9
+	brset	0,PortA,L03AC
+	brset	0,PortA,L03AF
+	brset	0,PortA,L03B2
+	brset	0,PortA,L03B5
+	brset	0,PortA,L03B8
+	brset	0,PortA,L03BB
+	brset	0,PortA,L03BE
+	brset	0,PortA,L03C1
+	brset	0,PortA,L03C4
+	brset	0,PortA,L03C7
+	brset	0,PortA,L03CA
+	brset	0,PortA,L03CD
+	brset	0,PortA,L03D0
+	brset	0,PortA,L03D3
+	brset	0,PortA,L03D6
+	brset	0,PortA,L03D9
+	brset	0,PortA,L03DC
+	brset	0,PortA,L03DF
+	brset	0,PortA,L03E2
+	brset	0,PortA,L03E5
+	brset	0,PortA,L03E8
+	brset	0,PortA,L03EB
+	brset	0,PortA,L03EE
+	brset	0,PortA,L03F1
+	brset	0,PortA,L03F4
+	brset	0,PortA,L03F7
+	brset	0,PortA,L03FA
+	brset	0,PortA,L03FD
+	brset	0,PortA,L0400
+	brset	0,PortA,L0403
+	brset	0,PortA,L0406
+	brset	0,PortA,L0409
+	brset	0,PortA,L040C
+	brset	0,PortA,L040F
+	brset	0,PortA,L0412
+	brset	0,PortA,L0415
+	brset	0,PortA,L0418
+	brset	0,PortA,L041B
+	brset	0,PortA,L041E
+	brset	0,PortA,L0421
+	brset	0,PortA,L0424
+	brset	0,PortA,L0427
+	brset	0,PortA,L042A
+	brset	0,PortA,L042D
+	brset	0,PortA,L0430
+	brset	0,PortA,L0433
+	brset	0,PortA,L0436
+	brset	0,PortA,L0439
+	brset	0,PortA,L043C
+	brset	0,PortA,L043F
+	brset	0,PortA,L0442
+	brset	0,PortA,L0445
+	brset	0,PortA,L0448
+	brset	0,PortA,L044B
+	brset	0,PortA,L044E
+	brset	0,PortA,L0451
+	brset	0,PortA,L0454
+	brset	0,PortA,L0457
+	brset	0,PortA,L045A
+	brset	0,PortA,L045D
+	brset	0,PortA,L0460
+	brset	0,PortA,L0463
+	brset	0,PortA,L0466
+	brset	0,PortA,L0469
+	brset	0,PortA,L046C
+	brset	0,PortA,L046F
+	brset	0,PortA,L0472
+	brset	0,PortA,L0475
+	brset	0,PortA,L0478
+	brset	0,PortA,L047B
+	brset	0,PortA,L047E
+	brset	0,PortA,L0481
+	brset	0,PortA,L0484
+	brset	0,PortA,L0487
+	brset	0,PortA,L048A
+	brset	0,PortA,L048D
+	brset	0,PortA,L0490
+	brset	0,PortA,L0493
+	brset	0,PortA,L0496
+	brset	0,PortA,L0499
+	brset	0,PortA,L049C
+	brset	0,PortA,L049F
+	brset	0,PortA,L04A2
+	brset	0,PortA,L04A5
+	brset	0,PortA,L04A8
+	brset	0,PortA,L04AB
+	brset	0,PortA,L04AE
+	brset	0,PortA,L04B1
+	brset	0,PortA,L04B4
+	brset	0,PortA,L04B7
+	brset	0,PortA,L04BA
+	brset	0,PortA,L04BD
+	brset	0,PortA,L04C0
+	brset	0,PortA,L04C3
+	brset	0,PortA,L04C6
+	brset	0,PortA,L04C9
+	brset	0,PortA,L04CC
+	brset	0,PortA,L04CF
+	brset	0,PortA,L04D2
+	brset	0,PortA,L04D5
+	brset	0,PortA,L04D8
+	brset	0,PortA,L04DB
+	brset	0,PortA,L04DE
+	brset	0,PortA,L04E1
+	brset	0,PortA,L04E4
+	brset	0,PortA,L04E7
+	brset	0,PortA,L04EA
+	brset	0,PortA,L04ED
+	brset	0,PortA,L04F0
+	brset	0,PortA,L04F3
+	brset	0,PortA,L04F6
+	brset	0,PortA,L04F9
+	brset	0,PortA,L04FC
+	brset	0,PortA,L04FF
+	brset	0,PortA,L0502
+	brset	0,PortA,L0505
+	brset	0,PortA,L0508
+	brset	0,PortA,L050B
+	brset	0,PortA,L050E
+	brset	0,PortA,L0511
+	brset	0,PortA,L0514
+	brset	0,PortA,L0517
+	brset	0,PortA,L051A
+	brset	0,PortA,L051D
+	brset	0,PortA,L0520
+	brset	0,PortA,L0523
+	brset	0,PortA,L0526
+	brset	0,PortA,L0529
+	brset	0,PortA,L052C
+	brset	0,PortA,L052F
+	brset	0,PortA,L0532
+	brset	0,PortA,L0535
+	brset	0,PortA,L0538
+	brset	0,PortA,L053B
+	brset	0,PortA,L053E
+	brset	0,PortA,L0541
+	brset	0,PortA,L0544
+	brset	0,PortA,L0547
+	brset	0,PortA,L054A
+	brset	0,PortA,L054D
+	brset	0,PortA,L0550
+	brset	0,PortA,L0553
+	brset	0,PortA,L0556
+	brset	0,PortA,L0559
+	brset	0,PortA,L055C
+	brset	0,PortA,L055F
+	brset	0,PortA,L0562
+	brset	0,PortA,L0565
+	brset	0,PortA,L0568
+	brset	0,PortA,L056B
+	brset	0,PortA,L056E
+	brset	0,PortA,L0571
+	brset	0,PortA,L0574
+	brset	0,PortA,L0577
+	brset	0,PortA,L057A
+	brset	0,PortA,L057D
+	brset	0,PortA,L0580
+	brset	0,PortA,L0583
+	brset	0,PortA,L0586
+	brset	0,PortA,L0589
+	brset	0,PortA,L058C
+	brset	0,PortA,L058F
+	brset	0,PortA,L0592
+	brset	0,PortA,L0595
+	brset	0,PortA,L0598
+	brset	0,PortA,L059B
+	brset	0,PortA,L059E
+	brset	0,PortA,L05A1
+	brset	0,PortA,L05A4
+	brset	0,PortA,L05A7
+	brset	0,PortA,L05AA
+	brset	0,PortA,L05AD
+	brset	0,PortA,L05B0
+	brset	0,PortA,L05B3
+	brset	0,PortA,L05B6
+	brset	0,PortA,L05B9
+	brset	0,PortA,L05BC
+	brset	0,PortA,L05BF
+	brset	0,PortA,L05C2
+	brset	0,PortA,L05C5
+	brset	0,PortA,L05C8
+	brset	0,PortA,L05CB
+	brset	0,PortA,L05CE
+	brset	0,PortA,L05D1
+	brset	0,PortA,L05D4
+	brset	0,PortA,L05D7
+	brset	0,PortA,L05DA
+	brset	0,PortA,L05DD
+	brset	0,PortA,L05E0
+	brset	0,PortA,L05E3
+	brset	0,PortA,L05E6
+	brset	0,PortA,L05E9
+	brset	0,PortA,L05EC
+	brset	0,PortA,L05EF
+	brset	0,PortA,L05F2
+	brset	0,PortA,L05F5
+	brset	0,PortA,L05F8
+	brset	0,PortA,L05FB
+	brset	0,PortA,L05FE
+	brset	0,PortA,L0601
+	brset	0,PortA,L0604
+	brset	0,PortA,L0607
+	brset	0,PortA,L060A
+	brset	0,PortA,L060D
+	brset	0,PortA,L0610
+	brset	0,PortA,L0613
+	brset	0,PortA,L0616
+	brset	0,PortA,L0619
+	brset	0,PortA,L061C
+	brset	0,PortA,L061F
+	brset	0,PortA,L0622
+	brset	0,PortA,L0625
+	brset	0,PortA,L0628
+	brset	0,PortA,L062B
+	brset	0,PortA,L062E
+	brset	0,PortA,L0631
+	brset	0,PortA,L0634
+	brset	0,PortA,L0637
+	brset	0,PortA,L063A
+	brset	0,PortA,L063D
+	brset	0,PortA,L0640
+	brset	0,PortA,L0643
+	brset	0,PortA,L0646
+	brset	0,PortA,L0649
+	brset	0,PortA,L064C
+	brset	0,PortA,L064F
+	brset	0,PortA,L0652
+	brset	0,PortA,L0655
+	brset	0,PortA,L0658
+	brset	0,PortA,L065B
+	brset	0,PortA,L065E
+	brset	0,PortA,L0661
+	brset	0,PortA,L0664
+	brset	0,PortA,L0667
+	brset	0,PortA,L066A
+	brset	0,PortA,L066D
+	brset	0,PortA,L0670
+	brset	0,PortA,L0673
+	brset	0,PortA,L0676
+	brset	0,PortA,L0679
+	brset	0,PortA,L067C
+	brset	0,PortA,L067F
+	brset	0,PortA,L0682
+	brset	0,PortA,L0685
+	brset	0,PortA,L0688
+	brset	0,PortA,L068B
+	brset	0,PortA,L068E
+	brset	0,PortA,L0691
+	brset	0,PortA,L0694
+	brset	0,PortA,L0697
+	brset	0,PortA,L069A
+	brset	0,PortA,L069D
+	brset	0,PortA,L06A0
+	brset	0,PortA,L06A3
+	brset	0,PortA,L06A6
+	brset	0,PortA,L06A9
+	brset	0,PortA,L06AC
+	brset	0,PortA,L06AF
+	brset	0,PortA,L06B2
+	brset	0,PortA,L06B5
+	brset	0,PortA,L06B8
+	brset	0,PortA,L06BB
+	brset	0,PortA,L06BE
+	brset	0,PortA,L06C1
+	brset	0,PortA,L06C4
+	brset	0,PortA,L06C7
+	brset	0,PortA,L06CA
+	brset	0,PortA,L06CD
+	brset	0,PortA,L06D0
+	brset	0,PortA,L06D3
+	brset	0,PortA,L06D6
+	brset	0,PortA,L06D9
+	brset	0,PortA,L06DC
+	brset	0,PortA,L06DF
+	brset	0,PortA,L06E2
+	brset	0,PortA,L06E5
+	brset	0,PortA,L06E8
+	brset	0,PortA,L06EB
+	brset	0,PortA,L06EE
+	brset	0,PortA,L06F1
+	brset	0,PortA,L06F4
+	brset	0,PortA,L06F7
+	brset	0,PortA,L06FA
+	brset	0,PortA,L06FD
+	brset	0,PortA,L0700
+	brset	0,PortA,L0703
+	brset	0,PortA,L0706
+	brset	0,PortA,L0709
+	brset	0,PortA,L070C
+	brset	0,PortA,L070F
+	brset	0,PortA,L0712
+	brset	0,PortA,L0715
+	brset	0,PortA,L0718
+	brset	0,PortA,L071B
+	brset	0,PortA,L071E
+	brset	0,PortA,L0721
+	brset	0,PortA,L0724
+	brset	0,PortA,L0727
+	brset	0,PortA,L072A
+	brset	0,PortA,L072D
+	brset	0,PortA,L0730
+	brset	0,PortA,L0733
+	brset	0,PortA,L0736
+	brset	0,PortA,L0739
+	brset	0,PortA,L073C
+	brset	0,PortA,L073F
+	brset	0,PortA,L0742
+	brset	0,PortA,L0745
+	brset	0,PortA,L0748
+	brset	0,PortA,L074B
+	brset	0,PortA,L074E
+	brset	0,PortA,L0751
+	brset	0,PortA,L0754
+	brset	0,PortA,L0757
+	brset	0,PortA,L075A
+	brset	0,PortA,L075D
+	brset	0,PortA,L0760
+	brset	0,PortA,L0763
+	brset	0,PortA,L0766
+	brset	0,PortA,L0769
+	brset	0,PortA,L076C
+	brset	0,PortA,L076F
+	brset	0,PortA,L0772
+	brset	0,PortA,L0775
+	brset	0,PortA,L0778
+	brset	0,PortA,L077B
+	brset	0,PortA,L077E
+	brset	0,PortA,L0781
+	brset	0,PortA,L0784
+	brset	0,PortA,L0787
+	brset	0,PortA,L078A
+	brset	0,PortA,L078D
+	brset	0,PortA,L0790
+	brset	0,PortA,L0793
+	brset	0,PortA,L0796
+	brset	0,PortA,L0799
+	brset	0,PortA,L079C
+	brset	0,PortA,L079F
+	brset	0,PortA,L07A2
+	brset	0,PortA,L07A5
+	brset	0,PortA,L07A8
+	brset	0,PortA,L07AB
+	brset	0,PortA,L07AE
+	brset	0,PortA,L07B1
+	brset	0,PortA,L07B4
+	brset	0,PortA,L07B7
+	brset	0,PortA,L07BA
+	brset	0,PortA,L07BD
+	brset	0,PortA,L07C0
+	brset	0,PortA,L07C3
+	brset	0,PortA,L07C6
+	brset	0,PortA,L07C9
+	brset	0,PortA,L07CC
+	brset	0,PortA,L07CF
+	brset	0,PortA,L07D2
+	brset	0,PortA,L07D5
+	brset	0,PortA,L07D8
+	brset	0,PortA,L07DB
+	brset	0,PortA,L07DE
+	brset	0,PortA,L07E1
+	brset	0,PortA,L07E4
+	brset	0,PortA,L07E7
+	brset	0,PortA,L07EA
+	brset	0,PortA,L07ED
+	brset	0,PortA,L07F0
+	brset	0,PortA,L07F3
+	brset	0,PortA,L07F6
+	brset	0,PortA,L07F9
+	brset	0,PortA,L07FC
+	brset	0,PortA,L07FF
+	brset	0,PortA,L0002
+	brset	0,PortA,L0005
+	brset	0,PortA,L0008
+	brset	0,PortA,L000B
+	brset	0,PortA,L000E
+	brset	0,PortA,L0011
+	brset	0,PortA,L0014
+	brset	0,PortA,L0017
+	brset	0,PortA,L001A
+	brset	0,PortA,L001D
+	brset	0,PortA,L0020
+	brset	0,PortA,L0023
+	brset	0,PortA,L0026
+	brset	0,PortA,L0029
+	brset	0,PortA,L002C
+	brset	0,PortA,L002F
+	brset	0,PortA,L0032
+	brset	0,PortA,L0035
+	brset	0,PortA,L0038
+	brset	0,PortA,L003B
+	brset	0,PortA,L003E
+	brset	0,PortA,L0041
+	brset	0,PortA,L0044
+	brset	0,PortA,L0047
+	brset	0,PortA,L004A
+	brset	0,PortA,L004D
+	brset	0,PortA,L0050
+	brset	0,PortA,L0053
+	brset	0,PortA,L0056
+	brset	0,PortA,L0059
+	brset	0,PortA,L005C
+	brset	0,PortA,L005F
+	brset	0,PortA,L0062
+	brset	0,PortA,L0065
+	brset	0,PortA,L0068
+	brset	0,PortA,L006B
+	brset	0,PortA,L006E
+	brset	0,PortA,L0071
+	brset	0,PortA,L0074
+	brset	0,PortA,L0077
+	brset	0,PortA,L007A
+	brset	0,PortA,L007D
+	brset	0,PortA,L0080
+	brset	0,PortA,L0083
+	brset	0,PortA,L0086
+	brset	0,PortA,L0089
+	brset	0,PortA,L008C
+	brset	0,PortA,L008F
+	brset	0,PortA,L0092
+	brset	0,PortA,L0095
+	brset	0,PortA,L0098
+	brset	0,PortA,L009B
+	brset	0,PortA,L009E
+	brset	0,PortA,L00A1
+	brset	0,PortA,L00A4
+	brset	0,PortA,L00A7
+	brset	0,PortA,L00AA
+	brset	0,PortA,L00AD
+	brset	0,PortA,L00B0
+	brset	0,PortA,L00B3
+	brset	0,PortA,L00B6
+	brset	0,PortA,L00B9
+	brset	0,PortA,L00BC
+	brset	0,PortA,L00BF
+	brset	0,PortA,L00C2
+	brset	0,PortA,L00C5
+	brset	0,PortA,L00C8
+	brset	0,PortA,L00CB
+	brset	0,PortA,L00CE
+	brset	0,PortA,L00D1
+	brset	0,PortA,L00D4
+	brset	0,PortA,L00D7
+	brset	0,PortA,L00DA
+	brset	0,PortA,L00DD
+	brset	0,PortA,L00E0
+	brset	0,PortA,L00E3
+	brset	0,PortA,L00E6
+	brset	0,PortA,L00E9
+	brset	0,PortA,L00EC
+	brset	0,PortA,L00EF
+	brset	0,PortA,L00F2
+	brset	0,PortA,L00F5
+	brset	0,PortA,L00F8
+	brset	0,PortA,L00FB
+	brset	0,PortA,L00FE
+	brset	0,PortA,L0101
+	brset	0,PortA,L0104
+	brset	0,PortA,L0107
+	brset	0,PortA,L010A
+	brset	0,PortA,L010D
+	brset	0,PortA,L0110
+	brset	0,PortA,L0113
+	brset	0,PortA,L0116
+	brset	0,PortA,L0119
+	brset	0,PortA,L011C
+	brset	0,PortA,L011F
+	brset	0,PortA,L0122
+	brset	0,PortA,L0125
+	brset	0,PortA,L0128
+	brset	0,PortA,L012B
+	brset	0,PortA,L012E
+	brset	0,PortA,L0131
+	brset	0,PortA,L0134
+	brset	0,PortA,L0137
+	brset	0,PortA,L013A
+	brset	0,PortA,L013D
+	brset	0,PortA,L0140
+	brset	0,PortA,L0143
+	brset	0,PortA,L0146
+	brset	0,PortA,L0149
+	brset	0,PortA,L014C
+	brset	0,PortA,L014F
+	brset	0,PortA,L0152
+	brset	0,PortA,L0155
+	brset	0,PortA,L0158
+	brset	0,PortA,L015B
+	brset	0,PortA,L015E
+	brset	0,PortA,L0161
+	brset	0,PortA,L0164
+	brset	0,PortA,L0167
+	brset	0,PortA,L016A
+	brset	0,PortA,L016D
+	brset	0,PortA,L0170
+	brset	0,PortA,L0173
+	brset	0,PortA,L0176
+	brset	0,PortA,L0179
+	brset	0,PortA,L017C
+	brset	0,PortA,L017F
+	brset	0,PortA,L0182
+	brset	0,PortA,L0185
+	brset	0,PortA,L0188
+	brset	0,PortA,L018B
+	brset	0,PortA,L018E
+	brset	0,PortA,L0191
+	brset	0,PortA,L0194
+	brset	0,PortA,L0197
+	brset	0,PortA,L019A
+	brset	0,PortA,L019D
+	brset	0,PortA,L01A0
+	brset	0,PortA,L01A3
+	brset	0,PortA,L01A6
+	brset	0,PortA,L01A9
+	brset	0,PortA,L01AC
+	brset	0,PortA,L01AF
+	brset	0,PortA,L01B2
+	brset	0,PortA,L01B5
+	brset	0,PortA,L01B8
+	brset	0,PortA,L01BB
+	brset	0,PortA,L01BE
+	brset	0,PortA,L01C1
+	brset	0,PortA,L01C4
+	brset	0,PortA,L01C7
+	brset	0,PortA,L01CA
+	brset	0,PortA,L01CD
+	brset	0,PortA,L01D0
+	brset	0,PortA,L01D3
+	brset	0,PortA,L01D6
+	brset	0,PortA,L01D9
+	brset	0,PortA,L01DC
+	brset	0,PortA,L01DF
+	brset	0,PortA,L01E2
+	brset	0,PortA,L01E5
+	brset	0,PortA,L01E8
+	brset	0,PortA,L01EB
+	brset	0,PortA,L01EE
+	brset	0,PortA,L01F1
+	brset	0,PortA,L01F4
+	brset	0,PortA,L01F7
+	brset	0,PortA,L01FA
+	brset	0,PortA,L01FD
+	brset	0,PortA,L0200
+	brset	0,PortA,L0203
+	brset	0,PortA,L0206
+	brset	0,PortA,L0209
+	brset	0,PortA,L020C
+	brset	0,PortA,L020F
+	brset	0,PortA,L0212
+	brset	0,PortA,L0215
+	brset	0,PortA,L0218
+	brset	0,PortA,L021B
+	brset	0,PortA,L021E
+	brset	0,PortA,L0221
+	brset	0,PortA,L0224
+	brset	0,PortA,L0227
+	brset	0,PortA,L022A
+	brset	0,PortA,L022D
+	brset	0,PortA,L0230
+	brset	0,PortA,L0233
+	brset	0,PortA,L0236
+	brset	0,PortA,L0239
+	brset	0,PortA,L023C
+	brset	0,PortA,L023F
+	brset	0,PortA,L0242
+	brset	0,PortA,L0245
+	brset	0,PortA,L0248
+	brset	0,PortA,L024B
+	brset	0,PortA,L024E
+	brset	0,PortA,L0251
+	brset	0,PortA,L0254
+	brset	0,PortA,L0257
+	brset	0,PortA,L025A
+	brset	0,PortA,L025D
+	brset	0,PortA,L0260
+	brset	0,PortA,L0263
+	brset	0,PortA,L0266
+	brset	0,PortA,L0269
+	brset	0,PortA,L026C
+	brset	0,PortA,L026F
+	brset	0,PortA,L0272
+	brset	0,PortA,L0275
+	brset	0,PortA,L0278
+	brset	0,PortA,L027B
+	brset	0,PortA,L027E
+	brset	0,PortA,L0281
+	brset	0,PortA,L0284
+	brset	0,PortA,L0287
+	brset	0,PortA,L028A
+	brset	0,PortA,L028D
+	brset	0,PortA,L0290
+	brset	0,PortA,L0293
+	brset	0,PortA,L0296
+	brset	0,PortA,L0299
+	brset	0,PortA,L029C
+	brset	0,PortA,L029F
+	brset	0,PortA,L02A2
+	brset	0,PortA,L02A5
+	brset	0,PortA,L02A8
+	brset	0,PortA,L02AB
+	brset	0,PortA,L02AE
+	brset	0,PortA,L02B1
+	brset	0,PortA,L02B4
+	brset	0,PortA,L02B7
+	brset	0,PortA,L02BA
+	brset	0,PortA,L02BD
+	brset	0,PortA,L02C0
+	brset	0,PortA,L02C3
+	brset	0,PortA,L02C6
+	brset	0,PortA,L02C9
+	brset	0,PortA,L02CC
+	brset	0,PortA,L02CF
+	brset	0,PortA,L02D2
+	brset	0,PortA,L02D5
+	brset	0,PortA,L02D8
+	brset	0,PortA,L02DB
+	brset	0,PortA,L02DE
+	brset	0,PortA,L02E1
+	brset	0,PortA,L02E4
+	brset	0,PortA,L02E7
+	brset	0,PortA,L02EA
+	brset	0,PortA,L02ED
+	brset	0,PortA,L02F0
+	brset	0,PortA,L02F3
+	brset	0,PortA,L02F6
+	brset	0,PortA,L02F9
+	brset	0,PortA,L02FC
+	brset	0,PortA,L02FF
+	brset	0,PortA,L0302
+	brset	0,PortA,L0305
+	brset	0,PortA,L0308
+	brset	0,PortA,L030B
+	brset	0,PortA,L030E
+	brset	0,PortA,L0311
+	brset	0,PortA,L0314
+	brset	0,PortA,L0317
+	brset	0,PortA,L031A
+	brset	0,PortA,L031D
+	brset	0,PortA,L0320
+	brset	0,PortA,L0323
+	brset	0,PortA,L0326
+	brset	0,PortA,L0329
+	brset	0,PortA,L032C
+	brset	0,PortA,L032F
+	brset	0,PortA,L0332
+	brset	0,PortA,L0335
+	brset	0,PortA,L0338
+	brset	0,PortA,L033B
+	brset	0,PortA,L033E
+	brset	0,PortA,L0341
+	brset	0,PortA,L0344
+	brset	0,PortA,L0347
+	brset	0,PortA,L034A
+	brset	0,PortA,L034D
+	brset	0,PortA,L0350
+	brset	0,PortA,L0353
+	brset	0,PortA,L0356
+	brset	0,PortA,L0359
+	brset	0,PortA,L035C
+	brset	0,PortA,L035F
+	brset	0,PortA,L0362
+	brset	0,PortA,L0365
+	brset	0,PortA,L0368
+	brset	0,PortA,L036B
+	brset	0,PortA,L036E
+	brset	0,PortA,L0371
+	brset	0,PortA,L0374
+	brset	0,PortA,L0377
+	brset	0,PortA,L037A
+	brset	0,PortA,L037D
+	brset	0,PortA,L0380
+	brset	0,PortA,L0383
+	brset	0,PortA,L0386
+	brset	0,PortA,L0389
+	brset	0,PortA,L038C
+	brset	0,PortA,L038F
+	brset	0,PortA,L0392
+	brset	0,PortA,L0395
+	brset	0,PortA,L0398
+	brset	0,PortA,L039B
+	brset	0,PortA,L039E
+	brset	0,PortA,L03A1
+	brset	0,PortA,L03A4
+	brset	0,PortA,L03A7
+	brset	0,PortA,L03AA
+	brset	0,PortA,L03AD
+	brset	0,PortA,L03B0
+	brset	0,PortA,L03B3
+	brset	0,PortA,L03B6
+	brset	0,PortA,L03B9
+	brset	0,PortA,L03BC
+	brset	0,PortA,L03BF
+	brset	0,PortA,L03C2
+	brset	0,PortA,L03C5
+	brset	0,PortA,L03C8
+	brset	0,PortA,L03CB
+	brset	0,PortA,L03CE
+	brset	0,PortA,L03D1
+	brset	0,PortA,L03D4
+	brset	0,PortA,L03D7
+	brset	0,PortA,L03DA
+	brset	0,PortA,L03DD
+	brset	0,PortA,L03E0
+	brset	0,PortA,L03E3
+	brset	0,PortA,L03E6
+	brset	0,PortA,L03E9
+	brset	0,PortA,L03EC
+	brset	0,PortA,L03EF
+	brset	0,PortA,L03F2
+	brset	0,PortA,L03F5
+	brset	0,PortA,L03F8
+	brset	0,PortA,L03FB
+	brset	0,PortA,L03FE
+	brset	0,PortA,L0401
+	brset	0,PortA,L0404
+	brset	0,PortA,L0407
+	brset	0,PortA,L040A
+	brset	0,PortA,L040D
+	brset	0,PortA,L0410
+	brset	0,PortA,L0413
+	brset	0,PortA,L0416
+	brset	0,PortA,L0419
+	brset	0,PortA,L041C
+	brset	0,PortA,L041F
+	brset	0,PortA,L0422
+	brset	0,PortA,L0425
+	brset	0,PortA,L0428
+	brset	0,PortA,L042B
+	brset	0,PortA,L042E
+	brset	0,PortA,L0431
+	brset	0,PortA,L0434
+	brset	0,PortA,L0437
+	brset	0,PortA,L043A
+	brset	0,PortA,L043D
+	brset	0,PortA,L0440
+	brset	0,PortA,L0443
+	brset	0,PortA,L0446
+	brset	0,PortA,L0449
+	brset	0,PortA,L044C
+	brset	0,PortA,L044F
+	brset	0,PortA,L0452
+	brset	0,PortA,L0455
+	brset	0,PortA,L0458
+	brset	0,PortA,L045B
+	brset	0,PortA,L045E
+	brset	0,PortA,L0461
+	brset	0,PortA,L0464
+	brset	0,PortA,L0467
+	brset	0,PortA,L046A
+	brset	0,PortA,L046D
+	brset	0,PortA,L0470
+	brset	0,PortA,L0473
+	brset	0,PortA,L0476
+	brset	0,PortA,L0479
+	brset	0,PortA,L047C
+	brset	0,PortA,L047F
+	brset	0,PortA,L0482
+	brset	0,PortA,L0485
+	brset	0,PortA,L0488
+	brset	0,PortA,L048B
+	brset	0,PortA,L048E
+	brset	0,PortA,L0491
+	brset	0,PortA,L0494
+	brset	0,PortA,L0497
+	brset	0,PortA,L049A
+	brset	0,PortA,L049D
+	brset	0,PortA,L04A0
+	brset	0,PortA,L04A3
+	brset	0,PortA,L04A6
+	brset	0,PortA,L04A9
+	brset	0,PortA,L04AC
+	brset	0,PortA,L04AF
+	brset	0,PortA,L04B2
+	brset	0,PortA,L04B5
+	brset	0,PortA,L04B8
+	brset	0,PortA,L04BB
+	brset	0,PortA,L04BE
+	brset	0,PortA,L04C1
+	brset	0,PortA,L04C4
+	brset	0,PortA,L04C7
+	brset	0,PortA,L04CA
+	brset	0,PortA,L04CD
+	brset	0,PortA,L04D0
+	brset	0,PortA,L04D3
+	brset	0,PortA,L04D6
+	brset	0,PortA,L04D9
+	brset	0,PortA,L04DC
+	brset	0,PortA,L04DF
+	brset	0,PortA,L04E2
+	brset	0,PortA,L04E5
+	brset	0,PortA,L04E8
+	brset	0,PortA,L04EB
+	brset	0,PortA,L04EE
+	brset	0,PortA,L04F1
+	brset	0,PortA,L04F4
+	brset	0,PortA,L04F7
+	brset	0,PortA,L04FA
+	brset	0,PortA,L04FD
+	brset	0,PortA,L0500
+	brset	0,PortA,L0503
+	brset	0,PortA,L0506
+	brset	0,PortA,L0509
+	brset	0,PortA,L050C
+	brset	0,PortA,L050F
+	brset	0,PortA,L0512
+	brset	0,PortA,L0515
+	brset	0,PortA,L0518
+	brset	0,PortA,L051B
+	brset	0,PortA,L051E
+	brset	0,PortA,L0521
+	brset	0,PortA,L0524
+	brset	0,PortA,L0527
+	brset	0,PortA,L052A
+	brset	0,PortA,L052D
+	brset	0,PortA,L0530
+	brset	0,PortA,L0533
+	brset	0,PortA,L0536
+	brset	0,PortA,L0539
+	brset	0,PortA,L053C
+	brset	0,PortA,L053F
+	brset	0,PortA,L0542
+	brset	0,PortA,L0545
+	brset	0,PortA,L0548
+	brset	0,PortA,L054B
+	brset	0,PortA,L054E
+	brset	0,PortA,L0551
+	brset	0,PortA,L0554
+	brset	0,PortA,L0557
+	brset	0,PortA,L055A
+	brset	0,PortA,L055D
+	brset	0,PortA,L0560
+	brset	0,PortA,L0563
+	brset	0,PortA,L0566
+	brset	0,PortA,L0569
+	brset	0,PortA,L056C
+	brset	0,PortA,L056F
+	brset	0,PortA,L0572
+	brset	0,PortA,L0575
+	brset	0,PortA,L0578
+	brset	0,PortA,L057B
+	brset	0,PortA,L057E
+	brset	0,PortA,L0581
+	brset	0,PortA,L0584
+	brset	0,PortA,L0587
+	brset	0,PortA,L058A
+	brset	0,PortA,L058D
+	brset	0,PortA,L0590
+	brset	0,PortA,L0593
+	brset	0,PortA,L0596
+	brset	0,PortA,L0599
+	brset	0,PortA,L059C
+	brset	0,PortA,L059F
+	brset	0,PortA,L05A2
+	brset	0,PortA,L05A5
+	brset	0,PortA,L05A8
+	brset	0,PortA,L05AB
+	brset	0,PortA,L05AE
+	brset	0,PortA,L05B1
+	brset	0,PortA,L05B4
+	brset	0,PortA,L05B7
+	brset	0,PortA,L05BA
+	brset	0,PortA,L05BD
+	brset	0,PortA,L05C0
+	brset	0,PortA,L05C3
+	brset	0,PortA,L05C6
+	brset	0,PortA,L05C9
+	brset	0,PortA,L05CC
+	brset	0,PortA,L05CF
+	brset	0,PortA,L05D2
+	brset	0,PortA,L05D5
+	brset	0,PortA,L05D8
+	brset	0,PortA,L05DB
+	brset	0,PortA,L05DE
+	brset	0,PortA,L05E1
+	brset	0,PortA,L05E4
+	brset	0,PortA,L05E7
+	brset	0,PortA,L05EA
+	brset	0,PortA,L05ED
+	brset	0,PortA,L05F0
+	brset	0,PortA,L05F3
+	brset	0,PortA,L05F6
+	brset	0,PortA,L05F9
+	brset	0,PortA,L05FC
+	brset	0,PortA,L05FF
+	brset	0,PortA,L0602
+	brset	0,PortA,L0605
+	brset	0,PortA,L0608
+	brset	0,PortA,L060B
+	brset	0,PortA,L060E
+	brset	0,PortA,L0611
+	brset	0,PortA,L0614
+	brset	0,PortA,L0617
+	brset	0,PortA,L061A
+	brset	0,PortA,L061D
+	brset	0,PortA,L0620
+	brset	0,PortA,L0623
+	brset	0,PortA,L0626
+	brset	0,PortA,L0629
+	brset	0,PortA,L062C
+	brset	0,PortA,L062F
+	brset	0,PortA,L0632
+	brset	0,PortA,L0635
+	brset	0,PortA,L0638
+	brset	0,PortA,L063B
+	brset	0,PortA,L063E
+	brset	0,PortA,L0641
+	brset	0,PortA,L0644
+	brset	0,PortA,L0647
+	brset	0,PortA,L064A
+	brset	0,PortA,L064D
+	brset	0,PortA,L0650
+	brset	0,PortA,L0653
+	brset	0,PortA,L0656
+	brset	0,PortA,L0659
+	brset	0,PortA,L065C
+	brset	0,PortA,L065F
+	brset	0,PortA,L0662
+	brset	0,PortA,L0665
+	brset	0,PortA,L0668
+	brset	0,PortA,L066B
+	brset	0,PortA,L066E
+	brset	0,PortA,L0671
+	brset	0,PortA,L0674
+	brset	0,PortA,L0677
+	brset	0,PortA,L067A
+	brset	0,PortA,L067D
+	brset	0,PortA,L0680
+	brset	0,PortA,L0683
+	brset	0,PortA,L0686
+	brset	0,PortA,L0689
+	brset	0,PortA,L068C
+	brset	0,PortA,L068F
+	brset	0,PortA,L0692
+	brset	0,PortA,L0695
+	brset	0,PortA,L0698
+	brset	0,PortA,L069B
+	brset	0,PortA,L069E
+	brset	0,PortA,L06A1
+	brset	0,PortA,L06A4
+	brset	0,PortA,L06A7
+	brset	0,PortA,L06AA
+	brset	0,PortA,L06AD
+	brset	0,PortA,L06B0
+	brset	0,PortA,L06B3
+	brset	0,PortA,L06B6
+	brset	0,PortA,L06B9
+	brset	0,PortA,L06BC
+	brset	0,PortA,L06BF
+	brset	0,PortA,L06C2
+	brset	0,PortA,L06C5
+	brset	0,PortA,L06C8
+	brset	0,PortA,L06CB
+	brset	0,PortA,L06CE
+	brset	0,PortA,L06D1
+	brset	0,PortA,L06D4
+	brset	0,PortA,L06D7
+	brset	0,PortA,L06DA
+	brset	0,PortA,L06DD
+	brset	0,PortA,L06E0
+	brset	0,PortA,L06E3
+	brset	0,PortA,L06E6
+	brset	0,PortA,L06E9
+	brset	0,PortA,L06EC
+	brset	0,PortA,L06EF
+	brset	0,PortA,L06F2
+	brset	0,PortA,L06F5
+	brset	0,PortA,L06F8
+	brset	0,PortA,L06FB
+	brset	0,PortA,L06FE
+	brset	0,PortA,L0701
+	brset	0,PortA,L0704
+	brset	0,PortA,L0707
+	brset	0,PortA,L070A
+	brset	0,PortA,L070D
+	brset	0,PortA,L0710
+	brset	0,PortA,L0713
+	brset	0,PortA,L0716
+	brset	0,PortA,L0719
+	brset	0,PortA,L071C
+	brset	0,PortA,L071F
+	brset	0,PortA,L0722
+	brset	0,PortA,L0725
+	brset	0,PortA,L0728
+	brset	0,PortA,L072B
+	brset	0,PortA,L072E
+	brset	0,PortA,L0731
+	brset	0,PortA,L0734
+	brset	0,PortA,L0737
+	brset	0,PortA,L073A
+	brset	0,PortA,L073D
+	brset	0,PortA,L0740
+	brset	0,PortA,L0743
+	brset	0,PortA,L0746
+	brset	0,PortA,L0749
+	brset	0,PortA,L074C
+	brset	0,PortA,L074F
+	brset	0,PortA,L0752
+	brset	0,PortA,L0755
+	brset	0,PortA,L0758
+	brset	0,PortA,L075B
+	brset	0,PortA,L075E
+	brset	0,PortA,L0761
+	brset	0,PortA,L0764
+	brset	0,PortA,L0767
+	brset	0,PortA,L076A
+	brset	0,PortA,L076D
+	brset	0,PortA,L0770
+	brset	0,PortA,L0773
+	brset	0,PortA,L0776
+	brset	0,PortA,L0779
+	brset	0,PortA,L077C
+	brset	0,PortA,L077F
+	brset	0,PortA,L0782
+	brset	0,PortA,L0785
+	brset	0,PortA,L0788
+	brset	0,PortA,L078B
+	brset	0,PortA,L078E
+	brset	0,PortA,L0791
+	brset	0,PortA,L0794
+	brset	0,PortA,L0797
+	brset	0,PortA,L079A
+	brset	0,PortA,L079D
+	brset	0,PortA,L07A0
+	brset	0,PortA,L07A3
+	brset	0,PortA,L07A6
+	brset	0,PortA,L07A9
+	brset	0,PortA,L07AC
+	brset	0,PortA,L07AF
+	brset	0,PortA,L07B2
+	brset	0,PortA,L07B5
+	brset	0,PortA,L07B8
+	brset	0,PortA,L07BB
+	brset	0,PortA,L07BE
+	brset	0,PortA,L07C1
+	brset	0,PortA,L07C4
+	brset	0,PortA,L07C7
+	brset	0,PortA,L07CA
+	brset	0,PortA,L07CD
+	brset	0,PortA,L07D0
+	brset	0,PortA,L07D3
+	brset	0,PortA,L07D6
+	brset	0,PortA,L07D9
+	brset	0,PortA,L07DC
+	brset	0,PortA,L07DF
+	brset	0,PortA,L07E2
+	brset	0,PortA,L07E5
+	brset	0,PortA,L07E8
+	brset	0,PortA,L07EB
+	brset	0,PortA,L07EE
+	brset	0,PortA,L07F1
+	brset	0,PortA,L07F4
+	brset	0,PortA,L07F7
+	brset	0,PortA,L07FA
+	brset	0,PortA,L07FD
+	brset	0,PortA,L0000
+	brset	0,PortA,L0003
+	brset	0,PortA,L0006
+	brset	0,PortA,L0009
+	brset	0,PortA,L000C
+	brset	0,PortA,L000F
+	brset	0,PortA,L0012
+	brset	0,PortA,L0015
+	brset	0,PortA,L0018
+	brset	0,PortA,L001B
+	brset	0,PortA,L001E
+	brset	0,PortA,L0021
+	brset	0,PortA,L0024
+	brset	0,PortA,L0027
+	brset	0,PortA,L002A
+	brset	0,PortA,L002D
+	brset	0,PortA,L0030
+	brset	0,PortA,L0033
+	brset	0,PortA,L0036
+	brset	0,PortA,L0039
+	brset	0,PortA,L003C
+	brset	0,PortA,L003F
+	brset	0,PortA,L0042
+	brset	0,PortA,L0045
+	brset	0,PortA,L0048
+	brset	0,PortA,L004B
+	brset	0,PortA,L004E
+	brset	0,PortA,L0051
+	brset	0,PortA,L0054
+	brset	0,PortA,L0057
+	brset	0,PortA,L005A
+	brset	0,PortA,L005D
+	brset	0,PortA,L0060
+	brset	0,PortA,L0063
+	brset	0,PortA,L0066
+	brset	0,PortA,L0069
+	brset	0,PortA,L006C
+	brset	0,PortA,L006F
+	brset	0,PortA,L0072
+	brset	0,PortA,L0075
+	brset	0,PortA,L0078
+	brset	0,PortA,L007B
+	brset	0,PortA,L007E
+	brset	0,PortA,L0081
+	brset	0,PortA,L0084
+	brset	0,PortA,L0087
+	brset	0,PortA,L008A
+	brset	0,PortA,L008D
+	brset	0,PortA,L0090
+	brset	0,PortA,L0093
+	brset	0,PortA,L0096
+	brset	0,PortA,L0099
+	brset	0,PortA,L009C
+	brset	0,PortA,L009F
+	brset	0,PortA,L00A2
+	brset	0,PortA,L00A5
+	brset	0,PortA,L00A8
+	brset	0,PortA,L00AB
+	brset	0,PortA,L00AE
+	brset	0,PortA,L00B1
+	brset	0,PortA,L00B4
+	brset	0,PortA,L00B7
+	brset	0,PortA,L00BA
+	brset	0,PortA,L00BD
+	brset	0,PortA,L00C0
+	brset	0,PortA,L00C3
+	brset	0,PortA,L00C6
+	brset	0,PortA,L00C9
+	brset	0,PortA,L00CC
+	brset	0,PortA,L00CF
+	brset	0,PortA,L00D2
+	brset	0,PortA,L00D5
+	brset	0,PortA,L00D8
+	brset	0,PortA,L00DB
+	brset	0,PortA,L00DE
+	brset	0,PortA,L00E1
+	brset	0,PortA,L00E4
+	brset	0,PortA,L00E7
+	brset	0,PortA,L00EA
+	brset	0,PortA,L00ED
+	brset	0,PortA,L00F0
+	brset	0,PortA,L00F3
+	brset	0,PortA,L00F6
+	brset	0,PortA,L00F9
+	brset	0,PortA,L00FC
+	brset	0,PortA,L00FF
+	brset	0,PortA,L0102
+	brset	0,PortA,L0105
+	brset	0,PortA,L0108
+	brset	0,PortA,L010B
+	brset	0,PortA,L010E
+	brset	0,PortA,L0111
+	brset	0,PortA,L0114
+	brset	0,PortA,L0117
+	brset	0,PortA,L011A
+	brset	0,PortA,L011D
+	brset	0,PortA,L0120
+	brset	0,PortA,L0123
+	brset	0,PortA,L0126
+	brset	0,PortA,L0129
+	brset	0,PortA,L012C
+	brset	0,PortA,L012F
+	brset	0,PortA,L0132
+	brset	0,PortA,L0135
+	brset	0,PortA,L0138
+	brset	0,PortA,L013B
+	brset	0,PortA,L013E
+	brset	0,PortA,L0141
+	brset	0,PortA,L0144
+	brset	0,PortA,L0147
+	brset	0,PortA,L014A
+	brset	0,PortA,L014D
+	brset	0,PortA,L0150
+	brset	0,PortA,L0153
+	brset	0,PortA,L0156
+	brset	0,PortA,L0159
+	brset	0,PortA,L015C
+	brset	0,PortA,L015F
+	brset	0,PortA,L0162
+	brset	0,PortA,L0165
+	brset	0,PortA,L0168
+	brset	0,PortA,L016B
+	brset	0,PortA,L016E
+	brset	0,PortA,L0171
+	brset	0,PortA,L0174
+	brset	0,PortA,L0177
+	brset	0,PortA,L017A
+	brset	0,PortA,L017D
+	brset	0,PortA,L0180
+	brset	0,PortA,L0183
+	brset	0,PortA,L0186
+	brset	0,PortA,L0189
+	brset	0,PortA,L018C
+	brset	0,PortA,L018F
+	brset	0,PortA,L0192
+	brset	0,PortA,L0195
+	brset	0,PortA,L0198
+	brset	0,PortA,L019B
+	brset	0,PortA,L019E
+	brset	0,PortA,L01A1
+	brset	0,PortA,L01A4
+	brset	0,PortA,L01A7
+	brset	0,PortA,L01AA
+	brset	0,PortA,L01AD
+	brset	0,PortA,L01B0
+	brset	0,PortA,L01B3
+	brset	0,PortA,L01B6
+	brset	0,PortA,L01B9
+	brset	0,PortA,L01BC
+	brset	0,PortA,L01BF
+	brset	0,PortA,L01C2
+	brset	0,PortA,L01C5
+	brset	0,PortA,L01C8
+	brset	0,PortA,L01CB
+	brset	0,PortA,L01CE
+	brset	0,PortA,L01D1
+	brset	0,PortA,L01D4
+	brset	0,PortA,L01D7
+	brset	0,PortA,L01DA
+	brset	0,PortA,L01DD
+	brset	0,PortA,L01E0
+	brset	0,PortA,L01E3
+	brset	0,PortA,L01E6
+	brset	0,PortA,L01E9
+	brset	0,PortA,L01EC
+	brset	0,PortA,L01EF
+	brset	0,PortA,L01F2
+	brset	0,PortA,L01F5
+	brset	0,PortA,L01F8
+	brset	0,PortA,L01FB
+	brset	0,PortA,L01FE
+	brset	0,PortA,L0201
+	brset	0,PortA,L0204
+	brset	0,PortA,L0207
+X7207:
+	brset	0,PortA,L020A
+	brset	0,PortA,L020D
+	brset	0,PortA,L0210
+	brset	0,PortA,L0213
+	brset	0,PortA,L0216
+	brset	0,PortA,L0219
+	brset	0,PortA,L021C
+	brset	0,PortA,L021F
+	brset	0,PortA,L0222
+	brset	0,PortA,L0225
+	brset	0,PortA,L0228
+	brset	0,PortA,L022B
+	brset	0,PortA,L022E
+	brset	0,PortA,L0231
+	brset	0,PortA,L0234
+	brset	0,PortA,L0237
+	brset	0,PortA,L023A
+	brset	0,PortA,L023D
+	brset	0,PortA,L0240
+	brset	0,PortA,L0243
+	brset	0,PortA,L0246
+	brset	0,PortA,L0249
+	brset	0,PortA,L024C
+	brset	0,PortA,L024F
+	brset	0,PortA,L0252
+	brset	0,PortA,L0255
+	brset	0,PortA,L0258
+	brset	0,PortA,L025B
+	brset	0,PortA,L025E
+	brset	0,PortA,L0261
+	brset	0,PortA,L0264
+	brset	0,PortA,L0267
+	brset	0,PortA,L026A
+	brset	0,PortA,L026D
+	brset	0,PortA,L0270
+	brset	0,PortA,L0273
+	brset	0,PortA,L0276
+	brset	0,PortA,L0279
+	brset	0,PortA,L027C
+	brset	0,PortA,L027F
+	brset	0,PortA,L0282
+	brset	0,PortA,L0285
+	brset	0,PortA,L0288
+	brset	0,PortA,L028B
+	brset	0,PortA,L028E
+	brset	0,PortA,L0291
+	brset	0,PortA,L0294
+	brset	0,PortA,L0297
+	brset	0,PortA,L029A
+	brset	0,PortA,L029D
+	brset	0,PortA,L02A0
+	brset	0,PortA,L02A3
+	brset	0,PortA,L02A6
+	brset	0,PortA,L02A9
+	brset	0,PortA,L02AC
+	brset	0,PortA,L02AF
+	brset	0,PortA,L02B2
+	brset	0,PortA,L02B5
+	brset	0,PortA,L02B8
+	brset	0,PortA,L02BB
+	brset	0,PortA,L02BE
+	brset	0,PortA,L02C1
+	brset	0,PortA,L02C4
+	brset	0,PortA,L02C7
+	brset	0,PortA,L02CA
+	brset	0,PortA,L02CD
+	brset	0,PortA,L02D0
+	brset	0,PortA,L02D3
+	brset	0,PortA,L02D6
+	brset	0,PortA,L02D9
+	brset	0,PortA,L02DC
+	brset	0,PortA,L02DF
+	brset	0,PortA,L02E2
+	brset	0,PortA,L02E5
+	brset	0,PortA,L02E8
+	brset	0,PortA,L02EB
+	brset	0,PortA,L02EE
+	brset	0,PortA,L02F1
+	brset	0,PortA,L02F4
+	brset	0,PortA,L02F7
+	brset	0,PortA,L02FA
+	brset	0,PortA,L02FD
+	brset	0,PortA,L0300
+	brset	0,PortA,L0303
+	brset	0,PortA,L0306
+	brset	0,PortA,L0309
+	brset	0,PortA,L030C
+	brset	0,PortA,L030F
+	brset	0,PortA,L0312
+	brset	0,PortA,L0315
+	brset	0,PortA,L0318
+	brset	0,PortA,L031B
+	brset	0,PortA,L031E
+	brset	0,PortA,L0321
+	brset	0,PortA,L0324
+	brset	0,PortA,L0327
+	brset	0,PortA,L032A
+	brset	0,PortA,L032D
+	brset	0,PortA,L0330
+	brset	0,PortA,L0333
+	brset	0,PortA,L0336
+	brset	0,PortA,L0339
+	brset	0,PortA,L033C
+	brset	0,PortA,L033F
+	brset	0,PortA,L0342
+	brset	0,PortA,L0345
+	brset	0,PortA,L0348
+	brset	0,PortA,L034B
+	brset	0,PortA,L034E
+	brset	0,PortA,L0351
+	brset	0,PortA,L0354
+	brset	0,PortA,L0357
+	brset	0,PortA,L035A
+	brset	0,PortA,L035D
+	brset	0,PortA,L0360
+	brset	0,PortA,L0363
+	brset	0,PortA,L0366
+	brset	0,PortA,L0369
+	brset	0,PortA,L036C
+	brset	0,PortA,L036F
+	brset	0,PortA,L0372
+	brset	0,PortA,L0375
+	brset	0,PortA,L0378
+	brset	0,PortA,L037B
+	brset	0,PortA,L037E
+	brset	0,PortA,L0381
+	brset	0,PortA,L0384
+	brset	0,PortA,L0387
+	brset	0,PortA,L038A
+	brset	0,PortA,L038D
+	brset	0,PortA,L0390
+	brset	0,PortA,L0393
+	brset	0,PortA,L0396
+	brset	0,PortA,L0399
+	brset	0,PortA,L039C
+	brset	0,PortA,L039F
+	brset	0,PortA,L03A2
+	brset	0,PortA,L03A5
+	brset	0,PortA,L03A8
+	brset	0,PortA,L03AB
+	brset	0,PortA,L03AE
+	brset	0,PortA,L03B1
+	brset	0,PortA,L03B4
+	brset	0,PortA,L03B7
+	brset	0,PortA,L03BA
+	brset	0,PortA,L03BD
+	brset	0,PortA,L03C0
+	brset	0,PortA,L03C3
+	brset	0,PortA,L03C6
+	brset	0,PortA,L03C9
+	brset	0,PortA,L03CC
+	brset	0,PortA,L03CF
+	brset	0,PortA,L03D2
+	brset	0,PortA,L03D5
+	brset	0,PortA,L03D8
+	brset	0,PortA,L03DB
+	brset	0,PortA,L03DE
+	brset	0,PortA,L03E1
+	brset	0,PortA,L03E4
+	brset	0,PortA,L03E7
+	brset	0,PortA,L03EA
+	brset	0,PortA,L03ED
+	brset	0,PortA,L03F0
+	brset	0,PortA,L03F3
+	brset	0,PortA,L03F6
+	brset	0,PortA,L03F9
+	brset	0,PortA,L03FC
+	brset	0,PortA,L03FF
+	brset	0,PortA,L0402
+	brset	0,PortA,L0405
+	brset	0,PortA,L0408
+	brset	0,PortA,L040B
+	brset	0,PortA,L040E
+	brset	0,PortA,L0411
+	brset	0,PortA,L0414
+	brset	0,PortA,L0417
+	brset	0,PortA,L041A
+	brset	0,PortA,L041D
+	brset	0,PortA,L0420
+	brset	0,PortA,L0423
+	brset	0,PortA,L0426
+	brset	0,PortA,L0429
+	brset	0,PortA,L042C
+	brset	0,PortA,L042F
+	brset	0,PortA,L0432
+	brset	0,PortA,L0435
+	brset	0,PortA,L0438
+	brset	0,PortA,L043B
+	brset	0,PortA,L043E
+	brset	0,PortA,L0441
+	brset	0,PortA,L0444
+	brset	0,PortA,L0447
+	brset	0,PortA,L044A
+	brset	0,PortA,L044D
+	brset	0,PortA,L0450
+	brset	0,PortA,L0453
+	brset	0,PortA,L0456
+	brset	0,PortA,L0459
+	brset	0,PortA,L045C
+	brset	0,PortA,L045F
+	brset	0,PortA,L0462
+	brset	0,PortA,L0465
+	brset	0,PortA,L0468
+	brset	0,PortA,L046B
+	brset	0,PortA,L046E
+	brset	0,PortA,L0471
+	brset	0,PortA,L0474
+	brset	0,PortA,L0477
+	brset	0,PortA,L047A
+	brset	0,PortA,L047D
+	brset	0,PortA,L0480
+	brset	0,PortA,L0483
+	brset	0,PortA,L0486
+	brset	0,PortA,L0489
+	brset	0,PortA,L048C
+	brset	0,PortA,L048F
+	brset	0,PortA,L0492
+	brset	0,PortA,L0495
+	brset	0,PortA,L0498
+	brset	0,PortA,L049B
+	brset	0,PortA,L049E
+	brset	0,PortA,L04A1
+	brset	0,PortA,L04A4
+	brset	0,PortA,L04A7
+	brset	0,PortA,L04AA
+	brset	0,PortA,L04AD
+	brset	0,PortA,L04B0
+	brset	0,PortA,L04B3
+	brset	0,PortA,L04B6
+	brset	0,PortA,L04B9
+	brset	0,PortA,L04BC
+	brset	0,PortA,L04BF
+	brset	0,PortA,L04C2
+	brset	0,PortA,L04C5
+	brset	0,PortA,L04C8
+	brset	0,PortA,L04CB
+	brset	0,PortA,L04CE
+	brset	0,PortA,L04D1
+	brset	0,PortA,L04D4
+	brset	0,PortA,L04D7
+	brset	0,PortA,L04DA
+	brset	0,PortA,L04DD
+	brset	0,PortA,L04E0
+	brset	0,PortA,L04E3
+	brset	0,PortA,L04E6
+	brset	0,PortA,L04E9
+	brset	0,PortA,L04EC
+	brset	0,PortA,L04EF
+	brset	0,PortA,L04F2
+	brset	0,PortA,L04F5
+	brset	0,PortA,L04F8
+	brset	0,PortA,L04FB
+	brset	0,PortA,L04FE
+	brset	0,PortA,L0501
+	brset	0,PortA,L0504
+	brset	0,PortA,L0507
+	brset	0,PortA,L050A
+	brset	0,PortA,L050D
+	brset	0,PortA,L0510
+	brset	0,PortA,L0513
+	brset	0,PortA,L0516
+	brset	0,PortA,L0519
+	brset	0,PortA,L051C
+	brset	0,PortA,L051F
+	brset	0,PortA,L0522
+	brset	0,PortA,L0525
+	brset	0,PortA,L0528
+	brset	0,PortA,L052B
+	brset	0,PortA,L052E
+	brset	0,PortA,L0531
+	brset	0,PortA,L0534
+	brset	0,PortA,L0537
+	brset	0,PortA,L053A
+	brset	0,PortA,L053D
+	brset	0,PortA,L0540
+	brset	0,PortA,L0543
+	brset	0,PortA,L0546
+	brset	0,PortA,L0549
+	brset	0,PortA,L054C
+	brset	0,PortA,L054F
+	brset	0,PortA,L0552
+	brset	0,PortA,L0555
+	brset	0,PortA,L0558
+	brset	0,PortA,L055B
+	brset	0,PortA,L055E
+	brset	0,PortA,L0561
+	brset	0,PortA,L0564
+	brset	0,PortA,L0567
+	brset	0,PortA,L056A
+	brset	0,PortA,L056D
+	brset	0,PortA,L0570
+	brset	0,PortA,L0573
+	brset	0,PortA,L0576
+	brset	0,PortA,L0579
+	brset	0,PortA,L057C
+	brset	0,PortA,L057F
+	brset	0,PortA,L0582
+	brset	0,PortA,L0585
+	brset	0,PortA,L0588
+	brset	0,PortA,L058B
+	brset	0,PortA,L058E
+	brset	0,PortA,L0591
+	brset	0,PortA,L0594
+	brset	0,PortA,L0597
+	brset	0,PortA,L059A
+	brset	0,PortA,L059D
+	brset	0,PortA,L05A0
+	brset	0,PortA,L05A3
+	brset	0,PortA,L05A6
+	brset	0,PortA,L05A9
+	brset	0,PortA,L05AC
+	brset	0,PortA,L05AF
+	brset	0,PortA,L05B2
+	brset	0,PortA,L05B5
+	brset	0,PortA,L05B8
+	brset	0,PortA,L05BB
+	brset	0,PortA,L05BE
+	brset	0,PortA,L05C1
+	brset	0,PortA,L05C4
+	brset	0,PortA,L05C7
+	brset	0,PortA,L05CA
+	brset	0,PortA,L05CD
+	brset	0,PortA,L05D0
+	brset	0,PortA,L05D3
+	brset	0,PortA,L05D6
+	brset	0,PortA,L05D9
+	brset	0,PortA,L05DC
+	brset	0,PortA,L05DF
+	brset	0,PortA,L05E2
+	brset	0,PortA,L05E5
+	brset	0,PortA,L05E8
+	brset	0,PortA,L05EB
+	brset	0,PortA,L05EE
+	brset	0,PortA,L05F1
+	brset	0,PortA,L05F4
+	brset	0,PortA,L05F7
+	brset	0,PortA,L05FA
+	brset	0,PortA,L05FD
+	brset	0,PortA,L0600
+	brset	0,PortA,L0603
+	brset	0,PortA,L0606
+	brset	0,PortA,L0609
+	brset	0,PortA,L060C
+	brset	0,PortA,L060F
+	brset	0,PortA,L0612
+	brset	0,PortA,L0615
+	brset	0,PortA,L0618
+	brset	0,PortA,L061B
+	brset	0,PortA,L061E
+	brset	0,PortA,L0621
+	brset	0,PortA,L0624
+	brset	0,PortA,L0627
+	brset	0,PortA,L062A
+	brset	0,PortA,L062D
+	brset	0,PortA,L0630
+	brset	0,PortA,L0633
+	brset	0,PortA,L0636
+	brset	0,PortA,L0639
+	brset	0,PortA,L063C
+	brset	0,PortA,L063F
+	brset	0,PortA,L0642
+	brset	0,PortA,L0645
+	brset	0,PortA,L0648
+	brset	0,PortA,L064B
+	brset	0,PortA,L064E
+	brset	0,PortA,L0651
+	brset	0,PortA,L0654
+	brset	0,PortA,L0657
+	brset	0,PortA,L065A
+	brset	0,PortA,L065D
+	brset	0,PortA,L0660
+	brset	0,PortA,L0663
+	brset	0,PortA,L0666
+	brset	0,PortA,L0669
+	brset	0,PortA,L066C
+	brset	0,PortA,L066F
+	brset	0,PortA,L0672
+	brset	0,PortA,L0675
+	brset	0,PortA,L0678
+	brset	0,PortA,L067B
+	brset	0,PortA,L067E
+	brset	0,PortA,L0681
+	brset	0,PortA,L0684
+	brset	0,PortA,L0687
+	brset	0,PortA,L068A
+	brset	0,PortA,L068D
+	brset	0,PortA,L0690
+	brset	0,PortA,L0693
+	brset	0,PortA,L0696
+	brset	0,PortA,L0699
+	brset	0,PortA,L069C
+	brset	0,PortA,L069F
+	brset	0,PortA,L06A2
+	brset	0,PortA,L06A5
+	brset	0,PortA,L06A8
+	brset	0,PortA,L06AB
+	brset	0,PortA,L06AE
+	brset	0,PortA,L06B1
+	brset	0,PortA,L06B4
+	brset	0,PortA,L06B7
+	brset	0,PortA,L06BA
+	brset	0,PortA,L06BD
+	brset	0,PortA,L06C0
+	brset	0,PortA,L06C3
+	brset	0,PortA,L06C6
+	brset	0,PortA,L06C9
+	brset	0,PortA,L06CC
+	brset	0,PortA,L06CF
+	brset	0,PortA,L06D2
+	brset	0,PortA,L06D5
+	brset	0,PortA,L06D8
+	brset	0,PortA,L06DB
+	brset	0,PortA,L06DE
+	brset	0,PortA,L06E1
+	brset	0,PortA,L06E4
+	brset	0,PortA,L06E7
+	brset	0,PortA,L06EA
+	brset	0,PortA,L06ED
+	brset	0,PortA,L06F0
+	brset	0,PortA,L06F3
+	brset	0,PortA,L06F6
+	brset	0,PortA,L06F9
+	brset	0,PortA,L06FC
+	brset	0,PortA,L06FF
+	brset	0,PortA,L0702
+	brset	0,PortA,L0705
+	brset	0,PortA,L0708
+	brset	0,PortA,L070B
+	brset	0,PortA,L070E
+	brset	0,PortA,L0711
+	brset	0,PortA,L0714
+	brset	0,PortA,L0717
+	brset	0,PortA,L071A
+	brset	0,PortA,L071D
+	brset	0,PortA,L0720
+	brset	0,PortA,L0723
+	brset	0,PortA,L0726
+	brset	0,PortA,L0729
+	brset	0,PortA,L072C
+	brset	0,PortA,L072F
+	brset	0,PortA,L0732
+	brset	0,PortA,L0735
+	brset	0,PortA,L0738
+	brset	0,PortA,L073B
+	brset	0,PortA,L073E
+	brset	0,PortA,L0741
+	brset	0,PortA,L0744
+	brset	0,PortA,L0747
+	brset	0,PortA,L074A
+	brset	0,PortA,L074D
+	brset	0,PortA,L0750
+	brset	0,PortA,L0753
+	brset	0,PortA,L0756
+	brset	0,PortA,L0759
+	brset	0,PortA,L075C
+	brset	0,PortA,L075F
+	brset	0,PortA,L0762
+	brset	0,PortA,L0765
+	brset	0,PortA,L0768
+	brset	0,PortA,L076B
+	brset	0,PortA,L076E
+	brset	0,PortA,L0771
+	brset	0,PortA,L0774
+	brset	0,PortA,L0777
+	brset	0,PortA,L077A
+	brset	0,PortA,L077D
+	brset	0,PortA,L0780
+	brset	0,PortA,L0783
+	brset	0,PortA,L0786
+	brset	0,PortA,L0789
+	brset	0,PortA,L078C
+	brset	0,PortA,L078F
+	brset	0,PortA,L0792
+	brset	0,PortA,L0795
+	brset	0,PortA,L0798
+	brset	0,PortA,L079B
+	brset	0,PortA,L079E
+	brset	0,PortA,L07A1
+	brset	0,PortA,L07A4
+	brset	0,PortA,L07A7
+	brset	0,PortA,L07AA
+	brset	0,PortA,L07AD
+	brset	0,PortA,L07B0
+	brset	0,PortA,L07B3
+	brset	0,PortA,L07B6
+	brset	0,PortA,L07B9
+	brset	0,PortA,L07BC
+	brset	0,PortA,L07BF
+	brset	0,PortA,L07C2
+	brset	0,PortA,L07C5
+	brset	0,PortA,L07C8
+	brset	0,PortA,L07CB
+	brset	0,PortA,L07CE
+	brset	0,PortA,L07D1
+	brset	0,PortA,L07D4
+	brset	0,PortA,L07D7
+	brset	0,PortA,L07DA
+	brset	0,PortA,L07DD
+	brset	0,PortA,L07E0
+	brset	0,PortA,L07E3
+	brset	0,PortA,L07E6
+	brset	0,PortA,L07E9
+	brset	0,PortA,L07EC
+	brset	0,PortA,L07EF
+	brset	0,PortA,L07F2
+	brset	0,PortA,L07F5
+	brset	0,PortA,L07F8
+	brset	0,PortA,L07FB
+	brset	0,PortA,L07FE
+	brset	0,PortA,L0001
+	brset	0,PortA,L0004
+	brset	0,PortA,L0007
+	brset	0,PortA,L000A
+	brset	0,PortA,L000D
+	brset	0,PortA,L0010
+	brset	0,PortA,L0013
+	brset	0,PortA,L0016
+	brset	0,PortA,L0019
+	brset	0,PortA,L001C
+	brset	0,PortA,L001F
+	brset	0,PortA,L0022
+	brset	0,PortA,L0025
+	brset	0,PortA,L0028
+	brset	0,PortA,L002B
+	brset	0,PortA,L002E
+	brset	0,PortA,L0031
+	brset	0,PortA,L0034
+	brset	0,PortA,L0037
+	brset	0,PortA,L003A
+	brset	0,PortA,L003D
+	brset	0,PortA,L0040
+	brset	0,PortA,L0043
+	brset	0,PortA,L0046
+	brset	0,PortA,L0049
+	brset	0,PortA,L004C
+	brset	0,PortA,L004F
+	brset	0,PortA,L0052
+	brset	0,PortA,L0055
+	brset	0,PortA,L0058
+	brset	0,PortA,L005B
+	brset	0,PortA,L005E
+	brset	0,PortA,L0061
+	brset	0,PortA,L0064
+	brset	0,PortA,L0067
+	brset	0,PortA,L006A
+	brset	0,PortA,L006D
+	brset	0,PortA,L0070
+	brset	0,PortA,L0073
+	brset	0,PortA,L0076
+	brset	0,PortA,L0079
+	brset	0,PortA,L007C
+	brset	0,PortA,L007F
+	brset	0,PortA,L0082
+	brset	0,PortA,L0085
+	brset	0,PortA,L0088
+	brset	0,PortA,L008B
+	brset	0,PortA,L008E
+	brset	0,PortA,L0091
+	brset	0,PortA,L0094
+	brset	0,PortA,L0097
+	brset	0,PortA,L009A
+	brset	0,PortA,L009D
+	brset	0,PortA,L00A0
+	brset	0,PortA,L00A3
+	brset	0,PortA,L00A6
+	brset	0,PortA,L00A9
+	brset	0,PortA,L00AC
+	brset	0,PortA,L00AF
+	brset	0,PortA,L00B2
+	brset	0,PortA,L00B5
+	brset	0,PortA,L00B8
+	brset	0,PortA,L00BB
+	brset	0,PortA,L00BE
+	brset	0,PortA,L00C1
+	brset	0,PortA,L00C4
+	brset	0,PortA,L00C7
+	brset	0,PortA,L00CA
+	brset	0,PortA,L00CD
+	brset	0,PortA,L00D0
+	brset	0,PortA,L00D3
+	brset	0,PortA,L00D6
+	brset	0,PortA,L00D9
+	brset	0,PortA,L00DC
+	brset	0,PortA,L00DF
+	brset	0,PortA,L00E2
+	brset	0,PortA,L00E5
+	brset	0,PortA,L00E8
+	brset	0,PortA,L00EB
+	brset	0,PortA,L00EE
+	brset	0,PortA,L00F1
+	brset	0,PortA,L00F4
+	brset	0,PortA,L00F7
+	brset	0,PortA,L00FA
+	brset	0,PortA,L00FD
+	brset	0,PortA,L0100
+	brset	0,PortA,L0103
+	brset	0,PortA,L0106
+	brset	0,PortA,L0109
+	brset	0,PortA,L010C
+	brset	0,PortA,L010F
+	brset	0,PortA,L0112
+	brset	0,PortA,L0115
+	brset	0,PortA,L0118
+	brset	0,PortA,L011B
+	brset	0,PortA,L011E
+	brset	0,PortA,L0121
+	brset	0,PortA,L0124
+	brset	0,PortA,L0127
+	brset	0,PortA,L012A
+	brset	0,PortA,L012D
+	brset	0,PortA,L0130
+	brset	0,PortA,L0133
+	brset	0,PortA,L0136
+	brset	0,PortA,L0139
+	brset	0,PortA,L013C
+	brset	0,PortA,L013F
+	brset	0,PortA,L0142
+	brset	0,PortA,L0145
+	brset	0,PortA,L0148
+	brset	0,PortA,L014B
+	brset	0,PortA,L014E
+	brset	0,PortA,L0151
+	brset	0,PortA,L0154
+	brset	0,PortA,L0157
+	brset	0,PortA,L015A
+	brset	0,PortA,L015D
+	brset	0,PortA,L0160
+	brset	0,PortA,L0163
+	brset	0,PortA,L0166
+	brset	0,PortA,L0169
+	brset	0,PortA,L016C
+	brset	0,PortA,L016F
+	brset	0,PortA,L0172
+	brset	0,PortA,L0175
+	brset	0,PortA,L0178
+	brset	0,PortA,L017B
+	brset	0,PortA,L017E
+	brset	0,PortA,L0181
+	brset	0,PortA,L0184
+	brset	0,PortA,L0187
+	brset	0,PortA,L018A
+	brset	0,PortA,L018D
+	brset	0,PortA,L0190
+	brset	0,PortA,L0193
+	brset	0,PortA,L0196
+	brset	0,PortA,L0199
+	brset	0,PortA,L019C
+	brset	0,PortA,L019F
+	brset	0,PortA,L01A2
+	brset	0,PortA,L01A5
+	brset	0,PortA,L01A8
+	brset	0,PortA,L01AB
+	brset	0,PortA,L01AE
+	brset	0,PortA,L01B1
+	brset	0,PortA,L01B4
+	brset	0,PortA,L01B7
+	brset	0,PortA,L01BA
+	brset	0,PortA,L01BD
+	brset	0,PortA,L01C0
+	brset	0,PortA,L01C3
+	brset	0,PortA,L01C6
+	brset	0,PortA,L01C9
+	brset	0,PortA,L01CC
+	brset	0,PortA,L01CF
+	brset	0,PortA,L01D2
+	brset	0,PortA,L01D5
+	brset	0,PortA,L01D8
+	brset	0,PortA,L01DB
+	brset	0,PortA,L01DE
+	brset	0,PortA,L01E1
+	brset	0,PortA,L01E4
+	brset	0,PortA,L01E7
+	brset	0,PortA,L01EA
+	brset	0,PortA,L01ED
+	brset	0,PortA,L01F0
+	brset	0,PortA,L01F3
+	brset	0,PortA,L01F6
+	brset	0,PortA,L01F9
+	brset	0,PortA,L01FC
+	brset	0,PortA,L01FF
+	brset	0,PortA,L0202
+	brset	0,PortA,L0205
+	brset	0,PortA,L0208
+	brset	0,PortA,L020B
+	brset	0,PortA,L020E
+	brset	0,PortA,L0211
+	brset	0,PortA,L0214
+	brset	0,PortA,L0217
+	brset	0,PortA,L021A
+	brset	0,PortA,L021D
+	brset	0,PortA,L0220
+	brset	0,PortA,L0223
+	brset	0,PortA,L0226
+	brset	0,PortA,L0229
+	brset	0,PortA,L022C
+	brset	0,PortA,L022F
+	brset	0,PortA,L0232
+	brset	0,PortA,L0235
+	brset	0,PortA,L0238
+	brset	0,PortA,L023B
+	brset	0,PortA,L023E
+	brset	0,PortA,L0241
+	brset	0,PortA,L0244
+	brset	0,PortA,L0247
+	brset	0,PortA,L024A
+	brset	0,PortA,L024D
+	brset	0,PortA,L0250
+	brset	0,PortA,L0253
+	brset	0,PortA,L0256
+	brset	0,PortA,L0259
+	brset	0,PortA,L025C
+	brset	0,PortA,L025F
+	brset	0,PortA,L0262
+	brset	0,PortA,L0265
+	brset	0,PortA,L0268
+	brset	0,PortA,L026B
+	brset	0,PortA,L026E
+	brset	0,PortA,L0271
+	brset	0,PortA,L0274
+	brset	0,PortA,L0277
+	brset	0,PortA,L027A
+	brset	0,PortA,L027D
+	brset	0,PortA,L0280
+	brset	0,PortA,L0283
+	brset	0,PortA,L0286
+	brset	0,PortA,L0289
+	brset	0,PortA,L028C
+	brset	0,PortA,L028F
+	brset	0,PortA,L0292
+	brset	0,PortA,L0295
+	brset	0,PortA,L0298
+	brset	0,PortA,L029B
+	brset	0,PortA,L029E
+	brset	0,PortA,L02A1
+	brset	0,PortA,L02A4
+	brset	0,PortA,L02A7
+	brset	0,PortA,L02AA
+	brset	0,PortA,L02AD
+	brset	0,PortA,L02B0
+	brset	0,PortA,L02B3
+	brset	0,PortA,L02B6
+	brset	0,PortA,L02B9
+	brset	0,PortA,L02BC
+	brset	0,PortA,L02BF
+	brset	0,PortA,L02C2
+	brset	0,PortA,L02C5
+	brset	0,PortA,L02C8
+	brset	0,PortA,L02CB
+	brset	0,PortA,L02CE
+	brset	0,PortA,L02D1
+	brset	0,PortA,L02D4
+	brset	0,PortA,L02D7
+	brset	0,PortA,L02DA
+	brset	0,PortA,L02DD
+	brset	0,PortA,L02E0
+	brset	0,PortA,L02E3
+	brset	0,PortA,L02E6
+	brset	0,PortA,L02E9
+	brset	0,PortA,L02EC
+	brset	0,PortA,L02EF
+	brset	0,PortA,L02F2
+	brset	0,PortA,L02F5
+	brset	0,PortA,L02F8
+	brset	0,PortA,L02FB
+	brset	0,PortA,L02FE
+	brset	0,PortA,L0301
+	brset	0,PortA,L0304
+	brset	0,PortA,L0307
+	brset	0,PortA,L030A
+	brset	0,PortA,L030D
+	brset	0,PortA,L0310
+	brset	0,PortA,L0313
+	brset	0,PortA,L0316
+	brset	0,PortA,L0319
+	brset	0,PortA,L031C
+	brset	0,PortA,L031F
+	brset	0,PortA,L0322
+	brset	0,PortA,L0325
+	brset	0,PortA,L0328
+	brset	0,PortA,L032B
+	brset	0,PortA,L032E
+	brset	0,PortA,L0331
+	brset	0,PortA,L0334
+	brset	0,PortA,L0337
+	brset	0,PortA,L033A
+	brset	0,PortA,L033D
+	brset	0,PortA,L0340
+	brset	0,PortA,L0343
+	brset	0,PortA,L0346
+	brset	0,PortA,L0349
+	brset	0,PortA,L034C
+	brset	0,PortA,L034F
+	brset	0,PortA,L0352
+	brset	0,PortA,L0355
+	brset	0,PortA,L0358
+	brset	0,PortA,L035B
+	brset	0,PortA,L035E
+	brset	0,PortA,L0361
+	brset	0,PortA,L0364
+	brset	0,PortA,L0367
+	brset	0,PortA,L036A
+	brset	0,PortA,L036D
+	brset	0,PortA,L0370
+	brset	0,PortA,L0373
+	brset	0,PortA,L0376
+	brset	0,PortA,L0379
+	brset	0,PortA,L037C
+	brset	0,PortA,L037F
+	brset	0,PortA,L0382
+	brset	0,PortA,L0385
+	brset	0,PortA,L0388
+	brset	0,PortA,L038B
+	brset	0,PortA,L038E
+	brset	0,PortA,L0391
+	brset	0,PortA,L0394
+	brset	0,PortA,L0397
+	brset	0,PortA,L039A
+	brset	0,PortA,L039D
+	brset	0,PortA,L03A0
+	brset	0,PortA,L03A3
+	brset	0,PortA,L03A6
+	brset	0,PortA,L03A9
+	brset	0,PortA,L03AC
+	brset	0,PortA,L03AF
+	brset	0,PortA,L03B2
+	brset	0,PortA,L03B5
+	brset	0,PortA,L03B8
+	brset	0,PortA,L03BB
+	brset	0,PortA,L03BE
+	brset	0,PortA,L03C1
+	brset	0,PortA,L03C4
+	brset	0,PortA,L03C7
+	brset	0,PortA,L03CA
+	brset	0,PortA,L03CD
+	brset	0,PortA,L03D0
+	brset	0,PortA,L03D3
+	brset	0,PortA,L03D6
+	brset	0,PortA,L03D9
+	brset	0,PortA,L03DC
+	brset	0,PortA,L03DF
+	brset	0,PortA,L03E2
+	brset	0,PortA,L03E5
+	brset	0,PortA,L03E8
+	brset	0,PortA,L03EB
+	brset	0,PortA,L03EE
+	brset	0,PortA,L03F1
+	brset	0,PortA,L03F4
+	brset	0,PortA,L03F7
+	brset	0,PortA,L03FA
+	brset	0,PortA,L03FD
+	brset	0,PortA,L0400
+	brset	0,PortA,L0403
+	brset	0,PortA,L0406
+	brset	0,PortA,L0409
+	brset	0,PortA,L040C
+	brset	0,PortA,L040F
+	brset	0,PortA,L0412
+	brset	0,PortA,L0415
+	brset	0,PortA,L0418
+	brset	0,PortA,L041B
+	brset	0,PortA,L041E
+	brset	0,PortA,L0421
+	brset	0,PortA,L0424
+	brset	0,PortA,L0427
+	brset	0,PortA,L042A
+	brset	0,PortA,L042D
+	brset	0,PortA,L0430
+	brset	0,PortA,L0433
+	brset	0,PortA,L0436
+	brset	0,PortA,L0439
+	brset	0,PortA,L043C
+	brset	0,PortA,L043F
+	brset	0,PortA,L0442
+	brset	0,PortA,L0445
+	brset	0,PortA,L0448
+	brset	0,PortA,L044B
+	brset	0,PortA,L044E
+	brset	0,PortA,L0451
+	brset	0,PortA,L0454
+	brset	0,PortA,L0457
+	brset	0,PortA,L045A
+	brset	0,PortA,L045D
+	brset	0,PortA,L0460
+	brset	0,PortA,L0463
+	brset	0,PortA,L0466
+	brset	0,PortA,L0469
+	brset	0,PortA,L046C
+	brset	0,PortA,L046F
+	brset	0,PortA,L0472
+	brset	0,PortA,L0475
+	brset	0,PortA,L0478
+	brset	0,PortA,L047B
+	brset	0,PortA,L047E
+	brset	0,PortA,L0481
+	brset	0,PortA,L0484
+	brset	0,PortA,L0487
+	brset	0,PortA,L048A
+	brset	0,PortA,L048D
+	brset	0,PortA,L0490
+	brset	0,PortA,L0493
+	brset	0,PortA,L0496
+	brset	0,PortA,L0499
+	brset	0,PortA,L049C
+	brset	0,PortA,L049F
+	brset	0,PortA,L04A2
+	brset	0,PortA,L04A5
+	brset	0,PortA,L04A8
+	brset	0,PortA,L04AB
+	brset	0,PortA,L04AE
+	brset	0,PortA,L04B1
+	brset	0,PortA,L04B4
+	brset	0,PortA,L04B7
+	brset	0,PortA,L04BA
+	brset	0,PortA,L04BD
+	brset	0,PortA,L04C0
+	brset	0,PortA,L04C3
+	brset	0,PortA,L04C6
+	brset	0,PortA,L04C9
+	brset	0,PortA,L04CC
+	brset	0,PortA,L04CF
+	brset	0,PortA,L04D2
+	brset	0,PortA,L04D5
+	brset	0,PortA,L04D8
+	brset	0,PortA,L04DB
+	brset	0,PortA,L04DE
+	brset	0,PortA,L04E1
+	brset	0,PortA,L04E4
+	brset	0,PortA,L04E7
+	brset	0,PortA,L04EA
+	brset	0,PortA,L04ED
+	brset	0,PortA,L04F0
+	brset	0,PortA,L04F3
+	brset	0,PortA,L04F6
+	brset	0,PortA,L04F9
+	brset	0,PortA,L04FC
+	brset	0,PortA,L04FF
+	brset	0,PortA,L0502
+	brset	0,PortA,L0505
+	brset	0,PortA,L0508
+	brset	0,PortA,L050B
+	brset	0,PortA,L050E
+	brset	0,PortA,L0511
+	brset	0,PortA,L0514
+	brset	0,PortA,L0517
+	brset	0,PortA,L051A
+	brset	0,PortA,L051D
+	brset	0,PortA,L0520
+	brset	0,PortA,L0523
+	brset	0,PortA,L0526
+	brset	0,PortA,L0529
+	brset	0,PortA,L052C
+	brset	0,PortA,L052F
+	brset	0,PortA,L0532
+	brset	0,PortA,L0535
+	brset	0,PortA,L0538
+	brset	0,PortA,L053B
+	brset	0,PortA,L053E
+	brset	0,PortA,L0541
+	brset	0,PortA,L0544
+	brset	0,PortA,L0547
+	brset	0,PortA,L054A
+	brset	0,PortA,L054D
+	brset	0,PortA,L0550
+	brset	0,PortA,L0553
+	brset	0,PortA,L0556
+	brset	0,PortA,L0559
+	brset	0,PortA,L055C
+	brset	0,PortA,L055F
+	brset	0,PortA,L0562
+	brset	0,PortA,L0565
+	brset	0,PortA,L0568
+	brset	0,PortA,L056B
+	brset	0,PortA,L056E
+	brset	0,PortA,L0571
+	brset	0,PortA,L0574
+	brset	0,PortA,L0577
+	brset	0,PortA,L057A
+	brset	0,PortA,L057D
+	brset	0,PortA,L0580
+	brset	0,PortA,L0583
+	brset	0,PortA,L0586
+	brset	0,PortA,L0589
+	brset	0,PortA,L058C
+	brset	0,PortA,L058F
+	brset	0,PortA,L0592
+	brset	0,PortA,L0595
+	brset	0,PortA,L0598
+	brset	0,PortA,L059B
+	brset	0,PortA,L059E
+	brset	0,PortA,L05A1
+	brset	0,PortA,L05A4
+	brset	0,PortA,L05A7
+	brset	0,PortA,L05AA
+	brset	0,PortA,L05AD
+	brset	0,PortA,L05B0
+	brset	0,PortA,L05B3
+	brset	0,PortA,L05B6
+	brset	0,PortA,L05B9
+	brset	0,PortA,L05BC
+	brset	0,PortA,L05BF
+	brset	0,PortA,L05C2
+	brset	0,PortA,L05C5
+	brset	0,PortA,L05C8
+	brset	0,PortA,L05CB
+	brset	0,PortA,L05CE
+	brset	0,PortA,L05D1
+	brset	0,PortA,L05D4
+	brset	0,PortA,L05D7
+	brset	0,PortA,L05DA
+	brset	0,PortA,L05DD
+	brset	0,PortA,L05E0
+	brset	0,PortA,L05E3
+	brset	0,PortA,L05E6
+	brset	0,PortA,L05E9
+	brset	0,PortA,L05EC
+	brset	0,PortA,L05EF
+	brset	0,PortA,L05F2
+	brset	0,PortA,L05F5
+	brset	0,PortA,L05F8
+	brset	0,PortA,L05FB
+	brset	0,PortA,L05FE
+;
+	db	$00, $00

@@ -1508,7 +1508,7 @@ byte 0x7fdd BOT3_07fdd
 
 ; USER VECTORS
 
-; vectab 0x7ff2 14
+;vectab 0x7ff2 14
 
 vector 0x7ff2 SCI
 vector 0x7ff4 T_OVF_ISR ; Timer Overflow

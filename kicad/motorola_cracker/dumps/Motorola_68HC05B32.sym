@@ -6,7 +6,10 @@ message 68HC05B32
 
 cpu 68HC05
 
+;for only ROM starts at 0x400:
 org 0x0400
+;for whole memory if bin starts at 0x000
+;org 0x0000
 
 code 0x0400
 
@@ -49,8 +52,9 @@ byte 0x001C ICH2
 byte 0x001D ICL2
 byte 0x001E OCH2
 byte 0x001F OCL2
-byte 0x0100 OPTR
-byte 0x7FDE MOR
+
+byte 0x0020 RESERVED 47
+
 
 ; ram 0x50 - 0xff
 
@@ -231,15 +235,17 @@ byte 0xfd STACK_0fd
 byte 0xfe STACK_0fe
 byte 0xff STACK_0ff
 
-; 0x100 options register
 ;
-; eeprom 0x101->0x1ff
-;
-; $0101 Unprotected (31 bytes)
 ; EEPROM
 ; (256 bytes)
-; Protected (224 bytes)
+; 0x101->0x1ff
+;
+; 0x100 options register
+; $0101 Unprotected (31 bytes)
+; 	Protected (224 bytes)
 ; 0x0200
+
+byte 0x0100 OPTR
 
 byte 0x101 SEC_CODE1;EEPROM_0101
 byte 0x102 SEC_CODE2;EEPROM_0102
@@ -1505,6 +1511,34 @@ byte 0x7fda BOT3_07fda
 byte 0x7fdb BOT3_07fdb
 byte 0x7fdc BOT3_07fdc
 byte 0x7fdd BOT3_07fdd
+
+byte 0x7FDE MOR
+
+byte 0x7FDF RESERVED
+
+;
+; Bootloader ROM vectors
+; (16 bytes)
+;
+
+byte 0x7FE0 BOOT_ROM_VECTORS
+byte 0x7FE1 BOOT_ROM_VECTORS
+byte 0x7FE2 BOOT_ROM_VECTORS
+byte 0x7FE3 BOOT_ROM_VECTORS
+byte 0x7FE4 BOOT_ROM_VECTORS
+byte 0x7FE5 BOOT_ROM_VECTORS
+byte 0x7FE6 BOOT_ROM_VECTORS
+byte 0x7FE7 BOOT_ROM_VECTORS
+byte 0x7FE8 BOOT_ROM_VECTORS
+byte 0x7FE9 BOOT_ROM_VECTORS
+byte 0x7FEA BOOT_ROM_VECTORS
+byte 0x7FEB BOOT_ROM_VECTORS
+byte 0x7FEC BOOT_ROM_VECTORS
+byte 0x7FED BOOT_ROM_VECTORS
+byte 0x7FEE BOOT_ROM_VECTORS
+byte 0x7FEF BOOT_ROM_VECTORS
+byte 0x7FF0 BOOT_ROM_VECTORS
+byte 0x7FF1 BOOT_ROM_VECTORS
 
 ; USER VECTORS
 

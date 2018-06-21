@@ -435,22 +435,22 @@ param3=`echo ${linen}|sed 's/^\ *//g'|cut -d\  -f 2|cut -d, -f3`
 #echo ${param3}
 
 case ${param1} in
-	\#*)
+	\#)
 	#constant #$1234, remove #, change $ to 0x
 	param1is="constant"
 	param1=`echo ${param1}|sed 's/#//g'|sed 's/\\\$/0x/g'`
 	;;
-	\$*)
+	\$)
 	#memory address $1234, change $ to 0x
 	param1is="address"
 	param1=`echo ${param1}|sed 's/\\\$/0x/g'`
 	;;
-	X*)
+	X)
         #memory address X1234, change X to 0x
         param1is="address"
         param1=`echo ${param1}|sed 's/X/0x/g'`
 	;;
-	L*)
+	L)
         #memory address L1234, change L to 0x
         param1is="address"
         param1=`echo ${param1}|sed 's/L/0x/g'`
@@ -460,22 +460,22 @@ case ${param1} in
 esac
 
 case ${param2} in
-        \#*)
+        \#)
         #constant #$1234, remove #, change $ to 0x
         param2is="constant"
         param2=`echo ${param2}|sed 's/#//g'|sed 's/\\\$/0x/g'`
         ;;
-        \$*)
+        \$)
         #memory address 0x1234, change $ to 0x
         param2is="address"
         param2=`echo ${param2}|sed 's/\\\$/0x/g'`
         ;;
-        X*)
+        X)
         #memory address 0x1234, change X to 0x
         param2is="address"
         param2=`echo ${param2}|sed 's/X/0x/g'`
         ;;
-        L*)
+        L)
         #memory address 0x1234, change L to 0x
         param2is="address"
         param2=`echo ${param2}|sed 's/L/0x/g'`
@@ -485,22 +485,22 @@ case ${param2} in
 esac
 
 case ${param3} in # probably only memory here (jumps, branches)
-        \#*)
+        \#)
         #constant #$1234, remove #, change $ to 0x
         param3is="constant"
         param3=`echo ${param3}|sed 's/#//g'|sed 's/\\\$/0x/g'`
         ;;
-        \$*)
+        \$)
         #memory address $1234, change $ to 0x
         param3is="address"
         param3=`echo ${param3}|sed 's/\\\$/0x/g'`
         ;;
-        X*)
+        X)
         #memory address $1234, change $ to 0x
         param3is="address"
         param3=`echo ${param3}|sed 's/X/0x/g'`
         ;;
-        L*)
+        L)
         #memory address $1234, change $ to 0x
         param3is="address"
         param3=`echo ${param3}|sed 's/L/0x/g'`
@@ -646,7 +646,7 @@ case ${param2} in
                                         param1="ENA_8V" #PC0"
                                 ;;
 
-                                *1*)
+                                *1)
                                         param1="WDOG_TEL" #PC1"
                                 ;;
 
@@ -1647,7 +1647,7 @@ case ${param2} in
 	
 
 case ${instruction} in 
-	ADC*|adc*)
+	ADC|adc)
 #		
 #		
 		case ${param1is} in
@@ -1662,7 +1662,7 @@ case ${instruction} in
 			;;
 		esac
 	;;
-	AND*|add*)
+	AND|add)
 #		
 #		
                 case ${param1is} in
@@ -1677,7 +1677,7 @@ case ${instruction} in
 			;;
 		esac
 	;;
-	and*|AND*)
+	and|AND)
                 case ${param1is} in
                         constant)
                         	comment="Logical AND between A and constant ${param1}, A ← (A) && (${param1})"
@@ -1690,7 +1690,7 @@ case ${instruction} in
 			;;
 		esac
 	;;
-	asl*|ASL*)
+	asl|ASL)
                 case ${param1is} in
                         constant)
 				comment="Arighmetic Shift Left (Same as LSL) of ${param1}, C <- [b7 <<<< b0] <- 0, after shift: $((1<<${param1}))"
@@ -1704,14 +1704,14 @@ case ${instruction} in
                 esac
 
 	;;
-        asla*|ASLA*)f
+        asla|ASLA)
                 	comment="Arighmetic Shift Left of accumualator (Same as LSL), C <- [b7 <<<< b0] <- 0"
         ;;
-        aslx*|ASLX*)
+        aslx|ASLX)
                 	comment="Arighmetic Shift Left of Index Register (Same as LSL), C <- [b7 <<<< b0] <- 0"
         ;;
 
-	ASR*|asr*)
+	ASR|asr)
                 case ${param1is} in
                         constant)
 				comment="Arithmetic Shift Right of ${param1} = $((${param1}>>1)), b7 -> [b7 >>>> b0] -> C"
@@ -1725,21 +1725,21 @@ case ${instruction} in
                 esac
 
 	;;
-	ASRA*|asra*)
+	ASRA|asra)
 		comment="Arithmetic Shift Right of accumulator, b7 -> [b7 >>>> b0] -> C"
 	;;
-	ASRX*|asrx*)
+	ASRX|asrx)
 		comment="Arithmetic Shift Right of Index Register, b7 -> [b7 >>>> b0] -> C"
 	;;
-	BCC*|bcc*)
+	BCC|bcc)
 		comment="Branch to ${param1} if C bit is cleared "
 	;;
-	BCLR*|bclr*)
+	BCLR|bclr)
                 case ${param2} in
-                DDR*)
+                DDR)
 	                comment="Set ${param1} as INPUT"
                 ;;
-		Port*)
+		Port)
 			comment="Set ${param1} LOW"
 		;;
                 *)
@@ -1747,71 +1747,71 @@ case ${instruction} in
 		;;
 		esac
 	;;
-	BCS*|bcs*)
+	BCS|bcs)
 		comment="Branch to ${param1} if C = 1"
 	;;
-	BEQ*|beq*)
+	BEQ|beq)
 		comment="Branch to ${param3} if Equal Z=1"
 	;;
-	BHCC*|bhcc*)
+	BHCC|bhcc)
 		comment="Branch to ${param3} if half carry bit Clear H=0"
 	;;
-	BHCS*|bhcs*)
+	BHCS|bhcs)
 		comment="Branch to ${param3} if Half-Carry Bit is Set, H=1"
 	;;
-	BHI*|bhi*)
+	BHI|bhi)
 		comment="Branch to ${param3} if Higher C v Z = 0"
 	;;
-	BHS*|bhs*)
+	BHS|bhs)
 		comment="Branch to ${param3} if Higher or Same C =0"
 	;;
-	BIH*|bih*)
+	BIH|bih)
 		comment="Branch to ${param3} if IRQ Pin High IRQ=1"
 	;;
-	BIL*|bil*)
+	BIL|bil)
 		comment="Branch to ${param3} if IRQ Pin Low IRQ=0"
 	;;
-	BIT*|bit*)
+	BIT|bit)
 		comment="Bit Test Accumulator with Memory Byte (A) ∧ (${param1})"
 	;;
-	BLO*|blo*)
+	BLO|blo)
 		comment="Branch to ${param3} if Lower (Same as BCS) C=1"
 	;;
-	BLS*|bls*)
+	BLS|bls)
 		comment="Branch to ${param3} if Lower or Same C v Z = 1"
 	;;
-	BMC*|bmc*)
+	BMC|bmc)
 		comment="Branch to ${param3} if Interrupt Mask Clear I=0"
 	;;
-	BMI*|bmi*)
+	BMI|bmi)
 		comment="Branch to ${param3} if Minus N = 1"
 	;;
-	BMS*|bms*)
+	BMS|bms)
 		comment="Branch to ${param3} if Interrupt Mask Set (I=1)"
 	;;
-	BNE*|bne*)
+	BNE|bne)
 		
 		
 		comment="Branch to ${param3} if Not Equal (Z = 0);"
 	;;
-	BPL*|bpl*)
+	BPL|bpl)
 		
 		
 		comment="Branch to ${param3} if Plus N = 0"
 	;;
-	BRA*|bra*)
+	BRA|bra)
 		
 		
 		comment="Branch Always (1 = 1)"
 	;;
-	BRCLR*|brclr*)
+	BRCLR|brclr)
 		
 		
                 case ${param2} in
-                DDR*)
+                DDR)
 			comment="Branch to ${param3} if ${param1} is set to INPUT"
 		;;
-		Port*)
+		Port)
 			comment="Branch to ${param3} if ${param1} is LOW"
 		;;
 		*)
@@ -1819,17 +1819,17 @@ case ${instruction} in
 		;;
 		esac
 	;;
-	BRN*|brn*)
+	BRN|brn)
 		
 		
 		comment="Branch Never (1 = 0)"
 	;;
-	BRSET*|brset*)
+	BRSET|brset)
 		case ${param2} in
-		DDR*)
+		DDR)
 			comment="Branch to ${param3} if ${param1} is set to OUTPUT"
 		;;
-		Port*)
+		Port)
 			comment="Branch to ${param3} if ${param1} is HIGH"
 		;;
 		*)
@@ -1837,12 +1837,12 @@ case ${instruction} in
 		;;
 		esac
 	;;
-	BSET*|bset*)
+	BSET|bset)
 		case ${param2} in
-		DDR*)
+		DDR)
 			comment="Set ${param1} as OUTPUT"
 		;;
-		Port*)
+		Port)
 			comment="Set ${param1} HIGH"
 		;;	
 		*)
@@ -1850,87 +1850,93 @@ case ${instruction} in
 		;;
 		esac
 	;;
-	BSR*|bsr*)
+	BSR|bsr)
 		
 		
 		comment="Branch to Subroutine at ${param1}"
 	;;
-	CLC*|clc*)
+	CLC|clc)
 		
 		
 		comment="Clear Carry Bit (C <- 0)"
 	;;
-	CLI*|cli*)
+	CLI|cli)
 		
 		
 		comment="Clear Interrupt Mask (I <- 0)"
 	;;
-	CLR*|clr*)
+	CLR|clr)
 		
 		
 		comment="Clear byte at ${param1} <- 0x00"
 	;;
-	CLRA*|clra*)
+	CLRA|clra)
 		
 		
 		comment="Clear byte Accumulator, A <- 0x00"
 	;;
-	CLRX*|clrx*)
+	CLRX|clrx)
 		
 		
 		comment="Clear Index Register, X <- 0x00"
 	;;
-	CMP*|cmp*)
+	CMP|cmp)
 		
 		
 		comment="Compare Accumulator with Memory Byte, (A) - (${param1})"
 	;;
-	COM*|com*)
+	COM|com)
 		
 		
 		comment="Complement Byte (One’s Complement), 0xFF - ${param1}"
 	;;
-	COMA*|coma*)
+	COMA|coma)
 		
 		
 		comment="Complement Accumulator (One’s Complement), 0xFF - A"
 	;;
-	COMX*|comx*)
+	COMX|comx)
 		
 		
 		comment="Complement Index register (One’s Complement), 0xFF - X"
 	;;
-	CPX*|cmx*)
+	CPX|cmx)
 		
 		
 		comment="Compare Index Register with Memory Byte at ${param1} (X) - (M)"
 	;;
-	DEC*|dec*)
+	DEC|dec)
 		
 		
 		comment="Decrement Byte at ${param1} Byte = Byte - 1"
 	;;
-	EOR*|eor*)
+	EOR|eor)
 		
 		
 		comment="\"EXCLUSIVE OR\" Accumulator with Memory Byte, (A) X (${param1})"
 	;;
-	INC*|inc*)
+	INC|inc)
 		
 		
 		comment="Increment Byte ${param1}, Byte = Byte + 1"
 	;;
-	JMP*|jmp*)
+	INCX|incx)
+		comment="Increment Index register by 1,X++"
+	;;
+	INCA|inca)
+		comment="Increment Accumulator by 1,A++"
+	;;
+	JMP|jmp)
 		
 		
 		comment="Unconditional Jump to ${param1}"
 	;;
-	JSR*|jsr*)
+	JSR|jsr)
 		
 		
 		comment="Jump to Subroutine at ${param1}"
 	;;
-	LDA*|lda*)
+	LDA|lda)
 		
 		
 		case "${param1is}" in 
@@ -1945,192 +1951,192 @@ case ${instruction} in
 			;;
 		esac
 	;;
-	LDX*|ldx*)
+	LDX|ldx)
 		
 		
 		comment="Load Index Register with Memory Byte, X <- (${param1})"
 	;;
-	LSL*|lsl*)
+	LSL|lsl)
 		
 		
 		comment="Logical Shift Left of ${param1} (Same as ASL), C <- [b7 <<<< b0] <- 0"
 	;;
-        LSLA*|lsla*)
+        LSLA|lsla)
 		
 		
                 comment="Logical Shift Left Accumulator (Same as ASL), C <- [b7 <<<< b0] <- 0"
         ;;
-        LSLX*|lslx*)
+        LSLX|lslx)
 		
 		
                 comment="Logical Shift Left Index register (Same as ASL), C <- [b7 <<<< b0] <- 0"
         ;;
-        LSR*|lsr*)
+        LSR|lsr)
 		
 		
                 comment="Logical Shift Right of ${param1}, b7 -> [b7 >>>> b0] -> C"
         ;;
-        LSRA*|lsra*)
+        LSRA|lsra)
 		
 		
                 comment="Logical Shift Left of Accumulator (Same as ASL), b7 -> [b7 >>>> b0] -> C"
         ;;
-        LSRX*|lsrx*)
+        LSRX|lsrx)
 		
 		
                 comment="Logical Shift Left of Index register (Same as ASL),  b7 -> [b7 >>>> b0] -> C"
         ;;
-	MUL*|mul*)
+	MUL|mul)
 		
 		
 		comment="Unsigned Multiply, X:A <- (X) * (A)"
 	;;
-	NEG*|neg*)
+	NEG|neg)
 		
 		
 		comment="Negate Byte of ${param1} (Two’s Complement), ${param1} = 0x00 - (${param1})"
 	;;
-        NEGA*|nega*)
+        NEGA|nega)
 		
 		
                 comment="Negate Byte of Accumulator (Two’s Complement), A = 0x00 - (A)"
         ;;
-        NEGX*|negx*)
+        NEGX|negx)
 		
 		
                 comment="Negate Byte of Index register(Two’s Complement), X = 0x00 - (X)"
         ;;
-	NOP*|nop*)
+	NOP|nop)
 		
 		
 		comment="No Operation"
 	;;
-	ORA*|ora*)
+	ORA|ora)
 		
 		
 		comment="Logical OR Accumulator with Memory at ${param1}, A <- (A) || (${param1})"
 	;;
-	ROL*|rol*)
+	ROL|rol)
 		
 		
 		comment="Rotate Byte at ${param1} Left through Carry Bit, C <- [b7 <<<< b0] <- C"
 	;;
-        ROLA*|rola*)
+        ROLA|rola)
 		
 		
                 comment="Rotate Accumulator Left through Carry Bit, C <- [b7 <<<< b0] <- C"
         ;;
-        ROLX*|rolx*)
+        ROLX|rolx)
 		
 		
                 comment="Rotate Index Register Left through Carry Bit, C <- [b7 <<<< b0] <- C"
         ;;
-	ROR*|ror*)
+	ROR|ror)
 		
 		
 		comment="Rotate Byte at ${param1} Right through Carry Bit, C -> [b7 >>>> b0] -> C"
 	;;
-        RORA*|rora*)
+        RORA|rora)
 		
 		
                 comment="Rotate Accumulator Right through Carry Bit, C -> [b7 >>>> b0] -> C"
         ;;
-        RORX*|rorx*)
+        RORX|rorx)
 		
 		
                 comment="Rotate Index Register Right through Carry Bit, C -> [b7 >>>> b0] -> C"
         ;;
-	rsp*|RSP*)
+	rsp|RSP)
 		
 		
 		comment="Reset Stack Pointer, SP <- 0x00FF"
 	;;
-	RTI*|rti*)
+	RTI|rti)
 		
 		
 		comment="Return from Interrupt"
 	;;
-	RTS*|rts*)
+	RTS|rts)
 		
 		
 		comment="Return from Subroutine"
 	;;
-	SBC*|sbc*)
+	SBC|sbc)
 		
 		
 		comment="Subtract Memory Byte ${param1} and Carry Bit from Accumulator, A ←  (A) – (${param1}) – (C)"
 	;;
-	SEC*|sec*)
+	SEC|sec)
 		
 		
 		comment="Set Carry Bit , C ← 1"
 	;;
-	SEI*|sei*)
+	SEI|sei)
 		
 		
 		comment="Set Interrupt Mask, I ← 1);"
 	;;
-	STA*|sta*)
+	STA|sta)
 		
 		
 		comment="Store Accumulator in Memory at ${param1}"
 	;;
-	STOP*|stop*)
+	STOP|stop)
 		
 		
 		comment="Stop Oscillator and Enable IRQ Pin"
 	;;
-	STX*|stx*)
+	STX|stx)
 		
 		
 		comment="Store Index Register In Memory at ${param1}"
 	;;
-	SUB*|sub*)
+	SUB|sub)
 		
 		
 		comment="Subtract Memory Byte from Accumulator , A ← (A) – (${param1})"
 	;;
-	SWI*|awi*)
+	SWI|awi)
 		
 		
 		comment="Software Interrupt"
 	;;
-	TAX*|tax*)
+	TAX|tax)
 		
 		
 		comment="Transfer Accumulator to Index Register, X ← (A))"
 	;;
-	TST*|tst*)
+	TST|tst)
 		
 		
 		comment="Test Memory Byte for Negative or Zero, (${param1}) – 0x00"
 	;;
-        TSTA*|tsta*)
+        TSTA|tsta)
 		
 		
                 comment="Test Accumulator for Negative or Zero, (${param1}) – 0x00"
         ;;
-        TSTX*|tstx*)
+        TSTX|tstx)
 		
 		
                 comment="Test Index Register for Negative or Zero, (${param1}) – 0x00"
         ;;
-	TXA*|txa*)
+	TXA|txa)
 		comment="Transfer Index Register to Accumulator, A ← (X)"
 	;;
-	WAIT*|wait*)
+	WAIT|wait)
 		comment="Stop CPU Clock and Enable Interrupts"
 	;;
-	fcb*|FCB*)
+	fcb|FCB)
 		comment="Form Constant Byte ${param1}"
 	;;
-        fdb*|FDB*)
+        fdb|FDB)
                 comment="Form Double Byte ${param1}"
         ;;
-	rmb*|RMB*)
+	rmb|RMB)
 		comment="Reserve Memory Byte ${param1}"
 	;;
-	db*)
+	db)
 		comment="data?"
 		all_data=`echo ${linen}|sed 's/\\\$//g'|sed 's/,//g'`
 		data1=`echo ${all_data}|awk '{print $2}'`

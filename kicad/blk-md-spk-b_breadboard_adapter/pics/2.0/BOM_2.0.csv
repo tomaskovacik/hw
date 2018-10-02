@@ -1,0 +1,14 @@
+"Id";"Designator";"Package";"Quantity";"Designation";"Supplier and ref";
+1;"RESET,MFB/PLAY,BACK,FWD,VOL+,VOL-";"SW_SPST_FSMSM";6;"SW_PUSH";;;
+2;"J1,J2";"3.5mm_stereo_jack_PJ320B";2;"Jack_3.5mm_3pin";;;
+3;"P2,P1";"Pin_Header_Straight_1x10";2;"CONNECTOR";;;
+4;"U1";"BLK-MD-SPK-B_no_up_silk";1;"BLK-MD-SPK-B";;;
+5;"R2,R1";"R_0805_HandSoldering";2;"470";;;
+6;"D2,D1";"LED-1206";2;"LED";;;
+7;"C1";"C_0805_HandSoldering";1;"100n";;;
+8;"R3";"R_0805_HandSoldering";1;"10k";;;
+9;"C2";"C_1206_HandSoldering";1;"4u7";;;
+10;"C3";"C_1206_HandSoldering";1;"1u";;;
+11;"C4";"C_0805_HandSoldering";1;"10";;;
+12;"L1";"Choke_SMD_1206_Handsoldering";1;"15n";;;
+13;"R4";"R_0805_HandSoldering";1;"2k7";;;

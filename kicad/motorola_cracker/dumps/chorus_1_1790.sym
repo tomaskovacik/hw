@@ -2,6 +2,8 @@
 ; based on datasheet by kovo for dasmx14
 ;
 
+;include audi.sym
+
 message 68HC05B32
 
 cpu 68HC05

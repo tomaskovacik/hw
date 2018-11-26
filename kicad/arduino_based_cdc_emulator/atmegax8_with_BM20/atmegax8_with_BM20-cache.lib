@@ -1,11 +1,11 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# BM2x_BM20
+# BM2x:BM20
 #
-DEF BM2x_BM20 U 0 40 Y Y 1 F N
+DEF BM2x:BM20 U 0 40 Y Y 1 F N
 F0 "U" 300 150 50 H V C CNN
-F1 "BM2x_BM20" 300 250 50 H V C CNN
+F1 "BM2x:BM20" 300 250 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -50,11 +50,11 @@ X SPKL 9 -500 -650 200 R 50 50 1 1 O
 ENDDRAW
 ENDDEF
 #
-# Connector_Generic_Conn_02x02_Counter_Clockwise
+# Connector_Generic:Conn_02x02_Counter_Clockwise
 #
-DEF Connector_Generic_Conn_02x02_Counter_Clockwise J 0 40 Y N 1 F N
+DEF Connector_Generic:Conn_02x02_Counter_Clockwise J 0 40 Y N 1 F N
 F0 "J" 50 100 50 H V C CNN
-F1 "Connector_Generic_Conn_02x02_Counter_Clockwise" 50 -200 50 H V C CNN
+F1 "Connector_Generic:Conn_02x02_Counter_Clockwise" 50 -200 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -73,11 +73,11 @@ X Pin_4 4 300 0 150 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Device_CP
+# Device:CP
 #
-DEF Device_CP C 0 10 N Y 1 F N
+DEF Device:CP C 0 10 N Y 1 F N
 F0 "C" 25 100 50 H V L CNN
-F1 "Device_CP" 25 -100 50 H V L CNN
+F1 "Device:CP" 25 -100 50 H V L CNN
 F2 "" 38 -150 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -96,11 +96,11 @@ X ~ 2 0 -150 110 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Device_Crystal_GND24
+# Device:Crystal_GND3
 #
-DEF Device_Crystal_GND24 Y 0 40 Y N 1 F N
-F0 "Y" 125 200 50 H V L CNN
-F1 "Device_Crystal_GND24" 125 125 50 H V L CNN
+DEF Device:Crystal_GND3 Y 0 40 Y N 1 F N
+F0 "Y" 0 225 50 H V C CNN
+F1 "Device:Crystal_GND3" 0 150 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -108,26 +108,23 @@ $FPLIST
 $ENDFPLIST
 DRAW
 S -45 100 45 -100 0 1 12 N
-P 2 0 1 0 -100 0 -80 0 N
-P 2 0 1 20 -80 -50 -80 50 N
+P 2 0 1 0 -100 0 -75 0 N
+P 2 0 1 20 -75 -50 -75 50 N
 P 2 0 1 0 0 -150 0 -140 N
-P 2 0 1 0 0 140 0 150 N
-P 2 0 1 20 80 -50 80 50 N
-P 2 0 1 0 80 0 100 0 N
+P 2 0 1 0 75 0 100 0 N
+P 2 0 1 20 75 50 75 -50 N
 P 4 0 1 0 -100 -90 -100 -140 100 -140 100 -90 N
-P 4 0 1 0 -100 90 -100 140 100 140 100 90 N
 X 1 1 -150 0 50 R 50 50 1 1 P
-X 2 2 0 200 50 D 50 50 1 1 P
-X 3 3 150 0 50 L 50 50 1 1 P
-X 4 4 0 -200 50 U 50 50 1 1 P
+X 2 2 150 0 50 L 50 50 1 1 P
+X 3 3 0 -200 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Device_D_Zener
+# Device:D_Zener
 #
-DEF Device_D_Zener D 0 40 N N 1 F N
+DEF Device:D_Zener D 0 40 N N 1 F N
 F0 "D" 0 100 50 H V C CNN
-F1 "Device_D_Zener" 0 -100 50 H V C CNN
+F1 "Device:D_Zener" 0 -100 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -146,26 +143,11 @@ X A 2 150 0 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Device_Jumper_NO_Small
+# Device:R
 #
-DEF Device_Jumper_NO_Small JP 0 30 N N 1 F N
-F0 "JP" 0 80 50 H V C CNN
-F1 "Device_Jumper_NO_Small" 10 -60 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-C -40 0 20 0 1 0 N
-C 40 0 20 0 1 0 N
-X 1 1 -100 0 40 R 50 50 0 1 P
-X 2 2 100 0 40 L 50 50 0 1 P
-ENDDRAW
-ENDDEF
-#
-# Device_R
-#
-DEF Device_R R 0 0 N Y 1 F N
+DEF Device:R R 0 0 N Y 1 F N
 F0 "R" 80 0 50 V V C CNN
-F1 "Device_R" 0 0 50 V V C CNN
+F1 "Device:R" 0 0 50 V V C CNN
 F2 "" -70 0 50 V I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -179,11 +161,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Jumper_Jumper_3_Bridged12
+# Jumper:Jumper_3_Bridged12
 #
-DEF Jumper_Jumper_3_Bridged12 JP 0 0 Y N 1 F N
+DEF Jumper:Jumper_3_Bridged12 JP 0 0 Y N 1 F N
 F0 "JP" -100 -100 50 H V C CNN
-F1 "Jumper_Jumper_3_Bridged12" 0 110 50 H V C CNN
+F1 "Jumper:Jumper_3_Bridged12" 0 110 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -201,11 +183,11 @@ X B 3 250 0 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# atmegax8_with_BM20-rescue_+12V-RESCUE-atmegax8_with_BM20
+# atmegax8_with_BM20-rescue:+12V-RESCUE-atmegax8_with_BM20
 #
-DEF atmegax8_with_BM20-rescue_+12V-RESCUE-atmegax8_with_BM20 #PWR 0 0 Y Y 1 F P
+DEF atmegax8_with_BM20-rescue:+12V-RESCUE-atmegax8_with_BM20 #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -150 50 H I C CNN
-F1 "atmegax8_with_BM20-rescue_+12V-RESCUE-atmegax8_with_BM20" 0 140 50 H V C CNN
+F1 "atmegax8_with_BM20-rescue:+12V-RESCUE-atmegax8_with_BM20" 0 140 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -216,11 +198,11 @@ X +12V 1 0 0 0 U 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# atmegax8_with_BM20-rescue_+5V-RESCUE-atmegax8_with_BM20
+# atmegax8_with_BM20-rescue:+5V-RESCUE-atmegax8_with_BM20
 #
-DEF atmegax8_with_BM20-rescue_+5V-RESCUE-atmegax8_with_BM20 #PWR 0 0 Y Y 1 F P
+DEF atmegax8_with_BM20-rescue:+5V-RESCUE-atmegax8_with_BM20 #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -150 50 H I C CNN
-F1 "atmegax8_with_BM20-rescue_+5V-RESCUE-atmegax8_with_BM20" 0 140 50 H V C CNN
+F1 "atmegax8_with_BM20-rescue:+5V-RESCUE-atmegax8_with_BM20" 0 140 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -231,26 +213,11 @@ X +5V 1 0 0 0 U 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# atmegax8_with_BM20-rescue_+BATT-RESCUE-atmegax8_with_BM20
+# atmegax8_with_BM20-rescue:78L05-RESCUE-atmegax8_with_BM20
 #
-DEF atmegax8_with_BM20-rescue_+BATT-RESCUE-atmegax8_with_BM20 #PWR 0 0 Y Y 1 F P
-F0 "#PWR" 0 -150 50 H I C CNN
-F1 "atmegax8_with_BM20-rescue_+BATT-RESCUE-atmegax8_with_BM20" 0 140 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-P 2 0 1 0 -30 50 0 100 N
-P 2 0 1 0 0 0 0 100 N
-P 2 0 1 0 0 100 30 50 N
-X +BATT 1 0 0 0 U 50 50 1 1 W N
-ENDDRAW
-ENDDEF
-#
-# atmegax8_with_BM20-rescue_78L05-RESCUE-atmegax8_with_BM20
-#
-DEF atmegax8_with_BM20-rescue_78L05-RESCUE-atmegax8_with_BM20 U 0 30 N Y 1 F N
+DEF atmegax8_with_BM20-rescue:78L05-RESCUE-atmegax8_with_BM20 U 0 30 N Y 1 F N
 F0 "U" 150 -196 50 H V C CNN
-F1 "atmegax8_with_BM20-rescue_78L05-RESCUE-atmegax8_with_BM20" 0 200 50 H V C CNN
+F1 "atmegax8_with_BM20-rescue:78L05-RESCUE-atmegax8_with_BM20" 0 200 50 H V C CNN
 F2 "" 0 0 50 H V C CNN
 F3 "" 0 0 50 H V C CNN
 DRAW
@@ -261,11 +228,11 @@ X VO VO 400 50 200 L 40 40 1 1 w
 ENDDRAW
 ENDDEF
 #
-# atmegax8_with_BM20-rescue_ATMEGA88-A-RESCUE-atmegax8_with_BM20
+# atmegax8_with_BM20-rescue:ATMEGA88-A-RESCUE-atmegax8_with_BM20
 #
-DEF atmegax8_with_BM20-rescue_ATMEGA88-A-RESCUE-atmegax8_with_BM20 IC 0 40 Y Y 1 F N
+DEF atmegax8_with_BM20-rescue:ATMEGA88-A-RESCUE-atmegax8_with_BM20 IC 0 40 Y Y 1 F N
 F0 "IC" -750 1250 50 H V L BNN
-F1 "atmegax8_with_BM20-rescue_ATMEGA88-A-RESCUE-atmegax8_with_BM20" 450 -1400 50 H V L BNN
+F1 "atmegax8_with_BM20-rescue:ATMEGA88-A-RESCUE-atmegax8_with_BM20" 450 -1400 50 H V L BNN
 F2 "TQFP32" 0 0 50 H V C CIN
 F3 "" 0 0 50 H V C CNN
 DRAW
@@ -305,11 +272,11 @@ X (PCINT21/OC0B/T1)PD5 9 1000 -1000 150 L 40 40 1 1 B
 ENDDRAW
 ENDDEF
 #
-# atmegax8_with_BM20-rescue_C-RESCUE-atmegax8_with_BM20
+# atmegax8_with_BM20-rescue:C-RESCUE-atmegax8_with_BM20
 #
-DEF atmegax8_with_BM20-rescue_C-RESCUE-atmegax8_with_BM20 C 0 10 N Y 1 F N
+DEF atmegax8_with_BM20-rescue:C-RESCUE-atmegax8_with_BM20 C 0 10 N Y 1 F N
 F0 "C" 25 100 50 H V L CNN
-F1 "atmegax8_with_BM20-rescue_C-RESCUE-atmegax8_with_BM20" 25 -100 50 H V L CNN
+F1 "atmegax8_with_BM20-rescue:C-RESCUE-atmegax8_with_BM20" 25 -100 50 H V L CNN
 F2 "" 38 -150 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -323,11 +290,11 @@ X ~ 2 0 -150 110 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# atmegax8_with_BM20-rescue_CONN_02X03-RESCUE-atmegax8_with_BM20
+# atmegax8_with_BM20-rescue:CONN_02X03-RESCUE-atmegax8_with_BM20
 #
-DEF atmegax8_with_BM20-rescue_CONN_02X03-RESCUE-atmegax8_with_BM20 P 0 1 Y N 1 F N
+DEF atmegax8_with_BM20-rescue:CONN_02X03-RESCUE-atmegax8_with_BM20 P 0 1 Y N 1 F N
 F0 "P" 0 200 50 H V C CNN
-F1 "atmegax8_with_BM20-rescue_CONN_02X03-RESCUE-atmegax8_with_BM20" 0 -200 50 H V C CNN
+F1 "atmegax8_with_BM20-rescue:CONN_02X03-RESCUE-atmegax8_with_BM20" 0 -200 50 H V C CNN
 F2 "" 0 -1200 50 H V C CNN
 F3 "" 0 -1200 50 H V C CNN
 $FPLIST
@@ -353,11 +320,11 @@ X P6 6 250 -100 150 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# atmegax8_with_BM20-rescue_CP-RESCUE-atmegax8_with_BM20
+# atmegax8_with_BM20-rescue:CP-RESCUE-atmegax8_with_BM20
 #
-DEF atmegax8_with_BM20-rescue_CP-RESCUE-atmegax8_with_BM20 C 0 10 N Y 1 F N
+DEF atmegax8_with_BM20-rescue:CP-RESCUE-atmegax8_with_BM20 C 0 10 N Y 1 F N
 F0 "C" 25 100 50 H V L CNN
-F1 "atmegax8_with_BM20-rescue_CP-RESCUE-atmegax8_with_BM20" 25 -100 50 H V L CNN
+F1 "atmegax8_with_BM20-rescue:CP-RESCUE-atmegax8_with_BM20" 25 -100 50 H V L CNN
 F2 "" 38 -150 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -376,11 +343,11 @@ X ~ 2 0 -150 110 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# atmegax8_with_BM20-rescue_GND-RESCUE-atmegax8_with_BM20
+# atmegax8_with_BM20-rescue:GND-RESCUE-atmegax8_with_BM20
 #
-DEF atmegax8_with_BM20-rescue_GND-RESCUE-atmegax8_with_BM20 #PWR 0 0 Y Y 1 F P
+DEF atmegax8_with_BM20-rescue:GND-RESCUE-atmegax8_with_BM20 #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -250 50 H I C CNN
-F1 "atmegax8_with_BM20-rescue_GND-RESCUE-atmegax8_with_BM20" 0 -150 50 H V C CNN
+F1 "atmegax8_with_BM20-rescue:GND-RESCUE-atmegax8_with_BM20" 0 -150 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -389,11 +356,11 @@ X GND 1 0 0 0 D 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# atmegax8_with_BM20-rescue_GNDA-RESCUE-atmegax8_with_BM20
+# atmegax8_with_BM20-rescue:GNDA-RESCUE-atmegax8_with_BM20
 #
-DEF atmegax8_with_BM20-rescue_GNDA-RESCUE-atmegax8_with_BM20 #PWR 0 0 Y Y 1 F P
+DEF atmegax8_with_BM20-rescue:GNDA-RESCUE-atmegax8_with_BM20 #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -250 50 H I C CNN
-F1 "atmegax8_with_BM20-rescue_GNDA-RESCUE-atmegax8_with_BM20" 0 -150 50 H V C CNN
+F1 "atmegax8_with_BM20-rescue:GNDA-RESCUE-atmegax8_with_BM20" 0 -150 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -402,11 +369,11 @@ X GNDA 1 0 0 0 D 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# atmegax8_with_BM20-rescue_LED-RESCUE-atmegax8_with_BM20
+# atmegax8_with_BM20-rescue:LED-RESCUE-atmegax8_with_BM20
 #
-DEF atmegax8_with_BM20-rescue_LED-RESCUE-atmegax8_with_BM20 D 0 40 Y N 1 F N
+DEF atmegax8_with_BM20-rescue:LED-RESCUE-atmegax8_with_BM20 D 0 40 Y N 1 F N
 F0 "D" 0 100 50 H V C CNN
-F1 "atmegax8_with_BM20-rescue_LED-RESCUE-atmegax8_with_BM20" 0 -100 50 H V C CNN
+F1 "atmegax8_with_BM20-rescue:LED-RESCUE-atmegax8_with_BM20" 0 -100 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -423,11 +390,11 @@ X A 2 150 0 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# atmegax8_with_BM20-rescue_LM358-RESCUE-atmegax8_with_BM20
+# atmegax8_with_BM20-rescue:LM358-RESCUE-atmegax8_with_BM20
 #
-DEF atmegax8_with_BM20-rescue_LM358-RESCUE-atmegax8_with_BM20 U 0 20 Y Y 2 F N
+DEF atmegax8_with_BM20-rescue:LM358-RESCUE-atmegax8_with_BM20 U 0 20 Y Y 2 F N
 F0 "U" 0 200 50 H V L CNN
-F1 "atmegax8_with_BM20-rescue_LM358-RESCUE-atmegax8_with_BM20" 0 -200 50 H V L CNN
+F1 "atmegax8_with_BM20-rescue:LM358-RESCUE-atmegax8_with_BM20" 0 -200 50 H V L CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -456,11 +423,11 @@ X ~ 7 300 0 100 L 50 50 2 1 O
 ENDDRAW
 ENDDEF
 #
-# atmegax8_with_BM20-rescue_R-RESCUE-atmegax8_with_BM20
+# atmegax8_with_BM20-rescue:R-RESCUE-atmegax8_with_BM20
 #
-DEF atmegax8_with_BM20-rescue_R-RESCUE-atmegax8_with_BM20 R 0 0 N Y 1 F N
+DEF atmegax8_with_BM20-rescue:R-RESCUE-atmegax8_with_BM20 R 0 0 N Y 1 F N
 F0 "R" 80 0 50 V V C CNN
-F1 "atmegax8_with_BM20-rescue_R-RESCUE-atmegax8_with_BM20" 0 0 50 V V C CNN
+F1 "atmegax8_with_BM20-rescue:R-RESCUE-atmegax8_with_BM20" 0 0 50 V V C CNN
 F2 "" -70 0 50 V I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -474,11 +441,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# gencon_CONN_12
+# gencon:CONN_12
 #
-DEF gencon_CONN_12 CON 0 40 Y N 1 F N
+DEF gencon:CONN_12 CON 0 40 Y N 1 F N
 F0 "CON" 0 650 60 H V C CNN
-F1 "gencon_CONN_12" 0 -650 60 H V C CNN
+F1 "gencon:CONN_12" 0 -650 60 H V C CNN
 F2 "" 0 0 60 H I C CNN
 F3 "" 0 0 60 H I C CNN
 DRAW

@@ -455,28 +455,18 @@ Connection ~ 1900 6900
 Wire Wire Line
 	1900 6900 2200 6900
 $Comp
-L phonejack:3.5mmjack J2
+L jacks:PJ-320B J2
 U 1 1 5AB5C1C1
-P 6000 5300
-F 0 "J2" H 6039 4903 60  0000 C CNN
-F 1 "3.5mmjack" H 6039 5009 60  0000 C CNN
-F 2 "jacks:3.5mm_stereo_jack_PJ320B_no_up_silkscreen" H 6000 5300 60  0001 C CNN
-F 3 "http://www.scpre.com.tw/ProductPage/101/2" H 6000 5300 60  0001 C CNN
-	1    6000 5300
-	-1   0    0    1   
+P 5850 5250
+F 0 "J2" H 5889 4853 60  0000 C CNN
+F 1 "3.5mmjack" H 5889 4959 60  0000 C CNN
+F 2 "jacks:3.5mm_stereo_jack_PJ320B" H 5850 5250 60  0001 C CNN
+F 3 "http://www.scpre.com.tw/ProductPage/101/2" H 5850 5250 60  0001 C CNN
+	1    5850 5250
+	1    0    0    1   
 $EndComp
 Wire Wire Line
 	6250 5150 6300 5150
-Wire Wire Line
-	6300 5150 6300 5250
-Wire Wire Line
-	6300 5250 6250 5250
-Wire Wire Line
-	6250 5350 6300 5350
-Wire Wire Line
-	6300 5350 6300 5450
-Wire Wire Line
-	6300 5450 6250 5450
 $Comp
 L Device:R R3
 U 1 1 5AB71EA4
@@ -517,10 +507,6 @@ F 3 "" H 7500 5550 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	7650 5150 8150 5150
-Wire Wire Line
-	6300 5350 6300 5250
-Connection ~ 6300 5350
-Connection ~ 6300 5250
 Connection ~ 6350 5550
 Wire Wire Line
 	7700 5550 8150 5550
@@ -757,7 +743,7 @@ Wire Wire Line
 Wire Wire Line
 	6500 5150 6500 5000
 Wire Wire Line
-	6500 5000 6900 5000
+	6500 5000 6650 5000
 Wire Wire Line
 	7100 5000 7100 5150
 Wire Wire Line
@@ -771,4 +757,24 @@ Wire Wire Line
 	6900 5000 7100 5000
 Text Label 3600 5200 0    50   ~ 0
 40
+$Comp
+L Device:Jumper_NO_Small JP1
+U 1 1 5AE40162
+P 6450 5350
+F 0 "JP1" H 6450 5535 50  0000 C CNN
+F 1 "Jumper_NO_Small" H 6450 5444 50  0000 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 6450 5350 50  0001 C CNN
+F 3 "~" H 6450 5350 50  0001 C CNN
+	1    6450 5350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6350 5350 6250 5350
+Wire Wire Line
+	6550 5350 6650 5350
+Wire Wire Line
+	6650 5350 6650 5000
+Connection ~ 6650 5000
+Wire Wire Line
+	6650 5000 6900 5000
 $EndSCHEMATC

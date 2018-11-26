@@ -158,7 +158,7 @@ Text Label 7000 2050 0    50   ~ 0
 LED2
 Text Label 7000 2150 0    50   ~ 0
 VCC
-Text Label 7000 2250 0    50   ~ 0
+Text Label 6950 2350 0    50   ~ 0
 VBUCK
 $Comp
 L c:C C1
@@ -171,7 +171,7 @@ F 3 "" H 4350 6100 50  0001 C CNN
 	1    4350 6100
 	-1   0    0    1   
 $EndComp
-Text Label 7000 2350 0    50   ~ 0
+Text Label 7000 2250 0    50   ~ 0
 GND
 Wire Wire Line
 	3050 1550 2500 1550

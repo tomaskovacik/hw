@@ -40,7 +40,7 @@ Text Label 3500 7500 2    60   ~ 0
 DataIn
 Text Label 3800 8350 2    60   ~ 0
 Clock
-Text Label 4700 6650 2    60   ~ 0
+Text Label 4900 6650 2    60   ~ 0
 DataOut
 Text Label 6900 10150 0    60   ~ 0
 Clock
@@ -54,7 +54,7 @@ U 1 1 530C9435
 P 8300 9900
 F 0 "P1" V 8250 9900 50  0000 C CNN
 F 1 "CONN_10" V 8350 9900 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x12" H 8300 9900 60  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x12_Pitch2.54mm" H 8300 9900 60  0001 C CNN
 F 3 "" H 8300 9900 60  0001 C CNN
 	1    8300 9900
 	1    0    0    -1  
@@ -120,7 +120,7 @@ U 1 1 530C76C5
 P 1950 7450
 F 0 "IC1" H 1250 8700 50  0000 L BNN
 F 1 "ATMEGA88-A" H 2250 6050 50  0000 L BNN
-F 2 "Housings_QFP:TQFP-32_7x7mm_Pitch0.8mm" H 1400 6100 50  0001 C CNN
+F 2 "Housings_QFP.pretty:LQFP-32_7x7mm_Pitch0.8mm" H 1400 6100 50  0001 C CNN
 F 3 "" H 1950 7450 60  0001 C CNN
 	1    1950 7450
 	1    0    0    -1  
@@ -198,17 +198,6 @@ LED1
 Text Label 14400 5950 2    60   ~ 0
 LED2
 $Comp
-L atmegax8_with_BM20-rescue:+BATT-RESCUE-atmegax8_with_BM20 #PWR015
-U 1 1 568BDDE9
-P 12850 4100
-F 0 "#PWR015" H 12850 3950 50  0001 C CNN
-F 1 "+BATT" H 12700 4200 50  0000 C CNN
-F 2 "" H 12850 4100 50  0000 C CNN
-F 3 "" H 12850 4100 50  0000 C CNN
-	1    12850 4100
-	1    0    0    -1  
-$EndComp
-$Comp
 L atmegax8_with_BM20-rescue:R-RESCUE-atmegax8_with_BM20 R7
 U 1 1 568BF2EB
 P 7250 8200
@@ -225,7 +214,7 @@ U 1 1 568BF753
 P 6900 8550
 F 0 "C24" H 6950 8650 50  0000 L CNN
 F 1 "2u2" H 6950 8450 50  0000 L CNN
-F 2 "Capacitors_Tantalum_SMD:TantalC_SizeA_EIA-3216_HandSoldering" H 6900 8550 60  0001 C CNN
+F 2 "Capacitors_Tantalum_SMD.pretty:TantalC_SizeA_EIA-3216_HandSoldering" H 6900 8550 60  0001 C CNN
 F 3 "" H 6900 8550 60  0001 C CNN
 	1    6900 8550
 	1    0    0    -1  
@@ -250,12 +239,12 @@ ARESET
 $Comp
 L atmegax8_with_BM20-rescue:R-RESCUE-atmegax8_with_BM20 R4
 U 1 1 568C17BF
-P 4000 6650
-F 0 "R4" V 4080 6650 50  0000 C CNN
-F 1 "3k3" V 4000 6650 50  0000 C CNN
-F 2 "Resistors_SMD:R_0805_HandSoldering" H 4000 6650 60  0001 C CNN
-F 3 "" H 4000 6650 60  0001 C CNN
-	1    4000 6650
+P 4200 6650
+F 0 "R4" V 4280 6650 50  0000 C CNN
+F 1 "3k3" V 4200 6650 50  0000 C CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" H 4200 6650 60  0001 C CNN
+F 3 "" H 4200 6650 60  0001 C CNN
+	1    4200 6650
 	0    -1   -1   0   
 $EndComp
 $Comp
@@ -362,17 +351,6 @@ F 3 "" H 3150 10300 60  0001 C CNN
 $EndComp
 Text Label 3450 10100 2    60   ~ 0
 VGND
-$Comp
-L atmegax8_with_BM20-rescue:C-RESCUE-atmegax8_with_BM20 C12
-U 1 1 568E5AE8
-P 2200 9900
-F 0 "C12" H 2315 9946 50  0000 L CNN
-F 1 "100n" H 2350 9800 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0805_HandSoldering" H 2200 9900 60  0001 C CNN
-F 3 "" H 2200 9900 60  0001 C CNN
-	1    2200 9900
-	1    0    0    -1  
-$EndComp
 Text Label 7400 9350 0    60   ~ 0
 AOUTL
 Text Label 7400 9550 0    60   ~ 0
@@ -395,8 +373,8 @@ L atmegax8_with_BM20-rescue:CP-RESCUE-atmegax8_with_BM20 C10
 U 1 1 568E86D3
 P 1400 9900
 F 0 "C10" H 1515 9946 50  0000 L CNN
-F 1 "100m/25V" H 1515 9854 50  0000 L CNN
-F 2 "Capacitors_SMD:c_elec_6.3x7.7" H 1400 9900 60  0001 C CNN
+F 1 "CTS 47u/25V D 10% VIS-293D" H 1515 9854 50  0000 L CNN
+F 2 "Capacitors_Tantalum_SMD.pretty:TantalC_SizeD_EIA-7343_HandSoldering" H 1400 9900 60  0001 C CNN
 F 3 "" H 1400 9900 60  0001 C CNN
 	1    1400 9900
 	1    0    0    -1  
@@ -407,7 +385,7 @@ U 1 1 568E8D5E
 P 2600 10300
 F 0 "C13" H 2800 10350 50  0000 L CNN
 F 1 "2m2/16V" H 2700 10200 50  0000 L CNN
-F 2 "Capacitors_Tantalum_SMD:TantalC_SizeA_EIA-3216_HandSoldering" H 2600 10300 60  0001 C CNN
+F 2 "Capacitors_Tantalum_SMD.pretty:TantalC_SizeA_EIA-3216_HandSoldering" H 2600 10300 60  0001 C CNN
 F 3 "" H 2600 10300 60  0001 C CNN
 	1    2600 10300
 	1    0    0    -1  
@@ -468,7 +446,7 @@ U 1 1 5691459B
 P 6250 1550
 F 0 "C21" V 6450 1450 50  0000 L CNN
 F 1 "4m7/16V" V 5950 1500 50  0000 L CNN
-F 2 "Capacitors_SMD:c_elec_5x5.8" H 6250 1550 60  0001 C CNN
+F 2 "Capacitors_SMD.pretty:c_elec_5x5.8" H 6250 1550 60  0001 C CNN
 F 3 "" H 6250 1550 60  0001 C CNN
 	1    6250 1550
 	0    -1   1    0   
@@ -514,7 +492,7 @@ U 1 1 569195E0
 P 3300 1650
 F 0 "C14" H 2950 1700 50  0000 L CNN
 F 1 "4u7/25V" H 2800 1600 50  0000 L CNN
-F 2 "Capacitors_SMD:c_elec_5x5.8" H 3300 1650 60  0001 C CNN
+F 2 "Capacitors_SMD.pretty:c_elec_5x5.8" H 3300 1650 60  0001 C CNN
 F 3 "" H 3300 1650 60  0001 C CNN
 	1    3300 1650
 	0    1    -1   0   
@@ -525,7 +503,7 @@ U 1 1 5691C948
 P 5350 1850
 F 0 "C18" V 5603 1850 50  0000 C CNN
 F 1 "10n" V 5511 1850 50  0000 C CNN
-F 2 "Capacitors_SMD:C_0805_HandSoldering" H 5350 1850 60  0001 C CNN
+F 2 "Capacitors_SMD.pretty:C_0805_HandSoldering" H 5350 1850 60  0001 C CNN
 F 3 "" H 5350 1850 60  0001 C CNN
 	1    5350 1850
 	1    0    0    -1  
@@ -580,7 +558,7 @@ U 1 1 5692116B
 P 10600 1800
 F 0 "C9" H 10250 1850 50  0000 L CNN
 F 1 "47m/25V" H 10100 1750 50  0000 L CNN
-F 2 "Capacitors_SMD:c_elec_6.3x5.7" H 10600 1800 60  0001 C CNN
+F 2 "Capacitors_SMD.pretty:c_elec_5x5.8" H 10600 1800 60  0001 C CNN
 F 3 "" H 10600 1800 60  0001 C CNN
 	1    10600 1800
 	0    1    -1   0   
@@ -626,7 +604,7 @@ U 1 1 5692995E
 P 7900 4050
 F 0 "C22" H 8015 4096 50  0000 L CNN
 F 1 "2u2/16V" H 8015 4004 50  0000 L CNN
-F 2 "Capacitors_SMD:C_1206_HandSoldering" H 7900 4050 60  0001 C CNN
+F 2 "Capacitors_Tantalum_SMD.pretty:TantalC_SizeA_EIA-3216_HandSoldering" H 7900 4050 60  0001 C CNN
 F 3 "" H 7900 4050 60  0001 C CNN
 	1    7900 4050
 	1    0    0    -1  
@@ -648,7 +626,7 @@ U 1 1 5692A8F6
 P 8350 4650
 F 0 "C23" V 8603 4650 50  0000 C CNN
 F 1 "1u/10V" V 8511 4650 50  0000 C CNN
-F 2 "Capacitors_SMD:C_0805_HandSoldering" H 8350 4650 60  0001 C CNN
+F 2 "Capacitors_SMD.pretty:C_1206_HandSoldering" H 8350 4650 60  0001 C CNN
 F 3 "" H 8350 4650 60  0001 C CNN
 	1    8350 4650
 	0    -1   -1   0   
@@ -700,7 +678,7 @@ U 1 1 5695899C
 P 8450 8550
 F 0 "C25" H 8500 8650 50  0000 L CNN
 F 1 "2u2" H 8500 8450 50  0000 L CNN
-F 2 "Capacitors_Tantalum_SMD:TantalC_SizeA_EIA-3216_HandSoldering" H 8450 8550 60  0001 C CNN
+F 2 "Capacitors_Tantalum_SMD.pretty:TantalC_SizeA_EIA-3216_HandSoldering" H 8450 8550 60  0001 C CNN
 F 3 "" H 8450 8550 60  0001 C CNN
 	1    8450 8550
 	1    0    0    -1  
@@ -730,7 +708,7 @@ U 1 1 59FC8340
 P 8350 5050
 F 0 "C27" V 8603 5050 50  0000 C CNN
 F 1 "1u/10V" V 8511 5050 50  0000 C CNN
-F 2 "Capacitors_SMD:C_0805_HandSoldering" H 8350 5050 60  0001 C CNN
+F 2 "Capacitors_SMD.pretty:C_1206_HandSoldering" H 8350 5050 60  0001 C CNN
 F 3 "" H 8350 5050 60  0001 C CNN
 	1    8350 5050
 	0    -1   -1   0   
@@ -869,7 +847,7 @@ Connection ~ 6900 8200
 Wire Wire Line
 	6900 8900 6900 8700
 Wire Wire Line
-	4150 6650 4700 6650
+	4350 6650 4900 6650
 Wire Wire Line
 	4400 6950 4400 7050
 Connection ~ 4400 6950
@@ -1092,8 +1070,6 @@ Wire Wire Line
 Wire Wire Line
 	9050 5050 10100 5050
 Wire Wire Line
-	5350 7600 5350 7550
-Wire Wire Line
 	7900 9650 7800 9650
 Wire Wire Line
 	7800 9650 7800 9450
@@ -1106,15 +1082,13 @@ U 1 1 5A9AFA78
 P 3500 6350
 F 0 "JP1" H 3500 6554 50  0000 C CNN
 F 1 "Jumper_3_Bridged12" H 3500 6463 50  0000 C CNN
-F 2 "" H 3500 6350 50  0001 C CNN
+F 2 "Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm_NumberLabels" H 3500 6350 50  0001 C CNN
 F 3 "~" H 3500 6350 50  0001 C CNN
 	1    3500 6350
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	3250 6350 2950 6350
-Wire Wire Line
-	3850 6650 3500 6650
 Wire Wire Line
 	3500 6650 3500 6500
 Wire Wire Line
@@ -1143,7 +1117,7 @@ U 1 1 5ABDEEED
 P 12650 5750
 F 0 "U2" H 13000 5950 50  0000 C CNN
 F 1 "BM20" H 13000 5850 50  0000 C CNN
-F 2 "" H 12650 5750 50  0001 C CNN
+F 2 "bluetooth:BM20" H 12650 5750 50  0001 C CNN
 F 3 "" H 12650 5750 50  0001 C CNN
 	1    12650 5750
 	1    0    0    -1  
@@ -1171,7 +1145,7 @@ U 1 1 59FC9441
 P 8500 4050
 F 0 "C28" V 8753 4050 50  0000 C CNN
 F 1 "2u2/16V" V 8661 4050 50  0000 C CNN
-F 2 "Capacitors_SMD:C_1206_HandSoldering" H 8500 4050 60  0001 C CNN
+F 2 "Capacitors_Tantalum_SMD.pretty:TantalC_SizeA_EIA-3216_HandSoldering" H 8500 4050 60  0001 C CNN
 F 3 "" H 8500 4050 60  0001 C CNN
 	1    8500 4050
 	1    0    0    -1  
@@ -1300,14 +1274,14 @@ Wire Wire Line
 Wire Wire Line
 	4650 3200 4650 3350
 Text Label 14450 1700 2    60   ~ 0
-BTOUTL
+BTOUTR
 $Comp
 L atmegax8_with_BM20-rescue:CP-RESCUE-atmegax8_with_BM20 C5
 U 1 1 5AF794F0
 P 13550 1700
 F 0 "C5" V 13750 1600 50  0000 L CNN
 F 1 "4m7/16V" V 13250 1650 50  0000 L CNN
-F 2 "Capacitors_SMD:c_elec_5x5.8" H 13550 1700 60  0001 C CNN
+F 2 "Capacitors_SMD.pretty:c_elec_5x5.8" H 13550 1700 60  0001 C CNN
 F 3 "" H 13550 1700 60  0001 C CNN
 	1    13550 1700
 	0    -1   1    0   
@@ -1340,7 +1314,7 @@ U 1 1 5AF79505
 P 12650 2000
 F 0 "C4" V 12903 2000 50  0000 C CNN
 F 1 "10n" V 12811 2000 50  0000 C CNN
-F 2 "Capacitors_SMD:C_0805_HandSoldering" H 12650 2000 60  0001 C CNN
+F 2 "Capacitors_SMD.pretty:C_0805_HandSoldering" H 12650 2000 60  0001 C CNN
 F 3 "" H 12650 2000 60  0001 C CNN
 	1    12650 2000
 	1    0    0    -1  
@@ -1496,19 +1470,12 @@ $EndComp
 Wire Wire Line
 	1400 9700 1400 9550
 Wire Wire Line
-	1400 9700 2200 9700
-Wire Wire Line
 	1400 9700 1400 9750
 Connection ~ 1400 9700
-Wire Wire Line
-	2200 9750 2200 9700
 Wire Wire Line
 	2600 10100 3150 10100
 Wire Wire Line
 	3150 9700 3150 9750
-Connection ~ 2200 9700
-Wire Wire Line
-	2200 9700 3150 9700
 Connection ~ 3150 9700
 $Comp
 L atmegax8_with_BM20-rescue:GNDA-RESCUE-atmegax8_with_BM20 #PWR024
@@ -1633,7 +1600,7 @@ U 1 1 5B3CC511
 P 3900 10000
 F 0 "C1" H 4015 10046 50  0000 L CNN
 F 1 "100n" H 4050 9900 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0805_HandSoldering" H 3900 10000 60  0001 C CNN
+F 2 "Capacitors_SMD.pretty:C_0805_HandSoldering" H 3900 10000 60  0001 C CNN
 F 3 "" H 3900 10000 60  0001 C CNN
 	1    3900 10000
 	1    0    0    -1  
@@ -1644,7 +1611,7 @@ U 1 1 5B3CC5D1
 P 5350 10000
 F 0 "C2" H 5465 10046 50  0000 L CNN
 F 1 "100n" H 5500 9900 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0805_HandSoldering" H 5350 10000 60  0001 C CNN
+F 2 "Capacitors_SMD.pretty:C_0805_HandSoldering" H 5350 10000 60  0001 C CNN
 F 3 "" H 5350 10000 60  0001 C CNN
 	1    5350 10000
 	1    0    0    -1  
@@ -1666,11 +1633,6 @@ Wire Wire Line
 	3900 10600 3150 10600
 Wire Wire Line
 	1400 10050 1400 10600
-Wire Wire Line
-	2200 10050 2200 10600
-Connection ~ 2200 10600
-Wire Wire Line
-	2200 10600 1400 10600
 Connection ~ 3150 10600
 Wire Wire Line
 	3150 10600 2600 10600
@@ -1679,8 +1641,6 @@ Wire Wire Line
 Wire Wire Line
 	2600 10450 2600 10600
 Connection ~ 2600 10600
-Wire Wire Line
-	2600 10600 2200 10600
 Wire Wire Line
 	3900 10150 3900 10250
 Wire Wire Line
@@ -1695,7 +1655,7 @@ Wire Wire Line
 Wire Wire Line
 	5350 9850 5350 9700
 Wire Wire Line
-	5350 9700 5950 9700
+	5350 9700 5800 9700
 Wire Wire Line
 	4250 9700 3900 9700
 Connection ~ 3900 9700
@@ -1708,7 +1668,7 @@ U 1 1 5B4921C0
 P 4650 9750
 F 0 "U1" H 4650 10156 50  0000 C CNN
 F 1 "78L05-RESCUE-atmegax8_with_BM20" H 4650 10065 50  0000 C CNN
-F 2 "my_modules:SOT-223-REGULATOR" H 4650 9974 50  0000 C CNN
+F 2 "modules:SOT-223-REGULATOR" H 4650 9974 50  0000 C CNN
 F 3 "" H 4650 9750 50  0000 C CNN
 	1    4650 9750
 	1    0    0    -1  
@@ -1771,18 +1731,16 @@ Wire Wire Line
 Wire Wire Line
 	15750 4100 15600 4100
 $Comp
-L Device:Crystal_GND24 Y1
+L Device:Crystal_GND3 Y1
 U 1 1 5ADC8831
 P 4950 7200
 F 0 "Y1" V 4904 7441 50  0000 L CNN
-F 1 "Crystal_GND24" V 4900 7700 50  0000 L CNN
+F 1 "Crystal_GND24" V 5150 6550 50  0000 L CNN
 F 2 "Crystals.pretty:crystal_FA238-TSX3225" H 4950 7200 50  0001 C CNN
 F 3 "~" H 4950 7200 50  0001 C CNN
 	1    4950 7200
-	0    1    1    0   
+	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	4950 6950 4950 7050
 Wire Wire Line
 	4400 6950 4950 6950
 Wire Wire Line
@@ -1791,19 +1749,8 @@ Wire Wire Line
 	4400 7450 4950 7450
 Wire Wire Line
 	5150 7200 5350 7200
-Wire Wire Line
-	4750 7200 4700 7200
-Wire Wire Line
-	4700 7200 4700 7550
-Wire Wire Line
-	4700 7550 5350 7550
-Connection ~ 5350 7550
-Wire Wire Line
-	5350 7550 5350 7200
 Text Label 4100 8550 2    60   ~ 0
 MFB
-Wire Wire Line
-	12850 4100 12850 4450
 $Comp
 L atmegax8_with_BM20-rescue:+5V-RESCUE-atmegax8_with_BM20 #PWR026
 U 1 1 5AE6D09D
@@ -1854,22 +1801,6 @@ Wire Wire Line
 	3750 6350 3850 6350
 Wire Wire Line
 	2950 8150 3850 8150
-Wire Wire Line
-	3850 6350 3850 6650
-Connection ~ 3850 6650
-Wire Wire Line
-	3850 6650 3850 8150
-$Comp
-L Device:Jumper_NO_Small JP2
-U 1 1 5AD2F5A9
-P 14350 4800
-F 0 "JP2" H 14350 4985 50  0000 C CNN
-F 1 "FLASH_MODE" H 14350 4894 50  0000 C CNN
-F 2 "Pin_Headers.pretty:Pin_Header_Straight_1x02" H 14350 4800 50  0001 C CNN
-F 3 "~" H 14350 4800 50  0001 C CNN
-	1    14350 4800
-	1    0    0    -1  
-$EndComp
 $Comp
 L Device:R R35
 U 1 1 5AD2F5B0
@@ -1881,23 +1812,6 @@ F 3 "~" H 15250 4250 50  0001 C CNN
 	1    15250 4250
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	14800 4800 14450 4800
-$Comp
-L atmegax8_with_BM20-rescue:GND-RESCUE-atmegax8_with_BM20 #PWR037
-U 1 1 5AD2F5B8
-P 15450 4950
-F 0 "#PWR037" H 15450 4700 50  0001 C CNN
-F 1 "GND" H 15450 4800 50  0000 C CNN
-F 2 "" H 15450 4950 60  0000 C CNN
-F 3 "" H 15450 4950 60  0000 C CNN
-	1    15450 4950
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	15450 4950 15450 4800
-Wire Wire Line
-	15450 4800 15100 4800
 Wire Wire Line
 	15400 4250 15600 4250
 Wire Wire Line
@@ -1940,4 +1854,58 @@ Text Label 13800 4150 0    60   ~ 0
 P2_0
 Text Label 13800 4250 0    60   ~ 0
 P2_4
+Wire Wire Line
+	3850 6350 3850 8150
+Wire Wire Line
+	3500 6650 4050 6650
+Wire Wire Line
+	4950 6950 4950 7050
+Wire Wire Line
+	5350 7200 5350 7600
+$Comp
+L atmegax8_with_BM20-rescue:C-RESCUE-atmegax8_with_BM20 C6
+U 1 1 5AF9AE6B
+P 5800 10000
+F 0 "C6" H 5915 10046 50  0000 L CNN
+F 1 "100n" H 5950 9900 50  0000 L CNN
+F 2 "Capacitors_SMD.pretty:C_0805_HandSoldering" H 5800 10000 60  0001 C CNN
+F 3 "" H 5800 10000 60  0001 C CNN
+	1    5800 10000
+	1    0    0    -1  
+$EndComp
+$Comp
+L atmegax8_with_BM20-rescue:C-RESCUE-atmegax8_with_BM20 C7
+U 1 1 5AF9AF13
+P 6250 10000
+F 0 "C7" H 6365 10046 50  0000 L CNN
+F 1 "100n" H 6400 9900 50  0000 L CNN
+F 2 "Capacitors_SMD.pretty:C_0805_HandSoldering" H 6250 10000 60  0001 C CNN
+F 3 "" H 6250 10000 60  0001 C CNN
+	1    6250 10000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6250 10150 6250 10250
+Wire Wire Line
+	6250 10250 5800 10250
+Connection ~ 5350 10250
+Wire Wire Line
+	5800 10150 5800 10250
+Connection ~ 5800 10250
+Wire Wire Line
+	5800 10250 5350 10250
+Wire Wire Line
+	5800 9850 5800 9700
+Connection ~ 5800 9700
+Wire Wire Line
+	5800 9700 5950 9700
+Wire Wire Line
+	6250 9850 6250 9700
+Wire Wire Line
+	6250 9700 5950 9700
+Connection ~ 5950 9700
+Wire Wire Line
+	1400 10600 2600 10600
+Wire Wire Line
+	1400 9700 3150 9700
 $EndSCHEMATC

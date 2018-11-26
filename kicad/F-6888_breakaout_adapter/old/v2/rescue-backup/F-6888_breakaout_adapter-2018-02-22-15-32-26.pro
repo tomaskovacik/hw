@@ -1,4 +1,4 @@
-update=Tue 05 Jan 2016 15:52:48 CET
+update=Št 14. september 2017, 17:50:16 CEST
 version=1
 last_client=kicad
 [pcbnew]
@@ -58,3 +58,5 @@ LibName26=opto
 LibName27=atmel
 LibName28=contrib
 LibName29=valves
+LibName30=/home/nail/src/kicad-library/library/f-6888
+LibName31=switches

@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:blk-md-spk-b_breadboard_adapter-cache
-EELAYER 26 0
+EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -604,7 +604,7 @@ L blk-md-spk-b_breadboard_adapter-rescue:C C5
 U 1 1 5BB7B0E5
 P 2250 5700
 F 0 "C5" V 2200 5800 50  0000 C CNN
-F 1 "1u" V 2200 5550 50  0000 C CNN
+F 1 "10uF" V 2200 5550 50  0000 C CNN
 F 2 "Capacitors_SMD:C_1206_HandSoldering" H 2288 5550 50  0001 C CNN
 F 3 "" H 2250 5700 50  0000 C CNN
 	1    2250 5700
@@ -615,7 +615,7 @@ L blk-md-spk-b_breadboard_adapter-rescue:C C6
 U 1 1 5BB7B159
 P 2250 5800
 F 0 "C6" V 2300 5900 50  0000 C CNN
-F 1 "1u" V 2300 5650 50  0000 C CNN
+F 1 "10uF" V 2300 5650 50  0000 C CNN
 F 2 "Capacitors_SMD:C_1206_HandSoldering" H 2288 5650 50  0001 C CNN
 F 3 "" H 2250 5800 50  0000 C CNN
 	1    2250 5800
@@ -626,7 +626,7 @@ L blk-md-spk-b_breadboard_adapter-rescue:C C7
 U 1 1 5BB7B199
 P 2250 6000
 F 0 "C7" V 2300 6100 50  0000 C CNN
-F 1 "1u" V 2300 5850 50  0000 C CNN
+F 1 "10uF" V 2300 5850 50  0000 C CNN
 F 2 "Capacitors_SMD:C_1206_HandSoldering" H 2288 5850 50  0001 C CNN
 F 3 "" H 2250 6000 50  0000 C CNN
 	1    2250 6000

@@ -19,22 +19,22 @@ L Diode:BAW56DW D1
 U 1 1 5B10E565
 P 9500 2200
 F 0 "D1" V 9546 2112 50  0000 R CNN
-F 1 "BAW56DW" V 9455 2112 50  0000 R CNN
-F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 9500 2025 50  0001 C CNN
-F 3 "http://www.diodes.com/datasheets/ds30146.pdf" H 9500 2300 50  0001 C CNN
+F 1 "d" V 9455 2112 50  0000 R CNN
+F 2 "" H 9500 2025 50  0001 C CNN
+F 3 "" H 9500 2300 50  0001 C CNN
 	1    9500 2200
-	0    1    1    0   
+	0    -1   -1   0   
 $EndComp
 $Comp
 L Diode:BAW56DW D1
 U 2 1 5B10E88F
 P 9500 2800
 F 0 "D1" V 9546 2712 50  0000 R CNN
-F 1 "BAW56DW" V 9455 2712 50  0000 R CNN
-F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 9500 2625 50  0001 C CNN
-F 3 "http://www.diodes.com/datasheets/ds30146.pdf" H 9500 2900 50  0001 C CNN
+F 1 "d" V 9455 2712 50  0000 R CNN
+F 2 "" H 9500 2625 50  0001 C CNN
+F 3 "" H 9500 2900 50  0001 C CNN
 	2    9500 2800
-	0    -1   -1   0   
+	0    1    1    0   
 $EndComp
 $Comp
 L Device:R R13
@@ -259,12 +259,12 @@ $EndComp
 $Comp
 L Diode:BAW56DW D3
 U 1 1 5B1212B1
-P 4050 950
-F 0 "D3" V 4096 862 50  0000 R CNN
-F 1 "BAW56DW" V 4005 862 50  0000 R CNN
-F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 4050 775 50  0001 C CNN
-F 3 "http://www.diodes.com/datasheets/ds30146.pdf" H 4050 1050 50  0001 C CNN
-	1    4050 950 
+P 4300 1000
+F 0 "D3" V 4346 912 50  0000 R CNN
+F 1 "BAW56DW" V 4255 912 50  0000 R CNN
+F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 4300 825 50  0001 C CNN
+F 3 "http://www.diodes.com/datasheets/ds30146.pdf" H 4300 1100 50  0001 C CNN
+	1    4300 1000
 	0    -1   -1   0   
 $EndComp
 $Comp
@@ -1266,9 +1266,9 @@ Wire Wire Line
 Wire Wire Line
 	3600 800  3600 650 
 Wire Wire Line
-	4050 650  4050 800 
+	4300 650  4300 850 
 Wire Wire Line
-	3600 650  4050 650 
+	3600 650  4300 650 
 Wire Wire Line
 	6650 8700 6650 8650
 Connection ~ 6800 7350
@@ -1305,7 +1305,7 @@ Connection ~ 6600 5600
 Wire Wire Line
 	6600 5600 6400 5600
 Wire Wire Line
-	4050 7000 6800 7000
+	4300 7000 6800 7000
 $Comp
 L Transistor_BJT:BC807 Q4
 U 1 1 5B124A47
@@ -1458,7 +1458,7 @@ F 3 "" H 6550 10050 60  0000 C CNN
 $EndComp
 Wire Wire Line
 	8500 2400 8500 2550
-Connection ~ 4050 650 
+Connection ~ 4300 650 
 Connection ~ 10450 8950
 Wire Wire Line
 	7000 7350 6800 7350
@@ -1481,8 +1481,6 @@ Wire Wire Line
 	4550 500  4550 3200
 Wire Wire Line
 	4850 3950 4850 3800
-Wire Wire Line
-	4050 1100 4050 4500
 Wire Wire Line
 	3050 4000 3050 3950
 Wire Wire Line
@@ -1633,7 +1631,7 @@ Wire Wire Line
 	6650 950  6650 650 
 Connection ~ 6650 650 
 Wire Wire Line
-	6650 650  4050 650 
+	6650 650  4300 650 
 Wire Wire Line
 	6650 2900 6350 2900
 Wire Wire Line
@@ -1855,6 +1853,5 @@ Wire Wire Line
 	12450 3300 12450 1750
 Connection ~ 14750 2800
 Wire Wire Line
-	4050 4500 4050 7000
-Connection ~ 4050 4500
+	4300 1150 4300 7000
 $EndSCHEMATC

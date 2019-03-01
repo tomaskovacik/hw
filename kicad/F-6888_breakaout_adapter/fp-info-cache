@@ -1,0 +1,883 @@
+184310689023440
+Connect.pretty
+1pin
+module 1 pin (ou trou mecanique de percage)
+DEV
+0
+1
+1
+Connect.pretty
+3M-N7E50
+Connecteur PCMCIA + carte
+CONN
+0
+56
+50
+Connect.pretty
+AK300-2
+CONNECTOR
+CONNECTOR
+0
+2
+2
+Connect.pretty
+AK300-3
+CONNECTOR
+CONNECTOR
+0
+3
+3
+Connect.pretty
+AK300-4
+CONNECTOR
+CONNECTOR
+0
+4
+4
+Connect.pretty
+Banana_Jack_1Pin
+Single banana socket, footprint - 6mm drill
+banana socket
+0
+1
+1
+Connect.pretty
+Banana_Jack_2Pin
+Dual banana socket, footprint - 2 x 6mm drills
+banana socket
+0
+2
+2
+Connect.pretty
+Banana_Jack_3Pin
+Triple banana socket, footprint - 3 x 6mm drills
+banana socket
+0
+3
+3
+Connect.pretty
+BARREL_JACK
+DC Barrel Jack
+Power Jack
+0
+3
+3
+Connect.pretty
+bnc
+
+
+0
+2
+2
+Connect.pretty
+bnc-ci
+
+
+0
+5
+2
+Connect.pretty
+bornier2
+Bornier d'alimentation 2 pins
+DEV
+0
+2
+2
+Connect.pretty
+bornier3
+Bornier d'alimentation 3 pins
+DEV
+0
+3
+3
+Connect.pretty
+bornier4
+Bornier d'alimentation 4 pins
+DEV
+0
+4
+4
+Connect.pretty
+bornier5
+Bornier d'alimentation 4 pins
+DEV
+0
+5
+5
+Connect.pretty
+bornier6
+Bornier d'alimentation 4 pins
+DEV
+0
+6
+6
+Connect.pretty
+BUSPCI
+Connecteur Bus PCI
+PCI CONN
+0
+240
+120
+Connect.pretty
+BUS_AT
+Connecteur Bus AT ISA 16 bits
+CONN BUS ISA
+0
+98
+98
+Connect.pretty
+c64abfd
+Connecteur DIN Europe 64 contatcts Femelle Droit
+CONN DIN
+0
+66
+66
+Connect.pretty
+c64abmd
+Connecteur DIN Europe 64 contacts Male Droit
+CONN DIN
+0
+66
+66
+Connect.pretty
+c64acfd
+Connecteur DIN Europe 96 contacts AC femelle droit
+CONN DIN
+0
+66
+66
+Connect.pretty
+C96ABCFD
+Connecteur DIN Europe 96 contacts ABC male droit
+CONN DIN
+0
+98
+98
+Connect.pretty
+C96ABCMD
+Connecteur DIN Europe 96 contacts ABC male droit
+CONN DIN
+0
+98
+98
+Connect.pretty
+CNT3BRCMS
+
+
+0
+5
+3
+Connect.pretty
+CR1220
+
+
+0
+5
+2
+Connect.pretty
+CR2032H
+
+
+0
+2
+2
+Connect.pretty
+CR2032V
+
+
+0
+3
+2
+Connect.pretty
+DB9FC
+Connecteur DB9 femelle couche
+CONN DB9
+0
+11
+9
+Connect.pretty
+DB9FD
+Connecteur DB9 femelle droit
+CONN DB9
+0
+11
+10
+Connect.pretty
+DB9F_CI
+Connecteur DB9 femelle encarte
+CONN DB9
+0
+9
+9
+Connect.pretty
+DB9F_CI_INVERT
+Connecteur DB9 male encarte
+CONN DB9
+0
+9
+9
+Connect.pretty
+DB9MC
+Connecteur DB9 male couche
+CONN DB9
+0
+11
+9
+Connect.pretty
+DB9MD
+Connecteur DB9 male droit
+CONN DB9
+0
+11
+10
+Connect.pretty
+DB9M_CI
+Connecteur DB9 male encarte
+CONN DB9
+0
+9
+9
+Connect.pretty
+DB9M_CI_INVERT
+Connecteur DB9 femelle encarte
+CONN DB9
+0
+9
+9
+Connect.pretty
+DB15FC
+Connecteur DB15 femelle couche
+CONN DB15
+0
+17
+15
+Connect.pretty
+DB15FD
+Connecteur DB15 femelle droit
+CONN DB15
+0
+17
+16
+Connect.pretty
+DB15F_CI
+Connecteur DB15 femelle encarte
+CONN DB15
+0
+15
+15
+Connect.pretty
+DB15MC
+Connecteur DB15 MALE couche
+CONN DB15
+0
+17
+15
+Connect.pretty
+DB15MD
+Connecteur DB15 male droit
+CONN DB15
+0
+17
+16
+Connect.pretty
+DB15M_CI
+Connecteur DB15 femelle encarte
+CONN DB15
+0
+15
+15
+Connect.pretty
+DB25FC
+Connecteur DB25 femelle couche
+CONN DB25
+0
+27
+25
+Connect.pretty
+DB25FD
+Connecteur DB25 femelle droit
+CONN DB25
+0
+27
+26
+Connect.pretty
+DB25F_CI
+Connecteur DB25 femelle encarte
+CONN DB25
+0
+25
+25
+Connect.pretty
+DB25MC
+Connecteur DB25 MALE couche
+CONN DB25
+0
+27
+25
+Connect.pretty
+DB25MD
+Connecteur DB25 male droit
+CONN DB25
+0
+27
+26
+Connect.pretty
+DB25M_CI
+Connecteur DB25 male couche
+CONN DB25
+0
+25
+25
+Connect.pretty
+DB37FC
+Connecteur DB37 femelle couche
+CONN DB37
+0
+39
+38
+Connect.pretty
+DB37FD
+Connecteur DB37 femelle droit
+CONN DB37
+0
+39
+37
+Connect.pretty
+DB37MD
+Connecteur DB37 male droit
+CONN DB37
+0
+39
+37
+Connect.pretty
+FMC_LPC_ASP-134604-01
+http://www.samtec.com/standards/vita.aspx
+FMC LPC VITA 
+0
+162
+160
+Connect.pretty
+GoldTek_SCP20GR11
+GoldTek SCP20GR11
+CONN GoldTek SCP20GR11
+0
+20
+20
+Connect.pretty
+GoldTek_SCP20GS11
+GoldTek SCP20GS11
+CONN GoldTek SCP20GS11
+0
+20
+20
+Connect.pretty
+GS2
+Pontet Goute de soudure
+
+0
+2
+2
+Connect.pretty
+GS3
+Pontet Goute de soudure
+
+0
+3
+3
+Connect.pretty
+GS_6x2
+Double rangee de contacts 2 x 8 pins
+CONN
+0
+12
+12
+Connect.pretty
+GS_8x2
+Double rangee de contacts 2 x 8 pins
+CONN
+0
+16
+16
+Connect.pretty
+GS_9x2
+Double rangee de contacts 2 x 8 pins
+CONN
+0
+18
+18
+Connect.pretty
+GTK2400-H2
+
+
+0
+2
+2
+Connect.pretty
+GTK2400-V2
+
+
+0
+2
+2
+Connect.pretty
+HE10-10C
+Connecteur HE10 10 contacts couche
+CONN HE10
+0
+12
+11
+Connect.pretty
+he10-10d
+Connecteur HE10 10 contacts droit
+CONN HE10
+0
+12
+10
+Connect.pretty
+he10-14c
+Connecteur HE10 14 contacts couche
+CONN HE10
+0
+16
+15
+Connect.pretty
+he10-14d
+Connecteur HE10 14 contacts droit
+CONN HE10
+0
+16
+15
+Connect.pretty
+he10-16c
+Connecteur HE10 16 contacts couche
+CONN HE10
+0
+18
+17
+Connect.pretty
+he10-16d
+Connecteur HE10 16 contacts droit
+CONN HE10
+0
+18
+17
+Connect.pretty
+he10-20c
+Connecteur HE10 20 contacts couche
+CONN HE10
+0
+22
+21
+Connect.pretty
+he10-26c
+Connecteur HE10 26 contacts couche
+CONN HE10
+0
+28
+27
+Connect.pretty
+he10-34c
+Connecteur HE10 34 contacts couche
+CONN HE10
+0
+36
+35
+Connect.pretty
+he10-40c
+Connecteur HE10 40 contacts couche
+CONN HE10
+0
+42
+41
+Connect.pretty
+HE10_20D
+Connecteur HE10 20 contacts droit
+CONN HE10
+0
+22
+20
+Connect.pretty
+HE10_26D
+Connecteur HE10 26 contacts droit
+CONN HE10
+0
+28
+26
+Connect.pretty
+HE10_34D
+Connecteur HE10 34 contacts droit
+CONN HE10
+0
+36
+34
+Connect.pretty
+HE10_40D
+Connecteur HE10 40 contacts droit
+CONN HE10
+0
+42
+40
+Connect.pretty
+HE10_50D
+Connecteur HE10 50 contacts droit
+CONN HE10
+0
+52
+50
+Connect.pretty
+HE10_60D
+Connecteur HE10 60 contacts droit
+CONN HE10
+0
+62
+60
+Connect.pretty
+HE10_64D
+Connecteur HE10 64 contacts droit
+CONN HE10
+0
+66
+64
+Connect.pretty
+JACK_ALIM
+module 1 pin (ou trou mecanique de percage)
+CONN JACK
+0
+3
+3
+Connect.pretty
+JWT_Vertical_A3963-RM3.96mm-2
+JWT A3963, 3.96mm pitch Pin head connector
+JWT A3963 pinhead
+0
+2
+2
+Connect.pretty
+NMJ6HCD2
+NMJ6HCD2, TRS 1/4" jack connector, stereo, switched
+NMJ6HCD2 TRS stereo jack connector
+0
+6
+6
+Connect.pretty
+PCI-EXPRESS
+
+
+0
+70
+36
+Connect.pretty
+PINHEAD1-2
+
+
+0
+2
+2
+Connect.pretty
+PINHEAD1-3
+
+
+0
+3
+3
+Connect.pretty
+PINHEAD1-6
+
+
+0
+6
+6
+Connect.pretty
+PINTST
+module 1 pin (ou trou mecanique de percage)
+DEV
+0
+1
+1
+Connect.pretty
+QMS-1X52-FEMALE-SMD
+
+
+0
+55
+53
+Connect.pretty
+QMS-1X52-SMD
+
+
+0
+55
+53
+Connect.pretty
+QMS-2X52-SMD
+
+
+0
+108
+106
+Connect.pretty
+RJ12_E
+
+
+0
+8
+8
+Connect.pretty
+RJ45_8
+
+RJ45
+0
+8
+8
+Connect.pretty
+RJ45_TRANSFO
+
+RJ45
+0
+16
+14
+Connect.pretty
+RJ45_TRANSFO_ver2
+
+RJ45
+0
+15
+9
+Connect.pretty
+RJHSE538X
+mod. jack, ethernet, 8P8C, RJ45 connector, 2 leds, shielded
+RJHSE538X 8P8C RJ45 ethernet jack
+0
+16
+12
+Connect.pretty
+SAS_mini_1888174
+36pin mini SAS connector
+SAS mini connector
+0
+44
+44
+Connect.pretty
+SATA-7_SMD
+SERIAL ATA 7P R/A SMT
+SERIAL ATA SATA
+0
+9
+9
+Connect.pretty
+SATA-7_THT_VERT_1
+
+
+0
+9
+9
+Connect.pretty
+SATA-7_THT_VERT_2
+
+
+0
+9
+9
+Connect.pretty
+SATA-22_SMD
+
+
+0
+26
+22
+Connect.pretty
+SDS-50J
+SDS-50J, standard DIN connector, 5 pins, midi
+SDS-50J DIN 5-pins connector midi
+0
+7
+5
+Connect.pretty
+SD_Card_Receptacle
+
+
+0
+13
+13
+Connect.pretty
+SMB_Straight
+SMB pcb mounting jack
+SMB Jack  Striaght
+0
+5
+2
+Connect.pretty
+SOC676BR
+SOCAPEX 6 pins vertical shape - large
+SOCAPEX CONN
+0
+6
+6
+Connect.pretty
+SOC676C
+SOCAPEX 6 pins horizontal shape
+SOCAPEX CONN
+0
+6
+6
+Connect.pretty
+SOC676NY
+SOCAPEX 6 pins vertical shape - narrow
+SOCAPEX CONN
+0
+6
+6
+Connect.pretty
+SUBCLICK
+Connecteur Subclick
+CONN DEV
+0
+5
+2
+Connect.pretty
+TE_Futurebus+_5536607-1
+
+connector
+0
+27
+8
+Connect.pretty
+USB_A
+USB A connector
+USB USB_A
+0
+6
+5
+Connect.pretty
+USB_A_Vertical
+USB A vertical female connector, right angle
+USB_A_Vertical female connector angled 73725-0110BLF
+0
+8
+5
+Connect.pretty
+USB_B
+USB B connector
+USB_B USB_DEV
+0
+6
+5
+Connect.pretty
+USB_Micro-B
+Micro USB Type B Receptacle
+USB USB_B USB_micro USB_OTG
+0
+9
+6
+Connect.pretty
+USB_Mini-B
+USB Mini-B 5-pin SMD connector
+USB USB_B USB_Mini connector
+0
+9
+6
+Connect.pretty
+VASCH5x2
+CONNECTOR
+CONNECTOR
+0
+10
+10
+Connect.pretty
+VASCH8x2
+CONNECTOR
+CONNECTOR
+0
+16
+16
+Connect.pretty
+VASCH10x2
+CONNECTOR
+CONNECTOR
+0
+20
+20
+Connect.pretty
+Wafer_Horizontal10x5.8x7RM2.5-3
+Gold-Tek horizontal wafer connector with 2.5mm pitch
+wafer connector horizontal
+0
+3
+3
+Connect.pretty
+Wafer_Horizontal15x5.8x7RM2.5-5
+Gold-Tek horizontal wafer connector with 2.5mm pitch
+wafer connector horizontal
+0
+5
+5
+Connect.pretty
+Wafer_Horizontal17.5x5.8x7RM2.5-6
+Gold-Tek horizontal wafer connector with 2.5mm pitch
+wafer connector horizontal
+0
+6
+6
+Connect.pretty
+Wafer_Horizontal20x5.8x7RM2.5-7
+Gold-Tek horizontal wafer connector with 2.5mm pitch
+wafer connector horizontal
+0
+7
+7
+Connect.pretty
+Wafer_Horizontal22.5x5.8x7RM2.5-8
+Gold-Tek horizontal wafer connector with 2.5mm pitch
+wafer connector horizontal
+0
+8
+8
+Connect.pretty
+Wafer_Vertical10x5.8x7RM2.5-3
+Gold-Tek vertical wafer connector with 2.5mm pitch
+wafer connector vertical
+0
+3
+3
+Connect.pretty
+Wafer_Vertical15x5.8x7RM2.5-5
+Gold-Tek vertical wafer connector with 2.5mm pitch
+wafer connector vertical
+0
+5
+5
+Connect.pretty
+Wafer_Vertical17.5x5.8x7RM2.5-6
+Gold-Tek vertical wafer connector with 2.5mm pitch
+wafer connector vertical
+0
+6
+6
+Connect.pretty
+Wafer_Vertical20x5.8x7RM2.5-7
+Gold-Tek vertical wafer connector with 2.5mm pitch
+wafer connector vertical
+0
+7
+7
+Connect.pretty
+Wafer_Vertical22.5x5.8x7RM2.5-8
+Gold-Tek vertical wafer connector with 2.5mm pitch
+wafer connector vertical
+0
+8
+8
+Connect.pretty
+XLR3MC
+
+
+0
+5
+4
+Connect.pretty
+XLR5MC
+
+
+0
+8
+5

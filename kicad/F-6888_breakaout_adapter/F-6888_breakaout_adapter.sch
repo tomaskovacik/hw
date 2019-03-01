@@ -5,17 +5,17 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
-Title ""
-Date ""
-Rev ""
-Comp ""
-Comment1 ""
-Comment2 ""
-Comment3 ""
+Title "BK3254 adapter"
+Date "1.1.2019"
+Rev "3"
+Comp "kovo"
+Comment1 "firmware version 1.1up"
+Comment2 "buttons on separate IO"
+Comment3 "BK8000L compatible"
 Comment4 ""
 $EndDescr
 $Comp
-L F-6888:F-6888 U1
+L F-6888_breakaout_adapter-rescue:F-6888-F-6888 U1
 U 1 1 59BA8F51
 P 6350 1100
 F 0 "U1" H 6400 1537 60  0000 C CNN
@@ -47,91 +47,91 @@ F 3 "" H 8100 1950 50  0001 C CNN
 	1    8100 1950
 	1    0    0    1   
 $EndComp
-Text Label 4950 950  0    60   ~ 0
+Text Label 4950 950  0    60   ~ 6
 GND
-Text Label 5350 1050 0    60   ~ 0
+Text Label 5350 1050 0    60   ~ 6
 FMINP
-Text Label 5350 1150 0    60   ~ 0
+Text Label 5350 1150 0    60   ~ 6
 FMINN
-Text Label 4850 1250 0    60   ~ 0
+Text Label 4850 1250 0    60   ~ 6
 TMS
-Text Label 4850 1350 0    60   ~ 0
+Text Label 4850 1350 0    60   ~ 6
 TCK
-Text Label 4850 1450 0    60   ~ 0
+Text Label 4850 1450 0    60   ~ 6
 TDO
-Text Label 4850 1550 0    60   ~ 0
+Text Label 4850 1550 0    60   ~ 6
 TDI
-Text Label 4950 1650 0    60   ~ 0
+Text Label 4950 1650 0    60   ~ 6
 RSTN
-Text Label 4950 1750 0    60   ~ 0
+Text Label 4950 1750 0    60   ~ 6
 GPIO6
-Text Label 4950 1850 0    60   ~ 0
+Text Label 4950 1850 0    60   ~ 6
 TX
-Text Label 4950 1950 0    60   ~ 0
+Text Label 4950 1950 0    60   ~ 6
 RX
-Text Label 4950 2050 0    60   ~ 0
+Text Label 4950 2050 0    60   ~ 6
 MUTE
-Text Label 4950 2150 0    60   ~ 0
+Text Label 4950 2150 0    60   ~ 6
 LED1
-Text Label 4950 2250 0    60   ~ 0
+Text Label 4950 2250 0    60   ~ 6
 LED2
-Text Label 4950 2450 0    60   ~ 0
+Text Label 4950 2450 0    60   ~ 6
 GND
-Text Label 4950 2550 0    60   ~ 0
+Text Label 4950 2550 0    60   ~ 6
 GPIO10
-Text Label 4950 2650 0    60   ~ 0
+Text Label 4950 2650 0    60   ~ 6
 SD_CMD
-Text Label 4950 2750 0    60   ~ 0
+Text Label 4950 2750 0    60   ~ 6
 GPIO5
-Text Label 4950 2850 0    60   ~ 0
+Text Label 4950 2850 0    60   ~ 6
 SD_DATA
-Text Label 7800 2550 2    60   ~ 0
+Text Label 7800 2550 2    60   ~ 6
 IRDA
-Text Label 7800 2650 2    60   ~ 0
+Text Label 7800 2650 2    60   ~ 6
 USBD-
-Text Label 7800 2750 2    60   ~ 0
+Text Label 7800 2750 2    60   ~ 6
 USBD+
-Text Label 7800 2850 2    60   ~ 0
+Text Label 7800 2850 2    60   ~ 6
 SD_CLK
-Text Label 7800 2450 2    60   ~ 0
+Text Label 7800 2450 2    60   ~ 6
 GND
-Text Label 7800 2350 2    60   ~ 0
+Text Label 7800 2350 2    60   ~ 6
 AUX_DET
-Text Label 7800 2250 2    60   ~ 0
+Text Label 7800 2250 2    60   ~ 6
 AUXR
-Text Label 7800 2150 2    60   ~ 0
+Text Label 7800 2150 2    60   ~ 6
 AUXL
-Text Label 7800 1950 2    60   ~ 0
+Text Label 7800 1950 2    60   ~ 6
 MICIP
-Text Label 7800 1850 2    60   ~ 0
+Text Label 7800 1850 2    60   ~ 6
 MICBIAS
-Text Label 7800 1750 2    60   ~ 0
+Text Label 7800 1750 2    60   ~ 6
 AUDIOLN
-Text Label 7800 1650 2    60   ~ 0
+Text Label 7800 1650 2    60   ~ 6
 AUDIOLP
-Text Label 7800 1550 2    60   ~ 0
+Text Label 7800 1550 2    60   ~ 6
 AUDIORP
-Text Label 7800 1450 2    60   ~ 0
+Text Label 7800 1450 2    60   ~ 6
 AUDIORN
-Text Label 7800 1350 2    60   ~ 0
+Text Label 7800 1350 2    60   ~ 6
 VCCIO
-Text Label 7800 1250 2    60   ~ 0
+Text Label 7800 1250 2    60   ~ 6
 VBAT
-Text Label 7800 1150 2    60   ~ 0
+Text Label 7800 1150 2    60   ~ 6
 V3OUT
-Text Label 7800 1050 2    60   ~ 0
+Text Label 7800 1050 2    60   ~ 6
 ADC
-Text Label 7800 950  2    60   ~ 0
+Text Label 7800 950  2    60   ~ 6
 GND
-Text Label 5100 1250 0    60   ~ 0
+Text Label 5100 1250 0    60   ~ 6
 PREV/VOL-
-Text Label 5100 1350 0    60   ~ 0
+Text Label 5100 1350 0    60   ~ 6
 NEXT/VOL+
-Text Label 5100 1450 0    60   ~ 0
+Text Label 5100 1450 0    60   ~ 6
 P.P/CALL
-Text Label 5100 1550 0    60   ~ 0
+Text Label 5100 1550 0    60   ~ 6
 MODE
-Text Label 4950 2350 0    60   ~ 0
+Text Label 4950 2350 0    60   ~ 6
 GPIO16
 $Comp
 L power:GND #PWR01
@@ -144,7 +144,7 @@ F 3 "" H 7600 3300 50  0001 C CNN
 	1    7600 3300
 	1    0    0    -1  
 $EndComp
-Text Label 8100 3250 2    60   ~ 0
+Text Label 8100 3250 2    60   ~ 6
 GND
 $Comp
 L F-6888_breakaout_adapter-rescue:LED-RESCUE-F-6888_breakaout_adapter D1
@@ -190,9 +190,9 @@ F 3 "" H 1700 3900 50  0001 C CNN
 	1    1700 3900
 	0    1    1    0   
 $EndComp
-Text Label 1250 800  0    60   ~ 0
+Text Label 1250 800  0    60   ~ 6
 MICBIAS
-Text Label 1200 1600 0    60   ~ 0
+Text Label 1200 1600 0    60   ~ 6
 MICIP
 $Comp
 L F-6888_breakaout_adapter-rescue:R-RESCUE-F-6888_breakaout_adapter R3
@@ -260,11 +260,11 @@ F 3 "" H 8500 5750 50  0001 C CNN
 	1    8500 5750
 	1    0    0    -1  
 $EndComp
-Text Label 10550 5450 2    60   ~ 0
+Text Label 10550 5450 2    60   ~ 6
 AUXL
-Text Label 10550 5100 2    60   ~ 0
+Text Label 10550 5100 2    60   ~ 6
 AUX_DET
-Text Label 10550 5800 2    60   ~ 0
+Text Label 10550 5800 2    60   ~ 6
 AUXR
 $Comp
 L F-6888_breakaout_adapter-rescue:SW_SPST-RESCUE-F-6888_breakaout_adapter SW2
@@ -365,9 +365,9 @@ F 3 "" H 10100 5450 50  0001 C CNN
 	1    10100 5450
 	0    1    1    0   
 $EndComp
-Text Label 2950 3700 2    60   ~ 0
+Text Label 2950 3700 2    60   ~ 6
 LED1
-Text Label 2950 4100 2    60   ~ 0
+Text Label 2950 4100 2    60   ~ 6
 LED2
 $Comp
 L power:GND #PWR03
@@ -380,13 +380,13 @@ F 3 "" H 1400 7100 50  0001 C CNN
 	1    1400 7100
 	1    0    0    -1  
 $EndComp
-Text Label 2900 5150 2    60   ~ 0
+Text Label 2900 5150 2    60   ~ 6
 PREV/VOL-
-Text Label 2900 5400 2    60   ~ 0
+Text Label 2900 5400 2    60   ~ 6
 NEXT/VOL+
-Text Label 2900 5650 2    60   ~ 0
+Text Label 2900 5650 2    60   ~ 6
 P.P/CALL
-Text Label 2900 5900 2    60   ~ 0
+Text Label 2900 5900 2    60   ~ 6
 MODE
 $Comp
 L F-6888_breakaout_adapter-rescue:SW_SPST-RESCUE-F-6888_breakaout_adapter SW1
@@ -399,7 +399,7 @@ F 3 "" H 1950 7100 50  0001 C CNN
 	1    1950 7100
 	1    0    0    -1  
 $EndComp
-Text Label 2800 7100 2    60   ~ 0
+Text Label 2800 7100 2    60   ~ 6
 RSTN
 $Comp
 L F-6888_breakaout_adapter-rescue:R-RESCUE-F-6888_breakaout_adapter R1
@@ -445,11 +445,11 @@ F 3 "" H 4450 6700 50  0001 C CNN
 	1    4450 6700
 	1    0    0    -1  
 $EndComp
-Text Label 3450 5600 0    60   ~ 0
+Text Label 3450 5600 0    60   ~ 6
 SD_CMD
-Text Label 3450 5700 0    60   ~ 0
+Text Label 3450 5700 0    60   ~ 6
 V3OUT
-Text Label 3450 5800 0    60   ~ 0
+Text Label 3450 5800 0    60   ~ 6
 SD_CLK
 Wire Wire Line
 	4850 950  5600 950 
@@ -668,7 +668,7 @@ F 3 "" H 4200 6300 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	4600 6000 3450 6000
-Text Label 3450 6000 0    60   ~ 0
+Text Label 3450 6000 0    60   ~ 6
 SD_DATA
 Wire Wire Line
 	2000 3900 2000 4100
@@ -680,9 +680,9 @@ Wire Wire Line
 	1500 5150 1500 5400
 Wire Wire Line
 	2450 7100 2800 7100
-Text Label 9150 1350 0    60   ~ 0
+Text Label 9150 1350 0    60   ~ 6
 AUDIORP
-Text Label 9150 1150 0    60   ~ 0
+Text Label 9150 1150 0    60   ~ 6
 AUDIOLP
 Wire Wire Line
 	4600 5600 3450 5600
@@ -752,12 +752,12 @@ Wire Wire Line
 	10100 3250 10600 3250
 Wire Wire Line
 	9800 3250 9250 3250
-Text Label 10600 3250 2    60   ~ 0
+Text Label 10600 3250 2    60   ~ 6
 5V
-Text Label 9250 3250 0    60   ~ 0
+Text Label 9250 3250 0    60   ~ 6
 VBAT
 $Comp
-L Connector_Specialized:USB_A J1
+L F-6888_breakaout_adapter-rescue:USB_A-Connector_Specialized J1
 U 1 1 5AC5EC95
 P 8950 2450
 F 0 "J1" H 9005 2917 50  0000 C CNN
@@ -767,11 +767,11 @@ F 3 "" H 9100 2400 50  0001 C CNN
 	1    8950 2450
 	1    0    0    -1  
 $EndComp
-Text Label 10450 2550 2    60   ~ 0
+Text Label 10450 2550 2    60   ~ 6
 USBD-
-Text Label 10450 2450 2    60   ~ 0
+Text Label 10450 2450 2    60   ~ 6
 USBD+
-Text Label 9800 2250 2    60   ~ 0
+Text Label 9800 2250 2    60   ~ 6
 5V
 Wire Wire Line
 	9250 2250 9800 2250
@@ -799,7 +799,7 @@ Wire Wire Line
 Connection ~ 8850 3000
 Wire Wire Line
 	8850 3000 8850 3150
-Text Label 7500 2950 0    60   ~ 0
+Text Label 7500 2950 0    60   ~ 6
 5V
 Wire Wire Line
 	7500 2950 7900 2950
@@ -903,9 +903,9 @@ F 3 "" H 2000 2150 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	1850 2150 1650 2150
-Text Label 1200 2150 0    60   ~ 0
+Text Label 1200 2150 0    60   ~ 6
 NC
-Text Label 7800 2050 2    60   ~ 0
+Text Label 7800 2050 2    60   ~ 6
 NC
 $Comp
 L F-6888_breakaout_adapter-rescue:R-RESCUE-F-6888_breakaout_adapter R9
@@ -926,7 +926,7 @@ Wire Wire Line
 	1000 4900 1000 4650
 Wire Wire Line
 	1000 4650 1650 4650
-Text Label 1650 4650 2    60   ~ 0
+Text Label 1650 4650 2    60   ~ 6
 V3OUT
 Wire Wire Line
 	2700 2500 2700 2900
@@ -951,7 +951,7 @@ Wire Wire Line
 Connection ~ 2250 800 
 Wire Wire Line
 	2250 800  2700 800 
-Text Notes 3450 7550 0    50   ~ 0
+Text Notes 3450 7550 0    50   ~ 6
 * for F-6188 compatibility
 $Comp
 L F-6888_breakaout_adapter-rescue:C-RESCUE-F-6888_breakaout_adapter C7
@@ -1006,7 +1006,7 @@ Wire Wire Line
 	10250 1150 10450 1150
 Wire Wire Line
 	10450 1350 10250 1350
-Text Label 2800 6450 2    60   ~ 0
+Text Label 2800 6450 2    60   ~ 6
 V3OUT
 $Comp
 L F-6888_breakaout_adapter-rescue:C-RESCUE-F-6888_breakaout_adapter C8
@@ -1072,6 +1072,6 @@ Wire Wire Line
 	9600 2450 9250 2450
 Wire Wire Line
 	9250 2550 9600 2550
-Text Notes 1000 3150 0    50   ~ 0
+Text Notes 1000 3150 0    50   ~ 6
 * BK8000L compatibility
 $EndSCHEMATC

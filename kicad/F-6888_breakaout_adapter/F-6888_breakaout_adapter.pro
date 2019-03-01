@@ -1,4 +1,4 @@
-update=Ut  6. november 2018, 11:02:56 CET
+update=Pi  1. marec 2019, 22:30:44 CET
 version=1
 last_client=kicad
 [pcbnew]
@@ -31,7 +31,7 @@ LibDir=
 [schematic_editor]
 version=1
 PageLayoutDescrFile=
-PlotDirectoryName=~/tmp/f6888.pdf
+PlotDirectoryName=
 SubpartIdSeparator=0
 SubpartFirstId=65
 NetFmtName=

@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name arduino_nanoPB-rescue)(type Legacy)(uri ${KIPRJMOD}/arduino_nanoPB-rescue.lib)(options "")(descr ""))
+)

@@ -1,0 +1,23 @@
+Designator,Package,Quantity,Designation
+"P1,P2",Pin_Header_Straight_1x16,2,Pin Header 1x16
+SW1,3x6x2.5mm_tact_switch,1,3x6x2.5mm tact. Button
+"C2,C1,C7,C8,C9,C10,C11",0805,7,0.1m
+U1,TQFP-32_7x7mm_Pitch0.8mm,1,ATMEGA328PB-AU
+C3,tantal cap sizeA (3216),1,1u
+C4,tantal cap sizeA (3216),1,10u
+D1,1206,1,Green RED
+D2,1206,1,Red LED
+"D3,D4",1206,2,Yellow LED
+"D5,D6",SOD-123,2,MBR120
+F1,1206,1,Fuse
+J1,USB_Micro-B,1,USB_B_Micro
+L1,1206,1,fer. bead
+P7,Pin_Header_Straight_2x03,1,
+"R1,R2",0805,2,22
+"R3,R7,R8,R9",0805,4,1k
+R6,0805,1,10k
+"TH1,TH2",0805,2,CG0603MLC-05E
+U2,QFN-24-1EP_4x4mm_Pitch0.5mm,1,CP2104
+"U3,U4",SOT223,2,AP1117-50
+Y1,MURATA_CSTCE_V53,1,16MHz resonator
+R4,0805,1,1M

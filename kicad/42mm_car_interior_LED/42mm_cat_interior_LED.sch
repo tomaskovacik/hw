@@ -1,35 +1,6 @@
-EESchema Schematic File Version 2
-LIBS:power
-LIBS:device
-LIBS:transistors
-LIBS:conn
-LIBS:linear
-LIBS:regul
-LIBS:74xx
-LIBS:cmos4000
-LIBS:adc-dac
-LIBS:memory
-LIBS:xilinx
-LIBS:microcontrollers
-LIBS:dsp
-LIBS:microchip
-LIBS:analog_switches
-LIBS:motorola
-LIBS:texas
-LIBS:intel
-LIBS:audio
-LIBS:interface
-LIBS:digital-audio
-LIBS:philips
-LIBS:display
-LIBS:cypress
-LIBS:siliconi
-LIBS:opto
-LIBS:atmel
-LIBS:contrib
-LIBS:valves
+EESchema Schematic File Version 4
 LIBS:42mm_cat_interior_LED-cache
-EELAYER 25 0
+EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -44,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L LED_RGB D10
+L 42mm_cat_interior_LED-rescue:LED_RGB D10
 U 1 1 5652DCB5
 P 4600 2500
 F 0 "D10" H 4600 2925 50  0000 C CNN
@@ -55,7 +26,7 @@ F 3 "" H 4600 2450 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D7
+L 42mm_cat_interior_LED-rescue:LED_RGB D7
 U 1 1 5652E21C
 P 4050 2500
 F 0 "D7" H 4050 2925 50  0000 C CNN
@@ -66,7 +37,7 @@ F 3 "" H 4050 2450 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D4
+L 42mm_cat_interior_LED-rescue:LED_RGB D4
 U 1 1 5652E253
 P 3500 2500
 F 0 "D4" H 3500 2925 50  0000 C CNN
@@ -77,7 +48,7 @@ F 3 "" H 3500 2450 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D1
+L 42mm_cat_interior_LED-rescue:LED_RGB D1
 U 1 1 5652E287
 P 3000 2500
 F 0 "D1" H 3000 2925 50  0000 C CNN
@@ -88,7 +59,7 @@ F 3 "" H 3000 2450 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D11
+L 42mm_cat_interior_LED-rescue:LED_RGB D11
 U 1 1 5652E995
 P 4600 3300
 F 0 "D11" H 4600 3725 50  0000 C CNN
@@ -99,7 +70,7 @@ F 3 "" H 4600 3250 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D8
+L 42mm_cat_interior_LED-rescue:LED_RGB D8
 U 1 1 5652E9AD
 P 4050 3300
 F 0 "D8" H 4050 3725 50  0000 C CNN
@@ -110,7 +81,7 @@ F 3 "" H 4050 3250 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D5
+L 42mm_cat_interior_LED-rescue:LED_RGB D5
 U 1 1 5652E9B3
 P 3500 3300
 F 0 "D5" H 3500 3725 50  0000 C CNN
@@ -121,7 +92,7 @@ F 3 "" H 3500 3250 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D2
+L 42mm_cat_interior_LED-rescue:LED_RGB D2
 U 1 1 5652E9B9
 P 3000 3300
 F 0 "D2" H 3000 3725 50  0000 C CNN
@@ -132,7 +103,7 @@ F 3 "" H 3000 3250 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D12
+L 42mm_cat_interior_LED-rescue:LED_RGB D12
 U 1 1 5652EBAE
 P 5050 4050
 F 0 "D12" H 5050 4475 50  0000 C CNN
@@ -143,7 +114,7 @@ F 3 "" H 5050 4000 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D9
+L 42mm_cat_interior_LED-rescue:LED_RGB D9
 U 1 1 5652EBC6
 P 4500 4050
 F 0 "D9" H 4500 4475 50  0000 C CNN
@@ -154,7 +125,7 @@ F 3 "" H 4500 4000 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D6
+L 42mm_cat_interior_LED-rescue:LED_RGB D6
 U 1 1 5652EBCC
 P 3950 4050
 F 0 "D6" H 3950 4475 50  0000 C CNN
@@ -165,7 +136,7 @@ F 3 "" H 3950 4000 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D3
+L 42mm_cat_interior_LED-rescue:LED_RGB D3
 U 1 1 5652EBD2
 P 3450 4050
 F 0 "D3" H 3450 4475 50  0000 C CNN
@@ -176,7 +147,7 @@ F 3 "" H 3450 4000 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_01X01 P1
+L 42mm_cat_interior_LED-rescue:CONN_01X01 P1
 U 1 1 5652FEAD
 P 9100 2200
 F 0 "P1" H 9100 2300 50  0000 C CNN
@@ -187,7 +158,7 @@ F 3 "" H 9100 2200 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_01X01 P2
+L 42mm_cat_interior_LED-rescue:CONN_01X01 P2
 U 1 1 5652FFE0
 P 9050 1500
 F 0 "P2" H 9050 1600 50  0000 C CNN
@@ -198,7 +169,7 @@ F 3 "" H 9050 1500 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D16
+L 42mm_cat_interior_LED-rescue:LED_RGB D16
 U 1 1 56530B8D
 P 5050 4850
 F 0 "D16" H 5050 5275 50  0000 C CNN
@@ -209,7 +180,7 @@ F 3 "" H 5050 4800 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D15
+L 42mm_cat_interior_LED-rescue:LED_RGB D15
 U 1 1 56530BA5
 P 4500 4850
 F 0 "D15" H 4500 5275 50  0000 C CNN
@@ -220,7 +191,7 @@ F 3 "" H 4500 4800 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D14
+L 42mm_cat_interior_LED-rescue:LED_RGB D14
 U 1 1 56530BAB
 P 3950 4850
 F 0 "D14" H 3950 5275 50  0000 C CNN
@@ -231,7 +202,7 @@ F 3 "" H 3950 4800 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D13
+L 42mm_cat_interior_LED-rescue:LED_RGB D13
 U 1 1 56530BB1
 P 3450 4850
 F 0 "D13" H 3450 5275 50  0000 C CNN
@@ -246,7 +217,7 @@ PLUS
 Text Label 1750 3300 0    60   ~ 0
 MINUS
 $Comp
-L D D20
+L 42mm_cat_interior_LED-rescue:D D20
 U 1 1 5654878B
 P 8400 4850
 F 0 "D20" H 8400 4950 50  0000 C CNN
@@ -257,7 +228,7 @@ F 3 "" H 8400 4850 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L D D17
+L 42mm_cat_interior_LED-rescue:D D17
 U 1 1 565488BC
 P 7800 4850
 F 0 "D17" H 7800 5066 50  0000 C CNN
@@ -268,7 +239,7 @@ F 3 "" H 7800 4850 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L D D21
+L 42mm_cat_interior_LED-rescue:D D21
 U 1 1 565489C7
 P 8400 5150
 F 0 "D21" H 8400 5250 50  0000 C CNN
@@ -279,7 +250,7 @@ F 3 "" H 8400 5150 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L D D18
+L 42mm_cat_interior_LED-rescue:D D18
 U 1 1 56548A77
 P 7800 5150
 F 0 "D18" H 7800 5250 50  0000 C CNN
@@ -302,7 +273,7 @@ IN2
 Text Label 8100 4600 3    60   ~ 0
 IN1
 $Comp
-L R R19
+L 42mm_cat_interior_LED-rescue:R R19
 U 1 1 56548B2B
 P 5100 2300
 F 0 "R19" V 5180 2300 50  0000 C CNN
@@ -313,7 +284,7 @@ F 3 "" H 5100 2300 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R20
+L 42mm_cat_interior_LED-rescue:R R20
 U 1 1 56548C8F
 P 5100 2500
 F 0 "R20" V 5180 2500 50  0000 C CNN
@@ -324,7 +295,7 @@ F 3 "" H 5100 2500 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R21
+L 42mm_cat_interior_LED-rescue:R R21
 U 1 1 56548D12
 P 5100 2700
 F 0 "R21" V 5180 2700 50  0000 C CNN
@@ -335,7 +306,7 @@ F 3 "" H 5100 2700 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R22
+L 42mm_cat_interior_LED-rescue:R R22
 U 1 1 56548F64
 P 5100 3100
 F 0 "R22" V 5180 3100 50  0000 C CNN
@@ -346,7 +317,7 @@ F 3 "" H 5100 3100 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R23
+L 42mm_cat_interior_LED-rescue:R R23
 U 1 1 56548FF7
 P 5100 3300
 F 0 "R23" V 5180 3300 50  0000 C CNN
@@ -357,7 +328,7 @@ F 3 "" H 5100 3300 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R24
+L 42mm_cat_interior_LED-rescue:R R24
 U 1 1 565490AB
 P 5100 3500
 F 0 "R24" V 5180 3500 50  0000 C CNN
@@ -368,7 +339,7 @@ F 3 "" H 5100 3500 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R13
+L 42mm_cat_interior_LED-rescue:R R13
 U 1 1 56549779
 P 2950 3850
 F 0 "R13" V 3030 3850 50  0000 C CNN
@@ -379,7 +350,7 @@ F 3 "" H 2950 3850 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R14
+L 42mm_cat_interior_LED-rescue:R R14
 U 1 1 5654984D
 P 2950 4050
 F 0 "R14" V 3030 4050 50  0000 C CNN
@@ -390,7 +361,7 @@ F 3 "" H 2950 4050 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R15
+L 42mm_cat_interior_LED-rescue:R R15
 U 1 1 565498E2
 P 2950 4250
 F 0 "R15" V 3030 4250 50  0000 C CNN
@@ -401,7 +372,7 @@ F 3 "" H 2950 4250 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R16
+L 42mm_cat_interior_LED-rescue:R R16
 U 1 1 56549D46
 P 2950 4650
 F 0 "R16" V 3030 4650 50  0000 C CNN
@@ -412,7 +383,7 @@ F 3 "" H 2950 4650 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R17
+L 42mm_cat_interior_LED-rescue:R R17
 U 1 1 56549DEB
 P 2950 4850
 F 0 "R17" V 3030 4850 50  0000 C CNN
@@ -423,7 +394,7 @@ F 3 "" H 2950 4850 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R18
+L 42mm_cat_interior_LED-rescue:R R18
 U 1 1 56549E89
 P 2950 5050
 F 0 "R18" V 3030 5050 50  0000 C CNN
@@ -519,7 +490,7 @@ Wire Wire Line
 	5350 3500 5250 3500
 Connection ~ 5350 3500
 Wire Wire Line
-	5250 3300 6200 3300
+	5250 3300 5350 3300
 Connection ~ 5350 3300
 Wire Wire Line
 	5350 3100 5250 3100
@@ -541,7 +512,7 @@ Wire Wire Line
 	2300 3500 2800 3500
 Connection ~ 2300 3500
 Wire Wire Line
-	1750 3300 2800 3300
+	1750 3300 2300 3300
 Connection ~ 2300 3300
 Wire Wire Line
 	2300 3100 2800 3100
@@ -598,23 +569,23 @@ Connection ~ 2300 4650
 Connection ~ 5350 4250
 Connection ~ 2300 4250
 Wire Wire Line
-	2300 2300 2300 5050
+	2300 2300 2300 2500
 Wire Wire Line
 	8550 4850 8650 4850
 Wire Wire Line
-	8650 4850 8650 5150
+	8650 4850 8650 5000
 Wire Wire Line
 	8650 5150 8550 5150
 Wire Wire Line
-	7550 4850 7550 5150
+	7550 4850 7550 5000
 Wire Wire Line
 	7550 5150 7650 5150
 Wire Wire Line
 	7650 4850 7550 4850
 Wire Wire Line
-	7950 4850 8250 4850
+	7950 4850 8100 4850
 Wire Wire Line
-	7950 5150 8250 5150
+	7950 5150 8100 5150
 Connection ~ 8100 4850
 Connection ~ 8100 5150
 Connection ~ 7550 5000
@@ -632,7 +603,7 @@ Wire Wire Line
 Wire Wire Line
 	8100 5400 8100 5150
 $Comp
-L CP C1
+L 42mm_cat_interior_LED-rescue:CP C1
 U 1 1 56654E40
 P 8050 2900
 F 0 "C1" H 8075 3000 50  0000 L CNN
@@ -651,7 +622,7 @@ MINUS
 Wire Wire Line
 	7600 2900 7900 2900
 $Comp
-L CP C2
+L 42mm_cat_interior_LED-rescue:CP C2
 U 1 1 566552E6
 P 8050 3400
 F 0 "C2" H 8075 3500 50  0000 L CNN
@@ -670,7 +641,7 @@ MINUS
 Wire Wire Line
 	7600 3400 7900 3400
 $Comp
-L CP C3
+L 42mm_cat_interior_LED-rescue:CP C3
 U 1 1 566553F8
 P 8050 4050
 F 0 "C3" H 8075 4150 50  0000 L CNN
@@ -689,7 +660,7 @@ MINUS
 Wire Wire Line
 	7600 4050 7900 4050
 $Comp
-L CONN_01X01 P4
+L 42mm_cat_interior_LED-rescue:CONN_01X01 P4
 U 1 1 56658CEF
 P 7850 2200
 F 0 "P4" H 7850 2300 50  0000 C CNN
@@ -700,7 +671,7 @@ F 3 "" H 7850 2200 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_01X01 P3
+L 42mm_cat_interior_LED-rescue:CONN_01X01 P3
 U 1 1 56658CF5
 P 7800 1500
 F 0 "P3" H 7800 1600 50  0000 C CNN
@@ -719,5 +690,57 @@ Wire Wire Line
 Wire Wire Line
 	6950 2200 7650 2200
 Wire Wire Line
-	5350 2300 5350 5050
+	5350 2300 5350 2500
+Wire Wire Line
+	5350 4050 5350 4250
+Wire Wire Line
+	5350 3850 5350 4050
+Wire Wire Line
+	5350 3500 5350 3850
+Wire Wire Line
+	5350 3300 6200 3300
+Wire Wire Line
+	5350 3300 5350 3500
+Wire Wire Line
+	5350 3100 5350 3300
+Wire Wire Line
+	5350 2700 5350 3100
+Wire Wire Line
+	2300 4050 2300 4250
+Wire Wire Line
+	2300 3850 2300 4050
+Wire Wire Line
+	2300 3500 2300 3850
+Wire Wire Line
+	2300 3300 2800 3300
+Wire Wire Line
+	2300 3300 2300 3500
+Wire Wire Line
+	2300 3100 2300 3300
+Wire Wire Line
+	2300 2700 2300 3100
+Wire Wire Line
+	2300 2500 2300 2700
+Wire Wire Line
+	5350 2500 5350 2700
+Wire Wire Line
+	5350 4850 5350 5050
+Wire Wire Line
+	5350 4650 5350 4850
+Wire Wire Line
+	2300 4850 2300 5050
+Wire Wire Line
+	2300 4650 2300 4850
+Wire Wire Line
+	5350 4250 5350 4650
+Wire Wire Line
+	2300 4250 2300 4650
+Wire Wire Line
+	8100 4850 8250 4850
+Wire Wire Line
+	8100 5150 8250 5150
+Wire Wire Line
+	7550 5000 7550 5150
+Wire Wire Line
+	8650 5000 8650 5150
 $EndSCHEMATC

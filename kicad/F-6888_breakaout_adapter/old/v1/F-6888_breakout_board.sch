@@ -1,5 +1,6 @@
 EESchema Schematic File Version 4
-EELAYER 26 0
+LIBS:F-6888_breakout_board-cache
+EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -14,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L gencon:CONN_20 CON1
+L F-6888_breakout_board-rescue:CONN_20-gencon CON1
 U 1 1 5A847A68
 P 2800 3850
 F 0 "CON1" H 2928 3898 60  0000 L CNN
@@ -51,7 +52,7 @@ Wire Wire Line
 Wire Wire Line
 	3200 4100 3550 4100
 $Comp
-L gencon:CONN_20 CON2
+L F-6888_breakout_board-rescue:CONN_20-gencon CON2
 U 1 1 5A84AD5B
 P 5850 3850
 F 0 "CON2" H 5978 3898 60  0000 L CNN
@@ -168,7 +169,7 @@ Connection ~ 3250 4400
 Wire Wire Line
 	3250 4400 3550 4400
 $Comp
-L F-6888:F-6888 U1
+L F-6888_breakout_board-rescue:F-6888-F-6888 U1
 U 1 1 5AA6C3D3
 P 4300 3050
 F 0 "U1" H 4300 3600 60  0000 C CNN

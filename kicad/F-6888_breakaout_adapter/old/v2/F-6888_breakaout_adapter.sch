@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:F-6888_breakaout_adapter-cache
-EELAYER 26 0
+EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -15,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L F-6888:F-6888 U1
+L F-6888_breakaout_adapter-rescue:F-6888-F-6888 U1
 U 1 1 59BA8F51
 P 5850 2600
 F 0 "U1" H 5900 3037 60  0000 C CNN
@@ -450,7 +450,7 @@ $EndComp
 Text Label 3050 1950 2    60   ~ 0
 VBAT
 $Comp
-L Connector_Specialized:Micro_SD_Card_Det_Hirose_DM3AT J6
+L F-6888_breakaout_adapter-rescue:Micro_SD_Card_Det_Hirose_DM3AT-Connector_Specialized J6
 U 1 1 59BB90AF
 P 5550 6600
 F 0 "J6" H 5500 7417 50  0000 C CNN
@@ -752,7 +752,7 @@ Wire Wire Line
 Wire Wire Line
 	2700 2600 3050 2600
 $Comp
-L gencon:CONN_6 PJ-327A1
+L F-6888_breakaout_adapter-rescue:CONN_6-gencon PJ-327A1
 U 1 1 5A90F45F
 P 8200 1450
 F 0 "PJ-327A1" H 8044 953 60  0000 C CNN
@@ -769,7 +769,7 @@ Wire Wire Line
 Wire Wire Line
 	8950 1700 8950 1900
 $Comp
-L gencon:CONN_6 PJ-327A2
+L F-6888_breakaout_adapter-rescue:CONN_6-gencon PJ-327A2
 U 1 1 5A92B891
 P 9150 2550
 F 0 "PJ-327A2" H 8994 2053 60  0000 C CNN
@@ -866,7 +866,7 @@ Text Label 9900 5150 2    60   ~ 0
 Text Label 8550 5150 0    60   ~ 0
 VBAT
 $Comp
-L Connector_Specialized:USB_A J1
+L F-6888_breakaout_adapter-rescue:USB_A-Connector_Specialized J1
 U 1 1 5AC5EC95
 P 8450 3950
 F 0 "J1" H 8505 4417 50  0000 C CNN

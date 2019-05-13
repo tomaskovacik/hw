@@ -11,7 +11,7 @@ github)
 
 To use PB version of ATmega328 version of chip you need to install MiniCore from MCUdude: [https://github.com/MCUdude/MiniCore](https://github.com/MCUdude/MiniCore).
 
-![pic](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/arduino_nanoPB/pics/20190513_124704.jpg")
+![](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/arduino_nanoPB/pics/20190513_124704.jpg "")
 
 #### Tindie
 

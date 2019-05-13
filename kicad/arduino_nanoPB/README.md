@@ -15,8 +15,10 @@ To use PB version of ATmega328 chip in arduino you need to install MiniCore from
 
 #### PB/nonPB version selection
 
-On board are 3jumpers 2 are 3pins, these are used to select which MCU version is insraled, clearly marked as PA|PB, 3th one is 2pin jumper used to connect DTR pin of cp2102 to reset line of atmega MCU over 100nF capacitors used as autoreset fetature.
-
+On board are 3 jumpers:
+ - 2 are 3pins, these are used to select which MCU version is instaled, clearly marked as PA|PB
+ - 3th one is 2pin jumper used to connect DTR pin of cp2102 to reset line of atmega MCU over 100nF capacitors used as auto-reset feature.
+ 
 ![](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/arduino_nanoPB/pics/solder_jumpers.jpg "")
 
 #### Tindie

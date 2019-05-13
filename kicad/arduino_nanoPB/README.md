@@ -7,11 +7,11 @@ I was in need for drop in replacement for some arduino compatible boards with mo
 github)
  - [ Atmega2560 board compatible with Arduino mega with all pins routed to pinheaders ](https://www.tindie.com/products/tomaskovacik/megaallpins/)
 
+![](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/arduino_nanoPB/pics/20190513_124704.jpg "")
+
 #### Arduino support
 
 To use PB version of ATmega328 chip in arduino you need to install MiniCore from MCUdude: [https://github.com/MCUdude/MiniCore](https://github.com/MCUdude/MiniCore).
-
-![](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/arduino_nanoPB/pics/20190513_124704.jpg "")
 
 #### PB/nonPB version selection
 

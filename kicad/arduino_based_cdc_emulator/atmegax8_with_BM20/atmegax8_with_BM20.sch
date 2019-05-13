@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:atmegax8_with_BM20-cache
-EELAYER 26 0
+EELAYER 29 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
@@ -49,7 +49,7 @@ DataIn
 Text Label 6900 10250 0    60   ~ 0
 DataOut
 $Comp
-L gencon:CONN_12 P1
+L atmegax8_with_BM20-rescue:CONN_12-gencon P1
 U 1 1 530C9435
 P 8300 9900
 F 0 "P1" V 8250 9900 50  0000 C CNN
@@ -1112,7 +1112,7 @@ Connection ~ 7550 6700
 NoConn ~ 1050 7700
 NoConn ~ 1050 7800
 $Comp
-L BM2x:BM20 U2
+L atmegax8_with_BM20-rescue:BM20-BM2x U2
 U 1 1 5ABDEEED
 P 12650 5750
 F 0 "U2" H 13000 5950 50  0000 C CNN

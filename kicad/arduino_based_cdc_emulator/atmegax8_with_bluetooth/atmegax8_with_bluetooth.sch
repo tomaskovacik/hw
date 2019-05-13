@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:atmegax8_with_bluetooth-cache
-EELAYER 26 0
+EELAYER 29 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
@@ -49,7 +49,7 @@ DataIn
 Text Label 6900 10250 0    60   ~ 0
 DataOut
 $Comp
-L gencon:CONN_12 P1
+L atmegax8_with_bluetooth-rescue:CONN_12-gencon P1
 U 1 1 530C9435
 P 8300 9900
 F 0 "P1" V 8250 9900 50  0000 C CNN
@@ -1145,7 +1145,7 @@ MIC_IN1
 Text Label 7400 9750 0    60   ~ 0
 MIC_IN2
 $Comp
-L F-6188:F-6188 U2
+L atmegax8_with_bluetooth-rescue:F-6188-F-6188 U2
 U 1 1 59FC4A54
 P 9850 7600
 F 0 "U2" H 12300 8700 60  0000 C CNN

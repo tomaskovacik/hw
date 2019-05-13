@@ -1,37 +1,6 @@
-EESchema Schematic File Version 2
-LIBS:power
-LIBS:device
-LIBS:transistors
-LIBS:conn
-LIBS:linear
-LIBS:regul
-LIBS:74xx
-LIBS:cmos4000
-LIBS:adc-dac
-LIBS:memory
-LIBS:xilinx
-LIBS:special
-LIBS:microcontrollers
-LIBS:dsp
-LIBS:microchip
-LIBS:analog_switches
-LIBS:motorola
-LIBS:texas
-LIBS:intel
-LIBS:audio
-LIBS:interface
-LIBS:digital-audio
-LIBS:philips
-LIBS:display
-LIBS:cypress
-LIBS:siliconi
-LIBS:opto
-LIBS:atmel
-LIBS:contrib
-LIBS:valves
-LIBS:rgb_led_toy
+EESchema Schematic File Version 4
 LIBS:audi_trunk_led_light-cache
-EELAYER 25 0
+EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -46,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L R R1
+L rgb_led_toy:R R1
 U 1 1 542C14B9
 P 1850 1100
 F 0 "R1" V 1930 1100 40  0000 C CNN
@@ -57,7 +26,7 @@ F 3 "" H 1850 1100 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R2
+L rgb_led_toy:R R2
 U 1 1 542C153B
 P 1850 1300
 F 0 "R2" V 1930 1300 40  0000 C CNN
@@ -68,7 +37,7 @@ F 3 "" H 1850 1300 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R4
+L rgb_led_toy:R R4
 U 1 1 542C2399
 P 1850 1850
 F 0 "R4" V 1930 1850 40  0000 C CNN
@@ -79,7 +48,7 @@ F 3 "" H 1850 1850 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R5
+L rgb_led_toy:R R5
 U 1 1 542C239F
 P 1850 2050
 F 0 "R5" V 1930 2050 40  0000 C CNN
@@ -90,7 +59,7 @@ F 3 "" H 1850 2050 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R6
+L rgb_led_toy:R R6
 U 1 1 542C23A5
 P 1850 2250
 F 0 "R6" V 1930 2250 40  0000 C CNN
@@ -101,7 +70,7 @@ F 3 "" H 1850 2250 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R7
+L rgb_led_toy:R R7
 U 1 1 542C3E14
 P 1850 2650
 F 0 "R7" V 1930 2650 40  0000 C CNN
@@ -112,7 +81,7 @@ F 3 "" H 1850 2650 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R8
+L rgb_led_toy:R R8
 U 1 1 542C3E1A
 P 1850 2850
 F 0 "R8" V 1930 2850 40  0000 C CNN
@@ -123,7 +92,7 @@ F 3 "" H 1850 2850 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R9
+L rgb_led_toy:R R9
 U 1 1 542C3E20
 P 1850 3050
 F 0 "R9" V 1930 3050 40  0000 C CNN
@@ -134,7 +103,7 @@ F 3 "" H 1850 3050 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L LED_RGB D1
+L audi_trunk_led_light-rescue:LED_RGB D1
 U 1 1 542C22D6
 P 2550 1300
 F 0 "D1" H 2550 1750 50  0000 C CNN
@@ -145,7 +114,7 @@ F 3 "" H 2550 1250 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R3
+L rgb_led_toy:R R3
 U 1 1 542C1563
 P 1850 1500
 F 0 "R3" V 1930 1500 40  0000 C CNN
@@ -156,7 +125,7 @@ F 3 "" H 1850 1500 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L LED_RGB D2
+L audi_trunk_led_light-rescue:LED_RGB D2
 U 1 1 542C2616
 P 2550 2050
 F 0 "D2" H 2550 2500 50  0000 C CNN
@@ -167,7 +136,7 @@ F 3 "" H 2550 2000 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D3
+L audi_trunk_led_light-rescue:LED_RGB D3
 U 1 1 542C26A6
 P 2550 2850
 F 0 "D3" H 2550 3300 50  0000 C CNN
@@ -178,7 +147,7 @@ F 3 "" H 2550 2800 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D4
+L audi_trunk_led_light-rescue:LED_RGB D4
 U 1 1 542C2BA2
 P 3200 1300
 F 0 "D4" H 3200 1750 50  0000 C CNN
@@ -189,7 +158,7 @@ F 3 "" H 3200 1250 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D5
+L audi_trunk_led_light-rescue:LED_RGB D5
 U 1 1 542C2BA8
 P 3200 2050
 F 0 "D5" H 3200 2500 50  0000 C CNN
@@ -200,7 +169,7 @@ F 3 "" H 3200 2000 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D6
+L audi_trunk_led_light-rescue:LED_RGB D6
 U 1 1 542C2BAE
 P 3200 2850
 F 0 "D6" H 3200 3300 50  0000 C CNN
@@ -211,7 +180,7 @@ F 3 "" H 3200 2800 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D7
+L audi_trunk_led_light-rescue:LED_RGB D7
 U 1 1 542C2CBE
 P 3900 1300
 F 0 "D7" H 3900 1750 50  0000 C CNN
@@ -222,7 +191,7 @@ F 3 "" H 3900 1250 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D8
+L audi_trunk_led_light-rescue:LED_RGB D8
 U 1 1 542C2CC4
 P 3900 2050
 F 0 "D8" H 3900 2500 50  0000 C CNN
@@ -233,7 +202,7 @@ F 3 "" H 3900 2000 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D9
+L audi_trunk_led_light-rescue:LED_RGB D9
 U 1 1 542C2CCA
 P 3900 2850
 F 0 "D9" H 3900 3300 50  0000 C CNN
@@ -244,7 +213,7 @@ F 3 "" H 3900 2800 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_01X01 P1
+L audi_trunk_led_light-rescue:CONN_01X01 P1
 U 1 1 542C46D0
 P 1200 2050
 F 0 "P1" H 1200 2200 50  0000 C CNN
@@ -255,7 +224,7 @@ F 3 "" H 1200 2050 60  0000 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L CONN_01X01 P2
+L audi_trunk_led_light-rescue:CONN_01X01 P2
 U 1 1 542C4794
 P 5000 2050
 F 0 "P2" H 5000 2200 50  0000 C CNN
@@ -266,7 +235,7 @@ F 3 "" H 5000 2050 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R10
+L rgb_led_toy:R R10
 U 1 1 542C57A7
 P 3200 3450
 F 0 "R10" V 3280 3450 40  0000 C CNN
@@ -277,7 +246,7 @@ F 3 "" H 3200 3450 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R11
+L rgb_led_toy:R R11
 U 1 1 542C5843
 P 3200 3650
 F 0 "R11" V 3280 3650 40  0000 C CNN
@@ -288,7 +257,7 @@ F 3 "" H 3200 3650 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R12
+L rgb_led_toy:R R12
 U 1 1 542C58A9
 P 3200 3850
 F 0 "R12" V 3280 3850 40  0000 C CNN
@@ -299,7 +268,7 @@ F 3 "" H 3200 3850 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R22
+L rgb_led_toy:R R22
 U 1 1 542C46C1
 P 7150 1100
 F 0 "R22" V 7230 1100 40  0000 C CNN
@@ -310,7 +279,7 @@ F 3 "" H 7150 1100 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R23
+L rgb_led_toy:R R23
 U 1 1 542C46C7
 P 7150 1300
 F 0 "R23" V 7230 1300 40  0000 C CNN
@@ -321,7 +290,7 @@ F 3 "" H 7150 1300 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R25
+L rgb_led_toy:R R25
 U 1 1 542C46CD
 P 7150 1850
 F 0 "R25" V 7230 1850 40  0000 C CNN
@@ -332,7 +301,7 @@ F 3 "" H 7150 1850 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R26
+L rgb_led_toy:R R26
 U 1 1 542C46D3
 P 7150 2050
 F 0 "R26" V 7230 2050 40  0000 C CNN
@@ -343,7 +312,7 @@ F 3 "" H 7150 2050 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R27
+L rgb_led_toy:R R27
 U 1 1 542C46D9
 P 7150 2250
 F 0 "R27" V 7230 2250 40  0000 C CNN
@@ -354,7 +323,7 @@ F 3 "" H 7150 2250 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R28
+L rgb_led_toy:R R28
 U 1 1 542C46DF
 P 7150 2650
 F 0 "R28" V 7230 2650 40  0000 C CNN
@@ -365,7 +334,7 @@ F 3 "" H 7150 2650 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R29
+L rgb_led_toy:R R29
 U 1 1 542C46E5
 P 7150 2850
 F 0 "R29" V 7230 2850 40  0000 C CNN
@@ -376,7 +345,7 @@ F 3 "" H 7150 2850 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R30
+L rgb_led_toy:R R30
 U 1 1 542C46EB
 P 7150 3050
 F 0 "R30" V 7230 3050 40  0000 C CNN
@@ -387,7 +356,7 @@ F 3 "" H 7150 3050 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L LED_RGB D19
+L audi_trunk_led_light-rescue:LED_RGB D19
 U 1 1 542C46F1
 P 7850 1300
 F 0 "D19" H 7850 1750 50  0000 C CNN
@@ -398,7 +367,7 @@ F 3 "" H 7850 1250 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R24
+L rgb_led_toy:R R24
 U 1 1 542C46F7
 P 7150 1500
 F 0 "R24" V 7230 1500 40  0000 C CNN
@@ -409,7 +378,7 @@ F 3 "" H 7150 1500 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L LED_RGB D20
+L audi_trunk_led_light-rescue:LED_RGB D20
 U 1 1 542C46FD
 P 7850 2050
 F 0 "D20" H 7850 2500 50  0000 C CNN
@@ -420,7 +389,7 @@ F 3 "" H 7850 2000 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D21
+L audi_trunk_led_light-rescue:LED_RGB D21
 U 1 1 542C4703
 P 7850 2850
 F 0 "D21" H 7850 3300 50  0000 C CNN
@@ -431,7 +400,7 @@ F 3 "" H 7850 2800 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D22
+L audi_trunk_led_light-rescue:LED_RGB D22
 U 1 1 542C4709
 P 8500 1300
 F 0 "D22" H 8500 1750 50  0000 C CNN
@@ -442,7 +411,7 @@ F 3 "" H 8500 1250 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D23
+L audi_trunk_led_light-rescue:LED_RGB D23
 U 1 1 542C470F
 P 8500 2050
 F 0 "D23" H 8500 2500 50  0000 C CNN
@@ -453,7 +422,7 @@ F 3 "" H 8500 2000 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D24
+L audi_trunk_led_light-rescue:LED_RGB D24
 U 1 1 542C4715
 P 8500 2850
 F 0 "D24" H 8500 3300 50  0000 C CNN
@@ -464,7 +433,7 @@ F 3 "" H 8500 2800 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D25
+L audi_trunk_led_light-rescue:LED_RGB D25
 U 1 1 542C471B
 P 9200 1300
 F 0 "D25" H 9200 1750 50  0000 C CNN
@@ -475,7 +444,7 @@ F 3 "" H 9200 1250 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D26
+L audi_trunk_led_light-rescue:LED_RGB D26
 U 1 1 542C4721
 P 9200 2050
 F 0 "D26" H 9200 2500 50  0000 C CNN
@@ -486,7 +455,7 @@ F 3 "" H 9200 2000 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D27
+L audi_trunk_led_light-rescue:LED_RGB D27
 U 1 1 542C4727
 P 9200 2850
 F 0 "D27" H 9200 3300 50  0000 C CNN
@@ -497,7 +466,7 @@ F 3 "" H 9200 2800 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R13
+L rgb_led_toy:R R13
 U 1 1 542C6077
 P 1850 4300
 F 0 "R13" V 1930 4300 40  0000 C CNN
@@ -508,7 +477,7 @@ F 3 "" H 1850 4300 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R14
+L rgb_led_toy:R R14
 U 1 1 542C607D
 P 1850 4500
 F 0 "R14" V 1930 4500 40  0000 C CNN
@@ -519,7 +488,7 @@ F 3 "" H 1850 4500 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R16
+L rgb_led_toy:R R16
 U 1 1 542C6083
 P 1850 5050
 F 0 "R16" V 1930 5050 40  0000 C CNN
@@ -530,7 +499,7 @@ F 3 "" H 1850 5050 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R17
+L rgb_led_toy:R R17
 U 1 1 542C6089
 P 1850 5250
 F 0 "R17" V 1930 5250 40  0000 C CNN
@@ -541,7 +510,7 @@ F 3 "" H 1850 5250 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R18
+L rgb_led_toy:R R18
 U 1 1 542C608F
 P 1850 5450
 F 0 "R18" V 1930 5450 40  0000 C CNN
@@ -552,7 +521,7 @@ F 3 "" H 1850 5450 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R19
+L rgb_led_toy:R R19
 U 1 1 542C6095
 P 1850 5850
 F 0 "R19" V 1930 5850 40  0000 C CNN
@@ -563,7 +532,7 @@ F 3 "" H 1850 5850 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R20
+L rgb_led_toy:R R20
 U 1 1 542C609B
 P 1850 6050
 F 0 "R20" V 1930 6050 40  0000 C CNN
@@ -574,7 +543,7 @@ F 3 "" H 1850 6050 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R21
+L rgb_led_toy:R R21
 U 1 1 542C60A1
 P 1850 6250
 F 0 "R21" V 1930 6250 40  0000 C CNN
@@ -585,7 +554,7 @@ F 3 "" H 1850 6250 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L LED_RGB D10
+L audi_trunk_led_light-rescue:LED_RGB D10
 U 1 1 542C60A7
 P 2550 4500
 F 0 "D10" H 2550 4950 50  0000 C CNN
@@ -596,7 +565,7 @@ F 3 "" H 2550 4450 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R15
+L rgb_led_toy:R R15
 U 1 1 542C60AD
 P 1850 4700
 F 0 "R15" V 1930 4700 40  0000 C CNN
@@ -607,7 +576,7 @@ F 3 "" H 1850 4700 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L LED_RGB D11
+L audi_trunk_led_light-rescue:LED_RGB D11
 U 1 1 542C60B3
 P 2550 5250
 F 0 "D11" H 2550 5700 50  0000 C CNN
@@ -618,7 +587,7 @@ F 3 "" H 2550 5200 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D12
+L audi_trunk_led_light-rescue:LED_RGB D12
 U 1 1 542C60B9
 P 2550 6050
 F 0 "D12" H 2550 6500 50  0000 C CNN
@@ -629,7 +598,7 @@ F 3 "" H 2550 6000 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D13
+L audi_trunk_led_light-rescue:LED_RGB D13
 U 1 1 542C60BF
 P 3200 4500
 F 0 "D13" H 3200 4950 50  0000 C CNN
@@ -640,7 +609,7 @@ F 3 "" H 3200 4450 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D14
+L audi_trunk_led_light-rescue:LED_RGB D14
 U 1 1 542C60C5
 P 3200 5250
 F 0 "D14" H 3200 5700 50  0000 C CNN
@@ -651,7 +620,7 @@ F 3 "" H 3200 5200 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D15
+L audi_trunk_led_light-rescue:LED_RGB D15
 U 1 1 542C60CB
 P 3200 6050
 F 0 "D15" H 3200 6500 50  0000 C CNN
@@ -662,7 +631,7 @@ F 3 "" H 3200 6000 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D16
+L audi_trunk_led_light-rescue:LED_RGB D16
 U 1 1 542C60D1
 P 3900 4500
 F 0 "D16" H 3900 4950 50  0000 C CNN
@@ -673,7 +642,7 @@ F 3 "" H 3900 4450 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D17
+L audi_trunk_led_light-rescue:LED_RGB D17
 U 1 1 542C60D7
 P 3900 5250
 F 0 "D17" H 3900 5700 50  0000 C CNN
@@ -684,7 +653,7 @@ F 3 "" H 3900 5200 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D18
+L audi_trunk_led_light-rescue:LED_RGB D18
 U 1 1 542C60DD
 P 3900 6050
 F 0 "D18" H 3900 6500 50  0000 C CNN
@@ -710,7 +679,7 @@ Wire Wire Line
 	1600 2250 1500 2250
 Connection ~ 1500 2250
 Wire Wire Line
-	1400 2050 1600 2050
+	1400 2050 1500 2050
 Connection ~ 1500 2050
 Wire Wire Line
 	1600 1850 1500 1850
@@ -749,7 +718,7 @@ Wire Wire Line
 	4450 1850 4200 1850
 Connection ~ 4450 1850
 Wire Wire Line
-	4200 2050 4800 2050
+	4200 2050 4450 2050
 Connection ~ 4450 2050
 Wire Wire Line
 	4450 2250 4200 2250
@@ -801,20 +770,20 @@ Wire Wire Line
 Wire Wire Line
 	3450 3450 3550 3450
 Wire Wire Line
-	3550 3450 3550 3850
+	3550 3450 3550 3650
 Wire Wire Line
 	3550 3850 3450 3850
 Wire Wire Line
 	2950 3450 2850 3450
 Wire Wire Line
-	2850 3450 2850 3850
+	2850 3450 2850 3650
 Wire Wire Line
 	2850 3850 2950 3850
 Wire Wire Line
-	1500 3650 2950 3650
+	1500 3650 2850 3650
 Connection ~ 2850 3650
 Wire Wire Line
-	3450 3650 4450 3650
+	3450 3650 3550 3650
 Connection ~ 3550 3650
 Connection ~ 4450 3050
 Connection ~ 1500 3050
@@ -1025,19 +994,19 @@ Connection ~ 1500 3650
 Connection ~ 4450 4300
 Connection ~ 4450 3650
 Wire Wire Line
-	9750 800  9750 5650
+	9750 800  9750 1100
 Wire Wire Line
 	9500 2050 9750 2050
 Connection ~ 9750 2050
 Wire Wire Line
-	6800 700  6800 5650
+	6800 700  6800 1100
 Wire Wire Line
 	6800 2050 6900 2050
 Connection ~ 6800 2050
 Wire Wire Line
-	4450 800  4450 6250
+	4450 800  4450 1100
 Wire Wire Line
-	1500 700  1500 6250
+	1500 700  1500 1100
 Wire Wire Line
 	6800 700  1500 700 
 Connection ~ 1500 1100
@@ -1047,7 +1016,7 @@ Wire Wire Line
 Connection ~ 9750 1100
 Connection ~ 4450 1100
 $Comp
-L R R31
+L rgb_led_toy:R R31
 U 1 1 542D263A
 P 7150 3700
 F 0 "R31" V 7230 3700 40  0000 C CNN
@@ -1058,7 +1027,7 @@ F 3 "" H 7150 3700 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R32
+L rgb_led_toy:R R32
 U 1 1 542D2640
 P 7150 3900
 F 0 "R32" V 7230 3900 40  0000 C CNN
@@ -1069,7 +1038,7 @@ F 3 "" H 7150 3900 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R34
+L rgb_led_toy:R R34
 U 1 1 542D2646
 P 7150 4450
 F 0 "R34" V 7230 4450 40  0000 C CNN
@@ -1080,7 +1049,7 @@ F 3 "" H 7150 4450 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R35
+L rgb_led_toy:R R35
 U 1 1 542D264C
 P 7150 4650
 F 0 "R35" V 7230 4650 40  0000 C CNN
@@ -1091,7 +1060,7 @@ F 3 "" H 7150 4650 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R36
+L rgb_led_toy:R R36
 U 1 1 542D2652
 P 7150 4850
 F 0 "R36" V 7230 4850 40  0000 C CNN
@@ -1102,7 +1071,7 @@ F 3 "" H 7150 4850 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R37
+L rgb_led_toy:R R37
 U 1 1 542D2658
 P 7150 5250
 F 0 "R37" V 7230 5250 40  0000 C CNN
@@ -1113,7 +1082,7 @@ F 3 "" H 7150 5250 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R38
+L rgb_led_toy:R R38
 U 1 1 542D265E
 P 7150 5450
 F 0 "R38" V 7230 5450 40  0000 C CNN
@@ -1124,7 +1093,7 @@ F 3 "" H 7150 5450 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R39
+L rgb_led_toy:R R39
 U 1 1 542D2664
 P 7150 5650
 F 0 "R39" V 7230 5650 40  0000 C CNN
@@ -1135,7 +1104,7 @@ F 3 "" H 7150 5650 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L LED_RGB D28
+L audi_trunk_led_light-rescue:LED_RGB D28
 U 1 1 542D266A
 P 7850 3900
 F 0 "D28" H 7850 4350 50  0000 C CNN
@@ -1146,7 +1115,7 @@ F 3 "" H 7850 3850 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R33
+L rgb_led_toy:R R33
 U 1 1 542D2670
 P 7150 4100
 F 0 "R33" V 7230 4100 40  0000 C CNN
@@ -1157,7 +1126,7 @@ F 3 "" H 7150 4100 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L LED_RGB D29
+L audi_trunk_led_light-rescue:LED_RGB D29
 U 1 1 542D2676
 P 7850 4650
 F 0 "D29" H 7850 5100 50  0000 C CNN
@@ -1168,7 +1137,7 @@ F 3 "" H 7850 4600 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D30
+L audi_trunk_led_light-rescue:LED_RGB D30
 U 1 1 542D267C
 P 7850 5450
 F 0 "D30" H 7850 5900 50  0000 C CNN
@@ -1179,7 +1148,7 @@ F 3 "" H 7850 5400 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D31
+L audi_trunk_led_light-rescue:LED_RGB D31
 U 1 1 542D2682
 P 8500 3900
 F 0 "D31" H 8500 4350 50  0000 C CNN
@@ -1190,7 +1159,7 @@ F 3 "" H 8500 3850 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D32
+L audi_trunk_led_light-rescue:LED_RGB D32
 U 1 1 542D2688
 P 8500 4650
 F 0 "D32" H 8500 5100 50  0000 C CNN
@@ -1201,7 +1170,7 @@ F 3 "" H 8500 4600 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D33
+L audi_trunk_led_light-rescue:LED_RGB D33
 U 1 1 542D268E
 P 8500 5450
 F 0 "D33" H 8500 5900 50  0000 C CNN
@@ -1212,7 +1181,7 @@ F 3 "" H 8500 5400 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D34
+L audi_trunk_led_light-rescue:LED_RGB D34
 U 1 1 542D2694
 P 9200 3900
 F 0 "D34" H 9200 4350 50  0000 C CNN
@@ -1223,7 +1192,7 @@ F 3 "" H 9200 3850 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D35
+L audi_trunk_led_light-rescue:LED_RGB D35
 U 1 1 542D269A
 P 9200 4650
 F 0 "D35" H 9200 5100 50  0000 C CNN
@@ -1234,7 +1203,7 @@ F 3 "" H 9200 4600 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_RGB D36
+L audi_trunk_led_light-rescue:LED_RGB D36
 U 1 1 542D26A0
 P 9200 5450
 F 0 "D36" H 9200 5900 50  0000 C CNN
@@ -1352,4 +1321,156 @@ Connection ~ 6800 3700
 Connection ~ 9750 3700
 Connection ~ 6800 3050
 Connection ~ 9750 3050
+Wire Wire Line
+	1500 2850 1500 3050
+Wire Wire Line
+	1500 2650 1500 2850
+Wire Wire Line
+	1500 2250 1500 2650
+Wire Wire Line
+	1500 2050 1600 2050
+Wire Wire Line
+	1500 2050 1500 2250
+Wire Wire Line
+	1500 1850 1500 2050
+Wire Wire Line
+	1500 1500 1500 1850
+Wire Wire Line
+	1500 1300 1500 1500
+Wire Wire Line
+	4450 1300 4450 1500
+Wire Wire Line
+	4450 1500 4450 1850
+Wire Wire Line
+	4450 1850 4450 2050
+Wire Wire Line
+	4450 2050 4800 2050
+Wire Wire Line
+	4450 2050 4450 2250
+Wire Wire Line
+	4450 2250 4450 2650
+Wire Wire Line
+	4450 2650 4450 2850
+Wire Wire Line
+	4450 2850 4450 3050
+Wire Wire Line
+	2850 3650 2850 3850
+Wire Wire Line
+	2850 3650 2950 3650
+Wire Wire Line
+	3550 3650 3550 3850
+Wire Wire Line
+	3550 3650 4450 3650
+Wire Wire Line
+	4450 3050 4450 3650
+Wire Wire Line
+	1500 3050 1500 3650
+Wire Wire Line
+	6800 2850 6800 3050
+Wire Wire Line
+	6800 2650 6800 2850
+Wire Wire Line
+	6800 2250 6800 2650
+Wire Wire Line
+	6800 1850 6800 2050
+Wire Wire Line
+	6800 1500 6800 1850
+Wire Wire Line
+	6800 1300 6800 1500
+Wire Wire Line
+	9750 1300 9750 1500
+Wire Wire Line
+	9750 1500 9750 1850
+Wire Wire Line
+	9750 1850 9750 2050
+Wire Wire Line
+	9750 2250 9750 2650
+Wire Wire Line
+	9750 2650 9750 2850
+Wire Wire Line
+	9750 2850 9750 3050
+Wire Wire Line
+	1500 6050 1500 6250
+Wire Wire Line
+	1500 5850 1500 6050
+Wire Wire Line
+	1500 5450 1500 5850
+Wire Wire Line
+	1500 5050 1500 5250
+Wire Wire Line
+	1500 4700 1500 5050
+Wire Wire Line
+	1500 4500 1500 4700
+Wire Wire Line
+	4450 4500 4450 4700
+Wire Wire Line
+	4450 4700 4450 5050
+Wire Wire Line
+	4450 5050 4450 5250
+Wire Wire Line
+	4450 5450 4450 5850
+Wire Wire Line
+	4450 5850 4450 6050
+Wire Wire Line
+	4450 6050 4450 6250
+Wire Wire Line
+	1500 5250 1500 5450
+Wire Wire Line
+	4450 5250 4450 5450
+Wire Wire Line
+	1500 4300 1500 4500
+Wire Wire Line
+	1500 3650 1500 4300
+Wire Wire Line
+	4450 4300 4450 4500
+Wire Wire Line
+	4450 3650 4450 4300
+Wire Wire Line
+	9750 2050 9750 2250
+Wire Wire Line
+	6800 2050 6800 2250
+Wire Wire Line
+	1500 1100 1500 1300
+Wire Wire Line
+	6800 1100 6800 1300
+Wire Wire Line
+	9750 1100 9750 1300
+Wire Wire Line
+	4450 1100 4450 1300
+Wire Wire Line
+	6800 5450 6800 5650
+Wire Wire Line
+	6800 5250 6800 5450
+Wire Wire Line
+	6800 4850 6800 5250
+Wire Wire Line
+	6800 4450 6800 4650
+Wire Wire Line
+	6800 4100 6800 4450
+Wire Wire Line
+	6800 3900 6800 4100
+Wire Wire Line
+	9750 3900 9750 4100
+Wire Wire Line
+	9750 4100 9750 4450
+Wire Wire Line
+	9750 4450 9750 4650
+Wire Wire Line
+	9750 4850 9750 5250
+Wire Wire Line
+	9750 5250 9750 5450
+Wire Wire Line
+	9750 5450 9750 5650
+Wire Wire Line
+	9750 4650 9750 4850
+Wire Wire Line
+	6800 4650 6800 4850
+Wire Wire Line
+	6800 3700 6800 3900
+Wire Wire Line
+	9750 3700 9750 3900
+Wire Wire Line
+	6800 3050 6800 3700
+Wire Wire Line
+	9750 3050 9750 3700
 $EndSCHEMATC

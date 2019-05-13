@@ -61,7 +61,7 @@
     (aux_axis_origin 0 0)
     (visible_elements FFFDFF7F)
     (pcbplotparams
-      (layerselection 0x00030_80000001)
+      (layerselection 0x010fc_ffffffff)
       (usegerberextensions false)
       (usegerberattributes false)
       (usegerberadvancedattributes false)
@@ -86,7 +86,7 @@
       (mirror false)
       (drillshape 0)
       (scaleselection 1)
-      (outputdirectory ""))
+      (outputdirectory /home/nail/src/hw/kicad/ardpicprog/prod/))
   )
 
   (net 0 "")

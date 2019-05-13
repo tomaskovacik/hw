@@ -13,6 +13,12 @@ To use PB version of ATmega328 chip in arduino you need to install MiniCore from
 
 ![](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/arduino_nanoPB/pics/20190513_124704.jpg "")
 
+#### PB/nonPB version selection
+
+On board are 3jumpers 2 are 3pins, these are used to select which MCU version is insraled, clearly marked as PA|PB, 3th one is 2pin jumper used to connect DTR pin of cp2102 to reset line of atmega MCU over 100nF capacitors used as autoreset fetature.
+
+![](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/arduino_nanoPB/pics/solder_jumpers.jpg "")
+
 #### Tindie
 
 Boards which I did not need are on sale on tinfie, 1$ for board + shipping, as always all components can be added for aditional $$.

@@ -1,37 +1,6 @@
-EESchema Schematic File Version 2
-LIBS:power
-LIBS:device
-LIBS:transistors
-LIBS:conn
-LIBS:linear
-LIBS:regul
-LIBS:74xx
-LIBS:cmos4000
-LIBS:adc-dac
-LIBS:memory
-LIBS:xilinx
-LIBS:microcontrollers
-LIBS:dsp
-LIBS:microchip
-LIBS:analog_switches
-LIBS:motorola
-LIBS:texas
-LIBS:intel
-LIBS:audio
-LIBS:interface
-LIBS:digital-audio
-LIBS:philips
-LIBS:display
-LIBS:cypress
-LIBS:siliconi
-LIBS:opto
-LIBS:atmel
-LIBS:contrib
-LIBS:valves
-LIBS:MB-CM15113
-LIBS:audio_source-cache
+EESchema Schematic File Version 4
 LIBS:MB-CM15113-btm-68D_breakout_adapter-cache
-EELAYER 26 0
+EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -46,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L MB-CM15113 U1
+L MB-CM15113-btm-68D_breakout_adapter-rescue:MB-CM15113 U1
 U 1 1 55EC62E4
 P 5500 2850
 F 0 "U1" H 5500 3350 60  0000 C CNN
@@ -57,7 +26,7 @@ F 3 "" H 5550 2850 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_01X15 P1
+L MB-CM15113-btm-68D_breakout_adapter-rescue:CONN_01X15 P1
 U 1 1 55EC634B
 P 4050 2850
 F 0 "P1" H 4050 3700 50  0000 C CNN
@@ -68,7 +37,7 @@ F 3 "" H 4050 2850 60  0000 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L CONN_01X15 P3
+L MB-CM15113-btm-68D_breakout_adapter-rescue:CONN_01X15 P3
 U 1 1 55EC639E
 P 8300 2850
 F 0 "P3" H 8300 3700 50  0000 C CNN
@@ -79,7 +48,7 @@ F 3 "" H 8300 2850 60  0000 C CNN
 	1    0    0    1   
 $EndComp
 $Comp
-L CONN_01X05 P2
+L MB-CM15113-btm-68D_breakout_adapter-rescue:CONN_01X05 P2
 U 1 1 55EC6792
 P 6450 1650
 F 0 "P2" H 6450 1850 50  0000 C CNN
@@ -90,7 +59,7 @@ F 3 "" H 6450 1650 60  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L R R2
+L MB-CM15113-btm-68D_breakout_adapter-rescue:R R2
 U 1 1 57ECF44A
 P 6300 4300
 F 0 "R2" H 6370 4346 50  0000 L CNN
@@ -101,7 +70,7 @@ F 3 "" H 6300 4300 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R3
+L MB-CM15113-btm-68D_breakout_adapter-rescue:R R3
 U 1 1 57ECF4C4
 P 6600 4300
 F 0 "R3" H 6670 4346 50  0000 L CNN
@@ -112,7 +81,7 @@ F 3 "" H 6600 4300 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L D D1
+L MB-CM15113-btm-68D_breakout_adapter-rescue:D D1
 U 1 1 57ECF6CA
 P 6300 3900
 F 0 "D1" V 6254 3978 50  0000 L CNN
@@ -123,7 +92,7 @@ F 3 "" H 6300 3900 50  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L D D2
+L MB-CM15113-btm-68D_breakout_adapter-rescue:D D2
 U 1 1 57ECF843
 P 6600 3900
 F 0 "D2" V 6554 3978 50  0000 L CNN
@@ -134,7 +103,7 @@ F 3 "" H 6600 3900 50  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L SW_PUSH SW2
+L MB-CM15113-btm-68D_breakout_adapter-rescue:SW_PUSH SW2
 U 1 1 57ED00C6
 P 7050 4150
 F 0 "SW2" V 7096 4096 50  0000 R CNN
@@ -145,7 +114,7 @@ F 3 "" H 7050 4150 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L R R4
+L MB-CM15113-btm-68D_breakout_adapter-rescue:R R4
 U 1 1 57ED0215
 P 7300 4300
 F 0 "R4" H 7370 4346 50  0000 L CNN
@@ -156,7 +125,7 @@ F 3 "" H 7300 4300 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L SW_PUSH SW1
+L MB-CM15113-btm-68D_breakout_adapter-rescue:SW_PUSH SW1
 U 1 1 57ED066C
 P 4400 4150
 F 0 "SW1" V 4446 4096 50  0000 R CNN
@@ -167,7 +136,7 @@ F 3 "" H 4400 4150 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L R R1
+L MB-CM15113-btm-68D_breakout_adapter-rescue:R R1
 U 1 1 57ED0675
 P 4650 4300
 F 0 "R1" H 4720 4346 50  0000 L CNN
@@ -178,7 +147,7 @@ F 3 "" H 4650 4300 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L L L1
+L MB-CM15113-btm-68D_breakout_adapter-rescue:L L1
 U 1 1 599EED00
 P 7550 2650
 F 0 "L1" V 7740 2650 50  0000 C CNN
@@ -189,7 +158,7 @@ F 3 "" H 7550 2650 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L C C1
+L MB-CM15113-btm-68D_breakout_adapter-rescue:C C1
 U 1 1 599EF23C
 P 7250 1900
 F 0 "C1" H 7365 1946 50  0000 L CNN
@@ -200,7 +169,7 @@ F 3 "" H 7250 1900 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C2
+L MB-CM15113-btm-68D_breakout_adapter-rescue:C C2
 U 1 1 599EFBD4
 P 7850 4000
 F 0 "C2" H 7965 4046 50  0000 L CNN
@@ -211,7 +180,7 @@ F 3 "" H 7850 4000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR01
+L power1:GND #PWR01
 U 1 1 599F0545
 P 4200 3950
 F 0 "#PWR01" H 4200 3700 50  0001 C CNN
@@ -242,25 +211,25 @@ Wire Wire Line
 Wire Wire Line
 	4250 3050 4750 3050
 Wire Wire Line
-	4750 3150 4250 3150
+	4750 3150 4650 3150
 Wire Wire Line
-	6200 3250 8100 3250
+	6200 3250 6300 3250
 Wire Wire Line
-	6200 3150 8100 3150
+	6200 3150 6600 3150
 Wire Wire Line
-	6200 3050 8100 3050
+	6200 3050 7050 3050
 Wire Wire Line
-	6200 2950 8100 2950
+	6200 2950 6450 2950
 Wire Wire Line
 	6200 2850 8100 2850
 Wire Wire Line
 	6200 2750 8100 2750
 Wire Wire Line
-	6200 2550 8100 2550
+	6200 2550 6650 2550
 Wire Wire Line
 	6200 2450 8100 2450
 Wire Wire Line
-	6200 2350 8100 2350
+	6200 2350 6550 2350
 Wire Wire Line
 	6200 2250 8100 2250
 Wire Wire Line
@@ -284,7 +253,7 @@ Wire Wire Line
 Wire Wire Line
 	6300 4450 6300 4550
 Wire Wire Line
-	6300 4550 6600 4550
+	6300 4550 6450 4550
 Wire Wire Line
 	6600 4550 6600 4450
 Wire Wire Line
@@ -306,7 +275,7 @@ Connection ~ 7300 2950
 Wire Wire Line
 	4400 4450 4400 4550
 Wire Wire Line
-	4400 4550 4650 4550
+	4400 4550 4500 4550
 Wire Wire Line
 	4650 4550 4650 4450
 Wire Wire Line
@@ -317,12 +286,12 @@ Wire Wire Line
 Connection ~ 4500 4550
 Connection ~ 4500 3550
 Wire Wire Line
-	6200 2150 8100 2150
+	6200 2150 6250 2150
 Connection ~ 6250 2150
 Wire Wire Line
 	7700 2650 8100 2650
 Wire Wire Line
-	7400 2650 6200 2650
+	7400 2650 7250 2650
 Wire Wire Line
 	7250 2050 7250 2650
 Connection ~ 7250 2650
@@ -337,7 +306,7 @@ Wire Wire Line
 	7850 3850 7850 2950
 Connection ~ 7850 2950
 Wire Wire Line
-	7650 3350 7650 4300
+	7650 3350 7650 3800
 Wire Wire Line
 	7650 4300 7850 4300
 Wire Wire Line
@@ -345,9 +314,9 @@ Wire Wire Line
 Wire Wire Line
 	4200 3950 4200 3800
 Wire Wire Line
-	4200 3800 7650 3800
+	4200 3800 4400 3800
 Wire Wire Line
-	4750 3250 4250 3250
+	4750 3250 4700 3250
 Wire Wire Line
 	4250 3350 4600 3350
 Wire Wire Line
@@ -360,7 +329,7 @@ Wire Wire Line
 	4700 3350 4700 3250
 Connection ~ 4700 3250
 Wire Wire Line
-	4750 3550 4450 3550
+	4750 3550 4500 3550
 Wire Wire Line
 	4450 3550 4450 3450
 Wire Wire Line
@@ -372,7 +341,7 @@ Wire Wire Line
 Wire Wire Line
 	4350 3650 4750 3650
 Wire Wire Line
-	4400 3250 4400 3850
+	4400 3250 4400 3800
 Connection ~ 4400 3800
 Connection ~ 4400 3250
 Wire Wire Line
@@ -394,4 +363,44 @@ Wire Wire Line
 	7900 3350 7900 3450
 Wire Wire Line
 	7900 3450 6200 3450
+Wire Wire Line
+	6650 2550 7000 2550
+Wire Wire Line
+	6550 2350 8100 2350
+Wire Wire Line
+	6300 3250 8100 3250
+Wire Wire Line
+	6600 3150 8100 3150
+Wire Wire Line
+	6450 2950 7300 2950
+Wire Wire Line
+	6450 4550 6600 4550
+Wire Wire Line
+	7050 3050 8100 3050
+Wire Wire Line
+	7300 2950 7850 2950
+Wire Wire Line
+	4650 3150 4250 3150
+Wire Wire Line
+	4500 4550 4650 4550
+Wire Wire Line
+	4500 3550 4450 3550
+Wire Wire Line
+	6250 2150 8100 2150
+Wire Wire Line
+	7250 2650 6200 2650
+Wire Wire Line
+	7000 2550 8100 2550
+Wire Wire Line
+	7850 2950 8100 2950
+Wire Wire Line
+	4700 3250 4400 3250
+Wire Wire Line
+	4400 3800 7650 3800
+Wire Wire Line
+	4400 3800 4400 3850
+Wire Wire Line
+	4400 3250 4250 3250
+Wire Wire Line
+	7650 3800 7650 4300
 $EndSCHEMATC

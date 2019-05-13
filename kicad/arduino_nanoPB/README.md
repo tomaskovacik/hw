@@ -1,7 +1,7 @@
 I was in need for drop in replacement for some arduino compatible boards with more functionality (pins, UARTs, I2C...) , so I made few boards for few different/updated chips and while I was playing with is I designed more then what i need (breadboard adapter). I designed this set of boards:
 
  - [ Atmega328P/PA/PB board compatible with Arduino nano ](https://www.tindie.com/products/tomaskovacik/nanopb/)
- - [ Atmega328P/PA/PB board compatible with Arduino Uno ] (https://www.tindie.com/products/tomaskovacik/unopb/)
+ - [ Atmega328P/PA/PB board compatible with Arduino Uno ](https://www.tindie.com/products/tomaskovacik/unopb/)
  - [ Atmega324P/PA board compatible with Arduino nano ](https://www.tindie.com/products/tomaskovacik/nano324/) (PB version not produced yet, only designed, check github)
  - [ Atmega324P/PA board compatible with Arduino mega ](https://www.tindie.com/products/tomaskovacik/mega324/)(PB version not produced yet, only designed, check 
 github)

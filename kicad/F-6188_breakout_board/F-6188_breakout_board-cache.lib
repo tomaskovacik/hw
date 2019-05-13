@@ -1,11 +1,11 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# Device:C
+# Device_C
 #
-DEF Device:C C 0 10 N Y 1 F N
+DEF Device_C C 0 10 N Y 1 F N
 F0 "C" 25 100 50 H V L CNN
-F1 "Device:C" 25 -100 50 H V L CNN
+F1 "Device_C" 25 -100 50 H V L CNN
 F2 "" 38 -150 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -19,11 +19,11 @@ X ~ 2 0 -150 110 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Device:Jumper_NO_Small
+# Device_Jumper_NO_Small
 #
-DEF Device:Jumper_NO_Small JP 0 30 N N 1 F N
+DEF Device_Jumper_NO_Small JP 0 30 N N 1 F N
 F0 "JP" 0 80 50 H V C CNN
-F1 "Device:Jumper_NO_Small" 10 -60 50 H V C CNN
+F1 "Device_Jumper_NO_Small" 10 -60 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -34,11 +34,11 @@ X 2 2 100 0 40 L 50 50 0 1 P
 ENDDRAW
 ENDDEF
 #
-# Device:L
+# Device_L
 #
-DEF Device:L L 0 40 N N 1 F N
+DEF Device_L L 0 40 N N 1 F N
 F0 "L" -50 0 50 V V C CNN
-F1 "Device:L" 75 0 50 V V C CNN
+F1 "Device_L" 75 0 50 V V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -57,11 +57,11 @@ X 2 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Device:LED
+# Device_LED
 #
-DEF Device:LED D 0 40 Y N 1 F N
+DEF Device_LED D 0 40 Y N 1 F N
 F0 "D" 0 100 50 H V C CNN
-F1 "Device:LED" 0 -100 50 H V C CNN
+F1 "Device_LED" 0 -100 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -80,11 +80,11 @@ X A 2 150 0 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Device:R
+# Device_R
 #
-DEF Device:R R 0 0 N Y 1 F N
+DEF Device_R R 0 0 N Y 1 F N
 F0 "R" 80 0 50 V V C CNN
-F1 "Device:R" 0 0 50 V V C CNN
+F1 "Device_R" 0 0 50 V V C CNN
 F2 "" -70 0 50 V I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -98,11 +98,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# F-6188:F-6188
+# F-6188_F-6188
 #
-DEF F-6188:F-6188 U 0 40 Y Y 1 F N
+DEF F-6188_F-6188 U 0 40 Y Y 1 F N
 F0 "U" 2500 2650 60 H V C CNN
-F1 "F-6188:F-6188" 2500 2750 60 H V C CNN
+F1 "F-6188_F-6188" 2500 2750 60 H V C CNN
 F2 "" 2600 1500 60 H I C CNN
 F3 "" 2600 1500 60 H I C CNN
 $FPLIST
@@ -145,11 +145,11 @@ X MBISTEN 9 1700 1950 200 R 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# Jumper:Jumper_3_Bridged12
+# Jumper_Jumper_3_Bridged12
 #
-DEF Jumper:Jumper_3_Bridged12 JP 0 0 Y N 1 F N
+DEF Jumper_Jumper_3_Bridged12 JP 0 0 Y N 1 F N
 F0 "JP" -100 -100 50 H V C CNN
-F1 "Jumper:Jumper_3_Bridged12" 0 110 50 H V C CNN
+F1 "Jumper_Jumper_3_Bridged12" 0 110 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -167,11 +167,11 @@ X B 3 250 0 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# MiscellaneousDevices:SWITCH_SPST
+# MiscellaneousDevices_SWITCH_SPST
 #
-DEF MiscellaneousDevices:SWITCH_SPST SW 0 40 Y Y 1 F N
+DEF MiscellaneousDevices_SWITCH_SPST SW 0 40 Y Y 1 F N
 F0 "SW" 0 150 60 H V C CNN
-F1 "MiscellaneousDevices:SWITCH_SPST" 0 -100 60 H V C CNN
+F1 "MiscellaneousDevices_SWITCH_SPST" 0 -100 60 H V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW
@@ -181,11 +181,11 @@ X ~ 2 200 0 100 L 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# c:C
+# c_C
 #
-DEF c:C C 0 10 N Y 1 F N
+DEF c_C C 0 10 N Y 1 F N
 F0 "C" 50 100 60 H V L CNN
-F1 "c:C" 50 -100 60 H V L CNN
+F1 "c_C" 50 -100 60 H V L CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -201,11 +201,11 @@ X ~ 2 0 -200 170 U 40 40 1 1 P
 ENDDRAW
 ENDDEF
 #
-# gencon:CONN_16
+# gencon_CONN_16
 #
-DEF gencon:CONN_16 CON 0 40 Y N 1 F N
+DEF gencon_CONN_16 CON 0 40 Y N 1 F N
 F0 "CON" 0 850 60 H V C CNN
-F1 "gencon:CONN_16" 0 -850 60 H V C CNN
+F1 "gencon_CONN_16" 0 -850 60 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -229,11 +229,11 @@ X 9 9 -400 -50 300 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# jacks:PJ-320B
+# jacks_PJ-320B
 #
-DEF jacks:PJ-320B U 0 40 Y Y 1 F N
+DEF jacks_PJ-320B U 0 40 Y Y 1 F N
 F0 "U" 0 500 39 H V C CNN
-F1 "jacks:PJ-320B" 0 450 39 H V C CNN
+F1 "jacks_PJ-320B" 0 450 39 H V C CNN
 F2 "" 200 100 39 H I C CNN
 F3 "" 200 100 39 H I C CNN
 DRAW
@@ -247,11 +247,11 @@ X ~ 3 400 100 200 L 50 50 1 1 O
 ENDDRAW
 ENDDEF
 #
-# jacks:PJ-327A
+# jacks_PJ-327A
 #
-DEF jacks:PJ-327A U 0 40 Y Y 1 F N
+DEF jacks_PJ-327A U 0 40 Y Y 1 F N
 F0 "U" -50 500 39 H V C CNN
-F1 "jacks:PJ-327A" -50 400 39 H V C CNN
+F1 "jacks_PJ-327A" -50 400 39 H V C CNN
 F2 "" 0 0 39 H I C CNN
 F3 "" 0 0 39 H I C CNN
 DRAW
@@ -270,11 +270,11 @@ X ~ 6 400 0 200 L 50 50 1 1 O
 ENDDRAW
 ENDDEF
 #
-# power:GND
+# power_GND
 #
-DEF power:GND #PWR 0 0 Y Y 1 F P
+DEF power_GND #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -250 50 H I C CNN
-F1 "power:GND" 0 -150 50 H V C CNN
+F1 "power_GND" 0 -150 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW

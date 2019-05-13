@@ -22,7 +22,7 @@ Boards which I did not need are on sale on tinfie, 1$ for board + shipping, as a
 #### Why not RX/TX leds?
 
 board which is on sale on tindie has no RX/TX leds.
-where is place for RX/TX leds on PC (unpopulated R8,R9,D3 and D4), but I made error in design and route them to ground, they should be connected to 5V rail. I was about to run new PCBs when I realize this will only works with more expensive CP2102N chip, as this one use separate pins for leds. Legacy CP2102 did not has this function (leds in case of CP2102 are tie directly to RX/TX lines). And as I want to use CP2102 chip I decide that these leds are not so important, that rolling new PCB is just waste of money and also I did not like to ecological side of just throwing these PCBs to bin.
+There is place for RX/TX leds on PC (unpopulated R8,R9,D3 and D4), but I made error in design and route them to ground, they should be connected to 5V rail. I was about to run new PCBs when I realize this will only works with more expensive CP2102N chip, as this one use separate pins for leds. Legacy CP2102 did not has this function (leds in case of CP2102 are tied directly to RX/TX lines). And as I want to use CP2102 chip I decide that these leds are not so important, that rolling new PCB is just waste of money and also I did not like to ecological side of just throwing these PCBs to bin.
 
 But this can be hacked, you just need to cut traces around D4,D3 and R8 and R9. Then solder resistors, leds in revers, and few jumper wires. resistors goes to RX/TX pin and common pin of leds to 5V:
 

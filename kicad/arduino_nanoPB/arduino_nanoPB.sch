@@ -1,4 +1,4 @@
-EESchema Schematic File Version 4
+EESchema Schematic File Version 5
 LIBS:arduino_nanoPB-cache
 EELAYER 29 0
 EELAYER END
@@ -679,7 +679,7 @@ L arduino_nanoPB-rescue:R-RESCUE-arduino_atmega88-arduino_atmega88-rescue-arduin
 U 1 1 5CE23A7A
 P 2100 8400
 F 0 "R1" V 2100 8400 50  0000 C CNN
-F 1 "22" V 2150 8600 50  0000 C CNN
+F 1 "20" V 2150 8600 50  0000 C CNN
 F 2 "Resistors_SMD.pretty:R_0805_HandSoldering" H 2100 8400 60  0001 C CNN
 F 3 "" H 2100 8400 60  0001 C CNN
 	1    2100 8400
@@ -690,7 +690,7 @@ L arduino_nanoPB-rescue:R-RESCUE-arduino_atmega88-arduino_atmega88-rescue-arduin
 U 1 1 5CE24456
 P 2100 8300
 F 0 "R2" V 2100 8300 50  0000 C CNN
-F 1 "22" V 2150 8500 50  0000 C CNN
+F 1 "20" V 2150 8500 50  0000 C CNN
 F 2 "Resistors_SMD.pretty:R_0805_HandSoldering" H 2100 8300 60  0001 C CNN
 F 3 "" H 2100 8300 60  0001 C CNN
 	1    2100 8300
@@ -1042,7 +1042,7 @@ L arduino_nanoPB-rescue:AP1117-50-Regulator_Linear U4
 U 1 1 5CE53770
 P 10650 3500
 F 0 "U4" H 10650 3742 50  0000 C CNN
-F 1 "AP1117-50" H 10650 3651 50  0000 C CNN
+F 1 "AP1117-33" H 10650 3651 50  0000 C CNN
 F 2 "modules:AB2_SOT223" H 10650 3700 50  0001 C CNN
 F 3 "http://www.diodes.com/datasheets/AP1117.pdf" H 10750 3250 50  0001 C CNN
 	1    10650 3500

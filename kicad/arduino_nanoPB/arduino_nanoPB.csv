@@ -1,23 +1,27 @@
-Designator,Package,Quantity,Designation
-"P1,P2",Pin_Header_Straight_1x16,2,Pin Header 1x16
-SW1,3x6x2.5mm_tact_switch,1,3x6x2.5mm tact. Button
-"C2,C1,C7,C8,C9,C10,C11",0805,7,0.1m
-U1,TQFP-32_7x7mm_Pitch0.8mm,1,ATMEGA328PB-AU
-C3,tantal cap sizeA (3216),1,1u
-C4,tantal cap sizeA (3216),1,10u
-D1,1206,1,Green RED
-D2,1206,1,Red LED
-"D3,D4",1206,2,Yellow LED
-"D5,D6",SOD-123,2,MBR120
-F1,1206,1,Fuse
-J1,USB_Micro-B,1,USB_B_Micro
-L1,1206,1,fer. bead
-P7,Pin_Header_Straight_2x03,1,
-"R1,R2",0805,2,22
-"R3,R7,R8,R9",0805,4,1k
-R6,0805,1,10k
-"TH1,TH2",0805,2,CG0603MLC-05E
-U2,QFN-24-1EP_4x4mm_Pitch0.5mm,1,CP2104
-"U3,U4",SOT223,2,AP1117-50
-Y1,MURATA_CSTCE_V53,1,16MHz resonator
-R4,0805,1,1M
+"Id";"Designator";"Package";"Quantity";"Designation";"Supplier and ref";
+1;"U2";"QFN-28-1EP_5x5mm_Pitch0.5mm";1;"CP2102N-A01-GQFN28";;;
+2;"JP2,JP1";"SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm_NumberLabels";2;"Jumper_3_Open";;;
+3;"P2";"Pin_Header_Straight_1x16";1;"Analog";;;
+4;"SW1";"3x6x2.5mm_tact_switch";1;"SW_PUSH";;;
+5;"C2,C1,C7,C8,C9,C10,C11,C4";"C_0805_HandSoldering";8;"0.1m";;;
+6;"U1";"TQFP-32_7x7mm_Pitch0.8mm";1;"ATMEGA328PB-AU";;;
+7;"P1";"Pin_Header_Straight_1x16";1;"Digital";;;
+8;"P3,P4,P5,P6";"1pin_Nano";4;"CONN_01X01";;;
+9;"C3";"TantalC_SizeA_EIA-3216_Wave";1;"1u";;;
+10;"D1";"LED-1206";1;"Green RED";;;
+11;"D2";"LED-1206";1;"Red LED";;;
+12;"D3,D4";"LED-1206";2;"Yellow LED";;;
+13;"D5,D6";"SOD-123";2;"MBR120";;;
+14;"F1";"Fuse_SMD1206_Wave";1;"Fuse";;;
+15;"J1";"USB_Micro-B";1;"USB_B_Micro";;;
+16;"L1";"Choke_SMD_1206_Standard";1;"L";;;
+17;"P7";"Pin_Header_Straight_2x03";1;"CONN_6";;;
+18;"R1,R2";"R_0805_HandSoldering";2;"22";;;
+19;"R3,R7,R8,R9";"R_0805_HandSoldering";4;"1k";;;
+20;"R6,R5";"R_0805_HandSoldering";2;"10k";;;
+21;"TH1,TH2";"R_0603_HandSoldering";2;"CG0603MLC-05E";;;
+22;"U3";"AB2_SOT223";1;"AP1117-50";;;
+23;"U4";"AB2_SOT223";1;"AP1117-33";;;
+24;"Y1";"MURATA_CSTCE_V53";1;"Resonator";;;
+25;"R4";"R_0805_HandSoldering";1;"1M";;;
+26;"JP3";"SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm";1;"SolderJumper_2_Bridged";;;

@@ -481,7 +481,7 @@ ENDDEF
 #
 # arduino_nanoPB-rescue_GND-RESCUE-arduino_atmega88-arduino_atmega88-rescue-arduino_atmega328PB-rescue
 #
-DEF ~arduino_nanoPB-rescue_GND-RESCUE-arduino_atmega88-arduino_atmega88-rescue-arduino_atmega328PB-rescue #PWR 0 0 Y Y 1 F P
+DEF arduino_nanoPB-rescue_GND-RESCUE-arduino_atmega88-arduino_atmega88-rescue-arduino_atmega328PB-rescue #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 0 30 H I C CNN
 F1 "arduino_nanoPB-rescue_GND-RESCUE-arduino_atmega88-arduino_atmega88-rescue-arduino_atmega328PB-rescue" 0 -70 30 H I C CNN
 F2 "" 0 0 60 H V C CNN

@@ -50,14 +50,8 @@ Text Label 15600 1300 2    60   ~ 0
 Reset
 Text Notes 15650 1000 0    60   ~ 0
 Holes
-Text Notes 13350 575  0    60   ~ 0
-Shield for Arduino Nano
 Text Label 15100 950  1    60   ~ 0
 Vin
-Wire Notes Line
-	13325 650  14525 650 
-Wire Notes Line
-	14525 650  14525 475 
 $Comp
 L Connector_Generic:Conn_01x01 P3
 U 1 1 56D73ADD
@@ -106,39 +100,6 @@ $EndComp
 NoConn ~ 15750 850 
 NoConn ~ 15850 850 
 NoConn ~ 15950 850 
-$Comp
-L Connector_Generic:Conn_01x16 P1
-U 1 1 56D73FAC
-P 14400 1800
-F 0 "P1" H 14400 2600 50  0000 C CNN
-F 1 "Digital" V 14500 1800 50  0000 C CNN
-F 2 "Pin_Headers.pretty:Pin_Header_Straight_1x16" H 14400 1800 50  0001 C CNN
-F 3 "" H 14400 1800 50  0000 C CNN
-	1    14400 1800
-	1    0    0    -1  
-$EndComp
-$Comp
-L Connector_Generic:Conn_01x16 P2
-U 1 1 56D740C7
-P 14800 1800
-F 0 "P2" H 14800 2600 50  0000 C CNN
-F 1 "Analog" V 14900 1800 50  0000 C CNN
-F 2 "Pin_Headers.pretty:Pin_Header_Straight_1x16" H 14800 1800 50  0001 C CNN
-F 3 "" H 14800 1800 50  0000 C CNN
-	1    14800 1800
-	-1   0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR01
-U 1 1 56D7422C
-P 14100 2650
-F 0 "#PWR01" H 14100 2400 50  0001 C CNN
-F 1 "GND" H 14100 2500 50  0000 C CNN
-F 2 "" H 14100 2650 50  0000 C CNN
-F 3 "" H 14100 2650 50  0000 C CNN
-	1    14100 2650
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	14200 1400 14100 1400
 Wire Wire Line
@@ -220,12 +181,6 @@ Wire Notes Line
 	16050 1050 15500 1050
 Wire Notes Line
 	15500 1050 15500 500 
-Wire Notes Line
-	16050 2850 13300 2850
-Wire Notes Line
-	13300 2850 13300 500 
-Text Notes 14500 1100 0    60   ~ 0
-1
 Wire Wire Line
 	4650 8550 4650 8650
 Wire Wire Line
@@ -855,18 +810,14 @@ Connection ~ 2200 2050
 $Comp
 L power:GND #PWR02
 U 1 1 56D746ED
-P 15100 2650
-F 0 "#PWR02" H 15100 2400 50  0001 C CNN
-F 1 "GND" H 15100 2500 50  0000 C CNN
-F 2 "" H 15100 2650 50  0000 C CNN
-F 3 "" H 15100 2650 50  0000 C CNN
-	1    15100 2650
+P 15100 2800
+F 0 "#PWR02" H 15100 2550 50  0001 C CNN
+F 1 "GND" H 15100 2650 50  0000 C CNN
+F 2 "" H 15100 2800 50  0000 C CNN
+F 3 "" H 15100 2800 50  0000 C CNN
+	1    15100 2800
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	14100 1400 14100 2650
-Wire Wire Line
-	15100 1200 15100 2650
 Wire Wire Line
 	14200 2600 13500 2600
 Text Label 13500 2600 0    50   ~ 0
@@ -1019,17 +970,6 @@ Text Label 14150 9300 0    50   ~ 0
 VBUS
 Wire Wire Line
 	14550 9300 14150 9300
-$Comp
-L arduino_nanoPB-rescue:3V3-pwr #PWR0126
-U 1 1 5CE8434C
-P 11150 3200
-F 0 "#PWR0126" H 11150 3160 30  0001 C CNN
-F 1 "3V3" H 11175 3361 60  0000 C CNN
-F 2 "" H 11150 3200 50  0001 C CNN
-F 3 "" H 11150 3200 50  0001 C CNN
-	1    11150 3200
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	11150 3500 11150 3200
 Connection ~ 10100 3500
@@ -1547,4 +1487,74 @@ Text Label 6400 10200 1    60   ~ 0
 RX
 Text Label 7250 10200 1    60   ~ 0
 TX
+Wire Notes Line
+	14525 650  14525 475 
+Wire Notes Line
+	13325 650  14525 650 
+Text Notes 13350 575  0    60   ~ 0
+Shield for Arduino Nano
+Wire Notes Line
+	16050 3650 13300 3650
+Wire Notes Line
+	13300 3650 13300 500 
+$Comp
+L arduino_nanoPB-rescue:3V3-pwr #PWR0126
+U 1 1 5CE8434C
+P 11150 3200
+F 0 "#PWR0126" H 11150 3160 30  0001 C CNN
+F 1 "3V3" H 11175 3361 60  0000 C CNN
+F 2 "" H 11150 3200 50  0001 C CNN
+F 3 "" H 11150 3200 50  0001 C CNN
+	1    11150 3200
+	1    0    0    -1  
+$EndComp
+Text Label 5350 3050 0    50   ~ 0
+20
+Text Label 5350 3150 0    50   ~ 0
+21
+$Comp
+L Connector_Generic:Conn_01x17 P2
+U 1 1 56D740C7
+P 14800 1900
+F 0 "P2" H 14800 2800 50  0000 C CNN
+F 1 "Analog" V 14900 1900 50  0000 C CNN
+F 2 "Pin_Headers.pretty:Pin_Header_Straight_1x17" H 14800 1900 50  0001 C CNN
+F 3 "" H 14800 1900 50  0000 C CNN
+	1    14800 1900
+	-1   0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR01
+U 1 1 56D7422C
+P 14100 2850
+F 0 "#PWR01" H 14100 2600 50  0001 C CNN
+F 1 "GND" H 14100 2700 50  0000 C CNN
+F 2 "" H 14100 2850 50  0000 C CNN
+F 3 "" H 14100 2850 50  0000 C CNN
+	1    14100 2850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	14100 1400 14100 2850
+Wire Wire Line
+	15100 1200 15100 2800
+Wire Wire Line
+	15000 2700 15600 2700
+Wire Wire Line
+	14200 2700 13500 2700
+Text Label 13500 2700 0    50   ~ 0
+20
+Text Label 15600 2700 2    50   ~ 0
+21
+$Comp
+L Connector_Generic:Conn_01x17 P1
+U 1 1 56D73FAC
+P 14400 1900
+F 0 "P1" H 14400 2800 50  0000 C CNN
+F 1 "Digital" V 14500 1900 50  0000 C CNN
+F 2 "Pin_Headers.pretty:Pin_Header_Straight_1x17" H 14400 1900 50  0001 C CNN
+F 3 "" H 14400 1900 50  0000 C CNN
+	1    14400 1900
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

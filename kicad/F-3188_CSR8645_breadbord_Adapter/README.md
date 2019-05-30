@@ -10,32 +10,28 @@ Breadboard adapter for F-3188 bluetooth audio module from ebay/aliexpress (searc
 #### Schematics
 
 ![Schematics](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/F-3188_CSR8645_breadbord_Adapter/pics/F-3188_CSR8645_breadbord_Adapter.png "Schematics")
-Schematics
 
 #### PICS:
 ![assembled adapter](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/F-3188_CSR8645_breadbord_Adapter/pics/20190524_180931.jpg "assembled adapter")
-Assembled adapter
 
 ![assembled adapter](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/F-3188_CSR8645_breadbord_Adapter/pics/20190524_180943.jpg "assembled adapter")
-Assembled adapter
 
 ![assembled adapter](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/F-3188_CSR8645_breadbord_Adapter/pics/20190524_180953.jpg "assembled adapter")
-Assembled adapter
 
 ![assembled adapter](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/F-3188_CSR8645_breadbord_Adapter/pics/20190524_181000.jpg "assembled adapter")
-Assembled adapter
+
+#### Assembly plan
 
 ![Assembly plan](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/F-3188_CSR8645_breadbord_Adapter/pics/F-3188_CSR8645_breadbord_Assambly_plan.png "Assembly plan")
-Assembly plan
+
+#### Additional files used in this project
 
 Github repository with [KiCad library part, KiCad footprint](https://github.com/tomaskovacik/kicad-library/).
 
 Github repository with [datasheet](https://github.com/tomaskovacik/kicad-library/tree/master/library/datasheet/F-3188_CSR8645_bluetooth).
 
-More breadboard adapters:
+#### Buy one
 
-BLK-MD-SPK-B https://www.tindie.com/products/tomaskovacik/breadboard-adapter-for-blk-md-spk-b/
+[![I sell on Tindie](https://d2ss6ovg47m0r5.cloudfront.net/badges/tindie-larges.png "I sell on Tindie")](https://www.tindie.com/stores/tomaskovacik/?ref=offsite_badges&utm_source=sellers_tomaskovacik&utm_medium=badges&utm_campaign=badge_large)
 
-XS3886 / S3860M-s https://www.tindie.com/products/tomaskovacik/breadboard-adapter-for-s3860m-s-sx3868/
-
-F-3188 https://www.tindie.com/products/tomaskovacik/breadboard-adapter-for-f-3188-csr8645-module/
+<a href="https://www.tindie.com/stores/tomaskovacik/?ref=offsite_badges&utm_source=sellers_tomaskovacik&utm_medium=badges&utm_campaign=badge_large"><img src="https://d2ss6ovg47m0r5.cloudfront.net/badges/tindie-larges.png" alt="I sell on Tindie" width="200" height="104"></a>

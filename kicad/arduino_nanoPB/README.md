@@ -35,3 +35,5 @@ There is place for RX/TX leds on PC (unpopulated R8,R9,D3 and D4), but I made er
 But this can be hacked, you just need to cut traces around D4,D3 and R8 and R9. Then solder resistors, leds in revers, and few jumper wires. resistors goes to RX/TX pin and common pin of leds to 5V:
 
 ![MODS](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/arduino_nanoPB/pics/fixies.jpg "Mods")
+
+[![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)

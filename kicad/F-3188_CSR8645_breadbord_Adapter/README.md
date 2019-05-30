@@ -9,7 +9,7 @@ Breadboard adapter for F-3188 bluetooth audio module from ebay/aliexpress (searc
 
 #### Schematics
 
-![Schematics](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/F-3188_CSR8645_breadbord_Adapter/pics/F-3188_CSR8645_breadbord_Adapter.png "assembled adapter")
+![Schematics](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/F-3188_CSR8645_breadbord_Adapter/pics/F-3188_CSR8645_breadbord_Adapter.png "Schematics")
 Schematics
 
 #### PICS:

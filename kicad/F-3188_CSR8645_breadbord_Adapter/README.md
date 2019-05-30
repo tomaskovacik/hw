@@ -26,7 +26,7 @@ Breadboard adapter for F-3188 bluetooth audio module from ebay/aliexpress (searc
 
 #### Additional files used in this project
 
-Github repository with [KiCad library part, KiCad footprint](https://github.com/tomaskovacik/kicad-library/).
+Github repository with [KiCad library part](https://github.com/tomaskovacik/kicad-library/tree/master/library), [KiCad footprint](https://github.com/tomaskovacik/kicad-library/tree/master/bluetooth.pretty).
 
 Github repository with [datasheet](https://github.com/tomaskovacik/kicad-library/tree/master/library/datasheet/F-3188_CSR8645_bluetooth).
 
@@ -34,4 +34,3 @@ Github repository with [datasheet](https://github.com/tomaskovacik/kicad-library
 
 [![I sell on Tindie](https://d2ss6ovg47m0r5.cloudfront.net/badges/tindie-larges.png "I sell on Tindie")](https://www.tindie.com/stores/tomaskovacik/?ref=offsite_badges&utm_source=sellers_tomaskovacik&utm_medium=badges&utm_campaign=badge_large)
 
-<a href="https://www.tindie.com/stores/tomaskovacik/?ref=offsite_badges&utm_source=sellers_tomaskovacik&utm_medium=badges&utm_campaign=badge_large"><img src="https://d2ss6ovg47m0r5.cloudfront.net/badges/tindie-larges.png" alt="I sell on Tindie" width="200" height="104"></a>

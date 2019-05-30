@@ -7,6 +7,11 @@ Breadboard adapter for F-3188 bluetooth audio module from ebay/aliexpress (searc
 - 3.5mm jack for audio output
 - 2x LED for indication with resistors
 
+#### Schematics
+
+![Schematics](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/F-3188_CSR8645_breadbord_Adapter/pics/F-3188_CSR8645_breadbord_Assambly_plan.png "assembled adapter")
+Schematics
+
 #### PICS:
 ![assembled adapter](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/F-3188_CSR8645_breadbord_Adapter/pics/20190524_180931.jpg "assembled adapter")
 Assembled adapter

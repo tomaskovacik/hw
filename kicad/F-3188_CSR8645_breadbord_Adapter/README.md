@@ -20,7 +20,7 @@ Assembled adapter
 ![assembled adapter](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/F-3188_CSR8645_breadbord_Adapter/pics/20190524_181000.jpg "assembled adapter")
 Assembled adapter
 
-![Assembly plan] (https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/F-3188_CSR8645_breadbord_Adapter/pics/F-3188_CSR8645_breadbord_Assambly_plan.png "Assembly plan")
+![Assembly plan](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/F-3188_CSR8645_breadbord_Adapter/pics/F-3188_CSR8645_breadbord_Assambly_plan.png "Assembly plan")
 Assembly plan
 
 Github repository with [KiCad library part, KiCad footprint](https://github.com/tomaskovacik/kicad-library/).

@@ -1,30 +1,54 @@
-simple breadboard adapter for cheap BLK-MD-SPK-B module from ebay based on OVC3860 with 3.5mm jack for headphones, microphone and buttons.
+Breadboard adapter for BLK-MD-SPK-B
+-----------------------------------
+
+Breadboard adapter for BLK-MD-SPK-B bluetooth audio module from ebay (search for BLK-MD-SPK-B) based on OVC3860 chip (not CSR!!!).
+
+Adapter features
+----------------
+
+- 6 buttons(reset, play/pause, volume up/down, song previous/next)
+- 3.5mm jack for headphones direct connect, no caps
+- 3.5mm jack for microphone with supporting circut
+- indication leds
+
+####Schematics
+--------------
+![Schematics](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/blk-md-spk-b_breadboard_adapter/pics/schematics_2.0.png "Schematics")
+
+#### Photos
+
+
+![Assembled adapter, top view](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/blk-md-spk-b_breadboard_adapter/pics/20181002_174411.jpg "Assembled adapter top view")
+top view, assembled unit
+
+
+![Assembled adapter, bottom view](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/blk-md-spk-b_breadboard_adapter/pics/20181002_174418.jpg "Assembled adapter, bottom view")
+bottom view, assembled unit, with BT module soldered (silk screen marking of C3/R4 was swapped, fixed with perm. marker)
+
+
+#### Assembly plan
+--------------
+(fixed silk screen):
+<img src="https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/blk-md-spk-b_breadboard_adapter/pics/assembly_plan_2.0.png">
+
+
+#### Video
+----------
 
 video (ver. 1.0): https://www.youtube.com/watch?v=mN-LFUUrpa8
 
+#### Blog
+---------
+
 blog (ver. 1.0): http://kovo-blog.blogspot.sk/2015/01/breadboard-adapter-for-blk-md-spk-b.html
 
-boards are for sale(or kit, whole product...), contact me if you are interested, or buy on tindie:
+#### Additional files used in this project
+------------------------------------------
+Github repository with [KiCad library part](https://github.com/tomaskovacik/kicad-library/tree/master/library), [KiCad footprint](https://github.com/tomaskovacik/kicad-library/tree/master/bluetooth.pretty).
 
-<a href="https://www.tindie.com/products/tomaskovacik/breadboard-adapter-for-blk-md-spk-b/"><img src="https://d2ss6ovg47m0r5.cloudfront.net/badges/tindie-mediums.png" alt="I sell on Tindie" width="150" height="78"></a>
+Github repository with [datasheet](https://github.com/tomaskovacik/kicad-library/tree/master/library/datasheet/).
 
-Schematics:
---------------
-
-<img src="https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/blk-md-spk-b_breadboard_adapter/pics/2.0/schematics_2.0.png">
-
-Photos
--------------
-
-top view, assembled unit
-
-<img src="https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/blk-md-spk-b_breadboard_adapter/pics/2.0/20181002_174411.jpg">
-
-bottom view, assembled unit, with BT module soldered (silk screen marking of C3/R4 was switched, fix with perm. marker)
-
-<img src="https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/blk-md-spk-b_breadboard_adapter/pics/2.0/20181002_174418.jpg">
-
-assembly plan (fixed silk screen):
-
-<img src="https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/blk-md-spk-b_breadboard_adapter/pics/2.0/assembly_plan_2.0.png">
+#### Buy one
+------------
+[![I sell on Tindie](https://d2ss6ovg47m0r5.cloudfront.net/badges/tindie-larges.png "I sell on Tindie")](https://www.tindie.com/stores/tomaskovacik/?ref=offsite_badges&utm_source=sellers_tomaskovacik&utm_medium=badges&utm_campaign=badge_large)
 

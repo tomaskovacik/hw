@@ -19,18 +19,14 @@ Breadboard adapter for BLK-MD-SPK-B bluetooth audio module from ebay (search for
 ![Assembled adapter](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/blk-md-spk-b_breadboard_adapter/pics/20190524_181618.jpg "Assembled adapter")
 
 ![Assembled adapter top view](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/blk-md-spk-b_breadboard_adapter/pics/20190524_181628.jpg "Assembled adapter top view")
-top view, assembled unit
-
 
 ![Assembled adapter bottom view](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/blk-md-spk-b_breadboard_adapter/pics/20190524_181624.jpg "Assembled adapter, bottom view")
-bottom view, assembled unit, with BT module soldered (silk screen marking of C3/R4 was swapped, fixed with perm. marker)
+bottom view, assembled unit, with BT module soldered (silk screen marking of C3/R4 was swapped, fix it with perm. marker)
 
 
 #### Assembly plan
 
 ![Assembly plan](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/blk-md-spk-b_breadboard_adapter/pics/assembly_plan_2.0.png "Assembly plan")
-Assembly plan
-
 
 #### Video
 

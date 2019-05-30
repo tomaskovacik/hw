@@ -1,6 +1,6 @@
-EESchema Schematic File Version 4
+EESchema Schematic File Version 5
 LIBS:F-3188_CSR8645_breadbord_Adapter-cache
-EELAYER 26 0
+EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -15,12 +15,12 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L F-3188_CSR8645:F-3188_CSR8645 U1
+L F-3188_CSR8645_breadbord_Adapter-rescue:F-3188_CSR8645-F-3188_CSR8645 U1
 U 1 1 56E97AB3
 P 6000 4150
 F 0 "U1" H 5800 6093 60  0000 C CNN
 F 1 "F-3188_CSR8645" H 5800 5987 60  0000 C CNN
-F 2 "my_modules:F-3188_CSR8645_no_silk_under_antena" H 5800 5881 60  0000 C CNN
+F 2 "my_modules:F-3188_CSR8645_no_silk_under_antena" H 5800 5881 60  0001 C CNN
 F 3 "" H 6000 2450 60  0000 C CNN
 	1    6000 4150
 	1    0    0    -1  
@@ -31,7 +31,7 @@ U 1 1 56E97AFF
 P 7400 3600
 F 0 "P2" H 7477 3683 50  0000 L CNN
 F 1 "CONN_01X21" H 7477 3592 50  0000 L CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x21" H 7477 3501 50  0000 L CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x21" H 7477 3501 50  0001 L CNN
 F 3 "" H 7400 3600 50  0000 C CNN
 	1    7400 3600
 	1    0    0    -1  
@@ -42,21 +42,10 @@ U 1 1 56E97BD5
 P 4150 3650
 F 0 "P1" H 4228 3733 50  0000 L CNN
 F 1 "CONN_01X22" H 4228 3642 50  0000 L CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x22" H 4228 3551 50  0000 L CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x22" H 4228 3551 50  0001 L CNN
 F 3 "" H 4150 3650 50  0000 C CNN
 	1    4150 3650
 	-1   0    0    -1  
-$EndComp
-$Comp
-L F-3188_CSR8645_breadbord_Adapter-rescue:SCJ368R1NUS0B00G-RESCUE-F-3188_CSR8645_breadbord_Adapter J1
-U 1 1 56E988D9
-P 9150 5500
-F 0 "J1" V 9295 5256 60  0000 R CNN
-F 1 "SCJ368R1NUS0B00G" V 9189 5256 60  0000 R CNN
-F 2 "jacks:3.5mm_stereo_jack_PJ306M" V 9083 5256 60  0000 R CNN
-F 3 "" H 9150 5500 60  0000 C CNN
-	1    9150 5500
-	1    0    0    -1  
 $EndComp
 $Comp
 L F-3188_CSR8645_breadbord_Adapter-rescue:LED-RESCUE-F-3188_CSR8645_breadbord_Adapter D2
@@ -389,4 +378,15 @@ Wire Wire Line
 	8750 5400 8750 5450
 Wire Wire Line
 	8750 5600 8750 5650
+$Comp
+L F-3188_CSR8645_breadbord_Adapter-rescue:SCJ368R1NUS0B00G-RESCUE-F-3188_CSR8645_breadbord_Adapter J1
+U 1 1 56E988D9
+P 9150 5500
+F 0 "J1" H 9295 5256 60  0000 R CNN
+F 1 "SCJ368R1NUS0B00G" V 9189 5256 60  0001 R CNN
+F 2 "jacks:3.5mm_stereo_jack_PJ306M" V 9083 5256 60  0001 R CNN
+F 3 "" H 9150 5500 60  0000 C CNN
+	1    9150 5500
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

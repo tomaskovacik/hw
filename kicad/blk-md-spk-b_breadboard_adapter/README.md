@@ -28,14 +28,6 @@ bottom view, assembled unit, with BT module soldered (silk screen marking of C3/
 
 ![Assembly plan](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/blk-md-spk-b_breadboard_adapter/pics/assembly_plan_2.0.png "Assembly plan")
 
-#### Video
-
-video (ver. 1.0): https://www.youtube.com/watch?v=mN-LFUUrpa8
-
-#### Blog
-
-blog (ver. 1.0): http://kovo-blog.blogspot.sk/2015/01/breadboard-adapter-for-blk-md-spk-b.html
-
 #### Additional files used in this project
 
 Github repository with [KiCad library part](https://github.com/tomaskovacik/kicad-library/tree/master/library), [KiCad footprint](https://github.com/tomaskovacik/kicad-library/tree/master/bluetooth.pretty).

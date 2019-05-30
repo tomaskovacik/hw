@@ -7,6 +7,22 @@ Breadboard adapter for F-3188 bluetooth audio module from ebay/aliexpress (searc
 - 3.5mm jack for audio output
 - 2x LED for indication with resistors
 
+#### PICS:
+![assembled adapter](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/F-3188_CSR8645_breadbord_Adapter/pics/20190524_180931.jpg "assembled adapter")
+Assembled adapter
+
+![assembled adapter](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/F-3188_CSR8645_breadbord_Adapter/pics/20190524_180943.jpg "assembled adapter")
+Assembled adapter
+
+![assembled adapter](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/F-3188_CSR8645_breadbord_Adapter/pics/20190524_180953.jpg "assembled adapter")
+Assembled adapter
+
+![assembled adapter](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/F-3188_CSR8645_breadbord_Adapter/pics/20190524_181000.jpg "assembled adapter")
+Assembled adapter
+
+![Assembly plan] (https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/F-3188_CSR8645_breadbord_Adapter/pics/F-3188_CSR8645_breadbord_Assambly_plan.png "Assembly plan")
+Assembly plan
+
 Github repository with [KiCad library part, KiCad footprint](https://github.com/tomaskovacik/kicad-library/).
 
 Github repository with [datasheet](https://github.com/tomaskovacik/kicad-library/tree/master/library/datasheet/F-3188_CSR8645_bluetooth).

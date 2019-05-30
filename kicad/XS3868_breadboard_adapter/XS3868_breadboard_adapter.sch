@@ -1,4 +1,4 @@
-EESchema Schematic File Version 4
+EESchema Schematic File Version 5
 LIBS:XS3868_breadboard_adapter-cache
 EELAYER 29 0
 EELAYER END
@@ -15,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L xs3868:XS3868 U1
+L XS3868_breadboard_adapter-rescue:XS3868-xs3868 U1
 U 1 1 5576DBD3
 P 7950 1900
 F 0 "U1" H 7950 2250 60  0000 C CNN
@@ -26,7 +26,7 @@ F 3 "" H 8000 1900 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L switch:SW_PUSH SW6
+L XS3868_breadboard_adapter-rescue:SW_PUSH-switch SW6
 U 1 1 56C45A37
 P 8350 6000
 F 0 "SW6" H 8350 6256 50  0000 C CNN
@@ -48,7 +48,7 @@ F 3 "" H 8350 6250 50  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L switch:SW_PUSH SW5
+L XS3868_breadboard_adapter-rescue:SW_PUSH-switch SW5
 U 1 1 56C4875B
 P 8350 5650
 F 0 "SW5" H 8350 5906 50  0000 C CNN
@@ -161,7 +161,7 @@ VCC
 Text Label 6950 2350 0    50   ~ 0
 VBUCK
 $Comp
-L c:C C1
+L XS3868_breadboard_adapter-rescue:C-c C1
 U 1 1 5A910B1E
 P 4350 6100
 F 0 "C1" H 4100 6150 60  0000 L CNN
@@ -227,7 +227,7 @@ Wire Wire Line
 	9050 6000 8750 6000
 Connection ~ 8750 6000
 $Comp
-L switch:SW_PUSH SW4
+L XS3868_breadboard_adapter-rescue:SW_PUSH-switch SW4
 U 1 1 5BD7EF33
 P 8350 5250
 F 0 "SW4" H 8350 5506 50  0000 C CNN
@@ -240,7 +240,7 @@ $EndComp
 Wire Wire Line
 	8050 5250 7650 5250
 $Comp
-L switch:SW_PUSH SW3
+L XS3868_breadboard_adapter-rescue:SW_PUSH-switch SW3
 U 1 1 5BD80C91
 P 8350 4800
 F 0 "SW3" H 8350 5056 50  0000 C CNN
@@ -251,7 +251,7 @@ F 3 "" H 8350 4800 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L switch:SW_PUSH SW2
+L XS3868_breadboard_adapter-rescue:SW_PUSH-switch SW2
 U 1 1 5BD80C9A
 P 8350 4400
 F 0 "SW2" H 8350 4656 50  0000 C CNN
@@ -262,7 +262,7 @@ F 3 "" H 8350 4400 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L switch:SW_PUSH SW1
+L XS3868_breadboard_adapter-rescue:SW_PUSH-switch SW1
 U 1 1 5BD82B1B
 P 8350 3950
 F 0 "SW1" H 8350 4206 50  0000 C CNN
@@ -322,7 +322,7 @@ F 3 "" H 4800 3850 39  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L c:C C4
+L XS3868_breadboard_adapter-rescue:C-c C4
 U 1 1 5BD9018D
 P 3700 4000
 F 0 "C4" H 3400 3950 60  0000 L CNN
@@ -333,7 +333,7 @@ F 3 "" H 3700 4000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L c:C C3
+L XS3868_breadboard_adapter-rescue:C-c C3
 U 1 1 5BD903C6
 P 3200 3650
 F 0 "C3" V 3100 3750 60  0000 L CNN
@@ -424,7 +424,7 @@ Wire Wire Line
 Wire Wire Line
 	9350 2050 8550 2050
 $Comp
-L Connector_Generic:Conn_01x12_Male P2
+L XS3868_breadboard_adapter-rescue:Conn_01x12_Male-Connector_Generic P2
 U 1 1 5576DF5A
 P 10550 1950
 F 0 "P2" H 10550 2600 50  0000 C CNN
@@ -457,7 +457,7 @@ Wire Wire Line
 Wire Wire Line
 	7350 2450 6650 2450
 $Comp
-L Connector_Generic:Conn_01x12_Male P1
+L XS3868_breadboard_adapter-rescue:Conn_01x12_Male-Connector_Generic P1
 U 1 1 5576DE6D
 P 6450 2050
 F 0 "P1" H 6450 2700 50  0000 C CNN
@@ -471,7 +471,7 @@ NoConn ~ 4100 3850
 Wire Wire Line
 	4100 3850 4200 3850
 $Comp
-L c:C C6
+L XS3868_breadboard_adapter-rescue:C-c C6
 U 1 1 5BE2591C
 P 3250 1550
 F 0 "C6" V 3300 1650 60  0000 L CNN
@@ -482,7 +482,7 @@ F 3 "" H 3250 1550 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L c:C C7
+L XS3868_breadboard_adapter-rescue:C-c C7
 U 1 1 5BE2604A
 P 3250 1750
 F 0 "C7" V 3300 1850 60  0000 L CNN
@@ -493,7 +493,7 @@ F 3 "" H 3250 1750 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L c:C C5
+L XS3868_breadboard_adapter-rescue:C-c C5
 U 1 1 5BE26205
 P 3250 1950
 F 0 "C5" V 3300 2050 60  0000 L CNN
@@ -550,7 +550,7 @@ $EndComp
 Wire Wire Line
 	2400 3250 2200 3250
 $Comp
-L c:C C2
+L XS3868_breadboard_adapter-rescue:C-c C2
 U 1 1 5BD76587
 P 2200 3600
 F 0 "C2" H 1900 3550 60  0000 L CNN

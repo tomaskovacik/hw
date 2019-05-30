@@ -3,8 +3,6 @@ Breadboard adapter for BLK-MD-SPK-B
 
 Breadboard adapter for BLK-MD-SPK-B bluetooth audio module from ebay (search for BLK-MD-SPK-B) based on OVC3860 chip (not CSR!!!).
 
-![Assembled adapter](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/blk-md-spk-b_breadboard_adapter/pics/20190524_181618.jpg "Assembled adapter")
-
 #### Adapter features
 
 - 6 buttons(reset, play/pause, volume up/down, song previous/next)
@@ -17,6 +15,8 @@ Breadboard adapter for BLK-MD-SPK-B bluetooth audio module from ebay (search for
 ![Schematics](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/blk-md-spk-b_breadboard_adapter/pics/schematics_2.0.png "Schematics")
 
 #### Photos
+
+![Assembled adapter](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/blk-md-spk-b_breadboard_adapter/pics/20190524_181618.jpg "Assembled adapter")
 
 ![Assembled adapter top view](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/blk-md-spk-b_breadboard_adapter/pics/20190524_181628.jpg "Assembled adapter top view")
 top view, assembled unit

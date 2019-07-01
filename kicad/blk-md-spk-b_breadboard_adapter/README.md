@@ -28,6 +28,10 @@ bottom view, assembled unit, with BT module soldered (silk screen marking of C3/
 
 ![Assembly plan](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/blk-md-spk-b_breadboard_adapter/pics/assembly_plan_2.0.png "Assembly plan")
 
+#### Arduino support 
+
+Arduino library on github is [here](https://github.com/tomaskovacik/OVC3860/), currently in something like Beta stage, commit/suggestions are welcome
+
 #### Additional files used in this project
 
 Github repository with [KiCad library part](https://github.com/tomaskovacik/kicad-library/tree/master/library), [KiCad footprint](https://github.com/tomaskovacik/kicad-library/tree/master/bluetooth.pretty).

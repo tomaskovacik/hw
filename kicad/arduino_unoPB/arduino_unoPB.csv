@@ -1,0 +1,38 @@
+Designator,Package,Quantity,Designation
+"C13**,C14**",TantalC_SizeD_EIA-7343_Wave,2,10u/35V
+U2**,QFN-24-1EP_4x4mm_Pitch0.5mm,1,CP2104
+P21***,Pin_Header_Straight_1x06,1,CP2102
+P22**,Pin_Header_Straight_2x05,1,xx2
+C2**,TantalC_SizeA_EIA-3216_Wave,1,1u/16V
+C3**,TantalC_SizeA_EIA-3216_Wave,1,10u/16V
+"D3**,D4**",LED-1206,2,YellowLED
+"D5,D6***,D7**",SOD-123,3,MBR120
+"J1**,****",USB_B,1,USB_B
+"J2**,****",USB_Micro-B,1,USB_B_Micro
+"J3**,****",AB2_USB_MICRO_SMD,1,USB_B_Micro
+"TH1**,TH2**",R_0603_HandSoldering,2,MLC-05E
+L1**,Choke_SMD_1206_Standard,1,30Ohm bead
+F1**,Fuse_SMD1206_Wave,1,Fuse 16V/0.5A
+"R8**,R9**",R_0805_HandSoldering,2,22
+J4**,JACK_ALIM,1,DC_JACK
+D1,LED-1206,1,Green RED
+D2,LED-1206,1,Red LED
+P18,Pin_Header_Straight_1x10,1,Communication
+"P2,P15,P19",Pin_Header_Straight_1x08,3,
+U3,SOT223,1,AP1117-50
+U4,SOT223,1,AP1117-33
+P16,Pin_Header_Straight_2x03,1,CONN_6
+SW1,3x6x2.5mm_tact_switch,1,BUTTON
+U1,TQFP-32_7x7mm_Pitch0.8mm,1,ATMEGA328PB-AU
+X1*,Crystal_HC49-U_Vertical,1,16MHz
+X2*,Q_49U3HMS,1,16MHz
+Y1*,MURATA_CSTCE_V53,1,16MHz
+Y2*,CRYSTAL_3225,1,16MHz
+"R1,R5,R6**,R7**",R_0805_HandSoldering,4,1k
+R2,R_0805_HandSoldering,1,1M
+R3,R_0805_HandSoldering,1,10k
+R4,R_0805_HandSoldering,1,100
+"C1,C6,C7,C8,C9,C10,C11,C12",C_0805_HandSoldering,8,100n
+"C4,C5",C_0805_HandSoldering,2,22p
+,,,
+"* only one of X1,X2,Y1 or Y2 | ** usb support | **** only one of J1,J2 or J3 | **** external usb2serial",,,

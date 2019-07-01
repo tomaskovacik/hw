@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name arduino_unoPB-rescue)(type Legacy)(uri ${KIPRJMOD}/arduino_unoPB-rescue.lib)(options "")(descr ""))
+)

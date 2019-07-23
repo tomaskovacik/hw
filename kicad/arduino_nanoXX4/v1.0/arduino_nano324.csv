@@ -1,0 +1,22 @@
+Designator,Package,Quantity,Designation
+U3,SOT223,2,AP1117-50
+U4,SOT223,2,AP1117-33
+"C8,C2,C1,C6,C5,C7,C9",0805,7,0.1m
+C3,TantalC_SizeA_EIA-3216_Wave,1,1u
+C4,TantalC_SizeA_EIA-3216_Wave,1,10u
+D1,1206,1,Red LED
+D2,1206,1,Green LED
+"D5,D6",SOD-123,2,MBR120
+F1,1206,1,Fuse
+J1,USB_Micro-B,1,USB_B_Micro
+P7,Pin_Header_Straight_2x03,1,ISP
+"R1,R2",0805,2,22
+"R3,R5",0805,4,1k
+R8,0805,1,1M
+R4,0805,1,10k
+SW1,3x6x2.5mm_tact_switch,1,SW_PUSH
+U2,QFN-24-1EP_4x4mm_Pitch0.5mm,1,CP2104/CP2102N-GQFN24
+Y1,MURATA_CSTCE_V53,1,16MHz
+U1,TQFP-44_10x10mm_Pitch0.8mm,1,ATMEGA324PA
+X1,Crystal_Round_Horizontal_3mm_BigPad,1,32.768kHz
+P1.P2,Pin_Header_Straight_1x23,2,Pin_Header_Straight_1x23

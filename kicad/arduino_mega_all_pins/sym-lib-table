@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name arduino_mega_all_pins-rescue)(type Legacy)(uri ${KIPRJMOD}/arduino_mega_all_pins-rescue.lib)(options "")(descr ""))
+)

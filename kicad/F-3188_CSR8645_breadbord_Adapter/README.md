@@ -1,17 +1,33 @@
+Breadboard adapter for F-3188
+-----------------------------
 Breadboard adapter for F-3188 bluetooth audio module from ebay/aliexpress (search for F-3188) based on CSR8645 chip.
 
-#### Adapter features:
+v2:
+ - buttons for PLAY, NEXT, PREVIOUS, VOLUME UP and DOWN
+ - 3th led
+ - usb microusb + protection circute
+ - microphone support circute
 
-- MFB button (based on schematics provided for module, this should be button, but based on tests it should be switch, solder jumper is on board to bypass button)
-- reset button plus pull up resistor
+#### Adapter features
+
+v1:
+- reset + MFB button (based on schematics provided for module, this should be button, but based on tests it should be switch, solder jumper is on board to bypass button)
 - 3.5mm jack for audio output
-- 2x LED for indication with resistors
+- indication leds
+
+v2:
+ - buttons for PLAY, NEXT, PREVIOUS, VOLUME UP and DOWN, RESET
+ - 3 leds
+ - usb microusb + protection components
+ - microphone circute with 3.5mm jack
+
 
 #### Schematics
 
 ![Schematics](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/F-3188_CSR8645_breadbord_Adapter/pics/F-3188_CSR8645_breadbord_Adapter.png "Schematics")
 
-#### PICS:
+Photos
+------
 ![assembled adapter](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/F-3188_CSR8645_breadbord_Adapter/pics/20190524_180931.jpg "assembled adapter")
 
 ![assembled adapter](https://raw.githubusercontent.com/tomaskovacik/hw/master/kicad/F-3188_CSR8645_breadbord_Adapter/pics/20190524_180943.jpg "assembled adapter")

@@ -34,7 +34,11 @@ Boards that I sell in my Tindie store did not have RX/TX LEDs.
 
 There is the place for the RX/TX LEDs on PCB (unpopulated R8, R9, D3, D4), but I made an error in design and routed them to the ground. They should connect to 5V rail. I was about to run new PCBs when I realize this will only work with a more expensive CP2102N chip, as this one uses separate pins for the LEDs. Legacy CP2102 chip did not have this function (LEDs in case of CP2102 are tied directly to the RX/TX lines). And as I want to use the CP2102 chip, I decide that these LEDs are not so important, and rolling new PCB is just a waste of money, and it's not ecological.
 
-But this can be hacked. You need to cut traces around D4, D3, R8, R9. They must not connect to anything else expect RX and TX lines. Then solder resistors R8 and R9. Solder LEDs in reverse and add few jumper wires. In case the CP2102N chip is used only anodes of LEDs need to be connected to 5V rail, and when the CP2102 chip is used (without N),  the resistor R8 must be connected to the RX line and R9 to the TX line.
+But this can be hacked. 
+
+If the CP2102N chip is used, cut traces around D4 and D3. Solder these LEDs in reverse and connect anodes (pins closer to ISCP header) to 5V rail. Then solder resistors R8 and R9.
+
+If the CP2102 chip is used, do the same as for CP2102N chip, but also you must cut traces around R8 and R9.   the resistor R8 must be connected to the RX line and R9 to the TX line.
 
  Check the next picture:
 

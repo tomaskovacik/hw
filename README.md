@@ -1,6 +1,4 @@
-repo for hw
-
-fritzing: projects made in fritzing (abandoned, switching to kicad, I work on re-do all this PCBs in kicad)
+repo for hw(pcbs mainly) part of electronic projects, sometimes there is also few software files here:)
 
 kicad: projects made in kicad
 

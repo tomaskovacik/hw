@@ -12,7 +12,7 @@ I designed this set of boards:
 
 #### Arduino support
 
-To use PB version of ATmega328 chip in the Arduino software you need to install MiniCore from MCUdude: [https://github.com/MCUdude/MiniCore](https://github.com/MCUdude/MiniCore).
+To use the PB version of the ATmega328 chip in the Arduino software you need to install MiniCore from MCUdude: [https://github.com/MCUdude/MiniCore](https://github.com/MCUdude/MiniCore).
 
 #### PB/nonPB version selection
 

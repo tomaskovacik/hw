@@ -1,9 +1,9 @@
 breadboard adapter for S3860M-S module (check marking on your module, this is not for XS3868 module, nor BLK module!)
  version 2.0:
 
-buttons: on/off,reset,nex, previous, volume up and down
+buttons: on/off, reset, next, previous, volume up and down
 
-jack: output (optional over 1206 caps (by default this is bypased by PCB trace,so this  need to be cut for caps to work), mono mic + all required bias circute
+jack: output (optional over 1206 caps (by default this is bypased by PCB trace,so trace need to be cut for caps to work), mono mic + all required bias circute
 
 12+12pin headers
 

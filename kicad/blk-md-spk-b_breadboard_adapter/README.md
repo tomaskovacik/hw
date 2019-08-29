@@ -1,7 +1,7 @@
 Breadboard adapter for BLK-MD-SPK-B
 -----------------------------------
 
-Breadboard adapter for BLK-MD-SPK-B bluetooth audio module from ebay (search for BLK-MD-SPK-B) based on OVC3860 chip (not CSR!!!).
+Breadboard adapter for the BLK-MD-SPK-B bluetooth audio module from ebay (search for BLK-MD-SPK-B) based on OVC3860 chip (not CSR!!!).
 
 #### Adapter features
 

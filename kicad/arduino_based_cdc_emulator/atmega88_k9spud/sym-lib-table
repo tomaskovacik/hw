@@ -1,4 +1,0 @@
-(sym_lib_table
-  (lib (name arduino_based_cdc_emu-rescue)(type Legacy)(uri ${KIPRJMOD}/arduino_based_cdc_emu-rescue.lib)(options "")(descr ""))
-  (lib (name power)(type Legacy)(uri ${KICAD_SYMBOL_DIR}/power.lib)(options "")(descr ""))
-)

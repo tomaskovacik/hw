@@ -1,6 +1,6 @@
 NanoPB is an almost drop-in replacement for Arduino Nano boards. Almost because it has two more pins compared to the original Nano board, it is more capable thanks to upgraded ATmega328PB chip, check out this [pdf](http://ww1.microchip.com/downloads/en/AppNotes/Atmel-42559-Differences-between-ATmega328P-and-ATmega328PB_ApplicationNote_AT15007.pdf) from Microchip to learn more about the difference between the classic and the PB version of ATmega328.
 
-While I was playing with this new/upgraded chips and overall Arduino boards,  I designed more then what I need (one breadboard adapter :) ).
+While I was playing with these upgraded chips and overall Arduino boards, I designed more then what I need (one breadboard adapter :) ).
 
 I designed this set of boards:
 

@@ -26,7 +26,7 @@ On the board are three jumpers:
 
 #### Tindie
 
-Boards that I did not need are on sale on Tindie, 1$ for board + shipping, as always all components can be added for an additional $$.
+Boards that I do not need are on sale on Tindie, 1$ for board + shipping, as always all components can be added for an additional $$.
 
 [ link to store ] (https://www.tindie.com/products/tomaskovacik/nanopb/)
 

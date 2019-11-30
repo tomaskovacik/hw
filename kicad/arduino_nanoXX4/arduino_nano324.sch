@@ -1,6 +1,6 @@
 EESchema Schematic File Version 5
 LIBS:arduino_nano324-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
@@ -1006,10 +1006,6 @@ Text Label 3950 3900 2    60   ~ 0
 D23
 Wire Wire Line
 	3350 4500 3950 4500
-Text Label 3950 3400 2    60   ~ 0
-D32
-Text Label 3950 3700 2    60   ~ 0
-D33
 Wire Wire Line
 	3950 4300 3350 4300
 Wire Wire Line
@@ -1031,10 +1027,6 @@ Wire Wire Line
 	15000 2600 15400 2600
 Wire Wire Line
 	15000 3000 15400 3000
-Text Label 13550 2700 0    60   ~ 0
-D33
-Text Label 13550 2800 0    60   ~ 0
-D32
 Text Label 13550 2600 0    60   ~ 0
 D23
 Text Label 13550 2900 0    60   ~ 0
@@ -1057,8 +1049,6 @@ Wire Wire Line
 	14200 2800 13550 2800
 Wire Wire Line
 	13550 2700 14200 2700
-Wire Wire Line
-	13550 3000 14200 3000
 Text Label 3950 3200 2    60   ~ 0
 D21
 Text Label 15400 3000 0    60   ~ 0
@@ -1782,17 +1772,6 @@ F 3 "" H 2250 900 50  0001 C CNN
 	1    2250 900 
 	1    0    0    -1  
 $EndComp
-$Comp
-L arduino_nano324-rescue:3V3-pwr #PWR0134
-U 1 1 5D00D122
-P 11450 2800
-F 0 "#PWR0134" H 11450 2760 30  0001 C CNN
-F 1 "3V3" H 11475 2961 60  0000 C CNN
-F 2 "" H 11450 2800 50  0001 C CNN
-F 3 "" H 11450 2800 50  0001 C CNN
-	1    11450 2800
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	11450 2800 11450 3250
 Wire Wire Line
@@ -1848,14 +1827,35 @@ F 3 "" H 8450 4950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:VCC #PWR?
+L power:VCC #PWR0131
 U 1 1 5D0CF1E2
 P 6350 5550
-F 0 "#PWR?" H 6350 5400 50  0001 C CNN
+F 0 "#PWR0131" H 6350 5400 50  0001 C CNN
 F 1 "VCC" H 6367 5723 50  0000 C CNN
 F 2 "" H 6350 5550 50  0001 C CNN
 F 3 "" H 6350 5550 50  0001 C CNN
 	1    6350 5550
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	13550 3000 14200 3000
+$Comp
+L arduino_nano324-rescue:3V3-pwr #PWR0134
+U 1 1 5D00D122
+P 11450 2800
+F 0 "#PWR0134" H 11450 2760 30  0001 C CNN
+F 1 "3V3" H 11475 2961 60  0000 C CNN
+F 2 "" H 11450 2800 50  0001 C CNN
+F 3 "" H 11450 2800 50  0001 C CNN
+	1    11450 2800
+	1    0    0    -1  
+$EndComp
+Text Label 13550 2800 0    60   ~ 0
+D32
+Text Label 3950 3400 2    60   ~ 0
+D32
+Text Label 13550 2700 0    60   ~ 0
+D33
+Text Label 3950 3700 2    60   ~ 0
+D33
 $EndSCHEMATC

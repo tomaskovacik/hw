@@ -1,14 +1,15 @@
-breadboard adapter for S3860M-S module (check marking on your module, this is not for XS3868 module, nor BLK module!)
- version 2.0:
+breadboard adapter for the S3860M-S module (check markings on your module, this is not for the XS3868 module, nor BLK module!)
+ 
+What's new in version 2.0:
 
 buttons: on/off, reset, next, previous, volume up and down
 
-jack: output (optional over 1206 caps (by default this is bypased by PCB trace,so trace need to be cut for caps to work), mono mic + all required bias circute
+jack: output (optional over 1206 caps (by default this is bypassed by PCB trace, so trace need to be cut for caps to work), mono mic + all required bias circuit
 
 12+12pin headers
 
 
-breadboard adapters for these bluetooth modules can be purchase at tindie:
+breadboard adapters for these bluetooth modules can be purchase at Tindie.com :
 
 BLK-MD-SPK-B https://www.tindie.com/products/tomaskovacik/breadboard-adapter-for-blk-md-spk-b/
 

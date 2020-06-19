@@ -6,7 +6,7 @@ Breadboard adapter for the BLK-MD-SPK-B bluetooth audio module from ebay (search
 #### Adapter features
 
 - 6 buttons(reset, play/pause, volume up/down, song previous/next)
-- 3.5mm jack for headphones direct connect, no caps
+- 3.5mm jack for headphones with direct connection, no caps
 - 3.5mm jack for microphone with supporting circut
 - indication leds
 

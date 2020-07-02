@@ -1,0 +1,56 @@
+Designator,Package,Quantity,Designation
+"C1,C2,C5,C6,C7,C8,C11,C14,C15,C16,C17",C_0805,11,0.1m
+C3,TantalC_SizeA_EIA-3216,1,1u
+C4,TantalC_SizeA_EIA-3216,1,10u
+"C9,C10*",TantalC_SizeD_EIA-7343,2,10u/35V
+"C12,C13",C_0805,2,22p
+"D1,D7,D6",SOD-123,3,MBR120
+D2,LED-1206,1,GRED
+D3,LED-1206,1,RLED
+"D4,D5",LED-1206,2,YLED
+F1,Fuse_SMD1206,1,Fuse
+J1,USB_B,1,USB_B
+J3*,JACK_ALIM,1,DC_JACK DC-005
+J2 optional package for J1,USB_Micro-B,1,USB_B_Micro
+J4 optional package for J1,AB2_USB_MICRO_SMD,1,USB_B_Micro
+L1,Choke_SMD_1206,1,10uH
+L2,Choke_SMD_1206,1,30Ohm beat
+P1,Pin_Header_Straight_1x10,1,"Spacing 0.1"""
+"P2, P3, P7, P8, P9",Pin_Header_Straight_1x08,5,"Spacing 0.1"""
+P4,Pin_Header_Straight_2x03,1,"Spacing 0.1"""
+P5,Pin_Header_Straight_2x08,1,"Spacing 0.1"""
+P6,Socket_Strip_Arduino_2x18,1,"Spacing 0.1"""
+"R1,R2",R_0805,2,20
+"R3,R4,R5,R6,R10,R11",R_0805,6,1k
+R7,R_0805,1,10k
+R8,R_0805,1,100
+R9,R_0805,1,1M
+"SW1,SW2",3x6x2.5mm tactile switch,2,SW_PUSH
+"TH1,TH2",R_0603,2,CG0603MLC-05E
+U1,QFN-24-1EP_4x4mm_Pitch0.5mm,1,CP2104
+U2,TQFP-100_14x14mm_Pitch0.5mm,1,ATMEGA2560-16AU
+U3,AB2_SOT223,2,AP1117-33
+U4,AB2_SOT223,2,AP1117-50
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+X1,Crystal_Round_Horizontal_3mm_BigPad,1,32.768kHz (optional)
+Y1,Crystal_HC49-U_Vertical,1,16MHz
+optional package for Y1,Q_49U3HMS,1,16MHz
+optional package for Y1,MURATA_CSTCE_V53,1,Resonator 16MHz
+optional package for Y1,CRYSTAL_3225,1,Crystal_GND23 16MHz

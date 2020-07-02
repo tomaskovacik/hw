@@ -1,6 +1,6 @@
 EESchema Schematic File Version 5
 LIBS:arduino_mega_all_pins-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
@@ -13,6 +13,11 @@ Comment1 ""
 Comment2 ""
 Comment3 ""
 Comment4 ""
+Comment5 ""
+Comment6 ""
+Comment7 ""
+Comment8 ""
+Comment9 ""
 $EndDescr
 Text Label 13550 1100 1    60   ~ 0
 Vin
@@ -588,7 +593,7 @@ L Device:L L2
 U 1 1 5CF48A5E
 P 6900 7000
 F 0 "L2" V 7090 7000 50  0000 C CNN
-F 1 "L" V 6999 7000 50  0000 C CNN
+F 1 "bead_30" V 6999 7000 50  0000 C CNN
 F 2 "Choke_SMD.pretty:Choke_SMD_1206_Standard" H 6900 7000 50  0001 C CNN
 F 3 "~" H 6900 7000 50  0001 C CNN
 	1    6900 7000
@@ -762,7 +767,7 @@ L Device:Fuse F1
 U 1 1 5CFE0C1B
 P 9950 3150
 F 0 "F1" V 9753 3150 50  0000 C CNN
-F 1 "Fuse" V 9844 3150 50  0000 C CNN
+F 1 "0.5A" V 9844 3150 50  0000 C CNN
 F 2 "Fuse_Holders_and_Fuses:Fuse_SMD1206_Wave" V 9880 3150 50  0001 C CNN
 F 3 "~" H 9950 3150 50  0001 C CNN
 	1    9950 3150
@@ -974,12 +979,6 @@ Wire Wire Line
 	8100 10550 8100 10750
 Wire Wire Line
 	8100 10750 8400 10750
-Text Label 8400 10750 2    50   ~ 0
-TXLED
-Text Label 8800 10750 2    50   ~ 0
-RXLED
-Text Label 10750 8850 0    60   ~ 0
-DTR
 $Comp
 L arduino_mega_all_pins-rescue:C-RESCUE-arduino_atmega88-arduino_atmega88-rescue-arduino_atmega328PB-rescue-arduino_unoPB-rescue C6
 U 1 1 53316DBF
@@ -996,20 +995,18 @@ Wire Wire Line
 Text Label 9350 8850 0    60   ~ 0
 RESET
 $Comp
-L Jumper:SolderJumper_2_Bridged JP1
+L Jumper:SolderJumper_2_Open JP1
 U 1 1 5C5707F6
 P 10350 8850
 F 0 "JP1" H 10500 8900 50  0000 C CNN
 F 1 "SolderJumper_2_Bridged" H 10350 8964 50  0001 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Bridged_RoundedPad1.0x1.5mm" H 10350 8850 50  0001 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10350 8850 50  0001 C CNN
 F 3 "~" H 10350 8850 50  0001 C CNN
 	1    10350 8850
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	10050 8850 10200 8850
-Wire Wire Line
-	10500 8850 10900 8850
+	10050 8850 10150 8850
 $Comp
 L arduino_mega_all_pins-rescue:CONN_5X2-con P14
 U 1 1 5CA262C4
@@ -1089,8 +1086,6 @@ F 3 "https://www.silabs.com/Support%20Documents/TechnicalDocs/cp2104.pdf" H 2000
 $EndComp
 Wire Wire Line
 	3250 9450 3750 9450
-Wire Wire Line
-	3250 9550 3750 9550
 Wire Wire Line
 	3250 9150 3750 9150
 Text Label 3750 9150 2    60   ~ 0
@@ -2117,7 +2112,7 @@ Text Label 5050 5050 2    60   ~ 0
 0(Rx0)
 Text Label 3750 9450 2    60   ~ 0
 0(Rx0)
-Text Label 3750 9550 2    60   ~ 0
+Text Label 4325 9550 2    60   ~ 0
 1(Tx0)
 Text Label 5050 1450 2    60   ~ 0
 22
@@ -2387,8 +2382,6 @@ Text Label 5050 6650 2    60   ~ 0
 A7
 Text Label 1350 3250 0    60   ~ 0
 A8
-Text Label 1350 3350 0    60   ~ 0
-A9
 Text Label 1350 3450 0    60   ~ 0
 A10
 Text Label 1350 3550 0    60   ~ 0
@@ -3451,4 +3444,54 @@ Text Label 15700 1250 0    60   ~ 0
 20(SDA)
 Text Label 15700 1150 0    60   ~ 0
 21(SCL)
+$Comp
+L arduino_mega_all_pins-rescue:R-RESCUE-arduino_atmega88-arduino_atmega88-rescue-arduino_atmega328PB-rescue-arduino_unoPB-rescue R10
+U 1 1 5D8A4F69
+P 3700 9550
+F 0 "R10" V 3700 9550 50  0000 C CNN
+F 1 "1k" V 3750 9750 50  0000 C CNN
+F 2 "Resistors_SMD.pretty:R_0805_HandSoldering" H 3700 9550 60  0001 C CNN
+F 3 "" H 3700 9550 60  0001 C CNN
+	1    3700 9550
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3450 9550 3250 9550
+Wire Wire Line
+	3950 9550 4325 9550
+$Comp
+L arduino_mega_all_pins-rescue:R-RESCUE-arduino_atmega88-arduino_atmega88-rescue-arduino_atmega328PB-rescue-arduino_unoPB-rescue R11
+U 1 1 5D8A6FBF
+P 10925 8850
+F 0 "R11" V 10925 8850 50  0000 C CNN
+F 1 "1k" V 10975 9050 50  0000 C CNN
+F 2 "Resistors_SMD.pretty:R_0805_HandSoldering" H 10925 8850 60  0001 C CNN
+F 3 "" H 10925 8850 60  0001 C CNN
+	1    10925 8850
+	0    1    1    0   
+$EndComp
+Text Label 11500 8850 2    60   ~ 0
+DTR
+Wire Wire Line
+	11175 8850 11500 8850
+Wire Wire Line
+	10675 8850 10550 8850
+Text Label 8400 10750 2    60   ~ 0
+1(Tx0)
+Text Label 8800 10750 2    60   ~ 0
+0(Rx0)
+Wire Wire Line
+	10550 8850 10550 9025
+Wire Wire Line
+	10550 9025 10150 9025
+Wire Wire Line
+	10150 9025 10150 8850
+Connection ~ 10550 8850
+Wire Wire Line
+	10550 8850 10500 8850
+Connection ~ 10150 8850
+Wire Wire Line
+	10150 8850 10200 8850
+Text Label 1350 3350 0    60   ~ 0
+A9
 $EndSCHEMATC

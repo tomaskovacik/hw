@@ -975,14 +975,27 @@ X SPKL 9-UZ -1400 950 200 D 50 50 26 1 I
 ENDDRAW
 ENDDEF
 #
-# Connector_Specialized_USB_B_Micro
+# BM20_breadboard_adapter-rescue_SWITCH_SPST-MiscellaneousDevices
 #
-DEF Connector_Specialized_USB_B_Micro J 0 40 Y Y 1 F N
+DEF BM20_breadboard_adapter-rescue_SWITCH_SPST-MiscellaneousDevices SW 0 40 Y Y 1 F N
+F0 "SW" 0 150 60 H V C CNN
+F1 "BM20_breadboard_adapter-rescue_SWITCH_SPST-MiscellaneousDevices" 0 -100 60 H V C CNN
+F2 "" 0 0 60 H V C CNN
+F3 "" 0 0 60 H V C CNN
+DRAW
+P 2 0 1 0 -100 0 100 100 N
+X ~ 1 -200 0 100 R 50 50 1 1 I
+X ~ 2 200 0 100 L 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
+# BM20_breadboard_adapter-rescue_USB_B_Micro-Connector_Specialized
+#
+DEF BM20_breadboard_adapter-rescue_USB_B_Micro-Connector_Specialized J 0 40 Y Y 1 F N
 F0 "J" -200 450 50 H V L CNN
-F1 "Connector_Specialized_USB_B_Micro" -200 350 50 H V L CNN
+F1 "BM20_breadboard_adapter-rescue_USB_B_Micro-Connector_Specialized" -200 350 50 H V L CNN
 F2 "" 150 -50 50 H I C CNN
 F3 "" 150 -50 50 H I C CNN
-ALIAS USB_B_Mini
 $FPLIST
  USB*
 $ENDFPLIST
@@ -1028,7 +1041,7 @@ ENDDEF
 #
 # Device_LED
 #
-DEF Device_LED D 0 40 Y N 1 F N
+DEF Device_LED D 0 40 N N 1 F N
 F0 "D" 0 100 50 H V C CNN
 F1 "Device_LED" 0 -100 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
@@ -1058,26 +1071,11 @@ F2 "" -70 0 50 V I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
  R_*
- R_*
 $ENDFPLIST
 DRAW
 S -40 -100 40 100 0 1 10 N
 X ~ 1 0 150 50 D 50 50 1 1 P
 X ~ 2 0 -150 50 U 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
-# MiscellaneousDevices_SWITCH_SPST
-#
-DEF MiscellaneousDevices_SWITCH_SPST SW 0 40 Y Y 1 F N
-F0 "SW" 0 150 60 H V C CNN
-F1 "MiscellaneousDevices_SWITCH_SPST" 0 -100 60 H V C CNN
-F2 "" 0 0 60 H V C CNN
-F3 "" 0 0 60 H V C CNN
-DRAW
-P 2 0 1 0 -100 0 100 100 N
-X ~ 1 -200 0 100 R 50 50 1 1 I
-X ~ 2 200 0 100 L 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #

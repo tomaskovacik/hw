@@ -1,6 +1,6 @@
-EESchema Schematic File Version 4
+EESchema Schematic File Version 5
 LIBS:BM20_breadboard_adapter-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -422,7 +422,7 @@ Wire Wire Line
 Text Label 8950 2700 2    50   ~ 0
 GND
 $Comp
-L MiscellaneousDevices:SWITCH_SPST SW1
+L BM20_breadboard_adapter-rescue:SWITCH_SPST-MiscellaneousDevices SW1
 U 1 1 5AA8F0C8
 P 8100 2700
 F 0 "SW1" H 8100 2987 60  0000 C CNN
@@ -433,7 +433,7 @@ F 3 "" H 8100 2700 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L MiscellaneousDevices:SWITCH_SPST SW2
+L BM20_breadboard_adapter-rescue:SWITCH_SPST-MiscellaneousDevices SW2
 U 1 1 5AA97138
 P 8100 3050
 F 0 "SW2" H 8100 3337 60  0000 C CNN
@@ -456,7 +456,7 @@ Wire Wire Line
 Wire Wire Line
 	7500 3050 7800 3050
 $Comp
-L Connector_Specialized:USB_B_Micro J3
+L BM20_breadboard_adapter-rescue:USB_B_Micro-Connector_Specialized J3
 U 1 1 5AA4246D
 P 6600 1350
 F 0 "J3" H 6655 1817 50  0000 C CNN

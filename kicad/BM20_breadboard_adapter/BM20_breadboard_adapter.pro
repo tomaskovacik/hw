@@ -1,4 +1,4 @@
-update=Št  2. júl 2020, 12:34:56 CEST
+update=Št 23. júl 2020, 13:29:13 CEST
 version=1
 last_client=kicad
 [general]
@@ -24,8 +24,12 @@ LabSize=50
 ERC_TestSimilarLabels=1
 [ModEditFrame]
 version=1
+[SchematicFrame]
+version=1
+[LibeditFrame]
+version=1
 [sheetnames]
-1=f348ddda-9ff0-46b6-95c6-8261a4834ab2:
+1=c8ba42ef-57cb-4fce-a972-4ce22e4d3b3c:
 [pcbnew]
 version=1
 PageLayoutDescrFile=
@@ -328,7 +332,3 @@ uViaDrill=0.1
 dPairWidth=0.2
 dPairGap=0.25
 dPairViaGap=0.25
-[SchematicFrame]
-version=1
-[LibeditFrame]
-version=1

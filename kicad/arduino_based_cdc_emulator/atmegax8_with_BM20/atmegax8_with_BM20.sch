@@ -1,6 +1,5 @@
-EESchema Schematic File Version 4
-LIBS:atmegax8_with_BM20-cache
-EELAYER 29 0
+EESchema Schematic File Version 5
+EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
@@ -13,6 +12,11 @@ Comment1 ""
 Comment2 ""
 Comment3 ""
 Comment4 ""
+Comment5 ""
+Comment6 ""
+Comment7 ""
+Comment8 ""
+Comment9 ""
 $EndDescr
 $Comp
 L atmegax8_with_BM20-rescue:+5V-RESCUE-atmegax8_with_BM20 #PWR01
@@ -275,7 +279,7 @@ U 1 1 568C595C
 P 9550 10100
 F 0 "P2" H 9550 10508 50  0000 C CNN
 F 1 "SPI" H 9550 10416 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_2x03" H 9550 10324 50  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_2x03_Pitch2.54mm" H 9550 10324 50  0000 C CNN
 F 3 "" H 9550 8900 50  0000 C CNN
 	1    9550 10100
 	1    0    0    -1  
@@ -491,7 +495,7 @@ L atmegax8_with_BM20-rescue:CP-RESCUE-atmegax8_with_BM20 C14
 U 1 1 569195E0
 P 3300 1650
 F 0 "C14" H 2950 1700 50  0000 L CNN
-F 1 "4u7/25V" H 2800 1600 50  0000 L CNN
+F 1 "10u/16V" H 2800 1600 50  0000 L CNN
 F 2 "Capacitors_SMD.pretty:c_elec_5x5.8" H 3300 1650 60  0001 C CNN
 F 3 "" H 3300 1650 60  0001 C CNN
 	1    3300 1650
@@ -557,7 +561,7 @@ L atmegax8_with_BM20-rescue:CP-RESCUE-atmegax8_with_BM20 C9
 U 1 1 5692116B
 P 10600 1800
 F 0 "C9" H 10250 1850 50  0000 L CNN
-F 1 "47m/25V" H 10100 1750 50  0000 L CNN
+F 1 "10m/16V" H 10100 1750 50  0000 L CNN
 F 2 "Capacitors_SMD.pretty:c_elec_5x5.8" H 10600 1800 60  0001 C CNN
 F 3 "" H 10600 1800 60  0001 C CNN
 	1    10600 1800

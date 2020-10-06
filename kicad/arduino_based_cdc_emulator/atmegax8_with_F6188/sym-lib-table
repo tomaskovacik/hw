@@ -1,3 +1,0 @@
-(sym_lib_table
-  (lib (name atmegax8_with_bluetooth-rescue)(type Legacy)(uri ${KIPRJMOD}/atmegax8_with_bluetooth-rescue.lib)(options "")(descr ""))
-)

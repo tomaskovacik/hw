@@ -1373,7 +1373,7 @@
     (fp_text reference "P5" (at -2.2975 1.134 90) (layer "F.SilkS")
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (fp_text value "CONN_4" (at 0 -3.1) (layer "F.Fab") hide
+    (fp_text value "LM7805" (at 0 -3.1) (layer "F.Fab") hide
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_line (start -1.75 -1.75) (end -1.75 6.85) (layer "F.CrtYd") (width 0.05))

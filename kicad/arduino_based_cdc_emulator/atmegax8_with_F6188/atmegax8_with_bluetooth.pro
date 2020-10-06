@@ -1,4 +1,4 @@
-update=So  4. júl 2020, 18:58:22 CEST
+update=Ut  6. október 2020, 06:31:34 CEST
 version=1
 last_client=kicad
 [cvpcb]
@@ -345,4 +345,4 @@ dPairWidth=0.2
 dPairGap=0.25
 dPairViaGap=0.25
 [sheetnames]
-1=e4ff3bc2-75cf-4190-ab2d-ea4e58529d12:
+1=a0976045-c359-4c9c-a1ee-591b7ca0372d:

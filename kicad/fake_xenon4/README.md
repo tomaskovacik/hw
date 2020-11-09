@@ -2,7 +2,7 @@ HW for fake headlights autoleveling
 
 SW is here: https://github.com/tomaskovacik/arduino/tree/master/fake_xenon_adjuster
 
-you can by set of 2 here:
+you can buy set of 2 here:
 
 https://www.tindie.com/products/tomaskovacik/adapter-for-fxr-40-audi-a4-b5/
 

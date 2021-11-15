@@ -1204,7 +1204,7 @@
   (wire (pts (xy 196.85 83.82) (xy 196.85 76.2))
     (stroke (width 0) (type solid) (color 0 0 0 0))
   )
-  (wire (pts (xy 196.85 92.075) (xy 196.85 109.22))
+  (wire (pts (xy 196.85 91.44) (xy 196.85 109.22))
     (stroke (width 0) (type solid) (color 0 0 0 0))
   )
   (wire (pts (xy 196.85 109.22) (xy 196.85 120.65))

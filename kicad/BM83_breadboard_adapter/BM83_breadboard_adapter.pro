@@ -1,4 +1,4 @@
-update=Po 19. apríl 2021, 09:54:42 CEST
+update=Pi  5. november 2021, 19:45:50 CET
 version=1
 last_client=kicad
 [general]
@@ -14,10 +14,32 @@ LibDir=
 [eeschema/libraries]
 [SchematicFrame]
 version=1
+[schematic_editor]
+version=1
+PageLayoutDescrFile=
+PlotDirectoryName=
+NetFmtName=
+SpiceAjustPassiveValues=0
+SubpartIdSeparator=0
+SubpartFirstId=65
+LabSize=50
+TextOffsetRatio=0.3
+LineThickness=6
+BusThickness=12
+WireThickness=6
+PinSymbolSize=25
+JunctionSize=40
+FieldNameTemplates=(templatefields)
+ERC_TestSimilarLabels=1
+ERC_CheckUniqueGlobalLabels=1
+ERC_CheckBusDriverConflicts=1
+ERC_CheckBusEntryConflicts=1
+ERC_CheckBusToBusConflicts=1
+ERC_CheckBusToNetConflicts=1
+[sheetnames]
+1=20ab18f5-d6be-48be-b711-aa2e12c66d93:
 [ModEditFrame]
 version=1
-[sheetnames]
-1=d656bf5b-c5f2-48f2-9153-9b1c768f01e6:
 [pcbnew]
 version=1
 PageLayoutDescrFile=

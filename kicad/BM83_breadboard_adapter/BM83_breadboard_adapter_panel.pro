@@ -1,4 +1,4 @@
-update=Po 19. apríl 2021, 16:01:17 CEST
+update=Pi  5. november 2021, 19:46:39 CET
 version=1
 last_client=pcbnew
 [general]

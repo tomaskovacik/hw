@@ -57,4 +57,4 @@ ERC_CheckBusToNetConflicts=1
 [SchematicFrame]
 version=1
 [sheetnames]
-1=a80b2ea8-ea70-47ff-8ed5-1c2e7666e09c:
+1=367a40d2-fa2d-4340-b7c3-c06842eab31d:

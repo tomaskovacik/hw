@@ -910,6 +910,10 @@
   (text "GROUND" (at 70.739 79.756 180)
     (effects (font (size 1.27 1.27)) (justify right bottom))
   )
+  (text "do we need this R1?\nprobably no, \nit is mosfet ... "
+    (at 124.1298 121.1072 0)
+    (effects (font (size 1.27 1.27)) (justify right bottom))
+  )
   (text "no need this for attiny85!" (at 256.921 105.283 180)
     (effects (font (size 1.27 1.27)) (justify right bottom))
   )
